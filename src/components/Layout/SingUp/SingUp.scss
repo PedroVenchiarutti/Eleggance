@@ -1,55 +1,153 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Great+Vibes:regular);
+
 .container {
-    background: rgba(218, 160, 109, 0.72);
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #d59066;
+  font-family: "Poppins", sans-serif;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1405%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(81%2c 81%2c 81%2c 1)'%3e%3c/rect%3e%3cpath d='M 0%2c323 C 96%2c295 288%2c164.8 480%2c183 C 672%2c201.2 768%2c398.6 960%2c414 C 1152%2c429.4 1344%2c290.8 1440%2c260L1440 560L0 560z' fill='rgb(156, 138, 87)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1405'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-size: cover;
 }
 
-.card-singIn{
-
-    width: 800px;
-    background: #DDA68F;
-    margin-left: 25px;
-    margin-top: 5%;
-    margin-bottom: 5%;
-
+.box {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  align-self: center;
 }
-.card-one{
 
+.box-header {
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 2px -1px 20px 3px #252525;
+  width: 800px;
+  height: 500px;
+  position: relative;
+  background-color: #f3f3f3;
+}
+
+.box-header > img {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  align-self: center;
+  position: absolute;
+  width: 400px;
+  height: 100%;
+}
+.content-input {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 100px;
+  top: 50px;
+
+  h1 {
     text-align: center;
-}
-.card-signUp{
+    background: linear-gradient(to left, #7e370c, #ffce45);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 3.3rem;
+    position: relative;
+    font-family: Great Vibes;
+    margin-right: 30px;
+    width: 100%;
+  }
 
-
-    width: 800px;
-    background: #222222;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-.forgot {
-    display: block;
+  h2 {
     text-align: center;
-    color: white;
-}
-.text{
-    text-align: center;
-    color: white;
-}
-.tittlesSignIn {
-
-
-    display: block;
-    text-align: center;
-    color: black;
-    margin-top: 30%;
+    font-size: 20px;
+    padding-top: 20px;
+  }
 }
 
-.a1{
-    margin-top: 30%;
-
-
-
+#input-password,
+#input-login {
+  font-family: "Poppins";
+  width: 200px;
+  height: 40px;
+  position: relative;
+  border: 0.2px solid #5c5c5c;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding-left: 8px;
 }
+
+.button-div {
+  display: flex;
+  align-self: center;
+}
+
+.button-login {
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 30px;
+  border: none;
+  border-radius: 20px;
+  width: 190px;
+  height: 40px;
+  background-color: #ffce45;
+}
+
+.button-login:hover {
+  background-color: #fdba00;
+  transition: 1.9ms;
+}
+
+.footer-card > a {
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
+  color: #252525;
+}
+
+.footer-card > a:hover {
+  color: rgb(253, 135, 0);
+  opacity: 90%;
+  transition: 1.5ms;
+}
+
+.fade-in-fwd {
+  -webkit-animation: fade-in-fwd 1.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-fwd 1.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-elliptic-right-fwd {
+	-webkit-animation: slide-in-elliptic-right-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-elliptic-right-fwd 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-elliptic-right-fwd {
+    0% {
+      -webkit-transform: translateX(800px) rotateY(-30deg) scale(0);
+              transform: translateX(800px) rotateY(-30deg) scale(0);
+      -webkit-transform-origin: -100% 50%;
+              transform-origin: -100% 50%;
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0) rotateY(0) scale(1);
+              transform: translateX(0) rotateY(0) scale(1);
+      -webkit-transform-origin: -1800px 50%;
+              transform-origin: -1800px 50%;
+      opacity: 1;
+    }
+  }

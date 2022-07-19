@@ -1,32 +1,43 @@
 import React from "react";
 import "./SingUp.scss";
 
-const SingUp = () => {
+const SingUp = (props) => {
   return (
     <div className="container">
-      <div className="card-signUp">
-        <div>
-          <div className="text">
-            <h1>Sign In</h1>
-          </div>
-          <div className="icon"></div>
-          <div className="card-one">
-            <input type="text" className="input" />
-            <input type="password" className="input" />
-          </div>
-          <span className="forgot" type="button">
-            Forgot your password?
-          </span>
-        </div>
-      </div>
-
-      <div className="card-singIn">
-        <div className="tittlesSignIn">
-          <div className="a1">
-            <h1>Sign Up</h1>
-          </div>
-          <div className="a2">
-            <h3>Sign up here if you dont have account</h3>
+      <div className="box">
+        <div className="box-header">
+          <h3>{props.title}</h3>
+          <img
+            src="public\img\modelo-login.jpg"
+            alt="foto"
+            className="fade-in-fwd"
+          />
+          <div className="content-input">
+            <h1 className="slide-in-elliptic-right-fwd">Eleggance</h1>
+            <h2>SINGUP</h2>
+            <input
+              type="text"
+              name="input-login"
+              id="input-login"
+              placeholder="Login:"
+            />
+            <input
+              type="password"
+              name="input-password"
+              id="input-password"
+              placeholder="Password:"
+            />
+            <div className="button-div">
+              <button className="button-login">Entrar</button>
+            </div>
+            <div className="footer-card">
+              <a href="#">
+                <p>Esqueceu a senha?</p>
+              </a>
+              <a href="#">
+                <p>Cadastre aqui</p>
+              </a>
+            </div>
           </div>
         </div>
       </div>
