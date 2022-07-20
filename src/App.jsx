@@ -5,7 +5,9 @@ import SingUp from "./components/Layout/SingUp/SingUp";
 export const App = () => {
   return (
     <>
-      <SingUp />
+      {/* <HomePage /> */}
+      <SingUp title="Entrar" option="Entrar" />
+      {/* <SingUp title="Cadastrar" option="Cadastrar" /> */}
     </>
   );
 };
