@@ -1,6 +1,9 @@
 import React from "react";
 import "./SingUp.scss";
 
+
+
+
 function inputRender(title) {
   if (title.title === "Entrar") {
     return (
