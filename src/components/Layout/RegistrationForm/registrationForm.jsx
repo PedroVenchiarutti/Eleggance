@@ -50,7 +50,9 @@ export default (props) => {
             <button className="button-proximo-registration">Proximo</button>
           </div>
           <div>
-            <button className="button-voltar-registration">Voltar</button>
+            <button className="button-voltar-registration">
+              <a href="/cadastro">Voltar</a>
+            </button>
           </div>
         </div>
       </div>
