@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SingUp from "./components/Layout/SingUp/SingUp";
 import RegistrationForm from "./components/Layout/RegistrationForm/registrationForm";
 
-import HomePage from "./components/Layout/HomePage/HomePage/HomePage";
+import HomePage from "./components/Layout/HomePage/HomePage";
 
 export const App = () => {
   return (

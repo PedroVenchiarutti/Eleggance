@@ -1,0 +1,78 @@
+.container-promo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .swiper-pagination {
+    position: relative;
+    padding-top: 20px;
+    display: none;
+  }
+}
+
+.swiperSlidePromo {
+  height: 100%;
+  width: 90%;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  overflow-y: auto;
+
+  h1:first-child {
+    color: #000;
+    margin-left: 130px;
+  }
+
+  .swiper {
+    width: 80%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    height: auto;
+  }
+
+  .container-img-promo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .title-product-promo {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+  .full-price-promo {
+    color: #818181;
+    text-decoration: line-through;
+  }
+}
