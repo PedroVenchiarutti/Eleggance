@@ -9,31 +9,35 @@ export default (props) => {
           <h1>Ellegance</h1>
         </div>
         <div className="Titulo2">
-          <h2>Informacoes pessoais</h2>
+          <h2>Informacões pessoais</h2>
         </div>
         <div className="FormularioBox">
           <div className="grid-container">
             <form className="Formulario">
+              <div className="input-photo-registration">
+                <label className="label-photo-registration" for="photo-registration"></label>
+                <input type="file" id="photo-registration" name="photo-registration" />
+              </div>
               <section className="container-container">
                 <div className="container-name-registration">
                   <div className="grid-item label-float">
-                    <label>Nome completo:</label>
-                    <input type="text" name="name" required />
+                    <label className="label-form">Nome completo:</label>
+                    <input className="input-form-registration" type="text" name="name" required />
                     <div className="grid-item">
-                      <label>CPF:</label>
-                      <input type="text" name="cpf" required />
+                      <label className="label-form">CPF:</label>
+                      <input className="input-form-registration" type="text" name="cpf" required />
                     </div>
                   </div>
                 </div>
                 <div className="container-name-registration">
                   <div className="grid-item">
-                    <label>
+                    <label className="label-form">
                       Data de nascimento:
-                      <input type="data" name="data de nascimento" required />
+                      <input className="input-form-registration" type="data" name="data de nascimento" required />
                     </label>
                   </div>
                   <div className="grid-item">
-                    <label>Sexo:</label>
+                    <label className="label-form">Sexo:</label>
                     <select name="select" className="select-form" required>
                       <option value="Masculino"> Masculino</option>
                       <option value="Feminino"> Feminino</option>
