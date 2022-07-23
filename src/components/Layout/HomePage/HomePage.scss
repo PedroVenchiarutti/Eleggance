@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 20px;
   font-size: 0.875rem;
   color: #f3f3f3;
   font-weight: 600;
@@ -13,6 +12,7 @@
 .homepage {
   overflow-x: hidden;
   overflow-y: hidden;
+  height: 100%;
 }
 
 .navbar-homepage {
@@ -72,7 +72,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 20px;
 }
 
 .list-navbar-homepage > li > a {

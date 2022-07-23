@@ -4,10 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import Promo from "../Promo/Promo";
 import { Keyboard, Pagination, Navigation } from "swiper";
 import AboutUs from "./../AboutUs/AboutUs";
 import Footer from "./../Footer/Footer";
+import Taskbar from "../TaskBar/TaskBar";
+import Carrousel from "../utils/Carrousel/Carrousel";
 
 const HomePage = (props) => {
   return (
@@ -77,10 +78,35 @@ const HomePage = (props) => {
               <img src="\img\Imageteste.png" alt="ImgTeeste" />
             </SwiperSlide>
           </Swiper>
+          <Taskbar />
+          <Carrousel
+            title="Oferta"
+            imageCard1="/img/gloss.png"
+            imageCard2="/img/gloss.png"
+            imageCard3="/img/gloss.png"
+            imageCard4="/img/gloss.png"
+            imageCard5="/img/gloss.png"
+            imageCard6="/img/gloss.png"
+            imageCard7="/img/gloss.png"
+            imageCard8="/img/produtos/sabonete-gourmet-1.png"
+          />
         </>
-        <Promo />
-        <AboutUs />
       </header>
+      <br />
+      <br />
+      <br />
+      <Carrousel
+        title="Promocao"
+        imageCard1="/img/gloss.png"
+        imageCard2="/img/gloss.png"
+        imageCard3="/img/gloss.png"
+        imageCard4="/img/gloss.png"
+        imageCard5="/img/gloss.png"
+        imageCard6="/img/gloss.png"
+        imageCard7="/img/gloss.png"
+        imageCard8="/img/produtos/sabonete-gourmet-1.png"
+      />
+      <AboutUs />
       <Footer />
     </>
   );
