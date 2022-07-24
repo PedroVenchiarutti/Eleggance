@@ -5,7 +5,6 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Card from "./Card";
 
-
 const Carrousel = (props) => {
   return (
     <div className="container-promo">

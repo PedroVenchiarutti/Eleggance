@@ -1,0 +1,240 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Great+Vibes:regular);
+
+.img-container-singup {
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(img/background-login.jpg);
+  background-position: left;
+  background-size: cover;
+}
+
+.container-singup {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.form-singup {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.box-singup {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  align-self: center;
+}
+
+.box-header-singup {
+  display: flex;
+  border-radius: 6px;
+  box-shadow: 2px -1px 20px 3px #252525;
+  width: 900px;
+  height: 600px;
+  position: relative;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.img-singup {
+  width: 100%;
+
+  img {
+    border-radius: 5px;
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+.content-input-login-singup {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-top: 20px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    text-align: center;
+    background: linear-gradient(to left, #7e370c, #ffce45);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 3.3rem;
+    position: relative;
+    font-family: "Great Vibes";
+    margin-right: 30px;
+    width: 100%;
+    font-weight: 800;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+    font-weight: 800;
+  }
+}
+
+.content-input-cadastrar-singup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 100px;
+  top: 20px;
+
+  h1 {
+    text-align: center;
+    background: linear-gradient(to left, #7e370c, #ffce45);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 3.3rem;
+    position: relative;
+    font-family: Great Vibes;
+    margin-right: 30px;
+    width: 100%;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+    font-weight: 800;
+  }
+}
+
+.hero-svg-singup {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+
+  img {
+    right: 8px;
+    display: flex;
+    position: relative;
+    margin-top: 38px;
+    align-self: center;
+  }
+}
+
+#input-email,
+#input-password,
+#input-login {
+  background-color: transparent;
+  font-family: "Poppins";
+  text-align: start;
+  width: 200px;
+  height: 40px;
+  position: relative;
+  border: none;
+  border-bottom: 2px solid black;
+  margin-top: 20px;
+  outline: none;
+}
+
+.button-div-singup {
+  display: flex;
+  align-self: center;
+}
+
+.button-login-singup {
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 30px;
+  border: none;
+  border-radius: 6px;
+  width: 190px;
+  height: 40px;
+  background-color: #ffce45;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.button-login-singup:hover {
+  background-color: #fdba00;
+  transition: 1.9ms;
+}
+
+.footer-card-singup > a {
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
+  font-weight: 800;
+  color: #252525;
+}
+
+.footer-card-singup > a:hover {
+  color: rgb(253, 135, 0);
+  opacity: 50%;
+  transition: 1.5ms;
+}
+
+// Efeitos foto e texto
+.fade-in-fwd {
+  -webkit-animation: fade-in-fwd 1.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-fwd 1.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-elliptic-right-fwd {
+  -webkit-animation: slide-in-elliptic-right-fwd 0.7s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-elliptic-right-fwd 0.7s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-in-elliptic-right-fwd {
+  0% {
+    -webkit-transform: translateX(800px) rotateY(-30deg) scale(0);
+    transform: translateX(800px) rotateY(-30deg) scale(0);
+    -webkit-transform-origin: -100% 50%;
+    transform-origin: -100% 50%;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotateY(0) scale(1);
+    transform: translateX(0) rotateY(0) scale(1);
+    -webkit-transform-origin: -1800px 50%;
+    transform-origin: -1800px 50%;
+    opacity: 1;
+  }
+}
+
+.error-message {
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  top: 20px;
+  font-size: 15px;
+  margin-left: 10px;
+  display: flex;
+  color: rgb(240, 47, 47);
+  justify-content: center;
+}

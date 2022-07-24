@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./SingUp.scss";
+import { useForm } from "react-hook-form";
 
 const SingUp = (props) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { erros },
+  } = useForm();
+
   const login = "pedro";
   const passoword = "teste";
 
@@ -17,14 +24,9 @@ const SingUp = (props) => {
     };
 
     const handleSubmit = (e) => {
-      if (login === values.login && passoword === values.password) {
-        props.history.push("/");
-        console.log("Login realizado com sucesso");
-      } else {
-        console.log("Login ou senha incorretos");
-      }
+      e.preventDefault();
+      console.log(values);
     };
-
     //renderizar input de login
     if (title.title === "Entrar") {
       return (
@@ -69,7 +71,11 @@ const SingUp = (props) => {
           </div>
           <div className="button-div">
             <a href={props.option == "Cadastrar" ? "/registration" : "/home"}>
-              <button className="button-login" onClick={() => handleSubmit()}>
+              <button
+                type="submit"
+                className="button-login"
+                onSubmit={() => handleSubmit()}
+              >
                 {props.option}
               </button>
             </a>
@@ -172,39 +178,41 @@ const SingUp = (props) => {
   return (
     <div className="img-container-singup">
       <div className="container-singup">
-        {/* <form action="post" className="form-singup"> */}
-        <div className="box-singup">
-          <div className="box-header-singup">
-            <img
-              src="\img\cute-girl-with-beautiful-face.jpg"
-              alt="foto"
-              className="fade-in-fwd"
-            />
-            <div
-              className={
-                props.title === "Cadastrar"
-                  ? "content-input-cadastrar "
-                  : "content-input-login "
-              }
-            >
-              <h1>Eleggance</h1>
-              <h2>{props.title}</h2>
-              {inputRender(props)}
+        <form className="form-singup" onSubmit={() => handleSubmit()}>
+          <div className="box-singup">
+            <div className="box-header-singup">
+              <img
+                src="\img\cute-girl-with-beautiful-face.jpg"
+                alt="foto"
+                className="fade-in-fwd"
+              />
+              <div
+                className={
+                  props.title === "Cadastrar"
+                    ? "content-input-cadastrar "
+                    : "content-input-login "
+                }
+              >
+                <h1>Eleggance</h1>
+                <h2>{props.title}</h2>
+                {inputRender(props)}
 
-              <div className="footer-card">
-                <a href={props.option == "Esqueceu senha" ? "/" : "/login"}>
-                  <p>
-                    {props.option === "Entrar" ? "Esqueceu a senha" : "Voltar"}
-                  </p>
-                </a>
-                <a href="/cadastro">
-                  <p>{props.option === "Entrar" ? "Cadastre aqui" : ""} </p>
-                </a>
+                <div className="footer-card">
+                  <a href={props.option == "Esqueceu senha" ? "/" : "/login"}>
+                    <p>
+                      {props.option === "Entrar"
+                        ? "Esqueceu a senha"
+                        : "Voltar"}
+                    </p>
+                  </a>
+                  <a href="/cadastro">
+                    <p>{props.option === "Entrar" ? "Cadastre aqui" : ""} </p>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        {/* </form> */}
+        </form>
       </div>
     </div>
   );
