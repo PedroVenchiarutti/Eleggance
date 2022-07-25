@@ -7,28 +7,44 @@ export default (props) => {
       <div className="container container-registration">
         <div className="box-header box-header-registration ">
           <div className="Titulo1">
-            <h1>Ellegance</h1>
+            <h2>Ellegance</h2>
           </div>
           <div className="Titulo2">
-            <h2>Informacões pessoais</h2>
+            <h4>Informacões pessoais</h4>
           </div>
           <div className="FormularioBox">
             <div className="grid-container">
               <form className="Formulario">
-                <div className="input-photo-registration">
-                  <label className="label-photo-registration"></label>
+                <div className="input-photo-registration" >
+                  <label className="label-photo-registration" for="photo-registration" ></label>
                   <input
                     type="file"
                     id="photo-registration"
                     name="photo-registration"
                   />
+                  
                 </div>
                 <section className="container-container">
+                  <div className="icons-registration">
+                    <ul>
+                      <li>
+                        <div> 
+                        <img src="\icons\icon-user.png" alt="" />
+                        </div>
+                      </li>
+                      <li>
+                        <div className="div-li-icon-form">
+                      <img src="\icons\icon-cpf.png" alt="" />
+                      </div>
+                      </li>
+                    </ul>
+                  </div>
                   <div className="container-name-registration">
                     <div className="grid-item label-float">
                       <label className="label-form">Nome completo:</label>
                       <input
                         className="input-form-registration"
+                        placeholder="Nome completo"
                         type="text"
                         name="name"
                         required
@@ -37,6 +53,7 @@ export default (props) => {
                         <label className="label-form">CPF:</label>
                         <input
                           className="input-form-registration"
+                          placeholder="000.000.000-00"
                           type="text"
                           name="cpf"
                           required
@@ -44,13 +61,27 @@ export default (props) => {
                       </div>
                     </div>
                   </div>
+                  <div className="icons-registration">
+                    <ul className="li-icon-form">
+                      <li>
+                        <div>
+                        <img src="\icons\icon-calendar.png" alt="" />
+                        </div>
+                      </li>
+                      <li>
+                      <div className="div-li-icon-form">
+                      <img src="\icons\icon-genders.png" alt="" />
+                      </div>
+                      </li>
+                    </ul>
+                  </div>
                   <div className="container-name-registration">
                     <div className="grid-item">
                       <label className="label-form">
                         Data de nascimento:
                         <input
                           className="input-form-registration"
-                          type="data"
+                          type="date"
                           name="data de nascimento"
                           required
                         />
@@ -75,7 +106,7 @@ export default (props) => {
             </div>
             <div>
               <button className="button-voltar-registration">
-                <a href="/cadastro">Voltar</a>
+                <a className="ancora-button-voltar-registration" href="/cadastro">Voltar</a>
               </button>
             </div>
           </div>
