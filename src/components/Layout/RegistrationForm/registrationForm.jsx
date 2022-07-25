@@ -16,7 +16,7 @@ export default (props) => {
             <div className="grid-container">
               <form className="Formulario">
                 <div className="input-photo-registration" >
-                  <label className="label-photo-registration" for="photo-registration" ></label>
+                  <label className="label-photo-registration" htmfor="photo-registration" ></label>
                   <input
                     type="file"
                     id="photo-registration"
@@ -24,7 +24,7 @@ export default (props) => {
                   />
                   
                 </div>
-                <section className="container-container">
+                <div className="container-container">
                   <div className="icons-registration">
                     <ul>
                       <li>
@@ -96,11 +96,8 @@ export default (props) => {
                       </select>
                     </div>
                   </div>
-                </section>
-              </form>
-            </div>
-          </div>
-          <div className="buttons-registration">
+                </div>
+                <div className="buttons-registration">
             <div>
               <button className="button-proximo-registration">Proximo</button>
             </div>
@@ -108,6 +105,9 @@ export default (props) => {
               <button className="button-voltar-registration">
                 <a className="ancora-button-voltar-registration" href="/cadastro">Voltar</a>
               </button>
+            </div>
+          </div>
+              </form>
             </div>
           </div>
         </div>
