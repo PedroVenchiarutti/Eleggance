@@ -15,27 +15,29 @@ export default (props) => {
           <div className="FormularioBox">
             <div className="grid-container">
               <form className="Formulario">
-                <div className="input-photo-registration" >
-                  <label className="label-photo-registration" for="photo-registration" ></label>
+                <div className="input-photo-registration">
+                  <label
+                    className="label-photo-registration"
+                    htmfor="photo-registration"
+                  ></label>
                   <input
                     type="file"
                     id="photo-registration"
                     name="photo-registration"
                   />
-                  
                 </div>
-                <section className="container-container">
+                <div className="container-container">
                   <div className="icons-registration">
                     <ul>
                       <li>
-                        <div> 
-                        <img src="\icons\icon-user.png" alt="" />
+                        <div>
+                          <img src="\icons\icon-user.png" alt="" />
                         </div>
                       </li>
                       <li>
                         <div className="div-li-icon-form">
-                      <img src="\icons\icon-cpf.png" alt="" />
-                      </div>
+                          <img src="\icons\icon-cpf.png" alt="" />
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -65,13 +67,13 @@ export default (props) => {
                     <ul className="li-icon-form">
                       <li>
                         <div>
-                        <img src="\icons\icon-calendar.png" alt="" />
+                          <img src="\icons\icon-calendar.png" alt="" />
                         </div>
                       </li>
                       <li>
-                      <div className="div-li-icon-form">
-                      <img src="\icons\icon-genders.png" alt="" />
-                      </div>
+                        <div className="div-li-icon-form">
+                          <img src="\icons\icon-genders.png" alt="" />
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -96,18 +98,25 @@ export default (props) => {
                       </select>
                     </div>
                   </div>
-                </section>
+                </div>
+                <div className="buttons-registration">
+                  <div>
+                    <button className="button-proximo-registration">
+                      Proximo
+                    </button>
+                  </div>
+                  <div>
+                    <button className="button-voltar-registration">
+                      <a
+                        className="ancora-button-voltar-registration"
+                        href="/cadastro"
+                      >
+                        Voltar
+                      </a>
+                    </button>
+                  </div>
+                </div>
               </form>
-            </div>
-          </div>
-          <div className="buttons-registration">
-            <div>
-              <button className="button-proximo-registration">Proximo</button>
-            </div>
-            <div>
-              <button className="button-voltar-registration">
-                <a className="ancora-button-voltar-registration" href="/cadastro">Voltar</a>
-              </button>
             </div>
           </div>
         </div>
@@ -115,7 +124,3 @@ export default (props) => {
     </div>
   );
 };
-
-// ADICIONAR EFEITO DE FLOAT NOS INPUT PESQUISAR PRA FAZER
-// ADICIONAR EFEITO DE REQUIRED NOS INPUT
-// https://dev.to/rafacdomin/criando-um-input-com-label-flutuando-no-reactjs-3mde

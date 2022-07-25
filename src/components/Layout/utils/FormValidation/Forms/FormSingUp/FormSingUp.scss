@@ -184,49 +184,6 @@
   transition: 1.5ms;
 }
 
-// Efeitos foto e texto
-.fade-in-fwd {
-  -webkit-animation: fade-in-fwd 1.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in-fwd 1.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-@keyframes fade-in-fwd {
-  0% {
-    -webkit-transform: translateZ(-80px);
-    transform: translateZ(-80px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    opacity: 1;
-  }
-}
-
-.slide-in-elliptic-right-fwd {
-  -webkit-animation: slide-in-elliptic-right-fwd 0.7s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-in-elliptic-right-fwd 0.7s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-@keyframes slide-in-elliptic-right-fwd {
-  0% {
-    -webkit-transform: translateX(800px) rotateY(-30deg) scale(0);
-    transform: translateX(800px) rotateY(-30deg) scale(0);
-    -webkit-transform-origin: -100% 50%;
-    transform-origin: -100% 50%;
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) rotateY(0) scale(1);
-    transform: translateX(0) rotateY(0) scale(1);
-    -webkit-transform-origin: -1800px 50%;
-    transform-origin: -1800px 50%;
-    opacity: 1;
-  }
-}
-
 .error-message {
   margin: 0 auto;
   width: 100%;
@@ -237,4 +194,25 @@
   display: flex;
   color: rgb(240, 47, 47);
   justify-content: center;
+}
+
+@media (min-width: 800px) {
+  .box-header-singup {
+    height: 500px;
+  }
+
+  .button-login-singup:hover {
+    background-color: #fdba00;
+    transition: 1.9ms;
+  }
+
+  .footer-card-singup > a {
+    display: flex;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-weight: 800;
+    color: #252525;
+  }
 }

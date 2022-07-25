@@ -30,6 +30,11 @@
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
+
+  li {
+    list-style: none;
+    margin-right: 50px;
+  }
 }
 
 .icon-task-bar {
@@ -42,7 +47,7 @@
   margin-right: 10px;
 
   img {
-    width: 80px;
+    width: 70px;
     height: 70px;
   }
 }
@@ -52,10 +57,7 @@
   justify-self: center;
   align-items: center;
 }
-li {
-  list-style: none;
-  margin-right: 50px;
-}
+
 .h4-titulo {
   display: flex;
   width: 100%;
@@ -65,4 +67,21 @@ li {
 .p-titulo {
   display: flex;
   font-size: 12px;
+}
+
+@media (min-width: 800px) {
+  .icon-task-bar {
+    height: 80%;
+    background-color: white;
+    display: flex;
+    margin-bottom: 20px;
+    align-self: center;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }

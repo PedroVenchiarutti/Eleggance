@@ -87,6 +87,10 @@
     flex-direction: column;
   }
 
+  .container-img-promo:hover {
+    box-shadow: 2px -3px 12px rgb(179, 179, 179);
+  }
+
   .swiper-slide img {
     display: block;
     width: 100%;

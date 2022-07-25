@@ -12,10 +12,13 @@
 
 .box-header-registration {
   display: block;
-  width: 50%;
-  height: 50vh;
-  
-  
+  width: 100%;
+  height: 100vh;
+  max-height: 550px;
+  max-width: 800px;
+  position: absolute;
+  background-color: white;
+  border-radius: 25px;
 }
 
 .Titulo1 {
@@ -33,7 +36,6 @@
   margin-bottom: 15px;
 }
 
-
 .Titulo2 {
   display: flex;
   justify-content: center;
@@ -42,8 +44,7 @@
   position: relative;
   margin-right: 30px;
   width: 100%;
-  margin-bottom: 35px;    
-    
+  margin-bottom: 35px;
 }
 
 .Formulario {
@@ -60,18 +61,15 @@
   align-content: center;
   justify-content: center;
   border-radius: 10px;
+  position: absolute;
 }
 .grid-container {
-  display: flex;
   align-items: center;
   align-content: center;
   align-self: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
-  height: 60vh;
-  background-color: white;
-  border-radius: 25px;
+  height: 100%;
 }
 
 .grid-item {
@@ -80,17 +78,18 @@
   position: relative;
 
   input {
-    width: 300px;
+    width: 90%;
   }
 }
 
 .container-container {
   display: flex;
   width: 100%;
+  height: 100%;
   border-left: 5px;
   border-right: 5px;
   input:focus {
-    background-color: #fffafa
+    background-color: #fffafa;
   }
 }
 
@@ -114,7 +113,6 @@
   height: 10px;
 }
 
-
 .button-proximo-registration {
   font-weight: bold;
   font-family: "Poppins";
@@ -125,7 +123,7 @@
   width: 120px;
   height: 30px;
   background-color: #ffce45;
-  font-size: 1.0rem;
+  font-size: 1rem;
 }
 
 .button-voltar-registration {
@@ -134,8 +132,8 @@
   font-weight: bold;
   margin-top: 20px;
   background-color: white;
-  border: none  ;
-  text-decoration:none;
+  border: none;
+  text-decoration: none;
   color: black;
 }
 .input-form-registration {
@@ -147,42 +145,44 @@
   text-decoration: none;
 }
 
-
 .input-photo-registration {
   display: flex;
   justify-content: center;
   height: 100px;
-  margin-left: 15px;
+  margin-left: 20px;
   margin-bottom: 20px;
 }
-#photo-registration{
+#photo-registration {
   display: none;
 }
 .label-photo-registration {
   margin-top: 10px;
   width: 100px;
-  height: 100px;  
+  height: 100px;
   background-image: url(/public/icons/iconmonstr-photo-camera-6-72.png);
   background-repeat: no-repeat;
   margin-bottom: 50px;
 }
-.label-form{
+.label-form {
   font-weight: bold;
   font-size: 14px;
 }
-.ancora-button-voltar-registration{
+.ancora-button-voltar-registration {
   text-decoration: none;
-  color: black  ;
+  color: black;
   font-weight: bold;
 }
-.icons-registration{
+.icons-registration {
   margin-top: 20px;
-  margin-left: 30px;
-
+  margin-left: 45px;
 }
 .div-li-icon-form {
   margin-top: 15px;
 }
-.li-icon-form {
- 
-}
+//@media (max-width: 600px)
+//{
+//  .container-container {
+
+//    flex-direction: column;
+//  }
+//}

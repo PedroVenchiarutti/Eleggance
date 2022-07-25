@@ -225,9 +225,8 @@
     opacity: 1;
   }
 }
-
 .error-message {
-  margin: 0 ai;
+  margin: 0 auto;
   width: 100%;
   position: relative;
   top: 20px;
@@ -236,4 +235,10 @@
   display: flex;
   text-align: center;
   color: rgb(240, 47, 47);
+}
+
+@media (min-width: 800px) {
+  .box-header-cadastro {
+    height: 500px;
+  }
 }
