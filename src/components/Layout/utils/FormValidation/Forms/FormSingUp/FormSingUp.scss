@@ -35,7 +35,7 @@
 
 .box-header-singup {
   display: flex;
-  border-radius: 6px;
+  border-radius: 25px;
   box-shadow: 2px -1px 20px 3px #252525;
   width: 900px;
   height: 600px;
@@ -43,16 +43,15 @@
   background-color: #f2f2f2;
   color: #333;
 }
-
 .img-singup {
   width: 100%;
 
-  img {
-    border-radius: 5px;
+  img {    
     max-width: 100%;
     height: 100%;
   }
 }
+
 
 .content-input-login-singup {
   display: flex;
@@ -196,6 +195,7 @@
   justify-content: center;
 }
 
+<<<<<<< HEAD
 @media (min-width: 800px) {
   .box-header-singup {
     height: 500px;
@@ -216,3 +216,5 @@
     color: #252525;
   }
 }
+=======
+>>>>>>> 7803a527df7935b14f6d7a3a539429293b46aa53
