@@ -1,0 +1,51 @@
+.navbar-container {
+	height: 100px;
+	background-color: #111;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	nav {
+		display: flex;
+		max-width: 1120px;
+		width: 100%;
+		justify-content: space-between;
+		align-items: center;
+		.logo {
+			h1 {
+				font-family: Great Vibes;
+				font-size: 40px;
+				color: #e1ab38;
+			}
+		}
+		.list-container {
+			.list {
+				display: flex;
+				ul {
+					display: flex;
+					list-style: none;
+					align-items: center;
+					li {
+						cursor: pointer;
+						margin: 0 15px;
+					}
+				}
+				.login-button {
+					border: 0;
+					margin-left: 30px;
+					outline: none;
+					background-color: #e1ab38;
+					padding: 8px 15px;
+					border-radius: 6px;
+					display: flex;
+					line-height: 15px;
+					cursor: pointer;
+					img {
+						width: 30px;
+						margin-right: 20px;
+					}
+				}
+			}
+		}
+	}
+}

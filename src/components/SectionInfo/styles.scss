@@ -1,0 +1,48 @@
+.section-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 1120px;
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	// esquerda
+	.section-carousel {
+		width: 50%;
+		padding: 20px;
+		.mySwiper {
+			border-radius: 8px !important;
+		}
+	}
+	// direita
+	.section-info {
+		width: 100%;
+		padding: 20px;
+
+		.title {
+			font-size: 24px;
+			margin-bottom: 40px;
+		}
+		.card-container {
+			display: flex;
+			margin-bottom: 20px;
+			.container-icon {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 6px;
+				width: 50px;
+				height: 50px;
+				margin-right: 10px;
+			}
+			.container-text {
+				h4 {
+					font-size: 20px;
+				}
+				p {
+					font-size: 16px;
+				}
+			}
+		}
+	}
+}
