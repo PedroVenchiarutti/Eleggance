@@ -19,7 +19,7 @@ export const SectionInfo = () => {
 					</div>
 					<div className="container-text">
 						<h4>Manicure</h4>
-						<p>Profissionais especialistas</p>
+						<p>Pé e Mão, Esmaltação e Alongamento.</p>
 					</div>
 				</div>
 				{/* ================= */}
@@ -28,8 +28,8 @@ export const SectionInfo = () => {
 						<img src="/icons/star.svg" alt="" />
 					</div>
 					<div className="container-text">
-						<h4>Manicure</h4>
-						<p>Profissionais especialistas</p>
+						<h4>Cabeleireiro</h4>
+						<p>Coloração, Progressivas e Escovas.</p>
 					</div>
 				</div>
 				{/* ================= */}
@@ -38,8 +38,8 @@ export const SectionInfo = () => {
 						<img src="/icons/star.svg" alt="" />
 					</div>
 					<div className="container-text">
-						<h4>Manicure</h4>
-						<p>Profissionais especialistas</p>
+						<h4>Massagem Relaxante</h4>
+						<p>Venha cuidar de você!</p>
 					</div>
 				</div>
 			</div>

@@ -11,10 +11,9 @@ const Card = ({ product }) => {
 				<span className="title-product-promo">{product.name}</span>
 				<br />
 				<span className="full-price-promo">{product.price}</span>
-				<span>A vista</span>
+				<span>á vista</span>
 				<span>{product.discount}</span>
-				<span>Ou</span>
-				<p>{product.installments}</p>
+				<span>ou em</span><p>{product.installments}</p>
 			</div>
 		</>
 	);
