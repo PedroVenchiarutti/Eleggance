@@ -3,7 +3,7 @@ import "./HomePage.scss";
 /* 
 import AboutUs from "./../AboutUs/AboutUs"; */
 import Footer from "./../Footer/Footer";
-import Taskbar from "../TaskBar/TaskBar";
+import Taskbar from "../../components/TaskBar/TaskBar";
 import Carrousel from "../../components/Carrousel/Carrousel";
 import { HomeBanner } from "../../components/HomeBanner";
 import { images, shelfProducts, trendProducts } from "../../api/mock";
