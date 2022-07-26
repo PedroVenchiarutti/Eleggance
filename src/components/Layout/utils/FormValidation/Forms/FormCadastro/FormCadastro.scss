@@ -236,8 +236,39 @@
   color: rgb(240, 47, 47);
 }
 
-@media (min-width: 800px) {
+@media (max-width: 1000px) {
   .box-header-cadastro {
-    height: 500px;
+  width: 90%;
+  height: 90%;
+  margin: 60px;
+  }
+  
+}
+
+@media (max-width: 700px) {
+  .box-header-cadastro {
+  width: 80%;
+  height: 80%;
+  margin: 60px;
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .box-header-cadastro {
+  width: 80%;
+  height: 90%;
+  flex-direction: column;
+  margin: 60px;
+
+  }
+  .img-cadastro{
+    img{
+      height: 30vh;
+    border-radius: 25px 25px 0px 0px;
+    }
   }
 }
+
+
+
