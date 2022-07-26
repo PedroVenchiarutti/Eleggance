@@ -22,7 +22,7 @@ export const images = [
   },
 ];
 
-//produto vitrine
+//Produtos da vitrines
 export const shelfProducts = [
   {
     image: "/img/produtos/blindagem-nh-650x650 1.jpg",
@@ -103,8 +103,7 @@ export const shelfProducts = [
   },
 ];
 
-//produtos em alta
-
+// Produtos em alta
 export const trendProducts = [
   {
     image: "/img/produtos/tratamento-unico1.jpg",
