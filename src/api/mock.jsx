@@ -1,3 +1,4 @@
+//banner
 export const images = [
   {
     url: "./bannerHomepage.png",
@@ -21,6 +22,7 @@ export const images = [
   },
 ];
 
+//Produtos da vitrines
 export const shelfProducts = [
   {
     image: "/img/gloss.png",
@@ -66,6 +68,7 @@ export const shelfProducts = [
   },
 ];
 
+// Produtos em alta
 export const trendProducts = [
   {
     image: "/img/produtos/tratamento-unico1.jpg",

@@ -18,7 +18,7 @@ export default (props) => {
                 <div className="input-photo-registration">
                   <label
                     className="label-photo-registration"
-                    htmfor="photo-registration"
+                    htmlFor="photo-registration"
                   ></label>
                   <input
                     type="file"
@@ -27,96 +27,100 @@ export default (props) => {
                   />
                 </div>
                 <div className="container-container">
-                  <div className="icons-registration">
-                    <ul>
-                      <li>
-                        <div>
-                          <img src="\icons\icon-user.png" alt="" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="div-li-icon-form">
-                          <img src="\icons\icon-cpf.png" alt="" />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="container-name-registration">
-                    <div className="grid-item label-float">
-                      <label className="label-form">Nome completo:</label>
-                      <input
-                        className="input-form-registration"
-                        placeholder="Nome completo"
-                        type="text"
-                        name="name"
-                        required
-                      />
-                      <div className="grid-item">
-                        <label className="label-form">CPF:</label>
+                  <div className="icons-input-form">
+                    <div className="icons-registration">
+                      <ul>
+                        <li className="li-icons-form">
+                          <div>
+                            <img src="\icons\icon-user.png" alt="" />
+                          </div>
+                        </li>
+                        <li className="li-icons-form">
+                          <div className="div-li-icon-form">
+                            <img src="\icons\icon-cpf.png" alt="" />
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="container-name-registration">
+                      <div className="grid-item label-float">
+                        <label className="label-form">Nome completo:</label>
                         <input
                           className="input-form-registration"
-                          placeholder="000.000.000-00"
+                          placeholder="Nome completo"
                           type="text"
-                          name="cpf"
+                          name="name"
                           required
                         />
+                        <div className="grid-item">
+                          <label className="label-form">CPF:</label>
+                          <input
+                            className="input-form-registration"
+                            placeholder="000.000.000-00"
+                            type="text"
+                            name="cpf"
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="icons-registration">
-                    <ul className="li-icon-form">
-                      <li>
-                        <div>
-                          <img src="\icons\icon-calendar.png" alt="" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="div-li-icon-form">
-                          <img src="\icons\icon-genders.png" alt="" />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="container-name-registration">
-                    <div className="grid-item">
-                      <label className="label-form">
-                        Data de nascimento:
-                        <input
-                          className="input-form-registration"
-                          type="date"
-                          name="data de nascimento"
-                          required
-                        />
-                      </label>
+                  <div className="icons-input-form">
+                    <div className="icons-registration">
+                      <ul className="li-icon-form">
+                        <li className="li-icons-form">
+                          <div>
+                            <img src="\icons\icon-calendar.png" alt="" />
+                          </div>
+                        </li>
+                        <li className="li-icons-form">
+                          <div className="div-li-icon-form">
+                            <img src="\icons\icon-genders.png" alt="" />
+                          </div>
+                        </li>
+                      </ul>
                     </div>
-                    <div className="grid-item">
-                      <label className="label-form">Sexo:</label>
-                      <select name="select" className="select-form" required>
-                        <option value="Masculino"> Masculino</option>
-                        <option value="Feminino"> Feminino</option>
-                        <option value="Outros"> Outros</option>
-                      </select>
+                    <div className="container-name-registration">
+                      <div className="grid-item">
+                        <label className="label-form">
+                          Data de nascimento:
+                          <input
+                            className="input-form-registration"
+                            type="date"
+                            name="data de nascimento"
+                            required
+                          />
+                        </label>
+                      </div>
+                      <div className="grid-item">
+                        <label className="label-form">Sexo:</label>
+                        <select name="select" className="select-form" required>
+                          <option value="Masculino"> Masculino</option>
+                          <option value="Feminino"> Feminino</option>
+                          <option value="Outros"> Outros</option>
+                        </select>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="buttons-registration">
-                  <div>
-                    <button className="button-proximo-registration">
-                      Proximo
-                    </button>
-                  </div>
-                  <div>
-                    <button className="button-voltar-registration">
-                      <a
-                        className="ancora-button-voltar-registration"
-                        href="/cadastro"
-                      >
-                        Voltar
-                      </a>
-                    </button>
                   </div>
                 </div>
               </form>
+              <div className="buttons-registration">
+                <div>
+                  <button className="button-proximo-registration">
+                    Proximo
+                  </button>
+                </div>
+                <div>
+                  <button className="button-voltar-registration">
+                    <a
+                      className="ancora-button-voltar-registration"
+                      href="/cadastro"
+                    >
+                      Voltar
+                    </a>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

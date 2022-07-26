@@ -53,6 +53,15 @@
   .swiper {
     width: 80%;
     height: 100%;
+
+    .swiper-wrapper {
+      .swiper-slide {
+        width: 300px !important;
+      }
+      .swiper-slide:hover {
+        box-shadow: 2px -3px 12px rgb(179, 179, 179);
+      }
+    }
   }
 
   .swiper-slide {
@@ -88,7 +97,6 @@
   }
 
   .container-img-promo:hover {
-    box-shadow: 2px -3px 12px rgb(179, 179, 179);
   }
 
   .swiper-slide img {
