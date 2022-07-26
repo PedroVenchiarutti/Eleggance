@@ -6,9 +6,13 @@
 	width: 100%;
 	margin: 0 auto;
 	margin-bottom: 50px;
+	height: 50%;
 	// esquerda
 	.section-carousel {
 		width: 50%;
+		@media (max-width: 640px) {
+			width: 100%;
+		}
 		padding: 20px;
 		.mySwiper {
 			border-radius: 8px !important;
@@ -20,6 +24,7 @@
 		padding: 20px;
 
 		.title {
+			font-weight: 400;
 			font-size: 24px;
 			margin-bottom: 40px;
 		}
@@ -37,6 +42,7 @@
 			}
 			.container-text {
 				h4 {
+					font-weight: 500;
 					font-size: 20px;
 				}
 				p {
