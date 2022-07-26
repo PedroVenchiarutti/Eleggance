@@ -1,9 +1,13 @@
 import React from "react";
-
-/* import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./AboutUs.scss";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
 import { storage } from "../../api/firebase";
 
 const AboutUs = (props) => {
@@ -30,6 +34,8 @@ const AboutUs = (props) => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImgURL(downloadURL);
+          //pegando link da imagem
+          return urlLINK.push(downloadURL);
         });
       }
     );
@@ -45,9 +51,13 @@ const AboutUs = (props) => {
       <br />
       {!imgURL && <progress value={progress} max="100" />}
       {imgURL && <img src={imgURL} alt="Imagem" />}
+      <div>
+        <li>
+          <a href={imgURL}>{imgURL}</a>
+        </li>
+      </div>
     </div>
   );
 };
 
 export default AboutUs;
- */

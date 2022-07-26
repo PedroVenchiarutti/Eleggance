@@ -1,7 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "../RegistrationForm/registrationForm.scss";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
+import { storage } from "../../api/firebase";
 
-export default (props) => {
+const RegistrationForm = (props) => {
+  const [imgURL, setImgURL] = useState("");
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    const file = e.target[0]?.files[0];
+    if (!file) return;
+
+    const storageRef = ref(storage, `image/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setImgURL(downloadURL);
+          //pegando link da imagem
+          console.log(downloadURL);
+        });
+      }
+    );
+  };
+
   return (
     <div className="img-container-singup">
       <div className="container container-registration">
@@ -14,17 +47,14 @@ export default (props) => {
           </div>
           <div className="FormularioBox">
             <div className="grid-container">
-              <form className="Formulario">
+              <form className="Formulario" onSubmit={handleUpload}>
                 <div className="input-photo-registration">
                   <label
                     className="label-photo-registration"
                     htmlFor="photo-registration"
                   ></label>
-                  <input
-                    type="file"
-                    id="photo-registration"
-                    name="photo-registration"
-                  />
+                  {imgURL && <img src={imgURL} alt="Imagem" />}
+                  <input type="file" id="photo-registration" name="arquivos" />
                 </div>
                 <div className="container-container">
                   <div className="icons-input-form">
@@ -103,24 +133,30 @@ export default (props) => {
                     </div>
                   </div>
                 </div>
-              </form>
-              <div className="buttons-registration">
-                <div>
-                  <button className="button-proximo-registration">
-                    Proximo
-                  </button>
-                </div>
-                <div>
-                  <button className="button-voltar-registration">
-                    <a
-                      className="ancora-button-voltar-registration"
-                      href="/cadastro"
+                <div className="buttons-registration">
+                  <div>
+                    <button
+                      className="button-proximo-registration"
+                      type="submit"
                     >
-                      Voltar
-                    </a>
-                  </button>
+                      Proximo
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      className="button-voltar-registration"
+                      type="submit"
+                    >
+                      <a
+                        className="ancora-button-voltar-registration"
+                        href="/cadastro"
+                      >
+                        Voltar
+                      </a>
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -128,3 +164,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default RegistrationForm;

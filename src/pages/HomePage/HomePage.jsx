@@ -1,7 +1,7 @@
 import React from "react";
 import "./HomePage.scss";
-/* 
-import AboutUs from "./../AboutUs/AboutUs"; */
+
+import AboutUs from "./../AboutUs/AboutUs";
 import Footer from "./../Footer/Footer";
 import Taskbar from "../../components/TaskBar/TaskBar";
 import Carrousel from "../../components/Carrousel/Carrousel";
@@ -21,7 +21,7 @@ const HomePage = (props) => {
       <Carrousel products={shelfProducts} title="Ofertas" />
       <SectionInfo />
       <Carrousel products={trendProducts} title="Tendências" />
-      {/*    <AboutUs /> */}
+      <AboutUs />
       <Footer />
     </>
   );
