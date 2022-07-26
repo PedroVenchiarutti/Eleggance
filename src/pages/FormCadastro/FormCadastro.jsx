@@ -69,7 +69,7 @@ const FormCadastro = (props) => {
                     {errors.createPassword?.message}
                   </p>
                   <div className="hero-svg-cadastro">
-                    <img src="/iconPassword.svg" />
+                    <img src="public/iconPassword.svg" />
                     <input
                       type="password"
                       name="createPassword"
@@ -82,7 +82,7 @@ const FormCadastro = (props) => {
                     {errors.confirmPassword?.message}
                   </p>
                   <div className="hero-svg-cadastro">
-                    <img src="/iconConfirmPassword.svg" />
+                    <img src="public/iconConfirmPassword.svg" />
                     <input
                       type="password"
                       name="confirmPassword"

@@ -11,7 +11,7 @@
     url(img/background-login.jpg);
   background-position: left;
   background-size: cover;
-
+}
 
 .container-singup {
   display: flex;
@@ -35,7 +35,7 @@
 
 .box-header-singup {
   display: flex;
-  border-radius: 25px;
+  border-radius: 6px;
   box-shadow: 2px -1px 20px 3px #252525;
   width: 900px;
   height: 600px;
@@ -46,11 +46,13 @@
 .img-singup {
   width: 100%;
 
-  img {
+  img {    
     max-width: 100%;
     height: 100%;
+    border-radius: 6px 0px 0px 6px;
   }
 }
+
 
 .content-input-login-singup {
   display: flex;
@@ -58,9 +60,6 @@
   width: 100%;
   height: 100%;
   flex-direction: column;
-  padding-left: 20px;
-  padding-top: 20px;
-  margin: 0 auto;
   align-items: center;
   justify-content: center;
 
@@ -194,25 +193,29 @@
   justify-content: center;
 }
 
-@media (min-width: 800px) {
+@media (max-width: 900px){
+
   .box-header-singup {
-    height: 500px;
-  }
+    margin: 60px;
+    width: 95%;
+  height: 95%;
 
-  .button-login-singup:hover {
-    background-color: #fdba00;
-    transition: 1.9ms;
-  }
-
-  .footer-card-singup > a {
-    display: flex;
-    text-decoration: none;
-    text-align: center;
-    justify-content: center;
-    margin-top: 10px;
-    font-weight: 800;
-    color: #252525;
-  }
+}
 }
 
+@media (max-width: 700px) {
+
+  .box-header-singup {
+    margin: 60px;
+    width: 90%;
+  height: 90%;
+    flex-direction: column;
+  }
+  .img-singup{
+    width: 100%;
+    height: 25vh;
+    img{
+      border-radius: 6px 6px 0px 0px;
+    }
+  }
 }

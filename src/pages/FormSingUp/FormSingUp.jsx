@@ -42,7 +42,7 @@ const FormSingUp = (props) => {
                   <h2>Login</h2>
                   <p className="error-message">{errors.inputLogin?.message}</p>
                   <div className="hero-svg-singup">
-                    <img src="/iconUser.svg" />
+                    <img src="public/iconUser.svg" />
                     <input
                       type="text"
                       name="inputLogin"

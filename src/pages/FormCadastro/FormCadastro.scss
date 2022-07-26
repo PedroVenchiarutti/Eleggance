@@ -35,7 +35,7 @@
 
 .box-header-cadastro {
   display: flex;
-  border-radius: 25px;
+  border-radius: 6px;
   box-shadow: 2px -1px 20px 3px #252525;
   width: 900px;
   height: 600px;
@@ -48,7 +48,7 @@
   width: 100%;
 
   img {
-    border-radius: 25px 0px 0px 25px;
+    border-radius: 6px 0px 0px 6px;
     max-width: 100%;
     height: 100%;
   }
@@ -236,8 +236,39 @@
   color: rgb(240, 47, 47);
 }
 
-@media (min-width: 800px) {
+@media (max-width: 1000px) {
   .box-header-cadastro {
-    height: 500px;
+  width: 90%;
+  height: 90%;
+  margin: 60px;
+  }
+  
+}
+
+@media (max-width: 700px) {
+  .box-header-cadastro {
+  width: 80%;
+  height: 80%;
+  margin: 60px;
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .box-header-cadastro {
+  width: 80%;
+  height: 90%;
+  flex-direction: column;
+  margin: 60px;
+
+  }
+  .img-cadastro{
+    img{
+      height: 30vh;
+    border-radius: 6px 6px 0px 0px;
+    }
   }
 }
+
+
+
