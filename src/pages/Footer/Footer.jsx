@@ -14,7 +14,7 @@ const Footer = (props) => {
               <img src="/img/teste.png" />
             </div>
             <div className="footer_img">
-              <div>
+              <div className="icons">
                 <a href="#">
                   <img src="/icons/instagram.svg" />
                 </a>

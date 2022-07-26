@@ -1,26 +1,26 @@
 .container-promo {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 
-	.swiper-pagination {
-		position: relative;
-		padding-top: 20px;
-		display: block;
-	}
+  .swiper-pagination {
+    position: relative;
+    padding-top: 20px;
+    display: block;
+  }
 }
 
 .swiperSlidePromo {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	@media (min-width: 640px) {
-		min-width: 900px;
-	}
-	margin-bottom: 30px;
-	margin-top: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media (min-width: 640px) {
+    min-width: 900px;
+  }
+  margin-bottom: 30px;
+  margin-top: 10px;
 
   h1 {
     font-weight: 500;
@@ -30,40 +30,40 @@
     text-align: center;
   }
 
-	.blog-title:before,
-	.blog-title:after {
-		// background-image: linear-gradient(rgb(197, 197, 197), rgb(44, 44, 44));
-		// content: '';
-		// display: inline-block;
-		// height: 1px;
-		// position: relative;
-		// vertical-align: middle;
-		// width: 30%;
-	}
+  .blog-title:before,
+  .blog-title:after {
+    // background-image: linear-gradient(rgb(197, 197, 197), rgb(44, 44, 44));
+    // content: '';
+    // display: inline-block;
+    // height: 1px;
+    // position: relative;
+    // vertical-align: middle;
+    // width: 30%;
+  }
 
-	/* Aqui configuramos o estilo
+  /* Aqui configuramos o estilo
        da linha esquerda (before)
     */
-	.blog-title:before {
-		right: 0.5em;
-		margin-left: -50%;
-	}
+  .blog-title:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
 
-	/* Aqui configuramos o estilo
+  /* Aqui configuramos o estilo
        da linha direita (after)
     */
-	.blog-title:after {
-		left: 0.5em;
-		margin-right: -50%;
-	}
+  .blog-title:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
 
-  .swSiper {
-    width: 80%;
+  .swiper {
+    width: 100%;
     height: 100%;
     .swiper-wrapper {
       margin-top: 10px;
       .swiper-slide {
-        width: 203px !important;
+        width: 25% !important;
       }
       .swiper-slide:hover {
         box-shadow: 2px -3px 12px rgb(179, 179, 179);
@@ -71,30 +71,30 @@
     }
   }
 
-	.swiper-slide {
-		text-align: center;
-		font-size: 18px;
-		background: #fff;
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
 
-		/* Center slide text vertically */
-		display: -webkit-box;
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-pack: center;
-		-ms-flex-pack: center;
-		-webkit-justify-content: center;
-		justify-content: center;
-		-webkit-box-align: center;
-		-ms-flex-align: center;
-		-webkit-align-items: center;
-		align-items: center;
-		height: auto;
-	}
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: auto;
+  }
 
-	.card-oferta {
-		display: flex;
-	}
+  .card-oferta {
+    display: flex;
+  }
 
   .container-img-promo {
     display: flex;
@@ -131,7 +131,7 @@
       color: #818181;
       text-decoration: line-through;
     }
-    span{
+    span {
       font-size: 0.938rem;
     }
   }
