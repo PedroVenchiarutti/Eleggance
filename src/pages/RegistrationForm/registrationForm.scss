@@ -187,9 +187,10 @@
     display: flex;
     width: 100%;
   }
+ 
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1120px) {
   .container-container {
     flex-direction: column;
     margin: 0px;
