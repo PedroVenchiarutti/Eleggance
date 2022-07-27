@@ -12,10 +12,9 @@
   background-position: left;
   background-size: cover;
 
-
 .container-singup {
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   font-family: "Poppins", sans-serif;
 }
@@ -132,7 +131,7 @@
   background-color: transparent;
   font-family: "Poppins";
   text-align: start;
-  width: 200px;
+  width: 180px;
   height: 40px;
   position: relative;
   border: none;
@@ -195,15 +194,15 @@
 
 @media (max-width: 1120px) {
   .box-header-singup {
-    margin: 60px;
-    width: 90%;
-    height: 90%;
+    display:flex;
+    width:100%;
+    height: 100vh;
     flex-direction: column;
   }
-
-  .img-singup {
+  
+  .box-singup{
     width: 100%;
-    height: 25vh;
+    height: 100vh;
   }
 }
 }
