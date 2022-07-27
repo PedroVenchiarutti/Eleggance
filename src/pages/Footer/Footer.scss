@@ -1,12 +1,10 @@
 .footer {
-  min-width: 1200px;
   display: flex;
   background-color: #222222;
   width: 100%;
   height: 200px;
-  position: absolute;
   @media (max-width: 640px) {
-    display: none;
+    display: block;
     width: 100vw;
   }
 }
@@ -106,6 +104,31 @@
       text-decoration: none;
     }
   }
-
 }
 
+@media (max-width: 1120px) {
+  .footer {
+    width: 100%;
+  }
+
+  .footer__container {
+    min-width: 0px;
+  }
+  .foter__container__left {
+    width: 100%;
+  }
+
+  .footer__container__left__logo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: start;
+
+    a {
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+    }
+  }
+}
