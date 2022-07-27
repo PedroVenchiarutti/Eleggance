@@ -45,7 +45,7 @@ const FormCadastro = (props) => {
                   <h2>Cadastre-se</h2>
                   <p className="error-message">{errors.inputLogin?.message}</p>
                   <div className="hero-svg-cadastro">
-                    <img src="iconUser.svg" />
+                    <img src="/iconUser.svg" />
                     <input
                       type="text"
                       name="inputLogin"
@@ -56,7 +56,7 @@ const FormCadastro = (props) => {
                   </div>
                   <p className="error-message">{errors.inputEmail?.message}</p>
                   <div className="hero-svg-cadastro">
-                    <img src="public/iconEmail.svg" />
+                    <img src="/iconEmail.svg" />
                     <input
                       type="email"
                       name="inputEmail"
