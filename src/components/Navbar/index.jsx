@@ -22,12 +22,14 @@ export const Navbar = () => {
                 <a href="">Contato</a>
               </li>
             </ul>
-            <a href="/login" className="login-button">
-              <img src="/img/Frame.svg" />
-              <p>
-                Entre ou <br /> cadastre-se
-              </p>
-            </a>
+            <div className="div-button">
+              <a href="/login" className="login-button">
+                <img src="/img/Frame.svg" />
+                <p>
+                  Entre ou <br /> cadastre-se
+                </p>
+              </a>
+            </div>
           </div>
         </div>
       </nav>
