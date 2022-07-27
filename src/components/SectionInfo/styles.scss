@@ -1,54 +1,65 @@
 .section-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	max-width: 1120px;
-	width: 100%;
-	margin: 0 auto;
-	margin-bottom: 50px;
-	height: 50%;
-	// esquerda
-	.section-carousel {
-		width: 50%;
-		@media (max-width: 640px) {
-			width: 100%;
-		}
-		padding: 20px;
-		.mySwiper {
-			border-radius: 8px !important;
-		}
-	}
-	// direita
-	.section-info {
-		width: 100%;
-		padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  height: 50%;
+  // esquerda
+  .section-carousel {
+    width: 50%;
+    @media (max-width: 640px) {
+      width: 100%;
+    }
+    padding: 20px;
+    .mySwiper {
+      border-radius: 8px !important;
+    }
+  }
+  // direita
+  .section-info {
+    width: 100%;
+    padding: 20px;
 
-		.title {
-			font-weight: 400;
-			font-size: 24px;
-			margin-bottom: 40px;
-		}
-		.card-container {
-			display: flex;
-			margin-bottom: 20px;
-			.container-icon {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				border-radius: 6px;
-				width: 50px;
-				height: 50px;
-				margin-right: 10px;
-			}
-			.container-text {
-				h4 {
-					font-weight: 500;
-					font-size: 20px;
-				}
-				p {
-					font-size: 16px;
-				}
-			}
-		}
-	}
+    .title {
+      font-weight: 400;
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+    .card-container {
+      display: flex;
+      margin-bottom: 20px;
+      .container-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+      }
+      .container-text {
+        h4 {
+          font-weight: 500;
+          font-size: 20px;
+        }
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  .section-container {
+    flex-direction: column;
+    .section-carousel {
+      display: flex;
+    }
+    .container-text {
+    }
+  }
 }
