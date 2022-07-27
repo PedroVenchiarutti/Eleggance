@@ -2,14 +2,15 @@
   "name": "my-app",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
+    "start": "node server.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.6",
+    "express": "^4.18.1",
     "firebase": "9.8.4",
     "firestore": "^1.1.6",
     "react": "^18.2.0",

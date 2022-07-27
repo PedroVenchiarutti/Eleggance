@@ -42,7 +42,7 @@ const AboutUs = (props) => {
   };
 
   return (
-    <div>
+    <div className="Container">
       <h1>testando insercao firebase</h1>
       <form onSubmit={handleUpload}>
         <input type="file" name="arquivos" />
@@ -51,7 +51,7 @@ const AboutUs = (props) => {
       <br />
       {!imgURL && <progress value={progress} max="100" />}
       {imgURL && <img src={imgURL} alt="Imagem" />}
-      <div>
+      <div className="batata">
         <li>
           <a href={imgURL}>{imgURL}</a>
         </li>
