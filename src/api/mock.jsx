@@ -23,6 +23,17 @@ export const images = [
   },
 ];
 
+export const smallBanner = [
+  {
+    url:"./smallBanner.png",
+    alt:"Small Banner"
+  },
+  {
+    url:"./smallBanner2.png",
+    alt:"Small Banner"
+  },
+]
+
 //Produtos da vitrines
 export const shelfProducts = [
   {

@@ -12,8 +12,8 @@
     display: block;
     width: 100%;
     height: 100vh;
-    max-height: 550px;
     max-width: 800px;
+    max-height: 650px;
     position: absolute;
     background-color: white;
     border-radius: 6px;
@@ -189,26 +189,13 @@
 }
 
 @media (max-width: 1120px) {
+  
   .container-container {
     flex-direction: column;
     margin: 0px;
   }
-  .box-header-registration {
-    width: 90%;
-    height: 100vh;
-  }
-  .Titulo1 {
-    margin: 0px;
-  }
-  .Titulo2 {
-    margin: 0px;
-  }
-
-  .button-proximo-registration {
-    margin: 0px;
-  }
   .buttons-registration {
-    margin-top: 0px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
   }

@@ -196,6 +196,7 @@
     color: rgb(240, 47, 47);
   }
 
+<<<<<<< HEAD
   @media (max-width: 1120px) {
     .box-header-cadastro {
       width: 80%;
@@ -210,4 +211,23 @@
       }
     }
   }
+=======
+ @media (max-width: 1120px) {
+   .box-header-cadastro {
+     height: 100vh;
+     border-radius: 0px;
+   }
+   .img-cadastro {
+    display: none;
+   }
+   .box-cadastro{
+    width: 100%;
+    height: 100%;
+   }
+   .content-input-cadastro{
+    width: 100%;
+    height: 100%;
+   }
+ }
+>>>>>>> 3004f2e70d7a8e052fb80124136e0a6d76a17e65
 }
