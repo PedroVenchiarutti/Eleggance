@@ -1,4 +1,5 @@
 //banner
+import { useEffect } from "react";
 export const images = [
   {
     url: "./bannerHomepage.png",

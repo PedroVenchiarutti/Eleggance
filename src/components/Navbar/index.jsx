@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./navbar.scss";
 
 export const Navbar = () => {
@@ -23,12 +23,12 @@ export const Navbar = () => {
               </li>
             </ul>
             <div className="div-button">
-              <a href="/login" className="login-button">
+              <Link to="/login" className="login-button">
                 <img src="/img/Frame.svg" />
                 <p>
                   Entre ou <br /> cadastre-se
                 </p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

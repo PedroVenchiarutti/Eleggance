@@ -35,10 +35,7 @@ const FormCadastro = (props) => {
             <div className="box-cadastro">
               <div className="box-header-cadastro">
                 <div className="img-cadastro">
-                  <img
-                    src="\img\cute-girl-with-beautiful-face.jpg"
-                    alt="foto"
-                  />
+                  <img src="img\fotocadastro.jpg" alt="foto" />
                 </div>
                 <div className="content-input-cadastro">
                   <h1>Eleggance</h1>
@@ -93,8 +90,7 @@ const FormCadastro = (props) => {
                   </div>
                   <div className="button-div-cadastro">
                     <button className="button-cadastro">
-                      Cadastrar
-                      {/* <Link to="/registration">Cadastrar</Link> */}
+                      <Link to="/registration">Cadastrar</Link>
                     </button>
                   </div>
                   <div className="footer-card-cadastro">

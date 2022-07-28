@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./FormSingUp.scss";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -32,10 +32,7 @@ const FormSingUp = (props) => {
             <div className="box-singup">
               <div className="box-header-singup">
                 <div className="img-singup">
-                  <img
-                    src="\img\cute-girl-with-beautiful-face.jpg"
-                    alt="foto"
-                  />
+                  <img src="img\fotocadastro.jpg" alt="foto" />
                 </div>
                 <div className="content-input-login-singup">
                   <h1>Eleggance</h1>
