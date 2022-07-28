@@ -35,7 +35,7 @@ export default () => {
 									className="icon-taskBar"
 								/>
 							</div>
-							<div>
+							<div className='taskbar-text'>
 								<h4>Frete Gratis</h4>
 								<p> Para compras acima de R$ 200 em todo o site</p>
 							</div>
@@ -51,7 +51,7 @@ export default () => {
 									className="icon-taskBar"
 								/>
 							</div>
-							<div>
+							<div className='taskbar-text'>
 								<h4>10x Sem Juros</h4>
 								<p> Em todo o site e em todos os cartoes</p>
 							</div>
@@ -66,7 +66,7 @@ export default () => {
 									className="icon-taskBar"
 								/>
 							</div>
-							<div>
+							<div className='taskbar-text'>
 								<h4>5% de desconto</h4>
 								<p>A vista no boleto ou Pix direto no carrinho</p>
 							</div>
@@ -81,7 +81,7 @@ export default () => {
 									className="icon-taskBar"
 								/>
 							</div>
-							<div>
+							<div className='taskbar-text'>
 								<h4>Site 100% seguro</h4>
 								<p> Compra segura, site com tecnologia SSL</p>
 							</div>

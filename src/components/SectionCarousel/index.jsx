@@ -10,11 +10,12 @@ export const SectionCarousel = ({ images }) => {
     <Swiper
       slidesPerView={1}
       spaceBetween={30}
+      
       loop={true}
       pagination={{
         clickable: true,
       }}
-      navigation={true}
+      navigation={false}
       modules={[Pagination, Navigation]}
       className="mySwiper"
     >

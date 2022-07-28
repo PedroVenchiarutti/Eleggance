@@ -6,7 +6,28 @@ import 'swiper/css/pagination';
 import '../../pages/HomePage/HomePage.scss';
 import 'swiper/css/navigation';
 
-export const HomeBanner = ({ images }) => {
+export const HomeBanner = ({ images,smallBanner }) => {
+	
+	const renderSlides = () => {
+		if (window.screen.width <= 400 && window.screen.height <= 670) {
+		  return smallBanner.map((image, index) => {
+			return (
+			  <SwiperSlide key={index}>
+				<img src={image.url} alt={image.alt} />
+			  </SwiperSlide>
+			);
+		  });
+		} else {
+		  return images.map((image, index) => {
+			return (
+			  <SwiperSlide key={index}>
+				<img src={image.url}alt={image.alt} />
+			  </SwiperSlide>
+			);
+		  });
+		}
+	  };
+	
 	if (!images) return;
 
 	return (
@@ -25,7 +46,8 @@ export const HomeBanner = ({ images }) => {
 			{images.map((image, index) => {
 				return (
 					<SwiperSlide key={index}>
-						<img src={image.url} alt={image.alt} />
+						{renderSlides()}
+						{/* <img src={image.url} alt={image.alt} /> */}
 					</SwiperSlide>
 				);
 			})}
