@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../../pages/Footer/Footer";
 import "./team.scss";
 
 export default (props) => {
