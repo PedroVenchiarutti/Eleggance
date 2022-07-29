@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import { HomeBanner } from "../../components/HomeBanner";
 import { images, shelfProducts, trendProducts } from "../../api/mock";
 import Team from "../../components/Team/team";
+import { AboutUs } from "../../components/AboutUs";
 
 export default (props) => {
   return (
@@ -13,6 +14,7 @@ export default (props) => {
         <Navbar />
       </header>
       <HomeBanner images={images} />
+      <AboutUs/>
       <Team />
       <Footer />
     </div>
