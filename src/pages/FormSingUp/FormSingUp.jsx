@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./FormSingUp.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+/* import useAuth from "../../hooks/useAuth"; */
+import Input from "../../components/Input/Input";
+import Form from "../../components/Form/Form";
+import Button from "../../components/Button/Button";
 
 const schema = yup.object({
   inputLogin: yup.string().required("Login é obrigatório").max(40),
@@ -11,6 +15,29 @@ const schema = yup.object({
 });
 
 const FormSingUp = (props) => {
+  /*   const { signin } = useAuth();
+  const navigate = useNavigate();
+
+  const [email, useEmail] = useState("");
+  const [password, usePassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = () => {
+    if (!email | !password) {
+      setError("Preencha todos os campos");
+      return;
+    }
+
+    const res = signin(email, password);
+
+    if (res) {
+      setError(res);
+      return;
+    }
+
+    navigate("/home");
+  }; */
+
   const {
     register,
     handleSubmit,
@@ -28,10 +55,11 @@ const FormSingUp = (props) => {
     <>
       <div className="img-container-singup">
         <div className="container-singup ">
-          <form onSubmit={handleSubmit(onSubmit)} className="form-singup">
+          <Form className="form-singup" onSubmit={handleSubmit(onSubmit)}>
             <div className="box-singup">
               <div className="box-header-singup">
                 <div className="img-singup">
+                  {/*  IMAGEN CRASHANDO O SITE */}
                   <img src="img\fotocadastro.jpg" alt="foto" />
                 </div>
                 <div className="content-input-login-singup">
@@ -40,12 +68,11 @@ const FormSingUp = (props) => {
                   <p className="error-message">{errors.inputLogin?.message}</p>
                   <div className="hero-svg-singup">
                     <img src="iconUser.svg" />
-                    <input
+                    <Input
                       type="text"
+                      placeholder="Login"
                       name="inputLogin"
-                      {...register("inputLogin")}
                       id="input-login"
-                      placeholder="Login:"
                     />
                   </div>
                   <p className="error-message">
@@ -53,31 +80,26 @@ const FormSingUp = (props) => {
                   </p>
                   <div className="hero-svg-singup">
                     <img src="/iconPassword.svg" />
-                    <input
+                    <Input
                       type="password"
+                      placeholder="Senha"
                       name="inputPassword"
-                      {...register("inputPassword")}
                       id="input-password"
-                      placeholder="Password:"
                     />
                   </div>
                   <div className="button-div-singup">
-                    <button type="submit" className="button-login-singup">
+                    <Button type="submit" className="button-login-singup">
                       Entrar
-                    </button>
+                    </Button>
                   </div>
                   <div className="footer-card-singup">
-                    <a href="Esqueceu senha">
-                      <p>Esqueceu a senha</p>
-                    </a>
-                    <a href="/cadastro">
-                      <p>Cadastre aqui</p>
-                    </a>
+                    <Link to="/">Esqueci minha senha</Link>
+                    <Link to="/cadastro">Cadastre aqui</Link>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </>

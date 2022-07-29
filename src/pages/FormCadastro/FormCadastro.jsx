@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import Input from "../../components/Input/Input";
+import Form from "../../components/Form/Form";
+import Button from "../../components/Button/Button";
 
 const schema = yup.object({
   inputLogin: yup.string().required("Login é obrigatório").max(40),
@@ -31,10 +34,11 @@ const FormCadastro = (props) => {
     <>
       <div className="img-container-cadastro">
         <div className="container-cadastro">
-          <form onSubmit={handleSubmit(onSubmit)} className="form-cadastro">
+          <Form onSubmit={handleSubmit(onSubmit)} className="form-cadastro">
             <div className="box-cadastro">
               <div className="box-header-cadastro">
                 <div className="img-cadastro">
+                  {/*  IMAGEN CRASHANDO O SITE */}
                   <img src="img\fotocadastro.jpg" alt="foto" />
                 </div>
                 <div className="content-input-cadastro">
@@ -43,23 +47,21 @@ const FormCadastro = (props) => {
                   <p className="error-message">{errors.inputLogin?.message}</p>
                   <div className="hero-svg-cadastro">
                     <img src="/iconUser.svg" />
-                    <input
+                    <Input
                       type="text"
+                      placeholder="Login"
                       name="inputLogin"
-                      {...register("inputLogin")}
-                      id="inputLogin"
-                      placeholder="Login:"
+                      id="inputLoginResgister"
                     />
                   </div>
                   <p className="error-message">{errors.inputEmail?.message}</p>
                   <div className="hero-svg-cadastro">
                     <img src="/iconEmail.svg" />
-                    <input
+                    <Input
                       type="email"
+                      placeholder="Email"
                       name="inputEmail"
-                      {...register("inputEmail")}
                       id="inputEmail"
-                      placeholder="Digite seu email:"
                     />
                   </div>
                   <p className="error-message">
@@ -67,12 +69,11 @@ const FormCadastro = (props) => {
                   </p>
                   <div className="hero-svg-cadastro">
                     <img src="/iconPassword.svg" />
-                    <input
+                    <Input
                       type="password"
+                      placeholder="Senha"
                       name="createPassword"
-                      {...register("createPassword")}
-                      id="inputLogin"
-                      placeholder="Digite uma senha:"
+                      id="inputPassword"
                     />
                   </div>
                   <p className="error-message">
@@ -80,31 +81,26 @@ const FormCadastro = (props) => {
                   </p>
                   <div className="hero-svg-cadastro">
                     <img src="/iconConfirmPassword.svg" />
-                    <input
+                    <Input
                       type="password"
+                      placeholder="Confirmar Senha"
                       name="confirmPassword"
-                      {...register("confirmPassword")}
-                      id="inputPassword"
-                      placeholder="Confirme sua senha:"
+                      id="inputConfirmPassword"
                     />
                   </div>
                   <div className="button-div-cadastro">
-                    <button className="button-cadastro">
+                    <Button className="button-cadastro">
                       <Link to="/registration">Cadastrar</Link>
-                    </button>
+                    </Button>
                   </div>
                   <div className="footer-card-cadastro">
-                    <a href="Esqueceu senha">
-                      <p>Esqueceu a senha</p>
-                    </a>
-                    <a href="/login">
-                      <p>Voltar</p>
-                    </a>
+                    <Link to="/">Esqueceu a senha</Link>
+                    <Link to="/login">Já tem uma conta?</Link>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </>
