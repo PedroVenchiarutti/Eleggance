@@ -6,6 +6,7 @@ import { HomeBanner } from "../../components/HomeBanner";
 import { images, shelfProducts, trendProducts } from "../../api/mock";
 import Team from "../../components/Team/team";
 import { AboutUs } from "../../components/AboutUs";
+import { Services } from "../../components/Services";
 
 export default (props) => {
   return (
@@ -15,6 +16,7 @@ export default (props) => {
       </header>
       <HomeBanner images={images} />
       <AboutUs/>
+      <Services />
       <Team />
       <Footer />
     </div>
