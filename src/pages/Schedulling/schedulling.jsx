@@ -19,6 +19,7 @@ export default (props) => {
       <Services />
       <Team />
       <Footer />
+      
     </div>
   );
 }
