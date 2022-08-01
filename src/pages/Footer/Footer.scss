@@ -109,6 +109,7 @@
 @media (max-width: 1120px) {
   .footer {
     width: 100%;
+    flex-shrink: 0;
   }
 
   .footer__container {

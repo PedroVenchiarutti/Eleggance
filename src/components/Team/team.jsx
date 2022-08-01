@@ -20,21 +20,12 @@ export default (props) => {
               <img src="img/model1.jpg" alt="" />
             </div>
             <div className="p-list">
-              <ul>
-                <li>
-                  <h3>Jessica dos Santos Alves</h3>
-                </li>
-                <li>
-                  <h4> Especialista em cabelos ruivos </h4>
-                </li>
-                <li>
-                  <p>
-                    Formada em estetica pela Unip, atuo como cabeleleira a mais
-                    de 20 anos, sou especialista em cabelos ruivos a pelo menos
-                    14 anos.
-                  </p>
-                </li>
-              </ul>
+            <h4>
+            Jessica
+           </h4>
+           <p>
+           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus minima vitae quod voluptas cupiditate sit iusto modi dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium ullam itaque maiores hic assumenda natus?
+           </p>
             </div>
           </div>
         </div>
@@ -44,21 +35,12 @@ export default (props) => {
               <img src="img/model2.jpg" alt="" />
             </div>
             <div className="p-list">
-              <ul>
-                <li>
-                  <h3>Jessica dos Santos Alves</h3>
-                </li>
-                <li>
-                  <h4> Especialista em cabelos ruivos </h4>
-                </li>
-                <li>
-                  <p>
-                    Formada em estetica pela Unip, atuo como cabeleleira a mais
-                    de 20 anos, sou especialista em cabelos ruivos a pelo menos
-                    14 anos.
-                  </p>
-                </li>
-              </ul>
+           <h4>
+            Jessica
+           </h4>
+           <p>
+           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus minima vitae quod voluptas cupiditate sit iusto modi dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium ullam itaque maiores hic assumenda natus?
+           </p>
             </div>
           </div>
         </div>
@@ -68,21 +50,12 @@ export default (props) => {
               <img src="img/model1.jpg" alt="" />
             </div>
             <div className="p-list">
-              <ul>
-                <li>
-                  <h3>Jessica dos Santos Alves</h3>
-                </li>
-                <li>
-                  <h4> Especialista em cabelos ruivos </h4>
-                </li>
-                <li>
-                  <p>
-                    Formada em estetica pela Unip, atuo como cabeleleira a mais
-                    de 20 anos, sou especialista em cabelos ruivos a pelo menos
-                    14 anos.
-                  </p>
-                </li>
-              </ul>
+            <h4>
+            Jessica
+           </h4>
+           <p>
+           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus minima vitae quod voluptas cupiditate sit iusto modi dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium ullam itaque maiores hic assumenda natus?
+           </p>
             </div>
           </div>
         </div>
