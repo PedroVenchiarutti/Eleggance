@@ -1,72 +1,72 @@
-import { createContext, useEffect, useState } from "react";
+import React, { useState, useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const AuthContext = createContext({});
+// Criando um contexto para o Auth
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [logged, setLogged] = useState(false);
+  const [logout, setLogout] = useState(false);
 
   useEffect(() => {
-    const userToken = localStorage.getItem("user_Token");
-    const usersStorage = localStorage.getItem("users_db");
+    const recoveredUser = localStorage.getItem("user");
 
-    if (userToken && usersStorage) {
-      const hasUser = JSON.parse(usersStorage)?.filter(
-        (user) => user.email === JSON.parse(userToken).email
-      );
-
-      if (hasUser) setUser(hasUser[0]);
+    if (recoveredUser) {
+      setUser(JSON.parse(recoveredUser));
     }
+
+    setLoading(false);
   }, []);
 
-  const signin = (email, password) => {
-    const usersStorage = JSON.parse(localStorage.getItem("users_db"));
+  const login = (email, password) => {
+    const getLocalStorage = localStorage.getItem("user");
+    const user = JSON.parse(getLocalStorage);
 
-    const hasUser = usersStorage?.filter((user) => user.email === email);
-
-    if (hasUser?.length) {
-      if (hasUser[0].email === email && hasUser[0].password === password) {
-        const token = Math.random().toString(36).substring(2);
-        localStorage.setItem("user_Token", JSON.stringify({ email, token }));
-        setUser({ email, password });
-        return;
-      } else {
-        return "email or password is incorrect";
-      }
+    if (user.email == email && user.password == password) {
+      setUser(user);
+      setLogged(true);
+      navigate("/home");
     } else {
-      return " USUARIO NAO CADASTRADO";
+      setLogged(false);
+      alert("Email ou senha incorretos");
     }
   };
 
-  const signup = (email, password) => {
-    const usersStorage = JSON.parse(localStorage.getItem("users_db"));
-
-    const hasUser = usersStorage?.filter((user) => user.email === email);
-
-    if (hasUser?.length) {
-      return "USUARIO JA CADASTRADO";
-    }
-
-    let newUser;
-
-    if (usersStorage) {
-      newUser = [...usersStorage, { email, password }];
-    } else {
-      newUser = [{ email, password }];
-    }
-
-    localStorage.setItem("users_db", JSON.stringify(newUser));
-
-    return;
+  const registerUser = (login, email, password) => {
+    const user = {
+      id: Math.random(10),
+      login: login,
+      email: email,
+      password: password,
+    };
+    localStorage.setItem("user", JSON.stringify(user));
+    setUser(user);
+    alert("Usuário cadastrado com sucesso!");
+    navigate("/login");
   };
 
-  const signout = () => {
+  const userLogout = () => {
+    localStorage.removeItem("user");
     setUser(null);
-    localStorage.removeItem("user_Token");
+    setLogged(false);
+    setLogout(true);
+    navigate("/login");
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, signed: !!user, signin, signup, signout }}
+      value={{
+        authenticated: !!user,
+        user,
+        loginName: user ? user.login : "",
+        loading,
+        login,
+        userLogout,
+        registerUser,
+      }}
     >
       {children}
     </AuthContext.Provider>

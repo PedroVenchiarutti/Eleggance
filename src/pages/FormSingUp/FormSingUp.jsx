@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../contexts/auth";
 import "./FormSingUp.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -15,28 +16,9 @@ const schema = yup.object({
 });
 
 const FormSingUp = (props) => {
-  /*   const { signin } = useAuth();
-  const navigate = useNavigate();
-
-  const [email, useEmail] = useState("");
-  const [password, usePassword] = useState("");
-  const [error, setError] = useState("");
-
-  const handleLogin = () => {
-    if (!email | !password) {
-      setError("Preencha todos os campos");
-      return;
-    }
-
-    const res = signin(email, password);
-
-    if (res) {
-      setError(res);
-      return;
-    }
-
-    navigate("/home");
-  }; */
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { authenticated, login } = useContext(AuthContext);
 
   const {
     register,
@@ -46,16 +28,17 @@ const FormSingUp = (props) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    window.location.assign("/home");
-    console.log(data);
+  const handleSubmitt = (e) => {
+    e.preventDefault();
+    console.log("submit", { email, password });
+    login(email, password);
   };
 
   return (
     <>
       <div className="img-container-singup">
         <div className="container-singup ">
-          <Form className="form-singup" onSubmit={handleSubmit(onSubmit)}>
+          <Form className="form-singup" onSubmit={handleSubmitt}>
             <div className="box-singup">
               <div className="box-header-singup">
                 <div className="img-singup">
@@ -70,9 +53,11 @@ const FormSingUp = (props) => {
                     <img src="iconUser.svg" />
                     <Input
                       type="text"
-                      placeholder="Login"
-                      name="inputLogin"
-                      id="input-login"
+                      placeholder="Email"
+                      name="inputEmail"
+                      id="input-email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <p className="error-message">
@@ -85,6 +70,8 @@ const FormSingUp = (props) => {
                       placeholder="Senha"
                       name="inputPassword"
                       id="input-password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                   <div className="button-div-singup">

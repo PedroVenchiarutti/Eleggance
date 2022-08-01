@@ -1,28 +1,66 @@
-import React from "react";
+import React, { useContext } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import FormSingUp from "./pages/FormSingUp/FormSingUp";
 import FormCadastro from "./pages/FormCadastro/FormCadastro";
-import RegistrationForm from "./pages/RegistrationForm/registrationForm";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import useAuth from "./hooks/useAuth";
+import { AuthProvider, AuthContext } from "./contexts/auth";
 
-const Private = ({ Item }) => {
-  const signed = useAuth();
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+/* import useAuth from "./hooks/useAuth"; */
 
-  return signed > 0 ? <Item /> : <FormSingUp />;
+const changeRoutes = () => {
+  const Private = ({ children }) => {
+    const { authenticated, loading } = useContext(AuthContext);
+
+    if (loading) {
+      return <div className="loading">Loading...</div>;
+    }
+    if (!authenticated) {
+      return <Navigate to="/login" />;
+    } else {
+      return children;
+    }
+  };
+
+  return (
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route
+            exact
+            path="/home"
+            element={
+              <Private>
+                <HomePage />
+              </Private>
+            }
+          />
+          <Route exact path="/cadastro" element={<FormCadastro />} />
+          <Route exact path="/login" element={<FormSingUp />} />
+          <Route
+            path="*"
+            element={
+              <Private>
+                <HomePage />
+              </Private>
+            }
+            to="/"
+            replace
+          />
+        </Routes>
+      </AuthProvider>
+    </Router>
+  );
 };
 
-const changeRoutes = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route exact path="/home" element={<Private Item={HomePage} />} />
-      <Route path="/cadastro" element={<FormCadastro />} />
-      <Route exact path="/login" element={<FormSingUp />} />
-      {/*   <Route path="/registration" element={<RegistrationForm />} />
-       */}
-      <Route path="*" element={<HomePage />} to="/" replace />
-    </Routes>
-  </BrowserRouter>
-);
-
 export default changeRoutes;
+
+{
+  /*   <Route path="/registration" element={<RegistrationForm />} />
+   */
+}
+/*  import RegistrationForm from "./pages/RegistrationForm/registrationForm"; */
