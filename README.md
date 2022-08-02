@@ -2,8 +2,8 @@
 
 <img src="./logo.png">
 
-![GitHub last commit](https://img.shields.io/github/last-commit/d3xt3er/FrontEnd-Recyclo)
-![GitHub top language](https://img.shields.io/github/languages/top/d3xt3er/FrontEnd-Recyclo)
+![GitHub last commit](https://img.shields.io/github/last-commit/Smooke09/Eleggance)
+![GitHub top language](https://img.shields.io/github/languages/top/Smooke09/Eleggance)
 
 </div>
 
