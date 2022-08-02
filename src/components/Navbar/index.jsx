@@ -1,8 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../contexts/auth";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss";
 
 export const Navbar = () => {
+  const { authenticated, loginName } = useContext(AuthContext);
+  const { userLogout } = useContext(AuthContext);
+
+  const userLogged = () => {
+    if (authenticated) {
+      return (
+        <>
+          <img src="/img/Frame.svg" />
+          <div className="user-logged">
+            <label>{loginName}</label>
+            <button onClick={userLogout} className="login-button">
+              Logout
+            </button>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <div className="div-button">
+          <Link to="/login" className="login-button">
+            <img src="/img/Frame.svg" />
+            <p>
+              Entre ou <br /> cadastre-se
+            </p>
+          </Link>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="navbar-container">
       <nav>
@@ -22,14 +53,7 @@ export const Navbar = () => {
                 <a href="">Contato</a>
               </li>
             </ul>
-            <div className="div-button">
-              <Link to="/login" className="login-button">
-                <img src="/img/Frame.svg" />
-                <p>
-                  Entre ou <br /> cadastre-se
-                </p>
-              </Link>
-            </div>
+            {userLogged()}
           </div>
         </div>
       </nav>
