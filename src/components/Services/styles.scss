@@ -4,31 +4,82 @@
   .services-items {
     width: 100%;
     height: 400px;
-    background-image: url("../../../public/img/servicesIMG.png");
+    background-image: url("../../../public/img/BackgroundHOVER.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 1;
+    position: relative;
 
     .services-text {
       width: 100%;
+      height: 100%;
       display: flex;
+
       .item-first {
         width: 25%;
+        height: 100%;
+        border-right: 1px solid #f4f4f4;
       }
+
+      .item-first:hover {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../public/img/CorteFIRST.jpg");
+        transition: all 0.7s ease;
+      }
+
       .item-second {
         width: 25%;
+        height: 100%;
+        border-right: 1px solid #f4f4f4;
       }
+
+      .item-second:hover {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../public/img/ManiPediSECOND.jpg");
+        transition: all 0.7s ease;
+      }
+
       .item-third {
         width: 25%;
+        height: 100%;
+        border-right: 1px solid #f4f4f4;
       }
+
+      .item-third:hover {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../public/img/QuimicasTHIRD.jpg");
+        transition: all 0.7s ease;
+      }
+
       .item-fourth {
         width: 25%;
+        height: 100%;
+      }
+
+      .item-fourth:hover {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../public/img/SpaFOURTH.jpg");
+        transition: all 0.7s ease;
       }
 
       h4 {
-        width: 100% ;
+        padding-top: 25px;
+        width: 100%;
         text-align: center;
         font-weight: 450;
-        font-size: 1.688rem;
+        font-size: 25px;
       }
     }
   }
