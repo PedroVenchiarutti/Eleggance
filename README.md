@@ -59,6 +59,6 @@
 </div>
 
 
-## FrontEnd do Projeto
+## API do Projeto
 
-    https://github.com/Smooke09/Eleggance
+    https://github.com/Smooke09/API-projectClear
