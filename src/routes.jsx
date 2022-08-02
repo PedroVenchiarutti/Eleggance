@@ -34,9 +34,9 @@ const changeRoutes = () => {
             exact
             path="/home"
             element={
-              <Private>
-                <HomePage />
-              </Private>
+              /*     <Private>
+              </Private> */
+              <HomePage />
             }
           />
           <Route exact path="/cadastro" element={<FormCadastro />} />
