@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import FormSingUp from "./pages/FormSingUp/FormSingUp";
 import FormCadastro from "./pages/FormCadastro/FormCadastro";
+import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 
 import {
@@ -30,17 +31,18 @@ const changeRoutes = () => {
     <Router>
       <AuthProvider>
         <Routes>
-          <Route
-            exact
-            path="/home"
-            element={
-              /*     <Private>
-              </Private> */
-              <HomePage />
-            }
-          />
+          <Route exact path="/home" element={<HomePage />} />
           <Route exact path="/cadastro" element={<FormCadastro />} />
           <Route exact path="/login" element={<FormSingUp />} />
+          <Route
+            path="/registration"
+            element={
+              <Private>
+                <RegistrationForm />
+              </Private>
+            }
+          />
+
           <Route
             path="*"
             element={
@@ -58,9 +60,3 @@ const changeRoutes = () => {
 };
 
 export default changeRoutes;
-
-{
-  /*   <Route path="/registration" element={<RegistrationForm />} />
-   */
-}
-/*  import RegistrationForm from "./pages/RegistrationForm/registrationForm"; */

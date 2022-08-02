@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../RegistrationForm/registrationForm.scss";
 import {
   ref,
@@ -8,15 +8,47 @@ import {
   list,
 } from "firebase/storage";
 import { storage } from "../../api/firebase";
+import { AuthContext } from "../../contexts/auth";
 
 const RegistrationForm = (props) => {
   const [imgURL, setImgURL] = useState("");
+  const [personalName, setPersonalName] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [sexo, setSexo] = useState("");
+
+  const { personalDataRecord } = useContext(AuthContext);
+
+   //Fazer uma funcao que so envie os dado pro localstorage quando a imagen ser enviada completa para firebase
+  const firebaseUpload = async (e) => {
+    e.preventDefault();
+    const file = e.target[0]?.files[0];
+    const storageRef = ref(storage, `image/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    if (!file) return;
+    try {
+      setImgURL(
+        uploadTask.on(
+          "state_changed",
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImgURL(downloadURL);
+              //pegando link da imagem
+              console.log(downloadURL);
+            });
+          }
+        )
+      );
+    } catch {}
+  };
 
   const handleUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
     if (!file) return;
-
     const storageRef = ref(storage, `image/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -35,6 +67,21 @@ const RegistrationForm = (props) => {
     );
   };
 
+ 
+
+  /*  const handleSubmit = async (e) => {
+    e.preventDefault();
+    personalDataRecord(personalName, cpf, birthDate, sexo);
+
+    console.log("cadastro pessoal", {
+      personalName,
+      cpf,
+      birthDate,
+      sexo,
+      imgURL,
+    });
+  }; */
+
   return (
     <div className="img-container-singup">
       <div className="container container-registration">
@@ -47,14 +94,20 @@ const RegistrationForm = (props) => {
           </div>
           <div className="FormularioBox">
             <div className="grid-container">
-              <form className="Formulario" onSubmit={handleUpload}>
+              <form className="Formulario" onSubmit={firebaseUpload}>
                 <div className="input-photo-registration">
                   <label
                     className="label-photo-registration"
                     htmlFor="photo-registration"
                   ></label>
                   {imgURL && <img src={imgURL} alt="Imagem" />}
-                  <input type="file" id="photo-registration" name="arquivos" />
+                  <input
+                    type="file"
+                    id="photo-registration"
+                    name="arquivos"
+                    value={imgURL}
+                    onChange={(e) => setImgURL(e.target.value)}
+                  />
                 </div>
                 <div className="container-container">
                   <div className="icons-input-form">
@@ -81,6 +134,8 @@ const RegistrationForm = (props) => {
                           type="text"
                           name="name"
                           required
+                          value={personalName}
+                          onChange={(e) => setPersonalName(e.target.value)}
                         />
                         <div className="grid-item">
                           <label className="label-form">CPF:</label>
@@ -90,6 +145,8 @@ const RegistrationForm = (props) => {
                             type="text"
                             name="cpf"
                             required
+                            value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
                           />
                         </div>
                       </div>
@@ -119,12 +176,20 @@ const RegistrationForm = (props) => {
                             type="date"
                             name="data de nascimento"
                             required
+                            value={birthDate}
+                            onChange={(e) => setBirthDate(e.target.value)}
                           />
                         </label>
                       </div>
                       <div className="grid-item">
                         <label className="label-form">Sexo:</label>
-                        <select name="select" className="select-form" required>
+                        <select
+                          name="select"
+                          className="select-form"
+                          required
+                          value={sexo}
+                          onChange={(e) => setSexo(e.target.value)}
+                        >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>
                           <option value="Outros"> Outros</option>
