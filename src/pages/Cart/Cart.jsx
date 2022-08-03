@@ -7,9 +7,8 @@ import Carrousel from "../../components/Carrousel/Carrousel";
 import "./Cart.scss"
 
 export default function Cart(props) {
-    const [shipping, setShipping] = useState(9.99)
+
     const subTotal = 1000
-    const total = subTotal + shipping
     return (
         <div className="cartContainer">
             <Navbar />
