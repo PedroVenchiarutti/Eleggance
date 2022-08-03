@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import FormSingUp from "./pages/FormSingUp/FormSingUp";
 import FormCadastro from "./pages/FormCadastro/FormCadastro";
+import Cart from "./pages/Cart/Cart";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 
 import {
@@ -40,6 +41,7 @@ const changeRoutes = () => {
             }
           />
           <Route exact path="/cadastro" element={<FormCadastro />} />
+          <Route exact path="/carrinho" element={<Cart />} />
           <Route exact path="/login" element={<FormSingUp />} />
           <Route
             path="*"
