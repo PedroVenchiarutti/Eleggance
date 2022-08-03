@@ -1,0 +1,160 @@
+.contianer {
+  width: 100%;
+  height: 100vh;
+}
+.container-products {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+.container-top {
+  display: flex;
+  padding-bottom: 70px;
+  h1 {
+    font-size: 17px;
+    padding-top: 25px;
+    padding-left: 5px;
+  }
+}
+.icon-home {
+  padding-top: 25px;
+  padding-left: 15px;
+}
+.photo-info-products {
+  width: 50%;
+  height: 100%;
+  margin-left: 80px;
+  padding-left: 150px;
+
+  p {
+    margin-left: 10px;
+  }
+  h1 {
+    margin-bottom: 25px;
+  }
+}
+.info-p {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+}
+.photo--product {
+  img {
+    width: 50%;
+    display: flex;
+  }
+  .name-product {
+  }
+}
+
+.products-info-price {
+  padding-top: 30px;
+  margin-left: 80px;
+}
+.available {
+  display: flex;
+  h1 {
+    padding-left: 5px;
+    padding-top: 8px;
+    font-size: 20px;
+  }
+}
+.icon-star {
+  padding: 10px;
+}
+.icon-heart {
+  padding: 10px;
+  padding-left: 150px;
+}
+.price {
+  padding: 60px;
+  padding-bottom: 25px;
+  padding-left: 10px;
+
+  font-weight: bold;
+  h1 {
+    color: #e1ab38;
+    font-size: 45px;
+  }
+}
+.button {
+  padding-left: 10px;
+}
+.amount-product {
+  width: 38px;
+  height: 22px;
+}
+.button-buy {
+  display: flex;
+  margin-left: 10px;
+  background-color: #e1ab38;
+  border-radius: 6px;
+  width: 200px;
+  margin-top: 20px;
+  img {
+    padding: 5px;
+    padding-right: 0px;
+  }
+  h3 {
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 6px;
+  }
+}
+.icon-bag {
+  padding-left: 25px;
+}
+.frete {
+  padding-top: 70px;
+  padding-left: 15px;
+  p {
+    padding-bottom: 15px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    padding-left: 5px;
+  }
+  input {
+    padding-left: 10px;
+    padding-right: 5px;
+    font-size: 15px;
+    border-radius: 6px;
+    width: 120px;
+    -webkit-appearance: none;
+  }
+  button{
+    border-radius: 6px;
+    width: 25px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 1120px) {
+    .container-products{
+        flex-direction: column;
+    }
+    .photo-info-products{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+    .name-product{
+        width: 100%;
+        padding: 0px;
+    }
+   .products-info-price{
+    margin-left: 0px;
+   }
+   .price{
+    padding-left: 50px;
+   }
+   .button{
+    padding-left: 50px;
+   }
+   .button-buy{
+    margin-left: 50px;
+   }
+}
