@@ -19,7 +19,7 @@ const ItemCart = ({ product }) => {
             </td>
             <td className='tdCol-2'>
                 <span>
-                    <input type="number" defaultValue={parseFloat(quantidade)} onChange={(e) => { setQuantidade(e.target.value) }} />
+                    <input min={0} max={100} type="number" defaultValue={parseFloat(quantidade)} onChange={(e) => { setQuantidade(e.target.value) }} />
                 </span>
             </td>
             <td className='tdCol-3'>

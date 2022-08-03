@@ -10,6 +10,18 @@
 .cartContainer table {
     width: 100%;
 }
+.cartContainer svg {
+    transition: 0.3s all linear;
+}
+.cartContainer svg:hover {
+    cursor: pointer;
+    transform: scale(1.1)
+}
+
+.cartContainer img:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
 
 .cartContainer table thead {
     background-color: #4E4E4E;
@@ -81,6 +93,7 @@
     max-width: 55px;
     max-height: 75px;
     margin-right: 40px;
+    transition: 0.3s all linear;
 }
 
 .cartContainer tbody tr td input {
@@ -150,7 +163,7 @@
     border-radius: 5px;
     border: 0.5px solid black;
     box-shadow: 2px 2px 8px black;
-
+    transition: 0.3s all ease-in-out;
 }
 
 .cartContainer main .actions {
@@ -166,4 +179,13 @@
 .cartContainer main .actions .finishBuyButton{
     color: #E4AF39;
     font-weight: 700;
+    transition: 0.3s all ease-out;
+}
+.cartContainer main .actions .finishBuyButton:hover{
+    color: #b07b08;
+}
+
+.cartContainer main .actions .homeButton:hover {
+    background-color: #d79a16;
+    color: #fff;
 }
