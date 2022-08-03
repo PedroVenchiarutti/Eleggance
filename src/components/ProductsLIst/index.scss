@@ -38,6 +38,8 @@
     justify-content: space-around;
     font-weight: 600;
     width: 98vw;
+    border-top: 0.25px solid #4e4e4ebd ;
+    border-bottom: 0.25px solid #4e4e4ea7 ;
 }
 
 .cartContainer tbody tr .tdCol-1 {
@@ -136,4 +138,32 @@
 
 .full-price-promo {
     width: 150px;
+}
+
+.cartContainer main .homeButton {
+    font-size: 18px;
+    color: #F3F3F3;
+    background-color: #E4AF39;
+    padding: 8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px 8px black;
+
+}
+
+.cartContainer main .actions {
+    position: absolute;
+    justify-content: space-between;
+    right: 60px;
+    display: flex;
+    width: 30%;
+    margin-top: 70px;
+
+}
+
+.cartContainer main .actions .finishBuyButton{
+    color: #E4AF39;
+    font-weight: 700;
 }
