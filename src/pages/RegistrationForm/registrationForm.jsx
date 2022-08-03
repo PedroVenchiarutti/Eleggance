@@ -1,12 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../RegistrationForm/registrationForm.scss";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-  list,
-} from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../api/firebase";
 import { AuthContext } from "../../contexts/auth";
 
@@ -16,62 +10,42 @@ const RegistrationForm = (props) => {
   const [cpf, setCpf] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [sexo, setSexo] = useState("");
+  const [progress, setProgress] = useState(0);
 
   const { personalDataRecord } = useContext(AuthContext);
 
-   //Fazer uma funcao que so envie os dado pro localstorage quando a imagen ser enviada completa para firebase
-  const firebaseUpload = async (e) => {
-    e.preventDefault();
-    const file = e.target[0]?.files[0];
-    const storageRef = ref(storage, `image/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-    if (!file) return;
-    try {
-      setImgURL(
-        uploadTask.on(
-          "state_changed",
-          (error) => {
-            console.log(error);
-          },
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              setImgURL(downloadURL);
-              //pegando link da imagem
-              console.log(downloadURL);
-            });
-          }
-        )
-      );
-    } catch {}
-  };
-
-  const handleUpload = (e) => {
+  // armazenar o dados da imagens no objeto que esta sendo enviado para o localStorage
+  const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
     if (!file) return;
-    const storageRef = ref(storage, `image/${file.name}`);
+    const storageRef = ref(storage, `image/${file}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
       "state_changed",
+      (snapshot) => {
+        console.log("snapshot", snapshot);
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgress(progress);
+      },
       (error) => {
         console.log(error);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImgURL(downloadURL);
-          //pegando link da imagem
-          console.log(downloadURL);
-        });
       }
     );
+    uploadTask.then((res) => {
+      getDownloadURL(storageRef).then((url) => {
+        console.log("urldaesssaporra", url);
+        //trazendo o state de success de uma promisse
+        console.log(res);
+      });
+      /* handleSubmit(); */
+    });
   };
-
- 
-
-  /*  const handleSubmit = async (e) => {
-    e.preventDefault();
-    personalDataRecord(personalName, cpf, birthDate, sexo);
+  /* 
+  const handleSubmit = async () => {
+    personalDataRecord(personalName, cpf, birthDate, sexo, imgURL);
 
     console.log("cadastro pessoal", {
       personalName,
@@ -99,15 +73,28 @@ const RegistrationForm = (props) => {
                   <label
                     className="label-photo-registration"
                     htmlFor="photo-registration"
-                  ></label>
-                  {imgURL && <img src={imgURL} alt="Imagem" />}
-                  <input
-                    type="file"
-                    id="photo-registration"
-                    name="arquivos"
-                    value={imgURL}
-                    onChange={(e) => setImgURL(e.target.value)}
-                  />
+                  >
+                    <img
+                      src={
+                        !imgURL
+                          ? "/icons/iconmonstr-photo-camera-6-72.png"
+                          : imgURL
+                      }
+                      className={
+                        !imgURL ? "img-photo-registration" : "imgPerfil"
+                      }
+                      alt="blabla"
+                    />
+                  </label>
+                  {!imgURL && (
+                    <progress
+                      value={progress}
+                      max="100"
+                      className="progres-range"
+                      onChange={(e) => setProgress(e.target.value)}
+                    />
+                  )}
+                  <input type="file" id="photo-registration" name="arquivos" />
                 </div>
                 <div className="container-container">
                   <div className="icons-input-form">
@@ -182,7 +169,7 @@ const RegistrationForm = (props) => {
                         </label>
                       </div>
                       <div className="grid-item">
-                        <label className="label-form">Sexo:</label>
+                        <label className="label-form">Sexo: </label>
                         <select
                           name="select"
                           className="select-form"

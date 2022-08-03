@@ -67,17 +67,19 @@ export const AuthProvider = ({ children }) => {
   const personalDataRecord = async (
     id,
     personalName,
-    lastName,
+    cpf,
     birthDate,
-    sexo
+    sexo,
+    imgUrl
   ) => {
     try {
       const personal = {
         id: id,
         personalName: personalName,
-        lastName: lastName,
+        cpf: cpf,
         birthDate: birthDate,
         sexo: sexo,
+        imgUrl: imgUrl,
       };
       localStorage.setItem("personal", JSON.stringify(personal));
       setUser(personal);

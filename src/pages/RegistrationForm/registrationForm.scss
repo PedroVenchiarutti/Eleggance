@@ -7,6 +7,7 @@
   align-items: center;
   align-content: center;
   justify-content: center;
+  background-color: #7e370c;
 
   .box-header-registration {
     display: block;
@@ -86,6 +87,7 @@
     height: 100%;
     border-left: 5px;
     border-right: 5px;
+    margin-top: 50px;
     input:focus {
       background-color: #fffafa;
     }
@@ -145,21 +147,38 @@
 
   .input-photo-registration {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     height: 100px;
     margin-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+
+    /*   img {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+    }
+    .progres-range {
+      width: 100px;
+      margin: 0 auto;
+    } */
   }
   #photo-registration {
     display: none;
   }
   .label-photo-registration {
-    margin-top: 10px;
-    width: 100px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     height: 100px;
-    background-image: url(/icons/iconmonstr-photo-camera-6-72.png);
-    background-repeat: no-repeat;
-    margin-bottom: 50px;
+
+    .imgPerfil {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      border-radius: 5px;
+    }
   }
   .label-form {
     font-weight: bold;
