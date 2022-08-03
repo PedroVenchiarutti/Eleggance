@@ -166,3 +166,9 @@ export const sectionImgs = [
   { url: "/img/cabelereiraConfira.jpg", alt: "" },
   { url: "/img/beauty-spa.jpg", alt: "" },
 ];
+
+export const myOrders = [
+  { products: ["Produto 1", "Produto 2", "Produto 3"], quantity: ["2", "2", "1"], purchaseId: "#123", price: "R$ 26,67", status: "Pendente" },
+  { products: ["Produto 4", "Produto 5", "Produto 6"], quantity: ["1", "1", "1"], purchaseId: "#456", price: "R$ 14,98", status: "Pendente" },
+  { products: ["Produto 7", "Produto 8", "Produto 9"], quantity: ["3", "1", "1"], purchaseId: "#789", price: "R$ 38,99", status: "Entregue" }
+]

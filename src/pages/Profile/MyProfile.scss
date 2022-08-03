@@ -1,0 +1,61 @@
+.page-title {
+    margin-left: 15px;
+}
+
+.profile-label, .my-profile-container {
+    margin: 50px
+}
+
+.border {
+    border: solid 2px #E4AF39;
+    border-radius: 10px;
+}
+
+.my-profile-container .menu-item, .main-content header, .main-content .orders {
+    padding: 15px;
+}
+
+.my-profile-container {
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 2;
+
+    .menu-container {
+        margin-right: 15px;
+
+        grid-column: 1;
+        background-color: #FFFFFF;
+
+        height: fit-content;
+
+        .menu-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-top: solid 0.5px #EAB53C;
+        }
+
+        .menu-item:hover {
+            background-color: #ffc53ff3;
+        }
+
+        .selected {
+            background-color: #EAB53C;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+
+            a, a:visited {
+                font-size: 1rem;
+                color: #E4AF39;
+            }
+        }
+    }
+
+    .main-content {
+        grid-column: 2;
+    }
+}

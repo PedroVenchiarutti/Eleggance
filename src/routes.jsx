@@ -10,6 +10,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import MyProfile from "./pages/Profile/MyProfile";
 /* import useAuth from "./hooks/useAuth"; */
 
 const changeRoutes = () => {
@@ -41,6 +42,7 @@ const changeRoutes = () => {
           />
           <Route exact path="/cadastro" element={<FormCadastro />} />
           <Route exact path="/login" element={<FormSingUp />} />
+          <Route exact path="/myprofile/" element={ <Private><MyProfile /></Private> } />
           <Route
             path="*"
             element={
