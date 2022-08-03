@@ -1,0 +1,146 @@
+.myProfile{
+
+    Footer{
+        position: absolute;
+    }
+
+    .pageTitle{
+        display: flex;
+        margin-left: 65px;
+        margin-top: 13px;
+    }
+        .pageTitle img{
+            padding-right: 15px;
+        }
+
+        .pageTitle h4{
+            font-weight: lighter;
+        }
+    
+    .container{
+        margin: 50px 65px;
+        display: flex;
+    }
+
+    // Menu
+    .options{
+        max-width: 250px;
+        display: flex;
+        margin-right: 20px;
+    }
+
+        .options ul li{
+            list-style-type: none;
+            border: 1px solid #e1ab38;
+        }
+
+        .options ul li:hover{
+            background-color: #e1ab38;
+        }
+
+        .options ul li:first-child{
+            border-top-left-radius: 5%;
+            border-top-right-radius: 5%;
+        }
+
+        .options ul li:last-child{
+            border-bottom-left-radius: 5%;
+            border-bottom-right-radius: 5%;
+
+        }
+
+        .options .liButton{
+            background: none;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            display: flex;
+            // não está separando o olá e o sair
+            justify-content: space-between;
+        }
+
+
+        .options .helloUser {
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .options a{
+            color: #e1ab38;
+        }
+
+        .options .username{
+            color: #e1ab38;
+        }
+
+        .options .option{
+            font-size: 12px;
+            padding: 15px 10px;
+            display: flex;
+        }
+            
+            .options .option h2{
+                font-weight: lighter;
+                font-size: 19px;
+                line-height: 35px;
+            }
+
+            .options .option img{
+                padding-right: 10px;
+            }
+
+
+    // Pedidos
+    .orders{
+        border: 1px solid #e1ab38;
+        border-radius: 5px;
+        height: 20vh;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+        .orders .orderText{
+            padding: 20px 30px;
+        }
+
+        .orders .orderDetails{
+            font-size: 13px;
+        }
+
+        .orders .recentOrders{
+            margin-bottom: 5px;
+        }
+
+    // Informações do usuário
+    .info{
+        border: 1px solid #e1ab38;
+        flex-grow: 1;
+    }
+
+        .info .myData{
+            font-weight:600;
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        .info .infoText{
+            margin-left: 30px;
+            margin-top: 30px;
+        }
+
+        .info .infoData{
+            margin: 25px 0px;
+        }
+
+        .info .infoData p{
+            margin: 25px 0px;
+            font-weight: bold;
+        }
+
+    .ordersAndInfo{
+        width: 76%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
