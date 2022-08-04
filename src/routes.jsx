@@ -35,7 +35,15 @@ const changeRoutes = () => {
           <Route exact path="/cadastro" element={<FormCadastro />} />
           <Route exact path="/login" element={<FormSingUp />} />
           <Route exact path="/agendamento" element={<Schedulling />} />
-          <Route exact path="/carrinho" element={<Cart />} />
+          <Route
+            exact
+            path="/carrinho"
+            element={
+              <Private>
+                <Cart />
+              </Private>
+            }
+          />
           <Route
             path="/registration"
             element={

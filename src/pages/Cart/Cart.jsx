@@ -26,11 +26,15 @@ export default function Cart(props) {
             <ProductsList products={shelfProducts} />
             <tfoot>
               <thead>
-                <td>SubTotal</td>
+                <tr>
+                  <td>SubTotal</td>
+                </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td>R${subTotal}</td>
+                </tr>
                 {/* ainda falta tornar o valor dinamico */}
-                <td>R${subTotal}</td>
               </tbody>
             </tfoot>
           </tbody>
