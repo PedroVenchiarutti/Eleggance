@@ -1,5 +1,6 @@
 .myProfile{
 
+
     Footer{
         position: absolute;
     }
@@ -18,7 +19,7 @@
         }
     
     .container{
-        margin: 50px 65px;
+        margin: 50px 60px;
         display: flex;
     }
 
@@ -34,18 +35,23 @@
             border: 1px solid #e1ab38;
         }
 
-        .options ul li:hover{
+        .options ul :nth-child(n + 2):hover{
             background-color: #e1ab38;
         }
 
+        // Sobrepõe o efeito de hover acima no elemento SAIR
+        .options .helloUser a:hover{
+            background-color: white;
+        }
+
         .options ul li:first-child{
-            border-top-left-radius: 5%;
-            border-top-right-radius: 5%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
         }
 
         .options ul li:last-child{
-            border-bottom-left-radius: 5%;
-            border-bottom-right-radius: 5%;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
 
         }
 
@@ -82,8 +88,9 @@
             
             .options .option h2{
                 font-weight: lighter;
-                font-size: 19px;
-                line-height: 35px;
+                font-size: 16px;
+                line-height: 40px;
+                padding-left: 5px;
             }
 
             .options .option img{
@@ -100,21 +107,23 @@
         margin-bottom: 20px;
     }
         .orders .orderText{
-            padding: 20px 30px;
+            padding: 25px 30px;
         }
 
         .orders .orderDetails{
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .orders .recentOrders{
             margin-bottom: 5px;
+            font-size: 16px;
         }
 
     // Informações do usuário
     .info{
         border: 1px solid #e1ab38;
         flex-grow: 1;
+        border-radius: 5px;
     }
 
         .info .myData{
@@ -135,6 +144,10 @@
         .info .infoData p{
             margin: 25px 0px;
             font-weight: bold;
+        }
+
+        .info .infoData .infoP{
+            font-weight: 200;
         }
 
     .ordersAndInfo{
