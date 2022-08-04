@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "../../components/Navbar";
 import "./shop.scss";
+import Footer from "../Footer/Footer";
 
 import AllProducts from "../../components/AllProducts/index";
 import { shelfProducts } from "../../api/mock";
@@ -11,6 +12,7 @@ export default function Shop({ products }) {
       <ul>
         <AllProducts products={shelfProducts} />
       </ul>
+      <Footer />
     </div>
   );
 }
