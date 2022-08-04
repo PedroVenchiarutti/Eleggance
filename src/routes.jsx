@@ -5,6 +5,7 @@ import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/schedulling";
+import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
 import {
   BrowserRouter as Router,
@@ -35,6 +36,7 @@ const changeRoutes = () => {
           <Route exact path="/cadastro" element={<FormCadastro />} />
           <Route exact path="/login" element={<FormSingUp />} />
           <Route exact path="/agendamento" element={<Schedulling />} />
+          <Route exact path="/produtos" element={<Products />} />
           <Route
             exact
             path="/carrinho"
