@@ -177,27 +177,7 @@
   color: #fff;
 }
 
-@media (max-width: 830px) {
-  .cartContainer table thead tr,
-  .cartContainer table tbody tr {
-    justify-content: space-between;
-  }
-  .cartContainer table thead .col-1 {
-    width: 30%;
-    text-align: left;
-  }
-  .cartContainer table tbody .tdCol-1 {
-    width: 30%;
-  }
-
-  .cartContainer tbody tr td div {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10%;
-  }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 1120px) {
   .cartContainer {
     width: 100%;
   }
@@ -205,16 +185,15 @@
   .cartContainer ul {
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
   }
 
   .cardContainer {
     font-weight: 600;
     display: block;
     list-style: none;
-    margin: 25px 0;
+    margin: 25px 25px;
     box-shadow: 4px 4px 12px black;
   }
   .cardContainer .row {
