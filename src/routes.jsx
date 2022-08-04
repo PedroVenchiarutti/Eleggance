@@ -35,7 +35,7 @@ const changeRoutes = () => {
             path="/home"
             element={
               /*     <Private>
-              </Private> */
+              </Privat> */
               <HomePage />
             }
           />
