@@ -10,11 +10,11 @@ import { Services } from "../../pages/Services";
 
 export default (props) => {
   return (
-    <div>
+    <div className="schedulling">
       <header className="homepage">
         <Navbar />
+        <HomeBanner images={images} />
       </header>
-      <HomeBanner images={images} />
       <AboutUs />
       <Services />
       <Team />
