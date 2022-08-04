@@ -37,16 +37,20 @@ const RegistrationForm = (props) => {
     uploadTask.then((res) => {
       getDownloadURL(storageRef).then((url) => {
         console.log("urldaesssaporra", url);
+        setImgURL(url);
         //trazendo o state de success de uma promisse
-        console.log(res);
+        if (res.state === "success") {
+          
+          handleSubmit();
+        } else {
+          return;
+        }
       });
-      /* handleSubmit(); */
     });
   };
-  /* 
+
   const handleSubmit = async () => {
     personalDataRecord(personalName, cpf, birthDate, sexo, imgURL);
-
     console.log("cadastro pessoal", {
       personalName,
       cpf,
@@ -54,7 +58,7 @@ const RegistrationForm = (props) => {
       sexo,
       imgURL,
     });
-  }; */
+  };
 
   return (
     <div className="img-container-singup">

@@ -73,14 +73,16 @@ export const AuthProvider = ({ children }) => {
     imgUrl
   ) => {
     try {
-      const personal = {
+      const personal = [
+      {
         id: id,
         personalName: personalName,
         cpf: cpf,
         birthDate: birthDate,
         sexo: sexo,
         imgUrl: imgUrl,
-      };
+      }
+    ];
       localStorage.setItem("personal", JSON.stringify(personal));
       setUser(personal);
       navigate("/login");
