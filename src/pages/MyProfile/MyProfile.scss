@@ -1,6 +1,5 @@
 .myProfile{
 
-
     Footer{
         position: absolute;
     }
@@ -15,7 +14,7 @@
         }
 
         .pageTitle h4{
-            font-weight: lighter;
+            font-weight: 400;
         }
     
     .container{
@@ -24,79 +23,7 @@
     }
 
     // Menu
-    .options{
-        max-width: 250px;
-        display: flex;
-        margin-right: 20px;
-    }
-
-        .options ul li{
-            list-style-type: none;
-            border: 1px solid #e1ab38;
-        }
-
-        .options ul :nth-child(n + 2):hover{
-            background-color: #e1ab38;
-        }
-
-        // Sobrepõe o efeito de hover acima no elemento SAIR
-        .options .helloUser a:hover{
-            background-color: white;
-        }
-
-        .options ul li:first-child{
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-
-        .options ul li:last-child{
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-
-        }
-
-        .options .liButton{
-            background: none;
-            border: none;
-            font: inherit;
-            cursor: pointer;
-            display: flex;
-            // não está separando o olá e o sair
-            justify-content: space-between;
-        }
-
-
-        .options .helloUser {
-            padding: 20px 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .options a{
-            color: #e1ab38;
-        }
-
-        .options .username{
-            color: #e1ab38;
-        }
-
-        .options .option{
-            font-size: 12px;
-            padding: 15px 10px;
-            display: flex;
-        }
-            
-            .options .option h2{
-                font-weight: lighter;
-                font-size: 16px;
-                line-height: 40px;
-                padding-left: 5px;
-            }
-
-            .options .option img{
-                padding-right: 10px;
-            }
-
+    
 
     // Pedidos
     .orders{
@@ -147,7 +74,7 @@
         }
 
         .info .infoData .infoP{
-            font-weight: 200;
+            font-weight: 400;
         }
 
     .ordersAndInfo{
@@ -157,3 +84,53 @@
     }
 }
 
+@media (max-width: 1120px) {
+
+
+    .myProfile {
+
+        *{
+            margin: 0px 0px;
+            padding: 0px 0px;
+        }
+
+        width: 100%;
+
+        .pageTitle{
+            width: 100%;
+            justify-content: center;
+            margin: 0px 0px;
+            padding: 0px 0px;
+            margin-top: 20px;
+        }
+
+        .Footer{
+            position: absolute;
+            bottom: 0px;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0px 0px;
+            align-items: center;
+            margin-top: 20px;
+
+            .options {
+                margin: 0px 0px;
+            }
+
+        .ordersAndInfo{
+            margin-top: 20px;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+
+        }
+
+    }
+    }

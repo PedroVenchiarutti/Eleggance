@@ -1,0 +1,74 @@
+.options{
+    max-width: 250px;
+    display: flex;
+    margin-right: 20px;
+}
+
+    .selected{
+        background-color:#e1ab38 ;
+    }
+
+    .options ul li{
+        list-style-type: none;
+        border: 1px solid #e1ab38;
+    }
+
+    .options ul :nth-child(n + 2):hover{
+        background-color: #e1ab38;
+    }
+
+    .options .helloUser a:hover{
+        background-color: white;
+    }
+
+    .options ul li:first-child{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .options ul li:last-child{
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+    }
+
+    .options .liButton{
+        background: none;
+        border: none;
+        font: inherit;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .options .helloUser {
+        padding: 20px 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .options a{
+        color: #e1ab38;
+    }
+
+    .options .username{
+        color: #e1ab38;
+    }
+
+    .options .option{
+        font-size: 12px;
+        padding: 15px 10px;
+        display: flex;
+    }
+        
+        .options .option h2{
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 40px;
+            padding-left: 5px;
+        }
+
+        .options .option img{
+            padding-right: 10px;
+        }

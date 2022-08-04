@@ -1,5 +1,3 @@
-//banner
-import { useEffect } from "react";
 export const images = [
   {
     url: "./bannerHomepage.png",
@@ -25,14 +23,14 @@ export const images = [
 
 export const smallBanner = [
   {
-    url:"./smallBanner.png",
-    alt:"Small Banner"
+    url: "./smallBanner.png",
+    alt: "Small Banner",
   },
   {
-    url:"./smallBanner2.png",
-    alt:"Small Banner"
+    url: "./smallBanner2.png",
+    alt: "Small Banner",
   },
-]
+];
 
 //Produtos da vitrines
 export const shelfProducts = [
@@ -40,6 +38,7 @@ export const shelfProducts = [
     image: "/img/produtos/blindagem-nh-650x650 1.jpg",
     name: "New Hair Blindagem",
     price: "R$199,00",
+    value: 89.99,
     discount: "R$89,99",
     installments: "2x R$44,99",
   },
@@ -48,12 +47,14 @@ export const shelfProducts = [
     name: "New Hair Queratina",
     price: "R$199,00",
     discount: "R$89,99",
+    value: 89.99,
     installments: "2x R$44,99",
   },
   {
     image: "/img/produtos/oleo-multifuncional1.jpg",
     name: "Óleo Multifuncional",
     price: "R$199,00",
+    value: 89.99,
     discount: "R$89,99",
     installments: "2x R$44,99",
   },
@@ -62,6 +63,7 @@ export const shelfProducts = [
     name: "Creme para Pentear",
     price: "R$199,00",
     discount: "R$89,99",
+    value: 89.99,
     installments: "2x R$44,99",
   },
   {
@@ -69,6 +71,7 @@ export const shelfProducts = [
     name: "Reparador de pontas",
     price: "R$199,00",
     discount: "R$89,99",
+    value: 89.99,
     installments: "2x R$44,99",
   },
   {
@@ -77,6 +80,7 @@ export const shelfProducts = [
     price: "R$199,00",
     discount: "R$89,99",
     installments: "2x R$44,99",
+    value: 89.99,
   },
   {
     image: "/img/produtos/capsulasNH.png",
@@ -84,6 +88,7 @@ export const shelfProducts = [
     price: "R$199,00",
     discount: "R$89,99",
     installments: "2x R$44,99",
+    value: 89.99,
   },
   {
     image: "/img/produtos/colageno.jpg",
@@ -91,6 +96,7 @@ export const shelfProducts = [
     price: "R$199,00",
     discount: "R$89,99",
     installments: "2x R$44,99",
+    value: 89.99,
   },
   {
     image: "/img/produtos/kitcachos.jpg",
@@ -98,6 +104,7 @@ export const shelfProducts = [
     price: "R$199,00",
     discount: "R$89,99",
     installments: "2x R$44,99",
+    value: 89.99,
   },
   {
     image: "/img/produtos/kitcapilarblindagem.jpg",
@@ -105,6 +112,7 @@ export const shelfProducts = [
     price: "R$199,00",
     discount: "R$89,99",
     installments: "2x R$44,99",
+    value: 89.99,
   },
   {
     image: "/img/produtos/makeonoff.jpg",
@@ -112,6 +120,7 @@ export const shelfProducts = [
     price: "R$199,00",
     discount: "R$89,99",
     installments: "2x R$44,99",
+    value: 89.99,
   },
 ];
 
@@ -138,6 +147,30 @@ export const trendProducts = [
     discount: "R$89,99",
     installments: "2x R$44,99",
   },
+  {
+    image: "/img/produtos/tratamento-unico1.jpg",
+    name: "Tratamento Único",
+    price: "R$199,00",
+    discount: "R$89,99",
+    installments: "2x R$44,99",
+  },
+  {
+    image: "/img/produtos/tratamento-unico1.jpg",
+    name: "Tratamento Único",
+    price: "R$199,00",
+    discount: "R$89,99",
+    installments: "2x R$44,99",
+  },
+  {
+    image: "/img/produtos/tratamento-unico1.jpg",
+    name: "Tratamento Único",
+    price: "R$199,00",
+    discount: "R$89,99",
+    installments: "2x R$44,99",
+  },
+];
+
+export const mostViewProducts = [
   {
     image: "/img/produtos/tratamento-unico1.jpg",
     name: "Tratamento Único",
