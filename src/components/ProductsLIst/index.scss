@@ -86,6 +86,7 @@
   background-color: #e4af39;
   text-decoration: line-through;
   text-align: center;
+  width: 100px;
   border-radius: 50px;
 }
 
@@ -112,63 +113,34 @@
   margin-right: 1px;
 }
 
-.cartContainer tbody tfoot {
+.cartContainer table tfoot {
   position: absolute;
   height: 100px;
   right: 80px;
 }
 
-.cartContainer tbody tfoot thead {
+.cartContainer table tfoot tr th {
   font-weight: bold;
 }
 
-.cartContainer tbody tfoot tbody {
+.cartContainer table tfoot tr td {
   color: #e4af39;
   font-weight: 600;
 }
 
-.cartContainer tbody tfoot tbody td {
+.cartContainer table tfoot tr td {
   text-align: center;
   width: 100%;
-}
-
-.cartContainer section .fieldCEP {
-  height: 25px;
-  width: 400px;
-  display: flex;
-  margin-bottom: 100px;
-}
-
-.cartContainer section .fieldCEP a {
-  color: black;
-}
-
-.cartContainer section .fieldCEP button {
-  border-radius: 5px;
-  padding: 5px;
-  width: 35px;
-  background-color: #e4af39;
-  color: whitesmoke;
-  border: 0.5px solid black;
-  margin-right: 10px;
-}
-
-.cartContainer section .fieldCEP input {
-  width: 150px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 0.5px solid black;
-}
-
-.full-price-promo {
-  width: 150px;
 }
 
 .cartContainer main .homeButton {
   font-size: 18px;
   color: #f3f3f3;
+  width: fit-content;
   background-color: #e4af39;
   padding: 8px;
+  margin-left: 15px;
+  margin-bottom: 15px;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 5px;
@@ -198,4 +170,39 @@
 .cartContainer main .actions .homeButton:hover {
   background-color: #d79a16;
   color: #fff;
+}
+
+@media (max-width: 830px) {
+  .cartContainer table thead tr,
+  .cartContainer table tbody tr {
+    justify-content: space-between;
+  }
+  .cartContainer table thead .col-1 {
+    background-color: #b07b08;
+    width: 30%;
+    text-align: left;
+  }
+  .cartContainer table tbody .tdCol-1 {
+    width: 30%;
+  }
+
+  .cartContainer tbody tr td div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10%;
+  }
+}
+
+@media (max-width: 600px) {
+  .cartContainer tbody tr img {
+    max-width: 40px;
+    max-height: 65px;
+    margin-right: 40px;
+    transition: 0.3s all linear;
+  }
+
+  .cartContainer table tbody tr .tdCol-1 .full-price-promo {
+    display: none;
+    background-color: #4e4e4e;
+  }
 }

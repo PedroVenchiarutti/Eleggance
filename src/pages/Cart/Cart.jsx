@@ -24,20 +24,16 @@ export default function Cart(props) {
           </thead>
           <tbody>
             <ProductsList products={shelfProducts} />
-            <tfoot>
-              <thead>
-                <tr>
-                  <td>SubTotal</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>R${subTotal}</td>
-                </tr>
-                {/* ainda falta tornar o valor dinamico */}
-              </tbody>
-            </tfoot>
           </tbody>
+          <tfoot>
+            <tr>
+              <td>SubTotal</td>
+            </tr>
+            <tr>
+              <td>R${subTotal}</td>
+            </tr>
+            {/* ainda falta tornar o valor dinamico */}
+          </tfoot>
         </table>
 
         <div className="actions">
