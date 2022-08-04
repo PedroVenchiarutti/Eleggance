@@ -7,7 +7,7 @@ import Carrousel from "../../components/Carrousel/Carrousel";
 import { Link } from "react-router-dom";
 import "./Cart.scss";
 
-export default function Cart(props, { products }) {
+export default function Cart(props) {
   const subTotal = 1000;
   return (
     <div className="cartContainer">
@@ -24,12 +24,20 @@ export default function Cart(props, { products }) {
           </thead>
           <tbody>
             <ProductsList products={shelfProducts} />
+            <tfoot>
+              <thead>
+                <td>SubTotal</td>
+              </thead>
+              <tbody>
+                {/* ainda falta tornar o valor dinamico */}
+                <td>R${subTotal}</td>
+              </tbody>
+            </tfoot>
           </tbody>
         </table>
 
         <div className="actions">
           <Link to="/home" className="finishBuyButton">
-            {" "}
             Continuar Comprando
           </Link>
           <Link to="/home" className="homeButton">
