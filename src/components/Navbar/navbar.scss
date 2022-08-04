@@ -19,9 +19,16 @@
       }
     }
     .list-container {
+      .buttonLogout {
+        display: flex;
+        align-self: center;
+      }
+
       .div-button {
         width: 100%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       .list {
         display: flex;
@@ -34,9 +41,23 @@
             margin: 0 15px;
           }
         }
+
+        .user-logged {
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px;
+          align-items: center;
+          height: 100px;
+          justify-content: center;
+
+          label {
+            font-size: 20px;
+            color: #e1ab38;
+          }
+        }
+
         .login-button {
           border: 0;
-          margin-left: 30px;
           outline: none;
           background-color: #e1ab38;
           padding: 8px 15px;
@@ -47,6 +68,13 @@
           img {
             width: 30px;
             margin-right: 20px;
+          }
+          span {
+            display: flex;
+            font-size: 19px;
+            font-family: "Roboto", sans-serif;
+            font-weight: bold;
+            justify-content: center;
           }
         }
       }

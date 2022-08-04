@@ -19,6 +19,10 @@ export const App = () => {
       </Routes>
     </BrowserRouter>
   );
-};
+}
+import Routes from "./routes";
 
+export const App = () => (
+  <Routes />
+);
 export default App;

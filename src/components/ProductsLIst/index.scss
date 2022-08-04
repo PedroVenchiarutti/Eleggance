@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+}
+
+.cartContainer table {
+    width: 100%;
+}
+.cartContainer svg {
+    transition: 0.3s all linear;
+}
+.cartContainer svg:hover {
+    cursor: pointer;
+    transform: scale(1.1)
+}
+
+.cartContainer img:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.cartContainer table thead {
+    background-color: #4E4E4E;
+    color: #F3F3F3;
+    font-size: 16px;
+    padding: 6px;
+    display: flex;
+    flex-direction: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.cartContainer table thead .col-1 {
+    width: 50%;
+    text-align: left;
+}
+
+.cartContainer tbody {
+    border: 3px solid saddlebrown;
+    width: 100%;
+    min-width: 100%;
+}
+
+.cartContainer tbody tr {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 600;
+    width: 98vw;
+    border-top: 0.25px solid #4e4e4ebd ;
+    border-bottom: 0.25px solid #4e4e4ea7 ;
+}
+
+.cartContainer tbody tr .tdCol-1 {
+    width: 50%;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cartContainer tbody tr .tdCol-2 {
+    display: flex;
+    align-items: center;
+}
+
+.cartContainer tbody tr td {
+    height: 90px;
+    width: 5%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.cartContainer tbody tr .tdCol-1 .full-price-promo {
+    color: #F3F3F3;
+    background-color: #E4AF39;
+    text-decoration: line-through;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.cartContainer tbody tr td div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50%;
+}
+
+.cartContainer tbody tr img {
+    max-width: 55px;
+    max-height: 75px;
+    margin-right: 40px;
+    transition: 0.3s all linear;
+}
+
+.cartContainer tbody tr td input {
+    width: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    border: 0.5px solid black;
+    margin-right: 1px;
+}
+
+.cartContainer tbody tfoot {
+    position: absolute;
+    height: 100px;
+    right: 80px;
+}
+
+.cartContainer tbody tfoot thead{
+    font-weight: bold;
+}
+
+.cartContainer tbody tfoot tbody{
+    color: #E4AF39;
+    font-weight: 600;
+}
+
+.cartContainer section .fieldCEP {
+    height: 25px;
+    width: 400px;
+    display: flex;
+    margin-bottom: 100px;
+}
+
+.cartContainer section .fieldCEP a{
+    color: black
+}
+
+.cartContainer section .fieldCEP button {
+    border-radius: 5px;
+    padding: 5px;
+    width: 35px;
+    background-color: #E4AF39;
+    color: whitesmoke;
+    border: 0.5px solid black;
+    margin-right: 10px;
+}
+
+.cartContainer section .fieldCEP input {
+    width: 150px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0.5px solid black;
+}
+
+.full-price-promo {
+    width: 150px;
+}
+
+.cartContainer main .homeButton {
+    font-size: 18px;
+    color: #F3F3F3;
+    background-color: #E4AF39;
+    padding: 8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px 8px black;
+    transition: 0.3s all ease-in-out;
+}
+
+.cartContainer main .actions {
+    position: absolute;
+    justify-content: space-between;
+    right: 60px;
+    display: flex;
+    width: 30%;
+    margin-top: 70px;
+
+}
+
+.cartContainer main .actions .finishBuyButton{
+    color: #E4AF39;
+    font-weight: 700;
+    transition: 0.3s all ease-out;
+}
+.cartContainer main .actions .finishBuyButton:hover{
+    color: #b07b08;
+}
+
+.cartContainer main .actions .homeButton:hover {
+    background-color: #d79a16;
+    color: #fff;
+}
