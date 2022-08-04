@@ -6,18 +6,19 @@ import { HomeBanner } from "../../components/HomeBanner";
 import { images, shelfProducts, trendProducts } from "../../api/mock";
 import Team from "../../components/Team/team";
 import { AboutUs } from "../../components/AboutUs";
+import { Services } from "../../pages/Services";
 
 export default (props) => {
   return (
-    <div>
+    <div className="schedulling">
       <header className="homepage">
         <Navbar />
+        <HomeBanner images={images} />
       </header>
-      <HomeBanner images={images} />
-      <AboutUs/>
+      <AboutUs />
+      <Services />
       <Team />
       <Footer />
-      
     </div>
   );
-}
+};

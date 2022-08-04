@@ -1,0 +1,131 @@
+@import url(https://fonts.googleapis.com/css?family=Bebas+Neue:regular);
+
+.services-container {
+  margin-top: 60px;
+  margin-bottom: 30px;
+  .services-items {
+    width: 100%;
+    height: 400px;
+    background-image: url("../../../public/img/BackgroundOP4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    position: relative;
+
+    .services-text {
+      font-family: bebas neue;
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      .item-first {
+        width: 25%;
+        height: 100%;
+      }
+      //===========HOVER===========//
+      .item-first:hover {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../public/img/CorteFIRST.jpg");
+        transition: all 0.7s ease;
+
+        h4 {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          font-size: 2.5rem;
+          text-shadow: 1px 2px #111;
+          color: #e1ab38;
+        }
+      }
+      //===========HOVER===========//
+      .item-second {
+        width: 25%;
+        height: 100%;
+      }
+      //===========HOVER===========//
+      .item-second:hover {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../public/img/ManiPediSECOND.jpg");
+        transition: all 0.7s ease;
+
+        h4 {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          padding-bottom: 10px;
+          font-size: 2.5rem;
+          text-shadow: 1px 2px #111;
+          color: #e1ab38;
+        }
+      }
+      //===========HOVER===========//
+
+      .item-third {
+        width: 25%;
+        height: 100%;
+      }
+      //===========HOVER===========//
+      .item-third:hover {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../img/QuimicasTHIRD.jpg");
+        transition: all 0.7s ease;
+
+        h4 {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          //background-color: #333;
+          font-size: 2.5rem;
+          text-shadow: 1px 2px #111;
+          color: #e1ab38;
+        }
+      }
+      //===========HOVER===========//
+
+      .item-fourth {
+        width: 25%;
+        height: 100%;
+      }
+      //===========HOVER===========//
+      .item-fourth:hover {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../../../public/img/SpaFOURTH.jpg");
+        transition: all 0.7s ease;
+
+        h4 {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          font-size: 2.5rem;
+          text-shadow: 1px 2px #111;
+          color: #e1ab38;
+        }
+      }
+      //===========HOVER===========//
+
+      h4 {
+        padding: 25px;
+        width: 100%;
+        text-align: center;
+        font-weight: 450;
+        font-size: 1.5625rem;
+      }
+    }
+  }
+}
