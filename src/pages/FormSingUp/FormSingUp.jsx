@@ -43,7 +43,7 @@ const FormSingUp = (props) => {
               <div className="box-header-singup">
                 <div className="img-singup">
                   {/*  IMAGEN CRASHANDO O SITE */}
-                  <img src="img\fotocadastro.jpg" alt="foto" />
+                  <img src="img\CadastroELogin.jpg" alt="foto" />
                 </div>
                 <div className="content-input-login-singup">
                   <h1>Eleggance</h1>
