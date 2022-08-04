@@ -1,5 +1,7 @@
 import React from "react";
 import "./product.scss";
+import InfoProducts from "./infoproduct.jsx"
+
 
 export default (props) => {
   return (
@@ -22,8 +24,17 @@ export default (props) => {
           </div>
           <div className="photo--product">
             <img src="\img\produtos\blindagem-nh-650x650 1.jpg" alt="foto" />
+            <div className="info-products-info">
+          <ul className="ul-products">
+            <li>
+              <a href="">Informacoes do produto</a>
+            </li>
+            <li>
+              <a href="">Comentarios</a>
+            </li>
+          </ul>
+        </div>
           </div>
-          <div></div>
         </div>
         <div className="products-info-price">
           <div className="available">
@@ -61,6 +72,7 @@ export default (props) => {
           </div>
         </div>
       </div>
-    </div>
+      <InfoProducts />
+      </div>      
   );
 };

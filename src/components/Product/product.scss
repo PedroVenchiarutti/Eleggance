@@ -4,10 +4,11 @@
 }
 .container-products {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
 }
 .container-top {
+  padding-left: 215px;
   display: flex;
   padding-bottom: 70px;
   h1 {
@@ -131,6 +132,19 @@
     height: 20px;
   }
 }
+.ul-products{
+  margin-top: 20px;
+  margin-bottom: 100px;
+  li{
+    display: inline;
+    padding: 10px;
+    padding-left: 220;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+  }
+}
 
 @media (max-width: 1120px) {
     .container-products{
@@ -157,4 +171,16 @@
    .button-buy{
     margin-left: 50px;
    }
-}
+   .frete{
+    margin-bottom: 50px;
+    margin-left: 30px;
+   }
+   .name-product{
+    h1{
+      display: flex;
+    }
+   }
+   .container-top{
+    padding-left: 0px;
+   }
+  }
