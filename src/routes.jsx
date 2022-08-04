@@ -5,14 +5,13 @@ import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/schedulling";
-import Cart from "./pages/Cart/Cart.jsx";
+import Cart from "./pages/Cart/Cart";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
 } from "react-router-dom";
-import Cart from "./pages/Cart/Cart";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
