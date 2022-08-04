@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import FormSingUp from "./pages/FormSingUp/FormSingUp";
 import FormCadastro from "./pages/FormCadastro/FormCadastro";
-import Cart from "./pages/Cart/Cart";
+import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
+import Schedulling from "./pages/Schedulling/schedulling";
 
 import {
   BrowserRouter as Router,
@@ -11,7 +12,6 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-/* import useAuth from "./hooks/useAuth"; */
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -31,18 +31,19 @@ const changeRoutes = () => {
     <Router>
       <AuthProvider>
         <Routes>
+          <Route exact path="/home" element={<HomePage />} />
+          <Route exact path="/cadastro" element={<FormCadastro />} />
+          <Route exact path="/login" element={<FormSingUp />} />
+          <Route exact path="/agendamento" element={<Schedulling />} />
           <Route
-            exact
-            path="/home"
+            path="/registration"
             element={
-              /*     <Private>
-              </Private> */
-              <HomePage />
+              <Private>
+                <RegistrationForm />
+              </Private>
             }
           />
-          <Route exact path="/cadastro" element={<FormCadastro />} />
-          <Route exact path="/carrinho" element={<Private><Cart /></Private>} />
-          <Route exact path="/login" element={<FormSingUp />} />
+
           <Route
             path="*"
             element={
@@ -60,9 +61,3 @@ const changeRoutes = () => {
 };
 
 export default changeRoutes;
-
-{
-  /*   <Route path="/registration" element={<RegistrationForm />} />
-   */
-}
-/*  import RegistrationForm from "./pages/RegistrationForm/registrationForm"; */

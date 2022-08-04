@@ -2,8 +2,6 @@ import React from "react";
 import "./styles.scss";
 
 
-
-
 export const Services = () => {
   return (
     <div className="services-container">

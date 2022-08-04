@@ -1,5 +1,3 @@
-//banner
-import { useEffect } from "react";
 export const images = [
   {
     url: "./bannerHomepage.png",
@@ -25,14 +23,14 @@ export const images = [
 
 export const smallBanner = [
   {
-    url:"./smallBanner.png",
-    alt:"Small Banner"
+    url: "./smallBanner.png",
+    alt: "Small Banner",
   },
   {
-    url:"./smallBanner2.png",
-    alt:"Small Banner"
+    url: "./smallBanner2.png",
+    alt: "Small Banner",
   },
-]
+];
 
 //Produtos da vitrines
 export const shelfProducts = [
@@ -91,7 +89,6 @@ export const shelfProducts = [
     discount: "R$89,99",
     installments: "2x R$44,99",
     value: 89.99,
-
   },
   {
     image: "/img/produtos/colageno.jpg",
@@ -194,7 +191,7 @@ export const mostViewProducts = [
     price: "R$199,00",
     discount: "R$89,99",
     installments: "2x R$44,99",
-  }
+  },
 ];
 
 export const sectionImgs = [
