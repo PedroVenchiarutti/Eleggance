@@ -5,7 +5,7 @@ import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/schedulling";
-import Cart from "./pages/Cart/Cart";
+import Cart from "./pages/Cart/Cart.jsx";
 import {
   BrowserRouter as Router,
   Route,
