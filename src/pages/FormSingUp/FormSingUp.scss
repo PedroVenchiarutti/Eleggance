@@ -4,12 +4,11 @@
   width: 100%;
   height: 100vh;
 
-
-  // IMAGEN CRASHANDO O SITE
-  /*   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  // IMAGEM CRASHANDO O SITE
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(img/background-login.jpg);
   background-position: left;
-  background-size: cover; */
+  background-size: cover;
 
   .container-singup {
     display: flex;
@@ -43,13 +42,17 @@
   }
   .img-singup {
     width: 100%;
-
+    height: 100%;
+    max-height: 800px;
     img {
       max-width: 100%;
-      //height: 100%;
-      border-radius: 6px;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px 0px 0px 6px;
     }
   }
+
+  ///////========INPUT LOGIN========///////
 
   .content-input-login-singup {
     display: flex;
@@ -64,7 +67,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 40px;
+      padding-top: 15px;
       background: linear-gradient(to left, #7e370c, #ffce45);
       -webkit-background-clip: text;
       background-clip: text;
@@ -74,16 +77,20 @@
       font-family: "Great Vibes";
       //margin-right: 30px;
       width: 100%;
-      font-weight: 800;
+      //font-weight: 800;
     }
 
     h2 {
       text-align: center;
       font-size: 20px;
-      padding-top: 20px;
-      font-weight: 800;
+      padding-top: 5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 5px;
     }
   }
+
+  ///////========INPUT CADASTRO========///////
 
   .content-input-cadastrar-singup {
     display: flex;
@@ -164,6 +171,8 @@
     transition: 1.9ms;
   }
 
+  ///////========FOOTER========///////
+
   .footer-card-singup > a {
     display: flex;
     text-decoration: none;
@@ -191,18 +200,53 @@
     color: rgb(240, 47, 47);
     justify-content: center;
   }
+}
 
-  @media (max-width: 1120px) {
-    .box-header-singup {
-      margin: 60px;
-      width: 90%;
-      height: 90%;
-      flex-direction: column;
-    }
+///////========MEDIA QUERY========///////
 
-    .img-singup {
+@media (max-width: 1120px) {
+  .img-container-singup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(img/background-login.jpg);
+    background-position: center;
+    background-size: cover;
+    .container-singup {
       width: 100%;
-      height: 25vh;
+      height: 100%;
+      .form-singup {
+        width: 100%;
+        height: 100%;
+        .box-singup {
+          width: 100%;
+          height: 100%;
+          .box-header-singup {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            padding-bottom: 15px;
+          }
+        }
+        .img-singup {
+          width: 100%;
+          img {
+            max-width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px 6px 0px 0px;
+          }
+        }
+        .content-input-login-singup {
+          width: 100%;
+          height: 100%;
+          h1 {
+            margin: 0%;
+          }
+        }
+      }
     }
   }
 }
