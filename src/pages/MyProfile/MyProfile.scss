@@ -3,19 +3,6 @@
     Footer{
         position: absolute;
     }
-
-    .pageTitle{
-        display: flex;
-        margin-left: 65px;
-        margin-top: 13px;
-    }
-        .pageTitle img{
-            padding-right: 15px;
-        }
-
-        .pageTitle h4{
-            font-weight: 400;
-        }
     
     .container{
         margin: 50px 60px;
@@ -44,10 +31,7 @@
         .orders .recentOrders{
             margin-bottom: 5px;
             font-size: 16px;
-        }
-
-    // Informações do usuário
-    
+        }    
 
     .ordersAndInfo{
         width: 76%;
