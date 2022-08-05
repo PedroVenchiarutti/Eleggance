@@ -6,7 +6,7 @@ const Data = (props) => {
 return(
 <div className="info">
     <div className="infoText">
-        <p className="myData">{props.title}</p>
+        { props.header }
         <div className="infoData">
             {props.body}
         </div>
