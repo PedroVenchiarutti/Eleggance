@@ -7,7 +7,7 @@ import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/schedulling";
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
-import Shop from "./pages/Shop.jsx/Shop";
+import Shop from "./pages/Shop/Shop";
 
 import {
   BrowserRouter as Router,
@@ -43,7 +43,7 @@ const changeRoutes = () => {
           <Route exact path="/shop" element={<Shop />} />
           <Route
             exact
-            path="/finishBuy"
+            path="/finalizarCompra"
             element={
               <Private>
                 <FinishBuy />
