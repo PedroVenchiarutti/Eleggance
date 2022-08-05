@@ -1,6 +1,7 @@
 import React from "react";
 import "./product.scss";
 import InfoProducts from "./infoproduct.jsx";
+import { Link } from "react-router-dom";
 
 export default (props) => {
   return (
@@ -60,12 +61,13 @@ export default (props) => {
               type="number"
             ></input>
           </div>
-          <button className="button-buy">
-            <div className="icon-bag">
-              <img src="\icons\icon-bag.png" alt="foto" />
-            </div>
-
-          </button>
+          <Link to={"/finishBuy"}>
+            <button className="button-buy">
+              <div className="icon-bag">
+                <img src="\icons\icon-bag.png" alt="foto" />
+              </div>
+            </button>
+          </Link>
 
           <div className="frete">
             <p>Consultar prazo e valor do frete</p>

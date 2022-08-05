@@ -15,6 +15,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import FinishBuy from "./pages/FinishBuy/FinishBuy";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -40,6 +41,15 @@ const changeRoutes = () => {
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/shop" element={<Shop />} />
+          <Route
+            exact
+            path="/finishBuy"
+            element={
+              <Private>
+                <FinishBuy />
+              </Private>
+            }
+          />
           <Route
             exact
             path="/carrinho"
