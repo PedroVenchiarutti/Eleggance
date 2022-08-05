@@ -60,12 +60,13 @@ export default (props) => {
               type="number"
             ></input>
           </div>
-          <div className="button-buy">
+          <button className="button-buy">
             <div className="icon-bag">
               <img src="\icons\icon-bag.png" alt="foto" />
             </div>
-            <h3>Comprar</h3>
-          </div>
+
+          </button>
+
           <div className="frete">
             <p>Consultar prazo e valor do frete</p>
             <input
@@ -74,7 +75,7 @@ export default (props) => {
               className="fretezin"
             ></input>
             <button> OK </button>
-            <a href="#"> Nao sei o meu cep</a>
+            <a href="#"> Nao sei o meu cep </a>
           </div>
         </div>
       </div>
