@@ -12,7 +12,7 @@ const MyProfile = (props) => {
     return (
         <div className="myProfile">
             <div className="navbar">
-            <Navbar />
+                <Navbar />
             </div>
             <ToHome />
             <div className="container">
@@ -24,7 +24,17 @@ const MyProfile = (props) => {
                             <p className="orderDetails">Os detalhes dos seus pedidos mais recentes poderão ser acompanhados nesta área</p>
                         </div>
                     </div>
-                    <Data />
+                    <Data title='Meus dados' body={
+                        <>
+                            <p>Nome: <span className="infoP">{props.name}</span></p>
+                            <p>CPF: <span className="infoP">{props.cpf}</span></p>
+                            <p>Sexo: <span className="infoP">{props.gender}</span></p>
+                            <p>Data de nascimento: <span className="infoP">{props.birth}</span></p>
+                            <p>Telefone Principal: <span className="infoP">{props.phone}</span></p>
+                            <p>E-mail: <span className="infoP">{props.email}</span></p>
+                        </>
+                    }>
+                    </Data>
                 </div>
             </div>
             <Footer></Footer>
