@@ -4,7 +4,7 @@ import FormSingUp from "./pages/FormSingUp/FormSingUp";
 import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
-import Schedulling from "./pages/Schedulling/schedulling";
+import Schedulling from "./pages/Schedulling/Schedulling";
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
 import {

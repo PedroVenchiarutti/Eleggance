@@ -5,61 +5,73 @@ import "./team.scss";
 export default (props) => {
   return (
     <div className="container-team">
+      <h4 id="h4-titulo">Nossa equipe</h4>
+      {/* ============================================= */}
+      {/* =====TEAM===== */}
+      <div className="cast-team">
+      {/* ============================================= */}
+        {/* =====TEAM 1 ANA===== */}
+        <div className="team-first">
+          <div className="photo-employee">
+            <img src="img/TEAM1.jpg" alt="" />
+          </div>
+          <div className="details-team">
+            <h4>Ana</h4>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Repellendus minima vitae quod voluptas cupiditate sit iusto modi
+              dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium
+              ullam itaque maiores hic assumenda natus?
+            </p>
+          </div>
+        </div>
+        {/* =====TEAM 1===== */}
+        {/* ============================================= */}
+        {/* =====TEAM 2 JOANA===== */}
+        <div className="team-second">
+          <div className="photo-employee">
+            <img src="img/TEAM2.jpg" alt="" />
+          </div>
+          <div className="details-team">
+            <h4>Joana</h4>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Repellendus minima vitae quod voluptas cupiditate sit iusto modi
+              dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium
+              ullam itaque maiores hic assumenda natus?
+            </p>
+          </div>
+        </div>
+        {/* =====TEAM 2===== */}
+        {/* ============================================= */}
+        {/* =====TEAM 3 CAROL===== */}
+        <div className="team-third">
+          <div className="photo-employee">
+            <img src="img/TEAM3.jpg" alt="" />
+          </div>
+          <div className="details-team">
+            <h4>Carol</h4>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Repellendus minima vitae quod voluptas cupiditate sit iusto modi
+              dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium
+              ullam itaque maiores hic assumenda natus?
+            </p>
+          </div>
+        </div>
+        {/* =====TEAM 3===== */}
+      </div>
+      {/* =====TEAM===== */}
+      {/* ============================================= */}
+      {/* =====CONTAINER BUTTON===== */}
       <div className="container-button">
         <div className="container-agendamento-button">
           <a href="/solicitation" className="agendamento-button">
             <p>Solicite um agendamento</p>
           </a>
         </div>
-        <h4 id="h4-titulo">Nossa equipe</h4>
       </div>
-      <div className="cast-team">
-        <div className="professionals">
-          <div className="list-employee">
-            <div className="photo-employee">
-              <img src="img/model1.jpg" alt="" />
-            </div>
-            <div className="p-list">
-            <h4>
-            Jessica
-           </h4>
-           <p>
-           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus minima vitae quod voluptas cupiditate sit iusto modi dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium ullam itaque maiores hic assumenda natus?
-           </p>
-            </div>
-          </div>
-        </div>
-        <div className="professionals">
-          <div className="list-employee">
-            <div className="photo-employee">
-              <img src="img/model2.jpg" alt="" />
-            </div>
-            <div className="p-list">
-           <h4>
-            Jessica
-           </h4>
-           <p>
-           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus minima vitae quod voluptas cupiditate sit iusto modi dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium ullam itaque maiores hic assumenda natus?
-           </p>
-            </div>
-          </div>
-        </div>
-        <div className="professionals">
-          <div className="list-employee">
-            <div className="photo-employee">
-              <img src="img/model1.jpg" alt="" />
-            </div>
-            <div className="p-list">
-            <h4>
-            Jessica
-           </h4>
-           <p>
-           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus minima vitae quod voluptas cupiditate sit iusto modi dolorum. Corrupti nulla reprehenderit commodi? Dolore laudantium ullam itaque maiores hic assumenda natus?
-           </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* =====CONTAINER BUTTON===== */}
     </div>
   );
 };

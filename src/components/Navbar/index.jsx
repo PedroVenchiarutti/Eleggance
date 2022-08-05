@@ -26,7 +26,7 @@ export const Navbar = () => {
           <Link to="/login" className="login-button">
             <img src="/img/Frame.svg" />
             <p>
-              Entre ou <br /> cadastre-se
+              Entre ou <br /> Cadastre-se
             </p>
           </Link>
         </div>
