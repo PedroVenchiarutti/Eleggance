@@ -11,11 +11,11 @@
     .main-content {
         display: flex;
         flex-direction: column;
-        width: 100%;
 
         .orders {
             border: solid 2px #E4AF39;
             border-radius: 10px;
+            flex-grow: 1;
         }
     }
 }

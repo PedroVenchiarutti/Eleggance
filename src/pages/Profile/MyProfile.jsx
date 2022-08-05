@@ -12,6 +12,7 @@ import ToHome from '../../components/ToHome/ToHome'
 import { myOrders } from '../../api/mock'
 
 import "./MyProfile.scss"
+import Data from "../../components/Data/Data";
 
 export default props => {
     const orderByOptions = [
@@ -32,7 +33,7 @@ export default props => {
                 <ClientMenu selected='pedidos' />
 
                 <div className="main-content">
-                    <MainHeader text="Todas as suas compras ficam salvas aqui. Caso deseje rever ou tenha algum problema, entre em contato conosco." />
+                    <MainHeader body="Todas as suas compras ficam salvas aqui. Caso deseje rever ou tenha algum problema, entre em contato conosco." />
 
                     <div className="orders">
                         <ContentHeader title="Meus pedidos">
