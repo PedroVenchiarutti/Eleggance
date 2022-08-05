@@ -6,6 +6,8 @@ import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/schedulling";
 import Cart from "./pages/Cart/Cart.jsx";
+import ProfileOrders from './pages/Profile/MyProfile'
+
 import {
   BrowserRouter as Router,
   Route,
@@ -38,6 +40,7 @@ const changeRoutes = () => {
           <Route exact path="/login" element={<FormSingUp />} />
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/meuperfil" element={<MyProfile />} />
+          <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
           <Route exact path="/carrinho" element={<Private><Cart /></Private>} />
           <Route
             path="/registration"

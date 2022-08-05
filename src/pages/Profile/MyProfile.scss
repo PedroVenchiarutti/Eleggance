@@ -1,0 +1,20 @@
+.pageTitle{
+    display: flex;
+    margin-left: 65px;
+    margin-top: 13px;
+}
+
+.my-profile-container {
+    margin: 50px;
+    display: flex;
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+
+        .orders {
+            border: solid 2px #E4AF39;
+            border-radius: 10px;
+        }
+    }
+}
