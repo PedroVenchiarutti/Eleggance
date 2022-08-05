@@ -37,7 +37,11 @@
 }
 
 @media (max-width: 1120px) {
-    .responsive-hide {
-        display: none;
+    table {
+        overflow: scroll;
+        
+        .responsive-hide {
+            display: none;
+        }
     }
 }

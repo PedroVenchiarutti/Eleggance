@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { Navbar } from "../../components/Navbar";
 import ContentHeader from "../../components/Profile/ContentHeader";
@@ -8,6 +7,7 @@ import MainHeader from "../../components/Profile/MainHeader";
 import OrdersTable from "../../components/Profile/OrdersTable";
 import ClientMenu from "../../components/ClientMenu/ClientMenu";
 import Footer from "../Footer/Footer";
+import ToHome from '../../components/ToHome/ToHome'
 
 import { myOrders } from '../../api/mock'
 
@@ -25,14 +25,8 @@ export default props => {
 
     return (
         <div>
-            {/* <Navbar /> */}
-
-            <div className="pageTitle">
-                <Link to="/home" >
-                    <img src="/icons/iconmonstr-home.svg" alt="casa" />
-                </Link>
-                <h4>Meu Perfil</h4>
-            </div>
+            <Navbar />
+            <ToHome />
 
             <div className="my-profile-container">
                 <ClientMenu selected='pedidos' />
