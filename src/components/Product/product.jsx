@@ -66,6 +66,7 @@ export default (props) => {
               <div className="icon-bag">
                 <img src="\icons\icon-bag.png" alt="foto" />
               </div>
+              <h3>Comprar</h3>
             </button>
           </Link>
 
