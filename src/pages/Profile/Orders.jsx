@@ -21,7 +21,7 @@ export default props => {
         { value: "price", text:"Preço" },
         { value: "products", text:"Produtos" },
         { value: "quantity", text:"Quantidade" },
-        { value: "purchase-code", text:"Código da compra" },
+        { value: "purchaseId", text:"Código da compra" },
         { value: "status", text:"Status" }
     ]
 

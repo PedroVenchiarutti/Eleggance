@@ -30,7 +30,6 @@ function renderHeadRows() {
 }
 
 function renderBodyRows(ordersList, orderBy) {
-    console.log(ordersList)
     switch (orderBy) {
         case 'price':
             ordersList.sort((a, b) => a.price > b.price)
@@ -39,9 +38,9 @@ function renderBodyRows(ordersList, orderBy) {
             ordersList.sort((a, b) => a.products.sort() > b.products.sort())
             break;
         case 'quantity':
-            ordersList.sort((a, b) => a.quantity.sort() - b.quantity.sort())
+            ordersList.sort((a, b) => sum(a.quantity) > sum(b.quantity))
             break;
-        case 'purchase-code':
+        case 'purchaseId':
             ordersList.sort((a, b) => a.purchaseId > b.purchaseId)
             break;
         case 'status':
@@ -80,4 +79,11 @@ function renderProductsRow(products) {
             </div>
         </div>
     )
+}
+
+function sum(numbers) {
+    let sum = 0;
+    numbers.forEach(number => sum += +number);
+    console.log(sum)
+    return sum;
 }
