@@ -17,6 +17,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import MyData from "./pages/myData/myData";
 
 
 const changeRoutes = () => {
@@ -42,9 +43,11 @@ const changeRoutes = () => {
           <Route exact path="/login" element={<FormSingUp />} />
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
-          <Route exact path="/perfil" element={<MyProfile />} />
 
+          <Route exact path="/perfil" element={<MyProfile />} />
           <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
+          <Route exact path="/perfil/dados" element={<MyData />} />
+
           <Route exact path="/carrinho" element={<Private><Cart /></Private>} />
 
           <Route

@@ -1,0 +1,49 @@
+.myData{
+
+    .container{
+        margin: 20px 30px;
+        display: flex;
+ 
+        .content{
+            margin-left: 0px;
+            width: 76%;
+
+            .infoText{
+                font-weight: bold;
+                margin-right: 30px;
+            }
+
+            .formData input{
+                border: 1px solid #000000;
+                border-radius: 5px;
+                font-size: 12px;
+                padding: 3px 3px;
+            }
+
+            .formData .readOnly{
+                background-color: #D9D9D9;
+            }
+
+            .formData .formWritable{
+                width: 70%;
+            }
+
+            .formData{
+                display: flex;
+
+                .formReadOnly{
+                    width: 25%;
+                }
+            }
+
+            .formData label{
+                font-size: 13px;
+                font-weight: 400;
+                display: block;
+            }
+
+        }
+ 
+    }
+
+}
