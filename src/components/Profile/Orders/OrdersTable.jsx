@@ -2,14 +2,16 @@ import React from "react";
 
 import './OrdersTable.scss'
 
-export default props => (
-    <div className="profile-orders-table">
-        <table>
-            {renderHeadRows()}
-            {renderBodyRows(props.list)}
-        </table>
-    </div>
-)
+export default props => {
+    return (
+        <div className="profile-orders-table">
+            <table>
+                {renderHeadRows()}
+                {renderBodyRows(props.list, props.orderBy)}
+            </table>
+        </div>
+    )
+}
 
 function renderHeadRows() {
     return (
@@ -27,7 +29,27 @@ function renderHeadRows() {
     )
 }
 
-function renderBodyRows(ordersList) {
+function renderBodyRows(ordersList, orderBy) {
+    console.log(ordersList)
+    switch (orderBy) {
+        case 'price':
+            ordersList.sort((a, b) => a.price > b.price)
+            break;
+        case 'products':
+            ordersList.sort((a, b) => a.products.sort() > b.products.sort())
+            break;
+        case 'quantity':
+            ordersList.sort((a, b) => a.quantity.sort() - b.quantity.sort())
+            break;
+        case 'purchase-code':
+            ordersList.sort((a, b) => a.purchaseId > b.purchaseId)
+            break;
+        case 'status':
+        default:
+            ordersList.sort((a, b) => a.status.localeCompare(b.status))
+            break;
+    }
+
     return (
         <tbody>
             {
@@ -36,7 +58,7 @@ function renderBodyRows(ordersList) {
                         <tr key={order.purchaseId}>
                             <td>{renderProductsRow(order.products)}</td>
                             <td className="responsive-hide">{order.quantity.map(quantity => { return <p> {quantity} </p> })}</td>
-                            <td className="responsive-hide">{order.purchaseId}</td>
+                            <td className="responsive-hide">{`#${order.purchaseId}`}</td>
                             <td>
                                 <p>{order.price}</p>
                                 <p className={order.status === "Pendente" ? "pending" : "send"}>{order.status}</p>
