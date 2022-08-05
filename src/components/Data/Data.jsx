@@ -8,7 +8,7 @@ return(
     <div className="infoText">
         { props.header }
         <div className="infoData">
-            {props.body}
+            {props.children}
         </div>
     </div>
 </div>

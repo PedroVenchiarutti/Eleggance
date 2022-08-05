@@ -1,17 +1,25 @@
 .myProfile{
 
-    Footer{
+    .footer{
         position: absolute;
         margin: 0px 0px;
+        padding: 0px 0px;
     }
     
+    // footer estava estourando a pagina por causa do min-width
+    .footer__container{
+        width: 100%;
+        min-width: 0;
+    }
+
+    .logo{
+        margin-left: 70px;
+    }
+
     .container{
         margin: 50px 60px;
         display: flex;
     }
-
-    // Menu
-    
 
     // Pedidos
     .orders{

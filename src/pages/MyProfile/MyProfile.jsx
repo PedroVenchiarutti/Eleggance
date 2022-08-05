@@ -25,7 +25,7 @@ const MyProfile = (props) => {
                     {/* </div> */}
                     <Data header={
                         <ContentHeader title="Meus dados"></ContentHeader>
-                    } body={
+                    }>
                         <>
                             <p>Nome: <span className="infoP">{props.name}</span></p>
                             <p>CPF: <span className="infoP">{props.cpf}</span></p>
@@ -34,7 +34,6 @@ const MyProfile = (props) => {
                             <p>Telefone Principal: <span className="infoP">{props.phone}</span></p>
                             <p>E-mail: <span className="infoP">{props.email}</span></p>
                         </>
-                    }>
                     </Data>
                 </div>
             </div>
