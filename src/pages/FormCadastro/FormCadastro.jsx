@@ -2,21 +2,9 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
 import "./FormCadastro.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
 import Button from "../../components/Button/Button";
-
-const schema = yup.object({
-  inputLogin: yup.string().required("Login é obrigatório").max(40),
-  inputEmail: yup.string().email().required("Email é obrigatório").max(40),
-  createPassword: yup.string().required("Senha é obrigatória").max(20),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("createPassword"), null], "Senhas não conferem"),
-});
 
 const FormCadastro = (props) => {
   const [login, setLogin] = useState("");
@@ -25,18 +13,10 @@ const FormCadastro = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const { registerUser } = useContext(AuthContext);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
   const handleRegistrer = (e) => {
     e.preventDefault();
-    registerUser(login, email, password);
-    console.log("cadastro", { login, email, password });
+    registerUser(login, email, password, confirmPassword);
+    console.log("cadastro", { login, email, password, confirmPassword });
   };
 
   return (
@@ -70,6 +50,7 @@ const FormCadastro = (props) => {
                     <img src="/iconEmail.svg" />
                     <Input
                       type="email"
+                      /*     {...register("inputLogin")} */
                       placeholder="Email"
                       name="inputEmail"
                       id="inputEmail"
