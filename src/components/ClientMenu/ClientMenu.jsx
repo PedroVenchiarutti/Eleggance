@@ -48,9 +48,6 @@ const ClientMenu = (props) => {
             initialMount.current = true;
         }
     },[])
-
-    
- 
     
     return(
         <div className="options">
