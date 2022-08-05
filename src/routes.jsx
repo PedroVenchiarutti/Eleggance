@@ -7,6 +7,8 @@ import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/schedulling";
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
+import Shop from "./pages/Shop.jsx/Shop";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -37,6 +39,7 @@ const changeRoutes = () => {
           <Route exact path="/login" element={<FormSingUp />} />
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
+          <Route exact path="/shop" element={<Shop />} />
           <Route
             exact
             path="/carrinho"

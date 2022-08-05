@@ -22,7 +22,7 @@ export default (props) => {
             </div>
           </div>
           <div className="photo--product">
-            <img src="\img\produtos\blindagem-nh-650x650 1.jpg" alt="foto" />
+            <img src="\img\produtos\blindagem-nh-650x650_1.png" alt="foto" />
             <div className="info-products-info">
               <ul className="ul-products">
                 <li>
@@ -64,8 +64,9 @@ export default (props) => {
             <div className="icon-bag">
               <img src="\icons\icon-bag.png" alt="foto" />
             </div>
-            <h3>Comprar</h3>
+
           </button>
+
           <div className="frete">
             <p>Consultar prazo e valor do frete</p>
             <input
