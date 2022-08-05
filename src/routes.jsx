@@ -58,6 +58,7 @@ const changeRoutes = () => {
                 <Cart />
               </Private>
             }
+          />
           <Route
             path="/registration"
             element={
