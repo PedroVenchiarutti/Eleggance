@@ -105,6 +105,11 @@
   transition: 0.5s;
 }
 
+.shopContainer main ul a {
+  color: #333;
+  text-decoration: none;
+}
+
 .shopContainer main ul .container-img-promo:hover {
   overflow: hidden;
   transform: scale(1.05);
