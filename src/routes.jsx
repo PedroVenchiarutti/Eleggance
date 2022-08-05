@@ -5,9 +5,12 @@ import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/schedulling";
+import ProfileOrders from './pages/Profile/MyProfile'
+
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
 import MyProfile from "./pages/MyProfile/MyProfile";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -40,6 +43,10 @@ const changeRoutes = () => {
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/meuperfil" element={<MyProfile />} />
+
+          <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
+          <Route exact path="/carrinho" element={<Private><Cart /></Private>} />
+
           <Route
             exact
             path="/carrinho"

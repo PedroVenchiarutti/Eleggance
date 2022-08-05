@@ -1,0 +1,43 @@
+.profile-orders-table {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+
+        thead {
+            background-color: #4E4E4E;
+            color: #fff;
+            font-weight: 100;
+        }
+
+        .products-header {
+            width: 55%;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: solid 1px;
+        }
+
+        .products-row {
+            display: flex;
+            align-items: center;
+
+            img { width: 10%; }
+        }
+
+        .send {
+            color: #E1AB38;
+        }
+
+        .pending {
+            color: red;
+        }
+    }
+}
+
+@media (max-width: 1120px) {
+    .responsive-hide {
+        display: none;
+    }
+}

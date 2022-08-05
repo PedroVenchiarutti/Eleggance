@@ -1,0 +1,20 @@
+.profile-select-div {
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        background-image: url("/icons/icon-select.png");
+        background-repeat: no-repeat;
+        background-position-x: 95%;
+        background-position-y: 50%;
+        border: 1px solid;
+        color: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        padding: 10px;
+        padding-right: 2rem;
+
+        @media (max-width: 1100px) {
+          padding: 0;
+        }
+      }
+}
