@@ -7,6 +7,10 @@
   font-family: "poppins";
 }
 
+.cartContainer .cardContainer {
+  display: none;
+}
+
 .cartContainer table {
   width: 100%;
 }
@@ -18,7 +22,7 @@
   transform: scale(1.1);
 }
 
-.cartContainer img:hover {
+.cartContainer .imgCartItem:hover {
   transform: scale(1.5);
   cursor: pointer;
 }
@@ -49,7 +53,8 @@
   display: flex;
   justify-content: space-around;
   font-weight: 600;
-  width: 98vw;
+  width: 100vw;
+  overflow-x: hidden;
   border-top: 0.25px solid #4e4e4ebd;
   border-bottom: 0.25px solid #4e4e4ea7;
 }
@@ -151,10 +156,10 @@
 
 .cartContainer main .actions {
   position: absolute;
-  justify-content: space-between;
+  justify-content: flex-end;
   right: 60px;
   display: flex;
-  width: 30%;
+  width: 100%;
   margin-top: 70px;
 }
 
@@ -172,37 +177,102 @@
   color: #fff;
 }
 
-@media (max-width: 830px) {
-  .cartContainer table thead tr,
-  .cartContainer table tbody tr {
-    justify-content: space-between;
-  }
-  .cartContainer table thead .col-1 {
-    background-color: #b07b08;
-    width: 30%;
-    text-align: left;
-  }
-  .cartContainer table tbody .tdCol-1 {
-    width: 30%;
+@media (max-width: 1120px) {
+  .cartContainer {
+    width: 100%;
   }
 
-  .cartContainer tbody tr td div {
+  .cartContainer ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cartContainer .cardContainer {
+    font-weight: 600;
+    display: block;
+    list-style: none;
+    margin: 25px 25px;
+    box-shadow: 4px 4px 12px black;
+  }
+  .cardContainer .row {
+    width: 100%;
+    text-align: center;
+  }
+  .cardContainer .first label {
+    height: 20%;
+    font-size: 18px;
+  }
+
+  .cardContainer .second {
+    margin-top: 10%;
+    height: 70%;
+    display: flex;
+  }
+  .cardContainer .second aside {
     display: flex;
     flex-direction: column;
-    margin-right: 10%;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
   }
-}
-
-@media (max-width: 600px) {
-  .cartContainer tbody tr img {
-    max-width: 40px;
-    max-height: 65px;
-    margin-right: 40px;
-    transition: 0.3s all linear;
+  .cardContainer .second aside label .full-price-promo {
+    color: red;
+    text-decoration: line-through;
+  }
+  .cardContainer .second aside label .price-discount {
+    color: #d79a16;
   }
 
-  .cartContainer table tbody tr .tdCol-1 .full-price-promo {
+  .cardContainer .second aside input {
+    width: 50px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  .cartContainer table {
     display: none;
-    background-color: #4e4e4e;
+  }
+
+  .cardContainer {
+    width: 320px;
+    height: 291px;
+    border: 1px solid #4e4e4e;
+  }
+
+  .cardContainer .second aside .imgCartItem {
+    max-width: 160px;
+    max-height: 120px;
+    box-shadow: 1px 1px 1px black;
+  }
+
+  .cardContainer .second aside .imgCartItem:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+  }
+
+  .cartContainer main .actions {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    right: 5px;
+    height: 150px;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+
+  .cartContainer main .actions .homeButton {
+    text-align: center;
+    width: 150px;
+    font-size: 12px;
+    margin-bottom: 25px;
+  }
+
+  .container-promo {
+    margin-top: 200px;
   }
 }

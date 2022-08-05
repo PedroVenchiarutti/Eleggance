@@ -14,7 +14,7 @@ const ItemCart = ({ product }) => {
           <span className="title-product-promo">{product.name}</span>
           <span className="full-price-promo">{product.price}</span>
         </div>
-        <img src="icons/trashIcon.svg" />
+        <img src="icons/trashIcon.svg" className="iconTrash" />
       </td>
       <td className="tdCol-2">
         <span>

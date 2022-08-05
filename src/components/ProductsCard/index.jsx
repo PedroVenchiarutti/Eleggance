@@ -1,5 +1,5 @@
 import React from "react";
-import ItemCart from "../ItemCart/ItemCart";
+import CardCart from "../ItemCart/CardCart";
 import "./index.scss";
 
 const ProductsList = ({ products }) => {
@@ -8,9 +8,9 @@ const ProductsList = ({ products }) => {
     <>
       {products.map((product, index) => {
         return (
-          <tr key={index} className="itemCart">
-            <ItemCart product={product} />
-          </tr>
+          <li key={index} className="cardContainer">
+            <CardCart product={product} />
+          </li>
         );
       })}
     </>
