@@ -5,10 +5,8 @@ import Footer from "../Footer/Footer";
 import Product from "../../components/Product/product";
 import Carrousel from "../../components/Carrousel/Carrousel.jsx";
 import {
-    images,
     shelfProducts,
     trendProducts,
-    smallBanner,
   } from "../../api/mock";
 
 
