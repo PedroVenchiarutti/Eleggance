@@ -1,38 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../RegistrationForm/registrationForm.scss";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-  list,
-} from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../api/firebase";
+import { AuthContext } from "../../contexts/auth";
 
 const RegistrationForm = (props) => {
   const [imgURL, setImgURL] = useState("");
+  const [personalName, setPersonalName] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [progress, setProgress] = useState(0);
 
-  const handleUpload = (e) => {
+  const { personalDataRecord } = useContext(AuthContext);
+
+  // armazenar o dados da imagens no objeto que esta sendo enviado para o localStorage
+  const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
     if (!file) return;
-
-    const storageRef = ref(storage, `image/${file.name}`);
+    const storageRef = ref(storage, `image/${file}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
       "state_changed",
+      (snapshot) => {
+        console.log("snapshot", snapshot);
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgress(progress);
+      },
       (error) => {
         console.log(error);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImgURL(downloadURL);
-          //pegando link da imagem
-          console.log(downloadURL);
-        });
       }
     );
+    uploadTask.then((res) => {
+      getDownloadURL(storageRef).then((url) => {
+        console.log("urldaesssaporra", url);
+        setImgURL(url);
+        //trazendo o state de success de uma promisse
+        if (res.state === "success") {
+          
+          handleSubmit();
+        } else {
+          return;
+        }
+      });
+    });
+  };
+
+  const handleSubmit = async () => {
+    personalDataRecord(personalName, cpf, birthDate, sexo, imgURL);
+    console.log("cadastro pessoal", {
+      personalName,
+      cpf,
+      birthDate,
+      sexo,
+      imgURL,
+    });
   };
 
   return (
@@ -47,13 +72,32 @@ const RegistrationForm = (props) => {
           </div>
           <div className="FormularioBox">
             <div className="grid-container">
-              <form className="Formulario" onSubmit={handleUpload}>
+              <form className="Formulario" onSubmit={firebaseUpload}>
                 <div className="input-photo-registration">
                   <label
                     className="label-photo-registration"
                     htmlFor="photo-registration"
-                  ></label>
-                  {imgURL && <img src={imgURL} alt="Imagem" />}
+                  >
+                    <img
+                      src={
+                        !imgURL
+                          ? "/icons/iconmonstr-photo-camera-6-72.png"
+                          : imgURL
+                      }
+                      className={
+                        !imgURL ? "img-photo-registration" : "imgPerfil"
+                      }
+                      alt="blabla"
+                    />
+                  </label>
+                  {!imgURL && (
+                    <progress
+                      value={progress}
+                      max="100"
+                      className="progres-range"
+                      onChange={(e) => setProgress(e.target.value)}
+                    />
+                  )}
                   <input type="file" id="photo-registration" name="arquivos" />
                 </div>
                 <div className="container-container">
@@ -81,6 +125,8 @@ const RegistrationForm = (props) => {
                           type="text"
                           name="name"
                           required
+                          value={personalName}
+                          onChange={(e) => setPersonalName(e.target.value)}
                         />
                         <div className="grid-item">
                           <label className="label-form">CPF:</label>
@@ -90,6 +136,8 @@ const RegistrationForm = (props) => {
                             type="text"
                             name="cpf"
                             required
+                            value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
                           />
                         </div>
                       </div>
@@ -119,12 +167,20 @@ const RegistrationForm = (props) => {
                             type="date"
                             name="data de nascimento"
                             required
+                            value={birthDate}
+                            onChange={(e) => setBirthDate(e.target.value)}
                           />
                         </label>
                       </div>
                       <div className="grid-item">
-                        <label className="label-form">Sexo:</label>
-                        <select name="select" className="select-form" required>
+                        <label className="label-form">Sexo: </label>
+                        <select
+                          name="select"
+                          className="select-form"
+                          required
+                          value={sexo}
+                          onChange={(e) => setSexo(e.target.value)}
+                        >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>
                           <option value="Outros"> Outros</option>

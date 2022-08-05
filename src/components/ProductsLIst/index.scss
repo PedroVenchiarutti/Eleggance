@@ -7,7 +7,7 @@
   font-family: "poppins";
 }
 
-.cardContainer {
+.cartContainer .cardContainer {
   display: none;
 }
 
@@ -189,7 +189,7 @@
     flex-wrap: wrap;
   }
 
-  .cardContainer {
+  .cartContainer .cardContainer {
     font-weight: 600;
     display: block;
     list-style: none;

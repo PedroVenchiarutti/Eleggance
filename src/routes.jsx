@@ -7,12 +7,15 @@ import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/Schedulling";
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
+import Shop from "./pages/Shop/Shop";
+
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
 } from "react-router-dom";
+import FinishBuy from "./pages/FinishBuy/FinishBuy";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -37,6 +40,16 @@ const changeRoutes = () => {
           <Route exact path="/login" element={<FormSingUp />} />
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
+          <Route exact path="/shop" element={<Shop />} />
+          <Route
+            exact
+            path="/finalizarCompra"
+            element={
+              <Private>
+                <FinishBuy />
+              </Private>
+            }
+          />
           <Route
             exact
             path="/carrinho"
