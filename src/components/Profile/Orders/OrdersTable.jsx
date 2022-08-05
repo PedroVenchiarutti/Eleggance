@@ -2,16 +2,15 @@ import React from "react";
 
 import './OrdersTable.scss'
 
-export default props => {
-    return (
-        <div className="profile-orders-table">
-            <table>
-                {renderHeadRows()}
-                {renderBodyRows(props.list, props.orderBy)}
-            </table>
-        </div>
-    )
-}
+export default props => (
+    <div className="profile-orders-table">
+        <table>
+            {renderHeadRows()}
+            {renderBodyRows(props.list, props.orderBy)}
+        </table>
+    </div>
+)
+
 
 function renderHeadRows() {
     return (
@@ -84,6 +83,5 @@ function renderProductsRow(products) {
 function sum(numbers) {
     let sum = 0;
     numbers.forEach(number => sum += +number);
-    console.log(sum)
     return sum;
 }

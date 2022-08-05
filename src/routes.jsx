@@ -16,6 +16,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import Addresses from "./pages/Profile/Addresses";
 
 
 const changeRoutes = () => {
@@ -43,7 +44,8 @@ const changeRoutes = () => {
           <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/carrinho" element={<Private><Cart /></Private>} />
 
-          <Route exact path="/meuperfil/pedidos" element={<ProfileOrders />} />
+          <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
+          <Route exact path="/perfil/enderecos" element={<Addresses />} />
 
           <Route
             exact

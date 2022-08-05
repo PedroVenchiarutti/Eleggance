@@ -29,6 +29,7 @@ export default function Cart(props) {
           <tfoot>
             <tr>
               <td>SubTotal</td>
+              <th>SubTotal</th>
             </tr>
             <tr>
               <td>R${subTotal}</td>
