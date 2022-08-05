@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navbar } from "../../components/Navbar/index";
 import Footer from "../Footer/Footer";
 import ProductsList from "../../components/ProductsLIst/index";
+import ProductsCard from "../../components/ProductsCard/index";
 import { shelfProducts } from "../../api/mock";
 import Carrousel from "../../components/Carrousel/Carrousel";
 import { Link } from "react-router-dom";
@@ -24,18 +25,20 @@ export default function Cart(props) {
           </thead>
           <tbody>
             <ProductsList products={shelfProducts} />
-            <tfoot>
-              <thead>
-                <td>SubTotal</td>
-              </thead>
-              <tbody>
-                {/* ainda falta tornar o valor dinamico */}
-                <td>R${subTotal}</td>
-              </tbody>
-            </tfoot>
           </tbody>
+          <tfoot>
+            <tr>
+              <td>SubTotal</td>
+            </tr>
+            <tr>
+              <td>R${subTotal}</td>
+            </tr>
+            {/* ainda falta tornar o valor dinamico */}
+          </tfoot>
         </table>
-
+        <ul>
+          <ProductsCard products={shelfProducts} />
+        </ul>
         <div className="actions">
           <Link to="/home" className="finishBuyButton">
             Continuar Comprando

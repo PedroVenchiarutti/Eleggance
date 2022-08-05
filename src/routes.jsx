@@ -5,7 +5,9 @@ import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/schedulling";
-import Cart from "./pages/Cart/Cart.jsx";
+import Products from "./pages/Products/products";
+import Cart from "./pages/Cart/Cart";
+import MyProfile from "./pages/MyProfile/MyProfile";
 import {
   BrowserRouter as Router,
   Route,
@@ -13,7 +15,6 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import MyProfile from "./pages/MyProfile/MyProfile";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -37,8 +38,17 @@ const changeRoutes = () => {
           <Route exact path="/cadastro" element={<FormCadastro />} />
           <Route exact path="/login" element={<FormSingUp />} />
           <Route exact path="/agendamento" element={<Schedulling />} />
+          <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/meuperfil" element={<MyProfile />} />
-          <Route exact path="/carrinho" element={<Private><Cart /></Private>} />
+          <Route
+            exact
+            path="/carrinho"
+            element={
+              <Private>
+                <Cart />
+              </Private>
+            }
+          />
           <Route
             path="/registration"
             element={

@@ -18,8 +18,8 @@ const MyProfile = (props) => {
                 </Link>
                 <h4>Meu Perfil</h4>
             </div>
-            <div className="container">  
-                <ClientMenu selected='enderecos' />
+            <div className="container">
+                <ClientMenu selected='perfil' />
                 <div className="ordersAndInfo">
                     <div className="orders">
                         <div className="orderText">
@@ -35,7 +35,7 @@ const MyProfile = (props) => {
                                 <p>CPF: <span className="infoP">{props.cpf}</span></p>
                                 <p>Sexo: <span className="infoP">{props.gender}</span></p>
                                 <p>Data de nascimento: <span className="infoP">{props.birth}</span></p>
-                                <p>Telefone Principal: <span className="infoP">{props.phone}aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span></p>
+                                <p>Telefone Principal: <span className="infoP">{props.phone}</span></p>
                                 <p>E-mail: <span className="infoP">{props.email}</span></p>
                             </div>
                         </div>
