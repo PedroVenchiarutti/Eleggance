@@ -7,6 +7,10 @@
   font-family: "poppins";
 }
 
+.cartContainer {
+  overflow-x: hidden;
+}
+
 .cartContainer .cardContainer {
   display: none;
 }
@@ -140,22 +144,24 @@
 
 .cartContainer main .homeButton {
   font-size: 18px;
+  display: flex;
+  align-items: center;
+  height: 40px;
   color: #f3f3f3;
   width: fit-content;
   background-color: #e4af39;
   padding: 8px;
   margin-left: 15px;
-  margin-bottom: 15px;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 5px;
-  border: 0.5px solid black;
   box-shadow: 2px 2px 8px black;
   transition: 0.3s all ease-in-out;
 }
 
 .cartContainer main .actions {
-  position: absolute;
+  height: 100px;
+  position: relative;
   justify-content: flex-end;
   right: 60px;
   display: flex;
@@ -176,7 +182,6 @@
   background-color: #d79a16;
   color: #fff;
 }
-
 @media (max-width: 1120px) {
   .cartContainer {
     width: 100%;
