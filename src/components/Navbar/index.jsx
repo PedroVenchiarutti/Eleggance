@@ -52,6 +52,7 @@ export const Navbar = () => {
           </div>
 >>>>>>> 1a07dbcaca72589e44650a09c3bc6d4cd85748d5
         </div>
+        </div>
       );
     }
   };
