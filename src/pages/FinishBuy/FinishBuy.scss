@@ -25,7 +25,7 @@
   flex-wrap: wrap;
 }
 .finishBuyContainer main .col {
-  width: 25%;
+  width: 30%;
 }
 
 .finishBuyContainer main .AsideFinishBuy {
@@ -61,6 +61,10 @@
   display: flex;
   align-items: center;
 }
+
+.finishBuyContainer main .paymentMethod ul div {
+  width: 100%;
+}
 .finishBuyContainer main .paymentMethod ul li {
   transition: 0.3s all ease-in-out;
   border-radius: 5px;
@@ -71,6 +75,7 @@
 .finishBuyContainer main .paymentMethod ul li:hover {
   color: #f3f3f3;
   background-color: #e1ab38;
+  cursor: pointer;
 }
 
 .finishBuyContainer main .AsideFinishBuy ul li input {
@@ -89,11 +94,49 @@
   font-size: 16px;
   padding: 7px;
 }
+#root > div > main > div:nth-child(2) > section ul {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 .finishBuyContainer main .AsideFinishBuy ul .iconPaymentMethod {
   height: 60px;
   margin-right: 10px;
 }
-
+.finishBuyContainer main .AsideFinishBuy ul .itemCart {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  width: 100%;
+}
+.finishBuyContainer main .AsideFinishBuy ul .itemCart .tdCol-1 {
+  font-weight: 600;
+  font-size: 18px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+.finishBuyContainer main .AsideFinishBuy ul .itemCart .tdCol-2,
+.finishBuyContainer main .AsideFinishBuy ul .itemCart .tdCol-4 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.finishBuyContainer main .AsideFinishBuy ul .itemCart .tdCol-1 img {
+  margin-right: 15px;
+}
+.finishBuyContainer main .AsideFinishBuy ul .itemCart input {
+  background: none;
+  border: none;
+  width: 30px;
+}
+.finishBuyContainer > main > div:nth-child(3) > section > ul > tr > .tdCol-4 {
+  color: green;
+  font-weight: 700;
+}
 .finishBuyContainer main .AsideFinishBuy ul img {
   max-height: 56px;
 }
@@ -116,16 +159,32 @@
 .finishBuyContainer > main > .col > section > ul > tr > td.tdCol-3 {
   display: none;
 }
-
-.finishBuyContainer main .col .itemsCart .info-cart {
-  justify-content: space-between;
-  display: flex;
+.finishBuyContainer main table,
+.finishBuyContainer main .info-cart {
   width: 100%;
-  height: 25%;
-  flex-wrap: nowrap;
+  margin-bottom: 10px;
+}
+.finishBuyContainer main table tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.finishBuyContainer main .col .itemsCart .info-cart .value-buy {
-  display: flex;
-  flex-direction: column;
+@media (max-width: 1020px) {
+  .finishBuyContainer header h1 {
+    font-size: 1.3em;
+  }
+
+  .finishBuyContainer main {
+    margin-top: 25px;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .finishBuyContainer main .col {
+    width: 80%;
+  }
 }

@@ -32,7 +32,6 @@ export const Navbar = () => {
       );
     } else {
       return (
-<<<<<<< HEAD
         <div className="div-button">
           <Link to="/login" className="login-button">
             <img src="/img/Frame.svg" />
@@ -40,17 +39,16 @@ export const Navbar = () => {
               Entre ou <br /> Cadastre-se
             </p>
           </Link>
-=======
-        <div className="navbar-user-logged-mobile">
-          <div className="navbar-user-logged-name-mobile">
-            <button>
-              <img src="/img/Frame.svg" className="svgUser-mobile" />
-            </button>
-            <button>
-              <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
-            </button>
+          <div className="navbar-user-logged-mobile">
+            <div className="navbar-user-logged-name-mobile">
+              <button>
+                <img src="/img/Frame.svg" className="svgUser-mobile" />
+              </button>
+              <button>
+                <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+              </button>
+            </div>
           </div>
->>>>>>> 1a07dbcaca72589e44650a09c3bc6d4cd85748d5
         </div>
       );
     }

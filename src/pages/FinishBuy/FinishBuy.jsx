@@ -6,7 +6,7 @@ import { shelfProducts } from "../../api/mock";
 import "./FinishBuy.scss";
 
 export default function FinishBuy({ products }) {
-  let countItems = 5;
+  let countItems = 12;
   let metodoDesconto = "PIX" || "CUPON";
   let prazoMin = 2;
   let prazoMax = 5;
@@ -78,20 +78,26 @@ export default function FinishBuy({ products }) {
           <AsideFinishBuy title="5 - INFORMAÇÕES DO PEDIDO" class="itemsCart">
             <ProductsList products={shelfProducts}></ProductsList>
             <div className="info-cart">
-              <div className="info-buy">
-                <ul>
-                  <li>Subtotal ( {countItems} )</li>
-                  <li>Entrgea</li>
-                  <li>Desconto do {metodoDesconto}</li>
-                  <li>Total</li>
-                </ul>
-              </div>
-              <div className="value-buy">
-                <li>R$ {valorSubTotal}</li>
-                <li>R$ {valorFrete}</li>
-                <li>R$ {valorDesconto}</li>
-                <li>R$ {valorTotal}</li>
-              </div>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Subtotal ({countItems})</td>
+                    <td>R$ {valorSubTotal}</td>
+                  </tr>
+                  <tr>
+                    <td>Entrega</td>
+                    <td>R$ {valorFrete}</td>
+                  </tr>
+                  <tr>
+                    <td>Desconto do {metodoDesconto}</td>
+                    <td>R$ {valorDesconto}</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>R$ {valorTotal}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <button>Finalizar Compra</button>
           </AsideFinishBuy>
