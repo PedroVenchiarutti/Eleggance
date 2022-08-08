@@ -32,6 +32,13 @@ export const Navbar = () => {
       );
     } else {
       return (
+        <div className="div-button">
+          <Link to="/login" className="login-button">
+            <img src="/img/Frame.svg" />
+            <p>
+              Entre ou <br /> Cadastre-se
+            </p>
+          </Link>
         <div className="navbar-user-logged-mobile">
           <div className="navbar-user-logged-name-mobile">
             <button>
@@ -41,6 +48,8 @@ export const Navbar = () => {
               <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
             </button>
           </div>
+
+        </div>
         </div>
       );
     }

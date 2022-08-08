@@ -4,11 +4,10 @@ import FormSingUp from "./pages/FormSingUp/FormSingUp";
 import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
-import Schedulling from "./pages/Schedulling/schedulling";
-import ProfileOrders from './pages/Profile/Orders'
-
+import Schedulling from "./pages/Schedulling/Schedulling";
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
+import Shop from "./pages/Shop/Shop";
 
 import {
   BrowserRouter as Router,
@@ -16,8 +15,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Addresses from "./pages/Profile/Addresses";
-
+import FinishBuy from "./pages/FinishBuy/FinishBuy";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -42,11 +40,16 @@ const changeRoutes = () => {
           <Route exact path="/login" element={<FormSingUp />} />
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
-          <Route exact path="/carrinho" element={<Private><Cart /></Private>} />
-
-          <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
-          <Route exact path="/perfil/enderecos" element={<Addresses />} />
-
+          <Route exact path="/shop" element={<Shop />} />
+          <Route
+            exact
+            path="/finalizarCompra"
+            element={
+              <Private>
+                <FinishBuy />
+              </Private>
+            }
+          />
           <Route
             exact
             path="/carrinho"
@@ -64,6 +67,7 @@ const changeRoutes = () => {
               </Private>
             }
           />
+
           <Route
             path="*"
             element={

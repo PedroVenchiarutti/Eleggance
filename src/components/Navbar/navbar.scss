@@ -1,196 +1,3 @@
-/* .navbar-container {
-  height: 100px;
-  background-color: #111;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  nav {
-    display: flex;
-    max-width: 1120px;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    .logo {
-      h1 {
-        font-family: Great Vibes;
-        font-size: 50px;
-        color: #e1ab38;
-      }
-    }
-
-    .inputSearch {
-      display: flex;
-      align-items: center;
-      button {
-        border-radius: 6px;
-        display: flex;
-        width: 30px;
-        height: 40px;
-        align-items: center;
-        position: relative;
-        background-color: transparent;
-        z-index: 2;
-        right: 35px;
-        border: none;
-        cursor: pointer;
-      }
-
-      img {
-        align-self: center;
-        width: 100%;
-        height: 70%;
-        padding-right: 10px;
-      }
-
-      #txtBusca {
-        background-color: #f3f3f3;
-        position: relative;
-        height: 40px;
-        width: 400px;
-        border-radius: 6px;
-        z-index: 1;
-        padding: 20px;
-        outline: none;
-        box-shadow: 1px 0px 20px 0px #848484;
-        border: none;
-      }
-    }
-    .list-container {
-      .buttonLogout {
-        display: flex;
-        align-self: center;
-      }
-
-      .div-button {
-        width: 100%;
-        display: flex;
-        align-items: center;
-      }
-      .list {
-        display: flex;
-        ul {
-          display: flex;
-          list-style: none;
-          align-items: center;
-          li {
-            cursor: pointer;
-            margin: 0 15px;
-          }
-        }
-
-        .user-logged {
-          display: flex;
-          flex-direction: column;
-          margin-left: 20px;
-          align-items: center;
-          height: 100px;
-          justify-content: center;
-
-          label {
-            font-size: 20px;
-            color: #e1ab38;
-          }
-        }
-
-        .login-button {
-          border: 0;
-          outline: none;
-          background-color: #e1ab38;
-          padding: 8px 15px;
-          border-radius: 6px;
-          display: flex;
-          line-height: 15px;
-          cursor: pointer;
-          img {
-            width: 30px;
-            margin-right: 20px;
-          }
-          span {
-            display: flex;
-            font-size: 19px;
-            font-family: "Roboto", sans-serif;
-            font-weight: bold;
-            justify-content: center;
-          }
-        }
-      }
-    }
-
-    .icon {
-      position: absolute;
-      z-index: 4;
-      left: 1%;
-      width: fit-content;
-      height: 44px;
-      cursor: pointer;
-    }
-
-    .hamburguer {
-      top: 50%;
-      left: 10%;
-      width: 30px;
-      height: 6px;
-      background: #ff3300;
-      position: absolute;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      transition: 0.5s;
-    }
-
-    .hamburguer::before {
-      top: -12px;
-      content: "";
-      position: absolute;
-      width: 37px;
-      height: 6px;
-      background: #ff3300;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      transition: 0.5s;
-    }
-
-    .hamburguer::after {
-      top: 12px;
-      content: "";
-      position: absolute;
-      width: 37px;
-      height: 6px;
-      background: #ff3300;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      transition: 0.5s;
-    }
-
-    .icon.iconActive .hamburguer {
-      background: transparent;
-      box-shadow: 0 2px 5px transparent;
-    }
-
-    .icon.iconActive .hamburguer::after {
-      top: 0;
-      background-color: #f3f3f3;
-      transform: rotate(225deg);
-      box-shadow: 0 -2px 5 rgba(0, 0, 0, 0.2);
-    }
-    .icon.iconActive .hamburguer::before {
-      top: 0;
-      background-color: #f3f3f3;
-      transform: rotate(135deg);
-      box-shadow: 0 -2px 5 rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #ffce45;
-    opacity: 60%;
-    transition: 0.5s;
-  }
-} */
-
 .navbar-container {
   height: 150px;
   background-color: #111;
@@ -198,10 +5,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   nav {
     display: flex;
-    max-width: 1120px;
+    //max-width: 1120px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -549,53 +357,53 @@
   .navbar-container {
     width: 100%;
     height: 200px;
-
     nav {
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-
       .logo {
         display: flex;
         height: 100%;
         margin: 0 auto;
         margin-top: 20px;
         border: 3px solid red;
-
         .logo h1 {
           display: flex;
           border: 3px solid #e1ab38;
           margin: 0 auto;
         }
       }
-
       .list-container {
         display: flex;
         flex-direction: column;
         margin: 0 auto;
         width: 100%;
-
         .div-button {
           display: flex;
           width: 100%;
           margin: 0 auto;
           flex-direction: column;
-
           align-items: center;
         }
         .list {
           display: flex;
           flex-direction: column;
           width: 100%;
-
           ul {
+            margin: 0 auto;
+          }
+          img {
+            max-width: fit-content;
+            margin: 0 auto;
+            padding-top: 10px;
+          }
+          .user-logged {
             margin: 0 auto;
           }
         }
       }
     }
-
     .login-button {
       display: flex;
       width: 180px;

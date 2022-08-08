@@ -29,7 +29,6 @@ export default function Cart(props) {
           <tfoot>
             <tr>
               <td>SubTotal</td>
-              <th>SubTotal</th>
             </tr>
             <tr>
               <td>R${subTotal}</td>
@@ -38,7 +37,7 @@ export default function Cart(props) {
           </tfoot>
         </table>
         <ul>
-          <ProductsCard products={shelfProducts} />
+          <ProductsCard products={shelfProducts}  />
         </ul>
         <div className="actions">
           <Link to="/home" className="finishBuyButton">

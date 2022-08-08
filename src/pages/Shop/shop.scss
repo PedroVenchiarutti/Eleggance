@@ -1,0 +1,183 @@
+.shopContainer {
+  background-color: #f3f3f3;
+}
+
+.shopContainer main {
+  display: flex;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.shopContainer main aside {
+  width: 20%;
+}
+
+.shopContainer main aside .modal ul {
+  background-color: #333;
+  color: #f3f3f3;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style: none;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 2px 3px 10px #00000041;
+  height: 90vh;
+}
+
+.shopContainer main aside .modal ul button {
+  height: 30px;
+  width: 150px;
+  background-color: #eab53c;
+  color: #f3f3f3;
+  border: none;
+  border-radius: 5px;
+  margin-left: 45px;
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.2s ease-in-out all;
+  letter-spacing: 2px;
+}
+.shopContainer main aside .modal ul button:hover {
+  cursor: pointer;
+  background-color: #e8b02dee;
+}
+
+.shopContainer main aside .modal ul li {
+  font-weight: 500;
+  font-size: 18px;
+  width: 100%;
+}
+
+.shopContainer main aside .modal ul h1,
+.shopContainer main aside .modal ul h2 {
+  text-align: center;
+}
+.shopContainer main aside .modal ul li input {
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 0.5px solid black;
+}
+.shopContainer main aside .modal ul .filter-by-price {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+.shopContainer main aside .modal ul .filter-by-price input {
+  margin-left: 5px;
+  width: 50px;
+}
+.shopContainer main .col-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+}
+.shopContainer main .col-2 ul {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.shopContainer main .col-2 select {
+  border-radius: 5px;
+  height: 25px;
+  background-color: #f3f3f3;
+  margin-right: 10px;
+}
+
+.shopContainer main ul .container-img-promo {
+  background-color: #f3f3f3;
+  display: flex;
+  width: 290px;
+  height: 420px;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: -2px -3px 11px #00000069;
+  padding: 40px;
+  border-radius: 6px;
+  transition: 0.5s;
+}
+
+.shopContainer main ul a {
+  color: #333;
+  text-decoration: none;
+}
+
+.shopContainer main ul .container-img-promo:hover {
+  overflow: hidden;
+  transform: scale(1.05);
+}
+
+.shopContainer main ul .container-img-promo img {
+  height: 200px;
+  width: 200px;
+  min-width: 200px;
+  min-height: 200px;
+  float: left;
+  max-height: 130px;
+  max-width: 130px;
+  object-fit: cover;
+  transition: 0.3s all ease-in-out;
+}
+.shopContainer main ul .container-img-promo img:hover {
+  transform: scale(1.1);
+}
+
+.shopContainer main ul .container-img-promo .title-product-promo {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  color: #333;
+}
+.shopContainer main ul .container-img-promo .full-price-promo {
+  font-size: 1rem;
+  color: red;
+  opacity: 0.8;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+.shopContainer main ul .container-img-promo .price-discount {
+  font-size: 1.05rem;
+  color: green;
+}
+.shopContainer main ul .container-img-promo .price-installments {
+  color: #eab53c;
+}
+
+.shopContainer main ul .container-img-promo span {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 1020px) {
+  .shopContainer main {
+    flex-direction: column;
+  }
+  .shopContainer main aside .modal ul {
+    height: 90%;
+  }
+
+  .shopContainer main aside {
+    width: 100%;
+  }
+
+  .shopContainer main .col-2 {
+    margin-top: 25px;
+  }
+
+  .shopContainer main .col-2 ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+}
