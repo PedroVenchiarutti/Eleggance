@@ -1,14 +1,30 @@
-.container-team {
-  min-height: 100%;
-  margin-bottom: 200px;
-  height: 100vh;
-  flex-direction: column;
+@import url(https://fonts.googleapis.com/css?family=Bebas+Neue:regular);
 
-  .container-button {
+.container-team {
+  height: 100%;
+  width: 100%;
+  //display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #h4-titulo {
+    font-family: bebas neue;
     display: flex;
-    width: 100%;
-    height: 25vh;
-    flex-direction: column;
+    justify-content: center;
+    font-size: 1.875rem;
+    font-weight: 500px;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+  }
+}
+//===========BUTTON===========\\
+.container-button {
+  width: 100%;
+  height: 100%;
+  .container-agendamento-button {
+    display: flex;
+    justify-content: center;
+    height: 10vh;
     a {
       display: flex;
       justify-content: center;
@@ -18,91 +34,149 @@
       font-size: 22px;
       height: 40px;
       width: 350px;
-      color: white;
       font-weight: bold;
       margin: 40px;
-    }
-    h4 {
-      display: flex;
-      justify-content: center;
-      font-size: 22px;
+      text-decoration: none;
+      color: #222;
     }
   }
-  .agendamento-button {
-    text-decoration: none;
-    color: black;
-  }
-  .container-agendamento-button {
-    display: flex;
-    justify-content: center;
-    height: 10vh;
-  }
-  #h4-titulo {
-    margin-top: 50px;
-  }
-  .cast-team {
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
-  .professionals {
-    display: flex;
-    width: 50%;
-    height: 100%;
-    margin: 8em;
-    border-width: 2px;
-  }
-  .photo-employee {
-    width: 100%;
-    height: 40%;
-  }
-  .list-employee {
-    width: 100%;
-    height: 100%;
-    padding: 5px;
-    ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      list-style: none;
-    }
-  }
-  img {
-    width: 100%;
-    height: 100%;
-    padding: 5px;
-  }
-  .p-list {
-    width: 100%;
-    height: 100vh;
-  
-    h4 {
-      display: flex;
-      font-size: 1.875rem;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 5px;
-    }
+}
 
-    p {
-     display: flex;
-     margin-left: 30px;
-    }
-  }
-  .p-list {
-    position: relative;
-    width: 90%;
-    height: 10vh;
-  }
+//===========TEAM===========\\
+.cast-team {
+  display: flex;
 
-  @media (max-width: 1120px) {
-    .cast-team {
-      flex-direction: column;
-    }
-    .professionals {
+  .team-first {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+
+    .photo-employee {
+      max-width: 400px;
+      min-height: 400px;
       width: 100%;
-      margin: 0px;
-      margin-top: 250px;
+      height: 40%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .details-team {
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+
+      h4 {
+        text-align: center;
+        font-size: 30px;
+      }
+      p {
+        text-align: center;
+      }
     }
   }
+  //========HOVER========\\
+  .team-first:hover {
+    box-shadow: 2px 2px 20px #222;
+    transition: 0.3s;
+  }
+  //========HOVER========\\
+
+  .team-second {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+
+    .photo-employee {
+      max-width: 400px;
+      min-height: 400px;
+      width: 100%;
+      height: 40%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .details-team {
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+
+      h4 {
+        text-align: center;
+        font-size: 30px;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  //========HOVER========\\
+  .team-second:hover {
+    box-shadow: 2px 2px 20px #222;
+    transition: 0.3s;
+  }
+  //========HOVER========\\
+
+  .team-third {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+
+    .photo-employee {
+      max-width: 400px;
+      min-height: 400px;
+      width: 100%;
+      height: 40%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .details-team {
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+
+      h4 {
+        text-align: center;
+        font-size: 30px;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  //========HOVER========\\
+  .team-third:hover {
+    box-shadow: 2px 2px 20px #222;
+    transition: 0.3s;
+  }
+  //========HOVER========\\
 }
