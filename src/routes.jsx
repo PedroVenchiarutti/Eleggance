@@ -60,7 +60,7 @@ const changeRoutes = () => {
             }
           />
           <Route
-            path="/cadastro/dados"
+            path="/registration"
             element={
               <Private>
                 <RegistrationForm />

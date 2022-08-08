@@ -18,16 +18,28 @@ export const Navbar = () => {
     if (authenticated) {
       const getLocalStorage = localStorage.getItem("personal");
       const img = JSON.parse(getLocalStorage);
-      const linkImg = img[0].id.imgURL;
 
-      console.log(linkImg);
-
-      if (linkImg) {
-        return <img src={linkImg} className="imgUser" />;
+      if (img === null) {
+        return;
       } else {
-        return <img src="/img/Frame.svg" />;
+        const linkImg = img[0].id.imgURL;
+        if (linkImg) {
+          return (
+            <button>
+              <img src={linkImg} className="imgUser" />
+            </button>
+          );
+        } else {
+          return (
+            <button>
+              <img src="/img/Frame.svg" />;
+            </button>
+          );
+        }
       }
     }
+
+    console.log(linkImg);
   };
 
   //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
@@ -47,7 +59,9 @@ export const Navbar = () => {
               <button onClick={userLogout}>Sair</button>
             </div>
           </div>
-          <img src="/icons/shoppingCart.svg" className="svgCart" />
+          <button className="buttonCart">
+            <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+          </button>
         </div>
       );
     } else if (height >= 600 && width >= 600 && !authenticated) {
@@ -61,7 +75,9 @@ export const Navbar = () => {
               </p>
             </Link>
           </div>
-          <img src="/icons/shoppingCart.svg" className="svgCart" />
+          <button className="buttonCart">
+            <img src="/icons/shoppingCart.svg" className="svgCart" />
+          </button>
         </div>
       );
     } else {
@@ -71,8 +87,8 @@ export const Navbar = () => {
             <button>
               <img src="/img/Frame.svg" className="svgUser-mobile" />
             </button>
-            <button>
-              <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+            <button className="buttonCart">
+              <img src="/icons/shoppingCart.svg" className="svgCart" />
             </button>
           </div>
         </div>

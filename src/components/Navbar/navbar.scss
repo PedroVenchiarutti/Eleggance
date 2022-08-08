@@ -62,7 +62,7 @@
           z-index: 1;
           padding: 20px;
           outline: none;
-          box-shadow: 1px 0px 20px 0px #848484;
+          box-shadow: 1px 0px 5px 0px #848484;
           border: none;
         }
       }
@@ -141,11 +141,6 @@
   position: relative;
   top: 10px;
 
-  .svgCart {
-    width: 71px;
-    margin-left: 30px;
-  }
-
   .navbar-user-logged-name {
     display: flex;
     align-items: center;
@@ -154,6 +149,7 @@
       background: transparent;
       cursor: pointer;
     }
+
     img {
       max-width: 66px;
       border-radius: 50%;
@@ -188,6 +184,17 @@
         color: #111;
         transition: 0.8;
       }
+    }
+  }
+
+  .buttonCart {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    .svgCart {
+      margin-top: 10px;
+      width: 71px;
+      margin-left: 30px;
     }
   }
 }
