@@ -61,7 +61,7 @@ export default (props) => {
               type="number"
             ></input>
           </div>
-          <Link to={"/finalizarCompra"}>
+          <Link to={"/carrinho"}>
             <button className="button-buy">
               <div className="icon-bag">
                 <img src="\icons\icon-bag.png" alt="foto" />

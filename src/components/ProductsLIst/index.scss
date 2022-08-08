@@ -9,6 +9,7 @@
 
 .cartContainer {
   overflow-x: hidden;
+  background-color: #f3f3f3;
 }
 
 .cartContainer .cardContainer {
@@ -143,6 +144,7 @@
 }
 
 .cartContainer main .homeButton {
+  justify-content: center;
   font-size: 18px;
   display: flex;
   align-items: center;

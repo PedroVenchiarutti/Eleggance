@@ -40,10 +40,10 @@ export default function Cart(props) {
           <ProductsCard products={shelfProducts} />
         </ul>
         <div className="actions">
-          <Link to="/home" className="finishBuyButton">
+          <Link to="/shop" className="finishBuyButton">
             Continuar Comprando
           </Link>
-          <Link to="/home" className="homeButton">
+          <Link to="/finalizarCompra" className="homeButton">
             Finalizar Compra
           </Link>
         </div>
