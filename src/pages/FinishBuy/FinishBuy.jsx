@@ -84,14 +84,17 @@ export default function FinishBuy({ products }) {
                     <td>Subtotal ({countItems})</td>
                     <td>R$ {valorSubTotal}</td>
                   </tr>
+                  <hr />
                   <tr>
                     <td>Entrega</td>
                     <td>R$ {valorFrete}</td>
                   </tr>
+                  <hr />
                   <tr>
                     <td>Desconto do {metodoDesconto}</td>
                     <td>R$ {valorDesconto}</td>
                   </tr>
+                  <hr />
                   <tr>
                     <td>Total</td>
                     <td>R$ {valorTotal}</td>
