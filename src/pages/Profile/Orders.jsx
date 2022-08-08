@@ -18,11 +18,11 @@ import "./Orders.scss"
 
 export default props => {
     const orderByOptions = [
-        { value: "price", text:"Preço" },
-        { value: "products", text:"Produtos" },
-        { value: "quantity", text:"Quantidade" },
-        { value: "purchaseId", text:"Código da compra" },
-        { value: "status", text:"Status" }
+        { value: "price", text: "Preço" },
+        { value: "products", text: "Produtos" },
+        { value: "quantity", text: "Quantidade" },
+        { value: "purchaseId", text: "Código da compra" },
+        { value: "status", text: "Status" }
     ]
 
     const [selectValue, setSelectValue] = useState("");
@@ -39,7 +39,9 @@ export default props => {
                 <ClientMenu selected='pedidos' />
 
                 <div className="main-content">
-                    <MainHeader body="Todas as suas compras ficam salvas aqui. Caso deseje rever ou tenha algum problema, entre em contato conosco." />
+                    <MainHeader>
+                        Todas as suas compras ficam salvas aqui. Caso deseje rever ou tenha algum problema, entre em contato conosco.
+                    </MainHeader>
 
                     <div className="orders">
                         <ContentHeader title="Meus pedidos">

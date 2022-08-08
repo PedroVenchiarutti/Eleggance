@@ -207,3 +207,9 @@ export const myOrders = [
   { products: ["Escova de cabelo ultra prime edição premium", "Produto 8", "Produto 9"], quantity: ["3", "1", "1"], purchaseId: 101112, price: "R$ 39,99", status: "Pendente" },
   { products: ["Batom", "Esmalte", "Produto 9"], quantity: ["1", "6", "1"], purchaseId: 131415, price: "R$ 38,99", status: "Entregue" }
 ]
+
+export const myAddresses =[
+  { cep: 11718350, fullAddressText: "Rua Jonas Vidal Dos Santos, 170 - 14 Jardim Quietude - Praia Grande 11718-350" },
+  { cep: 11718350, fullAddressText: "Rua Jonas Vidal Dos Santos, 170 - 14 Jardim Quietude - Praia Grande 11718-350" },
+  { cep: 11718350, fullAddressText: "Rua Jonas Vidal Dos Santos, 170 - 14 Jardim Quietude - Praia Grande 11718-350" }
+]
