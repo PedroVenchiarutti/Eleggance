@@ -1,12 +1,12 @@
 import React from "react";
-import "./schedulling.scss";
+import "./Schedulling.scss";
 import { Navbar } from "../../components/Navbar";
 import Footer from "../Footer/Footer";
 import { HomeBanner } from "../../components/HomeBanner";
 import { images, shelfProducts, trendProducts } from "../../api/mock";
-import Team from "../../components/Team/team";
+import Team from "../../components/Team/Team";
 import { AboutUs } from "../../components/AboutUs";
-import { Services } from "../../pages/Services";
+import { Services } from "../Services";
 
 export default (props) => {
   return (
