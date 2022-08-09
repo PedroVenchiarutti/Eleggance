@@ -37,7 +37,7 @@ export default function Cart(props) {
           </tfoot>
         </table>
         <ul>
-          <ProductsCard products={shelfProducts} />
+          <ProductsCard products={shelfProducts}  />
         </ul>
         <div className="actions">
           <Link to="/home" className="finishBuyButton">

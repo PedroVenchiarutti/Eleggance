@@ -1,38 +1,62 @@
-import React, { useState } from "react";
-import "../RegistrationForm/registrationForm.scss";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-  list,
-} from "firebase/storage";
+import React, { useState, useContext, useEffect } from "react";
+import "./registrationForm.scss";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../api/firebase";
+import { AuthContext } from "../../contexts/auth";
+import Form from "../../components/Form/Form";
+import Loading from "../../components/SpinerLoader";
 
 const RegistrationForm = (props) => {
   const [imgURL, setImgURL] = useState("");
+  const [previelImg, setPrevielImg] = useState(
+    "/icons/iconmonstr-photo-camera-6-72.png"
+  );
+  const [images, setImages] = useState("");
+  const [personalName, setPersonalName] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [progress, setProgress] = useState(false);
 
-  const handleUpload = (e) => {
+  const { personalDataRecord } = useContext(AuthContext);
+
+  //Funcao para enviar a imagem para o firebase
+  const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
     if (!file) return;
-
-    const storageRef = ref(storage, `image/${file.name}`);
+    const storageRef = ref(storage, `image/${file}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
       "state_changed",
-      (error) => {
-        console.log(error);
+      (snapshot) => {
+        console.log("snapshot", snapshot);
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setProgress(progress);
       },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImgURL(downloadURL);
-          //pegando link da imagem
-          console.log(downloadURL);
-        });
-      }
+      (error) => {}
     );
+    uploadTask.then((res) => {
+      getDownloadURL(storageRef)
+        .then((url) => {
+          let urlImage = url;
+          setImgURL(urlImage);
+          personalDataRecord({
+            personalName,
+            cpf,
+            birthDate,
+            sexo,
+            imgURL: urlImage,
+          });
+          setProgress(true);
+        })
+        .catch((error) => {
+          console.log(error);
+          return <div>Error...</div>;
+        });
+    });
   };
 
   return (
@@ -47,15 +71,30 @@ const RegistrationForm = (props) => {
           </div>
           <div className="FormularioBox">
             <div className="grid-container">
-              <form className="Formulario" onSubmit={handleUpload}>
+              <Form className="Formulario" onSubmit={firebaseUpload}>
                 <div className="input-photo-registration">
                   <label
                     className="label-photo-registration"
                     htmlFor="photo-registration"
-                  ></label>
-                  {imgURL && <img src={imgURL} alt="Imagem" />}
-                  <input type="file" id="photo-registration" name="arquivos" />
+                  >
+                    <img
+                      src={images ? URL.createObjectURL(images) : previelImg}
+                      className={
+                        !imgURL && previelImg
+                          ? "img-photo-registration"
+                          : "imgPerfil"
+                      }
+                      alt="blabla"
+                    />
+                  </label>
+                  <input
+                    type="file"
+                    id="photo-registration"
+                    name="image"
+                    onChange={(e) => setImages(e.target.files[0])}
+                  />
                 </div>
+
                 <div className="container-container">
                   <div className="icons-input-form">
                     <div className="icons-registration">
@@ -81,6 +120,8 @@ const RegistrationForm = (props) => {
                           type="text"
                           name="name"
                           required
+                          value={personalName}
+                          onChange={(e) => setPersonalName(e.target.value)}
                         />
                         <div className="grid-item">
                           <label className="label-form">CPF:</label>
@@ -90,6 +131,8 @@ const RegistrationForm = (props) => {
                             type="text"
                             name="cpf"
                             required
+                            value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
                           />
                         </div>
                       </div>
@@ -119,12 +162,20 @@ const RegistrationForm = (props) => {
                             type="date"
                             name="data de nascimento"
                             required
+                            value={birthDate}
+                            onChange={(e) => setBirthDate(e.target.value)}
                           />
                         </label>
                       </div>
                       <div className="grid-item">
-                        <label className="label-form">Sexo:</label>
-                        <select name="select" className="select-form" required>
+                        <label className="label-form">Sexo: </label>
+                        <select
+                          name="select"
+                          className="select-form"
+                          required
+                          value={sexo}
+                          onChange={(e) => setSexo(e.target.value)}
+                        >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>
                           <option value="Outros"> Outros</option>
@@ -138,6 +189,7 @@ const RegistrationForm = (props) => {
                     <button
                       className="button-proximo-registration"
                       type="submit"
+                      name="proximo"
                     >
                       Proximo
                     </button>
@@ -154,9 +206,10 @@ const RegistrationForm = (props) => {
                         Voltar
                       </a>
                     </button>
+                    <div>{progress === false ? <div> </div> : <Loading />}</div>
                   </div>
                 </div>
-              </form>
+              </Form>
             </div>
           </div>
         </div>

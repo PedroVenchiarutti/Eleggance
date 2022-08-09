@@ -1,5 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 // Criando um contexto para o Auth
 export const AuthContext = createContext();
@@ -25,6 +27,8 @@ export const AuthProvider = ({ children }) => {
     const getLocalStorage = localStorage.getItem("user");
     const user = JSON.parse(getLocalStorage);
 
+    if (!login || !email || !password) return alert("Preencha todos os campos");
+
     if (user.email == email && user.password == password) {
       setUser(user);
       setLogged(true);
@@ -35,21 +39,61 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const registerUser = (login, email, password) => {
-    const user = {
-      id: Math.random(10),
-      login: login,
-      email: email,
-      password: password,
-    };
-    localStorage.setItem("user", JSON.stringify(user));
-    setUser(user);
-    alert("Usuário cadastrado com sucesso!");
-    navigate("/login");
+  const registerUser = async (login, email, password, confirmPassword) => {
+    try {
+      const user = {
+        id: Math.random(10),
+        login: login,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+      };
+
+      if (!login || !email || !password || !confirmPassword)
+        return alert("Preencha todos os campos");
+
+      if (user.password != user.confirmPassword)
+        return alert("Senhas não conferem");
+
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
+      navigate("/registration");
+      /* alert("Usuário cadastrado com sucesso!"); */
+    } catch {
+      alert("Erro ao cadastrar usuário");
+    }
+  };
+
+  const personalDataRecord = async (
+    id,
+    personalName,
+    cpf,
+    birthDate,
+    sexo,
+    imgUrl
+  ) => {
+    try {
+      const personal = [
+        {
+          id: id,
+          personalName: personalName,
+          cpf: cpf,
+          birthDate: birthDate,
+          sexo: sexo,
+          imgUrl: imgUrl,
+        },
+      ];
+      localStorage.setItem("personal", JSON.stringify(personal));
+      setUser(personal);
+      navigate("/login");
+    } catch {
+      alert("Erro ao cadastrar usuário");
+    }
   };
 
   const userLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("personal");
     setUser(null);
     setLogged(false);
     setLogout(true);
@@ -66,6 +110,7 @@ export const AuthProvider = ({ children }) => {
         login,
         userLogout,
         registerUser,
+        personalDataRecord,
       }}
     >
       {children}

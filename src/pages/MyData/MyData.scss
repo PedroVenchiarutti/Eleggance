@@ -69,8 +69,6 @@
                         }
                     }
 
-
-
                     .formReadOnly input{
                         width: 80%;
                     }
@@ -98,13 +96,51 @@
 
     .myData{
     
+        width: 100%;
+        
+        .toHome{
+            width: 100%;
+            padding: 0px 0px;
+            margin: 0px 0px;
+            
+            .pageTitle{
+                justify-content: center;
+            }
+        }
+
         .container{
             display:flex;
             flex-direction: column;
             margin: 0px 0px;
+            width: 100%;
             justify-content: center;
-        }
+            align-items: center;
 
+            .options{
+                margin:20px 0px;
+            }
+
+            .content{
+                width: 100%;
+
+                .formData{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .formWritable, .formReadOnly{
+                        width: 100%;
+                        text-align: center;
+
+                        .submit{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            
+        }
 
     }
 

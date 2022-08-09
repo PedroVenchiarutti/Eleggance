@@ -1,38 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ClientMenu from "../../components/ClientMenu/ClientMenu";
 import Data from "../../components/Data/Data";
 import { Navbar } from "../../components/Navbar";
 import ContentHeader from "../../components/Profile/ContentHeader";
 import ToHome from "../../components/ToHome/ToHome";
-import './myData.scss'
+import './MyData.scss'
 import Footer from '../Footer/Footer'
 
 const MyData = (props) => {
 
-
     // useEffect(() => {
 
-    //     var input = document.getElementById('phoneNumber');
+    //     const number = document.getElementById("phoneNumber");
+    //     const num = number.value
     //     function phoneMask(){
-    //         input.style.backgroundColor = "aqua"
-    //         // input.addEventListener('keyup', () => {
-    //         //     let num = input.value
-    //         //     num = (num.substring(0,1) + '(' + num.substring(1,4) + ')' + num.substring(4,7) + '-' + num.substring(7,11));
-    //         //     input.value = num
-    //         // })
-    //         // let num = input.value
-    //         // num = (num.substring(0,0) + '(' )
-    //         // input.value = num
+        
     //     }
-    //     phoneMask()
-    // }, [])
- 
 
-  
+    //     phoneMask()
+
+    // })
+    
 
     return(
         <div className="myData">
-            <Navbar />
+            {/* <Navbar /> */}
             <ToHome />
             <div className="container">
                 <ClientMenu selected='dados'/>
