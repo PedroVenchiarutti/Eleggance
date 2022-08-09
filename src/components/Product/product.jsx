@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import "./product.scss";
 import InfoProducts from "./infoproduct.jsx";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default (props) => {
   const [showElement, setShowElement] = useState(false);
   const showOrHide = () => setShowElement(true);
+
+  {const { id } = useParams;
+  const [property, setProperty] = useState({});
+  useEffect(() => {
+    fetch(`${BASE_API_URL}/produtos/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProperty(data); 
+      });
+  });
+  }
 
   return (
     <div className="container-components-product">
@@ -48,7 +59,7 @@ export default (props) => {
             </div>
           </div>
           <div className="price-product">
-            <h1> R$ 2.000,00</h1>
+            <h1> {property.price || 'R$ 2.000,00'}</h1>
             <h3> 10x de 200,00 sem JUROS </h3>
           </div>
           <div className="button-product">
