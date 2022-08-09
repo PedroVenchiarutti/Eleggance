@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import ClientMenu from '../../components/ClientMenu/ClientMenu';
 import Data from "../../components/Data/Data";
 import ToHome from "../../components/ToHome/ToHome";
-import ContentHeader from "../../components/Profile/ContentHeader";
-import MainHeader from "../../components/Profile/MainHeader";
+import ContentHeader from "../../components/Profile/common/ContentHeader";
+import MainHeader from "../../components/Profile/common/MainHeader";
 
 const MyProfile = (props) => {  
 

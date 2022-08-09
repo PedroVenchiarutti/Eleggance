@@ -9,13 +9,14 @@
     display: flex;
 
     .main-content {
+        width: 76%;
         display: flex;
         flex-direction: column;
-        width: 100%;
 
         .orders {
-            border: solid 2px #E4AF39;
+            border: solid 1px #E4AF39;
             border-radius: 10px;
+            flex-grow: 1;
         }
     }
 }
@@ -26,6 +27,8 @@
         align-items: center;
 
         .main-content {
+            margin: 0px 0px;
+            padding: 0px 0px;
             margin-top: 5px;
         }
     }

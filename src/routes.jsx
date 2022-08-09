@@ -5,7 +5,6 @@ import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import Schedulling from "./pages/Schedulling/Schedulling";
-import ProfileOrders from './pages/Profile/MyProfile';
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
 import Shop from "./pages/Shop/Shop";
@@ -19,9 +18,9 @@ import {
 import FinishBuy from "./pages/FinishBuy/FinishBuy";
 import MyProfile from "./pages/MyProfile/MyProfile";
 import MyData from "./pages/MyData/MyData";
-import Profile from "./pages/Profile/MyProfile";
+import ProfileOrders from "./pages/Profile/Orders";
+import ProfileAddresses from "./pages/Profile/Addresses";
 import MyLogin from './pages/MyLogin/MyLogin';
-
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -48,8 +47,9 @@ const changeRoutes = () => {
           <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/shop" element={<Shop />} />
           <Route exact path="/perfil" element={<MyProfile />} />
-          <Route exact path="/perfil/pedidos" element={<Profile />} />
+          <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
           <Route exact path="/perfil/dados" element={<MyData />} />
+          <Route exact path="/perfil/enderecos" element={<ProfileAddresses />} />
           <Route exact path="/perfil/login" element={<MyLogin />} />
           <Route exact path="/perfil/favoritos" element={<MyLogin />} />
           <Route exact path="/perfil/avaliacoes" element={<MyLogin />} />
@@ -81,6 +81,7 @@ const changeRoutes = () => {
               </Private>
             }
           />
+
           <Route
             path="*"
             element={

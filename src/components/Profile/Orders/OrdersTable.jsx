@@ -2,14 +2,15 @@ import React from "react";
 
 import './OrdersTable.scss'
 
-export default props => (
+export default ({list, orderBy}) => (
     <div className="profile-orders-table">
         <table>
             {renderHeadRows()}
-            {renderBodyRows(props.list)}
+            {renderBodyRows(list, orderBy)}
         </table>
     </div>
 )
+
 
 function renderHeadRows() {
     return (
@@ -27,7 +28,26 @@ function renderHeadRows() {
     )
 }
 
-function renderBodyRows(ordersList) {
+function renderBodyRows(ordersList, orderBy) {
+    switch (orderBy) {
+        case 'price':
+            ordersList.sort((a, b) => a.price > b.price)
+            break;
+        case 'products':
+            ordersList.sort((a, b) => a.products.sort() > b.products.sort())
+            break;
+        case 'quantity':
+            ordersList.sort((a, b) => sum(a.quantity) > sum(b.quantity))
+            break;
+        case 'purchaseId':
+            ordersList.sort((a, b) => a.purchaseId > b.purchaseId)
+            break;
+        case 'status':
+        default:
+            ordersList.sort((a, b) => a.status.localeCompare(b.status))
+            break;
+    }
+
     return (
         <tbody>
             {
@@ -36,7 +56,7 @@ function renderBodyRows(ordersList) {
                         <tr key={order.purchaseId}>
                             <td>{renderProductsRow(order.products)}</td>
                             <td className="responsive-hide">{order.quantity.map(quantity => { return <p> {quantity} </p> })}</td>
-                            <td className="responsive-hide">{order.purchaseId}</td>
+                            <td className="responsive-hide">{`#${order.purchaseId}`}</td>
                             <td>
                                 <p>{order.price}</p>
                                 <p className={order.status === "Pendente" ? "pending" : "send"}>{order.status}</p>
@@ -58,4 +78,10 @@ function renderProductsRow(products) {
             </div>
         </div>
     )
+}
+
+function sum(numbers) {
+    let sum = 0;
+    numbers.forEach(number => sum += +number);
+    return sum;
 }

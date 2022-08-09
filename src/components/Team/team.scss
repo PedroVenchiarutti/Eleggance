@@ -1,0 +1,255 @@
+@import url(https://fonts.googleapis.com/css?family=Bebas+Neue:regular);
+
+.container-team {
+  height: 100%;
+  width: 100%;
+  //display: flex;
+  justify-content: center;
+  align-items: center;
+  //
+
+  #h4-titulo {
+    font-family: bebas neue;
+    display: flex;
+    justify-content: center;
+    font-size: 1.875rem;
+    font-weight: 500px;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+//===========TEAM===========\\
+.cast-team {
+  display: flex;
+  margin-bottom: 20px;
+
+  .team-first {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+
+    .photo-employee {
+      max-width: 400px;
+      min-height: 400px;
+      width: 100%;
+      height: 40%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .details-team {
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+
+      h4 {
+        text-align: center;
+        font-size: 30px;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+  //========HOVER========\\
+  .team-first:hover {
+    box-shadow: 2px 2px 20px #222;
+    transition: 0.3s;
+  }
+  //========HOVER========\\
+  
+  .team-second {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    
+    .photo-employee {
+      max-width: 400px;
+      min-height: 400px;
+      width: 100%;
+      height: 40%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .details-team {
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      
+      h4 {
+        text-align: center;
+        font-size: 30px;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+  
+  //========HOVER========\\
+  .team-second:hover {
+    box-shadow: 2px 2px 20px #222;
+    transition: 0.3s;
+  }
+  //========HOVER========\\
+  
+  .team-third {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    
+    .photo-employee {
+      max-width: 400px;
+      min-height: 400px;
+      width: 100%;
+      height: 40%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .details-team {
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      
+      h4 {
+        text-align: center;
+        font-size: 30px;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+  
+  //========HOVER========\\
+  .team-third:hover {
+    box-shadow: 2px 2px 20px #222;
+    transition: 0.3s;
+  }
+  //========HOVER========\\
+}
+
+//===========BUTTON===========\\
+.container-button {
+  width: 100%;
+  height: 100%;
+  .container-agendamento-button {
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffce45;
+      border-radius: 6px;
+      font-size: 22px;
+      height: 40px;
+      width: 350px;
+      font-weight: bold;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-decoration: none;
+      color: #222;
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  .container-team {
+    width: 100%;
+    height: 100%;
+
+    #h4-titulo {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .cast-team {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .team-first {
+      width: 100%;
+      height: 100%;
+
+      .photo-employee {
+        min-height: none;
+        max-width: none;
+      }
+
+      .details-team {
+        p {
+          word-break: break-all;
+        }
+      }
+    }
+
+    .team-second {
+      width: 100%;
+      height: 100%;
+
+      .photo-employee {
+        min-height: none;
+        max-width: none;
+        
+      }
+
+      .details-team {
+        p {
+          word-break: break-all;
+        }
+      }
+    }
+
+    .team-third {
+      width: 100%;
+      height: 100%;
+
+      .photo-employee {
+        min-height: none;
+        max-width: none;
+       
+      }
+
+      .details-team {
+        p {
+          word-break: break-all;
+        }
+      }
+    }
+  }
+}

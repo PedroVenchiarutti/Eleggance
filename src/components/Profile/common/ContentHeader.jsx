@@ -1,12 +1,12 @@
 import './ContentHeader.scss'
 
-export default props => (
+export default ({children, title}) => (
     <header className="profile-content-header">
         <h4>
-            { props.title }
+            { title }
         </h4>
         <div>
-            { props.children }
+            { children }
         </div>
     </header>
 )

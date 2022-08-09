@@ -10,6 +10,10 @@
             font-weight: 100;
         }
 
+        th {
+            font-weight: 300;
+        }
+
         .products-header {
             width: 55%;
         }
@@ -24,6 +28,7 @@
             align-items: center;
 
             img { width: 10%; }
+            p { text-align: start; }
         }
 
         .send {
@@ -37,7 +42,11 @@
 }
 
 @media (max-width: 1120px) {
-    .responsive-hide {
-        display: none;
+    table {
+        overflow: scroll;
+        
+        .responsive-hide {
+            display: none;
+        }
     }
 }
