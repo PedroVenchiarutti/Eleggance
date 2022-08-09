@@ -1,191 +1,167 @@
 .finishBuyContainer {
   background-color: #f3f3f3;
-}
 
-.finishBuyContainer header {
-  padding: 30px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #222222;
-  color: #e1ab38;
-}
+  header {
+    padding: 30px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222222;
+    color: #e1ab38;
 
-.finishBuyContainer header .logo {
-  font-size: 50px;
-  font-family: Great Vibes;
-}
-
-.finishBuyContainer main {
-  margin-top: 25px;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-.finishBuyContainer main .col {
-  width: 30%;
-}
-
-.finishBuyContainer main .AsideFinishBuy {
-  margin-bottom: 10%;
-  background-color: #d9d9d9;
-  width: 100%;
-  border-radius: 10px;
-}
-.finishBuyContainer main .itemsCart ul {
-  flex-direction: column;
-}
-
-.finishBuyContainer main .AsideFinishBuy h1 {
-  background-color: #222222;
-  text-align: center;
-  font-weight: 600;
-  color: #f3f3f3;
-}
-.finishBuyContainer main .AsideFinishBuy ul {
-  width: 100%;
-  align-items: center;
-  list-style: none;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.finishBuyContainer main .AsideFinishBuy ul li {
-  width: 100%;
-  font-weight: 600;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  display: flex;
-  align-items: center;
-}
-
-.finishBuyContainer main .paymentMethod ul div {
-  width: 100%;
-}
-.finishBuyContainer main .paymentMethod ul li {
-  transition: 0.3s all ease-in-out;
-  border-radius: 5px;
-  border: 0.5px solid black;
-  padding-left: 15px;
-  padding-right: 55px;
-}
-.finishBuyContainer main .paymentMethod ul li:hover {
-  color: #f3f3f3;
-  background-color: #e1ab38;
-  cursor: pointer;
-}
-
-.finishBuyContainer main .AsideFinishBuy ul li input {
-  border-radius: 5px;
-  width: 80%;
-  height: 38px;
-  padding-left: 5px;
-  border: 0.5px solid black;
-}
-
-.finishBuyContainer main .AsideFinishBuy ul button {
-  border: none;
-  background-color: #e1ab38;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.67);
-  border-radius: 5px;
-  color: #f3f3f3;
-  font-size: 16px;
-  padding: 7px;
-}
-#root > div > main > div:nth-child(2) > section ul {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-.finishBuyContainer main .AsideFinishBuy ul .iconPaymentMethod {
-  height: 60px;
-  margin-right: 10px;
-}
-.finishBuyContainer main .AsideFinishBuy ul .itemCart {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  border: 0.5px solid black;
-  border-radius: 5px;
-  width: 100%;
-}
-.finishBuyContainer main .AsideFinishBuy ul .itemCart .tdCol-1 {
-  font-weight: 600;
-  font-size: 18px;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-}
-.finishBuyContainer main .AsideFinishBuy ul .itemCart .tdCol-2,
-.finishBuyContainer main .AsideFinishBuy ul .itemCart .tdCol-4 {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-.finishBuyContainer main .AsideFinishBuy ul .itemCart .tdCol-1 img {
-  margin-right: 15px;
-}
-.finishBuyContainer main .AsideFinishBuy ul .itemCart input {
-  background: none;
-  border: none;
-  width: 30px;
-}
-.finishBuyContainer > main > div:nth-child(3) > section > ul > tr > .tdCol-4 {
-  color: green;
-  font-weight: 700;
-}
-.finishBuyContainer main .AsideFinishBuy ul img {
-  max-height: 56px;
-}
-.finishBuyContainer main .AsideFinishBuy ul .iconTrash {
-  display: none;
-}
-
-.finishBuyContainer
-  > main
-  > div:nth-child(3)
-  > section
-  > ul
-  > tr
-  > td.tdCol-1
-  > div
-  > span.full-price-promo {
-  display: none;
-}
-
-.finishBuyContainer > main > .col > section > ul > tr > td.tdCol-3 {
-  display: none;
-}
-.finishBuyContainer main table,
-.finishBuyContainer main .info-cart {
-  width: 100%;
-  margin-bottom: 10px;
-}
-.finishBuyContainer main table tr {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-@media (max-width: 1020px) {
-  .finishBuyContainer header h1 {
-    font-size: 1.3em;
+    .logo {
+      font-size: 50px;
+      font-family: Great Vibes;
+    }
   }
 
-  .finishBuyContainer main {
+  main {
     margin-top: 25px;
-    align-items: center;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     flex-wrap: wrap;
+    .col {
+      width: 30%;
+    }
+    .AsideFinishBuy {
+      margin-bottom: 10%;
+      background-color: #d9d9d9;
+      width: 100%;
+      border-radius: 10px;
+      h1 {
+        background-color: #222222;
+        text-align: center;
+        font-weight: 600;
+        color: #f3f3f3;
+      }
+      ul {
+        width: 100%;
+        align-items: center;
+        list-style: none;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        li {
+          width: 100%;
+          font-weight: 600;
+          margin-top: 5%;
+          margin-bottom: 5%;
+          display: flex;
+          align-items: center;
+          input {
+            border-radius: 5px;
+            width: 80%;
+            height: 38px;
+            padding-left: 5px;
+            border: 0.5px solid black;
+          }
+        }
+        input {
+          background: none;
+          border: none;
+          width: 30px;
+        }
+        .iconPaymentMethod {
+          height: 60px;
+          margin-right: 10px;
+        }
+        .itemCart {
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          margin: 5px;
+          border: 0.5px solid black;
+          border-radius: 5px;
+          width: 100%;
+
+          .tdCol-1 {
+            font-weight: 600;
+            font-size: 18px;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            img {
+              margin-right: 15px;
+              max-height: 56px;
+            }
+            div > span.full-price-promo {
+              display: none;
+            }
+          }
+          .tdCol-3 {
+            display: none;
+          }
+          .tdCol-2,
+          .tdCol-4 {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            color: green;
+            font-weight: 700;
+          }
+        }
+        button {
+          border: none;
+          background-color: #e1ab38;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.67);
+          border-radius: 5px;
+          color: #f3f3f3;
+          font-size: 16px;
+          padding: 7px;
+        }
+      }
+      .iconTrash {
+        display: none;
+      }
+    }
+    .paymentMethod ul div {
+      width: 100%;
+    }
+    .paymentMethod ul li {
+      transition: 0.3s all ease-in-out;
+      border-radius: 5px;
+      border: 0.5px solid black;
+      padding-left: 15px;
+      padding-right: 55px;
+    }
+    .paymentMethod ul li:hover {
+      color: #f3f3f3;
+      background-color: #e1ab38;
+      cursor: pointer;
+    }
+    .itemsCart ul {
+      flex-direction: column;
+    }
+    table,
+    .info-cart {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    table tr {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
-  .finishBuyContainer main .col {
-    width: 80%;
+  @media (max-width: 1020px) {
+    header h1 {
+      font-size: 1.3em;
+    }
+
+    main {
+      margin-top: 25px;
+      align-items: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    main .col {
+      width: 80%;
+    }
   }
 }

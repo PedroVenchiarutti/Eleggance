@@ -64,21 +64,21 @@ export default function FinishBuy({ products }) {
         <div className="col">
           <AsideFinishBuy title="4 - MÉTODO DE PAGAMENTO" class="paymentMethod">
             <div className="payment-methods">
-              <li className="PaymentMethod">
+              <li>
                 <img
                   className="iconPaymentMethod"
                   src="../../public/icons/icon-pix.svg"
                 />
                 PIX
               </li>
-              <li className="PaymentMethod">
+              <li>
                 <img
                   className="iconPaymentMethod"
                   src="../../public/icons/icon-boleto.png"
                 />
                 BOLETO
               </li>
-              <li className="PaymentMethod">
+              <li>
                 <img
                   className="iconPaymentMethod"
                   src="../../public/icons/icone-credit-card.png"
