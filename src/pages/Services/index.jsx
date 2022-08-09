@@ -23,6 +23,6 @@ export const Services = () => {
         </div>
         {/*======== SERVICES TEXT ========*/}
       </div>
-    </div>
+      </div>
   );
 };
