@@ -1,31 +1,41 @@
-import React from "react"
+import React, { useState } from "react"
 
-import { Navbar } from '../../components/Navbar/index'
+import { Navbar } from '../../components/Navbar/index';
 import ToHome from '../../components/ToHome/ToHome'
 import ClientMenu from '../../components/ClientMenu/ClientMenu'
 import MainHeader from '../../components/Profile/common/MainHeader'
 import AddressForm from '../../components/Profile/Addresses/Form'
 import Addresses from '../../components/Profile/Addresses/Content'
 
-import { myAddresses } from "../../api/mock"
-
 import './Addresses.scss'
 
-export default () => (
-    <div>
-        {/* <Navbar /> */}
-        <ToHome />
+export default () => {
+    const [addresses, setAddressesList] = useState([]);
 
-        <div className="address-container">
-            <ClientMenu selected='enderecos' />
+    const onAddressFormSubmit = (datas) => {
+        let address = {
+            cep: datas.cep,
+            fullAddressText: `${datas.street}, ${datas.number} - ${datas.district} - ${datas.city} ${datas.cep}`
+        }
+        setAddressesList(addresses => [...addresses, address]);
+    }
 
-            <div className="main-content">
-                <MainHeader title="Cadastrar novo endereço">
-                    <AddressForm />
-                </MainHeader>
+    return (
+        <div>
+            <Navbar />
+            <ToHome />
 
-                <Addresses title="Meus endereços" list={myAddresses} />
+            <div className="address-container">
+                <ClientMenu selected='enderecos' />
+
+                <div className="main-content">
+                    <MainHeader title="Cadastrar novo endereço">
+                        <AddressForm onFormSubmit={onAddressFormSubmit} />
+                    </MainHeader>
+
+                    <Addresses title="Meus endereços" list={addresses} />
+                </div>
             </div>
         </div>
-    </div>
-)
+    )
+}

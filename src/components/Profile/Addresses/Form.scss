@@ -9,11 +9,42 @@
             flex-direction: column;
         }
 
-        .street { width: 50%; }
-        .number { width: 10%; }
-        .complement { width: 18%; }
-        .district { width: 19%; }
-        .street, .number, .complement { margin-right: 1%; }
+        .street {
+            width: 50%;
+        }
+
+        .number {
+            width: 10%;
+        }
+
+        .complement {
+            width: 18%;
+        }
+
+        .district {
+            width: 19%;
+        }
+
+        .street,
+        .number,
+        .complement {
+            margin-right: 1%;
+        }
+
+        .second-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .second-row-group {
+            display: flex;
+
+            .form-group {
+                margin-right: 2%;
+            }
+        }
     }
 
     button {
@@ -25,13 +56,15 @@
         color: white;
         background-color: #E4AF39;
 
-        &:hover { background-color: rgb(205, 148, 27) }
+        &:hover {
+            background-color: rgb(205, 148, 27)
+        }
     }
 
     input {
         border: solid 1px black;
         border-radius: 4px;
-        
+
         padding: 4px 10px 4px 10px;
     }
 }

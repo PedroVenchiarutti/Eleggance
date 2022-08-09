@@ -2,11 +2,11 @@ import React from "react";
 
 import './Table.scss'
 
-export default props => (
+export default ({list}) => (
     <div className="table-container">
         <table>
             {renderHeadRows()}
-            {renderBodyRows(props.list)}
+            {renderBodyRows(list)}
         </table>
     </div>
 )
@@ -15,7 +15,7 @@ function renderHeadRows() {
     return (
         <thead>
             <tr>
-                <th>Endereço</th>
+                <th className="address">Endereço</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@ function renderBodyRows(addressesList) {
                 addressesList.map(address => {
                     return (
                         <tr key={address.cep}>
-                            <td>{address.fullAddressText}</td>
+                            <td className="address">{address.fullAddressText}</td>
                             {getTdButtons()}
                         </tr>
                     )
@@ -43,7 +43,7 @@ function renderBodyRows(addressesList) {
 function getTdButtons() {
     return (
         <td>
-            <button><img src="/icons/icon-edit.svg" alt="Editar" /></button>
+            <button><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
             <button><img src="/icons/icon-trash.svg" alt="Remover" /></button>
         </td>
     )

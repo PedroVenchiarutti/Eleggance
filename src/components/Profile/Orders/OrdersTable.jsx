@@ -2,11 +2,11 @@ import React from "react";
 
 import './OrdersTable.scss'
 
-export default props => (
+export default ({list, orderBy}) => (
     <div className="profile-orders-table">
         <table>
             {renderHeadRows()}
-            {renderBodyRows(props.list, props.orderBy)}
+            {renderBodyRows(list, orderBy)}
         </table>
     </div>
 )

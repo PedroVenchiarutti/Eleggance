@@ -4,9 +4,9 @@ import Table from "./Table";
 
 import './Content.scss';
 
-export default props => (
+export default ({title, list}) => (
     <div className="addresses">
-        <ContentHeader title={props.title} />
-        <Table list={props.list} />
+        <ContentHeader title={title} />
+        <Table list={list} />
     </div>
 )

@@ -8,6 +8,8 @@ import Schedulling from "./pages/Schedulling/Schedulling";
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
 import Shop from "./pages/Shop/Shop";
+import ProfileAddresses from './pages/Profile/Addresses';
+import ProfileOrders from './pages/Profile/Orders';
 
 import {
   BrowserRouter as Router,
@@ -41,6 +43,9 @@ const changeRoutes = () => {
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/shop" element={<Shop />} />
+          <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
+          <Route exact path="/perfil/enderecos" element={<ProfileAddresses />} />
+
           <Route
             exact
             path="/finalizarCompra"

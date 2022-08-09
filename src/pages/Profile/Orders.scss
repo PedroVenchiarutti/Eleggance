@@ -9,11 +9,12 @@
     display: flex;
 
     .main-content {
+        width: 76%;
         display: flex;
         flex-direction: column;
 
         .orders {
-            border: solid 2px #E4AF39;
+            border: solid 1px #E4AF39;
             border-radius: 10px;
             flex-grow: 1;
         }

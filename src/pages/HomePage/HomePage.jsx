@@ -12,7 +12,7 @@ import {
   trendProducts,
   smallBanner,
 } from "../../api/mock";
-import { Navbar } from "../../components/Navbar";
+import { Navbar } from "../../components/Navbar/index";
 import { SectionInfo } from "../../components/SectionInfo";
 
 const HomePage = (props) => {
