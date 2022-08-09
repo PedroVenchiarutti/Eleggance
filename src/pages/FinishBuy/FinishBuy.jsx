@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../Footer/Footer";
 import AsideFinishBuy from "../../components/AsideFinishBuy/AsideFinishBuy";
 import ProductsList from "../../components/ProductsLIst";
 import { shelfProducts } from "../../api/mock";
 import "./FinishBuy.scss";
 
+// let inputCupom = document.querySelector("#fieldCoupon");
+// inputCupom.addEventListener("change", (e) => {
+//   console.log(e);
+// });
+
 export default function FinishBuy({ products }) {
+  const [valor, setValor] = useState("");
   let countItems = 12;
   let metodoDesconto = "PIX" || "CUPON";
   let prazoMin = 2;
@@ -42,7 +48,15 @@ export default function FinishBuy({ products }) {
           </AsideFinishBuy>
           <AsideFinishBuy title="3 - CUPOM">
             <li>
-              <input placeholder="INSERIR CUPOM" type="text" />
+              <input
+                maxLength={7}
+                style={{ textTransform: "uppercase" }}
+                placeholder="INSERIR CUPOM"
+                id="fieldCoupon"
+                value={valor}
+                onChange={(e) => setValor(e.target.value)}
+                type="text"
+              />
               <button>OK</button>
             </li>
           </AsideFinishBuy>

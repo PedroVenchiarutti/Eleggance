@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss";
@@ -8,10 +8,41 @@ export const Navbar = () => {
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
 
+  // Abrir/Fechar menu mobile Hamburguer
   const ToggleMode = () => {
     setMode(!active);
   };
 
+  // Pega a imagen do localStorage e renderizar na tela
+  const renderImage = () => {
+    if (authenticated) {
+      const getLocalStorage = localStorage.getItem("personal");
+      const img = JSON.parse(getLocalStorage);
+
+      if (img === null) {
+        return;
+      } else {
+        const linkImg = img[0].id.imgURL;
+        if (linkImg) {
+          return (
+            <button>
+              <img src={linkImg} className="imgUser" />
+            </button>
+          );
+        } else {
+          return (
+            <button>
+              <img src="/img/Frame.svg" />;
+            </button>
+          );
+        }
+      }
+    }
+
+    console.log(linkImg);
+  };
+
+  //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
   const userLogged = () => {
     const height = window.screen.height;
     const width = window.screen.width;
@@ -20,14 +51,33 @@ export const Navbar = () => {
       return (
         <div className="navbar-user-logged">
           <div className="navbar-user-logged-name">
-            <button>
-              <img src="/img/Frame.svg" />
-            </button>
-            <h4>
-              <span>{loginName.toUpperCase()}</span>
-            </h4>
+            {renderImage()}
+            <div className="navbar-user-name-logout">
+              <h4>
+                <span>{loginName.toUpperCase()}</span>
+              </h4>
+              <button onClick={userLogout}>Sair</button>
+            </div>
           </div>
-          <img src="/icons/shoppingCart.svg" className="svgCart" />
+          <button className="buttonCart">
+            <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+          </button>
+        </div>
+      );
+    } else if (height >= 600 && width >= 600 && !authenticated) {
+      return (
+        <div className="navbar-user-logged">
+          <div className="div-button">
+            <Link to="/login" className="login-button">
+              <img src="/img/Frame.svg" />
+              <p>
+                Entre ou <br /> cadastre-se
+              </p>
+            </Link>
+          </div>
+          <button className="buttonCart">
+            <img src="/icons/shoppingCart.svg" className="svgCart" />
+          </button>
         </div>
       );
     } else {
