@@ -8,11 +8,7 @@
   height: 100%;
   display: flex;
 }
-<<<<<<< HEAD
-.container-top {
-=======
 .container-top-products {
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
   width: 75%;
   margin: 0 auto;
   display: flex;
@@ -52,10 +48,7 @@
   img {
     width: 50%;
     display: flex;
-<<<<<<< HEAD
-=======
     padding: 5px;
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
   }
 }
 
@@ -110,32 +103,18 @@
   margin-top: 20px;
   border: none;
 }
-<<<<<<< HEAD
-img {
-  padding: 5px;
-  padding-right: 0px;
-}
-h3 {
-  margin-top: 5px;
-=======
 a{
   text-decoration: none;
 }
 h3 {
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 6px;
   font-size: 18px;
 }
-<<<<<<< HEAD
-.button-buy:hover {
-  background-color: #e1ab38;
-=======
 .button-buy-product:hover {
   background-color: #e1ab38;
   transform: scale(1.1);
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
   opacity: 80%;
   transition: 0.5s;
 }
@@ -171,19 +150,10 @@ h3 {
 .ul-products {
   margin-top: 20px;
   margin-bottom: 100px;
-<<<<<<< HEAD
-  li {
-    display: inline;
-    padding-right: 10px;
-    padding-left: 220;
-  }
-  a {
-=======
 
   a {
     padding-left: 20px ;
     cursor: pointer;
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
     text-decoration: none;
     color: black;
   }
@@ -201,31 +171,16 @@ h3 {
   .name-product {
     width: 100%;
     padding: 0px;
-<<<<<<< HEAD
-=======
     h1{
       padding-left: 20px;
     }
     p{
       padding-left: 20px;
     }
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
   }
   .products-info-price {
     margin-left: 0px;
   }
-<<<<<<< HEAD
-  .price {
-    padding-left: 50px;
-  }
-  .button {
-    padding-left: 50px;
-  }
-  .button-buy {
-    margin-left: 50px;
-  }
-  .frete {
-=======
   .price-product {
     padding-left: 50px;
   }
@@ -236,7 +191,6 @@ h3 {
     margin-left: 50px;
   }
   .frete-product {
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
     margin-bottom: 50px;
     margin-left: 30px;
   }
@@ -249,8 +203,6 @@ h3 {
     padding-left: 0px;
   }
 }
-<<<<<<< HEAD
-=======
 .icon-heart-products{
   padding-left: 70px;
 }
@@ -266,4 +218,3 @@ h3 {
   display: none;
 }
 }
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
