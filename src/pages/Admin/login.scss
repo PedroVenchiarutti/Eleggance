@@ -1,0 +1,58 @@
+.admin-login-container {
+  background-color: #f3f3f3;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../public/img/BackgroundHOVER.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .modal-login {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #b6b6b69e;
+    justify-content: space-around;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    input {
+      width: 300px;
+      height: 40px;
+      border-radius: 5px;
+      border: 0.5px solid black;
+      padding-left: 5px;
+      font-size: 16px;
+      background-color: #f3f3f3;
+    }
+
+    button {
+      height: 40px;
+      border-radius: 5px;
+      border: 0.2px solid black;
+      font-size: 16px;
+      width: 300px;
+      transition: 0.3s;
+      color: #f3f3f3;
+      background-color: #e4af39;
+    }
+    button:hover {
+      cursor: pointer;
+      background-color: #f3bd4b;
+      color: #333;
+    }
+
+    a {
+      color: black;
+      font-weight: 600;
+    }
+    a:hover {
+      color: rgba(51, 51, 51, 0.886);
+    }
+  }
+}
