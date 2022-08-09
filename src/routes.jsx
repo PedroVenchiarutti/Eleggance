@@ -4,9 +4,8 @@ import FormSingUp from "./pages/FormSingUp/FormSingUp";
 import FormCadastro from "./pages/FormCadastro/FormCadastro";
 import RegistrationForm from "./pages/RegistrationForm/registrationForm";
 import { AuthProvider, AuthContext } from "./contexts/auth";
-import Schedulling from "./pages/Schedulling/schedulling";
-import ProfileOrders from './pages/Profile/MyProfile'
-
+import Schedulling from "./pages/Schedulling/Schedulling";
+import ProfileOrders from './pages/Profile/MyProfile';
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
 import Shop from "./pages/Shop/Shop";
@@ -22,6 +21,7 @@ import MyProfile from "./pages/MyProfile/MyProfile";
 import MyData from "./pages/MyData/MyData";
 import Profile from "./pages/Profile/MyProfile";
 import MyLogin from './pages/MyLogin/MyLogin';
+
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -51,7 +51,6 @@ const changeRoutes = () => {
           <Route exact path="/perfil/pedidos" element={<Profile />} />
           <Route exact path="/perfil/dados" element={<MyData />} />
           <Route exact path="/perfil/login" element={<MyLogin />} />
-
 
           <Route
             exact
