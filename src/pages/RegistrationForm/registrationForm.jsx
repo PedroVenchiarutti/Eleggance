@@ -1,20 +1,26 @@
 import React, { useState, useContext, useEffect } from "react";
-import "../RegistrationForm/registrationForm.scss";
+import "./registrationForm.scss";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../api/firebase";
 import { AuthContext } from "../../contexts/auth";
+import Form from "../../components/Form/Form";
+import Loading from "../../components/SpinerLoader";
 
 const RegistrationForm = (props) => {
   const [imgURL, setImgURL] = useState("");
+  const [previelImg, setPrevielImg] = useState(
+    "/icons/iconmonstr-photo-camera-6-72.png"
+  );
+  const [images, setImages] = useState("");
   const [personalName, setPersonalName] = useState("");
   const [cpf, setCpf] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [sexo, setSexo] = useState("");
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(false);
 
   const { personalDataRecord } = useContext(AuthContext);
 
-  // armazenar o dados da imagens no objeto que esta sendo enviado para o localStorage
+  //Funcao para enviar a imagem para o firebase
   const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
@@ -30,33 +36,26 @@ const RegistrationForm = (props) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
-      (error) => {
-        console.log(error);
-      }
+      (error) => {}
     );
     uploadTask.then((res) => {
-      getDownloadURL(storageRef).then((url) => {
-        console.log("urldaesssaporra", url);
-        setImgURL(url);
-        //trazendo o state de success de uma promisse
-        if (res.state === "success") {
-          
-          handleSubmit();
-        } else {
-          return;
-        }
-      });
-    });
-  };
-
-  const handleSubmit = async () => {
-    personalDataRecord(personalName, cpf, birthDate, sexo, imgURL);
-    console.log("cadastro pessoal", {
-      personalName,
-      cpf,
-      birthDate,
-      sexo,
-      imgURL,
+      getDownloadURL(storageRef)
+        .then((url) => {
+          let urlImage = url;
+          setImgURL(urlImage);
+          personalDataRecord({
+            personalName,
+            cpf,
+            birthDate,
+            sexo,
+            imgURL: urlImage,
+          });
+          setProgress(true);
+        })
+        .catch((error) => {
+          console.log(error);
+          return <div>Error...</div>;
+        });
     });
   };
 
@@ -72,34 +71,30 @@ const RegistrationForm = (props) => {
           </div>
           <div className="FormularioBox">
             <div className="grid-container">
-              <form className="Formulario" onSubmit={firebaseUpload}>
+              <Form className="Formulario" onSubmit={firebaseUpload}>
                 <div className="input-photo-registration">
                   <label
                     className="label-photo-registration"
                     htmlFor="photo-registration"
                   >
                     <img
-                      src={
-                        !imgURL
-                          ? "/icons/iconmonstr-photo-camera-6-72.png"
-                          : imgURL
-                      }
+                      src={images ? URL.createObjectURL(images) : previelImg}
                       className={
-                        !imgURL ? "img-photo-registration" : "imgPerfil"
+                        !imgURL && previelImg
+                          ? "img-photo-registration"
+                          : "imgPerfil"
                       }
                       alt="blabla"
                     />
                   </label>
-                  {!imgURL && (
-                    <progress
-                      value={progress}
-                      max="100"
-                      className="progres-range"
-                      onChange={(e) => setProgress(e.target.value)}
-                    />
-                  )}
-                  <input type="file" id="photo-registration" name="arquivos" />
+                  <input
+                    type="file"
+                    id="photo-registration"
+                    name="image"
+                    onChange={(e) => setImages(e.target.files[0])}
+                  />
                 </div>
+
                 <div className="container-container">
                   <div className="icons-input-form">
                     <div className="icons-registration">
@@ -194,6 +189,7 @@ const RegistrationForm = (props) => {
                     <button
                       className="button-proximo-registration"
                       type="submit"
+                      name="proximo"
                     >
                       Proximo
                     </button>
@@ -210,9 +206,10 @@ const RegistrationForm = (props) => {
                         Voltar
                       </a>
                     </button>
+                    <div>{progress === false ? <div> </div> : <Loading />}</div>
                   </div>
                 </div>
-              </form>
+              </Form>
             </div>
           </div>
         </div>

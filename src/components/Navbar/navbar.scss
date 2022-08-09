@@ -62,7 +62,7 @@
           z-index: 1;
           padding: 20px;
           outline: none;
-          box-shadow: 1px 0px 20px 0px #848484;
+          box-shadow: 1px 0px 5px 0px #848484;
           border: none;
         }
       }
@@ -133,18 +133,13 @@
   }
 }
 
-// javascript
+// javascript code
 .navbar-user-logged {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   top: 10px;
-
-  .svgCart {
-    width: 71px;
-    margin-left: 30px;
-  }
 
   .navbar-user-logged-name {
     display: flex;
@@ -154,14 +149,52 @@
       background: transparent;
       cursor: pointer;
     }
+
+    img {
+      max-width: 66px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .navbar-user-name-logout {
+      h4 {
+        font-size: 20px;
+        color: #e1ab38;
+        margin-left: 10px;
+        span {
+          color: #e1ab38;
+        }
+      }
+      button {
+        border: none;
+        background: #e1ab38;
+        cursor: pointer;
+        color: #f3f3f3;
+        width: "bold";
+        font-size: 16px;
+        margin-left: 10px;
+        border-radius: 6px;
+        width: 100px;
+      }
+
+      button:hover {
+        background: #ffce45;
+        color: #111;
+        transition: 0.8;
+      }
+    }
   }
 
-  h4 {
-    font-size: 20px;
-    color: #e1ab38;
-    margin-left: 10px;
-    span {
-      color: #e1ab38;
+  .buttonCart {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    .svgCart {
+      margin-top: 10px;
+      width: 71px;
+      margin-left: 30px;
     }
   }
 }
@@ -249,6 +282,7 @@
         flex-direction: column;
       }
 
+      //Menu hamburgue \/
       .hamburguer {
         top: 50%;
         left: 10%;

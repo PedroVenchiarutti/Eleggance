@@ -74,15 +74,15 @@ export const AuthProvider = ({ children }) => {
   ) => {
     try {
       const personal = [
-      {
-        id: id,
-        personalName: personalName,
-        cpf: cpf,
-        birthDate: birthDate,
-        sexo: sexo,
-        imgUrl: imgUrl,
-      }
-    ];
+        {
+          id: id,
+          personalName: personalName,
+          cpf: cpf,
+          birthDate: birthDate,
+          sexo: sexo,
+          imgUrl: imgUrl,
+        },
+      ];
       localStorage.setItem("personal", JSON.stringify(personal));
       setUser(personal);
       navigate("/login");
@@ -93,6 +93,7 @@ export const AuthProvider = ({ children }) => {
 
   const userLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("personal");
     setUser(null);
     setLogged(false);
     setLogout(true);
