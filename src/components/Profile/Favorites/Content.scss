@@ -1,0 +1,21 @@
+.profile-container {
+    display: flex;
+    margin: 50px 60px;
+
+    .main-content {
+        width: 76%;
+        
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            border: solid 1px #E4AF39;
+            border-radius: 10px;
+            flex-grow: 1;
+        }
+    }
+}

@@ -207,3 +207,10 @@ export const myOrders = [
   { products: ["Escova de cabelo ultra prime edição premium", "Produto 8", "Produto 9"], quantity: ["3", "1", "1"], purchaseId: 101112, price: "R$ 39,99", status: "Pendente" },
   { products: ["Batom", "Esmalte", "Produto 9"], quantity: ["1", "6", "1"], purchaseId: 131415, price: "R$ 38,99", status: "Entregue" }
 ]
+
+export const myFavorites = [
+  { name: "Batom cor rose cremoso", price: 22.99 },
+  { name: "Batom cor verde cremoso", price: 22.99, inSale: true },
+  { name: "Batom cor azul cremoso", price: 22.99 },
+  { name: "Batom cor ciano cremoso", price: 22.99 }
+]

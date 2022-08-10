@@ -21,6 +21,7 @@ import MyData from "./pages/MyData/MyData";
 import ProfileOrders from "./pages/Profile/Orders";
 import ProfileAddresses from "./pages/Profile/Addresses";
 import MyLogin from './pages/MyLogin/MyLogin';
+import ProfileFavorites from "./pages/Profile/Favorites";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -51,7 +52,7 @@ const changeRoutes = () => {
           <Route exact path="/perfil/dados" element={<MyData />} />
           <Route exact path="/perfil/enderecos" element={<ProfileAddresses />} />
           <Route exact path="/perfil/login" element={<MyLogin />} />
-          <Route exact path="/perfil/favoritos" element={<MyLogin />} />
+          <Route exact path="/perfil/favoritos" element={<ProfileFavorites />} />
           <Route exact path="/perfil/avaliacoes" element={<MyLogin />} />
 
 
