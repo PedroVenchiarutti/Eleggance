@@ -18,9 +18,28 @@ const MyLogin = (props) => {
             <div className="container">
                 <ClientMenu />
                 <div className="content">
-                    <Data header ="Meu Login e Senha">
+                    <Data header="Meu Login e Senha">
                         <div className="forms">
-                            <Form />
+                            <Form item="Senha">
+                                <label htmlFor="currentpassword">Senha atual:</label>
+                                <input type="password" />
+
+                                <label htmlFor="newpassword">Nova senha:</label>
+                                <input type="password" />
+
+                                <label htmlFor="newpassword">Nova senha:</label>
+                                <input type="password" />
+                            </Form>
+                            <Form item="Email">
+                                <label htmlFor="currentemail">Email atual:</label>
+                                <input type="email" />
+
+                                <label htmlFor="newemail">Novo Email:</label>
+                                <input type="email" />
+
+                                <label htmlFor="newemail">Novo Email:</label>
+                                <input type="email" />
+                            </Form>
                         </div>
                     </Data>
                 </div>
@@ -28,7 +47,6 @@ const MyLogin = (props) => {
             <Footer />
         </div>
     )
-
 
 }
 

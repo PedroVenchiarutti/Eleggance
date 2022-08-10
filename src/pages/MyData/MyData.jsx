@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ClientMenu from "../../components/ClientMenu/ClientMenu";
 import Data from "../../components/Data/Data";
-import { Navbar } from "../../components/Navbar";
+import Navbar from "../../components/Navbar/index";
 import ToHome from "../../components/ToHome/ToHome";
 import './MyData.scss'
 import Footer from '../Footer/Footer'
@@ -24,7 +24,7 @@ const MyData = (props) => {
 
     return(
         <div className="myData">
-            {/* <Navbar /> */}
+            <Navbar />
             <ToHome />
             <div className="container">
                 <ClientMenu selected='dados'/>

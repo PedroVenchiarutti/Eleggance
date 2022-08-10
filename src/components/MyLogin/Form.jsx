@@ -8,16 +8,10 @@ const Form = (props) => {
         <div className="formDiv">
             <h4>Alterar {props.item}</h4>
             <form action="" className="form">
-                <Label for="password" label="teste"/>
-                <input type={props.type} />
-
-                <label htmlFor="password">Nova senha:</label>
-                <input type={props.type} />
-
-                <label htmlFor="password">Nova senha:</label>
-                <input type={props.type} />
-
-                <input type="submit" value={'Alterar ' + props.item} />
+                    {props.children}
+                <div className="submitDiv">
+                    <input type="submit" value={'Alterar ' + props.item} className="submit"/>
+                </div>
             </form>
         </div>
     )
