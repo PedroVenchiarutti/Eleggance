@@ -17,7 +17,6 @@ const RegistrationForm = (props) => {
   const [birthDate, setBirthDate] = useState("");
   const [sexo, setSexo] = useState("");
   const [progress, setProgress] = useState(false);
-
   const { personalDataRecord } = useContext(AuthContext);
 
   //Funcao para enviar a imagem para o firebase
@@ -80,9 +79,7 @@ const RegistrationForm = (props) => {
                     <img
                       src={images ? URL.createObjectURL(images) : previelImg}
                       className={
-                        !imgURL && previelImg
-                          ? "img-photo-registration"
-                          : "imgPerfil"
+                        previelImg ? "img-photo-registration" : "imgPerfil"
                       }
                       alt="blabla"
                     />
