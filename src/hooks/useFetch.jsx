@@ -5,11 +5,18 @@ import Api from "../api/api";
 export function useFetch(url) {
   const [data, setData] = useState([]);
 
+  //Fazer uma rota para puxar os produtos no all getALlProducts
   useEffect(() => {
-    Api.get(`http://localhost:3333/${url}`).then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    });
+    const getItem = Api.get(`${url}`);
+
+    getItem
+      .then((res) => {
+        console.log("res do hook", res.data[0]);
+        setData(res.data[0]);
+      })
+      .catch((err) => {
+        console.log("err do hook", err);
+      });
   }, []);
 
   return { data };

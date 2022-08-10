@@ -6,6 +6,7 @@ export default function AllProducts({ products }) {
   if (!products) return;
   return (
     <>
+      {/* renderzando produto statico do mock */}
       {products.map((product, index) => {
         return (
           <li key={index} className="swiper-container">
