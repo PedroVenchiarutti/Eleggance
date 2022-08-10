@@ -13,6 +13,7 @@ export const Navbar = () => {
     setMode(!active);
   };
 
+  
   // Pega a imagen do localStorage e renderizar na tela
   const renderImage = () => {
     if (authenticated) {

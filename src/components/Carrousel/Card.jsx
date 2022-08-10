@@ -5,7 +5,9 @@ import { useFetch } from "../../hooks/useFetch";
 const Card = ({ product }) => {
   /* const navigate = useNavigate(); */
 
-  const { data } = useFetch(`public/products/1`);
+  const { data } = useFetch(`public/products`);
+  if (!data) return;
+
   console.log("data", data);
 
   if (!product) return;
@@ -14,7 +16,7 @@ const Card = ({ product }) => {
     <>
       <div className="container-img-promo">
         <img src={product.image} alt="tete" />
-        <span className="title-product-promo">{data.name}</span>
+        <span className="title-product-promo">{product.name}</span>
         <br />
         <span className="full-price-promo">{product.price}</span>
         <span>à vista</span>

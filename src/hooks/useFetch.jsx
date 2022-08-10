@@ -8,14 +8,16 @@ export function useFetch(url) {
   //Fazer uma rota para puxar os produtos no all getALlProducts
   useEffect(() => {
     const getItem = Api.get(`${url}`);
-
     getItem
       .then((res) => {
-        console.log("res do hook", res.data[0]);
-        setData(res.data[0]);
+        console.log("res do hook", res.data);
+        setData(res.data);
       })
       .catch((err) => {
         console.log("err do hook", err);
+      })
+      .finally(() => {
+        console.log("finally do hook");
       });
   }, []);
 

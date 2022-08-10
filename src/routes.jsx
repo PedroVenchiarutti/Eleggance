@@ -41,6 +41,7 @@ const changeRoutes = () => {
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/shop" element={<Shop />} />
+          
           <Route
             exact
             path="/finalizarCompra"
