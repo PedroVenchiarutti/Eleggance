@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.scss";
 
 export default function HeaderDashboard(props) {
   return (
@@ -6,7 +7,9 @@ export default function HeaderDashboard(props) {
       <div className="col">
         <label>{props.titleHead}</label>
       </div>
-      <div className="col">{props.name}</div>
+      <div className="col">
+        <label>{props.name}</label>
+      </div>
     </div>
   );
 }

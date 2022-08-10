@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./index.scss";
 
 export default function MenuDashboard(props) {
@@ -17,27 +17,27 @@ export default function MenuDashboard(props) {
       <ul className="menu-container" id="menu">
         <img src="../../../public/logo.png" alt="" />
 
-        <li className="active">
-          <Link to={"/home"}>Geral</Link>
+        <li>
+          <NavLink to={"/admin/home"}>Geral</NavLink>
         </li>
         <li>
-          <Link to={"/home"}>Reservas</Link>
+          <NavLink to={"/admin/reservas"}>Reservas</NavLink>
         </li>
         <li>
-          <Link to={"/home"}>Produtos</Link>
+          <NavLink to={"/admin/produtos"}>Produtos</NavLink>
         </li>
         <li>
-          <Link to={"/home"}>Pedidos</Link>
+          <NavLink to={"/admin/pedidos"}>Pedidos</NavLink>
         </li>
         <li>
-          <Link to={"/home"}>Admnistração</Link>
+          <NavLink to={"/admin/admnistracao"}>Admnistração</NavLink>
         </li>
         <li>
-          <Link to={"/home"}>Cupons</Link>
+          <NavLink to={"/admin/cupons"}>Cupons</NavLink>
         </li>
         <hr />
         <li>
-          <Link to={"/home"}>Configurações</Link>
+          <NavLink to={"/admin/configuracoes"}>Configurações</NavLink>
         </li>
       </ul>
       <div

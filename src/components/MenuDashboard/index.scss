@@ -24,6 +24,8 @@
       color: #f3f3f3;
       text-decoration: none;
       font-size: 18px;
+      width: 100%;
+      height: 100%;
     }
   }
   li:hover {
@@ -32,6 +34,9 @@
 
   .active {
     background-color: #4e4736;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
   }
   hr {
     width: 100%;

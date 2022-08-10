@@ -5,11 +5,11 @@ import HeaderDashboard from "../../../HeaderDashboard";
 export default function HomeDashboard() {
   return (
     <div className="dashboard-container">
-      <header>
-        <MenuDashboard />
-        <HeaderDashboard titleHead={"SEJA BEM VINDO"} name={"Ryan"} />
-      </header>
-      <main></main>
+      <MenuDashboard />
+
+      <main>
+        <HeaderDashboard></HeaderDashboard>
+      </main>
     </div>
   );
 }

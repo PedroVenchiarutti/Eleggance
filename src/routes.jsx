@@ -10,7 +10,7 @@ import Cart from "./pages/Cart/Cart";
 import Shop from "./pages/Shop/Shop";
 import AdminLogin from "./pages/Admin/Login/Login";
 import HomeDashboard from "./pages/Admin/dashboard/Home";
-
+import ProdutosDashboard from "./pages/Admin/Produtos/Produtos";
 import {
   BrowserRouter as Router,
   Route,
@@ -72,6 +72,7 @@ const changeRoutes = () => {
 
           <Route exact path="/admin" element={<AdminLogin />} />
           <Route exact path="/admin/home" element={<HomeDashboard />} />
+          <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
           <Route
             path="*"
             element={

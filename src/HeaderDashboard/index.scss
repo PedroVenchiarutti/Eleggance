@@ -1,0 +1,10 @@
+.header-container {
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  label {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
