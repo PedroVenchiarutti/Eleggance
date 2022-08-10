@@ -8,7 +8,7 @@ import ClientMenu from "../../components/ClientMenu/ClientMenu";
 import MainHeader from '../../components/Profile/common/MainHeader'
 import ContentHeader from '../../components/Profile/common/ContentHeader'
 import Select from "../../components/Select/Select";
-import OrdersTable from '../../components/Profile/Orders/OrdersTable'
+import OrdersTable from '../../components/Profile/Orders/Table'
 
 import Footer from "../Footer/Footer";
 
@@ -16,7 +16,7 @@ import { myOrders } from '../../api/mock'
 
 import "./Orders.scss"
 
-export default props => {
+export default () => {
     const orderByOptions = [
         { value: "price", text: "Preço" },
         { value: "products", text: "Produtos" },
@@ -32,6 +32,7 @@ export default props => {
 
     return (
         <div>
+            <Navbar />
             <ToHome />
 
             <div className="my-profile-container">

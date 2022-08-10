@@ -2,49 +2,39 @@ import React from "react";
 
 import './Table.scss'
 
-export default ({list}) => (
+export default ({ list }) => (
     <div className="table-container">
         <table>
-            {renderHeadRows()}
-            {renderBodyRows(list)}
+            <thead>{renderHeadRows()}</thead>
+            <tbody>{renderBodyRows(list)}</tbody>
         </table>
     </div>
 )
 
-function renderHeadRows() {
-    return (
-        <thead>
-            <tr>
-                <th className="address">Endereço</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-    )
-}
+const renderHeadRows = () => (
+    <tr>
+        <th className="address">Endereço</th>
+        <th>Ações</th>
+    </tr>
+)
 
 // TODO: Get full address text based on cep.
 function renderBodyRows(addressesList) {
     return (
-        <tbody>
-            {
-                addressesList.map(address => {
-                    return (
-                        <tr key={address.cep}>
-                            <td className="address">{address.fullAddressText}</td>
-                            {getTdButtons()}
-                        </tr>
-                    )
-                })
-            }
-        </tbody>
+        addressesList.map(address => {
+            return (
+                <tr key={address.cep}>
+                    <td className="address">{address.fullAddressText}</td>
+                    {getTdButtons()}
+                </tr>
+            )
+        })
     )
 }
 
-function getTdButtons() {
-    return (
-        <td>
-            <button><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
-            <button><img src="/icons/icon-trash.svg" alt="Remover" /></button>
-        </td>
-    )
-}
+const getTdButtons = () => (
+    <td>
+        <button><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
+        <button><img src="/icons/icon-trash.svg" alt="Remover" /></button>
+    </td>
+)

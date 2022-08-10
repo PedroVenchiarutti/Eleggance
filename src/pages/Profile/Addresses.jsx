@@ -6,6 +6,7 @@ import ClientMenu from '../../components/ClientMenu/ClientMenu'
 import MainHeader from '../../components/Profile/common/MainHeader'
 import AddressForm from '../../components/Profile/Addresses/Form'
 import Addresses from '../../components/Profile/Addresses/Content'
+import Footer from '../Footer/Footer'
 
 import './Addresses.scss'
 
@@ -36,6 +37,8 @@ export default () => {
                     <Addresses title="Meus endereços" list={addresses} />
                 </div>
             </div>
+
+            <Footer />
         </div>
     )
 }

@@ -1,4 +1,5 @@
 .table-container {
+    overflow: hidden;
     table {
         width: 100%;
         border-collapse: collapse;
@@ -11,12 +12,17 @@
 
         th {
             font-weight: 300;
+            text-align: center;
+        }
+
+        .address {
             text-align: start;
-            padding-left: 15px;
+            padding-left: 20px;
         }
 
         td {
             padding: 15px;
+            text-align: center;
             border-bottom: solid 1px;
         }
 

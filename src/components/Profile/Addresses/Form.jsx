@@ -31,8 +31,8 @@ function saveAddress(event, datas, onFormSubmit) {
     onFormSubmit(datas);
 }
 
-export default ({onFormSubmit}) => {
-    const [cep, setCep] = useState(''); 
+export default ({ onFormSubmit }) => {
+    const [cep, setCep] = useState('');
     const onCepChange = (event) => {
         const cep = event.target.value;
         if (cep.length < 9) setCep(cep);
@@ -64,7 +64,7 @@ export default ({onFormSubmit}) => {
                 <div className="row">
                     <div className="form-group street">
                         <label>Rua:</label>
-                        <input value={street} onChange={ev => setStreet(ev.target.value)}/>
+                        <input value={street} onChange={ev => setStreet(ev.target.value)} />
                     </div>
                     <div className="form-group number">
                         <label>Número:</label>
@@ -76,7 +76,7 @@ export default ({onFormSubmit}) => {
                     </div>
                     <div className="form-group district">
                         <label>Bairro:</label>
-                        <input value={district} onChange={ev => setDistrict(ev.target.value)}/>
+                        <input value={district} onChange={ev => setDistrict(ev.target.value)} />
                     </div>
                 </div>
 
@@ -85,7 +85,7 @@ export default ({onFormSubmit}) => {
                         <div className="second-row-group">
                             <div className="form-group">
                                 <label>Cidade:</label>
-                                <input value={city} onChange={ev => setCity(ev.target.value)}/>
+                                <input value={city} onChange={ev => setCity(ev.target.value)} />
                             </div>
                             <div className="form-group">
                                 <label>CEP:</label>
@@ -93,7 +93,9 @@ export default ({onFormSubmit}) => {
                             </div>
                         </div>
 
-                        <button type="submit">Salvar endereço</button>
+                        <div className="button-div">
+                            <button type="submit">Salvar endereço</button>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -68,3 +68,35 @@
         padding: 4px 10px 4px 10px;
     }
 }
+
+@media (max-width: 1120px) {
+    .address-form-container {
+        overflow: hidden;
+        .row {
+            display: block;
+
+            .form-group {
+                width: 100%;
+            }
+
+            .second-row {
+                display: block;
+            }
+
+            .second-row-group {
+                display: block;
+
+                .form-group {
+                    width: 100%;
+                }
+            }
+        }
+
+        .button-div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    }
+}
