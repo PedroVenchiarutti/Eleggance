@@ -1,0 +1,31 @@
+
+.toHome{
+
+    .pageTitle{
+        display: flex;
+        margin-left: 65px;
+        margin-top: 13px;
+    
+    }
+        .pageTitle img{
+            padding-right: 15px;
+        }
+    
+        .pageTitle h4{
+            font-weight: 400;
+        }
+
+}
+
+@media (max-width: 1120px) {
+
+    .toHome .pageTitle{
+        margin: 10px 0px;
+        width: 100%;
+        padding-right: 5px;
+    }
+
+
+
+}
+
