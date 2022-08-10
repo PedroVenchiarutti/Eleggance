@@ -77,7 +77,6 @@ export default function Shop({ products }) {
 
           <ul>
             <AllProducts products={shelfProducts} />
-            <AllProducts products={shelfProducts} />
           </ul>
         </div>
       </main>

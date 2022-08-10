@@ -25,7 +25,7 @@ const renderBodyRows = () => (
                     </button>
                 </td>
                 <td><p className="product-price">R${favorite.price}</p></td>
-                <td><button className='buy-button'>Comprar</button></td>
+                <td><button className='buy-button'>COMPRAR</button></td>
             </tr>
         )
     })

@@ -20,8 +20,7 @@ import MyProfile from "./pages/MyProfile/MyProfile";
 import MyData from "./pages/MyData/MyData";
 import ProfileOrders from "./pages/Profile/Orders";
 import ProfileAddresses from "./pages/Profile/Addresses";
-import MyLogin from './pages/MyLogin/MyLogin';
-import ProfileFavorites from "./pages/Profile/Favorites";
+import MyLogin from "./pages/MyLogin/MyLogin";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -47,14 +46,18 @@ const changeRoutes = () => {
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/shop" element={<Shop />} />
+
           <Route exact path="/perfil" element={<MyProfile />} />
           <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
           <Route exact path="/perfil/dados" element={<MyData />} />
-          <Route exact path="/perfil/enderecos" element={<ProfileAddresses />} />
+          <Route
+            exact
+            path="/perfil/enderecos"
+            element={<ProfileAddresses />}
+          />
           <Route exact path="/perfil/login" element={<MyLogin />} />
-          <Route exact path="/perfil/favoritos" element={<ProfileFavorites />} />
+          <Route exact path="/perfil/favoritos" element={<MyLogin />} />
           <Route exact path="/perfil/avaliacoes" element={<MyLogin />} />
-
 
           <Route
             exact
