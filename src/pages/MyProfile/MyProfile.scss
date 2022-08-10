@@ -54,6 +54,12 @@
 
     .myProfile {
 
+
+
+        .profile-content-header {
+            background-color: aqua;
+        }
+
         *{
             margin: 0px 0px;
             padding: 0px 0px;
@@ -82,21 +88,20 @@
             align-items: center;
             margin-top: 20px;
 
-            .options {
-                margin: 0px 0px;
+                .options {
+                    margin: 0px 0px;
+                }
+
+            .ordersAndInfo{
+                margin-top: 20px;
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-bottom: 20px;
+
             }
 
-        .ordersAndInfo{
-            margin-top: 20px;
-            width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 20px;
-        }
-
-
-
         }
 
     }
-    }
+}

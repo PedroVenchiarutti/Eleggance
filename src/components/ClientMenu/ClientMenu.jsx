@@ -57,12 +57,20 @@ const ClientMenu = (props) => {
                         <h3>Olá, <span className="username">{props.username}</span></h3>
                         <Link to={'/home'}>Sair</Link>
                 </li>
-                <li className="option">
+                {/* <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil')}}>
                         <img src="/icons/user.png" alt="user" height="40px" width="50px"/>
                         <h2>Meu Perfil</h2>
                     </button>
+                </li> */}
+                <Link to="/perfil">
+                <li className="option">
+                    <button className="liButton">
+                        <img src="/icons/user.png" alt="user" height="40px" width="50px"/>
+                        <h2>Meu Perfil</h2>
+                    </button>
                 </li>
+                </Link>
                 <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil/pedidos')}}>
                         <img src="/icons/box.png" alt="caixa" height="40px" width="50px"/>

@@ -3,11 +3,10 @@ import { Navbar } from "../../components/Navbar"
 import Footer from '../../pages/Footer/Footer'
 import ToHome from '../../components/ToHome/ToHome'
 import ClientMenu from '../../components/ClientMenu/ClientMenu'
-import ContentHeader from "../../components/Profile/common/ContentHeader";
-import MainHeader from "../../components/Profile/common/MainHeader";
 import Data from '../../components/Data/Data'
 import './MyLogin.scss'
 import Form from "../../components/MyLogin/Form"
+
 
 const MyLogin = (props) => {
 
