@@ -160,7 +160,7 @@
 }
 
 //===========BUTTON===========\\
-.container-button {
+.container-button-team {
   width: 100%;
   height: 100%;
   .container-agendamento-button {
@@ -173,7 +173,7 @@
       align-items: center;
       background-color: #ffce45;
       border-radius: 6px;
-      font-size: 22px;
+      font-size: 1.375rem;
       height: 40px;
       width: 350px;
       font-weight: bold;
@@ -252,4 +252,5 @@
       }
     }
   }
+
 }
