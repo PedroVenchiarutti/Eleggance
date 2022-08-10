@@ -51,6 +51,7 @@ const changeRoutes = () => {
           <Route exact path="/perfil/dados" element={<MyData />} />
           <Route exact path="/perfil/enderecos" element={<ProfileAddresses />} />
           <Route exact path="/perfil/login" element={<MyLogin />} />
+          {/* <Route exact path="/logint" element={<MyLogin />} /> */}
           <Route exact path="/perfil/favoritos" element={<MyLogin />} />
           <Route exact path="/perfil/avaliacoes" element={<MyLogin />} />
 

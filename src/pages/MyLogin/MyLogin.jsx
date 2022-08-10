@@ -15,7 +15,7 @@ const MyLogin = (props) => {
             <Navbar />
             <ToHome />
             <div className="container">
-                <ClientMenu />
+                <ClientMenu selected='login' />
                 <div className="content">
                     <Data header="Meu Login e Senha">
                         <div className="forms">

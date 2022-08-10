@@ -32,6 +32,7 @@ export default props => {
 
     return (
         <div>
+            <Navbar />
             <ToHome />
 
             <div className="my-profile-container">

@@ -102,7 +102,7 @@ export const Navbar = () => {
       <nav>
         <div className="logoInSearch">
           <Link to="/">
-            <img src="logo.png" />
+            <img src="/logo.png" />
           </Link>
           <div className="inputSearch">
             <div className="inputList">
@@ -126,7 +126,7 @@ export const Navbar = () => {
               </div>
             </div>
             <button>
-              <img src="icons/iconmonstr-search-thin.svg" />
+              <img src="/icons/iconmonstr-search-thin.svg" />
             </button>
           </div>
         </div>
