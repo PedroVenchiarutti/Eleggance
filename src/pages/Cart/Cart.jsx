@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/index";
 import Footer from "../Footer/Footer";
 import ProductsList from "../../components/ProductsLIst/index";
 import ProductsCard from "../../components/ProductsCard/index";
 import { shelfProducts } from "../../api/mock";
 import Carrousel from "../../components/Carrousel/Carrousel";
-import { Link } from "react-router-dom";
 import "./Cart.scss";
+import { useFetch } from "../../hooks/useFetch";
 
-export default function Cart(props) {
+export default function Cart({ match }) {
   const subTotal = 1000;
   return (
     <div className="cartContainer">
@@ -37,7 +38,7 @@ export default function Cart(props) {
           </tfoot>
         </table>
         <ul>
-          <ProductsCard products={shelfProducts}  />
+          <ProductsCard products={shelfProducts} />
         </ul>
         <div className="actions">
           <Link to="/home" className="finishBuyButton">

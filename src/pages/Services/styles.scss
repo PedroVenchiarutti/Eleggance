@@ -3,13 +3,13 @@
 .services-container {
   margin-top: 60px;
   margin-bottom: 30px;
+  
   .services-items {
     width: 100%;
     height: 400px;
     background-image: url("../../../img/BackgroundOP4.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 1;
     position: relative;
 
     .services-text {
@@ -125,6 +125,55 @@
         text-align: center;
         font-weight: 450;
         font-size: 1.5625rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  .services-container {
+    max-width: 400px;
+    max-height: 400px;
+    display: flex;
+    .services-items {
+      background-image: url("../../../img/BackgroundOP4_MQ.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      flex-direction: column;
+      .services-text {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.813rem;
+
+        .item-first {
+          max-width: 400px;
+          max-height: 400px;
+        }
+        //===========HOVER===========//
+        .item-first:hover {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-image: url("../../../img/CorteFIRST.jpg");
+          transition: all 0.7s ease;
+
+          h4 {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            text-shadow: 1px 2px #111;
+            color: #e1ab38;
+          }
+        }
+        //===========HOVER===========//
       }
     }
   }
