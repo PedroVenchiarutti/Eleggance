@@ -38,7 +38,6 @@ export const Navbar = () => {
         }
       }
     }
-
     console.log(linkImg);
   };
 

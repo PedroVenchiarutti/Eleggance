@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.scss";
 
-
 export const Services = () => {
   return (
     <div className="services-container">
@@ -23,6 +22,6 @@ export const Services = () => {
         </div>
         {/*======== SERVICES TEXT ========*/}
       </div>
-      </div>
+    </div>
   );
 };
