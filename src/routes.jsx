@@ -21,7 +21,7 @@ import MyData from "./pages/MyData/MyData";
 import ProfileOrders from "./pages/Profile/Orders";
 import ProfileAddresses from "./pages/Profile/Addresses";
 import MyLogin from "./pages/MyLogin/MyLogin";
-
+import Financas from "./pages/Finances/finances"
 const changeRoutes = () => {
   const Private = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
@@ -46,6 +46,7 @@ const changeRoutes = () => {
           <Route exact path="/agendamento" element={<Schedulling />} />
           <Route exact path="/produtos" element={<Products />} />
           <Route exact path="/shop" element={<Shop />} />
+             <Route exact path="/financas" element={<Financas/>} />
 
           <Route exact path="/perfil" element={<MyProfile />} />
           <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
