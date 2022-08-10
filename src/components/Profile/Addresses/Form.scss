@@ -71,12 +71,12 @@
 
 @media (max-width: 1120px) {
     .address-form-container {
-        overflow: hidden;
+        width: 100%;
         .row {
             display: block;
 
             .form-group {
-                width: 100%;
+                width: 80%;
             }
 
             .second-row {
@@ -87,7 +87,7 @@
                 display: block;
 
                 .form-group {
-                    width: 100%;
+                    width: 80%;
                 }
             }
         }
@@ -95,7 +95,7 @@
         .button-div {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
             margin-top: 20px;
         }
     }

@@ -1,5 +1,4 @@
 .table-container {
-    overflow: hidden;
     table {
         width: 100%;
         border-collapse: collapse;
@@ -41,6 +40,5 @@
 
 @media (max-width: 1120px) {
     table {
-        overflow: scroll;
     }
 }
