@@ -3,22 +3,26 @@ import { Link } from "react-router-dom";
 import "./login.scss";
 
 export default function Login() {
-  const [adminEmail, setAdminEmail] = useState("");
+  const [adminLogin, setAdminLogin] = useState("");
   const [adminSenha, setAdminSenha] = useState("");
 
-    function verificarLogin(){
-        
+  function verificarLogin() {
+    if (adminLogin == "admin" && adminSenha == "admin") {
+      
+    } else {
+      alert("tchau");
     }
-    
+  }
+
   return (
     <div className="admin-login-container">
       <div className="modal-login">
         <h1>DashBoard Elegancce </h1>
         <input
           type="text"
-          placeholder="Email"
-          value={adminEmail}
-          onChange={(e) => setAdminEmail(e.target.value)}
+          placeholder="Login"
+          value={adminLogin}
+          onChange={(e) => setAdminLogin(e.target.value)}
         />
         <input
           type="password"

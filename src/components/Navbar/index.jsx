@@ -82,7 +82,6 @@ export const Navbar = () => {
       );
     } else {
       return (
-<<<<<<< HEAD
         <div className="div-button">
           <Link to="/login" className="login-button">
             <img src="/img/Frame.svg" />
@@ -99,16 +98,6 @@ export const Navbar = () => {
                 <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
               </button>
             </div>
-=======
-        <div className="navbar-user-logged-mobile">
-          <div className="navbar-user-logged-name-mobile">
-            <button>
-              <img src="/img/Frame.svg" className="svgUser-mobile" />
-            </button>
-            <button className="buttonCart">
-              <img src="/icons/shoppingCart.svg" className="svgCart" />
-            </button>
->>>>>>> 9615ba468789ac3813a424f2ca848287df4c6950
           </div>
         </div>
       );

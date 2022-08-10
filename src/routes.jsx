@@ -8,7 +8,8 @@ import Schedulling from "./pages/Schedulling/Schedulling";
 import Products from "./pages/Products/products";
 import Cart from "./pages/Cart/Cart";
 import Shop from "./pages/Shop/Shop";
-import AdminLogin from "./pages/Admin/Login";
+import AdminLogin from "./pages/Admin/Login/Login";
+import HomeDashboard from "./pages/Admin/dashboard/Home";
 
 import {
   BrowserRouter as Router,
@@ -69,7 +70,8 @@ const changeRoutes = () => {
             }
           />
 
-          <Route path="/admin" element={<AdminLogin />} />
+          <Route exact path="/admin" element={<AdminLogin />} />
+          <Route exact path="/admin/home" element={<HomeDashboard />} />
           <Route
             path="*"
             element={
