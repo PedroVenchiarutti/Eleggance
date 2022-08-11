@@ -3,10 +3,10 @@ import React, { useState } from "react";
 export default function ModalAddProduct() {
   const [valor, setValor] = useState({
     name: "testeeet",
-    price: 0,
+    price: 1,
     descrition: "",
     brand: "",
-    qtProduct: "",
+    qtProduct: 1,
     urlImage: "",
   });
   function modalToggle() {
@@ -14,7 +14,6 @@ export default function ModalAddProduct() {
     modalAdd.classList.toggle("open");
   }
 
-  console.log(valor);
   return (
     <div className="modalAddProducts" id="modalAddProducts">
       <div className="header-modal">
@@ -33,28 +32,28 @@ export default function ModalAddProduct() {
         <input
           type="number"
           value={valor.price}
-          onchange={(e) => setValor({ ...valor, price: e.target.value })}
+          onChange={(e) => setValor({ ...valor, price: e.target.value })}
         />
         <label>Descrição:</label>
         <input
           maxLength={255}
           type="text"
           value={valor.descrition}
-          onchange={(e) => setValor({ ...valor, description: e.target.value })}
+          onChange={(e) => setValor({ ...valor, descrition: e.target.value })}
         />
         <label>Categoria</label>
         <input
           maxLength={45}
           type="text"
           value={valor.brand}
-          onchange={(e) => setValor({ ...valor, brand: e.target.value })}
+          onChange={(e) => setValor({ ...valor, brand: e.target.value })}
         />
         <label>Quantidade Disponível</label>
         <input
           maxLength={3}
           type="number"
           value={valor.qtProduct}
-          onchange={(e) =>
+          onChange={(e) =>
             setValor({
               ...valor,
               qtProduct: e.target.value,
@@ -66,7 +65,7 @@ export default function ModalAddProduct() {
           type="file"
           className="inputPhoto"
           value={valor.urlImage}
-          onchange={(e) => setValor({ ...valor, urlImage: e.target.value })}
+          onChange={(e) => setValor({ ...valor, urlImage: e.target.value })}
         />
       </div>
       <div className="areaBtn">
