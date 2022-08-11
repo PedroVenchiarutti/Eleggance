@@ -1,0 +1,60 @@
+.produtos-dashboard-container main table {
+  width: 100%;
+  margin-top: 20px;
+
+  thead {
+    background-color: #222;
+    width: 100%;
+    color: #f3f3f3;
+  }
+
+  tbody {
+    width: 100%;
+    font-weight: 600;
+
+    td {
+      border-bottom: 1px solid #222;
+    }
+
+    .col-1 img {
+      max-width: 80px;
+      border-left: 1px solid #222;
+    }
+
+    .col-3 {
+      color: rgb(61, 60, 60);
+    }
+
+    .col-4 {
+      color: rgb(16, 173, 16);
+      font-weight: bold;
+    }
+    .col-5 {
+      color: rgb(209, 150, 47);
+      font-weight: bold;
+    }
+    .col-6 {
+      img {
+        max-width: 25px;
+        max-height: 25px;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      .icon-edit {
+        background-color: rgb(227, 169, 68);
+      }
+      .icon-trash {
+        background-color: rgb(232, 71, 71);
+      }
+
+      img:hover {
+        cursor: pointer;
+      }
+    }
+
+    td label {
+      margin-left: 10px;
+    }
+  }
+}

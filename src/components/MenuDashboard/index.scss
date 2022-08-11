@@ -52,11 +52,13 @@
     display: none;
   }
 
-  .active {
+  .menu-container.active {
     transition: 2s all ease;
     display: flex;
     width: 100vw;
     margin-left: 0;
+    position: fixed;
+    z-index: 3;
   }
 
   .toogle {
