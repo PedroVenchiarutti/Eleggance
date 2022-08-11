@@ -13,15 +13,15 @@ export default function ModalAddProduct() {
       </div>
       <div className="main-modal">
         <label>Nome Do Produto:</label>
-        <input type="text" />
+        <input maxLength={45} type="text" />
         <label>Valor:</label>
-        <input type="text" />
+        <input max={5} type="number" />
         <label>Descrição</label>
-        <input type="text" />
+        <input maxLength={255} type="text" />
         <label>Categoria</label>
-        <input type="text" />
+        <input maxLength={45} type="text" />
         <label>Quantidade Disponível</label>
-        <input type="text" />
+        <input maxLength={3} type="number" />
         <label>Foto Do Produto</label>
         <input type="file" className="inputPhoto" />
       </div>
