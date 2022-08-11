@@ -2,12 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss";
-
 export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
-
   // Abrir/Fechar menu mobile Hamburguer
   const ToggleMode = () => {
     setMode(!active);
@@ -18,7 +16,6 @@ export const Navbar = () => {
     if (authenticated) {
       const getLocalStorage = localStorage.getItem("personal");
       const img = JSON.parse(getLocalStorage);
-
       if (img === null) {
         return;
       } else {
@@ -40,12 +37,10 @@ export const Navbar = () => {
     }
     console.log(linkImg);
   };
-
   //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
   const userLogged = () => {
     const height = window.screen.height;
     const width = window.screen.width;
-
     if (height >= 600 && width >= 600 && authenticated) {
       return (
         <div className="navbar-user-logged">
@@ -94,7 +89,6 @@ export const Navbar = () => {
       );
     }
   };
-
   return (
     <div className="navbar-container">
       <nav>

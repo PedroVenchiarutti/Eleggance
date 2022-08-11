@@ -9,7 +9,7 @@ const Card = ({ product }) => {
     <>
       {/* renderzando produto statico do mock */}
       <div className="container-img-promo">
-        <img src={product.url_img} alt="tete" />
+        <img src={product.image} alt="tete" />
         <span className="title-product-promo">{product.name}</span>
         <br />
         <span className="full-price-promo">{product.description}</span>
