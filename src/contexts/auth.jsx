@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+// hook para inserir
+import { useFetch } from "../hooks/useFetch";
+
 // Criando um contexto para o Auth
 export const AuthContext = createContext();
 
@@ -12,6 +15,18 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [logged, setLogged] = useState(false);
   const [logout, setLogout] = useState(false);
+
+  //enviando para bancodados
+  const { data, insert, setData, setInsert } = useFetch(`public/resgister
+    `);
+
+  //enviando para bancodados
+  /*   useEffect(() => {
+    if (data) {
+      setProgress(false);
+      personalDataRecord(data);
+    }
+  }, [data]); */
 
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
@@ -73,21 +88,24 @@ export const AuthProvider = ({ children }) => {
     imgUrl
   ) => {
     try {
-      const personal = [
-        {
-          id: id,
-          personalName: personalName,
-          cpf: cpf,
-          birthDate: birthDate,
-          sexo: sexo,
-          imgUrl: imgUrl,
-        },
-      ];
-      localStorage.setItem("personal", JSON.stringify(personal));
-      setUser(personal);
+      const personal = {
+        id: id,
+        personalName: personalName,
+        cpf: cpf,
+        birthDate: birthDate,
+        sexo: sexo,
+        imgUrl: imgUrl,
+      };
+      setData(personal);
+      setInsert(true);
       navigate("/login");
-    } catch {
-      alert("Erro ao cadastrar usuário");
+
+      /*       localStorage.setItem("personal", JSON.stringify(personal)); */
+      /*  setUser(personal); */
+      //adicionando no array os dados pessoal pegado por props
+      //Passando true para o setInsert para adicionar no banco de dados
+    } catch (error) {
+      alert("Erro ao cadastrar usuário", error);
     }
   };
 
