@@ -4,7 +4,7 @@ import ClientMenu from "../../ClientMenu/ClientMenu";
 import ContentHeader from '../../../components/Profile/common/ContentHeader';
 import Table from "./Table";
 
-import './Content.scss'
+import '../Profile.scss'
 
 export default () => (
     <div className="profile-container">
