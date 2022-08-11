@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
+import Finances from "./finances";
 import {
   LineChart,
   Line,
@@ -9,65 +10,24 @@ import {
   Legend,
   ReferenceLine,
   ResponsiveContainer,
-} from 'recharts';
-
-
-
+} from "recharts";
 
 let data = [
   {
-    name: 'Page A',
-    Vendas: 4000,
-    Vendas: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 5000,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    name: "Dia 1",
+    VendasHoje: 40,
+    VendasOntem: 0,
+    amt: 50,
   },
 ];
 
-{/*for (var i = 1; i<= 5; i++) {
- data.push{
-
- }
+for (var dia = 1; dia <= 5; dia++) {
+  data.push({ name: "Dia 2", VendasHoje: 25, VendasOntem: 15, amt: 10 });
 }
-*/}
 
 export default class Example extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/line-chart-width-xaxis-padding-sujqi';
+  static demoUrl =
+    "https://codesandbox.io/s/line-chart-width-xaxis-padding-sujqi";
 
   render() {
     return (
@@ -78,8 +38,13 @@ export default class Example extends PureComponent {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <Line
+            type="monotone"
+            dataKey="VendasHoje"
+            stroke="#8884d8"
+            activeDot={{ r: 8 }}
+          />
+          <Line type="monotone" dataKey="VendasOntem" stroke="#82ca9d" />
         </LineChart>
       </ResponsiveContainer>
     );
