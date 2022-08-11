@@ -8,6 +8,7 @@ import AddressForm from '../../components/Profile/Addresses/Form'
 import Addresses from '../../components/Profile/Addresses/Content'
 
 import './Addresses.scss'
+import Footer from "../Footer/Footer";
 
 export default () => {
     const [addresses, setAddressesList] = useState([]);
@@ -36,6 +37,7 @@ export default () => {
                     <Addresses title="Meus endereços" list={addresses} />
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

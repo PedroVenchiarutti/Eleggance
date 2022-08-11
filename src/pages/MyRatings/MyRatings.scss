@@ -38,6 +38,7 @@
 
                     p{
                         margin: 0px 0px;
+                        font-weight: 400;
                     }
     
                     h5{
@@ -96,6 +97,38 @@
                     }
 
                 }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 1120px) { 
+
+    .myRatings{
+
+        width: 100%;
+        .toHome .pageTitle{
+            width: 100%;
+            justify-content: center;
+        }
+
+        .container{
+            margin: 0px 0px;
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+         
+            .content{
+                margin-top: 20px;
+                width: 100%;
+
+                .item{
+
+                }
+
             }
         }
     }
