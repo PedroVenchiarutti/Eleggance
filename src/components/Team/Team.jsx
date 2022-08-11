@@ -64,7 +64,7 @@ export default (props) => {
       {/* =====TEAM===== */}
       {/* ============================================= */}
       {/* =====CONTAINER BUTTON===== */}
-      <div className="container-button">
+      <div className="container-button-team">
         <div className="container-agendamento-button">
           <a href="/solicitation" className="agendamento-button">
             <p>Solicite um agendamento</p>

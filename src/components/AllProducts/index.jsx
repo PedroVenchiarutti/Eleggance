@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 
 export default function AllProducts({ products }) {
-  const { data } = useFetch(`public/products`);
+  const { data } = useFetch(`api/public/products/pages/1`);
   console.log("data", data);
 
   if (!products) return;
