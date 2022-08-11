@@ -35,7 +35,7 @@ export default () => {
             <Navbar />
             <ToHome />
 
-            <div className="my-profile-container">
+            <div className="profile-container">
                 <ClientMenu selected='pedidos' />
 
                 <div className="main-content">
@@ -43,7 +43,7 @@ export default () => {
                         Todas as suas compras ficam salvas aqui. Caso deseje rever ou tenha algum problema, entre em contato conosco.
                     </MainHeader>
 
-                    <div className="orders">
+                    <div className="content">
                         <ContentHeader title="Meus pedidos">
                             <Select label="Ordenar por:" options={orderByOptions} onChange={updateSelectState} />
                         </ContentHeader>

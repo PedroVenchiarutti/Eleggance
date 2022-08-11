@@ -5,7 +5,7 @@ import Table from "./Table";
 import './Content.scss';
 
 export default ({ title, list, removeAddress }) => (
-    <div className="addresses">
+    <div className="content">
         <ContentHeader title={title} />
         <Table list={list} removeAddress={removeAddress} />
     </div>

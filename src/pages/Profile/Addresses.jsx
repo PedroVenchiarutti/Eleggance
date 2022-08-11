@@ -33,7 +33,7 @@ export default () => {
             <Navbar />
             <ToHome />
 
-            <div className="address-container">
+            <div className="profile-container">
                 <ClientMenu selected='enderecos' />
 
                 <div className="main-content">

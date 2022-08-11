@@ -9,8 +9,8 @@
         padding: 15px;
     }
 
-    td.product-img {
-        height: 10px;
+    td.product-img img {
+        height: 80px;
     }
 
     td.product {
@@ -47,6 +47,16 @@
         
         &:hover {
             background-color: rgb(205, 148, 27)
+        }
+    }
+}
+
+@media (max-width: 1120px) {
+    table {
+        overflow: scroll;
+
+        td.responsive-hide {
+            display: none;
         }
     }
 }
