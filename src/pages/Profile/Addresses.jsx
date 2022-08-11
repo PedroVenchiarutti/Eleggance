@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { Navbar } from '../../components/Navbar/index';
 import ToHome from '../../components/ToHome/ToHome'
@@ -11,15 +11,22 @@ import Footer from '../Footer/Footer'
 import './Addresses.scss'
 
 export default () => {
-    const [addresses, setAddressesList] = useState([]);
+    const addressesFromStorage = sessionStorage.getItem('addresses');
+    const [addresses, setAddressesList] = useState(addressesFromStorage ? JSON.parse(addressesFromStorage) : []);
 
     const onAddressFormSubmit = (datas) => {
         let address = {
             cep: datas.cep,
             fullAddressText: `${datas.street}, ${datas.number} - ${datas.district} - ${datas.city} ${datas.cep}`
         }
-        setAddressesList(addresses => [...addresses, address]);
+        if (!addresses.find(item => item.cep == address.cep)) setAddressesList([...addresses, address]);
     }
+
+    const removeAddress = (cep) => setAddressesList(addresses.filter(item => item.cep != cep));
+
+    useEffect(() => {
+        sessionStorage.setItem('addresses', JSON.stringify(addresses));
+    }, [addresses]);
 
     return (
         <div>
@@ -34,7 +41,7 @@ export default () => {
                         <AddressForm onFormSubmit={onAddressFormSubmit} />
                     </MainHeader>
 
-                    <Addresses title="Meus endereços" list={addresses} />
+                    <Addresses title="Meus endereços" list={addresses} removeAddress={removeAddress} />
                 </div>
             </div>
 

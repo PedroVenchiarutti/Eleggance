@@ -20,6 +20,7 @@ import MyProfile from "./pages/MyProfile/MyProfile";
 import MyData from "./pages/MyData/MyData";
 import ProfileOrders from "./pages/Profile/Orders";
 import ProfileAddresses from "./pages/Profile/Addresses";
+import ProfileFavorites from './pages/Profile/Favorites'
 import MyLogin from "./pages/MyLogin/MyLogin";
 
 const changeRoutes = () => {
@@ -56,7 +57,7 @@ const changeRoutes = () => {
             element={<ProfileAddresses />}
           />
           <Route exact path="/perfil/login" element={<MyLogin />} />
-          <Route exact path="/perfil/favoritos" element={<MyLogin />} />
+          <Route exact path="/perfil/favoritos" element={<ProfileFavorites />} />
           <Route exact path="/perfil/avaliacoes" element={<MyLogin />} />
 
           <Route
