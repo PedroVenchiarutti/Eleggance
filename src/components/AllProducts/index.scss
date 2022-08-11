@@ -1,0 +1,16 @@
+.containerSpiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  position: absolute;
+  height: 100%;
+  top: 200px;
+  right: 300px;
+
+  .chaotic-orbit {
+    --uib-size: 70px;
+    --uib-speed: 1.5s;
+    --uib-color: black;
+  }
+}
