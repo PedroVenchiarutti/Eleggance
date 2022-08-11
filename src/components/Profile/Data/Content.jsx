@@ -1,5 +1,5 @@
 import React from "react";
-import ClientMenu from "../../ClientMenu/ClientMenu";
+import ClientMenu from '../common/ClientMenu'
 import Data from "../../Data/Data"
 import '../Profile.scss'
 

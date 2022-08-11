@@ -1,6 +1,6 @@
 import React from "react";
 import '../Profile.scss';
-import ClientMenu from '../../ClientMenu/ClientMenu'
+import ClientMenu from '../common/ClientMenu'
 import Data from '../../Data/Data'
 import ContentHeader from '../common/ContentHeader'
 import './Content.scss'

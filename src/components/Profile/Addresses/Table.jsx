@@ -20,7 +20,6 @@ const renderHeadRows = () => (
 
 // TODO: Get full address text based on cep.
 function renderBodyRows(addressesList, removeAddress) {
-    console.log(removeAddress)
     return (
         addressesList.map(address => {
             return (
