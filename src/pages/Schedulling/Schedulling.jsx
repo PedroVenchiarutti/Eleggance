@@ -6,7 +6,9 @@ import { HomeBanner } from "../../components/HomeBanner";
 import { images, shelfProducts, trendProducts } from "../../api/mock";
 import Team from "../../components/Team/Team";
 import { AboutUs } from "../../components/AboutUs";
-import { Services } from "../Services";
+import { Services } from "../../pages/Services";
+import MyProfile from "../MyProfile/MyProfile";
+
 
 export default (props) => {
   return (

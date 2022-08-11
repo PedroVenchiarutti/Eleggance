@@ -1,3 +1,4 @@
+
 import React from "react";
 import Footer from "../../pages/Footer/Footer";
 import "./Team.scss";

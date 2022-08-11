@@ -1,20 +1,38 @@
 import React, { useState, useEffect } from "react";
-import Api from "../api/api";
+import { apiGet, apiPost } from "../api/api";
 
 export function useFetch(url) {
   const [data, setData] = useState([]);
+  const [insert, setInsert] = useState(false);
 
   //Fazer uma rota para puxar os produtos no all getALlProducts
   useEffect(() => {
-    const getItem = Api.get(`${url}`);
-    getItem
+    const postItem = apiPost(`${url}`);
+    const getItemAll = apiGet(`${url}`);
+
+    /*  postItem
       .then((res) => {
-        console.log("res do hook", res.data);
+        setInsert(true);
+        data.push(res);
+        console.log("res do fetch", res);
       })
       .catch((err) => {
-        console.log("err do hook", err);
-      });
+        console.log("erro no fetch", err);
+      }); */
+
+    async function getItem() {
+      await getItemAll
+        .then((res) => {
+          console.log(res);
+          setData(res.data);
+          setInsert(true);
+        })
+        .catch((err) => {
+          console.log("err do hook", err);
+        });
+    }
+    getItem();
   }, []);
 
-  return { data };
+  return { data, insert, setData, setInsert };
 }

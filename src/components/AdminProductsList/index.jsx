@@ -2,7 +2,7 @@ import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 
 export default function AdminProductsList() {
-  const { data } = useFetch(`public/products`);
+  const { data } = useFetch(`api/public/products/pages/1`);
 
   console.log("data do admin", data);
 
