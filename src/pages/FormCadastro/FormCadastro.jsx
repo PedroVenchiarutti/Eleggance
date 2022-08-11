@@ -7,16 +7,19 @@ import Form from "../../components/Form/Form";
 import Button from "../../components/Button/Button";
 
 const FormCadastro = (props) => {
-  const [login, setLogin] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [registerUserState, setRegisterUserState] = useState({
+    login: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   const { registerUser } = useContext(AuthContext);
 
   const handleRegistrer = (e) => {
     e.preventDefault();
-    registerUser(login, email, password, confirmPassword);
-    console.log("cadastro", { login, email, password, confirmPassword });
+    registerUser(registerUserState);
+    console.log("cadastro ok ");
   };
 
   return (
@@ -28,7 +31,7 @@ const FormCadastro = (props) => {
               <div className="box-header-cadastro">
                 <div className="img-cadastro">
                   {/*  IMAGEN CRASHANDO O SITE */}
-                  <img src="img\fotocadastro.jpg" alt="foto" />
+                  {/*  <img src="img\fotocadastro.jpg" alt="foto" /> */}
                 </div>
                 <div className="content-input-cadastro">
                   <h1>Eleggance</h1>
@@ -41,8 +44,13 @@ const FormCadastro = (props) => {
                       placeholder="Login"
                       name="inputLogin"
                       id="inputLoginResgister"
-                      value={login}
-                      onChange={(e) => setLogin(e.target.value)}
+                      value={registerUserState.login}
+                      onChange={(e) =>
+                        setRegisterUserState({
+                          ...registerUserState,
+                          login: e.target.value,
+                        })
+                      }
                     />
                   </div>
                   {/*   <p className="error-message">{errors.inputEmail?.message}</p> */}
@@ -54,8 +62,13 @@ const FormCadastro = (props) => {
                       placeholder="Email"
                       name="inputEmail"
                       id="inputEmail"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={registerUserState.email}
+                      onChange={(e) =>
+                        setRegisterUserState({
+                          ...registerUserState,
+                          email: e.target.value,
+                        })
+                      }
                     />
                   </div>
                   {/*       <p className="error-message">
@@ -68,8 +81,13 @@ const FormCadastro = (props) => {
                       placeholder="Senha"
                       name="createPassword"
                       id="inputPassword"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      value={registerUserState.password}
+                      onChange={(e) =>
+                        setRegisterUserState({
+                          ...registerUserState,
+                          password: e.target.value,
+                        })
+                      }
                     />
                   </div>
                   {/*       <p className="error-message">
@@ -82,8 +100,13 @@ const FormCadastro = (props) => {
                       placeholder="Confirmar Senha"
                       name="confirmPassword"
                       id="inputConfirmPassword"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      value={registerUserState.confirmPassword}
+                      onChange={(e) =>
+                        setRegisterUserState({
+                          ...registerUserState,
+                          confirmPassword: e.target.value,
+                        })
+                      }
                     />
                   </div>
                   <div className="button-div-cadastro">

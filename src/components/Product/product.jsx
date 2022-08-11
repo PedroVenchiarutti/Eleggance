@@ -18,11 +18,11 @@ export default (props) => {
       <div className="container-products">
         <div className="photo-info-products">
           <div className="name-product">
-            <h1>Shampoo do bom</h1>
+            <h1>Nome do Produto</h1>
             <div className="info-p-products">
-              <p>ref: 001</p>
-              <p>estoque: em estoque</p>
-              <p>marca: sehloiro</p>
+              <p>ref: 001 </p>
+              <p>Estoque: Em Estoque </p>
+              <p>Marca: Marca do Produto </p>
             </div>
           </div>
           <div className="photo-product">
@@ -61,8 +61,8 @@ export default (props) => {
           </div>
           <Link to={"/finishBuy"}>
             <button className="button-buy-product">
-              <div className="icon-bag-product">
-                <img src="\icons\icon-bag.png" alt="foto" />
+              <div className="icon-cart-product">
+                <img src="\icons\ShopCart.png" alt="foto" />
               </div>
               <h3>Comprar</h3>
             </button>

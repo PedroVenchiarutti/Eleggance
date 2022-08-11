@@ -38,7 +38,7 @@ export default function FinishBuy({ products }) {
               <li>11718-350 || PRAIA GRANDE - SP</li>
             </div>
             <div className="icon-edit">
-              <img src="../../public/icons/icon-edit.svg" />
+              <img src="./icons/icon-edit.svg" />
             </div>
           </AsideFinishBuy>
           <AsideFinishBuy title="2 - FRETE">
@@ -65,23 +65,20 @@ export default function FinishBuy({ products }) {
           <AsideFinishBuy title="4 - MÉTODO DE PAGAMENTO" class="paymentMethod">
             <div className="payment-methods">
               <li>
-                <img
-                  className="iconPaymentMethod"
-                  src="../../public/icons/icon-pix.svg"
-                />
+                <img className="iconPaymentMethod" src="./icons/icon-pix.svg" />
                 PIX
               </li>
               <li>
                 <img
                   className="iconPaymentMethod"
-                  src="../../public/icons/icon-boleto.png"
+                  src="./icons/icon-boleto.png"
                 />
                 BOLETO
               </li>
               <li>
                 <img
                   className="iconPaymentMethod"
-                  src="../../public/icons/icone-credit-card.png"
+                  src="./icons/icone-credit-card.png"
                 />
                 CARTÃO DE CRÉDITO
               </li>
