@@ -10,7 +10,7 @@ import Form from "../../components/MyLogin/Form"
 
 const MyLogin = (props) => {
 
-    return(
+    return (
         <div className="myLogin">
             <Navbar />
             <ToHome />
@@ -19,7 +19,7 @@ const MyLogin = (props) => {
                 <div className="content">
                     <Data header="Meu Login e Senha">
                         <div className="forms">
-                            <Form item="Senha">
+                            <Form item="Senha" value="Alterar Senha">
                                 <label htmlFor="currentpassword">Senha atual:</label>
                                 <input type="password" />
 
@@ -29,7 +29,7 @@ const MyLogin = (props) => {
                                 <label htmlFor="newpassword">Nova senha:</label>
                                 <input type="password" />
                             </Form>
-                            <Form item="Email">
+                            <Form item="Email" value="Alterar Email">
                                 <label htmlFor="currentemail">Email atual:</label>
                                 <input type="email" />
 

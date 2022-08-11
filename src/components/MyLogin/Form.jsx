@@ -1,6 +1,6 @@
 import React from "react";
 import './Form.scss';
-import Label from "./Label";
+import Button from '../Button/Button'
 
 const Form = (props) => {
 
@@ -10,7 +10,7 @@ const Form = (props) => {
             <form action="" className="form">
                     {props.children}
                 <div className="submitDiv">
-                    <input type="submit" value={'Alterar ' + props.item} className="submit"/>
+                    <Button className="saveButton">{props.value}</Button>
                 </div>
             </form>
         </div>
