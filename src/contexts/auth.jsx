@@ -1,14 +1,15 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+
+// hook para inserir
+import { useFetch } from "../hooks/useFetch";
 
 // Criando um contexto para o Auth
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
   const [logged, setLogged] = useState(false);
   const [logout, setLogout] = useState(false);
@@ -39,57 +40,48 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const registerUser = async (login, email, password, confirmPassword) => {
+  const registerUser = async (resgister) => {
     try {
-      const user = {
-        id: Math.random(10),
-        login: login,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword,
+      const userData = {
+        id: 2,
+        ...resgister,
       };
 
-      if (!login || !email || !password || !confirmPassword)
+      if (
+        !userData.login ||
+        !userData.email ||
+        !userData.password ||
+        !userData.confirmPassword
+      )
         return alert("Preencha todos os campos");
 
       if (user.password != user.confirmPassword)
         return alert("Senhas não conferem");
 
-      localStorage.setItem("user", JSON.stringify(user));
-      setUser(user);
+      localStorage.setItem("user", JSON.stringify(userData));
+      setUser(userData);
+      console.log("register user", user);
       navigate("/registration");
-      /* alert("Usuário cadastrado com sucesso!"); */
-    } catch {
-      alert("Erro ao cadastrar usuário");
+    } catch (error) {
+      alert("Erro ao cadastrar usuário", error);
     }
   };
 
-  const personalDataRecord = async (
-    id,
-    personalName,
-    cpf,
-    birthDate,
-    sexo,
-    imgUrl
-  ) => {
+  const personalDataRecord = async (id) => {
     try {
-      const personal = [
-        {
-          id: id,
-          personalName: personalName,
-          cpf: cpf,
-          birthDate: birthDate,
-          sexo: sexo,
-          imgUrl: imgUrl,
-        },
-      ];
-      localStorage.setItem("personal", JSON.stringify(personal));
-      setUser(personal);
+      const personal = {
+        ...user,
+        id,
+      };
+      setUser({ ...user, ...personal });
+      alert("Usuário cadastrado com sucesso!");
       navigate("/login");
-    } catch {
+    } catch (error) {
       alert("Erro ao cadastrar usuário");
+      console.log(error, "Erro ao cadastrar usuário");
     }
   };
+  console.log("userrrss", user);
 
   const userLogout = () => {
     localStorage.removeItem("user");

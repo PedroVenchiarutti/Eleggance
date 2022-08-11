@@ -11,14 +11,18 @@ const RegistrationForm = (props) => {
   const [previelImg, setPrevielImg] = useState(
     "/icons/iconmonstr-photo-camera-6-72.png"
   );
+  const [sexy, setSexy] = useState("");
   const [images, setImages] = useState("");
-  const [personalName, setPersonalName] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [birthDate, setBirthDate] = useState("");
-  const [sexo, setSexo] = useState("");
+  const [personalName, setPersonalName] = useState({
+    name: "",
+    cpf: "",
+    birthDate: "",
+    img: "",
+  });
+  const { personalDataRecord } = useContext(AuthContext);
   const [progress, setProgress] = useState(false);
 
-  const { personalDataRecord } = useContext(AuthContext);
+  console.log(personalName);
 
   //Funcao para enviar a imagem para o firebase
   const firebaseUpload = (e) => {
@@ -44,11 +48,8 @@ const RegistrationForm = (props) => {
           let urlImage = url;
           setImgURL(urlImage);
           personalDataRecord({
-            personalName,
-            cpf,
-            birthDate,
-            sexo,
-            imgURL: urlImage,
+            ...personalName,
+            img: urlImage,
           });
           setProgress(true);
         })
@@ -80,9 +81,7 @@ const RegistrationForm = (props) => {
                     <img
                       src={images ? URL.createObjectURL(images) : previelImg}
                       className={
-                        !imgURL && previelImg
-                          ? "img-photo-registration"
-                          : "imgPerfil"
+                        previelImg ? "img-photo-registration" : "imgPerfil"
                       }
                       alt="blabla"
                     />
@@ -120,8 +119,13 @@ const RegistrationForm = (props) => {
                           type="text"
                           name="name"
                           required
-                          value={personalName}
-                          onChange={(e) => setPersonalName(e.target.value)}
+                          value={personalName.name}
+                          onChange={(e) =>
+                            setPersonalName({
+                              ...personalName,
+                              name: e.target.value,
+                            })
+                          }
                         />
                         <div className="grid-item">
                           <label className="label-form">CPF:</label>
@@ -131,8 +135,13 @@ const RegistrationForm = (props) => {
                             type="text"
                             name="cpf"
                             required
-                            value={cpf}
-                            onChange={(e) => setCpf(e.target.value)}
+                            value={personalName.cpf}
+                            onChange={(e) =>
+                              setPersonalName({
+                                ...personalName,
+                                cpf: e.target.value,
+                              })
+                            }
                           />
                         </div>
                       </div>
@@ -162,8 +171,13 @@ const RegistrationForm = (props) => {
                             type="date"
                             name="data de nascimento"
                             required
-                            value={birthDate}
-                            onChange={(e) => setBirthDate(e.target.value)}
+                            value={personalName.birthDate}
+                            onChange={(e) =>
+                              setPersonalName({
+                                ...personalName,
+                                birthDate: e.target.value,
+                              })
+                            }
                           />
                         </label>
                       </div>
@@ -173,8 +187,8 @@ const RegistrationForm = (props) => {
                           name="select"
                           className="select-form"
                           required
-                          value={sexo}
-                          onChange={(e) => setSexo(e.target.value)}
+                          value={sexy}
+                          onChange={(e) => setSexy(e.target.value)}
                         >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>

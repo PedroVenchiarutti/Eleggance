@@ -39,7 +39,6 @@ export const Navbar = () => {
         }
       }
     }
-
     console.log(linkImg);
   };
 
@@ -61,7 +60,7 @@ export const Navbar = () => {
             </div>
           </div>
           <button className="buttonCart">
-            <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+            <img src="/icons/shoppingCart.svg" className="svgCart" />
           </button>
         </div>
       );
@@ -77,7 +76,7 @@ export const Navbar = () => {
             </Link>
           </div>
           <button className="buttonCart">
-            <img src="/icons/shoppingCart.svg" className="svgCart" />
+            <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
           </button>
         </div>
       );

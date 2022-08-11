@@ -1,11 +1,10 @@
 import React from "react";
 import "./styles.scss";
 
-
 export const Services = () => {
   return (
     <div className="services-container">
-      <div className="services-items">
+      <div   className="services-items">
         {/*======== SERVICES TEXT ========*/}
         <div className="services-text">
           <div className="item-first">
@@ -23,6 +22,6 @@ export const Services = () => {
         </div>
         {/*======== SERVICES TEXT ========*/}
       </div>
-      </div>
+    </div>
   );
 };

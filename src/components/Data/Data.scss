@@ -1,0 +1,33 @@
+.info{
+    border: 1px solid #e1ab38;
+    flex-grow: 1;
+    border-radius: 5px;
+}
+
+    .info .myData{
+        font-weight:600;
+        font-size: 20px;
+        margin-bottom: 35px;
+    }
+
+    .info .infoText{
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+
+    .info .infoData{
+        margin: 25px 0px;
+    }
+
+    .info .infoData p{
+        margin: 25px 0px;
+        font-weight: bold;
+    }
+
+    .info .infoData .infoP{
+        font-weight: 400;
+    }
+
+    .infoText .profile-content-header{
+        padding-left: 0px;
+    }
