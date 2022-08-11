@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
       console.log(error, "Erro ao cadastrar usuário");
     }
   };
-  console.log("userrrss", user);
+  // console.log("userrrss", user);
 
   const userLogout = () => {
     localStorage.removeItem("user");

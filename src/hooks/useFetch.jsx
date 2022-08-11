@@ -8,6 +8,7 @@ export function useFetch(url) {
 
   //Fazer uma rota para puxar os produtos no all getALlProducts
   useEffect(() => {
+
     async function getItem() {
       const getItemAll = Api.get(`${url}`);
       const response = await getItemAll;
