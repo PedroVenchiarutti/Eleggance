@@ -53,7 +53,7 @@
         justify-content: space-between;
         padding: 5px;
         width: 70%;
-        height: 5%;
+        height: 35px;
         margin-bottom: 15px;
 
         button {
@@ -81,6 +81,7 @@
         input {
           height: 40px;
           width: 450px;
+          max-width: 60%;
           border-radius: 5px;
           padding-left: 6px;
           font-size: 20px;
@@ -117,6 +118,32 @@
         color: #e2ac38;
         background-color: #f3f3f3;
         border: 0.5px solid #e2ac38;
+      }
+    }
+  }
+}
+
+@media (max-width: 1020px) {
+  .produtos-dashboard-container {
+    .header-container {
+      display: none;
+    }
+    main {
+      margin-top: 50px;
+      .header-modal {
+        width: 100%;
+        align-items: center;
+        h1 {
+          width: 100%;
+          font-size: 20px;
+        }
+      }
+      .areaBtn {
+        width: 80%;
+
+        .btn {
+          font-size: 14px;
+        }
       }
     }
   }

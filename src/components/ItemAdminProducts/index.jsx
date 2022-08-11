@@ -23,7 +23,9 @@ export default function ItemAdminProducts() {
             </td>
             <td className="col-3">
               <label>
-                {data.description.length > 50 ? "..." : data.description    }
+                {data.description.length > 50
+                  ? "Clique em editar para Descrição Completa..."
+                  : data.description}
               </label>
             </td>
             <td className="col-4">
