@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import ClientMenu from "../../ClientMenu/ClientMenu";
+import ClientMenu from "../common/ClientMenu";
 import MainHeader from '../common/MainHeader';
 import Form from './Form';
 import ContentHeader from '../common/ContentHeader';

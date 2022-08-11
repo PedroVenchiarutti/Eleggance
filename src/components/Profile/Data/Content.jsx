@@ -1,7 +1,8 @@
 import React from "react";
-import ClientMenu from "../../ClientMenu/ClientMenu";
+import ClientMenu from "../common/ClientMenu";
 import Data from "../../Data/Data"
 import '../Profile.scss'
+import Form from '../../Form/Form'
 
 export default (props) => {
 
@@ -24,6 +25,14 @@ export default (props) => {
                 <ClientMenu selected='dados'/>
                 <div className="main-content">
                   <Data header='Meus dados cadastrais'>
+                    <Form >
+
+                    </Form>
+
+
+
+
+
                         <form action="" className="formData">
                             <div className="formWritable">
                                 <label htmlFor="name">Nome Completo:</label>
