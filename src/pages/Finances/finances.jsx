@@ -64,13 +64,57 @@ const Finances = (props) => {
         </div>
         <div className="bottom-finance">
           <div className="bottom-finance-top">
-          <div className="bottom-finance-top-titles">
-          <h1>Vendas</h1>
+            <div className="bottom-finance-top-titles">
+              <h1>Vendas</h1>
+            </div>
+            <div className="bottom-finance-top-username">
+              <p>
+                De <input type="date" /> ate <input type="date" />{" "}
+                <button>
+                  ORDENAR POR{" "}
+                </button>{" "}
+              </p>
+            </div>
           </div>
-          <div className="bottom-finance-top-username">
-          <p>De <input type="date" /> ate <input type="date" /> <button className="bottom-finance-button-order">ORDENAR POR </button>  </p> 
-          
+          <div className="finances-table">
+            <table className="table-finances">
+              <thead>
+                <tr>
+                  <td>Nome do produto </td>
+                  <td>Quantidade</td>
+                  <td>Valor</td>
+                  <td>Codigo de venda</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Batom cor Rose Cremoso</td>
+                  <td>2</td>
+                  <td>99,98</td>
+                  <td>123456</td>
+                </tr>
+                <tr>
+                  <td>Batom cor Rose Cremoso</td>
+                  <td>2</td>
+                  <td>99,98</td>
+                  <td>123456</td>
+                </tr>
+                <tr>
+                  <td>Batom cor Rose Cremoso</td>
+                  <td>2</td>
+                  <td>99,98</td>
+                  <td>123456</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          <div className="finance-value-final">
+            <div className="finance-value-total">
+              <h3>Valor Total: R$ 150,00</h3>
+            </div>
+            <div className="finance-total-sell">
+              <h3> Vendas No Periodo: 777</h3>
+            </div>
           </div>
         </div>
       </div>

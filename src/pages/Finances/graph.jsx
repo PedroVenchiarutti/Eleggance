@@ -13,11 +13,12 @@ import {
 
 
 
-const data = [
+
+let data = [
   {
     name: 'Page A',
-    uv: 4000,
-    pv: 2400,
+    Vendas: 4000,
+    Vendas: 2400,
     amt: 2400,
   },
   {
@@ -57,6 +58,13 @@ const data = [
     amt: 2100,
   },
 ];
+
+{/*for (var i = 1; i<= 5; i++) {
+ data.push{
+
+ }
+}
+*/}
 
 export default class Example extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/line-chart-width-xaxis-padding-sujqi';
