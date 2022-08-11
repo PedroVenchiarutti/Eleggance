@@ -1,21 +1,17 @@
 import React from "react";
-import './MyRatings.scss'
-import { Navbar } from '../../components/Navbar'
-import ToHome from "../../components/ToHome/ToHome";
-import ClientMenu from "../../components/ClientMenu/ClientMenu";
-import Data from "../../components/Data/Data";
-import Footer from "../Footer/Footer"
-import ContentHeader from "../../components/Profile/common/ContentHeader"
+import '../Profile.scss';
+import ClientMenu from '../../ClientMenu/ClientMenu'
+import Data from '../../Data/Data'
+import ContentHeader from '../common/ContentHeader'
+import './Content.scss'
 
-const Ratings = (props) => {
+export default (props) => {
 
     return(
-        <div className="myRatings">
-            <Navbar />
-            <ToHome />
-            <div className="container">
+
+            <div className="profile-container">
                 <ClientMenu selected="avaliacoes"/>
-                <div className="content">
+                <div className="main-content">
                     <Data header={<ContentHeader title="Minhas Avaliações"/>}>
                         <ul className="itemList">
                             <li className="item">
@@ -48,10 +44,9 @@ const Ratings = (props) => {
                     </Data>
                 </div>
             </div>
-            <Footer />
-        </div>
+
+
     )
 
 }
 
-export default Ratings

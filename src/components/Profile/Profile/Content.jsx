@@ -1,13 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import Footer from "../Footer/Footer";
-import { Navbar } from "../../components/Navbar";
-import './MyProfile.scss';
-import { Link } from "react-router-dom";
-import ClientMenu from '../../components/ClientMenu/ClientMenu';
-import Data from "../../components/Data/Data";
-import ToHome from "../../components/ToHome/ToHome";
-import ContentHeader from "../../components/Profile/common/ContentHeader";
-import MainHeader from "../../components/Profile/common/MainHeader";
+import React, { useEffect, useState } from "react"
+import ClientMenu from "../../ClientMenu/ClientMenu"
+import Data from "../../Data/Data"
+import MainHeader from "../common/MainHeader"
+import '../Profile.scss'
 
 const MyProfile = (props) => {  
 
@@ -22,14 +17,9 @@ const MyProfile = (props) => {
     },[])
 
     return (
-        <div className="myProfile">
-            <div className="navbar">
-                <Navbar />
-            </div>
-            <ToHome />
-            <div className="container">
+            <div className="profile-container">
                 <ClientMenu selected='perfil' />
-                <div className="ordersAndInfo">
+                <div className="main-content">
                         <MainHeader title="VOCÊ AINDA NÃO TEM PEDIDOS RECENTES." body="Os detalhes dos seus pedidos mais recentes poderão ser acompanhados nesta área" />
                     <Data header='Meus Dados'>
                     {/* { <ContentHeader title="Meus dados"></ContentHeader>}> */}
@@ -44,8 +34,6 @@ const MyProfile = (props) => {
                     </Data>
                 </div>
             </div>
-            <Footer></Footer>
-        </div>
     )
 }
 

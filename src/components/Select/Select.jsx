@@ -1,11 +1,11 @@
 import './Select.scss'
 
-export default props => {
+export default ({ onChange, options }) => {
     return (
         <div className="profile-select-div">
-            <select defaultValue="" onChange={e => props.onChange(e)}>
+            <select defaultValue="" onChange={e => onChange(e)}>
                 <option defaultChecked value="">ORDENAR POR</option>
-                {props.options.map(option => { return <option value={option.value}>{option.text}</option> })}
+                {options.map(option => { return <option value={option.value}>{option.text}</option> })}
             </select>
         </div>
     )

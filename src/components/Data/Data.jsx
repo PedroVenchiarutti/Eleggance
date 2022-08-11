@@ -1,18 +1,17 @@
 import React from "react";
 import './Data.scss';
 
-const Data = (props) => {
-
-return(
-<div className="info">
-    <div className="infoText">
-        { props.header }
-        <div className="infoData">
-            { props.children }
+const Data = ({ header, children }) => {
+    return (
+        <div className="info">
+            <div className="infoText">
+                {header}
+                <div className="infoData">
+                    {children}
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-)
+    )
 
 }
 

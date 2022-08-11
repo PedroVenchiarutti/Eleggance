@@ -16,12 +16,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import FinishBuy from "./pages/FinishBuy/FinishBuy";
-import MyProfile from "./pages/MyProfile/MyProfile";
-import MyData from "./pages/MyData/MyData";
+import MyProfile from "./pages/Profile/Profile";
+import MyData from "./pages/Profile/Data";
 import ProfileOrders from "./pages/Profile/Orders";
 import ProfileAddresses from "./pages/Profile/Addresses";
-import MyLogin from "./pages/MyLogin/MyLogin";
-import MyRatings from './pages/MyRatings/MyRatings';
+import ProfileFavorites from './pages/Profile/Favorites'
+import MyLogin from "./pages/Profile/Login";
+import MyRatings from './pages/Profile/Ratings';
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -57,8 +58,7 @@ const changeRoutes = () => {
             element={<ProfileAddresses />}
           />
           <Route exact path="/perfil/login" element={<MyLogin />} />
-          {/* <Route exact path="/logint" element={<MyLogin />} /> */}
-          <Route exact path="/perfil/favoritos" element={<MyLogin />} />
+          <Route exact path="/perfil/favoritos" element={<ProfileFavorites />} />
           <Route exact path="/perfil/avaliacoes" element={<MyRatings />} />
 
           <Route

@@ -1,6 +1,6 @@
 import React from "react";
 import './Form.scss';
-import Button from '../Button/Button'
+import Button from '../../Button/Button'
 
 const Form = (props) => {
 

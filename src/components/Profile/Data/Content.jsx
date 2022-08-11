@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
-import ClientMenu from "../../components/ClientMenu/ClientMenu";
-import Data from "../../components/Data/Data";
-import { Navbar } from "../../components/Navbar";
-import ToHome from "../../components/ToHome/ToHome";
-import './MyData.scss'
-import Footer from '../Footer/Footer'
-import ContentHeader from "../../components/Profile/common/ContentHeader";
+import React from "react";
+import ClientMenu from "../../ClientMenu/ClientMenu";
+import Data from "../../Data/Data"
+import '../Profile.scss'
 
-const MyData = (props) => {
+export default (props) => {
 
     // useEffect(() => {
 
@@ -23,18 +19,11 @@ const MyData = (props) => {
     
 
     return(
-        <div className="myData">
-            <Navbar />
-            <ToHome />
-            <div className="container">
+
+            <div className="profile-container">
                 <ClientMenu selected='dados'/>
-                <div className="content">
-                    <ContentHeader title="" >
-                        <br />
-                        <br />
-                        <br />
-                    </ContentHeader>
-                    <Data header='Meus dados cadastrais'>
+                <div className="main-content">
+                  <Data header='Meus dados cadastrais'>
                         <form action="" className="formData">
                             <div className="formWritable">
                                 <label htmlFor="name">Nome Completo:</label>
@@ -66,13 +55,10 @@ const MyData = (props) => {
                             </div>
                         </form>
                     </Data>
+    
                 </div>
             </div>
-            <Footer />
-            {/* <script src="./myData.js"></script> */}
-        </div>
+
     )
 
 }
-
-export default MyData;
