@@ -1,60 +1,90 @@
-.form{
-    font-size: 20px;
-    display: flex;
-    label{
-        display: block;
-    }
+.info{
 
-    .formWritable{
-        display: inline;
-        width: 60%;
+    padding: 25px 25px;
 
-        .submit{
-            background-color: #E4AF39;
-            color: white;
-            border: none;
-            font-size: 15px;
-            padding: 10px 10px;
+    .form{
+        font-size: 20px;
+        display: flex;
+        label{
+            display: block;
         }
-
-        .nameInput{
-            width: 70%;
-        }
-
-        select{
-            padding: 0px 15px;
+    
+        .formWritable{
+            display: inline;
             width: 60%;
-            background-color: white;
-        }
-
-        input, select{
-            padding: 5px;
-            border-radius: 5px;
-            margin-bottom: 40px;            
-        }
-
-        .phoneAndGender{
-            display: flex;
-
-            input{
-                margin-right: 25px;
-                width: 80%;
+    
+            .submit{
+                background-color: #E4AF39;
+                color: white;
+                border: none;
+                font-size: 15px;
+                padding: 10px 10px;
+                cursor: pointer;
             }
-            span{
+    
+            .nameInput{
+                width: 70%;
+            }
+    
+            select{
+                padding: 0px 15px;
                 width: 60%;
+                background-color: white;
+            }
+    
+            input, select{
+                padding: 5px;
+                border-radius: 5px;
+                margin-bottom: 40px;            
+            }
+    
+            .phoneAndGender{
+                display: flex;
+    
+                input{
+                    margin-right: 25px;
+                    width: 80%;
+                }
+                span{
+                    width: 60%;
+                }
+            }
+        }
+    
+        .formReadOnly{
+            width: 40%;
+    
+            input{
+                padding: 5px;
+                border-radius: 5px;
+                background-color: #bdc2c2;
+                margin-bottom: 40px; 
             }
         }
     }
+}
 
-    .formReadOnly{
-        width: 40%;
 
-        input{
-            padding: 5px;
-            border-radius: 5px;
-            background-color: #bdc2c2;
-            margin-bottom: 40px; 
+@media (max-width: 1120px) {
+
+    .toHome{
+        width: 100%;
+    }
+
+    .footer__container{
+        min-width: 0px;
+        max-width: 375px;
+        margin: 0px 0px;
+    }
+
+    .form{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        .formReadOnly input{
+            width: 80%;
         }
+
     }
 
 

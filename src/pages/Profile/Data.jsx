@@ -7,12 +7,12 @@ import Footer from '../Footer/Footer'
 export default () => {
 
     return(
-        <div>
+        <>
             <Navbar />
             <ToHome />
             <Data />
             <Footer />
-        </div>
+        </>
     )
 
 
