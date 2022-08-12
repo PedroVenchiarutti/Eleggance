@@ -1,20 +1,37 @@
 import React from "react";
 import "./finances.scss";
 import RenderLineChart from "./graph";
-
+import MenuDashboard from "../../components/MenuDashboard";
 
 const Finances = (props) => {
+  const getTheDateCurrent = (e) => {
+    if (e.keyCode === 13) {
+      const valorCurrent = e.target.value;
+      const dataCurrent = valorCurrent.split("-");
+      dataCurrent.reverse();
+      const diaCurrent = dataCurrent[1];
+      const mesCurrent = dataCurrent[0];
+      const anoCurrent = dataCurrent[2];
+      const currentData = diaCurrent + "-" + mesCurrent + "-" + anoCurrent;
+      console.log(currentData);
+    }
+  };
   const getTheDate = (e) => {
     if (e.keyCode === 13) {
       const valor = e.target.value;
-      console.log(valor);   
+      const data = valor.split("-");
+      data.reverse();
+      const dia = data[1];
+      const mes = data[0];
+      const ano = data[2];
+      const currentData = dia + "-" + mes + "-" + ano;
+      console.log(currentData);
     }
   };
 
-
   return (
     <div className="container-all-finances">
-      <div className="left-finances"></div>
+      <MenuDashboard />
       <div className="right-finances">
         <div className="nav-finances">
           <div className="nav-finances-title">
@@ -49,7 +66,9 @@ const Finances = (props) => {
               <p> de 25 de maio de 2022, 09:41 PM</p>
             </div>
             <div className="finances-graph-left-graph">
-              <RenderLineChart dati={getTheDate}/>
+              <RenderLineChart 
+
+              />
             </div>
           </div>
           <div className="finances-graph-right">
@@ -78,8 +97,8 @@ const Finances = (props) => {
             </div>
             <div className="bottom-finance-top-username">
               <p>
-                De <input type="date" onKeyDown={(e) => getTheDate(e)} /> ate{" "}
-                <input type="date" onKeyDown={(e) => getTheDate(e)} />{" "}
+                De <input type="date" onKeyDown={(e) => getTheDateCurrent(e)} />{" "}
+                ate <input type="date" onKeyDown={(e) => getTheDate(e)} />{" "}
                 <button>ORDENAR POR </button>{" "}
               </p>
             </div>

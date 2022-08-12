@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import Finances from "./finances";
 import {
   LineChart,
   Line,
@@ -16,16 +15,16 @@ let data = [
   {
     name: "Dia 1",
     VendasHoje: 40,
-    VendasOntem: 0,
+    VendasOntem: 45,
     amt: 50,
   },
 ];
 
-for (var dia = 1; dia <= 5; dia++) {
+for (var dia = 1; dia <= 30; dia++) {
   data.push({ name: "Dia 2", VendasHoje: 25, VendasOntem: 15, amt: 10 });
 }
 
-export default class Example extends PureComponent {
+export default class RenderLineChart extends PureComponent {
   static demoUrl =
     "https://codesandbox.io/s/line-chart-width-xaxis-padding-sujqi";
 
