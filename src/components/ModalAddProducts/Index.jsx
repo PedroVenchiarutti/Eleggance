@@ -4,21 +4,14 @@ import Api from "../../api/api";
 export default function ModalAddProduct() {
   const [valor, setValor] = useState({
     name: "",
-    price: 1,
-    descrition: "",
+    description: "",
+    value: "13",
     brand: "",
-    qtProduct: 1,
-    urlImage: "",
+    qt: 1,
+    url_img: "",
   });
   function postItem() {
-    Api.post(`api/protected/product`, {
-      name: valor.name,
-      value: valor.price,
-      description: valor.descrition,
-      qt: valor.qtProduct,
-      brand: valor.brand,
-      urlImage: valor.urlImage,
-    })
+    Api.post(`api/protected/product`, valor)
       .then(function (response) {
         console.log(response);
       })
@@ -49,15 +42,15 @@ export default function ModalAddProduct() {
         <label>Valor:</label>
         <input
           type="number"
-          value={valor.price}
+          value={valor.value}
           onChange={(e) => setValor({ ...valor, price: e.target.value })}
         />
         <label>Descrição:</label>
         <input
           maxLength={255}
           type="text"
-          value={valor.descrition}
-          onChange={(e) => setValor({ ...valor, descrition: e.target.value })}
+          value={valor.description}
+          onChange={(e) => setValor({ ...valor, description: e.target.value })}
         />
         <label>Categoria</label>
         <input
@@ -70,11 +63,11 @@ export default function ModalAddProduct() {
         <input
           maxLength={3}
           type="number"
-          value={valor.qtProduct}
+          value={valor.qt}
           onChange={(e) =>
             setValor({
               ...valor,
-              qtProduct: e.target.value,
+              qt: e.target.value,
             })
           }
         />
@@ -82,8 +75,8 @@ export default function ModalAddProduct() {
         <input
           type="file"
           className="inputPhoto"
-          value={valor.urlImage}
-          onChange={(e) => setValor({ ...valor, urlImage: e.target.value })}
+          value={valor.url_img}
+          onChange={(e) => setValor({ ...valor, url_img: e.target.value })}
         />
       </div>
       <div className="areaBtn">
