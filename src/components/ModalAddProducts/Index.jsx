@@ -1,14 +1,32 @@
 import React, { useState } from "react";
+import Api from "../../api/api";
 
 export default function ModalAddProduct() {
   const [valor, setValor] = useState({
-    name: "testeeet",
+    name: "",
     price: 1,
     descrition: "",
     brand: "",
     qtProduct: 1,
     urlImage: "",
   });
+  function postItem() {
+    Api.post(`api/protected/product`, {
+      name: valor.name,
+      value: valor.price,
+      description: valor.descrition,
+      qt: valor.qtProduct,
+      brand: valor.brand,
+      urlImage: valor.urlImage,
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }
+
   function modalToggle() {
     let modalAdd = document.getElementById("modalAddProducts");
     modalAdd.classList.toggle("open");
@@ -69,7 +87,9 @@ export default function ModalAddProduct() {
         />
       </div>
       <div className="areaBtn">
-        <div className="btn btnCadastrarProduto">Cadastrar Produto</div>
+        <button className="btn btnCadastrarProduto" onClick={postItem}>
+          Cadastrar Produto
+        </button>
         <div className="btn btnCancelarCadastrarProduto" onClick={modalToggle}>
           Cancelar
         </div>

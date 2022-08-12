@@ -1,10 +1,11 @@
-import React from "react";
-import HeaderDashboard from "../../../HeaderDashboard";
+import React, { useEffect } from "react";
+import HeaderDashboard from "../../../components/HeaderDashboard";
 import AdminProductsList from "../../../components/AdminProductsList";
 import MenuDashboard from "../../../components/MenuDashboard";
 import ModalAddProducts from "../../../components/ModalAddProducts";
 import ModalEditProducts from "../../../components/ModalEditProducts";
 import "./Produtos.scss";
+
 export default function ProdutosDashboard() {
   function modalToggle() {
     let modalAdd = document.getElementById("modalAddProducts");
