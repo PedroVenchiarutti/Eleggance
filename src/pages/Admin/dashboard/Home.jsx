@@ -1,6 +1,6 @@
 import React from "react";
 import MenuDashboard from "../../../components/MenuDashboard";
-import HeaderDashboard from "../../../HeaderDashboard";
+import HeaderDashboard from "../../../components/HeaderDashboard";
 
 export default function HomeDashboard() {
   return (
