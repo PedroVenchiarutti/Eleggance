@@ -2,6 +2,8 @@ import React from "react";
 import "./finances.scss";
 import RenderLineChart from "./graph";
 import MenuDashboard from "../../components/MenuDashboard";
+import CardFinance from "./cardFinance";
+import NavBarFinances from "./navBarFinances";
 
 const Finances = (props) => {
   const getTheDateCurrent = (e) => {
@@ -33,32 +35,8 @@ const Finances = (props) => {
     <div className="container-all-finances">
       <MenuDashboard />
       <div className="right-finances">
-        <div className="nav-finances">
-          <div className="nav-finances-title">
-            <h2>Administracao</h2>
-          </div>
-          <div className="nav-finance-user">
-            <h2>oioi</h2>
-          </div>
-        </div>
-        <div className="cards-finances">
-          <div className="div-card-finances">
-            <h3> Reservas </h3>
-            <h2> 0 </h2>
-          </div>
-          <div className="div-card-finances">
-            <h3> Cupons gerados </h3>
-            <h2> 0 </h2>
-          </div>
-          <div className="div-card-finances">
-            <h3> Pedidos </h3>
-            <h2> 0 </h2>
-          </div>
-          <div className="div-card-finances">
-            <h3> Usuarios cadastrados </h3>
-            <h2> 0 </h2>
-          </div>
-        </div>
+        <NavBarFinances />
+        <CardFinance />
         <div className="finances-graph">
           <div className="finances-graph-left">
             <div className="finances-graph-left-top">
@@ -66,9 +44,7 @@ const Finances = (props) => {
               <p> de 25 de maio de 2022, 09:41 PM</p>
             </div>
             <div className="finances-graph-left-graph">
-              <RenderLineChart 
-
-              />
+              <RenderLineChart />
             </div>
           </div>
           <div className="finances-graph-right">

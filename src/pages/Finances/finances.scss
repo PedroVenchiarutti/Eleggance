@@ -2,31 +2,14 @@
   width: 100%;
   height: 100%;
   display: flex;
+  background-color: #d9d9d9;
 }
 .right-finances {
   width: 100%;
   height: 100%;
   background-color: #d9d9d9;
 }
-.nav-finances {
-  display: flex;
-  width: 95%;
-  margin: auto;
-  height: 100%;
-  padding: 15px;
-}
-.nav-finances-title {
-  width: 75%;
-  height: 100%;
-  border-right: 1px solid black;
-}
-.cards-finances {
-  width: 100%;
-  margin: auto;
-  height: 15vh;
-  background-color: #d9d9d9;
-  display: flex;
-}
+
 .div-card-finances {
   width: 20%;
   height: 100%;
@@ -146,7 +129,7 @@
 }
 
 .finance-value-final {
-  height: 100vh;
+  height: 25vh;
   width: 95%;
   margin: auto;
 }
