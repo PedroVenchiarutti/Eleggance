@@ -58,11 +58,12 @@
 @media (max-width: 1120px) {
     .address-form-container {
         width: 100%;
+
         .row {
             display: block;
 
             .form-group {
-                width: 80%;
+                width: 100%;
             }
 
             .second-row {
@@ -73,7 +74,7 @@
                 display: block;
 
                 .form-group {
-                    width: 80%;
+                    width: 100%;
                 }
             }
         }
