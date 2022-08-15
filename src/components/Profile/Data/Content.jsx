@@ -11,8 +11,6 @@ export default (props) => {
     const [fullName, setFullName] = useState('')
     const [phone, setPhone] = useState('')
 
-    // const fullName = document.getElementById('fullName')
-    // const phone = document.getElementById('phoneNumber')
     const gender = document.getElementById('genderSelect')
 
     function submitForm(){

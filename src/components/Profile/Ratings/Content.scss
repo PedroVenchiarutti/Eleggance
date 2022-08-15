@@ -1,18 +1,18 @@
-.main-content .info{
+.main-content .info {
 
     padding: 50px 50px;
 
     .infoText {
         margin-left: 0px;
         margin: 0px 0px;
-        
-    
+
+
         .profile-content-header {
             margin-left: 30px;
         }
     }
 
-} 
+}
 
 .itemList {
     list-style-type: none;
@@ -106,13 +106,42 @@
 
 @media (max-width: 1120px) {
 
-    .main-content .info{
+    .main-content .info {
         padding: 0px 0px;
     }
 
-    .itemList .item .rating{
+    .itemList .item .rating {
         margin-right: 0px;
     }
+
+    .itemList{
+
+
+    .item {
+
+
+        .itemName h5{
+            margin-left: 45px;
+        }
+
+        .rating {
+
+            .rate:not(:checked)>label {
+                float: right;
+                width: 1em;
+                overflow: hidden;
+                white-space: nowrap;
+                cursor: pointer;
+                font-size: 17px;
+                color: #ccc;
+            }
+        }
+
+    }
+
+    }
+
+
 
 
 

@@ -7,8 +7,6 @@ import './Content.scss'
 
 export default (props) => {
 
-
-
     return (
         <div className="profile-container">
             <ClientMenu selected='login' />
