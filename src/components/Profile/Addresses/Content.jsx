@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import ClientMenu from "../common/ClientMenu";
+import ClientMenu from '../common/ClientMenu'
 import MainHeader from '../common/MainHeader';
 import Form from './Form';
 import ContentHeader from '../common/ContentHeader';
@@ -8,38 +8,19 @@ import Table from "./Table";
 
 import '../Profile.scss'
 
-export default () => {
-    const addressesFromStorage = sessionStorage.getItem('addresses');
-    const [addresses, setAddressesList] = useState(addressesFromStorage ? JSON.parse(addressesFromStorage) : []);
+export default () => (
+    <div className="profile-container">
+        <ClientMenu selected="enderecos" />
 
-    const onAddressFormSubmit = (datas) => {
-        let address = {
-            cep: datas.cep,
-            fullAddressText: `${datas.street}, ${datas.number} - ${datas.district} - ${datas.city} ${datas.cep}`
-        }
-        if (!addresses.find(item => item.cep == address.cep)) setAddressesList([...addresses, address]);
-    }
+        <div className="main-content">
+            <MainHeader title="Cadastrar novo endereço">
+                <Form />
+            </MainHeader>
 
-    const removeAddress = (cep) => setAddressesList(addresses.filter(item => item.cep != cep));
-
-    useEffect(() => {
-        sessionStorage.setItem('addresses', JSON.stringify(addresses));
-    }, [addresses]);
-
-    return (
-        <div className="profile-container">
-            <ClientMenu selected="enderecos" />
-
-            <div className="main-content">
-                <MainHeader title="Cadastrar novo endereço">
-                    <Form onFormSubmit={onAddressFormSubmit} />
-                </MainHeader>
-
-                <div className="content">
-                    <ContentHeader title="Meus endereços" />
-                    <Table list={addresses} removeAddress={removeAddress} />
-                </div>
+            <div className="content">
+                <ContentHeader title="Meus endereços" />
+                <Table />
             </div>
         </div>
-    )
-}
+    </div>
+)

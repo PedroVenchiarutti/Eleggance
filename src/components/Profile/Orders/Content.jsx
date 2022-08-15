@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import ClientMenu from "../common/ClientMenu";
+import ClientMenu from '../common/ClientMenu'
 import MainHeader from '../common/MainHeader';
 import ContentHeader from '../common/ContentHeader';
 import Select from '../../Select/Select';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import ClientMenu from "../common/ClientMenu"
+import ClientMenu from '../common/ClientMenu'
 import Data from "../../Data/Data"
 import MainHeader from "../common/MainHeader"
 import '../Profile.scss'

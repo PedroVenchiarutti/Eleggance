@@ -1,6 +1,6 @@
 import React from "react";
 
-import ClientMenu from "../common/ClientMenu";
+import ClientMenu from '../common/ClientMenu'
 import ContentHeader from '../../../components/Profile/common/ContentHeader';
 import Table from "./Table";
 

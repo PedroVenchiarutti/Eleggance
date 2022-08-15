@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AddressContext } from "../../../contexts/address";
 
 import './Table.scss'
 
-export default ({ list, removeAddress }) => (
+export default () => (
     <div className="table-container">
         <table>
             <thead>{renderHeadRows()}</thead>
-            <tbody>{renderBodyRows(list, removeAddress)}</tbody>
+            <tbody>{renderBodyRows()}</tbody>
         </table>
     </div>
 )
@@ -19,23 +20,28 @@ const renderHeadRows = () => (
 )
 
 // TODO: Get full address text based on cep.
-function renderBodyRows(addressesList, removeAddress) {
-    console.log(removeAddress)
+function renderBodyRows() {
+    const { addresses } = useContext(AddressContext);
+
     return (
-        addressesList.map(address => {
+        addresses.map(address => {
             return (
                 <tr key={address.cep}>
                     <td className="address">{address.fullAddressText}</td>
-                    {getTdButtons(address.cep, removeAddress)}
+                    {getTdButtons(address.cep)}
                 </tr>
             )
         })
     )
 }
 
-const getTdButtons = (addressKey, removeAddress) => (
-    <td>
-        <button><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
-        <button onClick={() => removeAddress(addressKey)}><img src="/icons/icon-trash.svg" alt="Remover" /></button>
-    </td>
-)
+const getTdButtons = (addressKey) => {
+    const { editAddressClick, removeAddressClick } = useContext(AddressContext);
+
+    return (
+        <td>
+            <button onClick={() => editAddressClick(addressKey)}><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
+            <button onClick={() => removeAddressClick(addressKey)}><img src="/icons/icon-trash.svg" alt="Remover" /></button>
+        </td>
+    )
+}
