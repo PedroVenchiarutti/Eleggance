@@ -10,7 +10,7 @@ const Form = (props) => {
             <form action="" className="form">
                     {props.children}
                 <div className="submitDiv">
-                    <Button className="saveButton">{props.value}</Button>
+                    <Button className="submit-button">{props.value}</Button>
                 </div>
             </form>
         </div>

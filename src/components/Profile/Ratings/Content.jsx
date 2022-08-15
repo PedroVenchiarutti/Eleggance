@@ -4,6 +4,7 @@ import ClientMenu from '../common/ClientMenu'
 import Data from '../../Data/Data'
 import ContentHeader from '../common/ContentHeader'
 import './Content.scss'
+import SaleTag from '../common/SaleTag'
 
 export default (props) => {
 
@@ -19,7 +20,7 @@ export default (props) => {
                             <div className="itemSpace">
                                 <div className="itemName ">
                                     <p>Battom cor rose cremoso</p>
-                                    <h5>OFERTA</h5>
+                                    <SaleTag />
                                 </div>
                                 <div className="rating">
                                     <div class="rate">
