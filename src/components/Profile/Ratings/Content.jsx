@@ -35,8 +35,8 @@ export default (props) => {
                                         <label for="star1" title="text">1 star</label>
                                     </div>
                                     
-                                    <button>
-                                        <img src="/icons/trashIcon.svg" alt="" className="trashIcon" />
+                                    <button className="trashButton">
+                                        <img src="/icons/trashIcon.svg" alt="Excluir" className="trashIcon" />
                                     </button>
                                     
                                 </div>
