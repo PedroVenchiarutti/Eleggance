@@ -43,7 +43,7 @@ export default () => {
                         </div>
 
                         <div className="button-div">
-                            <Button onClick={ev => onFormSubmit(ev)}>Salvar endereço</Button>
+                            <Button className="submit-button" onClick={ev => onFormSubmit(ev)}>Salvar endereço</Button>
                         </div>
                     </div>
                 </div>

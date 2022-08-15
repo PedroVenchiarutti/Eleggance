@@ -1,11 +1,3 @@
-.footer {
-    .footer__container {
-        min-width: 500px;
-    }
-}
-
-
-
     .info {
         flex-grow: 1;
     }
@@ -17,33 +9,36 @@
 
             display: flex;
             justify-content: space-between;
-            margin: 0px 30px;
+            margin: 0px 0px;
+
+            .form {
+                display: flex;
+                flex-direction: column;
+
+                .saveButton {
+                    width: 100%;
+                }
+
+            }
 
         }
     }
 
+    @media (max-width: 1120px) {
 
-
-
-
-
-
-@media (max-width: 1120px) {
-
-    .myLogin {
 
         .toHome .pageTitle {
             justify-content: center;
         }
 
-        .container {
+        .profile-container {
             display: flex;
             flex-direction: column;
             margin: 0px 0px;
             align-items: center;
             width: 100%;
 
-            .content {
+            .main-content {
                 width: 100%;
                 flex-direction: column;
                 margin-top: 20px;
@@ -54,24 +49,23 @@
                     margin-left: 0px;
 
                     .forms {
-                        width: 100%;
+                        display: flex;
                         flex-direction: column;
+                        width: 100%;
                         justify-content: left;
                         margin: 0px 0px;
 
                         .formDiv {
                             margin-bottom: 20px;
+
+                            .form {
+                                display: flex;
+                                flex-direction: column;
+                            }
                         }
                     }
                 }
-
             }
         }
 
     }
-
-
-
-
-
-}

@@ -3,6 +3,7 @@ import ClientMenu from '../common/ClientMenu'
 import Data from "../../Data/Data"
 import MainHeader from "../common/MainHeader"
 import '../Profile.scss'
+import './Content.scss'
 
 const MyProfile = (props) => {  
 

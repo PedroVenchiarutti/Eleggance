@@ -1,4 +1,5 @@
 import { myFavorites } from '../../../api/mock';
+import SaleTag from '../common/SaleTag';
 
 import './Table.scss';
 
@@ -17,7 +18,7 @@ const renderBodyRows = () => (
                 <td className='product-img responsive-hide'><img src="/img/produtos/gloss.png" /></td>
                 <td className='product'>
                     <p>{favorite.name}</p>
-                    {favorite.inSale ? <p className='sale'>Oferta</p> : ''}
+                    {favorite.inSale ? <SaleTag /> : ''}
                 </td>
                 <td>
                     <button className='trash-button'>
