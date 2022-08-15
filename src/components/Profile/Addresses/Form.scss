@@ -1,7 +1,9 @@
 .address-form-container {
+
     .row {
         display: flex;
         flex-wrap: wrap;
+        
 
         .form-group {
             display: flex;
@@ -11,6 +13,7 @@
 
         .street {
             width: 50%;
+            margin: 0px 0px;
         }
 
         .number {
@@ -47,24 +50,47 @@
         }
     }
 
-    button {
-        padding: 5px 18px 5px 18px;
-
-        border: solid 1px black;
-        border-radius: 3px;
-
-        color: white;
-        background-color: #E4AF39;
-
-        &:hover {
-            background-color: rgb(205, 148, 27)
-        }
-    }
-
     input {
         border: solid 1px black;
         border-radius: 4px;
 
         padding: 4px 10px 4px 10px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .address-form-container {
+        width: 100%;
+
+        .row {
+            display: block;
+
+            .street{
+                margin: 0px 0px;
+            }
+
+            .form-group {
+                width: 100%;
+            }
+
+            .second-row {
+                display: block;
+            }
+
+            .second-row-group {
+                display: block;
+
+                .form-group {
+                    width: 100%;
+                }
+            }
+        }
+
+        .button-div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
     }
 }

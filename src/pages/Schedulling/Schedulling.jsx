@@ -7,7 +7,6 @@ import { images, shelfProducts, trendProducts } from "../../api/mock";
 import Team from "../../components/Team/Team";
 import { AboutUs } from "../../components/AboutUs";
 import { Services } from "../../pages/Services";
-import MyProfile from "../MyProfile/MyProfile";
 
 
 export default (props) => {

@@ -18,11 +18,14 @@ import {
   Navigate,
 } from "react-router-dom";
 import FinishBuy from "./pages/FinishBuy/FinishBuy";
-import MyProfile from "./pages/MyProfile/MyProfile";
-import MyData from "./pages/MyData/MyData";
+import MyProfile from "./pages/Profile/Profile";
+import MyData from "./pages/Profile/Data";
 import ProfileOrders from "./pages/Profile/Orders";
 import ProfileAddresses from "./pages/Profile/Addresses";
-import MyLogin from "./pages/MyLogin/MyLogin";
+import ProfileFavorites from './pages/Profile/Favorites'
+import MyLogin from "./pages/Profile/Login";
+import MyRatings from './pages/Profile/Ratings';
+import { AddressProvider } from "./contexts/address";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -41,67 +44,70 @@ const changeRoutes = () => {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
-          <Route exact path="/home" element={<HomePage />} />
-          <Route exact path="/cadastro" element={<FormCadastro />} />
-          <Route exact path="/login" element={<FormSingUp />} />
-          <Route exact path="/agendamento" element={<Schedulling />} />
-          <Route exact path="/produtos" element={<Products />} />
-          <Route exact path="/shop" element={<Shop />} />
+        <AddressProvider>
 
-          <Route exact path="/perfil" element={<MyProfile />} />
-          <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
-          <Route exact path="/perfil/dados" element={<MyData />} />
-          <Route
-            exact
-            path="/perfil/enderecos"
-            element={<ProfileAddresses />}
-          />
-          <Route exact path="/perfil/login" element={<MyLogin />} />
-          <Route exact path="/perfil/favoritos" element={<MyLogin />} />
-          <Route exact path="/perfil/avaliacoes" element={<MyLogin />} />
+          <Routes>
+            <Route exact path="/home" element={<HomePage />} />
+            <Route exact path="/cadastro" element={<FormCadastro />} />
+            <Route exact path="/login" element={<FormSingUp />} />
+            <Route exact path="/agendamento" element={<Schedulling />} />
+            <Route exact path="/produtos" element={<Products />} />
+            <Route exact path="/shop" element={<Shop />} />
 
-          <Route
-            exact
-            path="/finalizarCompra"
-            element={
-              <Private>
-                <FinishBuy />
-              </Private>
-            }
-          />
-          <Route
-            exact
-            path="/carrinho"
-            element={
-              <Private>
-                <Cart />
-              </Private>
-            }
-          />
-          <Route
-            path="/registration"
-            element={
-              <Private>
-                <RegistrationForm />
-              </Private>
-            }
-          />
+            <Route exact path="/perfil" element={<MyProfile />} />
+            <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
+            <Route exact path="/perfil/dados" element={<MyData />} />
+            <Route
+              exact
+              path="/perfil/enderecos"
+              element={<ProfileAddresses />}
+            />
+            <Route exact path="/perfil/login" element={<MyLogin />} />
+            <Route exact path="/perfil/favoritos" element={<ProfileFavorites />} />
+            <Route exact path="/perfil/avaliacoes" element={<MyRatings />} />
 
-          <Route exact path="/admin" element={<AdminLogin />} />
-          <Route exact path="/admin/home" element={<HomeDashboard />} />
-          <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
-          <Route
-            path="*"
-            element={
-              <Private>
-                <HomePage />
-              </Private>
-            }
-            to="/"
-            replace
-          />
-        </Routes>
+            <Route
+              exact
+              path="/finalizarCompra"
+              element={
+                <Private>
+                  <FinishBuy />
+                </Private>
+              }
+            />
+            <Route
+              exact
+              path="/carrinho"
+              element={
+                <Private>
+                  <Cart />
+                </Private>
+              }
+            />
+            <Route
+              path="/registration"
+              element={
+                <Private>
+                  <RegistrationForm />
+                </Private>
+              }
+            />
+
+            <Route exact path="/admin" element={<AdminLogin />} />
+            <Route exact path="/admin/home" element={<HomeDashboard />} />
+            <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
+            <Route
+              path="*"
+              element={
+                <Private>
+                  <HomePage />
+                </Private>
+              }
+              to="/"
+              replace
+            />
+          </Routes>
+        </AddressProvider>
       </AuthProvider>
     </Router>
   );
