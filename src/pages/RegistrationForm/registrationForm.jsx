@@ -29,7 +29,7 @@ const RegistrationForm = (props) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
     if (!file) return;
-    const storageRef = ref(storage, `image/${file}`);
+    const storageRef = ref(storage, `image/user/${file}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
