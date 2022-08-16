@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import HeaderDashboard from "../../../components/HeaderDashboard";
+import HeaderDashboard from "../../../components/Dashboard/HeaderDashboard";
 import AdminProductsList from "../../../components/AdminProductsList";
-import MenuDashboard from "../../../components/MenuDashboard";
+import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
 import ModalAddProducts from "../../../components/ModalAddProducts/Index";
 
 import ModalEditProducts from "../../../components/ModalEditProducts";

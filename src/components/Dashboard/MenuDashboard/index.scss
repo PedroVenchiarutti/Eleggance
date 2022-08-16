@@ -14,9 +14,8 @@
     margin-bottom: 15px;
   }
   li {
-    height: 12.5vh;
+    height: 10vh;
     width: 100%;
-    padding: 10px;
     display: flex;
     align-items: center;
     transition: 0.3s all ease-in-out;
@@ -26,6 +25,18 @@
       font-size: 18px;
       width: 100%;
       height: 100%;
+    }
+    .menuOption{
+      padding: 13px;
+
+      img{
+        margin: 0px 15px;
+      }
+    }
+    .menuIcon{
+      height: 15px;
+      width: 16px;
+      margin-bottom: 0px;
     }
   }
   li:hover {
