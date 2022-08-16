@@ -1,0 +1,23 @@
+table {
+    width: 99%;
+    border-collapse: collapse;
+    text-align: center;
+
+    thead {
+        background-color: #4E4E4E;
+
+        th {
+            color: white;
+            font-weight: 300;
+        }
+    }
+
+    tbody {
+        td {
+            font-weight: 300;
+            padding: 15px;
+            background-color: #fff;
+            border-bottom: 1px solid;
+        }
+    }
+}

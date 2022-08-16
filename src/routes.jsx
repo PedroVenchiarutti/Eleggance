@@ -26,6 +26,7 @@ import ProfileFavorites from './pages/Profile/Favorites'
 import MyLogin from "./pages/Profile/Login";
 import MyRatings from './pages/Profile/Ratings';
 import { AddressProvider } from "./contexts/address";
+import DashboardOrders from './pages/Admin/Orders/Orders'
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -96,6 +97,7 @@ const changeRoutes = () => {
             <Route exact path="/admin" element={<AdminLogin />} />
             <Route exact path="/admin/home" element={<HomeDashboard />} />
             <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
+            <Route exact path="/admin/pedidos" element={<DashboardOrders />} />
             <Route
               path="*"
               element={

@@ -6,6 +6,8 @@ import ContentHeader from '../common/ContentHeader';
 import Select from '../../Select/Select';
 import Table from './Table';
 
+import TableTeste from '../../Table/Table'
+
 import { myOrders } from '../../../api/mock'
 
 import '../Profile.scss'
@@ -35,6 +37,7 @@ export default () => {
                     <ContentHeader title="Meus pedidos">
                         <Select label="Ordenar por:" options={orderByOptions} onChange={updateSelectState} />
                     </ContentHeader>
+
                     <Table list={myOrders} orderBy={selectValue} />
                 </div>
             </div>
