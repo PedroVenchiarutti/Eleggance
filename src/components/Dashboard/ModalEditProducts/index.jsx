@@ -1,6 +1,5 @@
 import React from "react";
 import { useFetch } from "../../../hooks/useFetch";
-// import { useFetch } from "../../hooks/useFetch";
 
 export default function ModalEditProduct() {
   const { data } = useFetch(`api/public/products/pages/1`);

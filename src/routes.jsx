@@ -96,6 +96,7 @@ const changeRoutes = () => {
             <Route exact path="/admin" element={<AdminLogin />} />
             <Route exact path="/admin/home" element={<HomeDashboard />} />
             <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
+            <Route exact path="/admin/pedidos" element={<ProdutosDashboard />} />
             <Route
               path="*"
               element={
