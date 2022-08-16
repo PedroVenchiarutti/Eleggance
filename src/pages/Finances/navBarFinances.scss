@@ -1,20 +1,48 @@
 .nav-finances {
-    display: flex;
-    width: 95%;
-    margin: auto;
-    height: 100%;
-    padding: 15px;
+  display: flex;
+  width: 95%;
+  margin: auto;
+  height: 100%;
+  padding: 15px;
+}
+.nav-finances-title {
+  display: flex;
+  width: 75%;
+  height: 100%;
+  border-right: 3px solid white;
+}
+.finance-tittle {
+  width: 60%;
+}
+.search-products-finances {
+  display: flex;
+  background-color: #d9d9d9;
+  color: black;
+  border: none;
+  padding: 5px;
+}
+.icon-search{
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 50px;
+}
+.icon-bell{
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 15px;
+}
+.nav-finance-user {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  h2 {
+    text-align: center;
   }
-  .nav-finances-title {
-    width: 75%;
-    height: 100%;
-    border-right: 3px solid white
+  span {
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 10px;
   }
-  .nav-finance-user{
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    h2{
-      text-align: center
-    }
-  }
+}

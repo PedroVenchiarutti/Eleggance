@@ -48,10 +48,7 @@ export default function Cart({ match }) {
             Finalizar Compra
           </Link>
         </div>
-        <Carrousel
-          products={shelfProducts}
-          title="Baseado Nas Suas Ultimas Visitas"
-        />
+     
       </main>
 
       <Footer />

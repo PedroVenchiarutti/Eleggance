@@ -1,14 +1,51 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../../contexts/auth";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../Finances/navBarFinances.scss";
-export default (props) => {
+export default (navBarFinances) => {
+  const { loginName } = useContext(AuthContext);
+  const { linkImg } = useContext(AuthContext);
+  const renderImage = () => {
+    if (authenticated) {
+      const getLocalStorage = localStorage.getItem("personal");
+      const img = JSON.parse(getLocalStorage);
+      if (img === null) {
+        return;
+      } else {
+        const linkImg = img[0].id.imgURL;
+        if (linkImg) {
+          return (
+            <button>
+              <img src={linkImg} className="imgUser" />
+            </button>
+          );
+        } else {
+          return (
+            <button>
+              <img src="/img/Frame.svg" />;
+            </button>
+          );
+        }
+      }
+    }
+    console.log(linkImg);
+  };
   return (
     <div className="nav-finances">
       <div className="nav-finances-title">
-        <h2>Administracao</h2>
+      <div className="finance-tittle">
+      <h2>Administração</h2>
+      </div>
+        <input  id="search-products-finances" className="search-products-finances"></input>
+        <label htmlFor="search-products-finances">
+        <img  className="icon-search" src="/icons/icon-search.png" />
+        </label>
+   
+        <img className="icon-bell" src="/icons/icon-bell.png" />
       </div>
       <div className="nav-finance-user">
-        <h2>oioi</h2>
+        <span>{loginName.toUpperCase()}</span>
       </div>
     </div>
   );

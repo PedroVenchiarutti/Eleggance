@@ -4,6 +4,7 @@ import RenderLineChart from "./graph";
 import MenuDashboard from "../../components/MenuDashboard";
 import CardFinance from "./cardFinance";
 import NavBarFinances from "./navBarFinances";
+import { useState } from "react";
 
 const Finances = (props) => {
   const getTheDateCurrent = (e) => {
@@ -30,6 +31,16 @@ const Finances = (props) => {
       console.log(currentData);
     }
   };
+
+  const pedidos = [
+    'batom',
+    'esmalte',
+    'acetona'
+  ]
+  const [showElement, setShowElement] = useState(false);
+  const showOrHide = () => setShowElement(true);
+
+
 
   return (
     <div className="container-all-finances">
@@ -75,15 +86,29 @@ const Finances = (props) => {
               <p>
                 De <input type="date" onKeyDown={(e) => getTheDateCurrent(e)} />{" "}
                 ate <input type="date" onKeyDown={(e) => getTheDate(e)} />{" "}
-                <button>ORDENAR POR </button>{" "}
-              </p>
+                <button className="button-finance-filter-orders" onMouseMove={showOrHide}>ORDENAR POR </button>{" "}
+                {showElement ? <div className="li-filter-orders">
+                <li>
+                  Menor Preco
+                </li>
+                <li>
+                  Maior Preco
+                </li>
+                <li>
+                  Produto mais recente
+                </li>
+                <li>
+                  Produto mais antigo
+                </li>
+                </div> : null}
+              </p>  
             </div>
           </div>
           <div className="finances-table">
             <table className="table-finances">
               <thead>
                 <tr>
-                  <td>Nome do produto </td>
+                  <td>Pedidos</td>
                   <td>Quantidade</td>
                   <td>Valor</td>
                   <td>Codigo de venda</td>
