@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import HeaderDashboard from "../../../components/HeaderDashboard";
-import AdminProductsList from "../../../components/AdminProductsList";
-import MenuDashboard from "../../../components/MenuDashboard";
-import ModalAddProducts from "../../../components/ModalAddProducts/Index";
+import HeaderDashboard from "../../../components/Dashboard/HeaderDashboard";
+import AdminProductsList from "../../../components/Dashboard/AdminProductsList";
+import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
+import ModalAddProducts from "../../../components/Dashboard/ModalAddProducts/Index";
 
-import ModalEditProducts from "../../../components/ModalEditProducts";
+import ModalEditProducts from "../../../components/Dashboard/ModalEditProducts";
 import "./Produtos.scss";
 
 export default function ProdutosDashboard() {

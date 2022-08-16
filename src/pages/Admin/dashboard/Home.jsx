@@ -1,6 +1,10 @@
 import React from "react";
-import MenuDashboard from "../../../components/MenuDashboard";
-import HeaderDashboard from "../../../components/HeaderDashboard";
+
+import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
+import HeaderDashboard from "../../../components/Dashboard/HeaderDashboard";
+
+import './Home.scss';
+import Cards from "../../../components/Dashboard/Cards/Cards";
 
 export default function HomeDashboard() {
   return (
@@ -8,7 +12,8 @@ export default function HomeDashboard() {
       <MenuDashboard />
 
       <main>
-        <HeaderDashboard></HeaderDashboard>
+        <HeaderDashboard titleHead="SEJA BEM-VINDO User_name" name="User_name" />
+        <Cards />
       </main>
     </div>
   );
