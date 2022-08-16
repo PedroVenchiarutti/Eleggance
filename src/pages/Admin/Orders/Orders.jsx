@@ -4,7 +4,7 @@ import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
 import HeaderDashboard from "../../../components/Dashboard/HeaderDashboard";
 import Orders from "../../../components/Dashboard/Orders/Orders";
 
-import './Orders.scss';
+import '../Dashboard.scss';
 
 export default function HomeDashboard() {
   return (

@@ -2,7 +2,7 @@ import React from "react";
 
 import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
 import HeaderDashboard from "../../../components/Dashboard/HeaderDashboard";
-import Cards from "../../../components/Dashboard/Cards/Cards";
+import Coupons from "../../../components/Dashboard/Coupons/Coupons";
 
 import '../Dashboard.scss';
 
@@ -12,8 +12,8 @@ export default function HomeDashboard() {
       <MenuDashboard />
 
       <main>
-        <HeaderDashboard titleHead="SEJA BEM-VINDO User_name" name="User_name" />
-        <Cards />
+        <HeaderDashboard titleHead="Cupons" />
+        <Coupons />
       </main>
     </div>
   );

@@ -1,0 +1,25 @@
+.dashboard-container {
+    .toggle-modal-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        width: 60px;
+        height: 60px;
+
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+
+        font-size: 60px;
+        color: #f3f3f3;
+        background-color: #e2ac38;
+
+        &:hover {
+            background-color: #b47f0c
+        }
+    }
+}
