@@ -17,7 +17,8 @@ export default function Login() {
   return (
     <div className="admin-login-container">
       <div className="modal-login">
-        <h1>DashBoard Elegancce </h1>
+        {/* <h1>Elegancce </h1> */}
+        <img src="./logo.png" alt="" />
         <input
           type="text"
           placeholder="Login"
