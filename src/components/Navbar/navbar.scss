@@ -17,6 +17,7 @@
     .logoInSearch {
       display: flex;
       height: 100%;
+      width: 75%;
       img {
         position: relative;
         display: flex;
@@ -206,16 +207,36 @@
     background-color: #111;
     color: #fff;
 
+    .navbar-user-logged{
+      display: flex;
+      flex-direction: column;
+      top: 60px;
+      margin-left: 15px;
+
+      .navbar-user-logged-name{
+        .navbar-user-name-logout h4,button{
+          width: 60px;
+          font-size: 13px;
+          margin-left: 0px;
+        }
+      }
+
+      .buttonCart img{
+        width: 100%;
+        margin-top: 0px;
+        margin-left: 0px;
+      }
+    }
+
     //mobile
     .navbar-user-logged-mobile {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      // align-items: center;
+      // justify-content: center;
       position: relative;
       top: 72px;
-      height: 100%;
       width: 100%;
-      right: 27px;
+      margin-left: 10px;
 
       .svgUser-mobile {
         width: 32px;
