@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Api from "../../api/api";
+import Api from "../../../api/api";
 
 export default function ModalAddProduct() {
   const [valor, setValor] = useState({
