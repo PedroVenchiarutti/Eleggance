@@ -150,7 +150,7 @@
             margin-bottom: 10px;
             font-weight: 500;
             font-size: 20px;
-            width: 80%;
+            width: 65%;
           }
     
           .btnCadastrarProduto {
@@ -180,6 +180,19 @@
     main {
       margin-top: 50px;
 
+      .modalAddProducts{
+        width: 100%;
+
+        .body-modal{
+          flex-direction: column;
+          align-items: center;
+
+          .productVisualization .productAndInfo .productInfo{
+            text-align: center;
+          }
+
+        }
+      }
       .header-modal {
         width: 100%;
         align-items: center;
