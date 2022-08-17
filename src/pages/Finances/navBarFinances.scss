@@ -20,6 +20,7 @@
   color: black;
   border: none;
   padding: 5px;
+  width: 20%;
 }
 .icon-search{
   width: 25px;
@@ -45,4 +46,24 @@
     font-size: 16px;
     padding-top: 10px;
   }
+}
+@media (max-width: 1120px) {
+  .nav-finances{
+  width: 100%;
+  margin-bottom: 10px;
+ }
+ .finance-tittle {
+  margin-left: 30px;
+  font-size: 15px;
+  z-index: 2;
+ }
+ .icon-bell{
+  margin-left: 10px;
+ }
+ .icon-search{
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
 }

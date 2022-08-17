@@ -148,7 +148,7 @@
 }
 
 .finance-value-final {
-  height: 25vh;
+  height: 100%;
   width: 95%;
   margin: auto;
 }
@@ -159,4 +159,31 @@
 .finance-total-sell {
   display: flex;
   justify-content: right;
+}
+
+@media (max-width: 1120px) {
+  .container-all-finances{
+    width: 100%;
+  }
+  .finances-graph{
+    flex-direction: column;
+    height: 100%;
+  }
+  .finances-graph-left{
+    width: 100%;
+    height: 100%;
+  }
+  .finances-graph-right{
+    width: 100%;
+    height: 100%;
+  }
+  .finances-graph {
+    width: 100%;
+  }
+  .bottom-finance-top{
+    display: block;
+  }
+  .bottom-finance-top-username{
+    padding-left: 0px;
+  }
 }
