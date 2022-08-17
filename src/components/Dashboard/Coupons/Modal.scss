@@ -1,12 +1,11 @@
 .dashboard-container .create-modal {
     position: absolute;
 
-    background-color: #f3f3f3;
+    background-color: #fff;
     opacity: 1;
 
-    border: 0.5px solid black;
     border-radius: 5px;
-    box-shadow: 4px 4px 12px black;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.678);
 
     padding: 60px 20px;
     min-width: 350px;
@@ -66,5 +65,25 @@
 
             &:hover { background-color: rgb(205, 148, 27) }
         }
+    }
+}
+
+@media (max-width: 1020px) {
+    .dashboard-container .create-modal {
+        padding: 20px;
+        min-width: min-content;
+        width: 30%;
+
+        font-size: 10px;
+        button, input { font-size: 12px }
+        .form-group { margin: 0 0 5px 0; }
+
+        .buttons-div {
+            flex-direction: column-reverse;
+            .submit-button, .cancel-button {
+                margin: 2px 0;
+                width: 100%;
+            }
+        } 
     }
 }

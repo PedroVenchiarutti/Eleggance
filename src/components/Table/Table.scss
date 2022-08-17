@@ -1,5 +1,5 @@
 table {
-    width: 99%;
+    width: 95%;
     border-collapse: collapse;
     text-align: center;
 
@@ -7,6 +7,7 @@ table {
         background-color: #4E4E4E;
 
         th {
+            width: auto;
             color: white;
             font-weight: 300;
         }
@@ -14,10 +15,20 @@ table {
 
     tbody {
         td {
+            width: auto;
             font-weight: 300;
             padding: 15px;
             background-color: #fff;
             border-bottom: 1px solid;
         }
     }
+}
+
+@media (max-width: 1020px) {
+    table {
+        th, td { font-size: 10px;}
+
+        .responsive-hide { display: none }
+    } 
+    
 }

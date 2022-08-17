@@ -1,5 +1,11 @@
-.dashboard-container {
+.dashboard-container .content {
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+@media (max-width: 1020px) {
+    .dashboard-container .content {
+        margin-top: 50px;
+    }
 }
