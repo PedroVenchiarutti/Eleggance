@@ -1,9 +1,7 @@
 import Row from "./Row";
 
-export default ({ rows, rowsClass }) => (
+export default ({ objectsArray }) => (
     <tbody>
-        {rows.map(row => {
-            return <Row data={row} className={rowsClass} />
-        })}
+        {objectsArray.map(object => <Row object={object} />)}
     </tbody>
 )

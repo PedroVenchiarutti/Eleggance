@@ -3,8 +3,8 @@ import Head from "./Head"
 
 import './Table.scss'
 
-export default ({ headerColumns, headerClass, bodyRows, rowsClass }) =>
+export default ({ headerColumnsArray, headerClass, objectsArray }) =>
     <table>
-        <Head className={headerClass} columns={headerColumns} />
-        <Body rows={bodyRows} rowsClass={rowsClass} />
+        <Head className={headerClass} columns={headerColumnsArray} />
+        <Body objectsArray={objectsArray} />
     </table>

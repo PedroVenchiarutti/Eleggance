@@ -16,7 +16,7 @@ export const CouponProvider = ({ children }) => {
     const [coupon, setCoupon] = useState({ ...initialState });
     const updateState = (fieldName, value) => setCoupon({ ...Object.assign(coupon, { [fieldName]: value }) });
 
-    const [coupons, setCoupons] = useState(couponsFromStorage ? JSON.parse(couponsFromStorage) : [[]]);
+    const [coupons, setCoupons] = useState(couponsFromStorage ? JSON.parse(couponsFromStorage) : []);
 
     const onFormSubmit = event => {
         event.preventDefault();
@@ -27,7 +27,7 @@ export const CouponProvider = ({ children }) => {
     const toggleModalVisibility = () => setModalVisibility(!modalVisibility);
 
     const restartState = () => {
-        setCoupons([...coupons, Object.keys(coupon).map(key => coupon[key])]);
+        setCoupons([...coupons, coupon]);
         setCoupon({ ...initialState });
         toggleModalVisibility();
     }

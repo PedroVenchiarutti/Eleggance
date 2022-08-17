@@ -1,3 +1,9 @@
-export default ({ data, className }) => <tr> 
-    { data.map(row => row.type ? row : <td className={className}>{row}</td>) }
-</tr>
+export default ({ object }) => (
+    <tr className={object.key || object.id || object.code}>
+        {
+            Object.keys(object).map(key => {
+                return object[key].type ? object[key] : <td className={object.className}>{object[key]}</td>
+            })
+        }
+    </tr>
+)
