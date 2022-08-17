@@ -37,25 +37,21 @@ export const Navbar = () => {
     }
     console.log(linkImg);
   };
-  //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
+  // verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
   const userLogged = () => {
     const height = window.screen.height;
     const width = window.screen.width;
     if (height >= 600 && width >= 600 && authenticated) {
       return (
-        <div className="navbar-user-logged">
-          <div className="navbar-user-logged-name">
-            {renderImage()}
-            <div className="navbar-user-name-logout">
-              <h4>
-                <span>{loginName.toUpperCase()}</span>
-              </h4>
-              <button onClick={userLogout}>Sair</button>
-            </div>
+        <div className="navbar-user-logged-mobile">
+          <div className="navbar-user-logged-name-mobile">
+            <button>
+              <img src="/img/Frame.svg" className="svgUser-mobile" />
+            </button>
+            <button className="buttonCart">
+              <img src="/icons/shoppingCart.svg" className="svgCart" />
+            </button>
           </div>
-          <button className="buttonCart">
-            <img src="/icons/shoppingCart.svg" className="svgCart" />
-          </button>
         </div>
       );
     } else if (height >= 600 && width >= 600 && !authenticated) {
@@ -104,13 +100,13 @@ export const Navbar = () => {
                   <div className="list">
                     <ul>
                       <li>
-                        <a href="">Home</a>
+                        <Link to="/">Home</Link>
                       </li>
                       <li>
-                        <a href="">Produtos</a>
+                        <Link to="/produtos">Produtos</Link>
                       </li>
                       <li>
-                        <a href="">Contato</a>
+                        <Link to="/contato">Contato</Link>
                       </li>
                     </ul>
                   </div>
