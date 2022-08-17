@@ -1,15 +1,34 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "poppins";
-}
-
 .cartContainer {
   overflow-x: hidden;
-  background-color: #f3f3f3;
+  background-color: #fff;
+
+  .info-cart-top {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    padding-bottom: 10px;
+    .icon-home-cart {
+      padding-top: 25px;
+      padding-left: 0px;
+    }
+    h1 {
+      font-size: 17px;
+      font-weight: 600;
+      padding-top: 28px;
+      padding-left: 10px;
+    }
+  }
+
+  .table-cart {
+    .thead-cart {
+      tr {
+        th {
+          font-weight: 600;
+          letter-spacing: 2px;
+        }
+      }
+    }
+  }
 
   .cardContainer {
     display: none;
@@ -17,6 +36,7 @@
 
   table {
     width: 100%;
+    background-color: #f3f3f3;
 
     thead tr {
       background-color: #4e4e4e;
@@ -43,7 +63,7 @@
         display: flex;
         justify-content: space-around;
         font-weight: 600;
-        width: 100vw;
+        width: 100%;
         overflow-x: hidden;
         border-top: 0.25px solid #4e4e4ebd;
         border-bottom: 0.25px solid #4e4e4ea7;

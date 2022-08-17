@@ -15,8 +15,14 @@ export default function Cart({ match }) {
     <div className="cartContainer">
       <Navbar />
       <main>
-        <table>
-          <thead>
+        <div className="info-cart-top">
+          <div className="icon-home-cart">
+            <img src="\icons\icon-home.png" alt="home" />
+          </div>
+          <h1>Carrinho de Compras</h1>
+        </div>
+        <table className="table-cart">
+          <thead className="thead-cart">
             <tr>
               <th className="col-1">Produtos</th>
               <th className="col-2">Quantidade</th>
@@ -40,6 +46,7 @@ export default function Cart({ match }) {
         <ul>
           <ProductsCard products={shelfProducts} />
         </ul>
+      </main>
         <div className="actions">
           <Link to="/shop" className="finishBuyButton">
             Continuar Comprando
@@ -48,12 +55,10 @@ export default function Cart({ match }) {
             Finalizar Compra
           </Link>
         </div>
-        <Carrousel
-          products={shelfProducts}
-          title="Baseado Nas Suas Ultimas Visitas"
-        />
-      </main>
-
+      <Carrousel
+        products={shelfProducts}
+        title="Baseado Nas Suas Ultimas Visitas"
+      />
       <Footer />
     </div>
   );
