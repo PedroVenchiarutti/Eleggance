@@ -83,7 +83,7 @@ export default function ModalAddProduct() {
         <div className="productVisualization">
           <p>Visualização</p>
           <div className="productAndInfo">
-            <img src="/test.png" alt="" />
+            <img src="/product.png" alt="" />
             <div className="productInfo">
               <h4>Tratamento Único belkit</h4>
               <h1>R$ 45,99</h1>

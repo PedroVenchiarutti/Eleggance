@@ -100,13 +100,13 @@ export const Navbar = () => {
                   <div className="list">
                     <ul>
                       <li>
-                        <a href="">Home</a>
+                        <Link to="/">Home</Link>
                       </li>
                       <li>
-                        <a href="">Produtos</a>
+                        <Link to="/produtos">Produtos</Link>
                       </li>
                       <li>
-                        <a href="">Contato</a>
+                        <Link to="/contato">Contato</Link>
                       </li>
                     </ul>
                   </div>
