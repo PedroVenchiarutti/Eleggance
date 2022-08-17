@@ -4,6 +4,7 @@ import AsideFinishBuy from "../../components/AsideFinishBuy/AsideFinishBuy";
 import ProductsList from "../../components/ProductsLIst";
 import { shelfProducts } from "../../api/mock";
 import "./FinishBuy.scss";
+import { Link } from "react-router-dom";
 
 // let inputCupom = document.querySelector("#fieldCoupon");
 // inputCupom.addEventListener("change", (e) => {
@@ -25,7 +26,11 @@ export default function FinishBuy({ products }) {
   return (
     <div className="finishBuyContainer">
       <header>
-        <h1 className="logo">Ellegance</h1>
+        <h1 className="logo">
+          <Link to="/">
+            Ellegance
+            </Link>
+            </h1>
         <h1>Finalizar Compra</h1>
       </header>
       <main>
