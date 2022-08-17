@@ -135,14 +135,20 @@
 }
 
 // javascript code
-.navbar-user-logged {
+.navbar-user-logged-mobile {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   top: 10px;
 
-  .navbar-user-logged-name {
+  .navbar-user-logged-name-mobile {
+
+    img{
+      margin-left: 20px;
+      width: 60px;
+    }
+
     display: flex;
     align-items: center;
     button {
@@ -240,6 +246,7 @@
 
       .svgUser-mobile {
         width: 32px;
+        background: transparent;
       }
 
       .svgCart-mobile {
@@ -249,6 +256,12 @@
       .navbar-user-logged-name-mobile {
         display: flex;
         align-items: center;
+
+        img{
+          width: 32px;
+          height: 32px;
+          margin-left: 5px;
+        }
 
         button {
           border: none;
