@@ -2,8 +2,8 @@ import React from "react";
 import "./finances.scss";
 import RenderLineChart from "./graph";
 import MenuDashboard from "../../components/MenuDashboard";
-import CardFinance from "./cardFinance";
-import NavBarFinances from "./navBarFinances";
+import CardFinance from "../../components/CardFinances/cardFinance";
+import NavBarFinances from "../../components/NabBarFinance/navBarFinances";
 import { useState } from "react";
 
 const Finances = (props) => {
@@ -80,14 +80,15 @@ const Finances = (props) => {
               <h1>Vendas</h1>
             </div>
             <div className="bottom-finance-top-username">
-              <p>
+           <div>
                 De <input type="date" onKeyDown={(e) => getTheDateCurrent(e)} />{" "}
                 ate <input type="date" onKeyDown={(e) => getTheDate(e)} />{" "}
                 <button
                   className="button-finance-filter-orders"
-                  onMouseMove={showOrHide}
+                  onClick={showOrHide}
                 >
-                  ORDENAR POR{" "}
+                  ORDENAR POR <img className="icon-menu-finance" src="/icons/icon-menu.png" />
+              
                 </button>{" "}
                 {showElement ? (
                   <div className="li-filter-orders">
@@ -97,7 +98,7 @@ const Finances = (props) => {
                     <li>Produto mais antigo</li>
                   </div>
                 ) : null}
-              </p>
+                </div>
             </div>
           </div>
           <div className="finances-table">

@@ -5,6 +5,9 @@
   height: 100%;
   padding: 15px;
 }
+.label-nav-finance:hover + .finance-tittle{
+  background-color: black;
+}
 .nav-finances-title {
   display: flex;
   width: 75%;
@@ -66,4 +69,9 @@
   margin-top: 5px;
   margin-left: 10px;
 }
+.search-products-finances {
+margin-left: 0px;
+flex-direction: column;
+}
+
 }

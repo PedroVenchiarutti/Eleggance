@@ -1,5 +1,5 @@
 import React from "react";
-import "../Finances/cardFinance.scss";
+import "../CardFinances/cardFinance.scss"
 
 export default (props) => {
   return (
