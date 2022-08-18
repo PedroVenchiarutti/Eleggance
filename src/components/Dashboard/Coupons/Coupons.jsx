@@ -14,7 +14,7 @@ export default () => {
 
     return (
         <div className="content">
-            <Table headerColumnsArray={headerColumns} objectsArray={coupons} />
+            <Table headerColumnsArray={headerColumns} bodyObjectsArray={coupons} />
             <CouponModal />
 
             <Button className="toggle-modal-button" onClick={() => toggleModalVisibility()}>+</Button>

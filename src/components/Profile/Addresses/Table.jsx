@@ -14,6 +14,7 @@ const getHeadRow = () => [<>
 
 const getBodyObject = () => useContext(AddressContext).addresses.map(address => {
     return {
+        className: 'address',
         key: address.cep,
         text: address.fullAddressText,
         buttons: getTdButtons(address.cep)

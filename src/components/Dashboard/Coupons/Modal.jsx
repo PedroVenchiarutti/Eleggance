@@ -14,7 +14,7 @@ export default () => {
                 <h2 className="modal-title">Cadastrar cupom</h2>
                 <div className="form-group">
                     <label>Código</label>
-                    <input value={coupon.code} onChange={ev => updateState("code", ev.target.value)} />
+                    <input value={coupon.id} onChange={ev => updateState("id", ev.target.value)} />
                 </div>
 
                 <div className="form-group">
