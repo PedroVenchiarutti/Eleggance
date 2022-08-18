@@ -26,12 +26,8 @@ export default function FinishBuy({ products }) {
   return (
     <div className="finishBuyContainer">
       <header>
-        <h1 className="logo">
-          <Link to="/">
-            Ellegance
-            </Link>
-            </h1>
-        <h1>Finalizar Compra</h1>
+        <h1 className="logo">Ellegance</h1>
+        <h1 className="finishBuy-h1">Finalizar Compra</h1>
       </header>
       <main>
         <div className="col">

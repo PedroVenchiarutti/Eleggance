@@ -26,9 +26,11 @@ import ProfileFavorites from './pages/Profile/Favorites'
 import MyLogin from "./pages/Profile/Login";
 import MyRatings from './pages/Profile/Ratings';
 import { AddressProvider } from "./contexts/address";
+
 import DashboardOrders from './pages/Admin/Orders/Orders'
 import DashboardCoupons from './pages/Admin/Coupons/Coupons'
 import { CouponProvider } from "./contexts/coupon";
+import Financas from "./pages/Finances/finances"
 
 
 const changeRoutes = () => {
@@ -51,13 +53,13 @@ const changeRoutes = () => {
         <AddressProvider>
           <CouponProvider>
 
-            <Routes>
-              <Route exact path="/home" element={<HomePage />} />
-              <Route exact path="/cadastro" element={<FormCadastro />} />
-              <Route exact path="/login" element={<FormSingUp />} />
-              <Route exact path="/sobre" element={<Schedulling />} />
-              <Route exact path="/produtos" element={<Products />} />
-              <Route exact path="/shop" element={<Shop />} />
+          <Routes>
+            <Route exact path="/home" element={<HomePage />} />
+            <Route exact path="/cadastro" element={<FormCadastro />} />
+            <Route exact path="/login" element={<FormSingUp />} />
+            <Route exact path="/sobre" element={<Schedulling />} />
+            <Route exact path="/produtos" element={<Products />} />
+            <Route exact path="/shop" element={<Shop />} />
 
               <Route exact path="/perfil" element={<MyProfile />} />
               <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
@@ -103,6 +105,7 @@ const changeRoutes = () => {
               <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
               <Route exact path="/admin/pedidos" element={<DashboardOrders />} />
               <Route exact path="/admin/cupons" element={<DashboardCoupons />} />
+              <Route exact path="/admin/administracao" element={<Financas />} />
               <Route
                 path="*"
                 element={

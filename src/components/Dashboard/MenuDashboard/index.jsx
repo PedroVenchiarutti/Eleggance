@@ -46,7 +46,7 @@ export default function MenuDashboard(props) {
           </NavLink>
         </li>
         <li>
-          <NavLink to={"/admin/admnistracao"}>
+          <NavLink to={"/admin/administracao"}>
             <div className="menuOption">
               <img src="/icons/adminIcon.png" alt="a" className="menuIcon" /> Administração
             </div>
