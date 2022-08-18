@@ -1,0 +1,44 @@
+.profile-container {
+    display: flex;
+    margin: 50px 60px;
+
+    .main-content {
+        width: 76%;
+
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+
+            border: solid 1px #E4AF39;
+            border-radius: 10px;
+            flex-grow: 1;
+        }
+    }
+
+    .submit-button {
+        padding: 5px 18px 5px 18px;
+
+        border: none;
+        border-radius: 3px;
+
+        cursor: pointer;
+        color: white;
+        background-color: #E4AF39;
+
+        &:hover { background-color: rgb(205, 148, 27) }
+    }
+}
+
+@media (max-width: 1120px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        min-width: fit-content;
+
+        .main-content { margin-top: 20px; }
+    }
+}

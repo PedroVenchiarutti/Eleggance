@@ -1,0 +1,136 @@
+.container-task-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  .swiper-slide {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .columns-task-bar {
+    display: flex;
+    max-width: 80%;
+    max-height: 500px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 50px;
+    .swiper-pagination {
+      bottom: -5px;
+      .swiper-pagination-bullet {
+       background-color: #111;
+      }
+    }
+  }
+
+  .icon-taskBar {
+    width: 120px;
+    height: 70px;
+  }
+
+  .content-icon {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    background-color: #fff;
+    padding: 10px;
+
+    li {
+      list-style: none;
+      margin-right: 50px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+  }
+
+  .icon-task-bar {
+    height: 80%;
+    background-color: white;
+    display: flex;
+    margin-bottom: 20px;
+    align-self: center;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    img {
+      width: 70px;
+      height: 70px;
+    }
+  }
+
+  .p-titulo {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+  }
+
+  .h4-titulo {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+  }
+  .p-titulo {
+    display: flex;
+    font-size: 12px;
+  }
+
+  .taskbar-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      display: flex;
+      height: 0 auto;
+    }
+  }
+
+  @media (max-width: 1120px) {
+    .swiper-slide {
+      text-align: center;
+      margin-bottom: 10px;
+
+      .container-task-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        margin-bottom: 10px;
+
+        .content-icon {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          justify-content: center;
+          align-self: center;
+          background-color: #fff;
+          padding: 10px;
+        }
+      }
+      .icon-task-bar {
+        height: 80%;
+        background-color: white;
+        display: flex;
+        margin-bottom: 20px;
+        align-self: center;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      .swiper-pagination {
+        display: none;
+      }
+    }
+  }
+}

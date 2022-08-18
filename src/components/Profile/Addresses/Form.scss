@@ -1,0 +1,96 @@
+.address-form-container {
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        
+
+        .form-group {
+            display: flex;
+            width: 40%;
+            flex-direction: column;
+        }
+
+        .street {
+            width: 50%;
+            margin: 0px 0px;
+        }
+
+        .number {
+            width: 10%;
+        }
+
+        .complement {
+            width: 18%;
+        }
+
+        .district {
+            width: 19%;
+        }
+
+        .street,
+        .number,
+        .complement {
+            margin-right: 1%;
+        }
+
+        .second-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .second-row-group {
+            display: flex;
+
+            .form-group {
+                margin-right: 2%;
+            }
+        }
+    }
+
+    input {
+        border: solid 1px black;
+        border-radius: 4px;
+
+        padding: 4px 10px 4px 10px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .address-form-container {
+        width: 100%;
+
+        .row {
+            display: block;
+
+            .street{
+                margin: 0px 0px;
+            }
+
+            .form-group {
+                width: 100%;
+            }
+
+            .second-row {
+                display: block;
+            }
+
+            .second-row-group {
+                display: block;
+
+                .form-group {
+                    width: 100%;
+                }
+            }
+        }
+
+        .button-div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    }
+}
