@@ -1,46 +1,28 @@
 import React from "react";
+import Table from "../../Table/Table";
 
 import './Table.scss'
 
-export default ({ list, orderBy }) => (
-    <div className="profile-orders-table">
-        <table>
-            <thead>{renderHeadRows()}</thead>
-            <tbody>{renderBodyRows(list, orderBy)}</tbody>
-        </table>
-    </div>
-)
+export default ({ list, orderBy }) => <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(list, orderBy)} />
 
+const getHeadRows = () => [<>
+    <th className="products">Produtos</th>
+    <th className="responsive-hide">Quantidade</th>
+    <th className="responsive-hide">Código da compra</th>
+    <th>
+        <p>Valor</p>
+        <p>Status</p>
+    </th>
+</>];
 
-const renderHeadRows = () => (
-    <tr>
-        <th className="products">Produtos</th>
-        <th className="responsive-hide">Quantidade</th>
-        <th className="responsive-hide">Código da compra</th>
-        <th>
-            <p>Valor</p>
-            <p>Status</p>
-        </th>
-    </tr>
-)
-
-function renderBodyRows(ordersList, orderBy) {
-    return (
-        sortListByOptions(ordersList, orderBy).map(order => {
-            return (
-                <tr key={order.purchaseId}>
-                    {renderProductRow(order.products)}
-                    {renderQuantityRow(order.quantity)}
-                    <td className="responsive-hide">{`#${order.purchaseId}`}</td>
-                    <td>
-                        <p>{order.price}</p>
-                        <p className={order.status === "Pendente" ? "pending" : "send"}>{order.status}</p>
-                    </td>
-                </tr>
-            )
-        })
-    )
-}
+const getBodyObjects = (ordersList, orderBy) => sortListByOptions(ordersList, orderBy).map(order => {
+    return {
+        products: getProductRow(order.products),
+        quantity: getQuantityRow(order.quantity),
+        id: <td className="responsive-hide">{order.purchaseId}</td>,
+        otherInfos: getInfoRow(order.price, order.status)
+    }
+});
 
 const sortListByOptions = (ordersList, orderBy) => {
     switch (orderBy) {
@@ -65,7 +47,7 @@ const sortListByOptions = (ordersList, orderBy) => {
     return ordersList;
 }
 
-const renderProductRow = products => (
+const getProductRow = products => (
     <td className="products">
         <div className="products-row">
             <img src="/img/produtos/gloss.png" alt="" />
@@ -74,8 +56,13 @@ const renderProductRow = products => (
     </td>
 )
 
-const renderQuantityRow = quantities => (
-    <td className="responsive-hide">{quantities.map(quantity => <p> {quantity} </p>)}</td>
+const getQuantityRow = quantities => <td className="responsive-hide">{quantities.map(quantity => <p> {quantity} </p>)}</td>
+
+const getInfoRow = (price, status) => (
+    <td>
+        <p>{price}</p>
+        <p className={status === "Pendente" ? "pending" : "send"}>{status}</p>
+    </td>
 )
 
 const sum = numbersArray => {

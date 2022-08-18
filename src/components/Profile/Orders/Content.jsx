@@ -5,7 +5,6 @@ import MainHeader from '../common/MainHeader';
 import ContentHeader from '../common/ContentHeader';
 import Select from '../../Select/Select';
 import Table from './Table';
-import TableTeste from '../../Table/Table'
 import { myOrders } from '../../../api/mock'
 
 import '../Profile.scss'

@@ -1,39 +1,24 @@
 import React, { useContext } from "react";
 import { AddressContext } from "../../../contexts/address";
 
+import Table from '../../Table/Table';
+
 import './Table.scss'
 
-export default () => (
-    <div className="table-container">
-        <table>
-            <thead>{renderHeadRows()}</thead>
-            <tbody>{renderBodyRows()}</tbody>
-        </table>
-    </div>
-)
+export default () => <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObject()} />
 
-const renderHeadRows = () => (
-    <tr>
-        <th className="address">Endereço</th>
-        <th>Ações</th>
-    </tr>
-)
+const getHeadRow = () => [<>
+    <th className="address">Endereço</th>
+    <th>Ações</th>
+</>]
 
-// TODO: Get full address text based on cep.
-function renderBodyRows() {
-    const { addresses } = useContext(AddressContext);
-
-    return (
-        addresses.map(address => {
-            return (
-                <tr key={address.cep}>
-                    <td className="address">{address.fullAddressText}</td>
-                    {getTdButtons(address.cep)}
-                </tr>
-            )
-        })
-    )
-}
+const getBodyObject = () => useContext(AddressContext).addresses.map(address => {
+    return {
+        key: address.cep,
+        text: address.fullAddressText,
+        buttons: getTdButtons(address.cep)
+    }
+})
 
 const getTdButtons = (addressKey) => {
     const { editAddressClick, removeAddressClick } = useContext(AddressContext);

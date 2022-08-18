@@ -1,8 +1,8 @@
 export default ({ object }) => (
-    <tr className={object.key || object.id || object.code}>
+    <tr key={object.key || object.id}>
         {
             Object.keys(object).map(key => {
-                return object[key].type ? object[key] : <td className={object.className}>{object[key]}</td>
+                if (key != "key") return object[key].type ? object[key] : <td className={object.className}>{object[key]}</td>
             })
         }
     </tr>
