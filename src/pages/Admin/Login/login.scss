@@ -121,6 +121,10 @@
     .form-background {
       width: 86%;
       height: 65%;
+       
+      .logo-div {
+        position: inherit;
+      }
 
       .modal-login {
         width: 293px;
