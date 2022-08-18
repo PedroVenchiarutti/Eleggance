@@ -93,15 +93,14 @@ export default function ModalAddProduct() {
             </div>
           </div>
           <div className="areaBtn">
-          <button className="btn btnCadastrarProduto" onClick={postItem}>
-            CADASTRAR
-          </button>
-          <div className="btn btnCancelarCadastrarProduto" onClick={modalToggle}>
-            CANCELAR
+            <button className="btn btnCadastrarProduto" onClick={postItem}>
+              CADASTRAR
+            </button>
+            <div className="btn btnCancelarCadastrarProduto" onClick={modalToggle}>
+              CANCELAR
+            </div>
           </div>
         </div>
-        </div>
-
       </div>
     </div>
   );
