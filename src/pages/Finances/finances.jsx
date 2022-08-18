@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./finances.scss";
 import RenderLineChart from "./graph";
 import MenuDashboard from "../../components/MenuDashboard";
 import CardFinance from "../../components/CardFinances/cardFinance";
 import NavBarFinances from "../../components/NabBarFinance/navBarFinances";
 import { useState } from "react";
+import Api from "../../api/api";
 
 const Finances = (props) => {
   const getTheDateCurrent = (e) => {
@@ -31,8 +32,18 @@ const Finances = (props) => {
       console.log(currentData);
     }
   };
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    // Tem que trocar a rota para os produtos que foram vendidos
+    Api.get(`api/public/products/pages/1`)
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch(() => {
+        console.log("Deu tudo errado");
+      });
+  }, []);
 
-  const pedidos = ["batom", "esmalte", "acetona"];
   const [showElement, setShowElement] = useState(false);
   const showOrHide = () => setShowElement(true);
 
@@ -72,6 +83,7 @@ const Finances = (props) => {
               <h3>Pedidos Mensais</h3>
               <h2>0</h2>
             </div>
+            <div></div>
           </div>
         </div>
         <div className="bottom-finance">
@@ -80,15 +92,18 @@ const Finances = (props) => {
               <h1>Vendas</h1>
             </div>
             <div className="bottom-finance-top-username">
-           <div>
+              <div>
                 De <input type="date" onKeyDown={(e) => getTheDateCurrent(e)} />{" "}
                 ate <input type="date" onKeyDown={(e) => getTheDate(e)} />{" "}
                 <button
                   className="button-finance-filter-orders"
                   onClick={showOrHide}
                 >
-                  ORDENAR POR <img className="icon-menu-finance" src="/icons/icon-menu.png" />
-              
+                  ORDENAR POR{" "}
+                  <img
+                    className="icon-menu-finance"
+                    src="/icons/icon-menu.png"
+                  />
                 </button>{" "}
                 {showElement ? (
                   <div className="li-filter-orders">
@@ -98,7 +113,7 @@ const Finances = (props) => {
                     <li>Produto mais antigo</li>
                   </div>
                 ) : null}
-                </div>
+              </div>
             </div>
           </div>
           <div className="finances-table">
@@ -112,24 +127,16 @@ const Finances = (props) => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Batom cor Rose Cremoso</td>
-                  <td>2</td>
-                  <td>99,98</td>
-                  <td>123456</td>
-                </tr>
-                <tr>
-                  <td>Batom cor Rose Cremoso</td>
-                  <td>2</td>
-                  <td>99,98</td>
-                  <td>123456</td>
-                </tr>
-                <tr>
-                  <td>Batom cor Rose Cremoso</td>
-                  <td>2</td>
-                  <td>99,98</td>
-                  <td>123456</td>
-                </tr>
+                {products.map((products, key) => {
+                  return (
+                    <tr>
+                      <td>{products.name}</td>
+                      <td>{products.qt}</td>
+                      <td>R$ {products.value}</td>
+                      <td>{products.id}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

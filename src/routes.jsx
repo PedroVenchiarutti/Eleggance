@@ -22,11 +22,11 @@ import MyProfile from "./pages/Profile/Profile";
 import MyData from "./pages/Profile/Data";
 import ProfileOrders from "./pages/Profile/Orders";
 import ProfileAddresses from "./pages/Profile/Addresses";
-import ProfileFavorites from './pages/Profile/Favorites'
+import ProfileFavorites from "./pages/Profile/Favorites";
 import MyLogin from "./pages/Profile/Login";
-import MyRatings from './pages/Profile/Ratings';
+import MyRatings from "./pages/Profile/Ratings";
 import { AddressProvider } from "./contexts/address";
-import Financas from "./pages/Finances/finances"
+import Financas from "./pages/Finances/finances";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -46,7 +46,6 @@ const changeRoutes = () => {
     <Router>
       <AuthProvider>
         <AddressProvider>
-
           <Routes>
             <Route exact path="/home" element={<HomePage />} />
             <Route exact path="/cadastro" element={<FormCadastro />} />
@@ -65,7 +64,11 @@ const changeRoutes = () => {
               element={<ProfileAddresses />}
             />
             <Route exact path="/perfil/login" element={<MyLogin />} />
-            <Route exact path="/perfil/favoritos" element={<ProfileFavorites />} />
+            <Route
+              exact
+              path="/perfil/favoritos"
+              element={<ProfileFavorites />}
+            />
             <Route exact path="/perfil/avaliacoes" element={<MyRatings />} />
 
             <Route
@@ -97,7 +100,11 @@ const changeRoutes = () => {
 
             <Route exact path="/admin" element={<AdminLogin />} />
             <Route exact path="/admin/home" element={<HomeDashboard />} />
-            <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
+            <Route
+              exact
+              path="/admin/produtos"
+              element={<ProdutosDashboard />}
+            />
             <Route
               path="*"
               element={
