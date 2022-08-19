@@ -27,6 +27,7 @@ const RegistrationForm = (props) => {
   //Funcao para enviar a imagem para o firebase
   const firebaseUpload = (e) => {
     e.preventDefault();
+    console.log(e);
     const file = e.target[0]?.files[0];
     if (!file) return;
     const storageRef = ref(storage, `image/user/${file}`);
@@ -182,7 +183,7 @@ const RegistrationForm = (props) => {
                         </label>
                       </div>
                       <div className="grid-item">
-                        <label className="label-form">Sexo: </label>
+                        <label className="label-form">Genero: </label>
                         <select
                           name="select"
                           className="select-form"
