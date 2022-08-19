@@ -6,6 +6,7 @@ import CardFinance from "../../components/CardFinances/cardFinance";
 import NavBarFinances from "../../components/NabBarFinance/navBarFinances";
 import { useState } from "react";
 import Api from "../../api/api";
+import { useFetch } from "../../hooks/useFetch";
 
 const Finances = (props) => {
   const getTheDateCurrent = (e) => {
@@ -32,7 +33,10 @@ const Finances = (props) => {
       console.log(currentData);
     }
   };
-  const [products, setProducts] = useState([]);
+
+
+  
+  const [products, setProducts] = useState([] );
   useEffect(() => {
     // Tem que trocar a rota para os produtos que foram vendidos
     Api.get(`api/public/products/pages/1`)
@@ -43,6 +47,20 @@ const Finances = (props) => {
         console.log("Deu tudo errado");
       });
   }, []);
+
+
+  
+  let valueTotal = 0;
+  for (var i = 0; i < products.length; i++) {
+    valueTotal += products[i].value;
+  }
+
+  let qtTotal = 0;
+  for (var i = 0; i < products.length; i++) {
+    qtTotal += products[i].qt;
+  }
+
+
 
   const [showElement, setShowElement] = useState(false);
   const showOrHide = () => setShowElement(true);
@@ -63,24 +81,24 @@ const Finances = (props) => {
               <p> de 25 de maio de 2022, 09:41 PM</p>
             </div>
             <div className="finances-graph-left-graph">
-              <RenderLineChart />
+              <RenderLineChart  data = {products}/>
             </div>
           </div>
           <div className="finances-graph-right">
             <div className="finances-graph-right-info">
               <h3>Pedidos Mensais</h3>
-              <h2>0</h2>
+              <h2>{products.length}</h2>
             </div>
             <div className="finances-graph-right-info">
-              <h3>Pedidos Mensais</h3>
-              <h2>0</h2>
+              <h3>Produtos vendidos</h3>
+              <h2>{qtTotal}</h2>
             </div>
             <div className="finances-graph-right-info">
-              <h3>Pedidos Mensais</h3>
-              <h2>0</h2>
+              <h3>Valor mensal</h3>
+              <h2>R$ {valueTotal}</h2>
             </div>
             <div className="finances-graph-right-info">
-              <h3>Pedidos Mensais</h3>
+              <h3>Valor total</h3>
               <h2>0</h2>
             </div>
             <div></div>
