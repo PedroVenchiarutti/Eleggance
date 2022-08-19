@@ -20,14 +20,19 @@ export const CouponProvider = ({ children }) => {
 
     const onFormSubmit = event => {
         event.preventDefault();
-        restartState();
+
+        coupons.find(item => item.id === coupon.id) ? 
+            restartState(coupons.filter(item => item.id != coupon.id)) : restartState(coupons);
     }
 
     const [modalVisibility, setModalVisibility] = useState(false);
     const toggleModalVisibility = () => setModalVisibility(!modalVisibility);
 
-    const restartState = () => {
-        setCoupons([...coupons, coupon]);
+    const restartState = (newCouponsArray) => {
+        coupon.expirationDate = <td className="responsive-hide">{coupon.expirationDate}</td>
+        coupon.initialDate = <td className="responsive-hide">{coupon.initialDate}</td>
+
+        setCoupons([...newCouponsArray, coupon]);
         setCoupon({ ...initialState });
         toggleModalVisibility();
     }

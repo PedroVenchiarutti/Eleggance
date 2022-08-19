@@ -104,6 +104,7 @@ const changeRoutes = () => {
               <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
               <Route exact path="/admin/pedidos" element={<DashboardOrders />} />
               <Route exact path="/admin/cupons" element={<DashboardCoupons />} />
+              <Route exact path="/admin/administracao" element={<Financas />} />
               <Route
                 path="*"
                 element={
