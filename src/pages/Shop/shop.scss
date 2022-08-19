@@ -86,12 +86,13 @@
           display: flex;
           flex-wrap: wrap;
           list-style: none;
+          justify-content: center;
           .container-img-promo {
             text-overflow: ellipsis;
             overflow: hidden;
             background-color: #f3f3f3;
             display: flex;
-            width: 150px;
+            width: 250px;
             height: 250px;
             margin: 40px;
             align-items: center;
@@ -143,11 +144,11 @@
               transform: scale(1.1);
             }
           }
-          .container-img-promo:hover {
+          /* .container-img-promo:hover {
             width: 200px;
             height: 300px;
             transform: scale(1.05);
-          }
+          } */
           a {
             color: #333;
             text-decoration: none;

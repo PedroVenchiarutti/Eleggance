@@ -36,9 +36,10 @@ export default function ModalAddProduct() {
   const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[5]?.files[0];
+    console.log(file);
 
     if (!file) return;
-    const storageRef = ref(storage, `image/produtos/${file}`);
+    const storageRef = ref(storage, `image/produtos/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(

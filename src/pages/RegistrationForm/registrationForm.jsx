@@ -8,9 +8,7 @@ import Loading from "../../components/SpinerLoader";
 
 const RegistrationForm = (props) => {
   const [imgURL, setImgURL] = useState("");
-  const [previelImg, setPrevielImg] = useState(
-    "/icons/camera.png"
-  );
+  const [previelImg, setPrevielImg] = useState("/icons/camera.png");
   const [sexy, setSexy] = useState("");
   const [images, setImages] = useState("");
   const [personalName, setPersonalName] = useState({
@@ -30,7 +28,7 @@ const RegistrationForm = (props) => {
     console.log(e);
     const file = e.target[0]?.files[0];
     if (!file) return;
-    const storageRef = ref(storage, `image/user/${file}`);
+    const storageRef = ref(storage, `image/user/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
