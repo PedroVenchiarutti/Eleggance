@@ -29,9 +29,6 @@ export const CouponProvider = ({ children }) => {
     const toggleModalVisibility = () => setModalVisibility(!modalVisibility);
 
     const restartState = (newCouponsArray) => {
-        coupon.expirationDate = <td className="responsive-hide">{coupon.expirationDate}</td>
-        coupon.initialDate = <td className="responsive-hide">{coupon.initialDate}</td>
-
         setCoupons([...newCouponsArray, coupon]);
         setCoupon({ ...initialState });
         toggleModalVisibility();

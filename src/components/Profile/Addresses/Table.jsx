@@ -5,17 +5,17 @@ import Table from '../../Table/Table';
 
 import './Table.scss'
 
-export default () => <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObject()} />
+export default () => <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects()} />
 
 const getHeadRow = () => [<>
     <th className="address">Endereço</th>
     <th>Ações</th>
 </>]
 
-const getBodyObject = () => useContext(AddressContext).addresses.map(address => {
+const getBodyObjects = () => useContext(AddressContext).addresses.map(address => {
     return {
         key: address.cep,
-        text: address.fullAddressText,
+        text: <td className="address">{address.fullAddressText}</td>,
         buttons: getTdButtons(address.cep)
     }
 })
