@@ -22,15 +22,15 @@ import MyProfile from "./pages/Profile/Profile";
 import MyData from "./pages/Profile/Data";
 import ProfileOrders from "./pages/Profile/Orders";
 import ProfileAddresses from "./pages/Profile/Addresses";
-import ProfileFavorites from './pages/Profile/Favorites'
+import ProfileFavorites from "./pages/Profile/Favorites";
 import MyLogin from "./pages/Profile/Login";
-import MyRatings from './pages/Profile/Ratings';
+import MyRatings from "./pages/Profile/Ratings";
 import { AddressProvider } from "./contexts/address";
-
 import DashboardOrders from './pages/Admin/Orders/Orders'
 import DashboardCoupons from './pages/Admin/Coupons/Coupons'
 import { CouponProvider } from "./contexts/coupon";
 import Financas from "./pages/Finances/finances"
+
 
 
 const changeRoutes = () => {
@@ -61,17 +61,21 @@ const changeRoutes = () => {
             <Route exact path="/produtos" element={<Products />} />
             <Route exact path="/shop" element={<Shop />} />
 
-              <Route exact path="/perfil" element={<MyProfile />} />
-              <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
-              <Route exact path="/perfil/dados" element={<MyData />} />
-              <Route
-                exact
-                path="/perfil/enderecos"
-                element={<ProfileAddresses />}
-              />
-              <Route exact path="/perfil/login" element={<MyLogin />} />
-              <Route exact path="/perfil/favoritos" element={<ProfileFavorites />} />
-              <Route exact path="/perfil/avaliacoes" element={<MyRatings />} />
+            <Route exact path="/perfil" element={<MyProfile />} />
+            <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
+            <Route exact path="/perfil/dados" element={<MyData />} />
+            <Route
+              exact
+              path="/perfil/enderecos"
+              element={<ProfileAddresses />}
+            />
+            <Route exact path="/perfil/login" element={<MyLogin />} />
+            <Route
+              exact
+              path="/perfil/favoritos"
+              element={<ProfileFavorites />}
+            />
+            <Route exact path="/perfil/avaliacoes" element={<MyRatings />} />
 
               <Route
                 exact
@@ -99,10 +103,13 @@ const changeRoutes = () => {
                   </Private>
                 }
               />
-
               <Route exact path="/admin" element={<AdminLogin />} />
               <Route exact path="/admin/home" element={<HomeDashboard />} />
-              <Route exact path="/admin/produtos" element={<ProdutosDashboard />} />
+              <Route
+                exact
+                path="/admin/produtos"
+                element={<ProdutosDashboard />}
+              />
               <Route exact path="/admin/pedidos" element={<DashboardOrders />} />
               <Route exact path="/admin/cupons" element={<DashboardCoupons />} />
               <Route exact path="/admin/administracao" element={<Financas />} />

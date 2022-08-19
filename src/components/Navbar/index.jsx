@@ -106,7 +106,7 @@ export const Navbar = () => {
                         <Link to="/produtos">Produtos</Link>
                       </li>
                       <li>
-                        <Link to="/contato">Contato</Link>
+                        <Link to="/agendamento">Contato</Link>
                       </li>
                     </ul>
                   </div>
