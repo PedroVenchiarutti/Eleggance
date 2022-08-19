@@ -1,36 +1,43 @@
+import { useFetch } from '../../../hooks/useFetch'
+
 import Table from "../../Table/Table";
+import Loading from '../../SpinerLoader'
 
 import '../Dashboard.scss';
 import './Orders.scss';
 
 export default () => {
     const headerColumns = ["Nome do produto", "Quantidade", "Valor", <th className="responsive-hide">Status pagamento</th>, <th className="responsive-hide">Status entrega</th>, "Código da venda"];
+    const { data } = useFetch('api/protected/request/');
 
-    const orders = [{
-        product: "Batom cor rosê cremoso",
-        quantity: 4,
-        value: "R$99,99",
-        status: getOrderStatus("Pendente", "Pendente"),
-        id: 123,
-    }, {
-        product: "Batom cor verde cremoso",
-        quantity: 2,
-        value: "R$99,99",
-        status: getOrderStatus("Pago", "Pendente"),
-        id: 1223,
-    }, {
-        product: "Batom cor azul cremoso",
-        quantity: 1,
-        value: "R$129,99",
-        status: getOrderStatus("Pago", "Entregue"),
-        id: 999,
-    }]
-
-    return (
+    return data.length ?
         <div className="content">
-            <Table headerColumnsArray={headerColumns} bodyObjectsArray={orders} />
-        </div>
-    )
+            <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data)} />
+        </div> : <Loading />
+}
+
+const getRows = (orders) => orders.map(order => {
+    const status = order.status ?? "Pendente";
+    const products = order.products;
+
+    return {
+        products: getOrderProductsInfos(products),
+        price: `R$${getOrderValue(products)}`,
+        status: getOrderStatus(status, status),
+        id: order.id
+    }
+});
+
+const getOrderProductsInfos = (products) =>
+    <>
+        <td>{products.map(product => <li key={product.productId} className="product-name">{product.name}</li>)}</td>
+        <td>{products.map(product => <p>{product.qt_product}</p>)}</td>
+    </>
+
+const getOrderValue = (products) => {
+    let sum = 0;
+    products.forEach(product => sum += +product.value);
+    return sum;
 }
 
 const getOrderStatus = (paymentStatus, deliveryStatus) => {
@@ -41,7 +48,7 @@ const getOrderStatus = (paymentStatus, deliveryStatus) => {
             <td className={`responsive-hide`}>
                 <p className={getClass(paymentStatus)}>{paymentStatus}</p>
             </td>
-            <td className={`responsive-hide`}>  
+            <td className={`responsive-hide`}>
                 <p className={getClass(deliveryStatus)}>{deliveryStatus}</p>
             </td>
         </>

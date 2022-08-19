@@ -1,40 +1,35 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import Api from "../api/api";
+import { useFetch } from "../hooks/useFetch";
 
 const initialState = {
-    id: '',
+    code: '',
     minValue: '',
-    discountValue: '',
-    initialDate: new Date().toLocaleDateString(),
-    expirationDate: '',
+    discount: '',
+    initialDate: new Date(),
+    dt_limit: '',
     availableQuantity: ''
 }
 
 export const CouponContext = createContext();
 export const CouponProvider = ({ children }) => {
-    const couponsFromStorage = sessionStorage.getItem('coupons');
+    let { data } = useFetch('api/protected/dicount/');
 
     const [coupon, setCoupon] = useState({ ...initialState });
     const updateState = (fieldName, value) => setCoupon({ ...Object.assign(coupon, { [fieldName]: value }) });
 
-    const [coupons, setCoupons] = useState(couponsFromStorage ? JSON.parse(couponsFromStorage) : []);
+    const [coupons, setCoupons] = useState(data);
+    useEffect(() => setCoupons(data), [data]);
 
-    const onFormSubmit = event => {
+    const onFormSubmit = async event => {
         event.preventDefault();
-
-        coupons.find(item => item.id === coupon.id) ? 
-            restartState(coupons.filter(item => item.id != coupon.id)) : restartState(coupons);
+        console.log(coupon)
+        await Api.post('http://localhost:3333/api/protected/dicount', coupon);
     }
 
     const [modalVisibility, setModalVisibility] = useState(false);
     const toggleModalVisibility = () => setModalVisibility(!modalVisibility);
-
-    const restartState = (newCouponsArray) => {
-        setCoupons([...newCouponsArray, coupon]);
-        setCoupon({ ...initialState });
-        toggleModalVisibility();
-    }
-
-    useEffect(() => sessionStorage.setItem('coupons', JSON.stringify(coupons)), [coupons]);
 
     const state = {
         coupon,

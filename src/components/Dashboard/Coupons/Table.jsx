@@ -1,10 +1,7 @@
-import { useContext } from "react"
-import { CouponContext } from "../../../contexts/coupon"
-
-export default () =>
+export default ({ couponsList }) =>
     <table>
         <thead>{renderHeadRow()}</thead>
-        <tbody>{renderBodyRows()}</tbody>
+        <tbody>{renderBodyRows(couponsList)}</tbody>
     </table>
 
 const renderHeadRow = () =>
@@ -17,14 +14,14 @@ const renderHeadRow = () =>
         <th>Quantidade disponível</th>
     </tr>
 
-const renderBodyRows = () =>
-    useContext(CouponContext).coupons.map(coupon =>
+const renderBodyRows = (couponsList) =>
+    couponsList.map(coupon =>
         <tr key={coupon.id}>
-            <td>{coupon.id}</td>
-            <td>{coupon.minValue}</td>
-            <td>{coupon.discountValue}</td>
-            <td className="responsive-hide">{coupon.initialDate}</td>
-            <td className="responsive-hide">{coupon.expirationDate}</td>
-            <td>{coupon.availableQuantity}</td>
+            <td>{coupon.code}</td>
+            <td>{coupon.minValue ?? "R$ 0"}</td>
+            <td>{coupon.discount}</td>
+            <td className="responsive-hide">{coupon.created_at}</td>
+            <td className="responsive-hide">{coupon.dt_limit}</td>
+            <td>{coupon.availableQuantity ?? "0"}</td>
         </tr>
     )

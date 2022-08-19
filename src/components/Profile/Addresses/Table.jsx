@@ -13,10 +13,11 @@ const getHeadRow = () => [<>
 </>]
 
 const getBodyObjects = () => useContext(AddressContext).addresses.map(address => {
+    console.log(address);
     return {
-        key: address.cep,
-        text: <td className="address">{address.fullAddressText}</td>,
-        buttons: getTdButtons(address.cep)
+        key: address.id,
+        text: <td className="address">{address.address} - {address.district} - {address.city} {address.cep}</td>,
+        buttons: getTdButtons(address.id)
     }
 })
 

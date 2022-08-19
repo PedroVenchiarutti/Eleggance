@@ -14,7 +14,7 @@ export default () => {
                 <h2 className="modal-title">Cadastrar cupom</h2>
                 <div className="form-group">
                     <label>Código</label>
-                    <input value={coupon.id} onChange={ev => updateState("id", ev.target.value)} />
+                    <input value={coupon.code} onChange={ev => updateState("code", ev.target.value)} />
                 </div>
 
                 <div className="form-group">
@@ -24,12 +24,12 @@ export default () => {
 
                 <div className="form-group">
                     <label>Valor desconto</label>
-                    <input value={coupon.discountValue} onChange={ev => updateState("discountValue", ev.target.value)} />
+                    <input value={coupon.discount} onChange={ev => updateState("discount", +ev.target.value)} />
                 </div>
 
                 <div className="form-group">
                     <label>Data de expiração</label>
-                    <input value={coupon.expirationDate} onChange={ev => updateState("expirationDate", ev.target.value)} />
+                    <input value={coupon.dt_limit} type='date' onChange={ev => updateState("dt_limit", ev.target.value)} />
                 </div>
 
                 <div className="form-group">
