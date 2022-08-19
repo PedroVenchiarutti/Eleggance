@@ -9,7 +9,7 @@ import Loading from "../../components/SpinerLoader";
 const RegistrationForm = (props) => {
   const [imgURL, setImgURL] = useState("");
   const [previelImg, setPrevielImg] = useState(
-    "/icons/iconmonstr-photo-camera-6-72.png"
+    "/icons/camera.png"
   );
   const [sexy, setSexy] = useState("");
   const [images, setImages] = useState("");

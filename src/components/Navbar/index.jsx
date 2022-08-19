@@ -60,7 +60,9 @@ export const Navbar = () => {
             </div>
           </div>
           <button className="buttonCart">
-            <img src="/icons/shoppingCart.svg" className="svgCart" />
+            <Link to="/carrinho">
+              <img src="/icons/shoppingCart.svg" className="svgCart" />
+            </Link>
           </button>
         </div>
       );
@@ -91,7 +93,9 @@ export const Navbar = () => {
               <img src="/img/Frame.svg" className="svgUser-mobile" />
             </button>
             <button className="buttonCart">
-              <img src="/icons/shoppingCart.svg" className="svgCart" />
+              <Link to="/carrinho">
+                <img src="/icons/shoppingCart.svg" className="svgCart" />
+              </Link>
             </button>
           </div>
         </div>
@@ -103,7 +107,7 @@ export const Navbar = () => {
       <nav>
         <div className="logoInSearch">
           <Link to="/">
-            <img src="logo.png" />
+            <img src="/logo.png" />
           </Link>
           <div className="inputSearch">
             <div className="inputList">
@@ -113,13 +117,13 @@ export const Navbar = () => {
                   <div className="list">
                     <ul>
                       <li>
-                        <a href="">Home</a>
+                        <Link to="/">Home</Link>
                       </li>
                       <li>
-                        <a href="">Produtos</a>
+                        <Link to="/produtos">Produtos</Link>
                       </li>
                       <li>
-                        <a href="">Contato</a>
+                        <Link to="/contato">Contato</Link>
                       </li>
                     </ul>
                   </div>
@@ -127,7 +131,7 @@ export const Navbar = () => {
               </div>
             </div>
             <button>
-              <img src="icons/iconmonstr-search-thin.svg" />
+              <img src="/icons/iconmonstr-search-thin.svg" />
             </button>
           </div>
         </div>

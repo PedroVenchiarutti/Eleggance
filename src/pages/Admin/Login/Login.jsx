@@ -8,29 +8,46 @@ export default function Login() {
 
   function verificarLogin() {
     if (adminLogin == "admin" && adminSenha == "admin") {
-      
     } else {
-      alert("tchau");
+      alert("Login bem-sucedido!");
     }
   }
 
   return (
     <div className="admin-login-container">
-      <div className="modal-login">
-        <h1>DashBoard Elegancce </h1>
-        <input
-          type="text"
-          placeholder="Login"
-          value={adminLogin}
-          onChange={(e) => setAdminLogin(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={adminSenha}
-          onChange={(e) => setAdminSenha(e.target.value)}
-        />
-        <button onClick={verificarLogin}>Entrar</button>
+      <div className="form-background">
+        <div className="logo-div">
+          <img src="./logo.png" alt="" />
+        </div>
+        <form className="modal-login">
+          <div className="single-input">
+            <input
+              type="text"
+              name="Login"
+              value={adminLogin}
+              required
+              onChange={(e) => setAdminLogin(e.target.value)}
+            />
+            <label htmlFor="Login" className="label-login">
+              <span className="content-login">Login</span>
+            </label>
+          </div>
+          <div className="single-input">
+            <input
+              type="password"
+              name="Password"
+              required
+              value={adminSenha}
+              onChange={(e) => setAdminSenha(e.target.value)}
+            />
+            <label htmlFor="Password" className="label-password">
+              <span className="content-password">Password</span>
+            </label>
+          </div>
+        </form>
+        <div className="button-div">
+          <button onClick={verificarLogin}>Entrar</button>
+          </div>
       </div>
     </div>
   );

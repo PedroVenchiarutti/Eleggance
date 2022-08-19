@@ -74,10 +74,11 @@ export default function Shop({ products }) {
             <option value="saab">Preço: Ordem Crescente</option>
             <option value="mercedes">Preço: Ordem Decrescente</option>
           </select>
-
-          <ul>
-            <AllProducts products={shelfProducts} />
-          </ul>
+          <div className="ul-products">
+            <ul>
+              <AllProducts products={shelfProducts} />
+            </ul>
+          </div>
         </div>
       </main>
       <Footer />
