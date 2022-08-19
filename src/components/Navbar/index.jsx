@@ -54,7 +54,9 @@ export const Navbar = () => {
             </div>
           </div>
           <button className="buttonCart">
-            <img src="/icons/shoppingCart.svg" className="svgCart" />
+            <Link to="/carrinho">
+              <img src="/icons/shoppingCart.svg" className="svgCart" />
+            </Link>
           </button>
         </div>
       );
@@ -70,7 +72,9 @@ export const Navbar = () => {
             </Link>
           </div>
           <button className="buttonCart">
-            <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+            <Link to="/carrinho">
+              <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+            </Link>
           </button>
         </div>
       );
@@ -82,7 +86,9 @@ export const Navbar = () => {
               <img src="/img/Frame.svg" className="svgUser-mobile" />
             </button>
             <button className="buttonCart">
-              <img src="/icons/shoppingCart.svg" className="svgCart" />
+              <Link to="/carrinho">
+                <img src="/icons/shoppingCart.svg" className="svgCart" />
+              </Link>
             </button>
           </div>
         </div>
@@ -110,7 +116,7 @@ export const Navbar = () => {
                         <Link to="/produtos">Produtos</Link>
                       </li>
                       <li>
-                        <Link to="/agendamento">Contato</Link>
+                        <Link to="/contato">Contato</Link>
                       </li>
                     </ul>
                   </div>

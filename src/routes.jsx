@@ -50,11 +50,10 @@ const changeRoutes = () => {
             <Route exact path="/home" element={<HomePage />} />
             <Route exact path="/cadastro" element={<FormCadastro />} />
             <Route exact path="/login" element={<FormSingUp />} />
-            <Route exact path="/agendamento" element={<Schedulling />} />
-            <Route exact path="/produtos" element={<Products />} />
-            <Route exact path="/shop" element={<Shop />} />
+            <Route exact path="/contato" element={<Schedulling />} />
+            <Route exact path="/detalhes_produto" element={<Products />} />
+            <Route exact path="/produtos" element={<Shop />} />
             <Route exact path="/financas" element={<Financas />} />
-
             <Route exact path="/perfil" element={<MyProfile />} />
             <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
             <Route exact path="/perfil/dados" element={<MyData />} />
