@@ -26,7 +26,7 @@ const getRows = (couponsList) =>
             key: coupon.id,
             code: coupon.code,
             minValue: coupon.minValue ?? "R$ 0",
-            discount: coupon.discount,
+            discount: coupon.discount + '%',
             created_at: <td className="responsive-hide">{new Date(coupon.created_at).toLocaleDateString()}</td>,
             dt_limit: <td className="responsive-hide">{new Date(coupon.dt_limit).toLocaleDateString()}</td>,
             availableQuantity: coupon.availableQuantity ?? 0
