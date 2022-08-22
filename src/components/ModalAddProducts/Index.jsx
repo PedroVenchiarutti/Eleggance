@@ -7,7 +7,6 @@ import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
 
 export default function ModalAddProduct() {
-  const [imagesUrl, setImagesUrl] = useState(null);
   const [valor, setValor] = useState({
     name: "",
     description: "",
@@ -20,31 +19,31 @@ export default function ModalAddProduct() {
   const [previelImg, setPrevielImg] = useState(
     "/icons/iconmonstr-photo-camera-6-72.png"
   );
+  const [imagesUrl, setImagesUrl] = useState();
   const [progress, setProgress] = useState(false);
 
-  const postItem = async (e) => {
-    await Api.post(`api/protected/product`, valor)
+  async function postItem(url) {
+    await Api.post(`api/protected/product`, {
+      ...valor,
+      url_img: url,
+    })
       .then((res) => {
-        if (valor.url_img === null) {
-          alert("erro em cadastrar produto sem imagem");
-          console.log("valor", valor);
-          return;
-        } else {
-          alert("produto cadastrado com sucesso");
-          console.log("valor", valor);
-          return;
-        }
+        alert("deu tudo certo finalmente", url);
+        setProgress(false);
+        modalToggle();
+        window.location.reload();
       })
       .catch(function (error) {
         console.error(error);
+        alert("Algo deu errrado");
       });
-  };
+  }
 
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = async (e) => {
     e.preventDefault();
     const file = e.target[5]?.files[0];
-    console.log(file);
+    console.log("file", file);
 
     if (!file) return;
     const storageRef = ref(storage, `image/produtos/${file.name}`);
@@ -58,13 +57,19 @@ export default function ModalAddProduct() {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
-      (error) => {}
+      (error) => {
+        console.log("error", error);
+      }
     );
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
         .then((url) => {
-          setValor({ ...valor, url_img: url });
-          postItem();
+          if (!url) return;
+          let urlImg = url;
+          setImagesUrl(urlImg);
+          console.log("url", urlImg);
+          setProgress(true);
+          postItem(urlImg);
         })
         .catch((error) => {
           console.log(error);
@@ -85,6 +90,7 @@ export default function ModalAddProduct() {
       url_img: "",
     });
     setImages("");
+    console.log("url", valor);
   }
 
   return (
@@ -162,6 +168,7 @@ export default function ModalAddProduct() {
           >
             Cancelar
           </div>
+          <div>{progress === false ? <div> </div> : <Loading />}</div>
         </div>
       </Form>
     </div>
