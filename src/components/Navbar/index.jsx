@@ -6,6 +6,7 @@ export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
+
   // Abrir/Fechar menu mobile Hamburguer
   const ToggleMode = () => {
     setMode(!active);
@@ -23,7 +24,12 @@ export const Navbar = () => {
         if (linkImg) {
           return (
             <button>
-              <img src={linkImg} className="imgUser" />
+              <img
+                src={linkImg == " " ? "/img/Frame.svg" : linkImg}
+                alt="user"
+              />
+
+              {/* <img src={linkImg} className="imgUser" /> */}
             </button>
           );
         } else {
@@ -37,21 +43,27 @@ export const Navbar = () => {
     }
     console.log(linkImg);
   };
-  // verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
+  //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
   const userLogged = () => {
     const height = window.screen.height;
     const width = window.screen.width;
     if (height >= 600 && width >= 600 && authenticated) {
       return (
-        <div className="navbar-user-logged-mobile">
-          <div className="navbar-user-logged-name-mobile">
-            <button>
-              <img src="/img/Frame.svg" className="svgUser-mobile" />
-            </button>
-            <button className="buttonCart">
-              <img src="/icons/shoppingCart.svg" className="svgCart" />
-            </button>
+        <div className="navbar-user-logged">
+          <div className="navbar-user-logged-name">
+            {renderImage()}
+            <div className="navbar-user-name-logout">
+              <h4>
+                <span>{loginName.toUpperCase()}</span>
+              </h4>
+              <button onClick={userLogout}>Sair</button>
+            </div>
           </div>
+          <button className="buttonCart">
+            <Link to="/carrinho">
+              <img src="/icons/shoppingCart.svg" className="svgCart" />
+            </Link>
+          </button>
         </div>
       );
     } else if (height >= 600 && width >= 600 && !authenticated) {
@@ -66,19 +78,24 @@ export const Navbar = () => {
             </Link>
           </div>
           <button className="buttonCart">
-            <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+            <Link to="/carrinho">
+              <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+            </Link>
           </button>
         </div>
       );
     } else {
+      //mobile
       return (
         <div className="navbar-user-logged-mobile">
           <div className="navbar-user-logged-name-mobile">
-            <button>
+            <button className="buttonFrame">
               <img src="/img/Frame.svg" className="svgUser-mobile" />
             </button>
             <button className="buttonCart">
-              <img src="/icons/shoppingCart.svg" className="svgCart" />
+              <Link to="/carrinho">
+                <img src="/icons/shoppingCart.svg" className="svgCart" />
+              </Link>
             </button>
           </div>
         </div>

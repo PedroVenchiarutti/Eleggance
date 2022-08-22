@@ -1,18 +1,21 @@
-table {
-    .products {
-        text-align: start;
-        padding-left: 20px;
-        width: 55%;
+.table-content {
+    text-align: center;
+    table {
+        .products {
+            text-align: start;
+            padding-left: 20px;
+            width: 55%;
+        }
+    
+        .products-cell {
+            display: flex;
+            align-items: center;
+    
+            img { width: 10% }
+            p { text-align: start }
+        }
+    
+        .send { color: #E1AB38 }
+        .pending { color: red }
     }
-
-    .products-row {
-        display: flex;
-        align-items: center;
-
-        img { width: 10% }
-        p { text-align: start }
-    }
-
-    .send { color: #E1AB38 }
-    .pending { color: red }
 }

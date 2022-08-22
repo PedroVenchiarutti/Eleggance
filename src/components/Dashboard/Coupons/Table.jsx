@@ -19,9 +19,9 @@ const renderBodyRows = (couponsList) =>
         <tr key={coupon.id}>
             <td>{coupon.code}</td>
             <td>{coupon.minValue ?? "R$ 0"}</td>
-            <td>{coupon.discount}</td>
+            <td>R${coupon.discount}</td>
             <td className="responsive-hide">{coupon.created_at}</td>
-            <td className="responsive-hide">{coupon.dt_limit}</td>
+            <td className="responsive-hide">{new Date(coupon.dt_limit).toLocaleDateString()}</td>
             <td>{coupon.availableQuantity ?? "0"}</td>
         </tr>
     )

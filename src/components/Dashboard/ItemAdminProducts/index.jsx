@@ -10,6 +10,10 @@ export default function ItemAdminProducts() {
     console.log(data);
   }
 
+  function removeItem(item) {
+    console.log(item);
+  }
+
   return (
     <>
       {data.map((data) => {
@@ -40,7 +44,11 @@ export default function ItemAdminProducts() {
                 src="/icons/icon-edit-address.svg"
                 onClick={modalToggleEdit}
               />
-              <img className="icon-trash" src="/icons/trashIcon.svg" />
+              <img
+                className="icon-trash"
+                src="/icons/trashIcon.svg"
+                onClick={removeItem}
+              />
             </td>
           </tr>
         );

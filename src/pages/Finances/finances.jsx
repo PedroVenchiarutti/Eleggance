@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./finances.scss";
 import RenderLineChart from "./graph";
 import MenuDashboard from "../../components/Dashboard/MenuDashboard";
 import CardFinance from "../../components/CardFinances/cardFinance";
 import NavBarFinances from "../../components/NabBarFinance/navBarFinances";
 import { useState } from "react";
+import Api from "../../api/api";
+import { useFetch } from "../../hooks/useFetch";
 
 const Finances = (props) => {
   const getTheDateCurrent = (e) => {
@@ -32,7 +34,34 @@ const Finances = (props) => {
     }
   };
 
-  const pedidos = ["batom", "esmalte", "acetona"];
+
+  
+  const [products, setProducts] = useState([] );
+  useEffect(() => {
+    // Tem que trocar a rota para os produtos que foram vendidos
+    Api.get(`api/public/products/pages/1`)
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch(() => {
+        console.log("Deu tudo errado");
+      });
+  }, []);
+
+
+  
+  let valueTotal = 0;
+  for (var i = 0; i < products.length; i++) {
+    valueTotal += products[i].value;
+  }
+
+  let qtTotal = 0;
+  for (var i = 0; i < products.length; i++) {
+    qtTotal += products[i].qt;
+  }
+
+
+
   const [showElement, setShowElement] = useState(false);
   const showOrHide = () => setShowElement(true);
 
@@ -52,26 +81,27 @@ const Finances = (props) => {
               <p> de 25 de maio de 2022, 09:41 PM</p>
             </div>
             <div className="finances-graph-left-graph">
-              <RenderLineChart />
+              <RenderLineChart  data = {products}/>
             </div>
           </div>
           <div className="finances-graph-right">
             <div className="finances-graph-right-info">
               <h3>Pedidos Mensais</h3>
-              <h2>0</h2>
+              <h2>{products.length}</h2>
             </div>
             <div className="finances-graph-right-info">
-              <h3>Pedidos Mensais</h3>
-              <h2>0</h2>
+              <h3>Produtos vendidos</h3>
+              <h2>{qtTotal}</h2>
             </div>
             <div className="finances-graph-right-info">
-              <h3>Pedidos Mensais</h3>
-              <h2>0</h2>
+              <h3>Valor mensal</h3>
+              <h2>R$ {valueTotal}</h2>
             </div>
             <div className="finances-graph-right-info">
-              <h3>Pedidos Mensais</h3>
+              <h3>Valor total</h3>
               <h2>0</h2>
             </div>
+            <div></div>
           </div>
         </div>
         <div className="bottom-finance">
@@ -80,15 +110,18 @@ const Finances = (props) => {
               <h1>Vendas</h1>
             </div>
             <div className="bottom-finance-top-username">
-           <div>
+              <div>
                 De <input type="date" onKeyDown={(e) => getTheDateCurrent(e)} />{" "}
                 ate <input type="date" onKeyDown={(e) => getTheDate(e)} />{" "}
                 <button
                   className="button-finance-filter-orders"
                   onClick={showOrHide}
                 >
-                  ORDENAR POR <img className="icon-menu-finance" src="/icons/icon-menu.png" />
-              
+                  ORDENAR POR{" "}
+                  <img
+                    className="icon-menu-finance"
+                    src="/icons/icon-menu.png"
+                  />
                 </button>{" "}
                 {showElement ? (
                   <div className="li-filter-orders">
@@ -98,7 +131,7 @@ const Finances = (props) => {
                     <li>Produto mais antigo</li>
                   </div>
                 ) : null}
-                </div>
+              </div>
             </div>
           </div>
           <div className="finances-table">
@@ -112,24 +145,16 @@ const Finances = (props) => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Batom cor Rose Cremoso</td>
-                  <td>2</td>
-                  <td>99,98</td>
-                  <td>123456</td>
-                </tr>
-                <tr>
-                  <td>Batom cor Rose Cremoso</td>
-                  <td>2</td>
-                  <td>99,98</td>
-                  <td>123456</td>
-                </tr>
-                <tr>
-                  <td>Batom cor Rose Cremoso</td>
-                  <td>2</td>
-                  <td>99,98</td>
-                  <td>123456</td>
-                </tr>
+                {products.map((products, key) => {
+                  return (
+                    <tr>
+                      <td>{products.name}</td>
+                      <td>{products.qt}</td>
+                      <td>R$ {products.value}</td>
+                      <td>{products.id}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

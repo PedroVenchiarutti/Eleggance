@@ -3,14 +3,12 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
-
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
 
     width: 100%;
-
     .button-add {
       width: 60px;
       height: 60px;
@@ -27,7 +25,6 @@
       right: 15px;
       transition: 0.3s all ease-in-out;
     }
-
     .button-add:hover {
       background-color: #b47f0c;
     }
@@ -36,13 +33,12 @@
     .modalEditProducts {
       display: none;
     }
-
     .open {
       margin: 3% 0;
       display: flex;
       flex-direction: column;
       position: absolute;
-      width: 60%;
+      width: 50%;
       min-width: 350px;
       height: 90%;
       background-color: #f3f3f3;
@@ -60,10 +56,6 @@
         height: 35px;
         margin-bottom: 15px;
 
-        h1 {
-          font-weight: 400;
-        }
-
         button {
           cursor: pointer;
           width: 50px;
@@ -75,95 +67,58 @@
           transition: 0.3s all ease-out;
           border: none;
         }
-
         button:hover {
           color: #b47f0c;
         }
       }
-
-      .body-modal {
-
+      .main-modal {
+        font-weight: 600;
         display: flex;
-        height: 100%;
-
-        .main-modal {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 80%;
+        margin-left: 10%;
+        input {
+          height: 40px;
+          width: 450px;
+          max-width: 60%;
+          border-radius: 5px;
+          padding-left: 6px;
+          font-size: 20px;
+          border: 0.5px solid black;
+        }
+        .inputPhoto {
+          height: 70px;
+          min-height: 35px;
           font-weight: 600;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          height: 100%;
-          width: 60%;
-          margin-left: 5%;
-
-          input {
-            height: 40px;
-            width: 450px;
-            max-width: 80%;
-            border-radius: 5px;
-            padding-left: 6px;
-            font-size: 20px;
-            border: 0.5px solid black;
-          }
-
-          .inputPhoto {
-            height: 35px;
-            min-height: 35px;
-            font-weight: 600;
-            border: none;
-            border-radius: 5px;
-          }
+          border: none;
+          border-radius: 5px;
         }
+      }
+    }
 
-        .productVisualization{
-          display: block;
-          margin-right: 15px;
+    .areaBtn {
+      margin-left: 10%;
+      display: flex;
+      width: 40%;
+      justify-content: space-between;
 
-          p{
-            text-align: center;
-          }
+      .btn {
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: 700;
+      }
 
-          .productAndInfo{
-            background-color: #4743431c;
-            margin-bottom: 20px;
-            text-align: center;
+      .btnCadastrarProduto {
+        background-color: #e2ac38;
+        color: #f3f3f3;
+      }
 
-            .productInfo{
-              text-align: start;
-              padding-left: 5px;
-              background-color: #bdb9b9ef;
-              border-radius: 5px;
-            }
-          }
-        }
-
-        .areaBtn {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          text-align: center;
-
-
-          .btn {
-            padding: 5px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            font-weight: 500;
-            font-size: 20px;
-            width: 65%;
-          }
-    
-          .btnCadastrarProduto {
-            background-color: #e2ac38;
-            color: #f3f3f3;
-          }
-    
-          .btnCancelarCadastrarProduto {
-            color: #e2ac38;
-            background-color: #f3f3f3;
-            border: 0.5px solid #e2ac38;
-          }
-        }
+      .btnCancelarCadastrarProduto {
+        color: #e2ac38;
+        background-color: #f3f3f3;
+        border: 0.5px solid #e2ac38;
       }
     }
   }
@@ -174,33 +129,16 @@
     .header-container {
       display: none;
     }
-
     main {
       margin-top: 50px;
-
-      .modalAddProducts{
-        width: 100%;
-
-        .body-modal{
-          flex-direction: column;
-          align-items: center;
-
-          .productVisualization .productAndInfo .productInfo{
-            text-align: center;
-          }
-
-        }
-      }
       .header-modal {
         width: 100%;
         align-items: center;
-
         h1 {
           width: 100%;
-          font-size: 20px;
+          font-size: a20px;
         }
       }
-
       .areaBtn {
         width: 80%;
 

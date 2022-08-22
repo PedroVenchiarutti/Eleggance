@@ -1,9 +1,26 @@
 import React from "react";
+import { useFetch } from "../../../hooks/useFetch";
+
+import Loading from '../../SpinerLoader'
 import Table from "../../Table/Table";
 
 import './Table.scss'
 
-export default ({ list, orderBy }) => <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(list, orderBy)} />
+export default ({ orderBy }) => {
+    const { data } = useFetch('api/protected/request/');
+
+    return (
+        <div className="table-content">
+            {
+                data.length ?
+                    <Table
+                        headerColumnsArray={getHeadRows()}
+                        bodyObjectsArray={getBodyObjects(data, orderBy)}
+                    /> : <Loading />
+            }
+        </div>
+    )
+}
 
 const getHeadRows = () => [<>
     <th className="products">Produtos</th>
@@ -16,11 +33,13 @@ const getHeadRows = () => [<>
 </>];
 
 const getBodyObjects = (ordersList, orderBy) => sortListByOptions(ordersList, orderBy).map(order => {
+    const status = order.status ?? "Pendente";
+    const products = order.products;
+
     return {
-        products: getProductRow(order.products),
-        quantity: getQuantityRow(order.quantity),
-        id: <td className="responsive-hide">{order.purchaseId}</td>,
-        otherInfos: getInfoRow(order.price, order.status)
+        products: getOrderProductsInfos(products),
+        id: <td className="responsive-hide">{order.id}</td>,
+        otherInfos: getInfoRow(status, getOrderValue(products))
     }
 });
 
@@ -47,26 +66,27 @@ const sortListByOptions = (ordersList, orderBy) => {
     return ordersList;
 }
 
-const getProductRow = products => (
-    <td className="products">
-        <div className="products-row">
-            <img src="/img/produtos/gloss.png" alt="" />
-            <div> {products.map(products => { return <p> {products} </p> })} </div>
-        </div>
-    </td>
+const getOrderProductsInfos = products => (
+    <>
+        <td className="products">
+            <div className="products-cell">
+                <img src="/img/produtos/gloss.png" alt="" />
+                <div>{products.map(product => <li key={product.productId} className="product-name">{product.name}</li>)}</div>
+            </div>
+        </td>
+        <td>{products.map(product => <p>{product.qt_product}</p>)}</td>
+    </>
 )
 
-const getQuantityRow = quantities => <td className="responsive-hide">{quantities.map(quantity => <p> {quantity} </p>)}</td>
-
-const getInfoRow = (price, status) => (
+const getInfoRow = (status, price) => (
     <td>
-        <p>{price}</p>
+        <p>R${price}</p>
         <p className={status === "Pendente" ? "pending" : "send"}>{status}</p>
     </td>
 )
 
-const sum = numbersArray => {
+const getOrderValue = (products) => {
     let sum = 0;
-    numbersArray.forEach(number => sum += +number);
+    products.forEach(product => sum += +product.value);
     return sum;
 }

@@ -119,9 +119,12 @@
 }
 
 .cartContainer table tfoot {
-  position: absolute;
-  height: 100px;
-  right: 80px;
+  //position: absolute;
+  float: right;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+  margin-right: 37px;
 }
 
 .cartContainer table tfoot tr th {
