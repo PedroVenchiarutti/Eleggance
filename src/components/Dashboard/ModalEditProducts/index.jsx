@@ -1,36 +1,19 @@
 import React, { useState } from "react";
 import { useFetch } from "../../../hooks/useFetch";
 import Api from "../../../api/api";
+import { useContext } from "react";
+import { EditContext } from "../../../contexts/modalEdit";
 import { useEffect } from "react";
 
-export default function ModalEditProduct() {
+export default function ModalEditProduct(editing) {
   const { data } = useFetch(`api/public/products/pages/1`);
-
-  var product = JSON.parse(localStorage.getItem('produto'))
-  // console.log(product)
-
-
-  const buttons = document.querySelectorAll(".editButton")
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      product = JSON.parse(localStorage.getItem('produto'))
-      setValor({
-        name: product.name,
-        description: product.description,
-        value: product.value,
-        qt: product.qt
-      })
-      console.log('update')
-    })
-  })
-
   const [valor, setValor] = useState({
-    name: product.name,
-    description: product.description,
-    value: product.value,
-    // brand: product.brand,
-    qt: product.qt,
-    // url_img: "",
+    name: editing.editing.name,
+    description: editing.editing.description,
+    value: editing.editing.value,
+    brand: '',
+    qt: editing.editing.qt,
+    url_img: "",
   });
 
   function postItem() {
@@ -61,7 +44,8 @@ export default function ModalEditProduct() {
             maxLength={45}
             type="text"
             value={valor.name}
-            onChange={(e) => setValor({ ...valor, name: e.target.value })}
+            onChange={(e) => setValor({...valor, price: e.target.value})}
+            // onChange={(e) => setValor({ ...valor, name: e.target.value })}
           />
           <label>Valor:</label>
           <input

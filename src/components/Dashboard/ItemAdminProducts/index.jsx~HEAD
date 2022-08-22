@@ -1,17 +1,38 @@
 import React from "react";
 import { useFetch } from "../../../hooks/useFetch";
-import { useState, useContext } from "react"
-import { EditContext } from "../../../contexts/modalEdit";
+import { useState } from "react"
 
 export default function ItemAdminProducts() {
   const { data } = useFetch(`api/public/products/pages/1`);
+  const [editing, setEditing] = useState({
+    id: '0',
+    name: 'test',
+    value: 1,
+    description: 'desc',
+    qt: 8
+  })
 
-  const { onFormSubmit } = useContext(EditContext);
+  function getProductInfo(data){
+    setEditing({
+      id: data.id,
+      name: data.name,
+      value: data.value,
+      description: data.description,
+      qt: data.qt
+    })
+    localStorage.setItem('produto', JSON.stringify(editing))
+    // console.log(editing)
+  }
 
-  function modalToggleEdit() {
+  function modalToggleEdit(e) {
     let modalEdit = document.getElementById("modalEditProducts");
     modalEdit.classList.toggle("open");
     console.log(data);
+
+  }
+
+  function removeItem(item) {
+    console.log(item);
   }
 
   return (
@@ -39,15 +60,24 @@ export default function ItemAdminProducts() {
               <label>{data.qt}</label>
             </td>
             <td className="col-6">
-              <button className="editButton" onClick={ev => onFormSubmit(ev)}>
-              {/* <button className="editButton" onClick={ev => onFormSubmit(ev)}> */}
+              <button className="editButton" onClick={() => {
+                getProductInfo(data)
+              }}>
               <img
                 className="icon-edit"
                 src="/icons/icon-edit-address.svg"
                 onClick={modalToggleEdit}
               />
+<<<<<<< HEAD:src/components/Dashboard/ItemAdminProducts/index.jsx
               </button>
               <img className="icon-trash" src="/icons/trashIcon.svg" />
+=======
+              <img
+                className="icon-trash"
+                src="/icons/trashIcon.svg"
+                onClick={removeItem}
+              />
+>>>>>>> f4f01a1cf9303ddd41e50d46129af1768974e4c2:src/components/ItemAdminProducts/index.jsx
             </td>
           </tr>
         );
