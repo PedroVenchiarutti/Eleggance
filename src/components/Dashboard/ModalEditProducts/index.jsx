@@ -43,21 +43,21 @@ export default function ModalEditProduct(editing) {
           <input
             maxLength={45}
             type="text"
-            value={valor.name}
+            value={editing.editing.name}
             onChange={(e) => setValor({...valor, price: e.target.value})}
             // onChange={(e) => setValor({ ...valor, name: e.target.value })}
           />
           <label>Valor:</label>
           <input
             type="number"
-            value={valor.value}
+            value={editing.editing.value}
             onChange={(e) => setValor({ ...valor, price: e.target.value })}
           />
           <label>Descrição:</label>
           <input
             maxLength={255}
             type="text"
-            value={valor.description}
+            value={editing.editing.description}
             onChange={(e) => setValor({ ...valor, description: e.target.value })}
           />
           <label>Categoria</label>
@@ -71,7 +71,7 @@ export default function ModalEditProduct(editing) {
           <input
             maxLength={3}
             type="number"
-            value={valor.qt}
+            value={editing.editing.qt}
             onChange={(e) =>
               setValor({
                 ...valor,

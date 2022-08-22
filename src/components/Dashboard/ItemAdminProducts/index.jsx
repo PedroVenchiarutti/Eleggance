@@ -39,8 +39,8 @@ export default function ItemAdminProducts() {
               <label>{data.qt}</label>
             </td>
             <td className="col-6">
-              <button className="editButton" onClick={ev => onFormSubmit(ev)}>
               {/* <button className="editButton" onClick={ev => onFormSubmit(ev)}> */}
+              <button className="editButton" onClick={ev => onFormSubmit(ev,data)}>
               <img
                 className="icon-edit"
                 src="/icons/icon-edit-address.svg"

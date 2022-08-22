@@ -19,7 +19,9 @@ export const EditProvider = ({children}) => {
         console.log(editing)
     }
 
-    const onFormSubmit = event => {
+    const onFormSubmit = (event, data) => {
+        console.log(data)
+        localStorage.setItem('produto',JSON.stringify(data))
         event.preventDefault()
         updateState()
     }
