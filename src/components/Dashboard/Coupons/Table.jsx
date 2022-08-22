@@ -1,27 +1,34 @@
-export default ({ couponsList }) =>
-    <table>
-        <thead>{renderHeadRow()}</thead>
-        <tbody>{renderBodyRows(couponsList)}</tbody>
-    </table>
+import { useContext } from "react"
+import { CouponContext } from "../../../contexts/coupon"
 
-const renderHeadRow = () =>
-    <tr>
-        <th>Código</th>
-        <th>Valor mínimo</th>
-        <th>Valor desconto</th>
-        <th className="responsive-hide">Data de início</th>
-        <th className="responsive-hide">Data de expiração</th>
-        <th>Quantidade disponível</th>
-    </tr>
+import Loading from '../../SpinerLoader';
+import Table from '../../Table/Table';
 
-const renderBodyRows = (couponsList) =>
-    couponsList.map(coupon =>
-        <tr key={coupon.id}>
-            <td>{coupon.code}</td>
-            <td>{coupon.minValue ?? "R$ 0"}</td>
-            <td>R${coupon.discount}</td>
-            <td className="responsive-hide">{coupon.created_at}</td>
-            <td className="responsive-hide">{new Date(coupon.dt_limit).toLocaleDateString()}</td>
-            <td>{coupon.availableQuantity ?? "0"}</td>
-        </tr>
-    )
+export default () => {
+    const { coupons } = useContext(CouponContext);
+
+    return coupons.length ?
+        <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getRows(coupons)} /> : <Loading />
+}
+
+const getHeadRow = () => [
+    "Código",
+    "Valor mínimo",
+    "Valor desconto",
+    <th className="responsive-hide">Data de início</th>,
+    <th className="responsive-hide">Data de expiração</th>,
+    "Quantidade disponível"
+]
+
+const getRows = (couponsList) =>
+    couponsList.map(coupon => {
+        return {
+            key: coupon.id,
+            code: coupon.code,
+            minValue: coupon.minValue ?? "R$ 0",
+            discount: coupon.discount,
+            created_at: <td className="responsive-hide">{new Date(coupon.created_at).toLocaleDateString()}</td>,
+            dt_limit: <td className="responsive-hide">{new Date(coupon.dt_limit).toLocaleDateString()}</td>,
+            availableQuantity: coupon.availableQuantity ?? 0
+        }
+    })

@@ -74,7 +74,7 @@ const getOrderProductsInfos = products => (
                 <div>{products.map(product => <li key={product.productId} className="product-name">{product.name}</li>)}</div>
             </div>
         </td>
-        <td>{products.map(product => <p>{product.qt_product}</p>)}</td>
+        <td className="responsive-hide">{products.map(product => <p>{product.qt_product}</p>)}</td>
     </>
 )
 
