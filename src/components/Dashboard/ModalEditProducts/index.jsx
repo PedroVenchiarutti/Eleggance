@@ -45,7 +45,6 @@ export default function ModalEditProduct(editing) {
             type="text"
             value={editing.editing.name}
             onChange={(e) => setValor({...valor, price: e.target.value})}
-            // onChange={(e) => setValor({ ...valor, name: e.target.value })}
           />
           <label>Valor:</label>
           <input

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFetch } from "../../../hooks/useFetch";
 import { useState, useContext } from "react"
 import { EditContext } from "../../../contexts/modalEdit";

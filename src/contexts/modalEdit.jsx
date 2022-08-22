@@ -14,16 +14,17 @@ export const EditProvider = ({children}) => {
 
     const [editing, setEditing] = useState({...initialState})
 
-    const updateState = () => {
-        setEditing(JSON.parse(storageProduct))
+    const updateState = (data) => {
+        // setEditing(JSON.parse(storageProduct))
+        setEditing({...data})
         console.log(editing)
     }
 
     const onFormSubmit = (event, data) => {
         console.log(data)
-        localStorage.setItem('produto',JSON.stringify(data))
+        // localStorage.setItem('produto',JSON.stringify(data))
         event.preventDefault()
-        updateState()
+        updateState(data)
     }
 
     const state = {
