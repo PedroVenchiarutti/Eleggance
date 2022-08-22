@@ -7,6 +7,7 @@ import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
 
 export default function ModalAddProduct() {
+  const [imagesUrl, setImagesUrl] = useState(null);
   const [valor, setValor] = useState({
     name: "",
     description: "",
@@ -16,7 +17,6 @@ export default function ModalAddProduct() {
     url_img: "",
   });
   const [images, setImages] = useState("");
-  const [imagesUrl, setImagesUrl] = useState("");
   const [previelImg, setPrevielImg] = useState(
     "/icons/iconmonstr-photo-camera-6-72.png"
   );
@@ -25,7 +25,15 @@ export default function ModalAddProduct() {
   const postItem = async (e) => {
     await Api.post(`api/protected/product`, valor)
       .then((res) => {
-        console.log(res);
+        if (valor.url_img === null) {
+          alert("erro em cadastrar produto sem imagem");
+          console.log("valor", valor);
+          return;
+        } else {
+          alert("produto cadastrado com sucesso");
+          console.log("valor", valor);
+          return;
+        }
       })
       .catch(function (error) {
         console.error(error);
@@ -33,7 +41,7 @@ export default function ModalAddProduct() {
   };
 
   // Criar um hooks personalizado para utilização dessa função
-  const firebaseUpload = (e) => {
+  const firebaseUpload = async (e) => {
     e.preventDefault();
     const file = e.target[5]?.files[0];
     console.log(file);
@@ -55,17 +63,9 @@ export default function ModalAddProduct() {
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
         .then((url) => {
-          let urlImage = url;
-          setImagesUrl(urlImage);
-          setValor({
-            ...valor,
-            url_img: urlImage,
-          });
-          console.log("valorzin", valor);
+          setValor({ ...valor, url_img: url });
           postItem();
-          setProgress(true);
         })
-
         .catch((error) => {
           console.log(error);
           return <div>Error...</div>;

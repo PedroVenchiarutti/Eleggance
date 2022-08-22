@@ -23,7 +23,7 @@ export default function ItemAdminProducts() {
               <img src={data.url_img} />
             </td>
             <td className="col-2">
-              <label>{data.name}</label>{" "}
+              <label>{data.name}</label>
             </td>
             <td className="col-3">
               <label>

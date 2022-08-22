@@ -127,6 +127,11 @@
         font-family: "Roboto", sans-serif;
         font-weight: bold;
         justify-content: center;
+
+        a {
+          list-style: none;
+          text-decoration: none;
+        }
       }
     }
   }
@@ -164,6 +169,12 @@
         margin-left: 10px;
         span {
           color: #e1ab38;
+
+          a {
+            list-style: none;
+            text-decoration: none;
+            color: #e1ab38;
+          }
         }
       }
       button {

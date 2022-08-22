@@ -52,9 +52,12 @@ export const Navbar = () => {
         <div className="navbar-user-logged">
           <div className="navbar-user-logged-name">
             {renderImage()}
+            <img src="/img/Frame.svg" alt="user" />
             <div className="navbar-user-name-logout">
               <h4>
-                <span>{loginName.toUpperCase()}</span>
+                <span>
+                  <Link to="perfil">{loginName.toUpperCase()}</Link>
+                </span>
               </h4>
               <button onClick={userLogout}>Sair</button>
             </div>
