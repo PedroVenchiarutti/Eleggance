@@ -35,7 +35,7 @@ export const AddressProvider = ({ children }) => {
         event.preventDefault();
 
         const addressText = `${address.address}${address.number ? `, ${address.number}` : ''}${address.complement ? `, ${address.complement}` : ''}`
-        
+
         // Missing API treatment for edit coupon.
         if (inEditAddressMode) { }
         else {
@@ -66,7 +66,7 @@ export const AddressProvider = ({ children }) => {
     }
 
     useEffect(() => { setAddressesDatas() }, [address.cep]);
-
+    
     const { data } = useFetch('api/protected/client/addresses/all/15');
     const state = {
         address,

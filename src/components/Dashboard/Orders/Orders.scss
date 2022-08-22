@@ -1,6 +1,9 @@
-.content {
-    li.product-name { list-style-type: none; }
-
-    p.pending { color: #EA0000; }
-    p.success { color: #EAB53C; }
+.table-content {
+    table {
+        width: 95%;
+        li.product-name { list-style-type: none; }
+    
+        p.pending { color: #EA0000; }
+        p.success { color: #EAB53C; }
+    }
 }

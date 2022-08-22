@@ -12,7 +12,7 @@ export default () =>
 const getBodyObjects = () => (
     myFavorites.map(favorite => {
         return {
-            image: <td className='product-img responsive-hide'><img src="/img/produtos/gloss.png" /></td>,
+            image: <td className='responsive-hide'><img src="/img/produtos/gloss.png" /></td>,
             infos: getMainInfos(favorite.name, favorite.inSale),
             deleteBtn: <td><button className='trash-button'><img src="/icons/icon-trash.svg" alt="" /></button></td>,
             price: <td><p className="product-price responsive-hide">R${favorite.price}</p></td>,

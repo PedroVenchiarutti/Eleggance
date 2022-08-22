@@ -11,7 +11,7 @@ export default () => {
     const { data } = useFetch('api/protected/request/');
 
     return data.length ?
-        <div className="content">
+        <div className="table-content">
             <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data)} />
         </div> : <Loading />
 }
