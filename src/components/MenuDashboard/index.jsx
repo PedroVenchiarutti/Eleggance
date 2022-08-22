@@ -15,7 +15,7 @@ export default function MenuDashboard(props) {
   return (
     <>
       <ul className="menu-container" id="menu">
-        <img src="../../../public/logo.png" alt="" />
+        <img src="../../../logo.png" alt="" />
 
         <li>
           <NavLink to={"/admin/home"}>Geral</NavLink>
