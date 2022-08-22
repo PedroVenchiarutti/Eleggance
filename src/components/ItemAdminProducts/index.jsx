@@ -1,5 +1,6 @@
 import React from "react";
 import { useFetch } from "../../hooks/useFetch";
+import Api from "../../api/api";
 
 export default function ItemAdminProducts() {
   const { data } = useFetch(`api/public/products/pages/1`);
@@ -11,7 +12,9 @@ export default function ItemAdminProducts() {
   }
 
   function removeItem(item) {
-    console.log(item);
+    Api.delete(`api/protected/product/${item}`).then(() =>
+      alert("Produto Removido Com Sucesso")
+    );
   }
 
   return (
@@ -47,7 +50,9 @@ export default function ItemAdminProducts() {
               <img
                 className="icon-trash"
                 src="/icons/trashIcon.svg"
-                onClick={removeItem}
+                onClick={() => {
+                  removeItem(data.id);
+                }}
               />
             </td>
           </tr>

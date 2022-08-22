@@ -3,8 +3,8 @@ import HeaderDashboard from "../../../components/HeaderDashboard";
 import AdminProductsList from "../../../components/AdminProductsList";
 import MenuDashboard from "../../../components/MenuDashboard";
 import ModalAddProducts from "../../../components/ModalAddProducts/Index";
-
 import ModalEditProducts from "../../../components/ModalEditProducts";
+
 import "./Produtos.scss";
 
 export default function ProdutosDashboard() {
@@ -20,8 +20,7 @@ export default function ProdutosDashboard() {
         <HeaderDashboard titleHead={"Produtos"} name={"Ryan"} />
         <AdminProductsList />
         <ModalAddProducts />
-        <ModalEditProducts />
-
+        <ModalEditProducts id="1" />
         <div onClick={modalToggle} className="button-add">
           +
         </div>
