@@ -50,29 +50,29 @@ const changeRoutes = () => {
       <AuthProvider>
         <AddressProvider>
           <CouponProvider>
-          <Routes>
-            <Route exact path="/home" element={<HomePage />} />
-            <Route exact path="/cadastro" element={<FormCadastro />} />
-            <Route exact path="/login" element={<FormSingUp />} />
-            <Route exact path="/contato" element={<Schedulling />} />
-            <Route exact path="/detalhes" element={<Products />} />
-            <Route exact path="/produtos" element={<Shop />} />
-            <Route exact path="/financas" element={<Financas />} />
-            <Route exact path="/perfil" element={<MyProfile />} />
-            <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
-            <Route exact path="/perfil/dados" element={<MyData />} />
-            <Route
-              exact
-              path="/perfil/enderecos"
-              element={<ProfileAddresses />}
-            />
-            <Route exact path="/perfil/login" element={<MyLogin />} />
-            <Route
-              exact
-              path="/perfil/favoritos"
-              element={<ProfileFavorites />}
-            />
-            <Route exact path="/perfil/avaliacoes" element={<MyRatings />} />
+            <Routes>
+              <Route exact path="/home" element={<HomePage />} />
+              <Route exact path="/cadastro" element={<FormCadastro />} />
+              <Route exact path="/login" element={<FormSingUp />} />
+              <Route exact path="/contato" element={<Schedulling />} />
+              <Route exact path="/detalhes" element={<Products />} />
+              <Route exact path="/produtos" element={<Shop />} />
+              <Route exact path="/financas" element={<Financas />} />
+              <Route exact path="/perfil" element={<MyProfile />} />
+              <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
+              <Route exact path="/perfil/dados" element={<MyData />} />
+              <Route
+                exact
+                path="/perfil/enderecos"
+                element={<ProfileAddresses />}
+              />
+              <Route exact path="/perfil/login" element={<MyLogin />} />
+              <Route
+                exact
+                path="/perfil/favoritos"
+                element={<ProfileFavorites />}
+              />
+              <Route exact path="/perfil/avaliacoes" element={<MyRatings />} />
 
               <Route
                 exact

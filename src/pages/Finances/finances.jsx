@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./finances.scss";
 import RenderLineChart from "./graph";
-import MenuDashboard from "../../components/Dashboard/MenuDashboard";
+import MenuDashboard from "../../components/MenuDashboard";
 import CardFinance from "../../components/CardFinances/cardFinance";
 import NavBarFinances from "../../components/NabBarFinance/navBarFinances";
 import { useState } from "react";

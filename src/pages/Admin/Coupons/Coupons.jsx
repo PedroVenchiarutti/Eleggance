@@ -1,6 +1,6 @@
 import React from "react";
 
-import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
+import MenuDashboard from "../../../components/MenuDashboard";
 import Header from "../../../components/NabBarFinance/navBarFinances";
 import Coupons from "../../../components/Dashboard/Coupons/Coupons";
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "../../../components/NabBarFinance/navBarFinances";;
-import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
+import MenuDashboard from "../../../components/MenuDashboard";
 import Cards from "../../../components/Dashboard/Cards/Cards";
 
 import '../Dashboard.scss';

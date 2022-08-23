@@ -12,7 +12,7 @@ export default () => {
 
     return (
         <div className="content">
-            {  data.length ? <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data)} /> : <Loading /> }
+            {data.length ? <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data)} /> : <Loading />}
         </div>
     )
 }
@@ -46,8 +46,12 @@ const getOrderStatus = (paymentStatus, deliveryStatus) => {
 
     return (
         <>
-            <td className={`responsive-hide ${getClass(paymentStatus)}`}>{paymentStatus}</td>
-            <td className={`responsive-hide ${getClass(deliveryStatus)}`}>{deliveryStatus}</td>
+            <td className={"responsive-hide"}>
+                <p className={getClass(paymentStatus)}>{paymentStatus}</p>
+            </td>
+            <td className={"responsive-hide"}>
+                <p className={getClass(deliveryStatus)}>{deliveryStatus}</p>
+            </td>
         </>
     )
 }
