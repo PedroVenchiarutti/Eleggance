@@ -8,6 +8,7 @@ import './Table.scss'
 
 export default () => {
     const { addresses } = useContext(AddressContext);
+        
     return <div className="table-content">
         { addresses.length ? <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses)} /> : <Loading /> }
     </div>

@@ -1,15 +1,5 @@
-.favorites-table-container {
-    table {
-        background-color: #E5E5E5;
-        border-collapse: collapse;
-    
-        td {
-            text-align: center;
-            border-bottom: solid 1px;
-            border-top: solid 1px;
-            padding: 15px;
-        }
-        
+.table-content {
+    table {        
         td.product {
             width: 75%;
             text-align: left;

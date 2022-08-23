@@ -1,6 +1,8 @@
 .table-content {
+    display: flex;
+    justify-content: center;
+
     table {
-        width: 95%;
         li.product-name { list-style-type: none; }
     
         p.pending { color: #EA0000; }

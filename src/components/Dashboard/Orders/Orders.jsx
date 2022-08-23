@@ -10,10 +10,11 @@ export default () => {
     const headerColumns = ["Nome do produto", "Quantidade", "Valor", <th className="responsive-hide">Status pagamento</th>, <th className="responsive-hide">Status entrega</th>, "Código da venda"];
     const { data } = useFetch('api/protected/request/');
 
-    return data.length ?
-        <div className="table-content">
-            <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data)} />
-        </div> : <Loading />
+    return (
+        <div className="content">
+            {  data.length ? <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data)} /> : <Loading /> }
+        </div>
+    )
 }
 
 const getRows = (orders) => orders.map(order => {

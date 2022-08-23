@@ -5,7 +5,7 @@ import SaleTag from '../common/SaleTag';
 import './Table.scss';
 
 export default () =>
-    <div className="favorites-table-container">
+    <div className="table-content">
         <Table headerColumnsArray={[]} bodyObjectsArray={getBodyObjects()} />
     </div>
 
