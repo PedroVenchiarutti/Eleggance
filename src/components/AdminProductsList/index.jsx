@@ -1,5 +1,5 @@
 import React from "react";
-import ItemAdminProducts from "../ItemAdminProducts";
+import ItemAdminProducts from "../Dashboard/ItemAdminProducts";
 import "./index.scss";
 
 export default function AdminProductsList() {

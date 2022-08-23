@@ -73,7 +73,7 @@ const getOrderProductsInfos = products => (
         <td className="products">
             <div className="products-cell">
                 <img src="/img/produtos/gloss.png" alt="" />
-                <div>{products.map(product => <li key={product.productId} className="product-name">{product.name}</li>)}</div>
+                <div>{products.map(product => <p className="product-name">{product.name}</p>)}</div>
             </div>
         </td>
         <td className="responsive-hide">{products.map(product => <p>{product.qt_product}</p>)}</td>
