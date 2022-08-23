@@ -9,7 +9,7 @@ export default function ModalEditProduct() {
 
   const { editing, updateState } = useContext(EditContext)
 
-  console.log(editing)
+  console.log(data)
   function postItem() {
     // TROCAR PRA PUT
     Api.post(`api/protected/product`, editing)
@@ -78,10 +78,10 @@ export default function ModalEditProduct() {
         <div className="productVisualization">
           <p>Visualização</p>
           <div className="productAndInfo">
-            <img src="/product.png" alt="" />
+            <img src={editing.url_img} alt="" />
             <div className="productInfo">
-              <h4>Tratamento Único belkit</h4>
-              <h1>R$ 45,99</h1>
+              <h4>{editing.name}</h4>
+              <h1>R${editing.value}</h1>
               <p>10x de R$4,99 sem juros</p>
               <p>Frete Grátis</p>
               <h5>O tratamento único Belkit melhora a força e resistência do cabelo...</h5>

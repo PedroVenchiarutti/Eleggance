@@ -93,6 +93,7 @@
           height: 80%;
           margin-left: 5%;
           margin-top: 6%;
+          width: 50%;
 
           input {
             height: 40px;
@@ -139,7 +140,7 @@
         .productVisualization {
  
           display: block;
-
+          width: 42%;
           p {
             text-align: center;
           }
@@ -150,6 +151,9 @@
             background-color: #c4c2c23d;
             margin-bottom: 20px;
             text-align: center;
+            img{
+              width: 80%;
+            }
 
             .productInfo {
               text-align: start;
@@ -160,7 +164,7 @@
           }
 
           .areaBtn {
-            margin-top: 20%;
+            margin-top: 10%;
             padding-right: 10%;
             display: flex;
             width: 100%;
