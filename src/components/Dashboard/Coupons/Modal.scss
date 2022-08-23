@@ -1,5 +1,7 @@
 .dashboard-container .create-modal {
     position: absolute;
+    width: 20%;
+    margin-top: -33px;
 
     background-color: #fff;
     opacity: 1;
@@ -7,17 +9,20 @@
     border-radius: 5px;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.678);
 
-    padding: 60px 20px;
-    min-width: 350px;
+    padding: 0 20px;
 
     form { text-align: center; }
-    .modal-title { font-weight: 300 }
+    .modal-title {
+        margin: 20px 0;
+        font-weight: 300 
+    }
 
     .form-group {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
 
+        text-align: start;
         margin: 12px 0;
     }
 
@@ -35,11 +40,12 @@
         justify-content: center;
         align-items: center;
 
+        margin: 0 0 25px 0;
+
         .cancel-button,
         .submit-button {
-            width: 35%;
             margin: 10px 5px;
-            padding: 2px 20px;
+            padding: 2px 15px;
 
             font-weight: 400;
             text-transform: uppercase;
@@ -70,9 +76,7 @@
 
 @media (max-width: 1020px) {
     .dashboard-container .create-modal {
-        padding: 20px;
-        min-width: min-content;
-        width: 30%;
+        width: 200px;
 
         font-size: 10px;
         button, input { font-size: 12px }

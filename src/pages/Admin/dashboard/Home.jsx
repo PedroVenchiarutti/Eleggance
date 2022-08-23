@@ -1,9 +1,9 @@
 import React from "react";
 
-import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
-import HeaderDashboard from "../../../components/Dashboard/HeaderDashboard";
-import './Home.scss';
+import Header from "../../../components/NabBarFinance/navBarFinances";;
+import MenuDashboard from "../../../components/MenuDashboard";
 import Cards from "../../../components/Dashboard/Cards/Cards";
+
 import '../Dashboard.scss';
 
 export default function HomeDashboard() {
@@ -12,7 +12,7 @@ export default function HomeDashboard() {
       <MenuDashboard />
 
       <main>
-        <HeaderDashboard titleHead="SEJA BEM-VINDO User_name" name="User_name" />
+        <Header />
         <Cards />
       </main>
     </div>

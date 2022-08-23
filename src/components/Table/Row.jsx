@@ -1,9 +1,11 @@
-export default ({ object }) => (
-    <tr className={object.key || object.id || object.code}>
-        {
-            Object.keys(object).map(key => {
-                return object[key].type ? object[key] : <td className={object.className}>{object[key]}</td>
-            })
-        }
+export default ({ object }) =>
+    <tr key={object.key ? object.key : object.id}>
+        {Object.keys(object).map(key => getRow(object, key))}
     </tr>
-)
+
+const getRow = (object, key) => {
+    if (key != "key" && key != "className") {
+        const value = object[key];
+        return value.type ? value : <td>{value}</td>
+    }
+}

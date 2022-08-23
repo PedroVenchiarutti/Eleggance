@@ -4,7 +4,6 @@ import AsideFinishBuy from "../../components/AsideFinishBuy/AsideFinishBuy";
 import ProductsList from "../../components/ProductsLIst";
 import { shelfProducts } from "../../api/mock";
 import "./FinishBuy.scss";
-import { Link } from "react-router-dom";
 
 // let inputCupom = document.querySelector("#fieldCoupon");
 // inputCupom.addEventListener("change", (e) => {

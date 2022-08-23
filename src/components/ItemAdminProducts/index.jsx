@@ -1,7 +1,7 @@
 import React from "react";
-import { useFetch } from "../../../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react"
-import { EditContext } from "../../../contexts/modalEdit";
+import { EditContext } from "../../contexts/modalEdit";
 
 export default function ItemAdminProducts() {
   const { data } = useFetch(`api/public/products/pages/1`);

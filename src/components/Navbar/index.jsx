@@ -43,23 +43,41 @@ export const Navbar = () => {
     }
     console.log(linkImg);
   };
-  // verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
+  //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
   const userLogged = () => {
     const height = window.screen.height;
     const width = window.screen.width;
     if (height >= 600 && width >= 600 && authenticated) {
       return (
-        <div className="navbar-user-logged-mobile">
-          <div className="navbar-user-logged-name-mobile">
-            <button>
-              <img src="/img/Frame.svg" className="svgUser-mobile" />
-            </button>
-            <button className="buttonCart">
-              <Link to="/carrinho">
-                <img src="/icons/shoppingCart.svg" className="svgCart" />
-              </Link>
-            </button>
+// <<<<<<< HEAD
+//         <div className="navbar-user-logged-mobile">
+//           <div className="navbar-user-logged-name-mobile">
+//             <button>
+//               <img src="/img/Frame.svg" className="svgUser-mobile" />
+//             </button>
+//             <button className="buttonCart">
+//               <Link to="/carrinho">
+//                 <img src="/icons/shoppingCart.svg" className="svgCart" />
+//               </Link>
+//             </button>
+//           </div>
+// =======
+        <div className="navbar-user-logged">
+          <div className="navbar-user-logged-name">
+            {renderImage()}
+            <div className="navbar-user-name-logout">
+              <h4>
+                <span>{loginName.toUpperCase()}</span>
+              </h4>
+              <button onClick={userLogout}>Sair</button>
+            </div>
           </div>
+          <button className="buttonCart">
+            <Link to="/carrinho">
+              <img src="/icons/shoppingCart.svg" className="svgCart" />
+            </Link>
+          </button>
+{/* >>>>>>> fab52d74559bccac682280cb08820324e4906052 */}
         </div>
       );
     } else if (height >= 600 && width >= 600 && !authenticated) {

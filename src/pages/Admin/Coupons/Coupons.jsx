@@ -1,7 +1,7 @@
 import React from "react";
 
-import MenuDashboard from "../../../components/Dashboard/MenuDashboard";
-import HeaderDashboard from "../../../components/Dashboard/HeaderDashboard";
+import MenuDashboard from "../../../components/MenuDashboard";
+import Header from "../../../components/NabBarFinance/navBarFinances";
 import Coupons from "../../../components/Dashboard/Coupons/Coupons";
 
 import '../Dashboard.scss';
@@ -12,7 +12,7 @@ export default function HomeDashboard() {
       <MenuDashboard />
 
       <main>
-        <HeaderDashboard titleHead="Cupons" />
+        <Header />
         <Coupons />
       </main>
     </div>

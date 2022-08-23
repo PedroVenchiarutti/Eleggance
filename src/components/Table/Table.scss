@@ -1,5 +1,5 @@
 table {
-    width: 95%;
+    width: 100%;
     border-collapse: collapse;
     text-align: center;
 
@@ -20,6 +20,8 @@ table {
             padding: 15px;
             background-color: #fff;
             border-bottom: 1px solid;
+
+            img { max-width: 60px }
         }
     }
 }

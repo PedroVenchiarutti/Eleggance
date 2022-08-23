@@ -1,5 +1,6 @@
 .dashboard-cards-container {
     display: flex;
+    justify-content: center;
     width: 100%;
 }
 
@@ -7,6 +8,5 @@
     .dashboard-cards-container {
         flex-direction: column;
         align-items: center;
-        margin-top: 60px;
     }
 }

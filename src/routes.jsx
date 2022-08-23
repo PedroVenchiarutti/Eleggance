@@ -32,8 +32,6 @@ import { CouponProvider } from "./contexts/coupon";
 import Financas from "./pages/Finances/finances"
 import { EditProvider } from "./contexts/modalEdit";
 
-
-
 const changeRoutes = () => {
   const Private = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);

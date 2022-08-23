@@ -1,7 +1,7 @@
 import Row from "./Row";
 
-export default ({ objectsArray }) => (
+export default ({ bodyObjectsArray }) => (
     <tbody>
-        {objectsArray.map(object => <Row object={object} />)}
+        {bodyObjectsArray.map(object => <Row object={object} />)}
     </tbody>
 )

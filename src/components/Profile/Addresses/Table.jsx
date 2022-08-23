@@ -1,47 +1,39 @@
 import React, { useContext } from "react";
 import { AddressContext } from "../../../contexts/address";
 
+import Loading from '../../SpinerLoader'
+import Table from '../../Table/Table';
+
 import './Table.scss'
 
-export default () => (
-    <div className="table-container">
-        <table>
-            <thead>{renderHeadRows()}</thead>
-            <tbody>{renderBodyRows()}</tbody>
-        </table>
-    </div>
-)
-
-const renderHeadRows = () => (
-    <tr>
-        <th className="address">Endereço</th>
-        <th>Ações</th>
-    </tr>
-)
-
-// TODO: Get full address text based on cep.
-function renderBodyRows() {
+export default () => {
     const { addresses } = useContext(AddressContext);
-
-    return (
-        addresses.map(address => {
-            return (
-                <tr key={address.cep}>
-                    <td className="address">{address.fullAddressText}</td>
-                    {getTdButtons(address.cep)}
-                </tr>
-            )
-        })
-    )
+        
+    return <div className="table-content">
+        { addresses.length ? <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses)} /> : <Loading /> }
+    </div>
 }
 
-const getTdButtons = (addressKey) => {
+const getHeadRow = () => [<>
+    <th className="address">Endereço</th>
+    <th>Ações</th>
+</>]
+
+const getBodyObjects = (addresses) => addresses.map(address => {
+    return {
+        key: address.id,
+        text: <td className="address">{address.address} - {address.district} - {address.city} {address.cep}</td>,
+        buttons: getTdButtons(address.cep)
+    }
+})
+
+const getTdButtons = (cep) => {
     const { editAddressClick, removeAddressClick } = useContext(AddressContext);
 
     return (
         <td>
-            <button onClick={() => editAddressClick(addressKey)}><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
-            <button onClick={() => removeAddressClick(addressKey)}><img src="/icons/icon-trash.svg" alt="Remover" /></button>
+            <button onClick={() => editAddressClick(cep)}><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
+            <button onClick={() => removeAddressClick(cep)}><img src="/icons/icon-trash.svg" alt="Remover" /></button>
         </td>
     )
 }

@@ -1,42 +1,37 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext,  useState } from "react";
+import Api from "../api/api";
+import { useFetch } from "../hooks/useFetch";
 
 const initialState = {
     code: '',
-    minValue: '',
-    discountValue: '',
-    initialDate: new Date().toLocaleDateString(),
-    expirationDate: '',
-    availableQuantity: ''
+    minValue: 'R$ ',
+    discount: 0,
+    initialDate: new Date(),
+    dt_limit: '',
+    availableQuantity: 0
 }
 
 export const CouponContext = createContext();
 export const CouponProvider = ({ children }) => {
-    const couponsFromStorage = sessionStorage.getItem('coupons');
-
+    
     const [coupon, setCoupon] = useState({ ...initialState });
     const updateState = (fieldName, value) => setCoupon({ ...Object.assign(coupon, { [fieldName]: value }) });
-
-    const [coupons, setCoupons] = useState(couponsFromStorage ? JSON.parse(couponsFromStorage) : []);
-
-    const onFormSubmit = event => {
-        event.preventDefault();
-        restartState();
+    
+    const onFormSubmit = async () => {
+        Api.post('http://localhost:3333/api/protected/dicount', {
+            code: coupon.code,
+            dt_limit: coupon.dt_limit,
+            discount: coupon.discount
+        }).then(() => window.location.reload() );
     }
-
+    
     const [modalVisibility, setModalVisibility] = useState(false);
     const toggleModalVisibility = () => setModalVisibility(!modalVisibility);
-
-    const restartState = () => {
-        setCoupons([...coupons, coupon]);
-        setCoupon({ ...initialState });
-        toggleModalVisibility();
-    }
-
-    useEffect(() => sessionStorage.setItem('coupons', JSON.stringify(coupons)), [coupons]);
-
+    
+    let { data } = useFetch('api/protected/dicount/');
     const state = {
         coupon,
-        coupons,
+        coupons: data,
         modalVisibility,
         toggleModalVisibility,
         updateState,
