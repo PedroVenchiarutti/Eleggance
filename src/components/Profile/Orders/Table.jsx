@@ -44,6 +44,8 @@ const getBodyObjects = (ordersList, orderBy) => sortListByOptions(ordersList, or
 });
 
 const sortListByOptions = (ordersList, orderBy) => {
+    
+    // After API integration, order by it's not working properly.
     switch (orderBy) {
         case 'price':
             ordersList.sort((a, b) => a.price > b.price)

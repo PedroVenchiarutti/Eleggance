@@ -31,7 +31,7 @@ const getRows = (orders) => orders.map(order => {
 
 const getOrderProductsInfos = (products) =>
     <>
-        <td>{products.map(product => <li key={product.productId} className="product-name">{product.name}</li>)}</td>
+        <td>{products.map(product => <p className="product-name">{product.name}</p>)}</td>
         <td>{products.map(product => <p>{product.qt_product}</p>)}</td>
     </>
 
@@ -46,12 +46,8 @@ const getOrderStatus = (paymentStatus, deliveryStatus) => {
 
     return (
         <>
-            <td className={`responsive-hide`}>
-                <p className={getClass(paymentStatus)}>{paymentStatus}</p>
-            </td>
-            <td className={`responsive-hide`}>
-                <p className={getClass(deliveryStatus)}>{deliveryStatus}</p>
-            </td>
+            <td className={`responsive-hide ${getClass(paymentStatus)}`}>{paymentStatus}</td>
+            <td className={`responsive-hide ${getClass(deliveryStatus)}`}>{deliveryStatus}</td>
         </>
     )
 }

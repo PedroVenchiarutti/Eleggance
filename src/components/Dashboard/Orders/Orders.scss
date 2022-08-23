@@ -1,11 +1,4 @@
-.table-content {
-    display: flex;
-    justify-content: center;
-
-    table {
-        li.product-name { list-style-type: none; }
-    
-        p.pending { color: #EA0000; }
-        p.success { color: #EAB53C; }
-    }
+.dashboard-container .content table {
+    .pending { color: #EA0000; }
+    .success { color: #EAB53C; }
 }
