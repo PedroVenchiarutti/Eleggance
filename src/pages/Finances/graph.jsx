@@ -1,56 +1,50 @@
-import React, { PureComponent, useEffect, useState } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ReferenceLine,
-  ResponsiveContainer,
-} from "recharts";
+import React from "react";
+import { Chart } from "react-google-charts";
+import { useState, useEffect } from "react";
+import Api from "../../api/api";
 
+const data = [["Year", "Sales", "Quantidade: "]];
 
+let arr = [];
 
-let  data = [
+export const options = {
+  title: "Company Performance",
+  curveType: "function",
+  legend: { position: "bottom" },
+};
+
+export default function App() {
+  const [products, setProducts] = useState([]);
   {
-    name: "Dia 1",
-    VendasHoje: 40,
-    VendasOntem: 45,
-    amt: 50,
-  },
-];
-
-for (var dia = 1; dia <= 30; dia++) {
-  data.push({ name: "Dia" + dia, VendasHoje: 25, VendasOntem: 15, amt: 10 });
-  
-}
-
-export default class RenderLineChart extends PureComponent {
-
-
-
-
-  render() {
-    return (
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart width={500} height={300} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="VendasHoje"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
-          />
-          <Line type="monotone" dataKey="VendasOntem" stroke="#82ca9d" />
-        </LineChart>
-      </ResponsiveContainer>
-    );
+    useEffect(() => {
+      // Tem que trocar a rota para os produtos que foram vendido
+      Api.get(`api/public/products/pages/1`)
+        .then((response) => {
+          setProducts(response.data);
+          arr = products.map(function (obj) {
+            return Object.keys(obj).map(function (key) {
+              return obj[key];
+            });
+          });
+        })
+        .then(() => {
+          arr.forEach(function (number) {
+            let arr1 = [number[1], number[2], number[4]];
+            data.push(arr1);
+          });
+        })
+        .catch(() => {
+          console.log("Deu tudo errado");
+        });
+    }, []);
   }
-  
+  return (
+    <Chart
+      chartType="LineChart"
+      width="100%"
+      height="400px"
+      data={data}
+      options={options}
+    />
+  );
 }

@@ -145,7 +145,7 @@ const Finances = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {products.map((products, key) => {
+                {products.map((products, keys) => {
                   return (
                     <tr>
                       <td>{products.name}</td>
