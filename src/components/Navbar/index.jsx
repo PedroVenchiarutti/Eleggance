@@ -6,6 +6,7 @@ export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
+
   // Abrir/Fechar menu mobile Hamburguer
   const ToggleMode = () => {
     setMode(!active);
@@ -23,7 +24,12 @@ export const Navbar = () => {
         if (linkImg) {
           return (
             <button>
-              <img src={linkImg} className="imgUser" />
+              <img
+                src={linkImg == " " ? "/img/Frame.svg" : linkImg}
+                alt="user"
+              />
+
+              {/* <img src={linkImg} className="imgUser" /> */}
             </button>
           );
         } else {
@@ -49,7 +55,9 @@ export const Navbar = () => {
               <img src="/img/Frame.svg" className="svgUser-mobile" />
             </button>
             <button className="buttonCart">
-              <img src="/icons/shoppingCart.svg" className="svgCart" />
+              <Link to="/carrinho">
+                <img src="/icons/shoppingCart.svg" className="svgCart" />
+              </Link>
             </button>
           </div>
         </div>
@@ -66,19 +74,24 @@ export const Navbar = () => {
             </Link>
           </div>
           <button className="buttonCart">
-            <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+            <Link to="/carrinho">
+              <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+            </Link>
           </button>
         </div>
       );
     } else {
+      //mobile
       return (
         <div className="navbar-user-logged-mobile">
           <div className="navbar-user-logged-name-mobile">
-            <button>
+            <button className="buttonFrame">
               <img src="/img/Frame.svg" className="svgUser-mobile" />
             </button>
             <button className="buttonCart">
-              <img src="/icons/shoppingCart.svg" className="svgCart" />
+              <Link to="/carrinho">
+                <img src="/icons/shoppingCart.svg" className="svgCart" />
+              </Link>
             </button>
           </div>
         </div>
@@ -106,7 +119,7 @@ export const Navbar = () => {
                         <Link to="/produtos">Produtos</Link>
                       </li>
                       <li>
-                        <Link to="/agendamento">Contato</Link>
+                        <Link to="/contato">Contato</Link>
                       </li>
                     </ul>
                   </div>

@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -11,7 +11,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-let data = [
+
+
+let  data = [
   {
     name: "Dia 1",
     VendasHoje: 40,
@@ -21,12 +23,14 @@ let data = [
 ];
 
 for (var dia = 1; dia <= 30; dia++) {
-  data.push({ name: "Dia 2", VendasHoje: 25, VendasOntem: 15, amt: 10 });
+  data.push({ name: "Dia" + dia, VendasHoje: 25, VendasOntem: 15, amt: 10 });
+  
 }
 
 export default class RenderLineChart extends PureComponent {
-  static demoUrl =
-    "https://codesandbox.io/s/line-chart-width-xaxis-padding-sujqi";
+
+
+
 
   render() {
     return (
@@ -48,4 +52,5 @@ export default class RenderLineChart extends PureComponent {
       </ResponsiveContainer>
     );
   }
+  
 }

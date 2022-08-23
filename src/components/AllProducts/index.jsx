@@ -9,6 +9,7 @@ export default function AllProducts({ products }) {
   const [progress, setProgress] = useState(true);
 
   // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
+  // GEt
   const { data } = useFetch(`api/public/products/pages/1`);
   if (data == "") {
     return (

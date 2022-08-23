@@ -9,15 +9,16 @@
 
   nav {
     display: flex;
-    //max-width: 1120px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
     height: 100%;
+
     .logoInSearch {
       display: flex;
       height: 100%;
       width: 75%;
+
       img {
         position: relative;
         display: flex;
@@ -29,6 +30,7 @@
         align-items: center;
         position: relative;
         top: 20px;
+
         button {
           display: flex;
           width: 30px;
@@ -45,9 +47,10 @@
         img {
           align-self: center;
           width: 100%;
-          height: 70%;
+          height: 60%;
           padding-right: 10px;
         }
+
         .inputList {
           display: flex;
           flex-direction: column;
@@ -68,12 +71,15 @@
         }
       }
     }
+
     .list {
       display: flex;
+
       ul {
         display: flex;
         list-style: none;
         align-items: center;
+
         li {
           cursor: pointer;
           margin: 0 15px;
@@ -92,6 +98,7 @@
         }
       }
     }
+
     .user-logged {
       display: flex;
       flex-direction: column;
@@ -119,10 +126,12 @@
       position: relative;
       top: 7px;
       cursor: pointer;
+
       img {
         width: 30px;
         margin-right: 20px;
       }
+
       span {
         display: flex;
         font-size: 19px;
@@ -144,13 +153,14 @@
 
   .navbar-user-logged-name-mobile {
 
-    img{
+    img {
       margin-left: 20px;
       width: 60px;
     }
 
     display: flex;
     align-items: center;
+
     button {
       border: none;
       background: transparent;
@@ -170,10 +180,12 @@
         font-size: 20px;
         color: #e1ab38;
         margin-left: 10px;
+
         span {
           color: #e1ab38;
         }
       }
+
       button {
         border: none;
         background: #e1ab38;
@@ -200,35 +212,40 @@
     cursor: pointer;
     align-items: center;
     justify-content: center;
+
     .svgCart {
-      width: 71px;
-      margin-left: 30px;
+      width: 100px;
+      margin-left: 10px;
+
+      a {
+        .svgCart {
+          margin-top: 10px;
+          width: 32px;
+          margin-left: 10px;
+        }
+
+        align-items: center;
+        justify-content: center;
+      }
     }
-  }
-}
 
-@media (max-width: 1120px) {
-  .navbar-container {
-    position: relative;
-    height: 200px;
-    background-color: #111;
-    color: #fff;
-
-    .navbar-user-logged{
+    .navbar-user-logged {
       display: flex;
       flex-direction: column;
       top: 60px;
       margin-left: 15px;
 
-      .navbar-user-logged-name{
-        .navbar-user-name-logout h4,button{
+      .navbar-user-logged-name {
+
+        .navbar-user-name-logout h4,
+        button {
           width: 60px;
           font-size: 13px;
           margin-left: 0px;
         }
       }
 
-      .buttonCart img{
+      .buttonCart img {
         width: 100%;
         margin-top: 0px;
         margin-left: 0px;
@@ -254,23 +271,16 @@
         width: 32px;
       }
 
-      .navbar-user-logged-name-mobile {
-        display: flex;
-        align-items: center;
-
-        img{
-          width: 32px;
-          height: 32px;
-          margin-left: 5px;
-        }
-
-        button {
-          border: none;
-          background: transparent;
-          cursor: pointer;
-        }
-      }
     }
+  }
+}
+
+@media (max-width: 1120px) {
+  .navbar-container {
+    position: relative;
+    height: 200px;
+    background-color: #111;
+    color: #fff;
 
     nav {
       justify-content: center;
@@ -280,22 +290,25 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        width: 10% 
         a img {
           position: relative;
           left: 30px;
-          width: 300px;
+          width: 10%;
           right: 25px;
         }
+
         .inputSearch {
           #txtBusca {
             width: 232px;
             margin-top: 2px;
           }
+
           .inputList {
             margin-left: 90px;
           }
         }
+
         button {
           bottom: 0px !important;
         }
@@ -349,6 +362,7 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         transition: 0.5s;
       }
+
       .list {
         display: flex;
         flex-direction: column;
@@ -379,6 +393,7 @@
         margin: 22px 8px;
         cursor: pointer;
       }
+
       li:hover {
         font-weight: 800;
       }
@@ -415,6 +430,45 @@
       .menu.menuClose {
         display: none;
         width: 0;
+      }
+
+      //mobile
+      .navbar-user-logged-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: 72px;
+        height: 100%;
+        width: 100%;
+
+        .navbar-user-logged-name-mobile{
+          
+          img {
+            width: 32px;
+            height: 32px;
+            margin-left: 10px;
+          }
+
+        }
+
+        button {
+          border: none;
+          background: transparent;
+          cursor: pointer;
+
+          .navbar-user-logged-name-mobile {
+            display: flex;
+            align-items: center;
+
+            button {
+              border: none;
+              background: transparent;
+              cursor: pointer;
+              margin-left: 5px;
+            }
+          }
+        }
       }
     }
   }

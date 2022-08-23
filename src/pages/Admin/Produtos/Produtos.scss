@@ -87,18 +87,17 @@
         height: 100%;
 
         .main-modal {
-          font-weight: 600;
           display: flex;
           flex-direction: column;
           justify-content: space-around;
-          height: 100%;
-          width: 60%;
+          height: 80%;
           margin-left: 5%;
+          margin-top: 6%;
 
           input {
             height: 40px;
             width: 450px;
-            max-width: 80%;
+            max-width: 60%;
             border-radius: 5px;
             padding-left: 6px;
             font-size: 20px;
@@ -106,43 +105,87 @@
           }
 
           .inputPhoto {
-            height: 35px;
+            height: 70px;
             min-height: 35px;
             font-weight: 600;
-            border: none;
-            border-radius: 5px;
-          }
-        }
-        // Modal adicionar
-        .productVisualization{
-          display: block;
-          margin-right: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+            width: 60%;
+            margin-left: 5%;
 
-          p{
-            text-align: center;
-          }
+            input {
+              height: 40px;
+              width: 450px;
+              max-width: 80%;
+              border-radius: 5px;
+              padding-left: 6px;
+              font-size: 20px;
+              border: 0.5px solid black;
+            }
 
-          .productAndInfo{
-            background-color: #4743431c;
-            margin-bottom: 20px;
-            text-align: center;
-
-            .productInfo{
-              text-align: start;
-              padding-left: 5px;
-              background-color: #bdb9b9ef;
+            .inputPhoto {
+              height: 35px;
+              min-height: 35px;
+              font-weight: 600;
+              border: none;
               border-radius: 5px;
             }
           }
+
         }
-        // Modal editar
+
+        .productVisualization {
+ 
+          display: block;
+
+          p {
+            text-align: center;
+          }
+
+          text-align: center;
+
+          .productAndInfo {
+            background-color: #c4c2c23d;
+            margin-bottom: 20px;
+            text-align: center;
+
+            .productInfo {
+              text-align: start;
+              padding-left: 5px;
+              background-color: #b6b1b1;
+              border-radius: 5px;
+            }
+          }
+
+          .areaBtn {
+            margin-top: 20%;
+            padding-right: 10%;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
+            .btn {
+              padding: 5px 10px;
+              cursor: pointer;
+              border-radius: 5px;
+              font-weight: 700;
+            }
+
+            p {
+              text-align: center;
+            }
+
+
+          }
+        }
 
         .areaBtn {
           display: flex;
           flex-direction: column;
           align-items: flex-end;
           text-align: center;
-
 
           .btn {
             padding: 5px 15px;
@@ -153,12 +196,12 @@
             font-size: 20px;
             width: 65%;
           }
-    
+
           .btnCadastrarProduto {
             background-color: #e2ac38;
             color: #f3f3f3;
           }
-    
+
           .btnCancelarCadastrarProduto {
             color: #e2ac38;
             background-color: #f3f3f3;
@@ -179,19 +222,20 @@
     main {
       margin-top: 50px;
 
-      .modalAddProducts{
+      .modalAddProducts {
         width: 100%;
 
-        .body-modal{
+        .body-modal {
           flex-direction: column;
           align-items: center;
 
-          .productVisualization .productAndInfo .productInfo{
+          .productVisualization .productAndInfo .productInfo {
             text-align: center;
           }
 
         }
       }
+
       .header-modal {
         width: 100%;
         align-items: center;

@@ -97,7 +97,7 @@
     padding-left: 6px;
   }
   button {
-    height: 25px;;
+    height: 25px;
     border: 1px solid black;
     margin-left: 250px;
     padding-left: 2px;
@@ -167,28 +167,28 @@
 }
 
 @media (max-width: 1120px) {
-  .container-all-finances{
+  .container-all-finances {
     width: 100%;
   }
-  .finances-graph{
+  .finances-graph {
     flex-direction: column;
     height: 100%;
   }
-  .finances-graph-left{
+  .finances-graph-left {
     width: 100%;
     height: 100%;
   }
-  .finances-graph-right{
+  .finances-graph-right {
     width: 100%;
     height: 100%;
   }
   .finances-graph {
     width: 100%;
   }
-  .bottom-finance-top{
+  .bottom-finance-top {
     display: block;
   }
-  .bottom-finance-top-username{
+  .bottom-finance-top-username {
     padding-left: 0px;
   }
 }

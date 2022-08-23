@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useFetch } from "../../../hooks/useFetch";
 import Api from "../../../api/api";
-import { useContext } from "react";
-import { EditContext } from "../../../contexts/modalEdit";
-import { useEffect } from "react";
 
 export default function ModalEditProduct(editing) {
   const { data } = useFetch(`api/public/products/pages/1`);

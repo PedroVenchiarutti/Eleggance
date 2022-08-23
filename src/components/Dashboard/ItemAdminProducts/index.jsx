@@ -14,6 +14,10 @@ export default function ItemAdminProducts() {
     console.log(data);
   }
 
+  function removeItem(item) {
+    console.log(item);
+  }
+
   return (
     <>
       {data.map((data) => {
@@ -40,14 +44,18 @@ export default function ItemAdminProducts() {
             </td>
             <td className="col-6">
               {/* <button className="editButton" onClick={ev => onFormSubmit(ev)}> */}
-              <button className="editButton" onClick={ev => onFormSubmit(ev,data)}>
+              <button className="editButton" onClick={ev => onFormSubmit(ev,data)} >
               <img
                 className="icon-edit"
                 src="/icons/icon-edit-address.svg"
                 onClick={modalToggleEdit}
               />
               </button>
-              <img className="icon-trash" src="/icons/trashIcon.svg" />
+              <img
+                className="icon-trash"
+                src="/icons/trashIcon.svg"
+                onClick={removeItem}
+              />
             </td>
           </tr>
         );

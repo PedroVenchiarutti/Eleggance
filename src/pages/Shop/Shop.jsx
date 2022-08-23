@@ -28,11 +28,11 @@ export default function Shop({ products }) {
               </li>
               <li>
                 <input type="checkbox" />
-                <label>feminino</label>
+                <label>Feminino</label>
               </li>
               <li>
                 <input type="checkbox" />
-                <label>sem Gênero</label>
+                <label>Unissex</label>
               </li>
               <hr />
               <h2>Marca</h2>
@@ -74,10 +74,11 @@ export default function Shop({ products }) {
             <option value="saab">Preço: Ordem Crescente</option>
             <option value="mercedes">Preço: Ordem Decrescente</option>
           </select>
-
-          <ul>
-            <AllProducts products={shelfProducts} />
-          </ul>
+          <div className="ul-products">
+            <ul>
+              <AllProducts products={shelfProducts} />
+            </ul>
+          </div>
         </div>
       </main>
       <Footer />
