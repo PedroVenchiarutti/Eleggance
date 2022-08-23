@@ -1,7 +1,7 @@
 import { React, createContext, useState } from "react";
 
 const initialState = {
-    name: 'a',
+    name: '',
     value: '',
     description: '',
     brand: '',
@@ -11,7 +11,6 @@ const initialState = {
 
 export const EditContext = createContext({})
 export const EditProvider = ({children}) => {
-    const storageProduct = localStorage.getItem('produto')
 
     const [editing, setEditing] = useState({...initialState})
 

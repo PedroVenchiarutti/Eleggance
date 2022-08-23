@@ -71,7 +71,7 @@ export default function ModalEditProduct() {
           <input
             type="file"
             className="inputPhoto"
-            value={editing.url_img}
+            // value={editing.url_img}
             onChange={ev => updateState('url_img', ev.target.value)}
           />
         </div>
