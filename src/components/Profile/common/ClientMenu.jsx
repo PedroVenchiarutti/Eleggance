@@ -59,7 +59,7 @@ const ClientMenu = (props) => {
                 </li>
                 <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil')}}>
-                        <img src="/icons/user.png" alt="user" height="40px" width="50px"/>
+                        <img src="/icons/user.png" alt="user" height="40px" width="50px" className="user-icon"/>
                         <h2>Meu Perfil</h2>
                     </button>
                 </li>
@@ -73,37 +73,37 @@ const ClientMenu = (props) => {
                 </Link> */}
                 <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil/pedidos')}}>
-                        <img src="/icons/box.png" alt="caixa" height="40px" width="50px"/>
+                        <img src="/icons/box.png" alt="caixa" height="40px" width="50px" className="box-icon"/>
                         <h2>Meus Pedidos</h2>
                     </button>
                 </li>
                 <li className="option">
                 <button className="liButton" onClick={() => {navigate('/perfil/dados')}}>
-                    <img src="/icons/file.png" alt="arquivo" height="40px" width="50px"/>
+                    <img src="/icons/file.png" alt="arquivo" height="40px" width="50px" className="archive-icon"/>
                     <h2>Meus Dados</h2>
                 </button>
                 </li>
                 <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil/enderecos')}}>
-                        <img src="/icons/gps.png" alt="gps" height="40px" width="50px"/>
+                        <img src="/icons/gps.png" alt="gps" height="40px" width="50px" className="gps-icon"/>
                         <h2>Meus Endereços</h2>
                     </button>
                 </li>
                 <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil/login')}}>
-                        <img src="/icons/lock.png" alt="cadeado" height="40px" width="50px"/>
+                        <img src="/icons/lock.png" alt="cadeado" height="40px" width="50px" className="lock-icon"/>
                         <h2>Meu login e senha</h2>
                     </button>
                 </li>
                 <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil/favoritos')}}>
-                        <img src="/icons/heart.png" alt="coração" height="40px" width="50px"/>
+                        <img src="/icons/heart.png" alt="coração" height="40px" width="50px" className="heart-icon"/>
                         <h2>Meus Favoritos</h2>
                     </button>
                 </li>
                 <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil/avaliacoes')}}>
-                        <img src="/icons/star.png" alt="coração" height="40px" width="49px"/>
+                        <img src="/icons/star.png" alt="favorito" height="40px" width="49px" className="star-icon"/>
                         <h2>Minhas Avaliações</h2>
                     </button>
                 </li>
