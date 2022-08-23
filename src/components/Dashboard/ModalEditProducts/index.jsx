@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFetch } from "../../../hooks/useFetch";
 import Api from "../../../api/api";
+import { useContext } from "react";
+import { EditContext } from "../../../contexts/modalEdit";
 
-export default function ModalEditProduct(editing) {
+export default function ModalEditProduct() {
   const { data } = useFetch(`api/public/products/pages/1`);
-  const [valor, setValor] = useState({
-    name: editing.editing.name,
-    description: editing.editing.description,
-    value: editing.editing.value,
-    brand: '',
-    qt: editing.editing.qt,
-    url_img: "",
-  });
 
+  const { editing, updateState } = useContext(EditContext)
+
+  console.log(editing)
   function postItem() {
     // TROCAR PRA PUT
-    Api.post(`api/protected/product`, valor)
+    Api.post(`api/protected/product`, editing)
       .then(function (response) {
         console.log(response);
       })
@@ -28,6 +25,7 @@ export default function ModalEditProduct(editing) {
     let modalEdit = document.getElementById("modalEditProducts");
     modalEdit.classList.toggle("open");
   }
+
   return (
     <div className="modalEditProducts" id="modalEditProducts">
       <div className="header-modal">
@@ -40,47 +38,41 @@ export default function ModalEditProduct(editing) {
           <input
             maxLength={45}
             type="text"
-            value={editing.editing.name}
-            onChange={(e) => setValor({...valor, price: e.target.value})}
+            value={editing.name}
+            onChange={ev => updateState('name', ev.target.value)}
           />
           <label>Valor:</label>
           <input
             type="number"
-            value={editing.editing.value}
-            onChange={(e) => setValor({ ...valor, price: e.target.value })}
+            value={editing.value}
+            onChange={ev => updateState('value', ev.target.value)}
           />
           <label>Descrição:</label>
           <input
             maxLength={255}
             type="text"
-            value={editing.editing.description}
-            onChange={(e) => setValor({ ...valor, description: e.target.value })}
+            value={editing.description}
+            onChange={ev => updateState('description', ev.target.value)}
           />
           <label>Categoria</label>
           <input
             maxLength={45}
             type="text"
-            value={valor.brand}
-            onChange={(e) => setValor({ ...valor, brand: e.target.value })}
+            value={editing.brand}
+            onChange={ev => updateState('brand', ev.target.value)}
           />
           <label>Quantidade Disponível</label>
           <input
             maxLength={3}
             type="number"
-            value={editing.editing.qt}
-            onChange={(e) =>
-              setValor({
-                ...valor,
-                qt: e.target.value,
-              })
-            }
-          />
+            value={editing.qt}
+            onChange={ev => updateState('qt', ev.target.value)} />
           <label>Foto Do Produto</label>
           <input
             type="file"
             className="inputPhoto"
-            value={valor.url_img}
-            onChange={(e) => setValor({ ...valor, url_img: e.target.value })}
+            value={editing.url_img}
+            onChange={ev => updateState('url_img', ev.target.value)}
           />
         </div>
         <div className="productVisualization">

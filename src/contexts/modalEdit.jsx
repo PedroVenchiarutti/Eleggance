@@ -1,11 +1,12 @@
-import { React, createContext, useEffect, useState } from "react";
+import { React, createContext, useState } from "react";
 
 const initialState = {
     name: 'a',
     value: '',
     description: '',
-    category: '',
-    qt: ''
+    brand: '',
+    qt: '',
+    url_img: ''
 }
 
 export const EditContext = createContext({})
@@ -14,21 +15,23 @@ export const EditProvider = ({children}) => {
 
     const [editing, setEditing] = useState({...initialState})
 
-    const updateState = (data) => {
-        // setEditing(JSON.parse(storageProduct))
-        setEditing({...data})
-        console.log(editing)
+    const updateState = (field,data) => {
+        setEditing({...Object.assign(editing, { [field]: data }) })
+    }
+
+    const startState = (data) => {
+        console.log(data)
+        setEditing(data)
     }
 
     const onFormSubmit = (event, data) => {
-        console.log(data)
-        // localStorage.setItem('produto',JSON.stringify(data))
         event.preventDefault()
-        updateState(data)
+        startState(data)
     }
 
     const state = {
         editing,
+        updateState,
         onFormSubmit
     }
 

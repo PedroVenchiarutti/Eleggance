@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFetch } from "../../../hooks/useFetch";
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import { EditContext } from "../../../contexts/modalEdit";
 
 export default function ItemAdminProducts() {
@@ -43,7 +43,6 @@ export default function ItemAdminProducts() {
               <label>{data.qt}</label>
             </td>
             <td className="col-6">
-              {/* <button className="editButton" onClick={ev => onFormSubmit(ev)}> */}
               <button className="editButton" onClick={ev => onFormSubmit(ev,data)} >
               <img
                 className="icon-edit"
