@@ -166,15 +166,15 @@
               object-fit: cover;
               transition: 0.3s all ease-in-out;
             }
-            // img:hover {
-            //   transform: scale(1.1);
-            // }
           }
           .container-img-promo:hover {
             width: 260px;
             height: 332px;
             transition: all 0.7s ease;
             transform: scale(1.05);
+            img {
+              transform: scale(1.1);
+            }
           }
           .full-price-promo > span:hover {
             // width: 100%;

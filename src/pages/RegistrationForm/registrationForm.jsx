@@ -63,8 +63,8 @@ const RegistrationForm = (props) => {
     <div className="img-container-singup">
       <div className="container container-registration">
         <div className="box-header box-header-registration ">
-          <div className="Titulo1">
-            <h2>Ellegance</h2>
+          <div className="logo-registration">
+            <img src="./logo.png" />
           </div>
           <div className="Titulo2">
             <h4>Informacões pessoais</h4>
@@ -191,7 +191,7 @@ const RegistrationForm = (props) => {
                         >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>
-                          <option value="Outros"> Outros</option>
+                          <option value="Prefere não dizer">Prefere não dizer</option>
                         </select>
                       </div>
                     </div>

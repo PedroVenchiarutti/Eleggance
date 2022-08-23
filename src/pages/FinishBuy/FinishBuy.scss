@@ -3,7 +3,7 @@
 
   header {
     padding: 30px;
-    height: 90px;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,8 +11,16 @@
     color: #e1ab38;
 
     .logo {
-      font-size: 50px;
-      font-family: Great Vibes;
+      max-width: 312px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      margin-bottom: 39px;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 
@@ -110,6 +118,7 @@
           color: #f3f3f3;
           font-size: 16px;
           padding: 7px;
+          cursor: pointer;
         }
       }
       .iconTrash {
@@ -149,7 +158,16 @@
   @media (max-width: 1020px) {
     header {
       .logo {
-        font-size: 2.5rem;
+        max-width: 312px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-bottom: 39px;
+  
+        img {
+          height: 100%;
+          width: 100%;
+        }
       }
 
       .finishBuy-h1 {
