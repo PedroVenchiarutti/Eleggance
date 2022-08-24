@@ -20,9 +20,9 @@ export default function MenuDashboard(props) {
         <li>
           <NavLink to={"/admin/home"}>Geral</NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to={"/admin/reservas"}>Reservas</NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to={"/admin/produtos"}>Produtos</NavLink>
         </li>

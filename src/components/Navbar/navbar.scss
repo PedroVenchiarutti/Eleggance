@@ -201,189 +201,189 @@
     }
   }
 
-  @media (max-width: 1120px) {
-    .navbar-container {
-      position: relative;
-      height: 200px;
-      background-color: #111;
-      color: #fff;
+}
+@media (max-width: 1120px) {
+  .navbar-container {
+    position: relative;
+    height: 200px;
+    background-color: #111;
+    color: #fff;
 
-      //mobile
-      .navbar-user-logged-mobile {
+    //mobile
+    .navbar-user-logged-mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: 72px;
+      height: 100%;
+      width: 100%;
+      right: 27px;
+
+      .svgUser-mobile {
+        width: 32px;
+      }
+
+      .svgCart-mobile {
+        width: 32px;
+      }
+
+      .navbar-user-logged-name-mobile {
         display: flex;
         align-items: center;
-        justify-content: center;
-        position: relative;
-        top: 72px;
-        height: 100%;
-        width: 100%;
-        right: 27px;
 
-        .svgUser-mobile {
-          width: 32px;
+        button {
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          margin-left: 5px;
         }
+      }
+    }
 
-        .svgCart-mobile {
-          width: 32px;
+    nav {
+      justify-content: center;
+      height: 100% !important;
+
+      .logoInSearch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        a img {
+          position: relative;
+          left: 30px;
+          width: 300px;
+          right: 25px;
         }
+        .inputSearch {
+          #txtBusca {
+            width: 232px;
+            margin-top: 2px;
+          }
+          .inputList {
+            margin-left: 90px;
+          }
+        }
+        button {
+          bottom: 0px !important;
+        }
+      }
 
-        .navbar-user-logged-name-mobile {
+      .icon {
+        position: absolute;
+        z-index: 4;
+        left: 3%;
+        width: fit-content;
+        height: 44px;
+        bottom: 8%;
+        cursor: pointer;
+      }
+
+      .logo {
+        display: flex;
+        flex-direction: column;
+      }
+
+      //Menu hamburgue \/
+      .hamburguer {
+        top: 50%;
+        left: 10%;
+        width: 30px;
+        height: 6px;
+        background: #ffce45;
+        position: absolute;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+      }
+
+      .hamburguer::before {
+        top: -12px;
+        content: "";
+        position: absolute;
+        width: 37px;
+        height: 6px;
+        background: #ffce45;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+      }
+
+      .hamburguer::after {
+        top: 12px;
+        content: "";
+        position: absolute;
+        width: 37px;
+        height: 6px;
+        background: #ffce45;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+      }
+      .list {
+        display: flex;
+        flex-direction: column;
+        left: 1%;
+        flex-wrap: nowrap;
+        color: #ffce45;
+        font-size: 1.2rem;
+        font-weight: 600;
+
+        ul {
           display: flex;
-          align-items: center;
+          flex-direction: column;
 
-          button {
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            margin-left: 5px;
+          li {
+            padding: 20px;
           }
         }
       }
 
-      nav {
-        justify-content: center;
-        height: 100% !important;
+      .list .listItems {
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+      }
 
-        .logoInSearch {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+      .list .listItems ul li {
+        margin: 22px 8px;
+        cursor: pointer;
+      }
+      li:hover {
+        font-weight: 800;
+      }
 
-          a img {
-            position: relative;
-            left: 30px;
-            width: 300px;
-            right: 25px;
-          }
-          .inputSearch {
-            #txtBusca {
-              width: 232px;
-              margin-top: 2px;
-            }
-            .inputList {
-              margin-left: 90px;
-            }
-          }
-          button {
-            bottom: 0px !important;
-          }
-        }
+      .icon.iconActive .hamburguer {
+        background: transparent;
+        box-shadow: 0 2px 5px transparent;
+      }
 
-        .icon {
-          position: absolute;
-          z-index: 4;
-          left: 3%;
-          width: fit-content;
-          height: 44px;
-          bottom: 8%;
-          cursor: pointer;
-        }
+      .icon.iconActive .hamburguer::after {
+        top: 0;
+        background-color: #f3f3f3;
+        transform: rotate(225deg);
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      }
 
-        .logo {
-          display: flex;
-          flex-direction: column;
-        }
+      .icon.iconActive .hamburguer::before {
+        top: 0;
+        background-color: #f3f3f3;
+        transform: rotate(135deg);
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      }
 
-        //Menu hamburgue \/
-        .hamburguer {
-          top: 50%;
-          left: 10%;
-          width: 30px;
-          height: 6px;
-          background: #ffce45;
-          position: absolute;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-          transition: 0.5s;
-        }
+      .menu.menuOpen {
+        position: absolute;
+        right: 190px;
+        top: 53px;
+        z-index: 2;
+        width: 150px;
+        background-color: #333;
+        box-shadow: 10px 0px 69px 0px rgb(0, 0, 0, 0.59);
+      }
 
-        .hamburguer::before {
-          top: -12px;
-          content: "";
-          position: absolute;
-          width: 37px;
-          height: 6px;
-          background: #ffce45;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-          transition: 0.5s;
-        }
-
-        .hamburguer::after {
-          top: 12px;
-          content: "";
-          position: absolute;
-          width: 37px;
-          height: 6px;
-          background: #ffce45;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-          transition: 0.5s;
-        }
-        .list {
-          display: flex;
-          flex-direction: column;
-          left: 1%;
-          flex-wrap: nowrap;
-          color: #ffce45;
-          font-size: 1.2rem;
-          font-weight: 600;
-
-          ul {
-            display: flex;
-            flex-direction: column;
-
-            li {
-              padding: 20px;
-            }
-          }
-        }
-
-        .list .listItems {
-          padding: 0;
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .list .listItems ul li {
-          margin: 22px 8px;
-          cursor: pointer;
-        }
-        li:hover {
-          font-weight: 800;
-        }
-
-        .icon.iconActive .hamburguer {
-          background: transparent;
-          box-shadow: 0 2px 5px transparent;
-        }
-
-        .icon.iconActive .hamburguer::after {
-          top: 0;
-          background-color: #f3f3f3;
-          transform: rotate(225deg);
-          box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .icon.iconActive .hamburguer::before {
-          top: 0;
-          background-color: #f3f3f3;
-          transform: rotate(135deg);
-          box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .menu.menuOpen {
-          position: absolute;
-          right: 190px;
-          top: 53px;
-          z-index: 2;
-          width: 150px;
-          background-color: #333;
-          box-shadow: 10px 0px 69px 0px rgb(0, 0, 0, 0.59);
-        }
-
-        .menu.menuClose {
-          display: none;
-          width: 0;
-        }
+      .menu.menuClose {
+        display: none;
+        width: 0;
       }
     }
   }
