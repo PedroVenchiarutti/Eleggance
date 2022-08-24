@@ -52,6 +52,8 @@ const sortListByOptions = (ordersList, orderBy) => {
         }
     });
 
+    console.log(ordersList);
+
     switch (orderBy) {
         case 'price':
             ordersList.sort((a, b) => a.price > b.price)
@@ -110,4 +112,4 @@ const getProductsQuantity = products => products.map(product => +product.qt_prod
  * Retorna o preço do pedido.
  */
 const getOrderPrice = products =>
-    products.map(product => (+product.value * +product.qt_product) || 0).reduce(sum).toFixed(2);
+    parseFloat(products.map(product => (+product.value * +product.qt_product) || 0).reduce(sum).toFixed(2));
