@@ -1,6 +1,10 @@
 import React from "react";
+
+import Header from "../../../components/NabBarFinance/navBarFinances";;
 import MenuDashboard from "../../../components/MenuDashboard";
-import HeaderDashboard from "../../../components/HeaderDashboard";
+import Cards from "../../../components/Dashboard/Cards/Cards";
+
+import '../Dashboard.scss';
 
 export default function HomeDashboard() {
   return (
@@ -8,8 +12,10 @@ export default function HomeDashboard() {
       <MenuDashboard />
 
       <main>
-        <HeaderDashboard></HeaderDashboard>
+        <Header />
+        <Cards />
       </main>
     </div>
   );
 }
+

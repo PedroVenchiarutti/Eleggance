@@ -16,7 +16,7 @@ export default (props) => {
                 <Data header={<ContentHeader title="Minhas Avaliações" />}>
                     <ul className="itemList">
                         <li className="item">
-                            <img src="" alt="produto" />
+                            <img src="/product.png" alt="produto" />
                             <div className="itemSpace">
                                 <div className="itemName ">
                                     <p>Battom cor rose cremoso</p>

@@ -3,12 +3,14 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
+
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
 
     width: 100%;
+
     .button-add {
       width: 60px;
       height: 60px;
@@ -25,6 +27,7 @@
       right: 15px;
       transition: 0.3s all ease-in-out;
     }
+
     .button-add:hover {
       background-color: #b47f0c;
     }
@@ -33,12 +36,13 @@
     .modalEditProducts {
       display: none;
     }
+
     .open {
       margin: 3% 0;
       display: flex;
       flex-direction: column;
       position: absolute;
-      width: 50%;
+      width: 60%;
       min-width: 350px;
       height: 90%;
       background-color: #f3f3f3;
@@ -56,6 +60,10 @@
         height: 35px;
         margin-bottom: 15px;
 
+        h1 {
+          font-weight: 400;
+        }
+
         button {
           cursor: pointer;
           width: 50px;
@@ -67,58 +75,143 @@
           transition: 0.3s all ease-out;
           border: none;
         }
+
         button:hover {
           color: #b47f0c;
         }
       }
-      .main-modal {
-        font-weight: 600;
+
+      .body-modal {
+
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 80%;
-        margin-left: 10%;
-        input {
-          height: 40px;
-          width: 450px;
-          max-width: 60%;
-          border-radius: 5px;
-          padding-left: 6px;
-          font-size: 20px;
-          border: 0.5px solid black;
+        height: 100%;
+
+        .main-modal {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          height: 80%;
+          margin-left: 5%;
+          margin-top: 6%;
+          width: 50%;
+
+          input {
+            height: 40px;
+            width: 450px;
+            max-width: 60%;
+            border-radius: 5px;
+            padding-left: 6px;
+            font-size: 20px;
+            border: 0.5px solid black;
+          }
+
+          .inputPhoto {
+            height: 70px;
+            min-height: 35px;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+            width: 60%;
+            margin-left: 5%;
+
+            input {
+              height: 40px;
+              width: 450px;
+              max-width: 80%;
+              border-radius: 5px;
+              padding-left: 6px;
+              font-size: 20px;
+              border: 0.5px solid black;
+            }
+
+            .inputPhoto {
+              height: 35px;
+              min-height: 35px;
+              font-weight: 600;
+              border: none;
+              border-radius: 5px;
+            }
+          }
+
         }
-        .inputPhoto {
-          height: 70px;
-          min-height: 35px;
-          font-weight: 600;
-          border: none;
-          border-radius: 5px;
+
+        .productVisualization {
+ 
+          display: block;
+          width: 42%;
+          p {
+            text-align: center;
+          }
+
+          text-align: center;
+
+          .productAndInfo {
+            background-color: #c4c2c23d;
+            margin-bottom: 20px;
+            text-align: center;
+            img{
+              width: 80%;
+            }
+
+            .productInfo {
+              text-align: start;
+              padding-left: 5px;
+              background-color: #b6b1b1;
+              border-radius: 5px;
+            }
+          }
+
+          .areaBtn {
+            margin-top: 10%;
+            padding-right: 10%;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
+            .btn {
+              padding: 5px 10px;
+              cursor: pointer;
+              border-radius: 5px;
+              font-weight: 700;
+            }
+
+            p {
+              text-align: center;
+            }
+
+
+          }
         }
-      }
-    }
 
-    .areaBtn {
-      margin-left: 10%;
-      display: flex;
-      width: 40%;
-      justify-content: space-between;
+        .areaBtn {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          text-align: center;
 
-      .btn {
-        padding: 5px 10px;
-        cursor: pointer;
-        border-radius: 5px;
-        font-weight: 700;
-      }
+          .btn {
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 20px;
+            width: 65%;
+          }
 
-      .btnCadastrarProduto {
-        background-color: #e2ac38;
-        color: #f3f3f3;
-      }
+          .btnCadastrarProduto {
+            background-color: #e2ac38;
+            color: #f3f3f3;
+          }
 
-      .btnCancelarCadastrarProduto {
-        color: #e2ac38;
-        background-color: #f3f3f3;
-        border: 0.5px solid #e2ac38;
+          .btnCancelarCadastrarProduto {
+            color: #e2ac38;
+            background-color: #f3f3f3;
+            border: 0.5px solid #e2ac38;
+          }
+        }
       }
     }
   }
@@ -129,16 +222,34 @@
     .header-container {
       display: none;
     }
+
     main {
       margin-top: 50px;
+
+      .modalAddProducts {
+        width: 100%;
+
+        .body-modal {
+          flex-direction: column;
+          align-items: center;
+
+          .productVisualization .productAndInfo .productInfo {
+            text-align: center;
+          }
+
+        }
+      }
+
       .header-modal {
         width: 100%;
         align-items: center;
+
         h1 {
           width: 100%;
           font-size: 20px;
         }
       }
+
       .areaBtn {
         width: 80%;
 

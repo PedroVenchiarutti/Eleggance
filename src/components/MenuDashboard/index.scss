@@ -14,24 +14,37 @@
     margin-bottom: 15px;
   }
   li {
-    height: 12.5vh;
+    height: 10vh;
     width: 100%;
-    padding: 10px;
     display: flex;
     align-items: center;
     transition: 0.3s all ease-in-out;
-    a {
-      color: #f3f3f3;
-      text-decoration: none;
-      font-size: 18px;
       width: 100%;
       height: 100%;
+      a {
+        color: #f3f3f3;
+        text-decoration: none;
+        font-size: 18px;
+        width: 100%;
+        height: 100%;
+      }
     }
-  }
+    .menuOption{
+      padding: 13px;
+
+      img{
+        margin: 0px 15px;
+      }
+    }
+    .menuIcon{
+      height: 15px;
+      width: 16px;
+      margin-bottom: 0px;
+    }
+  
   li:hover {
     background-color: rgb(57, 56, 56);
   }
-
   .active {
     background-color: #4e4736;
     padding: 5px;
@@ -42,10 +55,10 @@
     width: 100%;
   }
 }
-
 .menu-container:hover {
   margin-left: 0;
 }
+
 
 @media (max-width: 1020px) {
   .menu-container {
