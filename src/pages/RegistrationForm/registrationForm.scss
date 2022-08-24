@@ -20,21 +20,13 @@
     border-radius: 6px;
   }
 
-  .Titulo1 {
-    background: linear-gradient(to left, #7e370c, #ffce45);
+  .logo-registration {
     text-align: center;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
     font-size: 2.813rem;
-    position: relative;
-    margin-right: 30px;
-    width: 100%;
-    margin-top: 15px;
     margin-bottom: 15px;
     
-    h2 {
-      font-family: Great Vibes !important;
+    img {
+        max-width: 315px;
     }
   }
 
@@ -46,7 +38,7 @@
     position: relative;
     margin-right: 30px;
     width: 100%;
-    margin-bottom: 35px;
+    margin-bottom: 14px;
   }
 
   .Formulario {

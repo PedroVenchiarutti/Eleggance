@@ -52,10 +52,10 @@ export default (props) => {
                         </div>
                         <div className="formReadOnly">
                             <label htmlFor="cpf">CPF:</label>
-                            <input type="text" name="cpf" readOnly className="readOnly" value='props.cpf' />
+                            <input type="text" name="cpf" readOnly className="readOnly" value="value" />
 
                             <label htmlFor="birth" >Data de nascimento:</label>
-                            <input type="text" name="birth" readOnly className="readOnly" value='props.birthdate' />
+                            <input type="text" name="birth" readOnly className="readOnly" value="value" />
                         </div>
                     </Form>
                 </Data>

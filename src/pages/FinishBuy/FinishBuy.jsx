@@ -4,6 +4,7 @@ import AsideFinishBuy from "../../components/AsideFinishBuy/AsideFinishBuy";
 import ProductsList from "../../components/ProductsLIst";
 import { shelfProducts } from "../../api/mock";
 import "./FinishBuy.scss";
+import { Link } from "react-router-dom";
 
 // let inputCupom = document.querySelector("#fieldCoupon");
 // inputCupom.addEventListener("change", (e) => {
@@ -25,7 +26,11 @@ export default function FinishBuy({ products }) {
   return (
     <div className="finishBuyContainer">
       <header>
-        <h1 className="logo">Ellegance</h1>
+        <div className="logo">
+          <Link to="/">
+            <img src="/logo.png" />
+          </Link>
+        </div>
         <h1 className="finishBuy-h1">Finalizar Compra</h1>
       </header>
       <main>
@@ -38,7 +43,11 @@ export default function FinishBuy({ products }) {
               <li>11718-350 || PRAIA GRANDE - SP</li>
             </div>
             <div className="icon-edit">
-              <img src="./icons/icon-edit.svg" />
+              <button className="edit-finish">
+                <Link to="/perfil/enderecos">
+                  <img src="./icons/icon-edit.svg" />
+                </Link>
+              </button>
             </div>
           </AsideFinishBuy>
           <AsideFinishBuy title="2 - FRETE">
