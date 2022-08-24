@@ -3,7 +3,6 @@
     margin: 50px 60px;
 
     .main-content {
-        min-width: fit-content;
         width: 76%;
 
         display: flex;
@@ -40,6 +39,9 @@
         align-items: center;
         min-width: fit-content;
 
-        .main-content { padding: 10px }
+        .main-content { 
+            padding: 10px; 
+            min-width: fit-content;
+        }
     }
 }
