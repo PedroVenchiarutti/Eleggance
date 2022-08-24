@@ -10,15 +10,10 @@ export default ({ orderBy }) => {
     const { data } = useFetch('api/protected/request/');
 
     return (
-        <div className="table-content">
-            {
-                data.length ?
-                    <Table
-                        headerColumnsArray={getHeadRows()}
-                        bodyObjectsArray={getBodyObjects(data, orderBy)}
-                    /> : <Loading />
-            }
-        </div>
+        <div className="table-content">{
+            data.length ?
+                <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(data, orderBy)} /> : <Loading />
+        }</div>
     )
 }
 
@@ -36,21 +31,23 @@ const getBodyObjects = (ordersList, orderBy) => sortListByOptions(ordersList, or
     return {
         products: getOrderProductsInfos(order.products),
         id: <td className="responsive-hide">{order.id}</td>,
-        otherInfos: getInfoRow(order.status, order.price)
+        otherInfos: getInfoCell(order.status, order.price)
     }
 });
 
+/**
+ * Ordena a lista de acordo com a opção selecionada.
+ */
 const sortListByOptions = (ordersList, orderBy) => {
-    // Gambiarra pra fazer o order by funcionar
+    // Mapeia a lista pra facilitar a ordenação da lista.
     ordersList = ordersList.map(order => {
         const products = order.products;
-        const sum = (t, v) => t + v;
 
         return {
             id: order.id,
             products,
-            quantity: products.map(product => +product.qt_product).reduce(sum),
-            price: products.map(product => +product.value * +product.qt_product || 0).reduce(sum).toFixed(2),
+            quantity: getProductsQuantity(products),
+            price: getOrderPrice(products),
             status: order.status ?? "Pendente"
         }
     });
@@ -63,7 +60,7 @@ const sortListByOptions = (ordersList, orderBy) => {
             ordersList.sort((a, b) => a.products.sort() > b.products.sort())
             break;
         case 'quantity':
-            ordersList.sort((a, b) => sum(a.quantity) > sum(b.quantity))
+            ordersList.sort((a, b) => a.quantity > b.quantity)
             break;
         case 'purchaseId':
             ordersList.sort((a, b) => a.id > b.id)
@@ -77,6 +74,9 @@ const sortListByOptions = (ordersList, orderBy) => {
     return ordersList;
 }
 
+/**
+ * Retorna o nome do produto e quantidade do pedido.
+ */
 const getOrderProductsInfos = products => (
     <>
         <td className="products">
@@ -89,9 +89,25 @@ const getOrderProductsInfos = products => (
     </>
 )
 
-const getInfoRow = (status, price) => (
+/**
+ * Retorna o valor e o status do pedido.
+ */
+const getInfoCell = (status, price) => (
     <td>
         <p>R${price}</p>
         <p className={status === "Pendente" ? "pending" : "send"}>{status}</p>
     </td>
 )
+
+const sum = (accumulated, current) => accumulated + current;
+
+/**
+ * Retorna o total de produtos da venda.
+ */
+const getProductsQuantity = products => products.map(product => +product.qt_product).reduce(sum);
+
+/**
+ * Retorna o preço do pedido.
+ */
+const getOrderPrice = products =>
+    products.map(product => (+product.value * +product.qt_product) || 0).reduce(sum).toFixed(2);
