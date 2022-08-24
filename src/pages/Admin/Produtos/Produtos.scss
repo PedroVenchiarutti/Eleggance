@@ -81,6 +81,22 @@
         }
       }
 
+      //MODAL ADICIONAR
+      .add{
+        input{
+          min-width: 100%;
+        }
+        
+        .label-productImage{
+          width: 80%;
+        }
+
+        .areaBtn{
+          margin-top: 6.5%;
+        }
+      }
+
+
       .body-modal {
 
         display: flex;
@@ -116,15 +132,6 @@
             width: 60%;
             margin-left: 5%;
 
-            input {
-              height: 40px;
-              width: 450px;
-              max-width: 80%;
-              border-radius: 5px;
-              padding-left: 6px;
-              font-size: 20px;
-              border: 0.5px solid black;
-            }
 
             .inputPhoto {
               height: 35px;
@@ -138,9 +145,10 @@
         }
 
         .productVisualization {
- 
+
           display: block;
           width: 42%;
+
           p {
             text-align: center;
           }
@@ -151,7 +159,8 @@
             background-color: #c4c2c23d;
             margin-bottom: 20px;
             text-align: center;
-            img{
+
+            img {
               width: 80%;
             }
 

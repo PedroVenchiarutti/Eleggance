@@ -16,10 +16,11 @@ export const EditProvider = ({children}) => {
 
     const updateState = (field,data) => {
         setEditing({...Object.assign(editing, { [field]: data }) })
+        // setEditing(Object.assign(editing, { [field]: data }) )
+
     }
 
     const startState = (data) => {
-        console.log(data)
         setEditing(data)
     }
 
