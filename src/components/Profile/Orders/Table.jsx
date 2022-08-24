@@ -33,19 +33,28 @@ const getHeadRows = () => [<>
 </>];
 
 const getBodyObjects = (ordersList, orderBy) => sortListByOptions(ordersList, orderBy).map(order => {
-    const status = order.status ?? "Pendente";
-    const products = order.products;
-
     return {
-        products: getOrderProductsInfos(products),
+        products: getOrderProductsInfos(order.products),
         id: <td className="responsive-hide">{order.id}</td>,
-        otherInfos: getInfoRow(status, getOrderValue(products))
+        otherInfos: getInfoRow(order.status, order.price)
     }
 });
 
 const sortListByOptions = (ordersList, orderBy) => {
-    
-    // After API integration, order by it's not working properly.
+    // Gambiarra pra fazer o order by funcionar
+    ordersList = ordersList.map(order => {
+        const products = order.products;
+        const sum = (t, v) => t + v;
+
+        return {
+            id: order.id,
+            products,
+            quantity: products.map(product => +product.qt_product).reduce(sum),
+            price: products.map(product => +product.value * +product.qt_product || 0).reduce(sum).toFixed(2),
+            status: order.status ?? "Pendente"
+        }
+    });
+
     switch (orderBy) {
         case 'price':
             ordersList.sort((a, b) => a.price > b.price)
@@ -57,7 +66,7 @@ const sortListByOptions = (ordersList, orderBy) => {
             ordersList.sort((a, b) => sum(a.quantity) > sum(b.quantity))
             break;
         case 'purchaseId':
-            ordersList.sort((a, b) => a.purchaseId > b.purchaseId)
+            ordersList.sort((a, b) => a.id > b.id)
             break;
         case 'status':
         default:
@@ -86,9 +95,3 @@ const getInfoRow = (status, price) => (
         <p className={status === "Pendente" ? "pending" : "send"}>{status}</p>
     </td>
 )
-
-const getOrderValue = (products) => {
-    let sum = 0;
-    products.forEach(product => sum += +product.value);
-    return sum;
-}
