@@ -2,6 +2,7 @@ import React from "react";
 import "../CardFinances/cardFinance.scss";
 import { NavLink } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
+import "./cardFinance.scss"
 
 export default (props) => {
   const { data } = useFetch(`api/public/products/pages/1`);

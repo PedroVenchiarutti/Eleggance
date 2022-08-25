@@ -4,6 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { NavLink } from "react-router-dom";
 
 import "../NabBarFinance/navBarFinances.scss";
+import "./navBarFinances.scss"
 export default (navBarFinances) => {
   const { loginName } = useContext(AuthContext);
   const { linkImg } = useContext(AuthContext);

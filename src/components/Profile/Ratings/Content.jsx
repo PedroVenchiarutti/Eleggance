@@ -1,10 +1,10 @@
 import React from "react";
-import '../Profile.scss';
-import ClientMenu from '../common/ClientMenu'
-import Data from '../../Data/Data'
-import ContentHeader from '../common/ContentHeader'
-import './Content.scss'
-import SaleTag from '../common/SaleTag'
+import "../Profile.scss";
+import ClientMenu from "../common/ClientMenu";
+import Data from "../../Data/Data";
+import ContentHeader from "../common/ContentHeader";
+import "./Content.scss";
+import SaleTag from "../common/SaleTag";
 
 export default (props) => {
 

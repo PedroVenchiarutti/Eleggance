@@ -23,18 +23,14 @@ export default function App() {
           setProducts(response.data);
         })
         .then(() => {
-          for (let i = products; i !=[0]; i=5) {
-            console.log("breno")
-            i = products
-          }
           arr = products.map(function (obj) {
             return Object.keys(obj).map(function (key) {
               return obj[key];
             });
           });
         })
-
         .then(() => {
+          console.log(products);
           arr.forEach((number) => {
             let arr1 = [number[1], number[2], number[4]];
             data.push(arr1);
@@ -43,7 +39,7 @@ export default function App() {
         .catch(() => {
           console.log("Deu ruim :( ");
         });
-    }, []);
+    },[arr]);
   }
 
   return (
