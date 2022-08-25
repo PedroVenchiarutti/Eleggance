@@ -18,7 +18,7 @@ export default function ModalEditProduct() {
 
   async function postItem() {
     // console.log(editing)
-    await Api.put(`api/protected/product/${editing.id}`, editing)
+    await Api.put(`api/protected/product/${editing.id}`,editing)
       .then(function (response) {
         console.log(response);
       })
