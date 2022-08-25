@@ -49,6 +49,19 @@ export const Navbar = () => {
     const width = window.screen.width;
     if (height >= 600 && width >= 600 && authenticated) {
       return (
+// <<<<<<< HEAD=
+//         <div className="navbar-user-logged-mobile">
+//           <div className="navbar-user-logged-name-mobile">
+//             <button>
+//               <img src="/img/Frame.svg" className="svgUser-mobile" />
+//             </button>
+//             <button className="buttonCart">
+//               <Link to="/carrinho">
+//                 <img src="/icons/shoppingCart.svg" className="svgCart" />
+//               </Link>
+//             </button>
+//           </div>
+// =======
         <div className="navbar-user-logged">
           <div className="navbar-user-logged-name">
             {renderImage()}
@@ -64,6 +77,7 @@ export const Navbar = () => {
               <img src="/icons/shoppingCart.svg" className="svgCart" />
             </Link>
           </button>
+{/* >>>>>>> fab52d74559bccac682280cb08820324e4906052 */}
         </div>
       );
     } else if (height >= 600 && width >= 600 && !authenticated) {

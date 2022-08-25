@@ -13,7 +13,7 @@ export default () => {
                 <div className="row">
                     <div className="form-group street">
                         <label>Rua:</label>
-                        <input value={address.street} onChange={ev => updateState("street", ev.target.value)} />
+                        <input value={address.address} onChange={ev => updateState("address", ev.target.value)} />
                     </div>
                     <div className="form-group number">
                         <label>Número:</label>
@@ -38,7 +38,7 @@ export default () => {
                             </div>
                             <div className="form-group">
                                 <label>CEP:</label>
-                                <input value={cep} onChange={ev => onCepChange(ev.target.value)} />
+                                <input value={address.cep} onChange={ev => onCepChange(ev.target.value)} />
                             </div>
                         </div>
 

@@ -1,0 +1,93 @@
+.dashboard-container .create-modal {
+    position: absolute;
+    width: 20%;
+    margin-top: -33px;
+
+    background-color: #fff;
+    opacity: 1;
+
+    border-radius: 5px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.678);
+
+    padding: 0 20px;
+
+    form { text-align: center; }
+    .modal-title {
+        margin: 20px 0;
+        font-weight: 300 
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        text-align: start;
+        margin: 12px 0;
+    }
+
+    input {
+        margin-top: 3px;
+        border: solid 1px black;
+        border-radius: 4px;
+
+        width: 100%;
+        padding: 3px 8px;
+    }
+
+    .buttons-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 0 0 25px 0;
+
+        .cancel-button,
+        .submit-button {
+            margin: 10px 5px;
+            padding: 2px 15px;
+
+            font-weight: 400;
+            text-transform: uppercase;
+
+            border-radius: 3px;
+        }
+
+        .cancel-button {
+            background-color: transparent;
+            color: #E1AB38;
+            border: solid 1px #E1AB38;
+
+            &:hover {
+                color: rgb(205, 148, 27);
+                border-color: rgb(205, 148, 27);
+            }
+        }
+
+        .submit-button {
+            background-color: #E1AB38;
+            border: solid 1px #E1AB38;
+            color: #fff;
+
+            &:hover { background-color: rgb(205, 148, 27) }
+        }
+    }
+}
+
+@media (max-width: 1020px) {
+    .dashboard-container .create-modal {
+        width: 200px;
+
+        font-size: 10px;
+        button, input { font-size: 12px }
+        .form-group { margin: 0 0 5px 0; }
+
+        .buttons-div {
+            flex-direction: column-reverse;
+            .submit-button, .cancel-button {
+                margin: 2px 0;
+                width: 100%;
+            }
+        } 
+    }
+}

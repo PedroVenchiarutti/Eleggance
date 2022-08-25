@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/auth";
 import { Link, useNavigate } from "react-router-dom";
 
-import "../NabBarFinance/navBarFinances.scss"
+import "./navBarFinances.scss"
 export default (navBarFinances) => {
   const { loginName } = useContext(AuthContext);
   const { linkImg } = useContext(AuthContext);

@@ -1,48 +1,51 @@
 import React from "react";
+import { useFetch } from "../../../hooks/useFetch";
+
+import Loading from '../../SpinerLoader'
+import Table from "../../Table/Table";
 
 import './Table.scss'
 
-export default ({ list, orderBy }) => (
-    <div className="profile-orders-table">
-        <table>
-            <thead>{renderHeadRows()}</thead>
-            <tbody>{renderBodyRows(list, orderBy)}</tbody>
-        </table>
-    </div>
-)
+export default ({ orderBy }) => {
+    const { data } = useFetch('api/protected/request/');
 
-
-const renderHeadRows = () => (
-    <tr>
-        <th className="products">Produtos</th>
-        <th className="responsive-hide">Quantidade</th>
-        <th className="responsive-hide">Código da compra</th>
-        <th>
-            <p>Valor</p>
-            <p>Status</p>
-        </th>
-    </tr>
-)
-
-function renderBodyRows(ordersList, orderBy) {
     return (
-        sortListByOptions(ordersList, orderBy).map(order => {
-            return (
-                <tr key={order.purchaseId}>
-                    {renderProductRow(order.products)}
-                    {renderQuantityRow(order.quantity)}
-                    <td className="responsive-hide">{`#${order.purchaseId}`}</td>
-                    <td>
-                        <p>{order.price}</p>
-                        <p className={order.status === "Pendente" ? "pending" : "send"}>{order.status}</p>
-                    </td>
-                </tr>
-            )
-        })
+        <div className="table-content">
+            {
+                data.length ?
+                    <Table
+                        headerColumnsArray={getHeadRows()}
+                        bodyObjectsArray={getBodyObjects(data, orderBy)}
+                    /> : <Loading />
+            }
+        </div>
     )
 }
 
+const getHeadRows = () => [<>
+    <th className="products">Produtos</th>
+    <th className="responsive-hide">Quantidade</th>
+    <th className="responsive-hide">Código da compra</th>
+    <th>
+        <p>Valor</p>
+        <p>Status</p>
+    </th>
+</>];
+
+const getBodyObjects = (ordersList, orderBy) => sortListByOptions(ordersList, orderBy).map(order => {
+    const status = order.status ?? "Pendente";
+    const products = order.products;
+
+    return {
+        products: getOrderProductsInfos(products),
+        id: <td className="responsive-hide">{order.id}</td>,
+        otherInfos: getInfoRow(status, getOrderValue(products))
+    }
+});
+
 const sortListByOptions = (ordersList, orderBy) => {
+    
+    // After API integration, order by it's not working properly.
     switch (orderBy) {
         case 'price':
             ordersList.sort((a, b) => a.price > b.price)
@@ -65,21 +68,27 @@ const sortListByOptions = (ordersList, orderBy) => {
     return ordersList;
 }
 
-const renderProductRow = products => (
-    <td className="products">
-        <div className="products-row">
-            <img src="/img/produtos/gloss.png" alt="" />
-            <div> {products.map(products => { return <p> {products} </p> })} </div>
-        </div>
+const getOrderProductsInfos = products => (
+    <>
+        <td className="products">
+            <div className="products-cell">
+                <img src="/img/produtos/gloss.png" alt="" />
+                <div>{products.map(product => <p className="product-name">{product.name}</p>)}</div>
+            </div>
+        </td>
+        <td className="responsive-hide">{products.map(product => <p>{product.qt_product}</p>)}</td>
+    </>
+)
+
+const getInfoRow = (status, price) => (
+    <td>
+        <p>R${price}</p>
+        <p className={status === "Pendente" ? "pending" : "send"}>{status}</p>
     </td>
 )
 
-const renderQuantityRow = quantities => (
-    <td className="responsive-hide">{quantities.map(quantity => <p> {quantity} </p>)}</td>
-)
-
-const sum = numbersArray => {
+const getOrderValue = (products) => {
     let sum = 0;
-    numbersArray.forEach(number => sum += +number);
+    products.forEach(product => sum += +product.value);
     return sum;
 }

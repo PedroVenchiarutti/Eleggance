@@ -36,38 +36,32 @@ export default (props) => {
         </div>
         <div className="products-info-price">
           <div className="available-products">
-            <div className="rating-product">
-              <div className="rate-product">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label htmlFor="star5" title="text">
-                  5 stars
-                </label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label htmlFor="star4" title="text">
-                  4 stars
-                </label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label htmlFor="star3" title="text">
-                  3 stars
-                </label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label htmlFor="star2" title="text">
-                  2 stars
-                </label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label htmlFor="star1" title="text">
-                  1 star
-                </label>
+            <div className="rating-container">
+              <div className="rating-product">
+                <div className="rate-product">
+                  <input type="radio" id="star5" name="rate" value="5" />
+                  <label htmlFor="star5" title="text">
+                    5 stars
+                  </label>
+                  <input type="radio" id="star4" name="rate" value="4" />
+                  <label htmlFor="star4" title="text">
+                    4 stars
+                  </label>
+                  <input type="radio" id="star3" name="rate" value="3" />
+                  <label htmlFor="star3" title="text">
+                    3 stars
+                  </label>
+                  <input type="radio" id="star2" name="rate" value="2" />
+                  <label htmlFor="star2" title="text">
+                    2 stars
+                  </label>
+                  <input type="radio" id="star1" name="rate" value="1" />
+                  <label htmlFor="star1" title="text">
+                    1 star
+                  </label>
+                </div>
               </div>
-            </div>
-            <h1 className="rating-text-product">Nos avalie</h1>
-            <div className="heart-products">
-              <div className="heart-product">
-                <input type="radio" id="heart1" name="rate" value="1" />
-                <label htmlFor="heart1" title="text">
-                  1 heart
-                </label>
-              </div>
+              <h1 className="rating-text-product">Nos avalie!</h1>
             </div>
           </div>
           <div className="price-product">
@@ -99,6 +93,14 @@ export default (props) => {
             <button> OK </button>
             <a href="#"> Nao sei o meu cep </a>
           </div>
+              <div className="heart-products">
+                <div className="heart-product">
+                  <input type="radio" id="heart1" name="rate" value="1" />
+                  <label htmlFor="heart1" title="text">
+                    1 heart
+                  </label>
+                </div>
+              </div>
         </div>
       </div>
       {showElement ? <InfoProducts /> : null}

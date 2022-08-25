@@ -1,17 +1,23 @@
 import { createContext, useEffect, useState } from "react";
+import { useFetch } from "../hooks/useFetch";
+import Api from "../api/api";
 
 const initialState = {
-    street: '',
+    user_id: 1,
+    cep: '',
+    address: '',
     district: '',
     city: '',
     number: '',
     complement: ''
 }
 
+const baseApiUrl = 'http://localhost:3333/api/protected/client/addresses';
+
 async function getCepDatas(cep) {
     const response = await (await fetch(`https://viacep.com.br/ws/${cep}/json/`)).json();
     return {
-        street: response.logradouro,
+        address: response.logradouro,
         district: response.bairro,
         city: response.localidade
     }
@@ -19,62 +25,52 @@ async function getCepDatas(cep) {
 
 export const AddressContext = createContext();
 export const AddressProvider = ({ children }) => {
-    const addressesFromStorage = sessionStorage.getItem('addresses');
-
     const [address, setAddress] = useState({ ...initialState });
-    const updateState = (fieldName, value) => {
-        const newState = Object.assign(address, { [fieldName]: value })
-        setAddress({ ...newState });
-    };
+    const updateState = (fieldName, value) => setAddress({ ...Object.assign(address, { [fieldName]: value }) });
 
     const [inEditAddressMode, setInEditAddressMode] = useState(false);
-    const [cep, setCep] = useState('');
-    const onCepChange = (cep) => { if (!inEditAddressMode && cep.length < 9) setCep(cep) }
+    const onCepChange = (cep) => { if (!inEditAddressMode && cep.length < 9) updateState('cep', cep) }
 
-    const [addresses, setAddresses] = useState(addressesFromStorage ? JSON.parse(addressesFromStorage) : []);
-
-    const onFormSubmit = (event) => {
+    const onFormSubmit = async event => {
         event.preventDefault();
 
-        let storedAddress = {
-            cep,
-            address,
-            fullAddressText: `${address.street}${address.number ? `, ${address.number}` : ''} - ${address.district} - ${address.city} ${cep}`
+        const addressText = `${address.address}${address.number ? `, ${address.number}` : ''}${address.complement ? `, ${address.complement}` : ''}`
+
+        // Missing API treatment for edit coupon.
+        if (inEditAddressMode) { }
+        else {
+            Api.post(baseApiUrl, {
+                cep: address.cep,
+                address: addressText,
+                district: address.district,
+                city: address.city,
+                complement: address.complement,
+                user_id: 1
+            }).then(() => window.location.reload());
         }
-
-        addresses.find(item => item.cep == storedAddress.cep) ?
-            restartState(addresses.filter(item => item.cep != storedAddress.cep), storedAddress) : restartState(addresses, storedAddress)
     }
 
-    const restartState = (newAddressesArray, newAddress) => {
-        setAddresses([...newAddressesArray, newAddress]);
-        setAddress({ ...initialState });
-        setCep('');
-        setInEditAddressMode(false);
-    }
-
-    const editAddressClick = (cep) => {
+    // API treatment for edit method bellow is missing.
+    const editAddressClick = cep => {
+        updateState('cep', cep);
         setInEditAddressMode(true);
-        const retrievedAddress = JSON.parse(sessionStorage.getItem('addresses')).find(item => item.cep == cep);
-        setAddress({ ...retrievedAddress.address });
-        setCep(cep)
     };
-    const removeAddressClick = (cep) => setAddresses(addresses.filter(item => item.cep != cep));
+    const removeAddressClick = addressId => Api.delete(`${baseApiUrl}/${addressId}`);
 
     const setAddressesDatas = async () => {
+        const cep = address.cep.toString();
         if (cep.length === 8) {
             const datas = await getCepDatas(cep);
             for (const key in datas) updateState(key, datas[key]);
-        } else setAddress({ ...initialState });
+        } else setAddress({ ...initialState, cep });
     }
 
-    useEffect(() => { setAddressesDatas() }, [cep]);
-    useEffect(() => { sessionStorage.setItem('addresses', JSON.stringify(addresses)) }, [addresses]);
-
+    useEffect(() => { setAddressesDatas() }, [address.cep]);
+    
+    const { data } = useFetch('api/protected/client/addresses/all/15');
     const state = {
         address,
-        cep,
-        addresses,
+        addresses: data,
         updateState,
         onCepChange,
         onFormSubmit,
