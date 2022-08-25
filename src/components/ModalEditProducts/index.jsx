@@ -17,7 +17,7 @@ export default function ModalEditProduct() {
   const [imagesUrl, setImagesUrl] = useState("");
 
   async function postItem() {
-    // console.log(editing)
+    console.log(editing)
     await Api.put(`api/protected/product/${editing.id}`,editing)
       .then(function (response) {
         console.log(response);
@@ -26,7 +26,7 @@ export default function ModalEditProduct() {
         console.error(error);
       });
   }
-
+  // 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
   const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[5]?.files[0];
@@ -61,7 +61,8 @@ export default function ModalEditProduct() {
           console.log(error);
           return <div>Error...</div>;
         });
-    });
+    }
+    );
   }
 
   function modalToggle() {
