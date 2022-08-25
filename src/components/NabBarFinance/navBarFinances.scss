@@ -15,7 +15,7 @@
   border-right: 3px solid white;
 }
 .finance-tittle {
-  width: 60%;
+  width: 56%;
 }
 .search-products-finances {
   display: flex;
@@ -49,6 +49,53 @@
     font-size: 16px;
     padding-top: 10px;
   }
+}
+.search-produto{
+  flex-direction: column;
+  justify-content: center;
+  a{
+    text-decoration: none;
+  }
+}
+.produto{
+  background-color: white;
+  display: flex;
+  width: 300px;
+  margin: auto;
+  height: 100%;
+}
+.produto:hover{
+  opacity: 80%;
+}
+
+.produto-photo{
+  height: 80px;
+  width: 80px;
+  img{
+    padding: 15px;
+    height: 100%;
+    width: 100%;
+  }
+}
+.container-produto{
+  width: 80%;
+  height: 80px;
+}
+.produto-name{
+  padding-top:20px;
+  margin-left: 10px;
+  font-size: 13px;
+  color: gray;
+  font-weight: bold;
+  p{
+    margin: auto;
+  }
+}
+.produto-value{
+  font-size: 13px;
+  padding: 5px;
+  color: black;
+  font-weight: bold;
 }
 @media (max-width: 1120px) {
   .nav-finances{
