@@ -29,7 +29,7 @@ export default function AllProducts({ products }) {
         return (
           <li key={index} className="swiper-container">
             <button onClick={ev => productData(ev, product)}>
-              <Link to="/produtos">
+              <Link to={`/detalhes/${product.id}`}>
                 <Card product={product} />
               </Link>
             </button>
