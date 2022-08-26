@@ -34,9 +34,7 @@ const Finances = (props) => {
     }
   };
 
-
-  
-  const [products, setProducts] = useState([] );
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     // Tem que trocar a rota para os produtos que foram vendidos
     Api.get(`api/public/products/pages/1`)
@@ -48,8 +46,6 @@ const Finances = (props) => {
       });
   }, []);
 
-
-  
   let valueTotal = 0;
   for (var i = 0; i < products.length; i++) {
     valueTotal += products[i].value;
@@ -59,8 +55,6 @@ const Finances = (props) => {
   for (var i = 0; i < products.length; i++) {
     qtTotal += products[i].qt;
   }
-
-
 
   const [showElement, setShowElement] = useState(false);
   const showOrHide = () => setShowElement(true);
@@ -81,7 +75,7 @@ const Finances = (props) => {
               <p> de 25 de maio de 2022, 09:41 PM</p>
             </div>
             <div className="finances-graph-left-graph">
-              <RenderLineChart  data = {products}/>
+              <RenderLineChart data={products} />
             </div>
           </div>
           <div className="finances-graph-right">
@@ -113,24 +107,6 @@ const Finances = (props) => {
               <div>
                 De <input type="date" onKeyDown={(e) => getTheDateCurrent(e)} />{" "}
                 ate <input type="date" onKeyDown={(e) => getTheDate(e)} />{" "}
-                <button
-                  className="button-finance-filter-orders"
-                  onClick={showOrHide}
-                >
-                  ORDENAR POR{" "}
-                  <img
-                    className="icon-menu-finance"
-                    src="/icons/icon-menu.png"
-                  />
-                </button>{" "}
-                {showElement ? (
-                  <div className="li-filter-orders">
-                    <li>Menor Preco</li>
-                    <li>Maior Preco</li>
-                    <li>Produto mais recente</li>
-                    <li>Produto mais antigo</li>
-                  </div>
-                ) : null}
               </div>
             </div>
           </div>
@@ -147,8 +123,8 @@ const Finances = (props) => {
               <tbody>
                 {products.map((products, keys) => {
                   return (
-                    <tr>
-                      <td>{products.name}</td>
+                    <tr key={products.id}>
+                      <td >{products.name}</td>
                       <td>{products.qt}</td>
                       <td>R$ {products.value}</td>
                       <td>{products.id}</td>
