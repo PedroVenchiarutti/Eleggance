@@ -3,6 +3,9 @@ import CardCart from "../ItemCart/CardCart";
 import "./index.scss";
 
 const ProductsList = ({ products }) => {
+
+  console.log(products)
+
   if (!products) return;
   return (
     <>

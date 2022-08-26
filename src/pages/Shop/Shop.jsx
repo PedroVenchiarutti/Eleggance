@@ -5,8 +5,13 @@ import Footer from "../Footer/Footer";
 import AllProducts from "../../components/AllProducts/index";
 
 import { shelfProducts } from "../../api/mock";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart";
 
 export default function Shop({ products }) {
+
+  const { cart } = useContext(CartContext)
+
   return (
     <div className="shopContainer">
       <Navbar />
@@ -71,8 +76,8 @@ export default function Shop({ products }) {
         <div className="col-2">
           <select placeholder="Ordenar Por">
             <option value="volvo">Mais Procurados</option>
-            <option value="saab">Preço: Ordem Crescente</option>
-            <option value="mercedes">Preço: Ordem Decrescente</option>
+            <option value="asc">Preço: Ordem Crescente</option>
+            <option value="desc">Preço: Ordem Decrescente</option>
           </select>
           <div className="ul-products">
             <ul>
