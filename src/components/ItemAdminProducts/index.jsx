@@ -2,6 +2,7 @@ import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react"
 import { EditContext } from "../../contexts/modalEdit";
+import Api from "../../api/api";
 
 export default function ItemAdminProducts() {
   const { data } = useFetch(`api/public/products/pages/1`);
@@ -15,7 +16,13 @@ export default function ItemAdminProducts() {
   }
 
   function removeItem(item) {
-    console.log(item);
+    Api.delete(`api/protected/product/${item}`)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 
   return (
@@ -43,18 +50,22 @@ export default function ItemAdminProducts() {
               <label>{data.qt}</label>
             </td>
             <td className="col-6">
-              <button className="editButton" onClick={ev => onFormSubmit(ev,data)} >
-              <img
-                className="icon-edit"
-                src="/icons/icon-edit-address.svg"
-                onClick={modalToggleEdit}
-              />
+              <button className="editButton" onClick={ev => onFormSubmit(ev, data)} >
+                <img
+                  className="icon-edit"
+                  src="/icons/icon-edit-address.svg"
+                  onClick={modalToggleEdit}
+                />
               </button>
-              <img
-                className="icon-trash"
-                src="/icons/trashIcon.svg"
-                onClick={removeItem}
-              />
+              <button className="editButton" onClick={() => {
+                removeItem(data.id)
+                  }}>
+                <img
+                  className="icon-trash"
+                  src="/icons/trashIcon.svg"
+                  onClick={removeItem}
+                />
+              </button>
             </td>
           </tr>
         );
