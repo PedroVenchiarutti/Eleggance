@@ -8,12 +8,14 @@ import {
     shelfProducts,
     trendProducts,
   } from "../../api/mock";
+import { useParams } from "react-router-dom";
 
 export default (props) => {
+  const { id } = useParams();
   return (
     <div>
       <Navbar />
-      <Product />
+      <Product id={id} />
       <Carrousel products={shelfProducts} title="Ofertas" />
 
       <Carrousel products={trendProducts} title="Tendências" />

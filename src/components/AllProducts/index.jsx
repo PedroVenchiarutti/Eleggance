@@ -4,10 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import Loading from "../../components/SpinerLoader";
 import "./index.scss";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart";
 
 export default function AllProducts({ products }) {
+  const { cart ,productData } = useContext(CartContext)
   const [progress, setProgress] = useState(true);
-
   // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
   // GEt
   const { data } = useFetch(`api/public/products/pages/1`);
@@ -26,9 +28,11 @@ export default function AllProducts({ products }) {
       {data.map((product, index) => {
         return (
           <li key={index} className="swiper-container">
-            <Link to="/produtos">
-              <Card product={product} />
-            </Link>
+            <button onClick={ev => productData(ev, product)}>
+              <Link to={`/detalhes/${product.id}`}>
+                <Card product={product} />
+              </Link>
+            </button>
           </li>
         );
       })}
