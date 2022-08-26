@@ -15,47 +15,43 @@ export default function MenuDashboard(props) {
   return (
     <>
       <ul className="menu-container" id="menu">
-        <img src="../../../public/logo.png" alt="" />
+        <img src="../../../logo.png" alt="" />
 
         <li>
           <NavLink to={"/admin/home"}>
             <div className="menuOption">
-              <img src="/icons/generalIcon.png" alt="a" className="menuIcon" /> Geral
+              <img src="/icons/geral.png" alt="a" className="menuIcon-geral" /> Geral
             </div>
           </NavLink>
         </li>
-        <li>
-          <NavLink to={"/admin/reservas"}>
-            <div className="menuOption">
-              <img src="/icons/reservationIcon.png" alt="a" className="menuIcon" /> Reservas
-            </div>
-          </NavLink>
-        </li>
+        {/* <li>
+          <NavLink to={"/admin/reservas"}>Reservas</NavLink>
+        </li> */}
         <li>
           <NavLink to={"/admin/produtos"}>
             <div className="menuOption">
-              <img src="/icons/productsIcon.png" alt="a" className="menuIcon" /> Produtos
+              <img src="/icons/shop.png" alt="a" className="menuIcon-products" /> Produtos
             </div>
           </NavLink>
         </li>
         <li>
           <NavLink to={"/admin/pedidos"}>
             <div className="menuOption">
-              <img src="/icons/ordersIcon.png" alt="a" className="menuIcon" /> Pedidos
+              <img src="/icons/orders.png" alt="a" className="menuIcon-orders" /> Pedidos
             </div>
           </NavLink>
         </li>
         <li>
           <NavLink to={"/admin/administracao"}>
             <div className="menuOption">
-              <img src="/icons/adminIcon.png" alt="a" className="menuIcon" /> Administração
+              <img src="/icons/admin.png" alt="a" className="menuIcon-admin" /> Administração
             </div>
           </NavLink>
         </li>
         <li>
           <NavLink to={"/admin/cupons"}>
             <div className="menuOption">
-              <img src="/icons/couponsIcon.png" alt="a" className="menuIcon" /> Cupons
+              <img src="/icons/coupon.png" alt="a" className="menuIcon-coupons" /> Cupons
             </div>
           </NavLink>
         </li>
@@ -63,7 +59,7 @@ export default function MenuDashboard(props) {
         <li>
           <NavLink to={"/admin/configuracoes"}>
             <div className="menuOption">
-              <img src="/icons/settingsIcon.png" alt="a" className="menuIcon" /> Configurações
+              <img src="/icons/settings.png" alt="a" className="menuIcon-settings" /> Configurações
             </div>
           </NavLink>
         </li>

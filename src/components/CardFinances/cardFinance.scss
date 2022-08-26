@@ -4,6 +4,26 @@
     height: 15vh;
     background-color: #d9d9d9;
     display: flex;
+    a{
+      text-decoration: none;
+    }
+  }
+  .link-financas{
+    width: 100%;
+    height: 100%;
+    
+  }
+  .div-card-finances:hover{
+    border: 2px solid blue;
+    h3{
+      color: blue;
+      opacity: 70%;
+    }
+    h2{
+      color: blue;
+      opacity: 70%;
+      
+    }
   }
   @media (max-width: 1120px) {
     .cards-finances{
@@ -17,4 +37,5 @@
       width: 100%;
       border-radius: 0px;
     }
+   
   }

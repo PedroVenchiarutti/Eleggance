@@ -49,7 +49,7 @@ export const Navbar = () => {
     const width = window.screen.width;
     if (height >= 600 && width >= 600 && authenticated) {
       return (
-// <<<<<<< HEAD
+// <<<<<<< HEAD=
 //         <div className="navbar-user-logged-mobile">
 //           <div className="navbar-user-logged-name-mobile">
 //             <button>

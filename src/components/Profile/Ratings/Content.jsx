@@ -1,10 +1,10 @@
 import React from "react";
-import '../Profile.scss';
-import ClientMenu from '../common/ClientMenu'
-import Data from '../../Data/Data'
-import ContentHeader from '../common/ContentHeader'
-import './Content.scss'
-import SaleTag from '../common/SaleTag'
+import "../Profile.scss";
+import ClientMenu from "../common/ClientMenu";
+import Data from "../../Data/Data";
+import ContentHeader from "../common/ContentHeader";
+import "./Content.scss";
+import SaleTag from "../common/SaleTag";
 
 export default (props) => {
 
@@ -16,7 +16,7 @@ export default (props) => {
                 <Data header={<ContentHeader title="Minhas Avaliações" />}>
                     <ul className="itemList">
                         <li className="item">
-                            <img src="/product.png" alt="produto" />
+                            <img src="" alt="produto" />
                             <div className="itemSpace">
                                 <div className="itemName ">
                                     <p>Battom cor rose cremoso</p>
