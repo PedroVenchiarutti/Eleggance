@@ -1,20 +1,19 @@
 .dashboard-cards-container .card {
     display: flex;
     flex-direction: column;
-
+    
     text-align: center;
     justify-content: center;
     align-items: center;
-
+    
     background-color: #fff;
     margin: 15px;
-
-    width: 25%;
+    
+    width: 33%;
     height: 130px;
     border-radius: 10px;
-
+    
     h2, h5 { font-weight: 500; }
-    // h5 { color: #9FA2B4; }
 
     &:hover {
         border: 1px solid #3751FF;
