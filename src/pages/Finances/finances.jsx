@@ -75,7 +75,7 @@ const Finances = (props) => {
               <p> de 25 de maio de 2022, 09:41 PM</p>
             </div>
             <div className="finances-graph-left-graph">
-              <RenderLineChart data={products} />
+              <RenderLineChart />
             </div>
           </div>
           <div className="finances-graph-right">
