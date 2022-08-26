@@ -16,7 +16,8 @@
     max-width: 800px;
     max-height: 650px;
     position: absolute;
-    background-color: white;
+    box-shadow: 2px -1px 20px 3px #252525;
+    background-color: rgba(165, 164, 164, 0.4235294118);
     border-radius: 6px;
   }
 
@@ -84,7 +85,8 @@
     border-right: 5px;
     margin-top: 50px;
     input:focus {
-      background-color: #fffafa;
+      //background-color: #fffafa;
+      background-color: transparent;
     }
   }
 
@@ -138,6 +140,7 @@
     border-bottom: 1px solid black;
     outline: none;
     text-decoration: none;
+    background-color: transparent;
   }
 
   .input-photo-registration {
@@ -148,8 +151,9 @@
     height: 100px;
     margin-left: 20px;
     margin-bottom: 30px;
-
+    
     img {
+      cursor: pointer;
       width: 120px;
       height: 120px;
       margin: 0 auto;
@@ -190,6 +194,8 @@
     text-decoration: none;
     color: black;
     font-weight: bold;
+    background-color: rgba(165, 164, 164, 0.4235294118);
+
   }
   .icons-registration {
     margin-top: 20px;

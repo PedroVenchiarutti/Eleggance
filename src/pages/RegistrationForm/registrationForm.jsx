@@ -191,7 +191,7 @@ const RegistrationForm = (props) => {
                         >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>
-                          <option value="Prefere não dizer">Prefere não dizer</option>
+                          <option value="Prefere não dizer">Prefiro não dizer</option>
                         </select>
                       </div>
                     </div>

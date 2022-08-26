@@ -29,12 +29,14 @@ const FormCadastro = (props) => {
           <Form onSubmit={handleRegistrer} className="form-cadastro">
             <div className="box-cadastro">
               <div className="box-header-cadastro">
-                <div className="img-cadastro">
-                  {/*  IMAGEN CRASHANDO O SITE */}
-                  {/*  <img src="img\fotocadastro.jpg" alt="foto" /> */}
-                </div>
+                {/* <div className="img-cadastro">
+                  IMAGEN CRASHANDO O SITE
+                  <img src="img\LOGINECADASTRO.jpg" alt="foto" />
+                </div> */}
                 <div className="content-input-cadastro">
-                  <h1>Eleggance</h1>
+                  <div className="logo-cadastro">
+                    <img src="./logo.png" alt="logo" />
+                  </div>
                   <h2>Cadastre-se</h2>
                   {/* <p className="error-message">{errors.inputLogin?.message}</p> */}
                   <div className="hero-svg-cadastro">

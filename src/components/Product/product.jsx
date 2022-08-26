@@ -11,7 +11,7 @@ export default (props) => {
     <div className="container-components-product">
       <div className="container-top-products">
         <div className="icon-home-products">
-          <img src="\icons\icon-home.png" alt="foto" />
+          <img src="\icons\home.png" alt="foto" />
         </div>
         <h1>Caminho do produto</h1>
       </div>
