@@ -21,6 +21,7 @@
     margin: 0 auto;
     display: flex;
     padding-bottom: 10px;
+
     .icon-home-cart {
       padding-top: 25px;
       padding-left: 0px;
@@ -31,6 +32,12 @@
       padding-top: 28px;
       padding-left: 10px;
     }
+  }
+
+  .cartProducts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .table-cart {
@@ -44,9 +51,9 @@
     }
   }
 
-  .cardContainer {
-    display: none;
-  }
+  // .cardContainer {
+  //   display: none;
+  // }
 
   table {
     width: 100%;

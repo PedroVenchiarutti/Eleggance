@@ -50,7 +50,7 @@ export default function Cart({ match }) {
             ainda falta tornar o valor dinamico
           </tfoot>
         </table> */}
-        <ul>
+        <ul className="cartProducts">
           <ProductsCard products={cart} />
         </ul>
       </main>
