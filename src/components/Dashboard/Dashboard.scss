@@ -1,7 +1,8 @@
-.dashboard-container .content {
+.dashboard-container main .content {
+    height: 100%;
+    
     display: flex;
     justify-content: center;
-    width: 100%;
 
     table { width: 95% }
 }

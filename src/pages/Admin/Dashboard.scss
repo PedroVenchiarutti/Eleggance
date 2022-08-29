@@ -1,17 +1,9 @@
 .dashboard-container {
-    width: 100%;
+    display: flex;
     background-color: #d9d9d9;
 
-    display: flex;
-    justify-content: flex-end;
-
-    main { width: 100% }
-}
-
-@media (max-width: 1020px) {
-    .dashboard-container {
-        .header-container {
-            display: none;
-        }
+    main {
+        width: 100%;
+        height: 100%;
     }
 }
