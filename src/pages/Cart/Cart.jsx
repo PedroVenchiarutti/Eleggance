@@ -11,13 +11,10 @@ import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 
-
-
 export default function Cart({ match }) {
 
   const { cart } = useContext(CartContext)
 
-  const subTotal = 1000;
   return (
     <div className="cartContainer">
       <Navbar />
