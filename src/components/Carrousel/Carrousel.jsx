@@ -8,8 +8,6 @@ import { useFetch } from '../../hooks/useFetch';
 
 const Carrousel = ({ products, title }) => {
 
-	const { data } = useFetch(`api/public/products/pages/1`)
-
 	if (!products) return;
 	return (
 		<div className="container-promo">
@@ -39,10 +37,10 @@ const Carrousel = ({ products, title }) => {
 					className="mySwiper"
 				>
 					{/* {products.map((product, index) => { */}
-					{data.map((data, index) => {
+					{products.map((product, index) => {
 						return (
 							<SwiperSlide key={index} className="swiper-container">
-								<Card product={data} />
+								<Card product={product} />
 							</SwiperSlide>
 						);
 					})}
