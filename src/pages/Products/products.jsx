@@ -8,12 +8,18 @@ import {
     shelfProducts,
     trendProducts,
   } from "../../api/mock";
+import { useLocation, useParams } from "react-router-dom";
 
-export default (props) => {
+
+export default (state) => {
+  const location = useLocation()
+
+  console.log(location)
+  const { id } = useParams();
   return (
     <div>
       <Navbar />
-      <Product />
+      <Product id={id} />
       <Carrousel products={shelfProducts} title="Ofertas" />
 
       <Carrousel products={trendProducts} title="Tendências" />

@@ -4,8 +4,10 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper';
 import Card from './Card';
+import { useFetch } from '../../hooks/useFetch';
 
 const Carrousel = ({ products, title }) => {
+
 	if (!products) return;
 	return (
 		<div className="container-promo">
@@ -34,6 +36,7 @@ const Carrousel = ({ products, title }) => {
 					modules={[Pagination]}
 					className="mySwiper"
 				>
+					{/* {products.map((product, index) => { */}
 					{products.map((product, index) => {
 						return (
 							<SwiperSlide key={index} className="swiper-container">

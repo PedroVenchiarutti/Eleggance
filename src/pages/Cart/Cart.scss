@@ -2,11 +2,30 @@
   overflow-x: hidden;
   background-color: #fff;
 
+  .cardContainer{
+    display: block;
+  }
+
+  .second{
+    aside{
+      button{
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+      }
+    }
+  }
+
   .info-cart-top {
     width: 75%;
     margin: 0 auto;
     display: flex;
     padding-bottom: 10px;
+
     .icon-home-cart {
       padding-top: 25px;
       padding-left: 0px;
@@ -19,6 +38,12 @@
     }
   }
 
+  .cartProducts{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .table-cart {
     .thead-cart {
       tr {
@@ -29,11 +54,7 @@
       }
     }
   }
-
-  .cardContainer {
-    display: none;
-  }
-
+  
   table {
     width: 100%;
     background-color: #f3f3f3;
@@ -279,9 +300,7 @@
       justify-content: center;
       flex-wrap: wrap;
     }
-    table {
-      display: none;
-    }
+
 
     .actions {
       font-size: 14px;

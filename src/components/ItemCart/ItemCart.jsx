@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { shelfProducts } from "../../api/mock";
 
 const ItemCart = ({ product }) => {
   const [quantidade, setQuantidade] = useState(5);

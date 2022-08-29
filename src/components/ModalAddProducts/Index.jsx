@@ -26,6 +26,7 @@ export default function ModalAddProduct() {
     await Api.post(`api/protected/product`, valor)
       .then((res) => {
         console.log(res);
+        alert('Produto adicionado')
       })
       .catch(function (error) {
         console.error(error);
@@ -50,7 +51,7 @@ export default function ModalAddProduct() {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
-      (error) => {}
+      (error) => { }
     );
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
@@ -94,73 +95,75 @@ export default function ModalAddProduct() {
         <button onClick={modalToggle}>X</button>
       </div>
       <Form onSubmit={firebaseUpload}>
-        <div className="main-modal">
-          <label>Nome Do Produto:</label>
-          <input
-            maxLength={45}
-            type="text"
-            value={valor.name}
-            onChange={(e) => setValor({ ...valor, name: e.target.value })}
-          />
-          <label>Valor:</label>
-          <input
-            type="number"
-            value={valor.value}
-            onChange={(e) => setValor({ ...valor, value: e.target.value })}
-          />
-          <label>Descrição:</label>
-          <input
-            maxLength={255}
-            type="text"
-            value={valor.description}
-            onChange={(e) =>
-              setValor({ ...valor, description: e.target.value })
-            }
-          />
-          <label>Categoria</label>
-          <input
-            maxLength={45}
-            type="text"
-            value={valor.brand}
-            onChange={(e) => setValor({ ...valor, brand: e.target.value })}
-          />
-          <label>Quantidade Disponível</label>
-          <input
-            maxLength={3}
-            type="number"
-            value={valor.qt}
-            onChange={(e) =>
-              setValor({
-                ...valor,
-                qt: e.target.value,
-              })
-            }
-          />
-          <label>Foto Do Produto</label>
-          <label className="label-productImage" htmlFor="inputPhoto">
-            <img
-              src={images ? URL.createObjectURL(images) : previelImg}
-              className={previelImg ? "inputPhoto" : "imgPerfil"}
-              alt="blabla"
+        <div className="add body-modal">
+          <div className="main-modal">
+            <label>Nome Do Produto:</label>
+            <input
+              maxLength={45}
+              type="text"
+              value={valor.name}
+              onChange={(e) => setValor({ ...valor, name: e.target.value })}
             />
-          </label>
-          <input
-            type="file"
-            className="inputPhoto"
-            id="inputPhoto"
-            name="image"
-            onChange={(e) => setImages(e.target.files[0])}
-          />
-        </div>
-        <div className="areaBtn">
-          <button type="submit" className="btn btnCadastrarProduto">
-            Cadastrar Produto
-          </button>
-          <div
-            className="btn btnCancelarCadastrarProduto"
-            onClick={modalToggle}
-          >
-            Cancelar
+            <label>Valor:</label>
+            <input
+              type="number"
+              value={valor.value}
+              onChange={(e) => setValor({ ...valor, value: e.target.value })}
+            />
+            <label>Descrição:</label>
+            <input
+              maxLength={255}
+              type="text"
+              value={valor.description}
+              onChange={(e) =>
+                setValor({ ...valor, description: e.target.value })
+              }
+            />
+            <label>Categoria</label>
+            <input
+              maxLength={45}
+              type="text"
+              value={valor.brand}
+              onChange={(e) => setValor({ ...valor, brand: e.target.value })}
+            />
+            <label>Quantidade Disponível</label>
+            <input
+              maxLength={3}
+              type="number"
+              value={valor.qt}
+              onChange={(e) =>
+                setValor({
+                  ...valor,
+                  qt: e.target.value,
+                })
+              }
+            />
+            <label>Foto Do Produto</label>
+            <label className="label-productImage" htmlFor="inputPhoto">
+              <img
+                src={images ? URL.createObjectURL(images) : previelImg}
+                className={previelImg ? "inputPhoto" : "imgPerfil"}
+                alt="blabla"
+              />
+            </label>
+            <input
+              type="file"
+              className="inputPhoto"
+              id="inputPhoto"
+              name="image"
+              onChange={(e) => setImages(e.target.files[0])}
+            />
+          </div>
+          <div className="areaBtn">
+            <button type="submit" className="btn btnCadastrarProduto">
+              Cadastrar Produto
+            </button>
+            <div
+              className="btn btnCancelarCadastrarProduto"
+              onClick={modalToggle}
+            >
+              Cancelar
+            </div>
           </div>
         </div>
       </Form>

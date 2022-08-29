@@ -199,9 +199,29 @@ export const sectionImgs = [
   { url: "/img/cabelereiraConfira.jpg", alt: "" },
   { url: "/img/beauty-spa.jpg", alt: "" },
 ];
+
 export const myFavorites = [
   { name: "Batom cor rose cremoso", price: 22.99 },
   { name: "Batom cor verde cremoso", price: 22.99, inSale: true },
   { name: "Batom cor azul cremoso", price: 22.99 },
   { name: "Batom cor ciano cremoso", price: 22.99 }
+];
+
+export const myRatings = [
+  {
+    name: "Batom cor rosê cremoso",
+    inSale: true,
+    stars: 5,
+    img: '/img/produtos/gloss.png'
+  }, {
+    name: "Batom cor verde cremoso",
+    inSale: false,
+    stars: 1,
+    img: '/img/produtos/gloss.png'
+  }, {
+    name: "Batom cor azul cremoso",
+    inSale: false,
+    stars: 3,
+    img: '/img/produtos/gloss.png'
+  },
 ]

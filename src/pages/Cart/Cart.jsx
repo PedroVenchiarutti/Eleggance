@@ -8,9 +8,12 @@ import { shelfProducts } from "../../api/mock";
 import Carrousel from "../../components/Carrousel/Carrousel";
 import "./Cart.scss";
 import { useFetch } from "../../hooks/useFetch";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart";
 
 export default function Cart({ match }) {
-  const subTotal = 1000;
+
+  const { cart } = useContext(CartContext)
   return (
     <div className="cartContainer">
       <Navbar />
@@ -21,7 +24,7 @@ export default function Cart({ match }) {
           </div>
           <h1>Carrinho de Compras</h1>
         </div>
-        <table className="table-cart">
+        {/* <table className="table-cart">
           <thead className="thead-cart">
             <tr>
               <th className="col-1">Produtos</th>
@@ -40,11 +43,11 @@ export default function Cart({ match }) {
             <tr>
               <td>R${subTotal}</td>
             </tr>
-            {/* ainda falta tornar o valor dinamico */}
+            ainda falta tornar o valor dinamico
           </tfoot>
-        </table>
-        <ul>
-          <ProductsCard products={shelfProducts} />
+        </table> */}
+        <ul className="cartProducts">
+          <ProductsCard products={cart} />
         </ul>
       </main>
         <div className="actions">

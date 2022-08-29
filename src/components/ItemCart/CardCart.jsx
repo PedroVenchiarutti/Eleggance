@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart";
 
 const ItemCart = ({ product }) => {
-  const [quantidade, setQuantidade] = useState(5);
-  if (!product) return;
 
+  const { removeItem } = useContext(CartContext)
+
+  const [quantidade, setQuantidade] = useState(5);
+
+  console.log(product)
   const valor = product;
   return (
     <>
@@ -12,7 +17,7 @@ const ItemCart = ({ product }) => {
       </div>
       <div className="row second">
         <aside>
-          <img src={product.image} alt="teste" className="imgCartItem" />
+          <img src={product.url_img} alt="teste" className="imgCartItem" />
           <input
             min={0}
             max={100}
@@ -24,18 +29,20 @@ const ItemCart = ({ product }) => {
           />
         </aside>
         <aside>
-          <label>
+          {/* <label>
             De {"  "}
             <span className="full-price-promo">{product.price}</span>
           </label>
           <label>
             Por {"  "}
             <span className="price-discount">{product.discount}</span>
-          </label>
+          </label> */}
           <label className="total-price">
             Total R$ {parseFloat((product.value * quantidade).toFixed(2))}
           </label>
-          <img src="icons/trashIcon.svg" />
+          <button onClick={ev => removeItem(ev, product.id)}>
+            <img src="icons/trashIcon.svg" />
+          </button>
         </aside>
       </div>
     </>

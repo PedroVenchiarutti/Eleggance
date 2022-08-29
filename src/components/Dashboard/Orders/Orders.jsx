@@ -20,10 +20,11 @@ export default () => {
 const getRows = (orders) => orders.map(order => {
     const status = order.status ?? "Pendente";
     const products = order.products;
+    const sum = (t, v) => t + v;
 
     return {
         products: getOrderProductsInfos(products),
-        price: `R$${getOrderValue(products)}`,
+        price: `R$${products.map(product => +product.value * product.qt_product || 0).reduce(sum).toFixed(2)}`,
         status: getOrderStatus(status, status),
         id: order.id
     }
@@ -34,12 +35,6 @@ const getOrderProductsInfos = (products) =>
         <td>{products.map(product => <p className="product-name">{product.name}</p>)}</td>
         <td>{products.map(product => <p>{product.qt_product}</p>)}</td>
     </>
-
-const getOrderValue = (products) => {
-    let sum = 0;
-    products.forEach(product => sum += +product.value);
-    return sum;
-}
 
 const getOrderStatus = (paymentStatus, deliveryStatus) => {
     const getClass = (status) => status === "Pendente" ? "pending" : "success";

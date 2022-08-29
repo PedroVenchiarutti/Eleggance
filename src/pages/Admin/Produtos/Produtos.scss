@@ -44,7 +44,6 @@
       position: absolute;
       width: 60%;
       min-width: 350px;
-      height: 90%;
       background-color: #f3f3f3;
       opacity: 1;
       border: 0.5px solid black;
@@ -81,6 +80,21 @@
         }
       }
 
+      //MODAL ADICIONAR
+      .add {
+        input {
+          min-width: 100%;
+        }
+
+        .label-productImage {
+          width: 50%;
+        }
+
+        .areaBtn {
+          margin-top: 9%;
+        }
+      }
+
       .body-modal {
 
         display: flex;
@@ -90,7 +104,7 @@
           display: flex;
           flex-direction: column;
           justify-content: space-around;
-          height: 80%;
+          height: 100%;
           margin-left: 5%;
           margin-top: 6%;
           width: 50%;
@@ -106,29 +120,16 @@
           }
 
           .inputPhoto {
-            height: 70px;
-            min-height: 35px;
             font-weight: 600;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            height: 100%;
             width: 60%;
             margin-left: 5%;
 
-            input {
-              height: 40px;
-              width: 450px;
-              max-width: 80%;
-              border-radius: 5px;
-              padding-left: 6px;
-              font-size: 20px;
-              border: 0.5px solid black;
-            }
 
             .inputPhoto {
               height: 35px;
-              min-height: 35px;
               font-weight: 600;
               border: none;
               border-radius: 5px;
@@ -138,9 +139,10 @@
         }
 
         .productVisualization {
- 
+
           display: block;
           width: 42%;
+
           p {
             text-align: center;
           }
@@ -151,7 +153,8 @@
             background-color: #c4c2c23d;
             margin-bottom: 20px;
             text-align: center;
-            img{
+
+            img {
               width: 80%;
             }
 
@@ -237,6 +240,46 @@
             text-align: center;
           }
 
+        }
+      }
+
+      .modalEditProducts {
+
+        height: auto;
+
+        .body-modal {
+          display: flex;
+          flex-direction: column;
+
+          .main-modal {
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            margin-left: 0%;
+
+            input {
+              width: 100%;
+            }
+          }
+
+          .productVisualization {
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+
+            .productAndInfo {
+              .productInfo {
+                text-align: center;
+              }
+            }
+
+            .areaBtn {
+              align-items: center;
+              justify-content: center;
+              padding-right: 0%;
+            }
+          }
         }
       }
 
