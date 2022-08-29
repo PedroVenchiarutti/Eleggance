@@ -8,9 +8,13 @@ import {
     shelfProducts,
     trendProducts,
   } from "../../api/mock";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
-export default (props) => {
+
+export default (state) => {
+  const location = useLocation()
+
+  console.log(location)
   const { id } = useParams();
   return (
     <div>

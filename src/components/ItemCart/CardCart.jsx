@@ -7,8 +7,8 @@ const ItemCart = ({ product }) => {
   const { removeItem } = useContext(CartContext)
 
   const [quantidade, setQuantidade] = useState(5);
-  if (!product) return;
 
+  console.log(product)
   const valor = product;
   return (
     <>
