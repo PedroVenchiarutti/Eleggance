@@ -22,7 +22,7 @@ export default ({ id }) => {
       id: data[0].id,
       name: data[0].name,
       value: data[0].value,
-      url_img: data[0].url_img,
+      image: data[0].url_img,
       qt: quantity
     }
 

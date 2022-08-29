@@ -96,7 +96,7 @@ export default function FinishBuy({ products }) {
         </div>
         <div className="col">
           <AsideFinishBuy title="5 - INFORMAÇÕES DO PEDIDO" class="itemsCart">
-            <ProductsList products={shelfProducts}></ProductsList>
+            <ProductsList />
             <div className="info-cart">
               <table>
                 <tbody>

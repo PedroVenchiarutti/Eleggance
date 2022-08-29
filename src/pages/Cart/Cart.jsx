@@ -51,7 +51,7 @@ export default function Cart({ match }) {
         </ul>
       </main>
         <div className="actions">
-          <Link to="/shop" className="finishBuyButton">
+          <Link to="/produtos" className="finishBuyButton">
             Continuar Comprando
           </Link>
           <Link to="/finalizarCompra" className="homeButton">
