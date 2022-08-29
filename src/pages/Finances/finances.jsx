@@ -59,11 +59,14 @@ const Finances = (props) => {
   const [showElement, setShowElement] = useState(false);
   const showOrHide = () => setShowElement(true);
 
+  // const current = new Date();
+  // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
   return (
     <div className="container-all-finances">
       <MenuDashboard />
       <div className="right-finances">
-        <NavBarFinances name={"Administracao"} />
+        <NavBarFinances name={"Administração"} />
         {/* */}
         <CardFinance />
         {/*  */}
@@ -73,6 +76,7 @@ const Finances = (props) => {
             <div className="finances-graph-left-top">
               <h3>Vendas</h3>
               <p> de 25 de maio de 2022, 09:41 PM</p>
+              {/* <p>de {date}</p> */}
             </div>
             <div className="finances-graph-left-graph">
               <RenderLineChart />
