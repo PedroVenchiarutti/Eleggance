@@ -2,6 +2,10 @@
   overflow-x: hidden;
   background-color: #fff;
 
+  .cardContainer{
+    display: block;
+  }
+
   .second{
     aside{
       button{
@@ -296,9 +300,7 @@
       justify-content: center;
       flex-wrap: wrap;
     }
-    table {
-      display: none;
-    }
+
 
     .actions {
       font-size: 14px;
