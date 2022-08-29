@@ -1,17 +1,9 @@
-.profile-container table {
-    
-    td.products-cell {
-        width: 60%;
+.profile-container table td.products-cell {
+    width: 60%;
 
-        .products-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-    }
-
-    button {
-        background: none;
-        border: none;
+    .products-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
