@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import HeaderDashboard from "../../../components/HeaderDashboard";
-
 import AdminProductsList from "../../../components/AdminProductsList";
 import MenuDashboard from "../../../components/MenuDashboard";
 import ModalAddProducts from "../../../components/ModalAddProducts/Index";
@@ -8,6 +6,7 @@ import ModalEditProducts from "../../../components/ModalEditProducts";
 import "./Produtos.scss";
 import { EditContext } from "../../../contexts/modalEdit";
 import { useContext } from "react";
+import NavBarFinances from "../../../components/NabBarFinance/navBarFinances"
 
 export default function ProdutosDashboard() {
   function modalToggle() {
@@ -21,7 +20,7 @@ export default function ProdutosDashboard() {
     <div className="produtos-dashboard-container">
       <MenuDashboard />
       <main>
-          <HeaderDashboard titleHead={"Produtos"} name={"Ryan"} />
+      <NavBarFinances />
           <AdminProductsList />
           <ModalAddProducts />
           <ModalEditProducts editing={editing}/>
