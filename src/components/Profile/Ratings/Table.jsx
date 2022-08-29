@@ -5,6 +5,7 @@ import Ratings from '../../Ratings'
 import { myRatings } from '../../../api/mock';
 
 import './Table.scss'
+import TrashButton from '../common/TrashButton';
 
 export default () =>
     <Table headerColumnsArray={[]} bodyObjectsArray={getRows()} />
@@ -15,7 +16,7 @@ const getRows = () =>
             image: <td><img src={rating.img} /></td>,
             productInfos: getProductInfos(rating.name, rating.inSale),
             rating: getProductRating(rating.stars),
-            button: <td><button><img src="/icons/trashIcon.svg" alt="Excluir" className="trashIcon" /></button></td>
+            button: <td><TrashButton /></td>
         }
     });
 

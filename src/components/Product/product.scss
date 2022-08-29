@@ -14,11 +14,13 @@
     display: flex;
     padding-bottom: 70px;
 
-    h1 {
+    a {
       font-weight: 600;
       font-size: 17px;
       padding-top: 28px;
       padding-left: 10px;
+      text-decoration: none;
+      color: #000;
     }
   }
 
@@ -132,7 +134,8 @@
 }
 
 .button-buy-center {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 10px;
 
   .button-buy-product {
@@ -292,6 +295,12 @@
     font-weight: 600;
     letter-spacing: 1px;
   }
+}
+
+.spinner-center {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
 }
 
 @media (max-width: 1120px) {

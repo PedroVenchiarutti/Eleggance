@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./product.scss";
 import InfoProducts from "./infoproduct.jsx";
-import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import Loading from '../../components/SpinerLoader';
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import Ratings from '../Ratings';
+import { Link } from "react-router-dom";
 
 export default ({ id }) => {
   const { data } = useFetch(`api/public/products/${id}`);
@@ -31,8 +31,9 @@ export default ({ id }) => {
       <div className="container-components-product">
         <div className="container-top-products">
           <div className="icon-home-products">
-            <img src="/icons/icon-home.png" alt="foto" />
+            <img src="\icons\home.png" alt="foto" />
           </div>
+          <Link to="/produtos">Voltar</Link>
         </div>
         <div className="container-products">
           <div className="photo-info-products">
@@ -67,14 +68,12 @@ export default ({ id }) => {
               <input className="amount-product" type="number" value={quantity} onChange={ev => setQuantity(+ev.target.value)}></input>
             </div>
             <div className="button-buy-center">
-              <Link to={"/finishBuy"}>
-                <button className="button-buy-product" onClick={ev => productData(ev, infos)}>
-                  <div className="icon-cart-product">
-                    <img src="\icons\ShopCart.png" alt="foto" />
-                  </div>
-                  <h3>Comprar</h3>
-                </button>
-              </Link>
+              <button className="button-buy-product" onClick={ev => productData(ev, infos)}>
+                <div className="icon-cart-product">
+                  <img src="\icons\ShopCart.png" alt="foto" />
+                </div>
+                <h3>Comprar</h3>
+              </button>
             </div>
 
             <div className="frete-product">
@@ -96,5 +95,5 @@ export default ({ id }) => {
         {showMoreInfos ? <InfoProducts /> : null}
       </div>
     )
-  } else return <Loading />
+  } else return <div className="spinner-center"><Loading /></div>
 };

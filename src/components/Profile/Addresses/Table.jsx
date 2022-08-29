@@ -3,14 +3,15 @@ import { AddressContext } from "../../../contexts/address";
 
 import Loading from '../../SpinerLoader'
 import Table from '../../Table/Table';
+import TrashButton from "../common/TrashButton";
 
 import './Table.scss'
 
 export default () => {
     const { addresses } = useContext(AddressContext);
-        
+
     return <div className="table-content">
-        { addresses.length ? <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses)} /> : <Loading /> }
+        {addresses.length ? <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses)} /> : <Loading />}
     </div>
 }
 
@@ -32,8 +33,8 @@ const getTdButtons = (cep) => {
 
     return (
         <td>
-            <button onClick={() => editAddressClick(cep)}><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
-            <button onClick={() => removeAddressClick(cep)}><img src="/icons/icon-trash.svg" alt="Remover" /></button>
+            <button className="edit-button" onClick={() => editAddressClick(cep)}><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
+            <TrashButton onClick={() => removeAddressClick(cep)} />
         </td>
     )
 }
