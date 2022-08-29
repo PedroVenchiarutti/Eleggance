@@ -1,4 +1,4 @@
-.container-nav-finances{
+.container-nav-finances {
   width: 100%;
 }
 .nav-finances {
@@ -7,7 +7,7 @@
   margin: auto;
   padding: 15px;
 }
-.label-nav-finance:hover + .finance-tittle{
+.label-nav-finance:hover + .finance-tittle {
   background-color: black;
 }
 .nav-finances-title {
@@ -18,22 +18,46 @@
 }
 .finance-tittle {
   width: 56%;
+
+  h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #111;
+  }
 }
 .search-products-finances {
   display: flex;
-  background-color: #d9d9d9;
+  background-color: white;
   color: black;
   border: none;
   padding: 5px;
-  width: 20%;
+  width: 28%;
+  border-radius: 6px;
+  outline: none;
+  justify-content: center;
+  align-items: center;
 }
-.icon-search{
+
+.search-products-finances:focus {
+  transition: ease 0.5s;
+  border: red;
+}
+
+.button-search {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+}
+.icon-search {
   width: 25px;
   height: 25px;
   margin-top: 5px;
-  margin-left: 50px;
+  margin-left: 10px;
+  transition: ease 0.5s;
+  cursor: pointer;
 }
-.icon-bell{
+.icon-bell {
   width: 25px;
   height: 25px;
   margin-top: 5px;
@@ -52,75 +76,78 @@
     padding-top: 10px;
   }
 }
-.search-produto{
+.search-produto {
   flex-direction: column;
   justify-content: center;
-  a{
+  a {
     text-decoration: none;
   }
 }
-.produto{
+.produto {
   background-color: white;
   display: flex;
   width: 300px;
   margin: auto;
   height: 100%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
 }
-.produto:hover{
+.produto:hover {
   opacity: 80%;
 }
 
-.produto-photo{
+.produto-photo {
   height: 80px;
   width: 80px;
-  img{
+  img {
     padding: 15px;
     height: 100%;
     width: 100%;
   }
 }
-.container-produto{
+.container-produto {
   width: 80%;
   height: 80px;
 }
-.produto-name{
-  padding-top:20px;
+.produto-name {
+  padding-top: 20px;
   margin-left: 10px;
   font-size: 13px;
   color: gray;
   font-weight: bold;
-  p{
+  p {
     margin: auto;
   }
 }
-.produto-value{
+.produto-value {
   font-size: 13px;
   padding: 5px;
   color: black;
   font-weight: bold;
 }
 @media (max-width: 1120px) {
-  .nav-finances{
-  width: 100%;
-  margin-bottom: 10px;
- }
- .finance-tittle {
-  margin-left: 30px;
-  font-size: 15px;
-  z-index: 2;
- }
- .icon-bell{
-  margin-left: 10px;
- }
- .icon-search{
-  width: 25px;
-  height: 25px;
-  margin-top: 5px;
-  margin-left: 10px;
-}
-.search-products-finances {
-margin-left: 0px;
-flex-direction: column;
-}
-
+  .nav-finances {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .finance-tittle {
+    margin-left: 30px;
+    font-size: 15px;
+    z-index: 2;
+  }
+  .icon-bell {
+    margin-left: 10px;
+  }
+  .icon-search {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+  .search-products-finances {
+    margin-left: 0px;
+    flex-direction: column;
+  }
 }

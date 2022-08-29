@@ -46,6 +46,17 @@ export default (props) => {
       }
     }
   });
+
+  //========TOGGLE SEARCH ========//
+  function toggleSearch() {
+    var search = document.getElementById("search-products-finances");
+    if (search.style.display === "none") {
+      search.style.display = "block";
+    } else {
+      search.style.display = "none";
+    }
+  }
+
   return (
     <div className="container-nav-finances">
       <div className="nav-finances">
@@ -62,10 +73,12 @@ export default (props) => {
             className="label-nav-finance"
             htmlFor="search-products-finances"
           >
-            <img className="icon-search" src="/icons/icon-search.png" />
+            <button onClick={toggleSearch} className="button-search">
+              <img className="icon-search" src="/icons/search.png" />
+            </button>
           </label>
 
-          <img className="icon-bell" src="/icons/icon-bell.png" />
+          <img className="icon-bell" src="/icons/notification.png" />
         </div>
         <div className="nav-finance-user">
           <span>{loginName.toUpperCase()}</span>
