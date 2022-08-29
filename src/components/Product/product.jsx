@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./product.scss";
 import InfoProducts from "./infoproduct.jsx";
-import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import Loading from '../../components/SpinerLoader';
 import { useContext } from "react";
@@ -67,14 +66,12 @@ export default ({ id }) => {
               <input className="amount-product" type="number" value={quantity} onChange={ev => setQuantity(+ev.target.value)}></input>
             </div>
             <div className="button-buy-center">
-              <Link to={"/finishBuy"}>
                 <button className="button-buy-product" onClick={ev => productData(ev, infos)}>
                   <div className="icon-cart-product">
                     <img src="\icons\ShopCart.png" alt="foto" />
                   </div>
                   <h3>Comprar</h3>
                 </button>
-              </Link>
             </div>
 
             <div className="frete-product">
