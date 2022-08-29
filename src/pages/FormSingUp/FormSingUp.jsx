@@ -41,12 +41,14 @@ const FormSingUp = (props) => {
           <Form className="form-singup" onSubmit={handleSubmitt}>
             <div className="box-singup">
               <div className="box-header-singup">
-                <div className="img-singup">
-                  {/*  IMAGEN CRASHANDO O SITE */}
-             {/*      <img src="img\CadastroELogin.jpg" alt="foto" /> */}
-                </div>
+                {/* <div className="img-singup">
+                  IMAGEN CRASHANDO O SITE 
+                  <img src="img\LOGINECADASTRO.jpg" alt="foto" />
+                </div> */}
                 <div className="content-input-login-singup">
-                  <h1>Eleggance</h1>
+                  <div className="logo-login">
+                    <img src="./logo.png" alt="logo" />
+                  </div>
                   <h2>Login</h2>
                   <p className="error-message">{errors.inputLogin?.message}</p>
                   <div className="hero-svg-singup">

@@ -5,8 +5,7 @@
   height: 100vh;
   
   // IMAGEM CRASHANDO O SITE
-  //linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-  background-image: url(img/BGLOGINop4.jpg);
+  background-image: url(img/OP2background.jpg);
   background-position: left;
   background-size: cover;
 
@@ -16,28 +15,31 @@
     height: 100vh;
     font-family: "Poppins", sans-serif;
   }
-
+  
   .form-singup {
     display: flex;
     width: 100%;
     height: 100%;
   }
-
+  
   .box-singup {
     display: flex;
     margin: 0 auto;
     align-items: center;
     align-self: center;
+    width: 35%;
+    height: 65%;
   }
-
+  
   .box-header-singup {
     display: flex;
+    background-color: rgba(165, 164, 164, 0.4235294118);
     box-shadow: 2px -1px 20px 3px #252525;
     border-radius: 6px;
     width: 900px;
     height: 600px;
     position: relative;
-    background-color: #f2f2f2;
+    //background-color: #f2f2f2;
     color: #333;
   }
   .img-singup {
@@ -49,6 +51,7 @@
       height: 100%;
       object-fit: cover;
       border-radius: 6px 0px 0px 6px;
+      opacity: 0.8s;
     }
   }
 
@@ -62,6 +65,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    .logo-login{
+      max-width: 357px;
+      margin-bottom: 10px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
     h1 {
       justify-content: center;
@@ -207,10 +220,9 @@
 
 @media (max-width: 1120px) {
   .img-container-singup {
-    //position: absolute;
     width: 100%;
-    height: 100%;
-    background-image: url(img/BGLOGINop4.jpg);
+    height: 100vh;
+    background-image: url(img/OP2background.jpg);
     background-position: center;
     background-size: cover;
     .container-singup {
@@ -221,6 +233,7 @@
         height: 100%;
         .box-singup {
           width: 100%;
+          height: 100vh;
           .box-header-singup {
             width: 100%;
             height: 100%;
@@ -241,8 +254,8 @@
           width: 100%;
           height: 100%;
           .footer-card-singup {
-            width: 100%;
-            height: 100%;
+            // width: 100%;
+            // height: 100%;
           }
         }
       }

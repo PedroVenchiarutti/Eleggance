@@ -6,6 +6,7 @@ import Api from "../../api/api";
 const data = [["Dia", "Pedidos", "Quantidade: "]];
 
 let arr = [];
+let ab = 0;
 
 export const options = {
   title: "Company Performance",
@@ -20,26 +21,30 @@ export default function App() {
       // Tem que trocar a rota para os produtos que foram vendidos
       Api.get(`api/public/products/pages/1`)
         .then((response) => {
-          setProducts(response.data);
+          ab = response.data;
         })
         .then(() => {
-          arr = products.map(function (obj) {
+          arr = ab.map(function (obj) {
             return Object.keys(obj).map(function (key) {
               return obj[key];
             });
           });
         })
         .then(() => {
-          console.log(products);
+          let numArr = arr.length;
+          numArr = numArr + 1;
+          console.log(numArr);
           arr.forEach((number) => {
-            let arr1 = [number[1], number[2], number[4]];
-            data.push(arr1);
+            if (numArr != data.length) {
+              let arr1 = [number[1], number[2], number[4]];
+              data.push(arr1);
+            }
           });
         })
         .catch(() => {
           console.log("Deu ruim :( ");
         });
-    },[arr]);
+    }, []);
   }
 
   return (
