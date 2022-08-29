@@ -46,7 +46,7 @@ export default ({ id }) => {
               </div>
             </div>
             <div className="photo-product">
-              <img src={infos.url_img} alt="foto" />
+              <img src={infos.image} alt="foto" />
               <div className="info-products-info">
                 <p className="ul-products">
                   <a onClick={() => toggleMoreInfos()}>Mais Informações</a>

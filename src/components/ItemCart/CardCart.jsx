@@ -17,7 +17,7 @@ const ItemCart = ({ product }) => {
       </div>
       <div className="row second">
         <aside>
-          <img src={product.url_img} alt="teste" className="imgCartItem" />
+          <img src={product.image} alt="teste" className="imgCartItem" />
           <input
             min={0}
             max={100}
