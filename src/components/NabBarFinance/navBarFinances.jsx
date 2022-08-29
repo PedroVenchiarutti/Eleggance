@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import "../NabBarFinance/navBarFinances.scss";
 import "./navBarFinances.scss";
-export default (navBarFinances) => {
+export default (props) => {
   const { loginName } = useContext(AuthContext);
   const { linkImg } = useContext(AuthContext);
   const renderImage = () => {
@@ -47,11 +47,11 @@ export default (navBarFinances) => {
     }
   });
   return (
-    <div>
+    <div className="container-nav-finances">
       <div className="nav-finances">
         <div className="nav-finances-title">
           <div className="finance-tittle">
-            <h2 className="h1-nav-finances">Administração</h2>
+            <h2 className="h1-nav-finances">{props.name}</h2>
           </div>
           <input
             id="search-products-finances"

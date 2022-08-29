@@ -63,7 +63,7 @@ const Finances = (props) => {
     <div className="container-all-finances">
       <MenuDashboard />
       <div className="right-finances">
-        <NavBarFinances />
+        <NavBarFinances name={"Administracao"} />
         {/* */}
         <CardFinance />
         {/*  */}
@@ -124,7 +124,7 @@ const Finances = (props) => {
                 {products.map((products, keys) => {
                   return (
                     <tr key={products.id}>
-                      <td >{products.name}</td>
+                      <td>{products.name}</td>
                       <td>{products.qt}</td>
                       <td>R$ {products.value}</td>
                       <td>{products.id}</td>
@@ -136,10 +136,10 @@ const Finances = (props) => {
           </div>
           <div className="finance-value-final">
             <div className="finance-value-total">
-              <h3>Valor Total: R$ 150,00</h3>
+              <h3>Valor Total: R$ {valueTotal}</h3>
             </div>
             <div className="finance-total-sell">
-              <h3> Vendas No Periodo: 777</h3>
+              <h3> Vendas No Periodo: {qtTotal}</h3>
             </div>
           </div>
         </div>
