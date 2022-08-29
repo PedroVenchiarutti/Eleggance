@@ -14,7 +14,6 @@ import { CartContext } from "../../contexts/cart";
 export default function Cart({ match }) {
 
   const { cart } = useContext(CartContext)
-
   return (
     <div className="cartContainer">
       <Navbar />

@@ -21,6 +21,7 @@ export default function ModalEditProduct() {
     await Api.put(`api/protected/product/${editing.id}`,editing)
       .then(function (response) {
         console.log(response);
+        alert('Produto editado')
       })
       .catch(function (error) {
         console.error(error);

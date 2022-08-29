@@ -26,6 +26,7 @@ export default function ModalAddProduct() {
     await Api.post(`api/protected/product`, valor)
       .then((res) => {
         console.log(res);
+        alert('Produto adicionado')
       })
       .catch(function (error) {
         console.error(error);

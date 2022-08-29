@@ -2,12 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { createContext } from "react";
 
-const initialState = []
+// const initialState = []
 
     export const CartContext = createContext([])
     export const CartProvider = ({children}) => {
 
-        const [cart, setCart] = useState([{initialState}])
+        const [cart, setCart] = useState([])
 
         const productData = (event, data) => {
             event.preventDefault()
