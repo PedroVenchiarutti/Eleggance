@@ -6,6 +6,7 @@ import { useFetch } from "../../hooks/useFetch";
 import Loading from '../../components/SpinerLoader';
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
+import Ratings from '../Ratings';
 
 export default ({ id }) => {
   const { data } = useFetch(`api/public/products/${id}`);
@@ -30,9 +31,8 @@ export default ({ id }) => {
       <div className="container-components-product">
         <div className="container-top-products">
           <div className="icon-home-products">
-            <img src="\icons\icon-home.png" alt="foto" />
+            <img src="/icons/icon-home.png" alt="foto" />
           </div>
-          <h1>Caminho do produto</h1>
         </div>
         <div className="container-products">
           <div className="photo-info-products">
@@ -55,33 +55,8 @@ export default ({ id }) => {
           </div>
           <div className="products-info-price">
             <div className="available-products">
-              <div className="rating-container">
-                <div className="rating-product">
-                  <div className="rate-product">
-                    <input type="radio" id="star5" name="rate" value="5" />
-                    <label htmlFor="star5" title="text">
-                      5 stars
-                    </label>
-                    <input type="radio" id="star4" name="rate" value="4" />
-                    <label htmlFor="star4" title="text">
-                      4 stars
-                    </label>
-                    <input type="radio" id="star3" name="rate" value="3" />
-                    <label htmlFor="star3" title="text">
-                      3 stars
-                    </label>
-                    <input type="radio" id="star2" name="rate" value="2" />
-                    <label htmlFor="star2" title="text">
-                      2 stars
-                    </label>
-                    <input type="radio" id="star1" name="rate" value="1" />
-                    <label htmlFor="star1" title="text">
-                      1 star
-                    </label>
-                  </div>
-                </div>
-                <h1 className="rating-text-product">Nos avalie!</h1>
-              </div>
+              <Ratings />
+              <h1>Nos avalie</h1>
             </div>
             <div className="price-product">
               <h1> R$ {infos.value.toFixed(2).replace('.', ',')}</h1>

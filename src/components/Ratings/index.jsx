@@ -1,18 +1,17 @@
+import React, { useState } from 'react'
+import { Rating } from 'react-simple-star-rating'
+
 import './index.scss'
 
-export default ({ selectedStar }) => <div className="rating-container">{getInputs(selectedStar)}</div>
+export default ({ selectedStar }) => {
+    const [rating, setRating] = useState(0);
 
-const getInputs = (selectedStar) => {
-    const inputs = [];
+    // API treatment goes here (to save in DB)
+    const handleChange = rate => setRating(rate);
 
-    for (let starNumber = 1; starNumber <= 5; starNumber++) {
-        inputs.push(
-            <>
-                <input type="radio" checked={selectedStar && selectedStar === starNumber} value={starNumber} />
-                <label title={`${starNumber} estrelas`}></label>
-            </>
-        )
-    }
-
-    return inputs;
+    return (
+        <div className="rating-container">
+            <Rating onClick={handleChange} initialValue={selectedStar ?? rating} ratingValue={rating} />
+        </div>
+    )
 }

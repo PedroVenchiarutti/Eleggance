@@ -8,7 +8,9 @@ const Footer = (props) => {
         <div className="footer__container__left">
           <div className="footer__container__left__logo">
             <a href="#">
-              <h1 className="footer_logo">Eleggance</h1>
+              <div className="footer_logo">
+                <img src="/logo.png" />
+              </div>
             </a>
             <div className="footer_content_img">
               <img src="/img/teste.png" />

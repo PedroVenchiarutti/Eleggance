@@ -32,41 +32,107 @@
   }
   .menuOption {
     padding: 10px;
+    display: flex;
 
-    .menuIcon-geral {
-      max-width: 80px;
-      max-height: 50px;
-      margin: 0 10px;
+    //=======GERAL========//
+    .icon-geral {
+      .menuIcon-geral {
+        max-width: 80px;
+        max-height: 50px;
+        margin: 0 10px;
+      }
     }
 
-    .menuIcon-products {
-      max-width: 70px;
-      max-height: 50px;
-      margin: 0 10px;
+    .menuAdmin-geral {
+      margin-top: 16px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
     }
 
-    .menuIcon-orders {
-      max-width: 70px;
-      max-height: 50px;
-      margin: 0 10px;
+    //=======PRODUCTS========//
+
+    .icon-products {
+      .menuIcon-products {
+        max-width: 70px;
+        max-height: 50px;
+        margin: 0 10px;
+      }
     }
 
-    .menuIcon-admin {
-      max-width: 70px;
-      max-height: 50px;
-      margin: 0 10px;
+    .menuAdmin-products {
+      margin-top: 16px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
     }
 
-    .menuIcon-coupons {
-      max-width: 70px;
-      max-height: 50px;
-      margin: 0 10px;
+    //=======ORDERS========//
+
+    .icon-orders {
+      .menuIcon-orders {
+        max-width: 70px;
+        max-height: 50px;
+        margin: 0 10px;
+      }
     }
 
-    .menuIcon-settings {
-      max-width: 70px;
-      max-height: 50px;
-      margin: 0 10px;
+    .menuAdmin-orders {
+      margin-top: 16px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    //=======ADMIN========//
+
+    .icon-admin {
+      .menuIcon-admin {
+        max-width: 70px;
+        max-height: 50px;
+        margin: 0 10px;
+      }
+    }
+
+    .menuAdmin-admin {
+      margin-top: 16px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.063rem;
+    }
+
+    //=======COUPONS========//
+
+    .icon-coupons {
+      .menuIcon-coupons {
+        max-width: 70px;
+        max-height: 50px;
+        margin: 0 10px;
+      }
+    }
+
+    .menuAdmin-coupons {
+      margin-top: 16px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    //=======SETTINGS========//
+
+    .icon-settings {
+      .menuIcon-settings {
+        max-width: 70px;
+        max-height: 50px;
+        margin: 0 10px;
+      }
+    }
+
+    .menuAdmin-settings {
+      margin-top: 16px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
     }
   }
   .menuIcon {
