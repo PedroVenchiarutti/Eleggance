@@ -12,7 +12,7 @@ import { createContext } from "react";
         const productData = (event, data) => {
             event.preventDefault()
             setCart(current => [...current, data])
-            console.log(cart)
+            alert('adicionado ao carrinho')
         }
 
         const removeItem = (event, data) => {

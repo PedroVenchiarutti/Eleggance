@@ -51,11 +51,13 @@ export default function Cart({ match }) {
         </ul>
       </main>
         <div className="actions">
-          <Link to="/shop" className="finishBuyButton">
-            Continuar Comprando
+          <Link to="/produtos" className="homeButton">
+            CONTINUAR COMPRANDO
           </Link>
-          <Link to="/finalizarCompra" className="homeButton">
-            Finalizar Compra
+          <Link to="/finalizarCompra" >
+            <button type="button" className="finishBuyButton">
+              FINALIZAR COMPRA
+            </button>
           </Link>
         </div>
       <Carrousel
