@@ -20,9 +20,11 @@ export default function Cart({ match }) {
       <main>
         <div className="info-cart-top">
           <div className="icon-home-cart">
-            <img src="\icons\icon-home.png" alt="home" />
+            <Link to='/home'>
+              <img src="\icons\icon-home.png" alt="home" />
+            </Link>
+            <h1>Carrinho de Compras</h1>
           </div>
-          <h1>Carrinho de Compras</h1>
         </div>
         {/* <table className="table-cart">
           <thead className="thead-cart">

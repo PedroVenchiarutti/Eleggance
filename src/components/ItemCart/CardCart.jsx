@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
+import SaleTag from "../Profile/common/SaleTag";
 
 const ItemCart = ({ product }) => {
 
@@ -20,7 +21,7 @@ const ItemCart = ({ product }) => {
         <img src={product.url_img} alt="aa" className="imgItem" />
         <div>
           <p>{product.name}</p>
-
+          <SaleTag/>
         </div>
       </div>
         <div className="quantity">

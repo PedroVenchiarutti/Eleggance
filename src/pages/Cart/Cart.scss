@@ -10,6 +10,7 @@
   .imgItem {
     width: 20%;
     height: 50px;
+    margin-right: 20px;
   }
 
   .quantity {
@@ -89,6 +90,13 @@
   margin: 30px;
   text-align: end;
 
+}
+
+.info-cart-top{
+  .icon-home-cart{
+    margin-top: 1%;
+    margin-left: 10%;
+  }
 }
 
 // .cartContainer {
