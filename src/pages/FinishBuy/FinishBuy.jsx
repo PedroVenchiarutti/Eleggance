@@ -8,21 +8,18 @@ import { useContext } from "react";
 import { CartContext } from '../../contexts/cart';
 import CouponForm from '../../components/FinishBuy/CouponForm';
 import Api from "../../api/api";
-
-// let inputCupom = document.querySelector("#fieldCoupon");
-// inputCupom.addEventListener("change", (e) => {
-//   console.log(e);
-// });
+import PaymentForm from "../../components/FinishBuy/PaymentForm";
+import AddressForm from "../../components/FinishBuy/AddressForm";
+import Table from "../../components/FinishBuy/Table";
 
 export default function FinishBuy() {
   const { cart } = useContext(CartContext);
 
-  const sum = (t, v) => t + v;
-  const getPriceString = price => 'R$' + price.toFixed(2).replace('.', ',');
-
   const [paymentMethod, setPaymentMethod] = useState('');
   const [couponDiscount, setCouponDiscount] = useState(0);
-
+  
+  const sum = (t, v) => t + v;
+  
   const subTotalPrice = cart.map(product => (product.qt || 0) * (product.value || 0)).reduce(sum);
   const infos = {
     totalItems: cart.map(product => product.qt || 0).reduce(sum),
@@ -31,7 +28,7 @@ export default function FinishBuy() {
     paymentMethod,
     discount: {
       ...(paymentMethod) && {
-        byPaymentMethod: paymentMethod === "PIX" ? subTotalPrice * 0.10 : subTotalPrice * 0.05
+        byPaymentMethod: paymentMethod === "PIX" ? subTotalPrice * 0.10 : paymentMethod === "BOLETO" ? subTotalPrice * 0.08 : subTotalPrice * 0.05
       },
       ...(couponDiscount) && {
         byCoupon: couponDiscount
@@ -46,9 +43,6 @@ export default function FinishBuy() {
       .then(resp => setCouponDiscount(resp.data[0].discount)).catch(setCouponDiscount(0));
   }
 
-  const getTotalPrice = () =>
-    getPriceString(infos.subTotalPrice + infos.shippingPrice - ((infos.discount.byPaymentMethod || 0) + (infos.discount.byCoupon || 0)));
-
   return (
     <div className="finishBuyContainer">
       <header>
@@ -62,23 +56,11 @@ export default function FinishBuy() {
       <main>
         <div className="col">
           <AsideFinishBuy title="1 - ENDEREÇO">
-            <div>
-              <li>R JONAS VIDAL DOS SANTOS, 170</li>
-              <li>14</li>
-              <li>QUIETUDE</li>
-              <li>11718-350 || PRAIA GRANDE - SP</li>
-            </div>
-            <div className="icon-edit">
-              <button className="edit-finish">
-                <Link to="/perfil/enderecos">
-                  <img src="./icons/icon-edit.svg" />
-                </Link>
-              </button>
-            </div>
+            <AddressForm />
           </AsideFinishBuy>
           <AsideFinishBuy title="2 - FRETE">
             <li>
-              Sedex - prazo dias uteis -  {getPriceString(infos.shippingPrice)}
+              Sedex - prazo dias uteis - R$ {infos.shippingPrice.toFixed(2).replace('.', ',')}
             </li>
           </AsideFinishBuy>
           <AsideFinishBuy title="3 - CUPOM">
@@ -87,70 +69,14 @@ export default function FinishBuy() {
         </div>
         <div className="col">
           <AsideFinishBuy title="4 - MÉTODO DE PAGAMENTO" class="paymentMethod">
-            <div className="payment-methods">
-              <li onClick={() => setPaymentMethod('PIX')}>
-                <img className="iconPaymentMethod" src="./icons/icon-pix.svg" />
-                PIX
-              </li>
-              <li onClick={() => setPaymentMethod('BOLETO')}>
-                <img
-                  className="iconPaymentMethod"
-                  src="./icons/icon-boleto.png"
-                />
-                BOLETO
-              </li>
-              <li onClick={() => setPaymentMethod("CRÉDITO")}>
-                <img
-                  className="iconPaymentMethod"
-                  src="./icons/icone-credit-card.png"
-                />
-                CARTÃO DE CRÉDITO
-              </li>
-            </div>
+            <PaymentForm paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
           </AsideFinishBuy>
         </div>
         <div className="col">
           <AsideFinishBuy title="5 - INFORMAÇÕES DO PEDIDO" class="itemsCart">
             <ProductsList products={cart} />
             <div className="info-cart">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Subtotal ({infos.totalItems})</td>
-                    <td> {getPriceString(infos.subTotalPrice)}</td>
-                  </tr>
-                  <hr />
-                  <tr>
-                    <td>Entrega</td>
-                    <td> {getPriceString(infos.shippingPrice)}</td>
-                  </tr>
-                  <hr />
-                  {
-                    infos.paymentMethod ?
-                      <>
-                        <tr>
-                          <td>Desconto do {infos.paymentMethod}</td>
-                          <td> {getPriceString(infos.discount.byPaymentMethod)}</td>
-                        </tr>
-                        <hr />
-                      </> : ''
-                  }
-                  {
-                    infos.discount.byCoupon ?
-                      <>
-                        <tr>
-                          <td>Desconto do cupom</td>
-                          <td>{getPriceString(infos.discount.byCoupon)}</td>
-                        </tr>
-                        <hr />
-                      </> : ''
-                  }
-                  <tr>
-                    <td>Total</td>
-                    <td> {getTotalPrice()}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <Table infos={infos} />
             </div>
             <button>Finalizar Compra</button>
           </AsideFinishBuy>
