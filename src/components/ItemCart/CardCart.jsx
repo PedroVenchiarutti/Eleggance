@@ -7,7 +7,6 @@ import SaleTag from "../Profile/common/SaleTag";
 const ItemCart = ({ product }) => {
 
   const { removeItem } = useContext(CartContext)
-
   const [quantidade, setQuantidade] = useState(5);
 
   console.log(product)
@@ -26,13 +25,15 @@ const ItemCart = ({ product }) => {
       </div>
         <div className="quantity">
           <div className="increaseDecrease">
-            <button type="button" onClick={() => setQuantidade(quantidade - 1)}>-</button>
+            <button type="button" onClick={() => setQuantidade(quantidade - 1)} className="increaseDecreaseButton">-</button>
             <input type="number" className="quantityInput" value={quantidade} onChange={e => setQuantidade(e.target.value)} />
-            <button type="button" onClick={() => setQuantidade(quantidade + 1)}>+</button>
+            <button type="button" onClick={() => setQuantidade(quantidade + 1)} className="increaseDecreaseButton">+</button>
           </div>
           <div className="deleteProduct">
+            <button type="button" className="removeItem">
             <img src="/icons/icon-trash.svg" alt="iconedolixo" />
-            <a href="#">Excluir Produto</a>
+            Excluir Produto
+            </button>
           </div>
         </div>
         <div className="price">
