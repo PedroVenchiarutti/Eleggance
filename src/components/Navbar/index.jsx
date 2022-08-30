@@ -1,11 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./navbar.scss";
+import { useFetch } from "../../hooks/useFetch";
+import Logic from "./logic";
 export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
+
+  const [busca, setBusca] = useState();
 
   // Abrir/Fechar menu mobile Hamburguer
   const ToggleMode = () => {
@@ -49,19 +53,20 @@ export const Navbar = () => {
     const width = window.screen.width;
     if (height >= 600 && width >= 600 && authenticated) {
       return (
-// <<<<<<< HEAD=
-//         <div className="navbar-user-logged-mobile">
-//           <div className="navbar-user-logged-name-mobile">
-//             <button>
-//               <img src="/img/Frame.svg" className="svgUser-mobile" />
-//             </button>
-//             <button className="buttonCart">
-//               <Link to="/carrinho">
-//                 <img src="/icons/shoppingCart.svg" className="svgCart" />
-//               </Link>
-//             </button>
-//           </div>
-// =======
+        // <<<<<<< HEAD=
+        //         <div className="navbar-user-logged-mobile">
+        //           <div className="navbar-user-logged-name-mobile">
+        //             <button>
+        //               <img src="/img/Frame.svg" className="svgUser-mobile" />
+        //             </button>
+        //             <button className="buttonCart">
+        //               <Link to="/carrinho">
+        //                 <img src="/icons/shoppingCart.svg" className="svgCart" />
+        //               </Link>
+        //             </button>
+        //           </div>
+        // =======
+
         <div className="navbar-user-logged">
           <div className="navbar-user-logged-name">
             {renderImage()}
@@ -77,7 +82,7 @@ export const Navbar = () => {
               <img src="/icons/shoppingCart.svg" className="svgCart" />
             </Link>
           </button>
-{/* >>>>>>> fab52d74559bccac682280cb08820324e4906052 */}
+          {/* >>>>>>> fab52d74559bccac682280cb08820324e4906052 */}
         </div>
       );
     } else if (height >= 600 && width >= 600 && !authenticated) {
@@ -117,47 +122,55 @@ export const Navbar = () => {
     }
   };
   return (
-    <div className="navbar-container">
-      <nav>
-        <div className="logoInSearch">
-          <Link to="/">
-            <img src="/logo.png" />
-          </Link>
-          <div className="inputSearch">
-            <div className="inputList">
-              <input type="text" id="txtBusca" placeholder="Buscar..." />
-              <div className={active ? "menu menuOpen" : "menu menuClose"}>
-                <div className="list-container">
-                  <div className="list">
-                    <ul>
-                      <li>
-                        <Link to="/">Home</Link>
-                      </li>
-                      <li>
-                        <Link to="/produtos">Produtos</Link>
-                      </li>
-                      <li>
-                        <Link to="/contato">Contato</Link>
-                      </li>
-                    </ul>
+    <div>
+      <div className="navbar-container">
+        <nav>
+          <div className="logoInSearch">
+            <Link to="/">
+              <img src="/logo.png" />
+            </Link>
+            <div className="inputSearch">
+              <div className="inputList">
+                <input
+                  type="text"
+                  id="txtBusca"
+                  placeholder="Buscar..."
+                  onChange={(ev) => setBusca(ev.target.value.toUpperCase())}
+                />
+                <div className={active ? "menu menuOpen" : "menu menuClose"}>
+                  <div className="list-container">
+                    <div className="list">
+                      <ul>
+                        <li>
+                          <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                          <Link to="/produtos">Produtos</Link>
+                        </li>
+                        <li>
+                          <Link to="/contato">Contato</Link>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
+              <button>
+                <img src="/icons/iconmonstr-search-thin.svg" />
+              </button>
             </div>
-            <button>
-              <img src="/icons/iconmonstr-search-thin.svg" />
-            </button>
           </div>
-        </div>
-        {/* menu hamburgue */}
-        {userLogged()}
-        <div
-          className={active ? "icon iconActive" : "icon"}
-          onClick={ToggleMode}
-        >
-          <div className="hamburguer hamburguerIcon"></div>
-        </div>
-      </nav>
+          {/* menu hamburgue */}
+          {userLogged()}
+          <div
+            className={active ? "icon iconActive" : "icon"}
+            onClick={ToggleMode}
+          >
+            <div className="hamburguer hamburguerIcon"></div>
+          </div>
+        </nav>
+      </div>
+      <Logic busca={busca} />
     </div>
   );
 };
