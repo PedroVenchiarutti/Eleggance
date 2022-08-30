@@ -1,10 +1,8 @@
 import React from "react";
-import { useContext } from "react";
 import ItemCart from "../ItemCart/ItemCart";
 import "./index.scss";
-import { CartContext } from '../../contexts/cart';
 
-export default () => useContext(CartContext).cart.map((cartItem, index) => 
+export default ({products}) => products.map((cartItem, index) => 
   <tr key={index} className="itemCart"><ItemCart product={cartItem} /></tr>);
 
 // const ProductsList = ({ products }) => {

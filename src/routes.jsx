@@ -74,7 +74,9 @@ const changeRoutes = () => {
                 path="/finalizarCompra"
                 element={
                   <Private>
-                    <FinishBuy />
+                    <CouponProvider>
+                      <FinishBuy />
+                    </CouponProvider>
                   </Private>
                 }
               />

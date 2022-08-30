@@ -2,26 +2,52 @@ import React, { useState } from "react";
 import Footer from "../Footer/Footer";
 import AsideFinishBuy from "../../components/AsideFinishBuy/AsideFinishBuy";
 import ProductsList from "../../components/ProductsLIst";
-import { shelfProducts } from "../../api/mock";
 import "./FinishBuy.scss";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from '../../contexts/cart';
+import CouponForm from '../../components/FinishBuy/CouponForm';
+import Api from "../../api/api";
 
 // let inputCupom = document.querySelector("#fieldCoupon");
 // inputCupom.addEventListener("change", (e) => {
 //   console.log(e);
 // });
 
-export default function FinishBuy({ products }) {
-  const [valor, setValor] = useState("");
-  let countItems = 12;
-  let metodoDesconto = "PIX" || "CUPON";
-  let prazoMin = 2;
-  let prazoMax = 5;
-  const valorDesconto = 3.0;
-  const prazo = `${prazoMin} a ${prazoMax}`;
-  const valorFrete = 8.99;
-  const valorSubTotal = 1200.0;
-  const valorTotal = valorSubTotal + valorFrete - valorDesconto;
+export default function FinishBuy() {
+  const { cart } = useContext(CartContext);
+
+  const sum = (t, v) => t + v;
+  const getPriceString = price => 'R$' + price.toFixed(2).replace('.', ',');
+
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [couponDiscount, setCouponDiscount] = useState(0);
+
+  const subTotalPrice = cart.map(product => (product.qt || 0) * (product.value || 0)).reduce(sum);
+  const infos = {
+    totalItems: cart.map(product => product.qt || 0).reduce(sum),
+    subTotalPrice,
+    shippingPrice: 19.99,
+    paymentMethod,
+    discount: {
+      ...(paymentMethod) && {
+        byPaymentMethod: paymentMethod === "PIX" ? subTotalPrice * 0.10 : subTotalPrice * 0.05
+      },
+      ...(couponDiscount) && {
+        byCoupon: couponDiscount
+      }
+    }
+  }
+
+  const handleCouponFormSubmit = (event, couponCode) => {
+    event.preventDefault();
+
+    Api.get(`http://localhost:3333/api/public/discount/${couponCode}`)
+      .then(resp => setCouponDiscount(resp.data[0].discount)).catch(setCouponDiscount(0));
+  }
+
+  const getTotalPrice = () =>
+    getPriceString(infos.subTotalPrice + infos.shippingPrice - ((infos.discount.byPaymentMethod || 0) + (infos.discount.byCoupon || 0)));
 
   return (
     <div className="finishBuyContainer">
@@ -52,39 +78,28 @@ export default function FinishBuy({ products }) {
           </AsideFinishBuy>
           <AsideFinishBuy title="2 - FRETE">
             <li>
-              Sedex - {prazo} dias uteis - R$ {valorFrete}
+              Sedex - prazo dias uteis -  {getPriceString(infos.shippingPrice)}
             </li>
           </AsideFinishBuy>
           <AsideFinishBuy title="3 - CUPOM">
-            <li>
-              <input
-                maxLength={7}
-                style={{ textTransform: "uppercase" }}
-                placeholder="INSERIR CUPOM"
-                id="fieldCoupon"
-                value={valor}
-                onChange={(e) => setValor(e.target.value)}
-                type="text"
-              />
-              <button>OK</button>
-            </li>
+            <CouponForm handleSubmit={handleCouponFormSubmit} />
           </AsideFinishBuy>
         </div>
         <div className="col">
           <AsideFinishBuy title="4 - MÉTODO DE PAGAMENTO" class="paymentMethod">
             <div className="payment-methods">
-              <li>
+              <li onClick={() => setPaymentMethod('PIX')}>
                 <img className="iconPaymentMethod" src="./icons/icon-pix.svg" />
                 PIX
               </li>
-              <li>
+              <li onClick={() => setPaymentMethod('BOLETO')}>
                 <img
                   className="iconPaymentMethod"
                   src="./icons/icon-boleto.png"
                 />
                 BOLETO
               </li>
-              <li>
+              <li onClick={() => setPaymentMethod("CRÉDITO")}>
                 <img
                   className="iconPaymentMethod"
                   src="./icons/icone-credit-card.png"
@@ -96,28 +111,43 @@ export default function FinishBuy({ products }) {
         </div>
         <div className="col">
           <AsideFinishBuy title="5 - INFORMAÇÕES DO PEDIDO" class="itemsCart">
-            <ProductsList />
+            <ProductsList products={cart} />
             <div className="info-cart">
               <table>
                 <tbody>
                   <tr>
-                    <td>Subtotal ({countItems})</td>
-                    <td>R$ {valorSubTotal}</td>
+                    <td>Subtotal ({infos.totalItems})</td>
+                    <td> {getPriceString(infos.subTotalPrice)}</td>
                   </tr>
                   <hr />
                   <tr>
                     <td>Entrega</td>
-                    <td>R$ {valorFrete}</td>
+                    <td> {getPriceString(infos.shippingPrice)}</td>
                   </tr>
                   <hr />
-                  <tr>
-                    <td>Desconto do {metodoDesconto}</td>
-                    <td>R$ {valorDesconto}</td>
-                  </tr>
-                  <hr />
+                  {
+                    infos.paymentMethod ?
+                      <>
+                        <tr>
+                          <td>Desconto do {infos.paymentMethod}</td>
+                          <td> {getPriceString(infos.discount.byPaymentMethod)}</td>
+                        </tr>
+                        <hr />
+                      </> : ''
+                  }
+                  {
+                    infos.discount.byCoupon ?
+                      <>
+                        <tr>
+                          <td>Desconto do cupom</td>
+                          <td>{getPriceString(infos.discount.byCoupon)}</td>
+                        </tr>
+                        <hr />
+                      </> : ''
+                  }
                   <tr>
                     <td>Total</td>
-                    <td>R$ {valorTotal}</td>
+                    <td> {getTotalPrice()}</td>
                   </tr>
                 </tbody>
               </table>

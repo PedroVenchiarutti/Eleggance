@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
 const ItemCart = ({ product }) => {
-  const [quantidade, setQuantidade] = useState(5);
+  const [quantidade, setQuantidade] = useState(product.qt);
   if (!product) return;
-
-  const valor = product;
+  
   return (
     <>
       <td className="tdCol-1">
@@ -33,7 +32,7 @@ const ItemCart = ({ product }) => {
       </td>
       <td className="tdCol-4">
         <span className="total-price">
-          R$ {parseFloat((product.value * quantidade).toFixed(2))}
+          R$ {(product.value * quantidade).toFixed(2).replace('.', ',')}
         </span>
       </td>
     </>

@@ -70,13 +70,12 @@
             border-radius: 5px;
             width: 80%;
             height: 38px;
-            padding-left: 5px;
             border: 0.5px solid black;
+            margin-right: 8px;
           }
           button{
             cursor: pointer;
             padding: 5.5px 40px;
-            margin-left: -10%;
             border: 1px solid #000000;
             box-shadow: none;
           }
@@ -167,6 +166,13 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+      
+      td:first-of-type {
+        width: 60%;
+      }
+      td:last-of-type {
+        width: 40%;
+      }
     }
   }
 

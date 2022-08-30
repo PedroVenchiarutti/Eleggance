@@ -6,6 +6,7 @@ export default ({ object }) =>
 const getRow = (object, key) => {
     if (key != "key" && key != "className") {
         const value = object[key];
+        console.log(value)
         return value.type ? value : <td>{value}</td>
     }
 }
