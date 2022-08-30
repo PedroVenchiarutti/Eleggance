@@ -30,7 +30,7 @@ const ItemCart = ({ product }) => {
             <button type="button" onClick={() => setQuantidade(quantidade + 1)} className="increaseDecreaseButton">+</button>
           </div>
           <div className="deleteProduct">
-            <button type="button" className="removeItem">
+            <button type="button" className="removeItem" onClick={ev => removeItem(ev, product.id)}>
             <img src="/icons/icon-trash.svg" alt="iconedolixo" />
             Excluir Produto
             </button>
