@@ -8,38 +8,15 @@ import "./navBarFinances.scss";
 export default (props) => {
   const { loginName } = useContext(AuthContext);
   const { linkImg } = useContext(AuthContext);
-  const renderImage = () => {
-    if (authenticated) {
-      const getLocalStorage = localStorage.getItem("personal");
-      const img = JSON.parse(getLocalStorage);
-      if (img === null) {
-        return;
-      } else {
-        const linkImg = img[0].id.imgURL;
-        if (linkImg) {
-          return (
-            <button>
-              <img src={linkImg} className="imgUser" />
-            </button>
-          );
-        } else {
-          return (
-            <button>
-              <img src="/img/Frame.svg" />;
-            </button>
-          );
-        }
-      }
-    }
-  };
+
   const { data } = useFetch(`api/public/products/pages/1`);
 
   const [busca, setBusca] = useState();
   let objName = "";
   const a = data.filter(function (obj) {
     if (obj.name) {
-      objName = obj.name;
-      if (objName.startsWith(busca)) {
+      objName = obj.name.toUpperCase();
+      if (objName.includes(busca)) {
         if (busca != "") {
           return objName;
         }
@@ -67,7 +44,7 @@ export default (props) => {
           <input
             id="search-products-finances"
             className="search-products-finances"
-            onChange={(ev) => setBusca(ev.target.value)}
+            onChange={(ev) => setBusca(ev.target.value.toUpperCase())}
           ></input>
           <label
             className="label-nav-finance"
