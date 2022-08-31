@@ -22,54 +22,70 @@ export default function AllProducts({ products , orderBy}) {
   }
   if (!products) return;
 
-  // function priceFilter(a , b, orderBy){
-  //   if(orderBy == 'asc'){
-  //     return( a.value-b.value)
-  //   }else{
-  //     return(b.value-a.value)
-  //   }
-  // }
-
-  switch(orderBy){
-    case 'asc':
-      return(
-        data.sort(function(a, b){return a.value-b.value})
-        .map((product, index) => {
-          return (
-            <li key={index} className="swiper-container">
-                <Link to={`/detalhes/${product.id}`}>
-                  <Card product={product} />
-                </Link>
-            </li>
-          );
-        })
-      )
-    case 'desc':
-      return(
-        data.sort(function(a, b){return b.value-a.value})
-        .map((product, index) => {
-          return (
-            <li key={index} className="swiper-container">
-                <Link to={`/detalhes/${product.id}`}>
-                  <Card product={product} />
-                </Link>
-            </li>
-          );
-        })
-      )
-    default:
-      return (
-        data.map((product, index) => {
-          return (
-            <li key={index} className="swiper-container">
-                <Link to={`/detalhes/${product.id}`}>
-                  <Card product={product} />
-                </Link>
-            </li>
-          );
-        })
-      )
+  function compareFunction(a, b){
+    if(orderBy == 'asc'){
+      return(a.value - b.value)
+    }else if(orderBy == 'desc'){
+      return(b.value - a.value)
+    }
+    else{
+      return;
+    }
   }
+
+      return(
+        data.sort((a, b) => compareFunction(a, b))
+        .map((product, index) => {
+          return (
+            <li key={index} className="swiper-container">
+                <Link to={`/detalhes/${product.id}`}>
+                  <Card product={product} />
+                </Link>
+            </li>
+          );
+        })
+      )
+
+  // switch(orderBy){
+  //   case 'asc':
+  //     return(
+  //       data.sort(function(a, b){return a.value-b.value})
+  //       .map((product, index) => {
+  //         return (
+  //           <li key={index} className="swiper-container">
+  //               <Link to={`/detalhes/${product.id}`}>
+  //                 <Card product={product} />
+  //               </Link>
+  //           </li>
+  //         );
+  //       })
+  //     )
+  //   case 'desc':
+  //     return(
+  //       data.sort(function(a, b){return b.value-a.value})
+  //       .map((product, index) => {
+  //         return (
+  //           <li key={index} className="swiper-container">
+  //               <Link to={`/detalhes/${product.id}`}>
+  //                 <Card product={product} />
+  //               </Link>
+  //           </li>
+  //         );
+  //       })
+  //     )
+  //   default:
+  //     return (
+  //       data.map((product, index) => {
+  //         return (
+  //           <li key={index} className="swiper-container">
+  //               <Link to={`/detalhes/${product.id}`}>
+  //                 <Card product={product} />
+  //               </Link>
+  //           </li>
+  //         );
+  //       })
+  //     )
+  // }
 
   // return (
   //   <>
