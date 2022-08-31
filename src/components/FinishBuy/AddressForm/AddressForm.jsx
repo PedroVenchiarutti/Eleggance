@@ -14,7 +14,7 @@ export default () => {
 
     return (
         <div className="address-form">
-            <Select defaultValue="selecionar endereço" onChange={onSelectChange} options={getSelectOptions(useContext(AddressContext).addresses)} />
+            <Select defaultValueLabel="selecionar endereço" onChange={onSelectChange} options={getSelectOptions(useContext(AddressContext).addresses)} />
             <SelectedAddressInfos addressId={selectValue} />
         </div>
     );
