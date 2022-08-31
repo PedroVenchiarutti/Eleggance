@@ -9,7 +9,7 @@ import { CartContext } from '../../contexts/cart';
 import CouponForm from '../../components/FinishBuy/CouponForm';
 import Api from "../../api/api";
 import PaymentForm from "../../components/FinishBuy/PaymentForm";
-import AddressForm from "../../components/FinishBuy/AddressForm";
+import AddressForm from "../../components/FinishBuy/AddressForm/AddressForm";
 import Table from "../../components/FinishBuy/Table";
 
 export default function FinishBuy() {

@@ -67,10 +67,13 @@ export const AddressProvider = ({ children }) => {
 
     useEffect(() => { setAddressesDatas() }, [address.cep]);
     
+    const getById = (addressId) => useFetch(`api/protected/addresses/${addressId}`);
+
     const { data } = useFetch('api/protected/client/addresses/all/15');
     const state = {
         address,
         addresses: data,
+        getById,
         updateState,
         onCepChange,
         onFormSubmit,
