@@ -21,9 +21,9 @@ export default ({ id }) => {
     const infos = {
       id: data[0].id,
       name: data[0].name,
-      value: data[0].value,
+      value: +data[0].value,
       image: data[0].url_img,
-      qt: quantity
+      qt: +quantity
     }
 
     console.log(data)

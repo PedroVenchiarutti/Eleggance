@@ -13,7 +13,7 @@ import AddressForm from "../../components/FinishBuy/AddressForm/AddressForm";
 import Table from "../../components/FinishBuy/Table";
 
 export default function FinishBuy() {
-  const { cart } = useContext(CartContext);
+  const { cart, finishBuy } = useContext(CartContext);
 
   const [paymentMethod, setPaymentMethod] = useState('');
   const [couponDiscount, setCouponDiscount] = useState(0);
@@ -78,7 +78,7 @@ export default function FinishBuy() {
             <div className="info-cart">
               <Table infos={infos} />
             </div>
-            <button>Finalizar Compra</button>
+            <button onClick={() => finishBuy(15)}>Finalizar Compra</button>
           </AsideFinishBuy>
         </div>
       </main>
