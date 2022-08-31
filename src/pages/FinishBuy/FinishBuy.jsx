@@ -22,7 +22,7 @@ export default function FinishBuy() {
   
   const subTotalPrice = cart.map(product => (+product.qt || 0) * (+product.value || 0)).reduce(sum);
   const infos = {
-    totalItems: cart.map(product => product.qt || 0).reduce(sum),
+    totalItems: cart.map(product => +product.qt || 0).reduce(sum),
     subTotalPrice,
     shippingPrice: 19.99,
     paymentMethod,
