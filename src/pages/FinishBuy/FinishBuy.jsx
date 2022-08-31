@@ -20,7 +20,7 @@ export default function FinishBuy() {
   
   const sum = (t, v) => t + v;
   
-  const subTotalPrice = cart.map(product => (product.qt || 0) * (product.value || 0)).reduce(sum);
+  const subTotalPrice = cart.map(product => (+product.qt || 0) * (+product.value || 0)).reduce(sum);
   const infos = {
     totalItems: cart.map(product => product.qt || 0).reduce(sum),
     subTotalPrice,
