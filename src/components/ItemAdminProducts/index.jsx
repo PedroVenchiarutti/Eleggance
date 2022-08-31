@@ -63,7 +63,7 @@ export default function ItemAdminProducts() {
                 <img
                   className="icon-trash"
                   src="/icons/trashIcon.svg"
-                  onClick={removeItem}
+                  onClick={() => alert('Item excluido')}
                 />
               </button>
             </td>

@@ -6,7 +6,6 @@ import Loading from "../../components/SpinerLoader";
 import "./index.scss";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
-import Select from "../Select/Select";
 
 export default function AllProducts({ products , orderBy}) {
   const { cart, productData } = useContext(CartContext)
@@ -22,9 +21,14 @@ export default function AllProducts({ products , orderBy}) {
     );
   }
   if (!products) return;
-  // const ascendingOrder = [].concat(data)
-  //   .sort(function(a, b){return a.value-b.value})
-  console.log(orderBy)
+
+  // function priceFilter(a , b, orderBy){
+  //   if(orderBy == 'asc'){
+  //     return( a.value-b.value)
+  //   }else{
+  //     return(b.value-a.value)
+  //   }
+  // }
 
   switch(orderBy){
     case 'asc':
@@ -41,31 +45,43 @@ export default function AllProducts({ products , orderBy}) {
         })
       )
     case 'desc':
-      data.sort(function(a, b){return b.value-a.value})
-      .map((product, index) => {
-        return (
-          <li key={index} className="swiper-container">
-              <Link to={`/detalhes/${product.id}`}>
-                <Card product={product} />
-              </Link>
-          </li>
-        );
-      })
-      break;
+      return(
+        data.sort(function(a, b){return b.value-a.value})
+        .map((product, index) => {
+          return (
+            <li key={index} className="swiper-container">
+                <Link to={`/detalhes/${product.id}`}>
+                  <Card product={product} />
+                </Link>
+            </li>
+          );
+        })
+      )
+    default:
+      return (
+        data.map((product, index) => {
+          return (
+            <li key={index} className="swiper-container">
+                <Link to={`/detalhes/${product.id}`}>
+                  <Card product={product} />
+                </Link>
+            </li>
+          );
+        })
+      )
   }
 
-  return (
-    <>
-      {/* {data.map((product, index) => { */}
-      {data.map((product, index) => {
-        return (
-          <li key={index} className="swiper-container">
-              <Link to={`/detalhes/${product.id}`}>
-                <Card product={product} />
-              </Link>
-          </li>
-        );
-      })}
-    </>
-  );
+  // return (
+  //   <>
+  //     {data.map((product, index) => {
+  //       return (
+  //         <li key={index} className="swiper-container">
+  //             <Link to={`/detalhes/${product.id}`}>
+  //               <Card product={product} />
+  //             </Link>
+  //         </li>
+  //       );
+  //     })}
+  //   </>
+  // );
 }
