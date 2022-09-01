@@ -88,8 +88,8 @@
           list-style: none;
           justify-content: center;
 
-          li{
-            button{
+          li {
+            button {
               background: none;
               color: inherit;
               border: none;
@@ -103,11 +103,10 @@
           .container-img-promo {
             text-overflow: ellipsis;
             overflow: hidden;
-            white-space: nowrap;
             background-color: #f3f3f3;
             display: flex;
-            width: 219px;
-            height: 316px;
+            width: 224px;
+            height: 420px;
             margin: 12px;
             align-items: center;
             justify-content: center;
@@ -116,78 +115,75 @@
             padding: 40px;
             border-radius: 6px;
             transition: 0.5s;
+            background-image: linear-gradient(#e2e2e2, #e2e2e2);
+            background-size: 0 100%;
+            background-repeat: no-repeat;
+            transition: 0.6s;
 
             .container-text-product {
               //background-color: #333;
               width: 100%;
               display: flex;
               align-items: center;
-              justify-content: center;
               height: 100%;
               flex-direction: column;
               white-space: normal;
-            
 
               .full-price-promo {
                 font-size: 0.875rem;
                 color: red;
                 opacity: 0.8;
-                font-weight: 500;
+                font-weight: 700;
                 text-decoration: line-through;
-                overflow: hidden;
                 text-overflow: ellipsis;
               }
 
               .cash-payment {
-                margin-top: 30px;
+                font-size: 0.9rem;
+                margin: -20px 0;
               }
 
               .title-product-promo {
-                //margin-top: 10px;
-                //font-size: 1.1rem;
                 font-weight: 600;
                 font-size: 0.875rem;
                 text-align: center;
+                width: 100%;
                 color: #333;
               }
               .price-discount {
                 //margin-top: 30px;
-                font-size: 0.875rem;
+                font-size: 1.3rem;
                 color: #eab53c;
+                font-weight: 800;
               }
               .price-installments {
                 color: green;
+                font-size: 14px;
               }
             }
 
             span {
-              //max-width: 100px;
-              //min-height: 70px;
-              width: 100%;
               text-align: center;
               margin-top: 3px;
+              font-size: 0.8rem;
             }
 
             img {
-              height: 200px;
-              width: 200px;
-              min-width: 80px;
-              min-height: 80px;
+              max-height: 224px;
+              max-width: 224px;
+              min-height: 224px;
+              min-width: 224px;
+
               float: left;
-              max-height: 80px;
-              max-width: 80px;
               object-fit: cover;
               transition: 0.3s all ease-in-out;
             }
           }
           .container-img-promo:hover {
-            width: 260px;
-            height: 332px;
-            transition: all 0.7s ease;
-            transform: scale(1.05);
             img {
-              transform: scale(1.1);
+              transform: scale(1.02);
             }
+            background-size: 100% 100%;
           }
           .full-price-promo > span:hover {
             // width: 100%;
