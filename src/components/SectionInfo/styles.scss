@@ -10,8 +10,8 @@
   // esquerda
   .section-carousel {
     .swiper {
-      box-shadow: 5px 5px 5px #333;
-      .swiper-pagination{
+      box-shadow: 2px 3px 20px 0px rgba(51, 51, 51, 0.562);
+      .swiper-pagination {
         display: none !important;
       }
     }
@@ -20,9 +20,6 @@
       align-items: center;
       width: 100%;
       height: 50vh;
-    
-
-     
     }
     width: 50%;
     @media (max-width: 640px) {

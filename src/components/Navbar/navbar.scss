@@ -18,6 +18,10 @@
       display: flex;
       height: 100%;
 
+      .logo-navbar {
+        top: 10px;
+      }
+
       img {
         position: relative;
         display: flex;
@@ -28,7 +32,7 @@
         display: flex;
         align-items: center;
         position: relative;
-        top: 20px;
+        top: 30px;
 
         button {
           display: flex;
@@ -158,14 +162,14 @@
       border: none;
       background: transparent;
       cursor: pointer;
-    }
-
-    img {
-      max-width: 66px;
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-      display: flex;
+      img {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        width: 60px;
+        height: 60px;
+        margin-top: 20px;
+      }
     }
 
     .navbar-user-name-logout {

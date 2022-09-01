@@ -22,36 +22,13 @@ export const Navbar = () => {
     console.log("modalUser", modalUser);
   };
 
-  // Pega a imagen do localStorage e renderizar na tela
+  // Pega a imagen do usuario e renderizar na navbar se nao tiver img pega a img padrao
   const renderImage = () => {
-    if (authenticated) {
-      const getLocalStorage = localStorage.getItem("personal");
-      const img = JSON.parse(getLocalStorage);
-      if (img === null) {
-        return;
-      } else {
-        const linkImg = img[0].id.imgURL;
-        if (linkImg) {
-          return (
-            <button>
-              <img
-                src={linkImg == " " ? "/img/Frame.svg" : linkImg}
-                alt="user"
-              />
-
-              {/* <img src={linkImg} className="imgUser" /> */}
-            </button>
-          );
-        } else {
-          return (
-            <button>
-              <img src="/img/Frame.svg" />;
-            </button>
-          );
-        }
-      }
-    }
-    console.log(linkImg);
+    return (
+      <button>
+        <img src="./icons/userWhite.svg" alt="Foto usuario" />;
+      </button>
+    );
   };
 
   //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
@@ -94,7 +71,7 @@ export const Navbar = () => {
           </div>
           <button className="buttonCart">
             <Link to="/carrinho">
-              <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
+              <img src="/icons/shoppingCart.svg" className="svgCart" />
             </Link>
           </button>
         </div>
@@ -123,7 +100,7 @@ export const Navbar = () => {
       <nav>
         <div className="logoInSearch">
           <Link to="/">
-            <img src="/logo.png" />
+            <img src="/logo.png" className="logo-navbar" />
           </Link>
           <div className="inputSearch">
             <div className="inputList">

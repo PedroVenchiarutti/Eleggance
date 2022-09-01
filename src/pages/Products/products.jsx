@@ -4,18 +4,14 @@ import { Navbar } from "../../components/Navbar";
 import Footer from "../Footer/Footer";
 import Product from "../../components/Product/product";
 import Carrousel from "../../components/Carrousel/Carrousel.jsx";
-import {
-    shelfProducts,
-    trendProducts,
-  } from "../../api/mock";
+import { shelfProducts, trendProducts } from "../../api/mock";
 import { useLocation, useParams } from "react-router-dom";
-import './products.scss'
-
+import "./products.scss";
 
 export default (state) => {
-  const location = useLocation()
+  const location = useLocation();
 
-  console.log(location)
+  console.log(location);
   const { id } = useParams();
   return (
     <div>
@@ -23,7 +19,7 @@ export default (state) => {
       <Product id={id} />
       <Carrousel products={shelfProducts} title="Ofertas" />
 
-      <Carrousel products={trendProducts} title="Tendências" />
+      <Carrousel products={shelfProducts} title="Tendências" />
       <Footer />
     </div>
   );

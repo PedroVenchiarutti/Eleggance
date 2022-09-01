@@ -36,7 +36,18 @@ import { CartProvider } from "./contexts/cart";
 const changeRoutes = () => {
   const Private = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
+    if (loading) {
+      return <div className="loading">Loading...</div>;
+    }
+    if (!authenticated) {
+      return <Navigate to="/home" />;
+    } else {
+      return children;
+    }
+  };
 
+  const PrivateCard = ({ children }) => {
+    const { authenticated, loading } = useContext(AuthContext);
     if (loading) {
       return <div className="loading">Loading...</div>;
     }
@@ -95,9 +106,9 @@ const changeRoutes = () => {
                 exact
                 path="/carrinho"
                 element={
-                  <Private>
+                  <PrivateCard>
                     <Cart />
-                  </Private>
+                  </PrivateCard>
                 }
               />
               <Route
