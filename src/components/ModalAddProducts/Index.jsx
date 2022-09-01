@@ -65,6 +65,8 @@ export default function ModalAddProduct() {
           console.log("valorzin", valor);
           postItem();
           setProgress(true);
+          window.location.reload()
+
         })
 
         .catch((error) => {
@@ -72,6 +74,7 @@ export default function ModalAddProduct() {
           return <div>Error...</div>;
         });
     });
+   
   };
 
   function modalToggle() {
@@ -87,6 +90,11 @@ export default function ModalAddProduct() {
     });
     setImages("");
   }
+
+  // function disableButton(){
+  //   let button = document.querySelector('.btnCadastrarProduto')
+  //   button.disabled = true
+  // }
 
   return (
     <div className="modalAddProducts" id="modalAddProducts">
@@ -155,7 +163,7 @@ export default function ModalAddProduct() {
             />
           </div>
           <div className="areaBtn">
-            <button type="submit" className="btn btnCadastrarProduto">
+            <button type="submit" className="btn btnCadastrarProduto" onClick={() => disableButton()}>
               Cadastrar Produto
             </button>
             <div
