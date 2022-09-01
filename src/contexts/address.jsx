@@ -45,7 +45,7 @@ export const AddressProvider = ({ children }) => {
                 district: address.district,
                 city: address.city,
                 complement: address.complement,
-                user_id: 1
+                user_id: 1 // Change to authenticated user_id
             }).then(() => window.location.reload());
         }
     }
@@ -67,10 +67,13 @@ export const AddressProvider = ({ children }) => {
 
     useEffect(() => { setAddressesDatas() }, [address.cep]);
     
+    const getById = (addressId) => useFetch(`api/protected/addresses/${addressId}`);
+
     const { data } = useFetch('api/protected/client/addresses/all/15');
     const state = {
         address,
         addresses: data,
+        getById,
         updateState,
         onCepChange,
         onFormSubmit,

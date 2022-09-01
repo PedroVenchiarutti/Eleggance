@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cart";
 
 const ItemCart = ({ product }) => {
-  const [quantidade, setQuantidade] = useState(5);
+  const { setQuantity } = useContext(CartContext);
   if (!product) return;
-
-  const valor = product;
+  
   return (
     <>
       <td className="tdCol-1">
@@ -21,10 +22,8 @@ const ItemCart = ({ product }) => {
             min={0}
             max={100}
             type="number"
-            defaultValue={parseFloat(quantidade)}
-            onChange={(e) => {
-              setQuantidade(e.target.value);
-            }}
+            value={product.qt}
+            onChange={(e) => setQuantity(product.id, e.target.value)}
           />
         </span>
       </td>
@@ -33,7 +32,7 @@ const ItemCart = ({ product }) => {
       </td>
       <td className="tdCol-4">
         <span className="total-price">
-          R$ {parseFloat((product.value * quantidade).toFixed(2))}
+          R$ {(product.value * product.qt).toFixed(2).replace('.', ',')}
         </span>
       </td>
     </>

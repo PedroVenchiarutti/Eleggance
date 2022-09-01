@@ -2,26 +2,46 @@ import React, { useState } from "react";
 import Footer from "../Footer/Footer";
 import AsideFinishBuy from "../../components/AsideFinishBuy/AsideFinishBuy";
 import ProductsList from "../../components/ProductsLIst";
-import { shelfProducts } from "../../api/mock";
 import "./FinishBuy.scss";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from '../../contexts/cart';
+import CouponForm from '../../components/FinishBuy/CouponForm';
+import Api from "../../api/api";
+import PaymentForm from "../../components/FinishBuy/PaymentForm";
+import AddressForm from "../../components/FinishBuy/AddressForm/AddressForm";
+import Table from "../../components/FinishBuy/Table";
 
-// let inputCupom = document.querySelector("#fieldCoupon");
-// inputCupom.addEventListener("change", (e) => {
-//   console.log(e);
-// });
+export default function FinishBuy() {
+  const { cart, finishBuy } = useContext(CartContext);
 
-export default function FinishBuy({ products }) {
-  const [valor, setValor] = useState("");
-  let countItems = 12;
-  let metodoDesconto = "PIX" || "CUPON";
-  let prazoMin = 2;
-  let prazoMax = 5;
-  const valorDesconto = 3.0;
-  const prazo = `${prazoMin} a ${prazoMax}`;
-  const valorFrete = 8.99;
-  const valorSubTotal = 1200.0;
-  const valorTotal = valorSubTotal + valorFrete - valorDesconto;
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [couponDiscount, setCouponDiscount] = useState(0);
+  
+  const sum = (t, v) => t + v;
+  
+  const subTotalPrice = cart.map(product => (+product.qt || 0) * (+product.value || 0)).reduce(sum);
+  const infos = {
+    totalItems: cart.map(product => +product.qt || 0).reduce(sum),
+    subTotalPrice,
+    shippingPrice: 19.99,
+    paymentMethod,
+    discount: {
+      ...(paymentMethod) && {
+        byPaymentMethod: paymentMethod === "PIX" ? subTotalPrice * 0.10 : paymentMethod === "BOLETO" ? subTotalPrice * 0.08 : subTotalPrice * 0.05
+      },
+      ...(couponDiscount) && {
+        byCoupon: couponDiscount
+      }
+    }
+  }
+
+  const handleCouponFormSubmit = (event, couponCode) => {
+    event.preventDefault();
+
+    Api.get(`http://localhost:3333/api/public/discount/${couponCode}`)
+      .then(resp => setCouponDiscount(resp.data[0].discount)).catch(setCouponDiscount(0));
+  }
 
   return (
     <div className="finishBuyContainer">
@@ -36,93 +56,29 @@ export default function FinishBuy({ products }) {
       <main>
         <div className="col">
           <AsideFinishBuy title="1 - ENDEREÇO">
-            <div>
-              <li>R JONAS VIDAL DOS SANTOS, 170</li>
-              <li>14</li>
-              <li>QUIETUDE</li>
-              <li>11718-350 || PRAIA GRANDE - SP</li>
-            </div>
-            <div className="icon-edit">
-              <button className="edit-finish">
-                <Link to="/perfil/enderecos">
-                  <img src="./icons/icon-edit.svg" />
-                </Link>
-              </button>
-            </div>
+            <AddressForm />
           </AsideFinishBuy>
           <AsideFinishBuy title="2 - FRETE">
             <li>
-              Sedex - {prazo} dias uteis - R$ {valorFrete}
+              Sedex - prazo dias uteis - R$ {infos.shippingPrice.toFixed(2).replace('.', ',')}
             </li>
           </AsideFinishBuy>
           <AsideFinishBuy title="3 - CUPOM">
-            <li>
-              <input
-                maxLength={7}
-                style={{ textTransform: "uppercase" }}
-                placeholder="INSERIR CUPOM"
-                id="fieldCoupon"
-                value={valor}
-                onChange={(e) => setValor(e.target.value)}
-                type="text"
-              />
-              <button>OK</button>
-            </li>
+            <CouponForm handleSubmit={handleCouponFormSubmit} />
           </AsideFinishBuy>
         </div>
         <div className="col">
           <AsideFinishBuy title="4 - MÉTODO DE PAGAMENTO" class="paymentMethod">
-            <div className="payment-methods">
-              <li>
-                <img className="iconPaymentMethod" src="./icons/icon-pix.svg" />
-                PIX
-              </li>
-              <li>
-                <img
-                  className="iconPaymentMethod"
-                  src="./icons/icon-boleto.png"
-                />
-                BOLETO
-              </li>
-              <li>
-                <img
-                  className="iconPaymentMethod"
-                  src="./icons/icone-credit-card.png"
-                />
-                CARTÃO DE CRÉDITO
-              </li>
-            </div>
+            <PaymentForm paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
           </AsideFinishBuy>
         </div>
         <div className="col">
           <AsideFinishBuy title="5 - INFORMAÇÕES DO PEDIDO" class="itemsCart">
-            {/* <ProductsList products={shelfProducts}></ProductsList> */}
+            <ProductsList products={cart} />
             <div className="info-cart">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Subtotal ({countItems})</td>
-                    <td>R$ {valorSubTotal}</td>
-                  </tr>
-                  <hr />
-                  <tr>
-                    <td>Entrega</td>
-                    <td>R$ {valorFrete}</td>
-                  </tr>
-                  <hr />
-                  <tr>
-                    <td>Desconto do {metodoDesconto}</td>
-                    <td>R$ {valorDesconto}</td>
-                  </tr>
-                  <hr />
-                  <tr>
-                    <td>Total</td>
-                    <td>R$ {valorTotal}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <Table infos={infos} />
             </div>
-            <button>Finalizar Compra</button>
+            <button onClick={() => finishBuy(15)}>Finalizar Compra</button>
           </AsideFinishBuy>
         </div>
       </main>
