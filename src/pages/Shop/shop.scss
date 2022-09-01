@@ -133,7 +133,7 @@
                 font-size: 0.875rem;
                 color: red;
                 opacity: 0.8;
-                font-weight: 700;
+                font-weight: 00;
                 text-decoration: line-through;
                 text-overflow: ellipsis;
               }
@@ -202,8 +202,10 @@
         }
       }
       select {
+        margin-left: 90%;
+        width: 200px;
         border-radius: 5px;
-        height: 25px;
+        height: 45px;
         background-color: #f3f3f3;
         margin-right: 10px;
         margin-bottom: 20px;

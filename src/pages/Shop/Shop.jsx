@@ -11,8 +11,7 @@ import { useState } from "react";
 import Select from "../../components/Select/Select";
 
 export default function Shop({ products }) {
-
-  const { cart } = useContext(CartContext)
+  const { cart } = useContext(CartContext);
   // const [filter, setFilter] = useState('')
 
   // const handleChange = event => {
@@ -21,9 +20,9 @@ export default function Shop({ products }) {
   // }
 
   const orderByOptions = [
-    {value: 'asc', text:'maior preço'},
-    {value: 'desc', text:'menor preço'}
-  ]
+    { value: "desc", text: "maior preço" },
+    { value: "asc", text: "menor preço" },
+  ];
   const [selectValue, setSelectValue] = useState("");
   const updateSelectState = (event) => setSelectValue(event.target.value);
 
@@ -95,9 +94,15 @@ export default function Shop({ products }) {
             <option value="desc">Preço: Ordem Decrescente</option>
           </select> */}
           <div className="ul-products">
-            <Select label='ordenar por:' options={orderByOptions} onChange={updateSelectState} value={selectValue}/>
+            <Select
+              label="ordenar por:"
+              options={orderByOptions}
+              onChange={updateSelectState}
+              value={selectValue}
+              placeholder={selectValue}
+            />
             <ul>
-              <AllProducts products={shelfProducts} orderBy={selectValue}/>
+              <AllProducts products={shelfProducts} orderBy={selectValue} />
             </ul>
           </div>
         </div>
