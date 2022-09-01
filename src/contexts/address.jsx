@@ -66,10 +66,11 @@ export const AddressProvider = ({ children }) => {
     }
 
     useEffect(() => { setAddressesDatas() }, [address.cep]);
-    
-    const getById = (addressId) => useFetch(`api/protected/addresses/${addressId}`);
 
-    const { data } = useFetch('api/protected/client/addresses/all/15');
+    const getById = (addressId) => useFetch(`api/protected/addresses/${addressId}`).data;
+
+    const userId = 1; // Change to authenticated user_id
+    const { data } = useFetch(`api/protected/client/addresses/all/${userId}`);
     const state = {
         address,
         addresses: data,

@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { AddressContext } from '../../../contexts/address';
 
 import Select from '../../Select/Select';
@@ -9,17 +7,17 @@ import SelectedAddressInfos from './SelectedAddressInfos';
 import './AddressForm.scss';
 
 export default () => {
-    const [selectValue, setSelectValue] = useState('');
-    const onSelectChange = (event) => setSelectValue(event.target.value);
+    const [addressId, setAddressId] = useState('');
+    const onAddressChange = (event) => setAddressId(event.target.value);
 
     return (
         <div className="address-form">
-            <Select defaultValueLabel="selecionar endereço" onChange={onSelectChange} options={getSelectOptions(useContext(AddressContext).addresses)} />
-            <SelectedAddressInfos addressId={selectValue} />
+            <Select defaultValueLabel="selecionar endereço" onChange={onAddressChange} options={getSelectOptions()} />
+            <SelectedAddressInfos addressId={addressId} />
         </div>
     );
 }
 
-const getSelectOptions = (addresses) => addresses.map(address => {
+const getSelectOptions = () => useContext(AddressContext).addresses.map(address => {
     return { value: address.id, text: address.address }
-})
+});
