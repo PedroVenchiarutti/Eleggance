@@ -238,11 +238,6 @@
     //       }
     // =======
     a {
-      .svgCart {
-        margin-top: 10px;
-        width: 71px;
-        margin-left: 30px;
-      }
 
       align-items: center;
       justify-content: center;
@@ -285,6 +280,9 @@
             background: transparent;
             cursor: pointer;
             margin-left: 5px;
+            img{
+              width: 35px;
+            }
           }
         }
       }
