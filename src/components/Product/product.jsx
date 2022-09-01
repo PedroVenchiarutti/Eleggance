@@ -7,15 +7,33 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import Ratings from '../Ratings';
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default ({ id }) => {
   const { data } = useFetch(`api/public/products/${id}`);
 
   const [showMoreInfos, setShowMoreInfos] = useState(false);
   const toggleMoreInfos = () => setShowMoreInfos(!showMoreInfos);
+
   const [quantity, setQuantity] = useState(1);
 
+  const [notification, setNotification] = useState('');
+  const [shouldUpdateNotification, setShouldUpdateNotification] = useState(false);
+  useEffect(() => {
+    if (shouldUpdateNotification)
+      setTimeout(() => {
+        setNotification('');
+        setShouldUpdateNotification(false);
+      }, 10000);
+  }, [notification])
+
   const { productData } = useContext(CartContext);
+
+  const addToCart = (event, productInfos) => {
+    productData(event, productInfos);
+    setShouldUpdateNotification(true);
+    setNotification('Produto adicionado ao carrinho');
+  }
 
   if (data.length) {
     const infos = {
@@ -26,7 +44,6 @@ export default ({ id }) => {
       qt: +quantity
     }
 
-    console.log(data)
     return (
       <div className="container-components-product">
         <div className="container-top-products">
@@ -68,13 +85,14 @@ export default ({ id }) => {
               <input className="amount-product" type="number" value={quantity} onChange={ev => setQuantity(+ev.target.value)}></input>
             </div>
             <div className="button-buy-center">
-              <button className="button-buy-product" onClick={ev => productData(ev, infos)}>
+              <button className="button-buy-product" onClick={addToCart}>
                 <div className="icon-cart-product">
                   <img src="\icons\ShopCart.png" alt="foto" />
                 </div>
                 <h3>Comprar</h3>
               </button>
             </div>
+            <p className="cart-notification">{notification}</p>
 
             <div className="frete-product">
               <p>Consultar prazo e valor do frete</p>

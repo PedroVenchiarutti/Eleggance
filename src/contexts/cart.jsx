@@ -15,7 +15,6 @@ export const CartProvider = ({ children }) => {
     const productData = (event, data) => {
         event.preventDefault()
         setCart(current => [...current, data])
-        alert('adicionado ao carrinho')
     }
 
     const removeItem = productId => setCart(current => current.filter(cart => cart.id !== productId));
