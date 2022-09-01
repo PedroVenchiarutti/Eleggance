@@ -32,6 +32,7 @@ import { CouponProvider } from "./contexts/coupon";
 import Financas from "./pages/Finances/finances"
 import { EditProvider } from "./contexts/modalEdit";
 import { CartProvider } from "./contexts/cart";
+import { RatingProvider } from "./contexts/rating";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -57,7 +58,7 @@ const changeRoutes = () => {
               <Route exact path="/cadastro" element={<FormCadastro />} />
               <Route exact path="/login" element={<FormSingUp />} />
               <Route exact path="/contato" element={<Schedulling />} />
-              <Route exact path="/detalhes/:id" element={<Products />} />
+              <Route exact path="/detalhes/:id" element={<RatingProvider><Products /></RatingProvider>} />
               <Route exact path="/produtos" element={<Shop />} />
               <Route exact path="/financas" element={<Financas />} />
               <Route exact path="/perfil" element={<MyProfile />} />
@@ -67,7 +68,7 @@ const changeRoutes = () => {
               <Route exact path="/perfil/login" element={<MyLogin />} />
               <Route exact path="/perfil/favoritos" element={<ProfileFavorites />}
               />
-              <Route exact path="/perfil/avaliacoes" element={<MyRatings />} />
+              <Route exact path="/perfil/avaliacoes" element={<RatingProvider><MyRatings /></RatingProvider>} />
 
               <Route
                 exact

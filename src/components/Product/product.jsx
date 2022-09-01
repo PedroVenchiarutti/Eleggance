@@ -73,7 +73,7 @@ export default ({ id }) => {
           </div>
           <div className="products-info-price">
             <div className="available-products">
-              <Ratings />
+              <Ratings productId={infos.id} />
               <h1>Nos avalie</h1>
             </div>
             <div className="price-product">
