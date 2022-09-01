@@ -32,7 +32,7 @@ export default function AllProducts({ products , orderBy}) {
       return;
     }
   }
-
+  
       return(
         data.sort((a, b) => compareFunction(a, b))
         .map((product, index) => {

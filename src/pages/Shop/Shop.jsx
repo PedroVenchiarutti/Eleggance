@@ -95,7 +95,7 @@ export default function Shop({ products }) {
             <option value="desc">Preço: Ordem Decrescente</option>
           </select> */}
           <div className="ul-products">
-            <Select label='ordenar por:' options={orderByOptions} onChange={updateSelectState}/>
+            <Select label='ordenar por:' options={orderByOptions} onChange={updateSelectState} value={selectValue}/>
             <ul>
               <AllProducts products={shelfProducts} orderBy={selectValue}/>
             </ul>

@@ -10,7 +10,6 @@ export default function HomeDashboard() {
   return (
     <div className="dashboard-container">
       <MenuDashboard />
-
       <main>
         <Header titleHead="Pedidos" />
         <Orders />
