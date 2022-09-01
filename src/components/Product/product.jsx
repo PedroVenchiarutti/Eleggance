@@ -85,7 +85,7 @@ export default ({ id }) => {
               <input className="amount-product" type="number" value={quantity} onChange={ev => setQuantity(+ev.target.value)}></input>
             </div>
             <div className="button-buy-center">
-              <button className="button-buy-product" onClick={addToCart}>
+              <button className="button-buy-product" onClick={ev => addToCart(ev, infos)}>
                 <div className="icon-cart-product">
                   <img src="\icons\ShopCart.png" alt="foto" />
                 </div>

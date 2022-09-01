@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
-import { useContext } from "react";
-import { AddressContext } from "../../../contexts/address";
+import Api from "../../../api/api";
 
 export default ({ addressId }) => {
-    const { getById } = useContext(AddressContext);
+    const [addressText, setAddressText] = useState('');
 
-    return addressId ? getById(addressId).map(address => {
-        const addressText = `${address.address} - ${address.cep} - ${address.district} | ${address.city}`
+    if (addressId) {
+        Api.get(`api/protected/addresses/${addressId}`).then(resp => {
+            const address = resp.data[0];
+            setAddressText(`${address.address} - ${address.cep} - ${address.district} | ${address.city}`);
+        });
+
         return (
             <div className="address-infos">
                 <span>{addressText}</span>
@@ -16,5 +19,5 @@ export default ({ addressId }) => {
                 </button>
             </div>
         )
-    }) : false
+    } else return;
 }

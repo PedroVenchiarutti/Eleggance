@@ -67,7 +67,7 @@ export const AddressProvider = ({ children }) => {
 
     useEffect(() => { setAddressesDatas() }, [address.cep]);
 
-    const getById = (addressId) => useFetch(`api/protected/addresses/${addressId}`).data;
+    const getById = async addressId => (await Api.get(`api/protected/addresses/${addressId}`).data);
 
     const userId = 1; // Change to authenticated user_id
     const { data } = useFetch(`api/protected/client/addresses/all/${userId}`);
