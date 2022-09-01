@@ -12,14 +12,21 @@ export default () =>
     <Table headerColumnsArray={[]} bodyObjectsArray={getRows()} />
 
 const getRows = () => {
-    const { getByAuthenticatedUser, deleteRating, getRatingProduct } = useContext(RatingContext);
-    
-    const ratings = getByAuthenticatedUser();
-    ratings.forEach(rating => {
-        console.log(getRatingProduct(rating.product_id));
-    });
+    const { ratings, products, deleteRating } = useContext(RatingContext);
 
-    return [];
+    const onDeleteClick = ratingId => deleteRating(ratingId);
+
+    return ratings.length && products.length ? ratings.map((rating, index) => {
+        const product = products[index];
+        console.log(product);
+
+        return {
+            image: <td><img src={product.url_img} /></td>,
+            productInfos: getProductInfos(product.name, false),
+            rating: getProductRating(rating.stars),
+            button: <td><TrashButton onClick={() => onDeleteClick(rating.id)} /></td>
+        }
+    }) : [];
 }
 
 const getProductInfos = (name, inSale) =>
