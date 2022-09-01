@@ -2,14 +2,24 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../contexts/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss";
+import ModalUser from "../ModalUser/ModalUser";
 export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
+  const [modalUser, setModalUser] = useState(false);
 
   // Abrir/Fechar menu mobile Hamburguer
   const ToggleMode = () => {
     setMode(!active);
+  };
+
+  const navigation = useNavigate();
+
+  //
+  const ToggleModalUser = () => {
+    setModalUser(!modalUser);
+    console.log("modalUser", modalUser);
   };
 
   // Pega a imagen do localStorage e renderizar na tela
@@ -43,31 +53,23 @@ export const Navbar = () => {
     }
     console.log(linkImg);
   };
+
   //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
   const userLogged = () => {
     const height = window.screen.height;
     const width = window.screen.width;
+
     if (height >= 600 && width >= 600 && authenticated) {
+      // renderizando Desktop
       return (
-// <<<<<<< HEAD=
-//         <div className="navbar-user-logged-mobile">
-//           <div className="navbar-user-logged-name-mobile">
-//             <button>
-//               <img src="/img/Frame.svg" className="svgUser-mobile" />
-//             </button>
-//             <button className="buttonCart">
-//               <Link to="/carrinho">
-//                 <img src="/icons/shoppingCart.svg" className="svgCart" />
-//               </Link>
-//             </button>
-//           </div>
-// =======
         <div className="navbar-user-logged">
           <div className="navbar-user-logged-name">
             {renderImage()}
             <div className="navbar-user-name-logout">
               <h4>
-                <span>{loginName.toUpperCase()}</span>
+                <span onClick={() => navigation("/perfil")}>
+                  {loginName.toUpperCase()}
+                </span>
               </h4>
               <button onClick={userLogout}>Sair</button>
             </div>
@@ -77,7 +79,6 @@ export const Navbar = () => {
               <img src="/icons/shoppingCart.svg" className="svgCart" />
             </Link>
           </button>
-{/* >>>>>>> fab52d74559bccac682280cb08820324e4906052 */}
         </div>
       );
     } else if (height >= 600 && width >= 600 && !authenticated) {
@@ -103,14 +104,15 @@ export const Navbar = () => {
       return (
         <div className="navbar-user-logged-mobile">
           <div className="navbar-user-logged-name-mobile">
-            <button className="buttonFrame">
+            <button className="buttonFrame" onClick={ToggleModalUser}>
               <img src="/img/Frame.svg" className="svgUser-mobile" />
             </button>
-            <button className="buttonCart">
+            {modalUser ? <ModalUser /> : null}
+            {/*   <button className="buttonCart">
               <Link to="/carrinho">
-                <img src="/icons/shoppingCart.svg" className="svgCart" />
+                <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
               </Link>
-            </button>
+            </button> */}
           </div>
         </div>
       );
