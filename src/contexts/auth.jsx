@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (email, password) => {
+  const login = (email, password, redirectTo = '/home') => {
     const getLocalStorage = localStorage.getItem("user");
     const user = JSON.parse(getLocalStorage);
 
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
     if (user.email == email && user.password == password) {
       setUser(user);
       setLogged(true);
-      navigate("/home");
+      navigate(redirectTo);
     } else {
       setLogged(false);
       alert("Email ou senha incorretos");

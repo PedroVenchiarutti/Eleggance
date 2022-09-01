@@ -1,0 +1,16 @@
+.AsideFinishBuy ul .address-form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .address-infos {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 6px;
+        margin-top: 10px;
+
+        span { width: 80% }
+    }
+}

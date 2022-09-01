@@ -1,322 +1,124 @@
-.cartContainer {
-  overflow-x: hidden;
-  background-color: #fff;
+.item {
 
-  .cardContainer{
-    display: block;
-  }
+  display: flex;
 
-  .second{
-    aside{
-      button{
-        background: none;
-        color: inherit;
-        border: none;
-        padding: 0;
-        font: inherit;
-        cursor: pointer;
-        outline: inherit;
-      }
-    }
-  }
-
-  .info-cart-top {
-    width: 75%;
-    margin: 0 auto;
+  .itemInfo {
     display: flex;
-    padding-bottom: 10px;
-
-    .icon-home-cart {
-      padding-top: 25px;
-      padding-left: 0px;
-    }
-    h1 {
-      font-size: 17px;
-      font-weight: 600;
-      padding-top: 28px;
-      padding-left: 10px;
-    }
+    width: 59%;
   }
 
-  .cartProducts{
+  .imgItem {
+    width: 15%;
+    height: 50px;
+    margin-right: 20px;
+  }
+
+  .quantity {
     display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    flex-direction: column;
+    width: 8%;
 
-  .table-cart {
-    .thead-cart {
-      tr {
-        th {
-          font-weight: 600;
-          letter-spacing: 2px;
-        }
-      }
-    }
-  }
-  
-  table {
-    width: 100%;
-    background-color: #f3f3f3;
-
-    thead tr {
-      background-color: #4e4e4e;
-      color: #f3f3f3;
-      font-size: 16px;
-      padding: 6px;
+    .increaseDecrease {
       display: flex;
-      flex-direction: flex;
+    }
+
+    .increaseDecreaseButton,
+    .quantityInput {
       width: 100%;
-      justify-content: space-around;
+      height: 25px;
+      font-size: 20px;
     }
 
-    thead .col-1 {
-      width: 50%;
-      text-align: left;
-    }
-
-    tbody {
-      border: 3px solid saddlebrown;
-      width: 100%;
-      min-width: 100%;
-
-      tr {
-        display: flex;
-        justify-content: space-around;
-        font-weight: 600;
-        width: 100%;
-        overflow-x: hidden;
-        border-top: 0.25px solid #4e4e4ebd;
-        border-bottom: 0.25px solid #4e4e4ea7;
-
-        td {
-          height: 90px;
-          width: 5%;
-          display: flex;
-          align-items: center;
-          font-size: 14px;
-
-          div {
-            display: flex;
-            flex-direction: column;
-            margin-right: 50%;
-          }
-
-          input {
-            width: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 5px;
-            border: 0.5px solid black;
-            margin-right: 1px;
-          }
-        }
-
-        .tdCol-1 {
-          width: 50%;
-          height: 90px;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-
-          .full-price-promo {
-            color: #f3f3f3;
-            background-color: #e4af39;
-            text-decoration: line-through;
-            text-align: center;
-            width: 100px;
-            border-radius: 50px;
-          }
-        }
-
-        .tdCol-2 {
-          display: flex;
-          align-items: center;
-        }
-
-        .tdCol-3,
-        .tdCol-4 {
-          width: 6%;
-          font-weight: 900;
-          font-size: 1.1rem;
-          color: #e4af39;
-        }
-
-        img {
-          max-width: 55px;
-          max-height: 75px;
-          margin-right: 40px;
-          transition: 0.3s all linear;
-        }
-      }
-    }
-
-    img {
-      transition: 0.3s all linear;
-    }
-
-    img:hover {
+    .removeItem {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
       cursor: pointer;
-      transform: scale(1.1);
+      outline: inherit;
     }
 
-    tfoot {
-      //position: absolute;
-      height: 100px;
-      right: 80px;
-
-      tr th {
-        font-weight: bold;
-      }
-
-      tr td {
-        color: #e4af39;
-        font-weight: 600;
-        text-align: center;
-        width: 100%;
-      }
+    button {
+      background-color: #E4AF39;
+      border: 1px solid #0F0F0F;
+      color: white;
+      border-radius: 20%;
+      line-height: 20px;
+      cursor: pointer;
     }
-  }
-  .actions {
-    height: 100px;
-    position: relative;
-    justify-content: flex-end;
-    right: 60px;
-    display: flex;
-    width: 100%;
-    margin-top: 70px;
 
-    .homeButton {
-      justify-content: center;
-      font-size: 18px;
+    .quantityInput {
+      width: 100%;
+      text-align: center;
+    }
+
+    .deleteProduct {
       display: flex;
-      align-items: center;
-      height: 40px;
-      color: #f3f3f3;
-      width: fit-content;
-      background-color: #e4af39;
-      padding: 8px;
-      margin-left: 15px;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 5px;
-      box-shadow: 2px 2px 8px black;
-      transition: 0.3s all ease-in-out;
-    }
+      font-size: 10px;
 
-    .finishBuyButton {
-      color: #e4af39;
-      font-weight: 700;
-      transition: 0.3s all ease-out;
-    }
-
-    .finishBuyButton:hover {
-      color: #b07b08;
-    }
-
-    .cartContainer main .actions .homeButton:hover {
-      background-color: #d79a16;
-      color: #fff;
+      a {
+        color: #0F0F0F;
+      }
     }
   }
 
-  .imgCartItem:hover {
-    transform: scale(1.5);
-    cursor: pointer;
+  .price {
+    margin-left: 9%;
+  }
+
+  .totalValue {
+    margin-left: 12%;
+  }
+
+  .price,
+  .totalValue {
+    color: #E4AF39;
+    width: 58px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+}
+
+.homeButton {
+  color: #E4AF39;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.finishBuyButton {
+  background-color: #E4AF39;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid #0F0F0F;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.actions {
+  margin: 30px;
+  text-align: end;
+
+}
+
+.info-cart-top {
+  .icon-home-cart {
+    margin-top: 1%;
+    margin-left: 10%;
   }
 }
 
+
 @media (max-width: 1120px) {
-  .cartContainer {
-    width: 100%;
 
-    .cardContainer {
-      width: 320px;
-      height: 291px;
-      border: 1px solid #4e4e4e;
-      font-weight: 600;
-      display: block;
-      list-style: none;
-      margin: 25px 25px;
-      box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.685);
+  .cartContainer .cardContainer {
+    margin: 0px;
 
-      .row {
-        width: 100%;
-        text-align: center;
-      }
-
-      .first label {
-        height: 20%;
-        font-size: 18px;
-      }
-
-      .second {
-        margin-top: 10%;
-        height: 70%;
-        display: flex;
-
-        aside {
-          display: flex;
-          flex-direction: column;
-          width: 50%;
-          height: 100%;
-          align-items: center;
-          justify-content: space-between;
-
-          label .full-price-promo {
-            color: red;
-            text-decoration: line-through;
-          }
-
-          label .price-discount {
-            color: #d79a16;
-          }
-
-          input {
-            width: 50px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 16px;
-            border-radius: 5px;
-          }
-
-          .imgCartItem {
-            max-width: 160px;
-            max-height: 120px;
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.492);
-          }
-
-          .imgCartItem:hover {
-            transform: scale(1.1);
-            cursor: pointer;
-          }
-        }
-      }
-    }
-    ul {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-
-    .actions {
-      font-size: 14px;
-      display: flex;
-      flex-direction: column;
-      right: 5px;
-      height: 150px;
-      justify-content: space-around;
-      align-items: flex-end;
-    }
-
-    .homeButton {
-      text-align: center;
-      width: 150px;
-      font-size: 12px;
-      margin-bottom: 25px;
+    .item .quantity {
+      width: 30%;
     }
   }
 }

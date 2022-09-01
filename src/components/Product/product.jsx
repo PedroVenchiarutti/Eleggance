@@ -21,9 +21,9 @@ export default ({ id }) => {
     const infos = {
       id: data[0].id,
       name: data[0].name,
-      value: data[0].value,
-      url_img: data[0].url_img,
-      qt: quantity
+      value: +data[0].value,
+      image: data[0].url_img,
+      qt: +quantity
     }
 
     console.log(data)
@@ -46,7 +46,7 @@ export default ({ id }) => {
               </div>
             </div>
             <div className="photo-product">
-              <img src={infos.url_img} alt="foto" />
+              <img src={infos.image} alt="foto" />
               <div className="info-products-info">
                 <p className="ul-products">
                   <a onClick={() => toggleMoreInfos()}>Mais Informações</a>

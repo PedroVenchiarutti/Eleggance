@@ -9,6 +9,7 @@ import {
     trendProducts,
   } from "../../api/mock";
 import { useLocation, useParams } from "react-router-dom";
+import './products.scss'
 
 
 export default (state) => {

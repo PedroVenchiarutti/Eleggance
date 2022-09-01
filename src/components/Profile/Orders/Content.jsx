@@ -31,7 +31,7 @@ export default () => {
 
                 <div className="content">
                     <ContentHeader title="Meus pedidos">
-                        <Select label="Ordenar por:" options={orderByOptions} onChange={updateSelectState} />
+                        <Select onChange={updateSelectState} options={orderByOptions} />
                     </ContentHeader>
                     <Table orderBy={selectValue} />
                 </div>

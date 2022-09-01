@@ -7,10 +7,6 @@
   font-family: "poppins";
 }
 
-.cartContainer .cardContainer {
-  display: none;
-}
-
 .cartContainer table {
   width: 100%;
 }
@@ -242,8 +238,7 @@
   }
 
   .cardContainer {
-    width: 320px;
-    height: 291px;
+    width: 100%;
     border: 1px solid #4e4e4e;
   }
 

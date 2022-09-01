@@ -85,7 +85,9 @@ const changeRoutes = () => {
                 path="/finalizarCompra"
                 element={
                   <Private>
-                    <FinishBuy />
+                    <AddressProvider>
+                      <FinishBuy />
+                    </AddressProvider>
                   </Private>
                 }
               />

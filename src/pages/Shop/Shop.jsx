@@ -7,10 +7,25 @@ import AllProducts from "../../components/AllProducts/index";
 import { shelfProducts } from "../../api/mock";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
+import { useState } from "react";
+import Select from "../../components/Select/Select";
 
 export default function Shop({ products }) {
 
   const { cart } = useContext(CartContext)
+  // const [filter, setFilter] = useState('')
+
+  // const handleChange = event => {
+  //   console.log(event.target.value)
+  //   setFilter(event.target.value)
+  // }
+
+  const orderByOptions = [
+    {value: 'asc', text:'maior preço'},
+    {value: 'desc', text:'menor preço'}
+  ]
+  const [selectValue, setSelectValue] = useState("");
+  const updateSelectState = (event) => setSelectValue(event.target.value);
 
   return (
     <div className="shopContainer">
@@ -74,14 +89,15 @@ export default function Shop({ products }) {
           </div>
         </aside>
         <div className="col-2">
-          <select placeholder="Ordenar Por">
+          {/* <select value={filter} onChange={handleChange} placeholder="Ordenar Por">
             <option value="volvo">Mais Procurados</option>
             <option value="asc">Preço: Ordem Crescente</option>
             <option value="desc">Preço: Ordem Decrescente</option>
-          </select>
+          </select> */}
           <div className="ul-products">
+            <Select label='ordenar por:' options={orderByOptions} onChange={updateSelectState} value={selectValue}/>
             <ul>
-              <AllProducts products={shelfProducts} />
+              <AllProducts products={shelfProducts} orderBy={selectValue}/>
             </ul>
           </div>
         </div>
