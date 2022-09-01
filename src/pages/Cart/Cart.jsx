@@ -20,9 +20,11 @@ export default function Cart({ match }) {
       <main>
         <div className="info-cart-top">
           <div className="icon-home-cart">
-            <img src="\icons\icon-home.png" alt="home" />
+            <Link to='/home'>
+              <img src="\icons\icon-home.png" alt="home" />
+            </Link>
+            <h1>Carrinho de Compras</h1>
           </div>
-          <h1>Carrinho de Compras</h1>
         </div>
         {/* <table className="table-cart">
           <thead className="thead-cart">
@@ -51,11 +53,13 @@ export default function Cart({ match }) {
         </ul>
       </main>
         <div className="actions">
-          <Link to="/shop" className="finishBuyButton">
-            Continuar Comprando
+          <Link to="/produtos" className="homeButton">
+            CONTINUAR COMPRANDO
           </Link>
-          <Link to="/finalizarCompra" className="homeButton">
-            Finalizar Compra
+          <Link to="/finalizarCompra" >
+            <button type="button" className="finishBuyButton">
+              FINALIZAR COMPRA
+            </button>
           </Link>
         </div>
       <Carrousel

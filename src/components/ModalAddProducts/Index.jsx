@@ -35,6 +35,7 @@ export default function ModalAddProduct() {
 
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = (e) => {
+    document.querySelector('.btnCadastrarProduto').disabled = true
     e.preventDefault();
     const file = e.target[5]?.files[0];
     console.log(file);
@@ -65,6 +66,7 @@ export default function ModalAddProduct() {
           console.log("valorzin", valor);
           postItem();
           setProgress(true);
+          window.location.reload()
         })
 
         .catch((error) => {
@@ -72,6 +74,7 @@ export default function ModalAddProduct() {
           return <div>Error...</div>;
         });
     });
+   
   };
 
   function modalToggle() {
@@ -87,6 +90,11 @@ export default function ModalAddProduct() {
     });
     setImages("");
   }
+
+  // function disableButton(){
+  //   let button = document.querySelector('.btnCadastrarProduto')
+  //   button.disabled = true
+  // }
 
   return (
     <div className="modalAddProducts" id="modalAddProducts">
@@ -155,7 +163,7 @@ export default function ModalAddProduct() {
             />
           </div>
           <div className="areaBtn">
-            <button type="submit" className="btn btnCadastrarProduto">
+            <button type="submit" className="btn btnCadastrarProduto" >
               Cadastrar Produto
             </button>
             <div

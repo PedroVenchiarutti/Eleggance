@@ -25,6 +25,11 @@ export default function ItemAdminProducts() {
       })
   }
 
+  function removedItemReturn(){
+    alert('item removido')
+    window.location.reload()
+  }
+
   return (
     <>
       {data.map((data) => {
@@ -63,7 +68,7 @@ export default function ItemAdminProducts() {
                 <img
                   className="icon-trash"
                   src="/icons/trashIcon.svg"
-                  onClick={removeItem}
+                  onClick={() => removedItemReturn()}
                 />
               </button>
             </td>
