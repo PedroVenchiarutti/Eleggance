@@ -15,6 +15,8 @@ import Table from "../../components/FinishBuy/Table";
 export default function FinishBuy() {
   const { cart, finishBuy } = useContext(CartContext);
 
+  const [selectValue, setSelectValue] = useState('');
+
   const [paymentMethod, setPaymentMethod] = useState('');
   const [couponDiscount, setCouponDiscount] = useState(0);
   
