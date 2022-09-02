@@ -18,7 +18,7 @@ export default () => {
             {/* <Card text="Reservas" quantity={data[0].reservations} /> */}
             <Card link="/admin/cupons" text="Cupons gerados" quantity={dashboard.discounts} />
             <Card link="/admin/pedidos" text="Pedidos" quantity={dashboard.requests} />
-            <Card link="/admin/pedidos" text="Usuários cadastrados" quantity={dashboard.users} />
+            <Card link="#" text="Usuários cadastrados" quantity={dashboard.users} />
         </div>
     </div>
 }

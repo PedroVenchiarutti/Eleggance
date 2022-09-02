@@ -11,7 +11,7 @@ export default () => {
 
     return (
         <div className="table-content">
-            <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses ?? [])} />
+            <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses)} />
         </div>
     )
 }

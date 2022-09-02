@@ -15,12 +15,10 @@ import Table from "../../components/FinishBuy/Table";
 export default function FinishBuy() {
   const { cart, finishBuy } = useContext(CartContext);
 
-  const [selectValue, setSelectValue] = useState('');
-
   const [paymentMethod, setPaymentMethod] = useState('');
   const [couponDiscount, setCouponDiscount] = useState(0);
   
-  const sum = (accumulated, current) => +accumulated ?? 0 + +current ?? 0;
+  const sum = (accumulated, current) => (+accumulated ?? 0) + (+current ?? 0);
   
   const subTotalPrice = cart.map(product => product.qt * product.value).reduce(sum, 0);
   const infos = {

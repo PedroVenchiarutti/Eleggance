@@ -7,7 +7,7 @@ import './Table.scss'
 
 export default ({ orderBy }) => {
     const { data } = useFetch('api/protected/request/');
-    return <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(data ?? [], orderBy)} />
+    return <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(data, orderBy)} />
 }
 
 const getHeadRows = () => [<>
@@ -76,7 +76,6 @@ const getOrderProductsInfos = products => (
     <>
         <td className="products">
             <div className="products-cell">
-                <img src="/img/produtos/gloss.png" alt="" />
                 <div>{products.map(product => <p className="product-name">{product.name}</p>)}</div>
             </div>
         </td>
@@ -94,7 +93,7 @@ const getInfoCell = (status, price) => (
     </td>
 )
 
-const sum = (accumulated, current) => +accumulated ?? 0 + +current ?? 0;
+const sum = (accumulated, current) => (+accumulated ?? 0) + (+current ?? 0);
 
 /**
  * Retorna o total de produtos da venda.
@@ -105,4 +104,4 @@ const getProductsQuantity = products => products.map(product => product.qt_produ
  * Retorna o preço do pedido.
  */
 const getOrderPrice = products =>
-    parseFloat(products.map(product => product.value * product.qt_product).reduce(sum, 0).toFixed(2));
+    parseFloat(products.map(product => product.value * product.qt_product).reduce(sum, 0).toFixed(2)).toString().replace('.', ',');

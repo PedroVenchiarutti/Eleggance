@@ -13,8 +13,8 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
 
     const productData = (event, data) => {
-        event.preventDefault()
-        setCart(current => [...current, data])
+        event.preventDefault();
+        setCart(current => [...current, data]);
     }
 
     const removeItem = productId => setCart(current => current.filter(cart => cart.id !== productId));
@@ -26,7 +26,7 @@ export const CartProvider = ({ children }) => {
         setCart([...cart]);;
     }
 
-    const finishBuy = (addressId) => {    
+    const finishBuy = (addressId) => {
         const order = {
             user_id: 1, // Change to authenticated user id
             date: Math.floor(Date.now() / 1000),

@@ -5,7 +5,7 @@ import Table from '../../Table/Table';
 
 export default () => {
     const { coupons } = useContext(CouponContext);
-    return  <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getRows(coupons ?? [])} />
+    return  <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getRows(coupons)} />
 }
 
 const getHeadRow = () => [
