@@ -7,7 +7,6 @@ import "../../pages/HomePage/HomePage.scss";
 import "swiper/css/navigation";
 
 export const HomeBanner = ({ images }) => {
-  
   const renderSlides = () => {
     if (window.screen.width <= 400 && window.screen.height <= 670) {
       return images.map((image, index) => {

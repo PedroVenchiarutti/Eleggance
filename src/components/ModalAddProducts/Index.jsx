@@ -26,7 +26,7 @@ export default function ModalAddProduct() {
     await Api.post(`api/protected/product`, valor)
       .then((res) => {
         console.log(res);
-        alert('Produto adicionado')
+        alert("Produto adicionado");
       })
       .catch(function (error) {
         console.error(error);
@@ -35,7 +35,7 @@ export default function ModalAddProduct() {
 
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = (e) => {
-    document.querySelector('.btnCadastrarProduto').disabled = true
+    document.querySelector(".btnCadastrarProduto").disabled = true;
     e.preventDefault();
     const file = e.target[5]?.files[0];
     console.log(file);
@@ -52,7 +52,7 @@ export default function ModalAddProduct() {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
-      (error) => { }
+      (error) => {}
     );
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
@@ -66,7 +66,6 @@ export default function ModalAddProduct() {
           console.log("valorzin", valor);
           postItem();
           setProgress(true);
-          window.location.reload()
         })
 
         .catch((error) => {
@@ -74,7 +73,6 @@ export default function ModalAddProduct() {
           return <div>Error...</div>;
         });
     });
-   
   };
 
   function modalToggle() {
@@ -163,7 +161,7 @@ export default function ModalAddProduct() {
             />
           </div>
           <div className="areaBtn">
-            <button type="submit" className="btn btnCadastrarProduto" >
+            <button type="submit" className="btn btnCadastrarProduto">
               Cadastrar Produto
             </button>
             <div
