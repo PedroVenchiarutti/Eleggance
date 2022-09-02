@@ -7,6 +7,7 @@ import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
 
 export default function ModalAddProduct() {
+  const [imagesUrl, setImagesUrl] = useState(null);
   const [valor, setValor] = useState({
     name: "",
     description: "",
@@ -16,16 +17,17 @@ export default function ModalAddProduct() {
     url_img: "",
   });
   const [images, setImages] = useState("");
-  const [imagesUrl, setImagesUrl] = useState("");
   const [previelImg, setPrevielImg] = useState(
     "/icons/iconmonstr-photo-camera-6-72.png"
   );
   const [progress, setProgress] = useState(false);
 
   const postItem = async (e) => {
-    await Api.post(`api/protected/product`, valor)
+    await Api.post(`api/protected/product`, {
+      ...valor,
+      url_img: e,
+    })
       .then((res) => {
-        console.log(res);
         alert("Produto adicionado");
       })
       .catch(function (error) {
@@ -49,7 +51,8 @@ export default function ModalAddProduct() {
         console.log("snapshot", snapshot);
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(progress);
+
+        setProgress(true);
       },
       (error) => {}
     );
@@ -57,21 +60,25 @@ export default function ModalAddProduct() {
       getDownloadURL(storageRef)
         .then((url) => {
           let urlImage = url;
-          setImagesUrl(urlImage);
-          setValor({
-            ...valor,
-            url_img: urlImage,
-          });
-          console.log("valorzin", valor);
-          postItem();
-          setProgress(true);
+          console.log(urlImage);
+          if (urlImage === undefined) {
+            alert("Erro ao carregar imagem");
+            return;
+          }
+          postItem(urlImage);
+          setProgress(false);
+          alert("Imagem carregada com sucesso");
+          location.reload();
         })
-
         .catch((error) => {
           console.log(error);
           return <div>Error...</div>;
         });
     });
+
+    /*  if (valor.url_img !== "") {
+      postItem();
+    } */
   };
 
   function modalToggle() {
@@ -125,7 +132,10 @@ export default function ModalAddProduct() {
               }
             />
             <label>Marca</label>
-            <select name="brand" onChange={e => setValor({...valor, brand: e.target.value})}>
+            <select
+              name="brand"
+              onChange={(e) => setValor({ ...valor, brand: e.target.value })}
+            >
               <option value="newHair">New Hair</option>
               <option value="natura">Natura</option>
               <option value="boticario">O Boticário</option>
@@ -175,6 +185,7 @@ export default function ModalAddProduct() {
             >
               Cancelar
             </div>
+            {progress ? <Loading /> : null}
           </div>
         </div>
       </Form>
