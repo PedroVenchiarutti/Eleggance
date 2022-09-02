@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/auth";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
 import { useFetch } from "../../hooks/useFetch";
-import Logic from "./logic";
+import Search from "./Search";
 export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
@@ -169,8 +169,9 @@ export const Navbar = () => {
             <div className="hamburguer hamburguerIcon"></div>
           </div>
         </nav>
+  
       </div>
-      <Logic busca={busca} />
+      <Search busca={busca} />
     </div>
   );
 };

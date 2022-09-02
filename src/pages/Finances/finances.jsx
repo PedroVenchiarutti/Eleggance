@@ -6,7 +6,6 @@ import CardFinance from "../../components/CardFinances/cardFinance";
 import NavBarFinances from "../../components/NabBarFinance/navBarFinances";
 import { useState } from "react";
 import Api from "../../api/api";
-import { useFetch } from "../../hooks/useFetch";
 
 const Finances = (props) => {
   const getTheDateCurrent = (e) => {
