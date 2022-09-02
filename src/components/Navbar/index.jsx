@@ -1,20 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./navbar.scss";
 import ModalUser from "../ModalUser/ModalUser";
+import { useFetch } from "../../hooks/useFetch";
+import Search from "./Search";
 
 export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
+  const [busca, setBusca] = useState("");
   const [modalUser, setModalUser] = useState(false);
-
-  // Abrir/Fechar menu mobile Hamburguer
-  const ToggleMode = () => {
-    setMode(!active);
-  };
-
   const navigation = useNavigate();
 
   //
@@ -23,11 +21,16 @@ export const Navbar = () => {
     console.log("modalUser", modalUser);
   };
 
-  // Pega a imagen do usuario e renderizar na navbar se nao tiver img pega a img padrao
+  // Abrir/Fechar menu mobile Hamburguer
+  const ToggleMode = () => {
+    setMode(!active);
+  };
+
+  // Pega a imagen do localStorage e renderizar na tela
   const renderImage = () => {
     return (
       <button onClick={() => navigation("/perfil")}>
-        <img src="/icons/userWhite.svg" alt="Foto usuario" />;
+        <img src="/icons/userWhite.svg" alt="Foto usuario" />
       </button>
     );
   };
@@ -45,7 +48,9 @@ export const Navbar = () => {
             {renderImage()}
             <div className="navbar-user-name-logout">
               <h4>
-                <span>{loginName.toUpperCase()}</span>
+                <span onClick={() => navigation("/perfil")}>
+                  {loginName.toUpperCase()}
+                </span>
               </h4>
               <button onClick={userLogout}>Sair</button>
             </div>
@@ -96,47 +101,55 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="navbar-container">
-      <nav>
-        <div className="logoInSearch">
-          <Link to="/">
-            <img src="/logo.png" className="logo-navbar" />
-          </Link>
-          <div className="inputSearch">
-            <div className="inputList">
-              <input type="text" id="txtBusca" placeholder="Buscar..." />
-              <div className={active ? "menu menuOpen" : "menu menuClose"}>
-                <div className="list-container">
-                  <div className="list">
-                    <ul>
-                      <li>
-                        <Link to="/">Home</Link>
-                      </li>
-                      <li>
-                        <Link to="/produtos">Produtos</Link>
-                      </li>
-                      <li>
-                        <Link to="/contato">Contato</Link>
-                      </li>
-                    </ul>
+    <div>
+      <div className="navbar-container">
+        <nav>
+          <div className="logoInSearch">
+            <Link to="/">
+              <img src="/logo.png" />
+            </Link>
+            <div className="inputSearch">
+              <div className="inputList">
+                <input
+                  type="text"
+                  id="txtBusca"
+                  placeholder="Buscar..."
+                  onChange={(ev) => setBusca(ev.target.value.toUpperCase())}
+                />
+                <div className={active ? "menu menuOpen" : "menu menuClose"}>
+                  <div className="list-container">
+                    <div className="list">
+                      <ul>
+                        <li>
+                          <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                          <Link to="/produtos">Produtos</Link>
+                        </li>
+                        <li>
+                          <Link to="/contato">Contato</Link>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
+              <button>
+                <img src="/icons/iconmonstr-search-thin.svg" />
+              </button>
             </div>
-            <button>
-              <img src="/icons/iconmonstr-search-thin.svg" />
-            </button>
           </div>
-        </div>
-        {/* menu hamburgue */}
-        {userLogged()}
-        <div
-          className={active ? "icon iconActive" : "icon"}
-          onClick={ToggleMode}
-        >
-          <div className="hamburguer hamburguerIcon"></div>
-        </div>
-      </nav>
+          {/* menu hamburgue */}
+          {userLogged()}
+          <div
+            className={active ? "icon iconActive" : "icon"}
+            onClick={ToggleMode}
+          >
+            <div className="hamburguer hamburguerIcon"></div>
+          </div>
+        </nav>
+      </div>
+      <Search busca={busca} />
     </div>
   );
 };

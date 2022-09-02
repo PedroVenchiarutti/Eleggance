@@ -143,9 +143,11 @@ const changeRoutes = () => {
               <Route
                 path="/registration"
                 element={
-                  <Private>
-                    <RegistrationForm />
-                  </Private>
+                  <PrivateLogin>
+                    <Private>
+                      <RegistrationForm />
+                    </Private>
+                  </PrivateLogin>
                 }
               />
               <Route exact path="/admin" element={<AdminLogin />} />
