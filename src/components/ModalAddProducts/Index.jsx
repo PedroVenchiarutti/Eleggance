@@ -11,7 +11,7 @@ export default function ModalAddProduct() {
     name: "",
     description: "",
     value: 0,
-    brand: "",
+    brand: "newHair",
     qt: 1,
     url_img: "",
   });
@@ -26,16 +26,15 @@ export default function ModalAddProduct() {
     await Api.post(`api/protected/product`, valor)
       .then((res) => {
         console.log(res);
-        alert('Produto adicionado')
+        alert("Produto adicionado");
       })
       .catch(function (error) {
         console.error(error);
       });
   };
-
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = (e) => {
-    document.querySelector('.btnCadastrarProduto').disabled = true
+    document.querySelector(".btnCadastrarProduto").disabled = true;
     e.preventDefault();
     const file = e.target[5]?.files[0];
     console.log(file);
@@ -52,7 +51,7 @@ export default function ModalAddProduct() {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
-      (error) => { }
+      (error) => {}
     );
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
@@ -66,7 +65,6 @@ export default function ModalAddProduct() {
           console.log("valorzin", valor);
           postItem();
           setProgress(true);
-          window.location.reload()
         })
 
         .catch((error) => {
@@ -74,7 +72,6 @@ export default function ModalAddProduct() {
           return <div>Error...</div>;
         });
     });
-   
   };
 
   function modalToggle() {
@@ -127,13 +124,19 @@ export default function ModalAddProduct() {
                 setValor({ ...valor, description: e.target.value })
               }
             />
-            <label>Categoria</label>
-            <input
+            <label>Marca</label>
+            <select name="brand" onChange={e => setValor({...valor, brand: e.target.value})}>
+              <option value="newHair">New Hair</option>
+              <option value="natura">Natura</option>
+              <option value="boticario">O Boticário</option>
+              <option value="avon">Avon</option>
+            </select>
+            {/* <input
               maxLength={45}
               type="text"
               value={valor.brand}
               onChange={(e) => setValor({ ...valor, brand: e.target.value })}
-            />
+            /> */}
             <label>Quantidade Disponível</label>
             <input
               maxLength={3}
@@ -163,7 +166,7 @@ export default function ModalAddProduct() {
             />
           </div>
           <div className="areaBtn">
-            <button type="submit" className="btn btnCadastrarProduto" >
+            <button type="submit" className="btn btnCadastrarProduto">
               Cadastrar Produto
             </button>
             <div

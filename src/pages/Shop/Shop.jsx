@@ -8,7 +8,8 @@ import { shelfProducts } from "../../api/mock";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import { useState } from "react";
-import Select from "../../components/Select/Select";
+import Select from "../../components/Select/Select"; 
+import ShopFilter from "../../components/ShopFilter";
 
 export default function Shop({ products }) {
   const { cart } = useContext(CartContext);
@@ -30,69 +31,8 @@ export default function Shop({ products }) {
     <div className="shopContainer">
       <Navbar />
       <main>
-        <aside>
-          <div className="modal">
-            <ul>
-              <h1>Filtrar</h1>
-              <hr />
-              <li>
-                <input type="checkbox" />
-                <label>Frete Grátis</label>
-              </li>
-              <hr />
-              <h2>Gênero</h2>
-              <li>
-                <input type="checkbox" />
-                <label>Masculino</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>Feminino</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>Unissex</label>
-              </li>
-              <hr />
-              <h2>Marca</h2>
-              <li>
-                <input type="checkbox" />
-                <label>New Hair</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>Natura</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>O Boticário</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>Avon</label>
-              </li>
-              <hr />
-              <h2>Preço</h2>
-              <div className="filter-by-price">
-                <li>
-                  <label> de </label>
-                  <input type="number" />
-                </li>
-                <li>
-                  <label>Até</label>
-                  <input type="number" />
-                </li>
-              </div>
-              <button className="button-apply">Aplicar</button>
-            </ul>
-          </div>
-        </aside>
+        <ShopFilter />
         <div className="col-2">
-          {/* <select value={filter} onChange={handleChange} placeholder="Ordenar Por">
-            <option value="volvo">Mais Procurados</option>
-            <option value="asc">Preço: Ordem Crescente</option>
-            <option value="desc">Preço: Ordem Decrescente</option>
-          </select> */}
           <div className="ul-products">
             <Select
               label="ordenar por:"
