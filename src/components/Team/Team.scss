@@ -67,7 +67,7 @@
     transition: 0.3s;
   }
   //========HOVER========\\
-  
+
   .team-second {
     justify-content: center;
     align-items: center;
@@ -77,13 +77,13 @@
     height: 100%;
     padding: 20px;
     border-radius: 5px;
-    
+
     .photo-employee {
       max-width: 400px;
       min-height: 400px;
       width: 100%;
       height: 40%;
-      
+
       img {
         width: 100%;
         height: 100%;
@@ -95,7 +95,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto;
-      
+
       h4 {
         text-align: center;
         font-size: 30px;
@@ -105,14 +105,14 @@
       }
     }
   }
-  
+
   //========HOVER========\\
   .team-second:hover {
     box-shadow: 2px 2px 20px #222;
     transition: 0.3s;
   }
   //========HOVER========\\
-  
+
   .team-third {
     justify-content: center;
     align-items: center;
@@ -122,13 +122,13 @@
     height: 100%;
     padding: 20px;
     border-radius: 5px;
-    
+
     .photo-employee {
       max-width: 400px;
       min-height: 400px;
       width: 100%;
       height: 40%;
-      
+
       img {
         width: 100%;
         height: 100%;
@@ -140,7 +140,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto;
-      
+
       h4 {
         text-align: center;
         font-size: 30px;
@@ -150,7 +150,7 @@
       }
     }
   }
-  
+
   //========HOVER========\\
   .team-third:hover {
     box-shadow: 2px 2px 20px #222;
@@ -169,20 +169,25 @@
     display: flex;
     justify-content: center;
     height: 10vh;
-    a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #ffce45;
-      border-radius: 6px;
-      font-size: 1.375rem;
-      height: 40px;
-      width: 350px;
-      font-weight: bold;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      text-decoration: none;
-      color: #222;
+
+    button {
+      border: none;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffce45;
+        border-radius: 6px;
+        font-size: 1.375rem;
+        height: 40px;
+        width: 350px;
+        font-weight: bold;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-decoration: none;
+        color: #222;
+      }
     }
   }
 }
@@ -227,7 +232,6 @@
       .photo-employee {
         min-height: none;
         max-width: none;
-        
       }
 
       .details-team {
@@ -244,7 +248,6 @@
       .photo-employee {
         min-height: none;
         max-width: none;
-       
       }
 
       .details-team {
@@ -254,5 +257,4 @@
       }
     }
   }
-
 }

@@ -3,13 +3,31 @@ import Footer from "../../pages/Footer/Footer";
 import "./Team.scss";
 
 export default (props) => {
+  const notificationSubmit = () => {
+    if (!window.Notification) return;
+
+    Notification.requestPermission().then(showNotification);
+  };
+
+  function showNotification(permision) {
+    if (permision !== "granted") return;
+
+    const notification = new Notification(
+      "Sera encaminhando um link para Chat do Whats",
+      {
+        body: "This is a notification",
+        icon: "https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/react-512.png",
+      }
+    );
+  }
+
   return (
     <div className="container-team">
       <h4 id="h4-titulo">Nossa equipe</h4>
       {/* ============================================= */}
       {/* =====TEAM===== */}
       <div className="cast-team">
-      {/* ============================================= */}
+        {/* ============================================= */}
         {/* =====TEAM 1 ANA===== */}
         <div className="team-first">
           <div className="photo-employee">
@@ -66,9 +84,11 @@ export default (props) => {
       {/* =====CONTAINER BUTTON===== */}
       <div className="container-button-team">
         <div className="container-agendamento-button">
-          <a href="/solicitation" className="agendamento-button">
-            <p>Solicite um agendamento</p>
-          </a>
+          <button onClick={notificationSubmit}>
+            <a href="" className="agendamento-button">
+              Solicite um agendamento
+            </a>
+          </button>
         </div>
       </div>
       {/* =====CONTAINER BUTTON===== */}

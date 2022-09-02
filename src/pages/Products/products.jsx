@@ -1,29 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import LastProducts from "../../components/LastProducts/lastProducts";
 import { Navbar } from "../../components/Navbar";
 import Footer from "../Footer/Footer";
 import Product from "../../components/Product/product";
 import Carrousel from "../../components/Carrousel/Carrousel.jsx";
-import {
-    shelfProducts,
-    trendProducts,
-  } from "../../api/mock";
 import { useLocation, useParams } from "react-router-dom";
-import './products.scss'
-
+import { useFetch } from "../../hooks/useFetch";
+import "./products.scss";
 
 export default (state) => {
-  const location = useLocation()
+  //pegando Rota atual
+  const location = useLocation();
 
-  console.log(location)
+  
+  const { data } = useFetch(`api/public/products/pages/1`);
+
+  console.log(location);
   const { id } = useParams();
+
   return (
     <div>
       <Navbar />
       <Product id={id} />
-      <Carrousel products={shelfProducts} title="Ofertas" />
+      <Carrousel products={data} title="Ofertas" />
 
-      <Carrousel products={trendProducts} title="Tendências" />
+      <Carrousel products={data} title="Tendências" />
       <Footer />
     </div>
   );
