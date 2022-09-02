@@ -2,31 +2,26 @@ import React from "react";
 import "./infoproduct.scss";
 
 export default (props) => {
+  console.log(props.data[0].qt);
+
   return (
     <div className="container-info-product">
       <ul>
         <li>
-          <h3>NH New Hair Blindagem no Chuveiro 150g </h3>
+          <h3>{props.data[0].name}</h3>
         </li>
         <li>
           <h4> Informações dos Produtos </h4>
         </li>
         <li>
-          <p>
-            A máscara NH New Hair Blindagem no Chuveiro é um tratamento
-            termoativado para todos os tipos de cabelo. Possui ativos
-            inteligentes que garantem um liso com efeito memória, ou seja,
-            quanto mais você usar, mais intenso fica o resultado. Solução
-            perfeita para facilitar o cuidado com os fios, promovendo a
-            manutenção do liso em casa. E o melhor: sem danificar os fios com
-            química, ou seja, SEM FORMOL. Além de promover uma hidratação
-            profunda, deixando os cabelos soltos e sem volume.
-          </p>
+          <p>{props.data[0].description}</p>
         </li>
         <li>
           <h4>Modo de usar</h4>
         </li>
         <li>
+          {/* Tem que colocar o modo de usar e as precaucoes no banco de dados junto com o produto
+           */}
           <p>
             NH New Hair Blindagem no Chuveiro aplique-o por todo comprimento do
             cabelo limpos e úmidos, deixe agir por até 20 minutos. Enxague para
