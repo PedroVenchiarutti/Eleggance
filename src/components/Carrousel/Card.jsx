@@ -12,8 +12,7 @@ const Card = ({ product }) => {
       <div className="container-img-promo">
         <img src={product.url_img} alt="tete" className="product-img-carrousel"/>
         <div className="container-text-product">
-           {/* solução melhor em vez de <br>? */}
-          <span className="title-product-promo">{product.name}</span>
+          <span className="title-product-promo">{product.name}</span> {/*Se colocar br aqui quebra o /produtos, esse card é usado no carrousel e no /produtos */}
           <span className="full-price-promo">{product.description}</span><br />
           <span className="cash-payment">à vista</span><br />
           <span className="price-discount">{product.discount}</span>
