@@ -1,7 +1,6 @@
 import { useFetch } from '../../../hooks/useFetch'
 
 import Table from "../../Table/Table";
-import Loading from '../../SpinerLoader'
 
 import '../Dashboard.scss';
 import './Orders.scss';
@@ -12,19 +11,19 @@ export default () => {
 
     return (
         <div className="content">
-            {data.length ? <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data)} /> : <Loading />}
+            <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data ?? [])} />
         </div>
     )
 }
 
 const getRows = (orders) => orders.map(order => {
     const status = order.status ?? "Pendente";
-    const products = order.products;
-    const sum = (t, v) => t + v;
+    const products = order.products ?? [];
+    const sum = (accumulated, current) => +accumulated ?? 0 + +current ?? 0;
 
     return {
         products: getOrderProductsInfos(products),
-        price: `R$${products.map(product => +product.value * product.qt_product || 0).reduce(sum).toFixed(2)}`,
+        price: `R$${products.map(product => +product.value * product.qt_product || 0).reduce(sum, 0).toFixed(2)}`,
         status: getOrderStatus(status, status),
         id: order.id
     }

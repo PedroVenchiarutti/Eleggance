@@ -20,11 +20,11 @@ export default function FinishBuy() {
   const [paymentMethod, setPaymentMethod] = useState('');
   const [couponDiscount, setCouponDiscount] = useState(0);
   
-  const sum = (t, v) => t + v;
+  const sum = (accumulated, current) => +accumulated ?? 0 + +current ?? 0;
   
-  const subTotalPrice = cart.map(product => (+product.qt || 0) * (+product.value || 0)).reduce(sum);
+  const subTotalPrice = cart.map(product => product.qt * product.value).reduce(sum, 0);
   const infos = {
-    totalItems: cart.map(product => +product.qt || 0).reduce(sum),
+    totalItems: cart.map(product => product.qt).reduce(sum, 0),
     subTotalPrice,
     shippingPrice: 19.99,
     paymentMethod,

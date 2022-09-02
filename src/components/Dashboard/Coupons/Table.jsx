@@ -1,14 +1,11 @@
 import { useContext } from "react"
 import { CouponContext } from "../../../contexts/coupon"
 
-import Loading from '../../SpinerLoader';
 import Table from '../../Table/Table';
 
 export default () => {
     const { coupons } = useContext(CouponContext);
-
-    return coupons.length ?
-        <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getRows(coupons)} /> : <Loading />
+    return  <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getRows(coupons ?? [])} />
 }
 
 const getHeadRow = () => [

@@ -1,20 +1,13 @@
 import React from "react";
 import { useFetch } from "../../../hooks/useFetch";
 
-import Loading from '../../SpinerLoader'
 import Table from "../../Table/Table";
 
 import './Table.scss'
 
 export default ({ orderBy }) => {
     const { data } = useFetch('api/protected/request/');
-
-    return (
-        <div className="table-content">{
-            data.length ?
-                <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(data, orderBy)} /> : <Loading />
-        }</div>
-    )
+    return <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(data ?? [], orderBy)} />
 }
 
 const getHeadRows = () => [<>
@@ -41,7 +34,7 @@ const getBodyObjects = (ordersList, orderBy) => sortListByOptions(ordersList, or
 const sortListByOptions = (ordersList, orderBy) => {
     // Mapeia a lista pra facilitar a ordenação da lista.
     ordersList = ordersList.map(order => {
-        const products = order.products;
+        const products = order.products ?? [];
 
         return {
             id: order.id,
@@ -101,15 +94,15 @@ const getInfoCell = (status, price) => (
     </td>
 )
 
-const sum = (accumulated, current) => accumulated + current;
+const sum = (accumulated, current) => +accumulated ?? 0 + +current ?? 0;
 
 /**
  * Retorna o total de produtos da venda.
  */
-const getProductsQuantity = products => products.map(product => +product.qt_product).reduce(sum);
+const getProductsQuantity = products => products.map(product => product.qt_product).reduce(sum, 0);
 
 /**
  * Retorna o preço do pedido.
  */
 const getOrderPrice = products =>
-    parseFloat(products.map(product => (+product.value * +product.qt_product) || 0).reduce(sum).toFixed(2));
+    parseFloat(products.map(product => product.value * product.qt_product).reduce(sum, 0).toFixed(2));

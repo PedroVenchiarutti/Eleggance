@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { AddressContext } from "../../../contexts/address";
 
-import Loading from '../../SpinerLoader'
 import Table from '../../Table/Table';
 import TrashButton from "../common/TrashButton";
 
@@ -10,9 +9,11 @@ import './Table.scss'
 export default () => {
     const { addresses } = useContext(AddressContext);
 
-    return <div className="table-content">
-        {addresses.length ? <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses)} /> : <Loading />}
-    </div>
+    return (
+        <div className="table-content">
+            <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses ?? [])} />
+        </div>
+    )
 }
 
 const getHeadRow = () => [<>
