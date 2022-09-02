@@ -11,7 +11,7 @@ export default function ModalAddProduct() {
     name: "",
     description: "",
     value: 0,
-    brand: "",
+    brand: "newHair",
     qt: 1,
     url_img: "",
   });
@@ -32,7 +32,6 @@ export default function ModalAddProduct() {
         console.error(error);
       });
   };
-
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = (e) => {
     document.querySelector(".btnCadastrarProduto").disabled = true;
@@ -125,13 +124,19 @@ export default function ModalAddProduct() {
                 setValor({ ...valor, description: e.target.value })
               }
             />
-            <label>Categoria</label>
-            <input
+            <label>Marca</label>
+            <select name="brand" onChange={e => setValor({...valor, brand: e.target.value})}>
+              <option value="newHair">New Hair</option>
+              <option value="natura">Natura</option>
+              <option value="boticario">O Boticário</option>
+              <option value="avon">Avon</option>
+            </select>
+            {/* <input
               maxLength={45}
               type="text"
               value={valor.brand}
               onChange={(e) => setValor({ ...valor, brand: e.target.value })}
-            />
+            /> */}
             <label>Quantidade Disponível</label>
             <input
               maxLength={3}
