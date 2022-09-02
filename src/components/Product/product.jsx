@@ -92,7 +92,7 @@ export default ({ id }) => {
             </div>
           </div>
         </div>
-        {showMoreInfos ? <InfoProducts /> : null}
+        {showMoreInfos ? <InfoProducts data= {data}/> : null}
       </div>
     )
   } else return <div className="spinner-center"><Loading /></div>
