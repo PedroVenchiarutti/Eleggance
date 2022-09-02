@@ -7,27 +7,27 @@ import TrashButton from '../common/TrashButton';
 import Ratings from '../../Ratings'
 
 import './Table.scss'
+import { useFetch } from '../../../hooks/useFetch';
 
-export default () =>
-    <Table headerColumnsArray={[]} bodyObjectsArray={getRows()} />
+export default () => <Table headerColumnsArray={[]} bodyObjectsArray={getRows()} />
 
 const getRows = () => {
-    const { ratings, products, deleteRating } = useContext(RatingContext);
+    const { ratings, deleteRating } = useContext(RatingContext);
 
-    const onDeleteClick = ratingId => deleteRating(ratingId);
-
-    return ratings.length && products.length ? ratings.map((rating, index) => {
-        const product = products[index];
-        console.log(product);
+    return ratings.map(rating => {
+        const { data } = useFetch(`api/public/products/${rating.product_id}`);
+        const product = data[0] ?? {};
 
         return {
-            image: <td><img src={product.url_img} /></td>,
+            key: rating.id,
+            image: <td><img src={product.url_img} alt="Imagem do produto" /></td>,
             productInfos: getProductInfos(product.name, false),
-            rating: getProductRating(rating.stars),
-            button: <td><TrashButton onClick={() => onDeleteClick(rating.id)} /></td>
+            rating: getProductRating(rating.stars, product.id),
+            button: <td><TrashButton onClick={() => deleteRating(rating.id)} /></td>
         }
-    }) : [];
+    })
 }
+
 
 const getProductInfos = (name, inSale) =>
     <td className='products-cell'>
@@ -37,4 +37,4 @@ const getProductInfos = (name, inSale) =>
         </div>
     </td>
 
-const getProductRating = (ratingStars) => <td className='responsive-hide'><Ratings selectedStar={ratingStars} /></td>
+const getProductRating = (ratingStars, productId) => <td className='responsive-hide'><Ratings selectedStar={ratingStars} productId={productId} /></td>

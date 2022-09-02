@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./product.scss";
 import InfoProducts from "./infoproduct.jsx";
 import { useFetch } from "../../hooks/useFetch";
-import Loading from '../../components/SpinerLoader';
+import Loading from "../../components/SpinerLoader";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
-import Ratings from '../Ratings';
+import Ratings from "../Ratings";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -41,8 +41,8 @@ export default ({ id }) => {
       name: data[0].name,
       value: +data[0].value,
       image: data[0].url_img,
-      qt: +quantity
-    }
+      qt: +quantity,
+    };
 
     return (
       <div className="container-components-product">
@@ -58,15 +58,21 @@ export default ({ id }) => {
               <h1>{data[0].name}</h1>
               <div className="info-p-products">
                 <p>ref: {data[0].id}</p>
-                {/* <p>Estoque: <span>Em Estoque</span> </p>
-            <p>Marca: <span>Marca do Produto</span> </p> */}
+                <p>
+                  Estoque: <span>Em Estoque</span>
+                </p>
+                <p>
+                  Marca: <span>Marca do Produto</span>
+                </p>
               </div>
             </div>
             <div className="photo-product">
               <img src={infos.image} alt="foto" />
               <div className="info-products-info">
                 <p className="ul-products">
-                  <a onClick={() => toggleMoreInfos()}>Mais Informações</a>
+                  <a onClick={() => toggleMoreInfos()}>
+                    Clique para Mais Informações <span>&#8595;</span>
+                  </a>
                 </p>
               </div>
             </div>
@@ -77,12 +83,20 @@ export default ({ id }) => {
               <h1>Nos avalie</h1>
             </div>
             <div className="price-product">
-              <h1> R$ {infos.value.toFixed(2).replace('.', ',')}</h1>
-              <h3> 10x de {(infos.value / 10).toFixed(2).replace('.', ',')} sem JUROS </h3>
+              <h1> R$ {infos.value.toFixed(2).replace(".", ",")}</h1>
+              <h3>
+                10x de {(infos.value / 10).toFixed(2).replace(".", ",")} sem
+                JUROS
+              </h3>
             </div>
             <div className="button-product">
-              Quantidade:{" "}
-              <input className="amount-product" type="number" value={quantity} onChange={ev => setQuantity(+ev.target.value)}></input>
+              Quantidade:
+              <input
+                className="amount-product"
+                type="number"
+                value={quantity}
+                onChange={(ev) => setQuantity(+ev.target.value)}
+              ></input>
             </div>
             <div className="button-buy-center">
               <button className="button-buy-product" onClick={ev => addToCart(ev, infos)}>
@@ -110,8 +124,13 @@ export default ({ id }) => {
             </div>
           </div>
         </div>
-        {showMoreInfos ? <InfoProducts /> : null}
+        {showMoreInfos ? <InfoProducts data={data} /> : null}
       </div>
-    )
-  } else return <div className="spinner-center"><Loading /></div>
+    );
+  } else
+    return (
+      <div className="spinner-center">
+        <Loading />
+      </div>
+    );
 };

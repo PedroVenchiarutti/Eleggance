@@ -84,6 +84,7 @@ const FormSingUp = (props) => {
                   <div className="footer-card-singup">
                     <Link to="/">Esqueci minha senha</Link>
                     <Link to="/cadastro">Cadastre aqui</Link>
+                    <Link to="/">Continuar sem entrar</Link>
                   </div>
                 </div>
               </div>

@@ -7,11 +7,9 @@ const Footer = (props) => {
       <div className="footer__container">
         <div className="footer__container__left">
           <div className="footer__container__left__logo">
-            <a href="#">
-              <div className="footer_logo">
-                <img src="/logo.png" />
-              </div>
-            </a>
+            <div className="footer_logo">
+              <img src="/logo.png" />
+            </div>
             <div className="footer_content_img">
               <img src="/img/teste.png" />
             </div>

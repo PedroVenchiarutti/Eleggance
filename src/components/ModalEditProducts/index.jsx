@@ -29,6 +29,7 @@ export default function ModalEditProduct() {
   }
   // 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
   const firebaseUpload = (e) => {
+    document.querySelector('.btnCadastrarProduto').disabled = true
     e.preventDefault();
     const file = e.target[5]?.files[0];
     console.log(file, 'oi');
@@ -56,6 +57,7 @@ export default function ModalEditProduct() {
           console.log("valorzin", urlImage);
           postItem();
           setProgress(true);
+          window.location.reload()
         })
 
         .catch((error) => {

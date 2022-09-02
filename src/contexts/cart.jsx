@@ -40,8 +40,8 @@ export const CartProvider = ({ children }) => {
         }
 
         Api.post('http://localhost:3333/api/protected/request', order).then(() => {
-
-            //não tá funcionando
+            // não tá funcionando qnd tá com mais de um item no carrinho, mas ainda assim tá salvando na api
+            alert('Pedido realizado com sucesso.');
             const navigate = useNavigate();
             navigate('/perfil/pedidos');
         }).catch(error => {

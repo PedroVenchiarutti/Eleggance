@@ -80,7 +80,9 @@ export default function FinishBuy() {
             <div className="info-cart">
               <Table infos={infos} />
             </div>
-            <button onClick={() => finishBuy(15)}>Finalizar Compra</button>
+            <Link to='/perfil/pedidos'>
+              <button onClick={() => finishBuy(15)}>Finalizar Compra</button>
+            </Link>
           </AsideFinishBuy>
         </div>
       </main>

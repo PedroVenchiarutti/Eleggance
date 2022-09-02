@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/index";
 import Footer from "../Footer/Footer";
 import ProductsList from "../../components/ProductsLIst/index";
@@ -10,17 +10,22 @@ import "./Cart.scss";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
+import { AuthContext } from "../../contexts/auth";
 
 export default function Cart({ match }) {
+  const { authenticated } = useContext(AuthContext);
+  const navigation = useNavigate();
 
-  const { cart } = useContext(CartContext)
+  if (!authenticated) navigation("/login");
+
+  const { cart } = useContext(CartContext);
   return (
     <div className="cartContainer">
       <Navbar />
       <main>
         <div className="info-cart-top">
           <div className="icon-home-cart">
-            <Link to='/home'>
+            <Link to="/home">
               <img src="\icons\icon-home.png" alt="home" />
             </Link>
             <h1>Carrinho de Compras</h1>
@@ -52,16 +57,16 @@ export default function Cart({ match }) {
           <ProductsCard products={cart} />
         </ul>
       </main>
-        <div className="actions">
-          <Link to="/produtos" className="homeButton">
-            CONTINUAR COMPRANDO
-          </Link>
-          <Link to="/finalizarCompra" >
-            <button type="button" className="finishBuyButton">
-              FINALIZAR COMPRA
-            </button>
-          </Link>
-        </div>
+      <div className="actions">
+        <Link to="/produtos" className="homeButton">
+          CONTINUAR COMPRANDO
+        </Link>
+        <Link to="/finalizarCompra">
+          <button type="button" className="finishBuyButton">
+            FINALIZAR COMPRA
+          </button>
+        </Link>
+      </div>
       <Carrousel
         products={shelfProducts}
         title="Baseado Nas Suas Ultimas Visitas"
