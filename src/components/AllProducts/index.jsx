@@ -57,7 +57,7 @@ export default function AllProducts({ products, orderBy }) {
         <div className="modal">
           <ul>
             <h1>Filtrar</h1>
-            <hr />
+            {/* <hr />
             <li>
               <input type="checkbox" />
               <label>Frete Grátis</label>
@@ -76,7 +76,7 @@ export default function AllProducts({ products, orderBy }) {
               <input type="checkbox" />
               <label>Unissex</label>
             </li>
-            <hr />
+            <hr /> */}
             <h2>Marca</h2>
             <li>
               <input type="checkbox" defaultChecked  value="newHair" onClick={(e) => toggleBrands(e.target.value)}/>

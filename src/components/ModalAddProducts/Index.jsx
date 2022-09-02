@@ -116,14 +116,19 @@ export default function ModalAddProduct() {
               onChange={(e) => setValor({ ...valor, value: e.target.value })}
             />
             <label>Descrição:</label>
-            <input
+            {/* <input
               maxLength={255}
               type="text"
               value={valor.description}
               onChange={(e) =>
                 setValor({ ...valor, description: e.target.value })
               }
-            />
+            /> */}
+            <textarea name="description" cols="27" rows="6"
+            value={valor.description}
+            onChange={(e) =>
+              setValor({ ...valor, description: e.target.value })}>
+              </textarea>
             <label>Marca</label>
             <select name="brand" onChange={e => setValor({...valor, brand: e.target.value})}>
               <option value="newHair">New Hair</option>
