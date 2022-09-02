@@ -4,6 +4,7 @@ import {
   Route,
   Routes,
   Navigate,
+  useMatch,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import FormSingUp from "./pages/FormSingUp/FormSingUp";
@@ -48,11 +49,23 @@ const changeRoutes = () => {
 
   const PrivateCard = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
+    const path = useMatch("/login");
+    console.log(path);
+
     if (loading) {
       return <div className="loading">Loading...</div>;
     }
     if (!authenticated) {
       return <Navigate to="/login" />;
+    } else {
+      return children;
+    }
+  };
+
+  const PrivateLogin = ({ children }) => {
+    const { authenticated, loading } = useContext(AuthContext);
+    if (authenticated) {
+      return <Navigate to="/home" />;
     } else {
       return children;
     }
@@ -65,8 +78,24 @@ const changeRoutes = () => {
           <EditProvider>
             <Routes>
               <Route exact path="/home" element={<HomePage />} />
-              <Route exact path="/cadastro" element={<FormCadastro />} />
-              <Route exact path="/login" element={<FormSingUp />} />
+              <Route
+                exact
+                path="/cadastro"
+                element={
+                  <PrivateLogin>
+                    <FormCadastro />
+                  </PrivateLogin>
+                }
+              />
+              <Route
+                exact
+                path="/login"
+                element={
+                  <PrivateLogin>
+                    <FormSingUp />
+                  </PrivateLogin>
+                }
+              />
               <Route exact path="/contato" element={<Schedulling />} />
               <Route exact path="/detalhes/:id" element={<Products />} />
               <Route exact path="/produtos" element={<Shop />} />

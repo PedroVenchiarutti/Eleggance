@@ -3,6 +3,7 @@ import { AuthContext } from "../../contexts/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss";
 import ModalUser from "../ModalUser/ModalUser";
+
 export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
@@ -25,8 +26,8 @@ export const Navbar = () => {
   // Pega a imagen do usuario e renderizar na navbar se nao tiver img pega a img padrao
   const renderImage = () => {
     return (
-      <button>
-        <img src="./icons/userWhite.svg" alt="Foto usuario" />;
+      <button onClick={() => navigation("/perfil")}>
+        <img src="/icons/userWhite.svg" alt="Foto usuario" />;
       </button>
     );
   };
@@ -44,9 +45,7 @@ export const Navbar = () => {
             {renderImage()}
             <div className="navbar-user-name-logout">
               <h4>
-                <span onClick={() => navigation("/perfil")}>
-                  {loginName.toUpperCase()}
-                </span>
+                <span>{loginName.toUpperCase()}</span>
               </h4>
               <button onClick={userLogout}>Sair</button>
             </div>
@@ -95,6 +94,7 @@ export const Navbar = () => {
       );
     }
   };
+
   return (
     <div className="navbar-container">
       <nav>

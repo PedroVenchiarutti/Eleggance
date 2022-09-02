@@ -289,12 +289,14 @@ a {
           right: 25px;
         }
         .inputSearch {
+          top: 20px;
+
           #txtBusca {
-            width: 232px;
+            width: 250px;
             margin-top: 2px;
           }
           .inputList {
-            margin-left: 90px;
+            margin-left: 70px;
           }
         }
         button {
@@ -308,7 +310,7 @@ a {
         left: 3%;
         width: fit-content;
         height: 44px;
-        bottom: 8%;
+        bottom: 6%;
         cursor: pointer;
       }
 

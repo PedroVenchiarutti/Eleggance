@@ -12,9 +12,7 @@ export default (props) => {
           <h4> Informações dos Produtos </h4>
         </li>
         <li>
-          {" "}
           <p>
-            {" "}
             A máscara NH New Hair Blindagem no Chuveiro é um tratamento
             termoativado para todos os tipos de cabelo. Possui ativos
             inteligentes que garantem um liso com efeito memória, ou seja,
