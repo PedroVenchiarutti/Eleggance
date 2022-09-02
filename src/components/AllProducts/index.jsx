@@ -98,7 +98,7 @@ export default function AllProducts({ products, orderBy }) {
 
       {data.sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
-          if (product.value > minPrice && product.value < maxPrice && brands.includes(product.brand)) {
+          if (product.value >= minPrice && product.value <= maxPrice && brands.includes(product.brand)) {
             return (
               <li key={index} className="swiper-container">
                 <Link to={`/detalhes/${product.id}`}>
