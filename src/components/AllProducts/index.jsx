@@ -36,6 +36,12 @@ export default function AllProducts({ products, orderBy }) {
     }
   }
 
+  function removeBrands(e) {
+    this.setState({brands: this.state.brands.filter(function(brands) { 
+        return brands !== e.target.value 
+    })});
+  }
+
   return (
     <>
       <aside>
@@ -68,7 +74,7 @@ export default function AllProducts({ products, orderBy }) {
                 <label>New Hair</label>
               </li>
               <li>
-                <input type="checkbox" />
+                <input type="checkbox" onClick={removeBrands}/>
                 <label>Natura</label>
               </li>
               <li>
