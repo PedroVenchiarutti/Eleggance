@@ -15,7 +15,7 @@ export default function AllProducts({ products, orderBy }) {
   const { data } = useFetch(`api/public/products/pages/1`);
   const [minPrice, setMinPrice] = useState('1')
   const [maxPrice, setMaxPrice] = useState('3000')
-  const [brands, setBrands] = useState(['newHair','natura','boticario','avon'])
+  const [brands, setBrands] = useState(['newHair', 'natura', 'boticario', 'avon'])
   if (data == "") {
     return (
       <div className="containerSpiner">
@@ -36,69 +36,78 @@ export default function AllProducts({ products, orderBy }) {
     }
   }
 
-  function removeBrands(e) {
-    this.setState({brands: this.state.brands.filter(function(brands) { 
-        return brands !== e.target.value 
-    })});
+  function toggleBrands(brand) {
+    if(brands.includes(brand)){
+      console.log(brands)
+      setBrands(current =>
+        current.filter(current => {
+          return current !== brand;
+        }),
+      );
+    } else {
+      // brands.concat(brand)
+      setBrands(current => [...current, brand])
+    }
+
   }
 
   return (
     <>
       <aside>
         <div className="modal">
-            <ul>
-              <h1>Filtrar</h1>
-              <hr />
+          <ul>
+            <h1>Filtrar</h1>
+            <hr />
+            <li>
+              <input type="checkbox" />
+              <label>Frete Grátis</label>
+            </li>
+            <hr />
+            <h2>Gênero</h2>
+            <li>
+              <input type="checkbox" />
+              <label>Masculino</label>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <label>Feminino</label>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <label>Unissex</label>
+            </li>
+            <hr />
+            <h2>Marca</h2>
+            <li>
+              <input type="checkbox" defaultChecked  value="newHair" onClick={(e) => toggleBrands(e.target.value)}/>
+              <label>New Hair</label>
+            </li>
+            <li>
+              <input type="checkbox" defaultChecked value="natura" onClick={(e) => toggleBrands(e.target.value)} />
+              <label>Natura</label>
+            </li>
+            <li>
+              <input type="checkbox" defaultChecked value="boticario" onClick={(e) => toggleBrands(e.target.value)}/>
+              <label>O Boticário</label>
+            </li>
+            <li>
+              <input type="checkbox" defaultChecked value="avon" onClick={(e) => toggleBrands(e.target.value)}/>
+              <label>Avon</label>
+            </li>
+            <hr />
+            <h2>Preço</h2>
+            <div className="filter-by-price">
               <li>
-                <input type="checkbox" />
-                <label>Frete Grátis</label>
-              </li>
-              <hr />
-              <h2>Gênero</h2>
-              <li>
-                <input type="checkbox" />
-                <label>Masculino</label>
+                <label> de </label>
+                <input type="number" value={minPrice} onChange={e => setMinPrice(e.target.value)} />
               </li>
               <li>
-                <input type="checkbox" />
-                <label>Feminino</label>
+                <label>Até</label>
+                <input type="number" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} />
               </li>
-              <li>
-                <input type="checkbox" />
-                <label>Unissex</label>
-              </li>
-              <hr />
-              <h2>Marca</h2>
-              <li>
-                <input type="checkbox" name="brand" value="newHair" />
-                <label>New Hair</label>
-              </li>
-              <li>
-                <input type="checkbox" onClick={removeBrands}/>
-                <label>Natura</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>O Boticário</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>Avon</label>
-              </li>
-              <hr />
-              <h2>Preço</h2>
-              <div className="filter-by-price">
-                <li>
-                  <label> de </label>
-                  <input type="number" value={minPrice} onChange={e => setMinPrice(e.target.value)} />
-                </li>
-                <li>
-                  <label>Até</label>
-                  <input type="number" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} />
-                </li>
-              </div>
-              <button className="button-apply" type="submit">Aplicar</button>
-            </ul>
+            </div>
+            <button className="button-apply" type="submit">Aplicar</button>
+          </ul>
         </div>
       </aside>
 
