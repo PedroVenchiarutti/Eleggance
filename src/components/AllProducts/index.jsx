@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "../Carrousel/Card";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import Loading from "../../components/SpinerLoader";
 import "./index.scss";
@@ -10,6 +10,8 @@ import { CartContext } from "../../contexts/cart";
 export default function AllProducts({ products, orderBy }) {
   const { cart, productData } = useContext(CartContext);
   const [progress, setProgress] = useState(true);
+  var { id } = useParams();
+  var i = 0;
   // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
   // GEt
   const { data } = useFetch(`api/public/products/pages/1`);
@@ -20,8 +22,8 @@ export default function AllProducts({ products, orderBy }) {
     "natura",
     "boticario",
     "avon",
-    "Sem marca",
   ]);
+
   if (data == "") {
     return (
       <div className="containerSpiner">
@@ -29,7 +31,7 @@ export default function AllProducts({ products, orderBy }) {
       </div>
     );
   }
-  if (!products) return;
+  if (!products) return
 
   function compareFunction(a, b) {
     if (orderBy == "asc") {
@@ -98,16 +100,6 @@ export default function AllProducts({ products, orderBy }) {
               />
               <label>Avon</label>
             </li>
-
-            <li>
-              <input
-                type="checkbox"
-                defaultChecked
-                value="avon"
-                onClick={(e) => toggleBrands(e.target.value)}
-              />
-              <label>Avon</label>
-            </li>
             <hr />
             <h2>Preço</h2>
             <div className="filter-by-price">
@@ -134,7 +126,6 @@ export default function AllProducts({ products, orderBy }) {
           </ul>
         </div>
       </aside>
-
       {data
         .sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
@@ -143,13 +134,39 @@ export default function AllProducts({ products, orderBy }) {
             product.value <= maxPrice &&
             brands.includes(product.brand)
           ) {
-            return (
-              <li key={index} className="swiper-container">
-                <Link to={`/detalhes/${product.id}`}>
-                  <Card product={product} />
-                </Link>
-              </li>
-            );
+            if (id === "id") {
+              return (
+                <li key={index} className="swiper-container">
+                  <Link to={`/detalhes/${product.id}`}>
+                    <Card product={product} />
+                  </Link>
+                </li>
+              );
+            } else {
+              id = id[0].toUpperCase() + id.substring(1);
+              product.name =
+                product.name[0].toUpperCase() + product.name.substring(1);
+              if (product.name.includes(id)) {
+                return (
+                  <li key={index} className="swiper-container">
+                    <Link to={`/detalhes/${product.id}`}>
+                      <Card product={product} />
+                    </Link>
+                  </li>
+                );
+              } else {
+                if (i == 0) {
+                  i = 1;
+                  return (
+                    <li key={index} className="swiper-container">
+                      <p className="p-all-products-null-products">
+                        Não foi encontrado nenhum produto com esse nome
+                      </p>
+                    </li>
+                  );
+                }
+              }
+            }
           } else {
             return;
           }
