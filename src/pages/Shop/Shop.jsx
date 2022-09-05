@@ -8,7 +8,7 @@ import { shelfProducts } from "../../api/mock";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import { useState } from "react";
-import Select from "../../components/Select/Select"; 
+import Select from "../../components/Select/Select";
 import ShopFilter from "../../components/ShopFilter";
 
 export default function Shop({ products }) {
@@ -31,7 +31,7 @@ export default function Shop({ products }) {
     <div className="shopContainer">
       <Navbar />
       <main>
-        <ShopFilter />
+        <ShopFilter />  
         <div className="col-2">
           <div className="ul-products">
             <Select
