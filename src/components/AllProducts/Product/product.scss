@@ -1,9 +1,8 @@
 .product {
-  // display: flex;
-  // flex-wrap: wrap;
+  margin-top: 20px;
 
   .product-container {
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
     width: 300px;
     margin: 0px 25px;
     height: 70%;
@@ -30,5 +29,13 @@
       text-align: center;
     }
   }
+}
+
+
+@media (max-width: 1120px) {
+
+
+  
+
 
 }

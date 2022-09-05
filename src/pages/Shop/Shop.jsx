@@ -31,7 +31,6 @@ export default function Shop({ products }) {
     <div className="shopContainer">
       <Navbar />
       <main>
-        <ShopFilter />
         <div className="col-2">
           <div className="ul-products">
             <Select
