@@ -6,7 +6,6 @@ const Card = ({ product }) => {
   {
     /* renderizando produtos da API */
   }
-  console.log("--->", product);
 
   const valorConvertido = product.value;
   const valorFormatado = valorConvertido.toString().replace(".", ",");
@@ -23,7 +22,7 @@ const Card = ({ product }) => {
           className="product-img-carrousel"
         />
         <div className="container-text-product">
-          <span className="title-product-promo">{product.name}</span>{" "}
+          <span className="title-product-promo">{product.name}</span>
           {/*Se colocar br aqui quebra o /produtos, esse card é usado no carrousel e no /produtos */}
           {/* <span className="full-price-promo">{product.description}</span><br /> */}
           <span className="cash-payment">à vista</span>

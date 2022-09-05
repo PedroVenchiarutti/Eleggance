@@ -8,14 +8,19 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 
 export default function AllProducts({ products, orderBy }) {
-  const { cart, productData } = useContext(CartContext)
+  const { cart, productData } = useContext(CartContext);
   const [progress, setProgress] = useState(true);
   // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
   // GEt
   const { data } = useFetch(`api/public/products/pages/1`);
-  const [minPrice, setMinPrice] = useState('1')
-  const [maxPrice, setMaxPrice] = useState('3000')
-  const [brands, setBrands] = useState(['newHair','natura','boticario','avon'])
+  const [minPrice, setMinPrice] = useState("1");
+  const [maxPrice, setMaxPrice] = useState("3000");
+  const [brands, setBrands] = useState([
+    "newHair",
+    "natura",
+    "boticario",
+    "avon",
+  ]);
   if (data == "") {
     return (
       <div className="containerSpiner">
@@ -26,85 +31,101 @@ export default function AllProducts({ products, orderBy }) {
   if (!products) return;
 
   function compareFunction(a, b) {
-    if (orderBy == 'asc') {
-      return (a.value - b.value)
-    } else if (orderBy == 'desc') {
-      return (b.value - a.value)
-    }
-    else {
+    if (orderBy == "asc") {
+      return a.value - b.value;
+    } else if (orderBy == "desc") {
+      return b.value - a.value;
+    } else {
       return;
     }
   }
 
   function removeBrands(e) {
-    this.setState({brands: this.state.brands.filter(function(brands) { 
-        return brands !== e.target.value 
-    })});
+    this.setState({
+      brands: this.state.brands.filter(function (brands) {
+        return brands !== e.target.value;
+      }),
+    });
   }
 
   return (
     <>
       <aside>
         <div className="modal">
-            <ul>
-              <h1>Filtrar</h1>
-              <hr />
+          <ul>
+            <h1>Filtrar</h1>
+            <hr />
+            <li>
+              <input type="checkbox" />
+              <label>Frete Grátis</label>
+            </li>
+            <hr />
+            <h2>Gênero</h2>
+            <li>
+              <input type="checkbox" />
+              <label>Masculino</label>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <label>Feminino</label>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <label>Unissex</label>
+            </li>
+            <hr />
+            <h2>Marca</h2>
+            <li>
+              <input type="checkbox" name="brand" value="newHair" />
+              <label>New Hair</label>
+            </li>
+            <li>
+              <input type="checkbox" onClick={removeBrands} />
+              <label>Natura</label>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <label>O Boticário</label>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <label>Avon</label>
+            </li>
+            <hr />
+            <h2>Preço</h2>
+            <div className="filter-by-price">
               <li>
-                <input type="checkbox" />
-                <label>Frete Grátis</label>
-              </li>
-              <hr />
-              <h2>Gênero</h2>
-              <li>
-                <input type="checkbox" />
-                <label>Masculino</label>
+                <label> de </label>
+                <input
+                  type="number"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                />
               </li>
               <li>
-                <input type="checkbox" />
-                <label>Feminino</label>
+                <label>Até</label>
+                <input
+                  type="number"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                />
               </li>
-              <li>
-                <input type="checkbox" />
-                <label>Unissex</label>
-              </li>
-              <hr />
-              <h2>Marca</h2>
-              <li>
-                <input type="checkbox" name="brand" value="newHair" />
-                <label>New Hair</label>
-              </li>
-              <li>
-                <input type="checkbox" onClick={removeBrands}/>
-                <label>Natura</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>O Boticário</label>
-              </li>
-              <li>
-                <input type="checkbox" />
-                <label>Avon</label>
-              </li>
-              <hr />
-              <h2>Preço</h2>
-              <div className="filter-by-price">
-                <li>
-                  <label> de </label>
-                  <input type="number" value={minPrice} onChange={e => setMinPrice(e.target.value)} />
-                </li>
-                <li>
-                  <label>Até</label>
-                  <input type="number" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} />
-                </li>
-              </div>
-              <button className="button-apply" type="submit">Aplicar</button>
-            </ul>
+            </div>
+            <button className="button-apply" type="submit">
+              Aplicar
+            </button>
+          </ul>
         </div>
       </aside>
 
-      {data.sort((a, b) => compareFunction(a, b))
+      {data
+        .sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
-          if (product.value >= minPrice && product.value <= maxPrice && brands.includes(product.brand)) {
+          if (
+            product.value >= minPrice &&
+            product.value <= maxPrice &&
+            brands.includes(product.brand)
+          ) {
             return (
               <li key={index} className="swiper-container">
                 <Link to={`/detalhes/${product.id}`}>
@@ -117,6 +138,5 @@ export default function AllProducts({ products, orderBy }) {
           }
         })}
     </>
-  )
-
+  );
 }

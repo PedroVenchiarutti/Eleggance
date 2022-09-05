@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Card from "./Card";
-import { useFetch } from "../../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 const Carrousel = ({ products, title }) => {
   if (!products) return;
@@ -38,7 +38,12 @@ const Carrousel = ({ products, title }) => {
           {products.map((product, index) => {
             return (
               <SwiperSlide key={index} className="swiper-container">
-                <Card product={product} />
+                <Link
+                  to={`/detalhes/${product.id}`}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Card product={product} />
+                </Link>
               </SwiperSlide>
             );
           })}
