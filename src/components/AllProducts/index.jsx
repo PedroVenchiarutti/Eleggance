@@ -31,7 +31,7 @@ export default function AllProducts({ products, orderBy }) {
       </div>
     );
   }
-  if (!products) return;
+  if (!products) return
 
   function compareFunction(a, b) {
     if (orderBy == "asc") {
