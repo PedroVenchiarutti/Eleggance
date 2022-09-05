@@ -20,6 +20,7 @@ export default function AllProducts({ products, orderBy }) {
     "natura",
     "boticario",
     "avon",
+    "Sem marca",
   ]);
   if (data == "") {
     return (
@@ -40,12 +41,18 @@ export default function AllProducts({ products, orderBy }) {
     }
   }
 
-  function removeBrands(e) {
-    this.setState({
-      brands: this.state.brands.filter(function (brands) {
-        return brands !== e.target.value;
-      }),
-    });
+  function toggleBrands(brand) {
+    if (brands.includes(brand)) {
+      console.log(brands);
+      setBrands((current) =>
+        current.filter((current) => {
+          return current !== brand;
+        })
+      );
+    } else {
+      // brands.concat(brand)
+      setBrands((current) => [...current, brand]);
+    }
   }
 
   return (
@@ -54,41 +61,51 @@ export default function AllProducts({ products, orderBy }) {
         <div className="modal">
           <ul>
             <h1>Filtrar</h1>
-            <hr />
-            <li>
-              <input type="checkbox" />
-              <label>Frete Grátis</label>
-            </li>
-            <hr />
-            <h2>Gênero</h2>
-            <li>
-              <input type="checkbox" />
-              <label>Masculino</label>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <label>Feminino</label>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <label>Unissex</label>
-            </li>
-            <hr />
             <h2>Marca</h2>
             <li>
-              <input type="checkbox" name="brand" value="newHair" />
+              <input
+                type="checkbox"
+                defaultChecked
+                value="newHair"
+                onClick={(e) => toggleBrands(e.target.value)}
+              />
               <label>New Hair</label>
             </li>
             <li>
-              <input type="checkbox" onClick={removeBrands} />
+              <input
+                type="checkbox"
+                defaultChecked
+                value="natura"
+                onClick={(e) => toggleBrands(e.target.value)}
+              />
               <label>Natura</label>
             </li>
             <li>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                defaultChecked
+                value="boticario"
+                onClick={(e) => toggleBrands(e.target.value)}
+              />
               <label>O Boticário</label>
             </li>
             <li>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                defaultChecked
+                value="avon"
+                onClick={(e) => toggleBrands(e.target.value)}
+              />
+              <label>Avon</label>
+            </li>
+
+            <li>
+              <input
+                type="checkbox"
+                defaultChecked
+                value="avon"
+                onClick={(e) => toggleBrands(e.target.value)}
+              />
               <label>Avon</label>
             </li>
             <hr />
