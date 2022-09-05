@@ -12,7 +12,7 @@ export default function HomeDashboard() {
       <MenuDashboard />
 
       <main>
-        <Header />
+        <Header name="Cupons" />
         <Coupons />
       </main>
     </div>

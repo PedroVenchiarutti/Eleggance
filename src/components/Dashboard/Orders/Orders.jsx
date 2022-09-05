@@ -19,11 +19,11 @@ export default () => {
 const getRows = (orders) => orders.map(order => {
     const status = order.status ?? "Pendente";
     const products = order.products ?? [];
-    const sum = (accumulated, current) => +accumulated ?? 0 + +current ?? 0;
+    const sum = (accumulated, current) => (+accumulated || 0) + (+current || 0);
 
     return {
         products: getOrderProductsInfos(products),
-        price: `R$${products.map(product => +product.value * product.qt_product || 0).reduce(sum, 0).toFixed(2)}`,
+        price: `R$${products.map(product => +product.value * +product.qt_product).reduce(sum, 0).toFixed(2)}`,
         status: getOrderStatus(status, status),
         id: order.id
     }
