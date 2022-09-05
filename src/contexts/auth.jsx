@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
+import Api from "../api/api";
 
 // hook para inserir
 import { useFetch } from "../hooks/useFetch";
@@ -25,19 +26,15 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (email, password, redirectTo = '/home') => {
-    const getLocalStorage = localStorage.getItem("user");
-    const user = JSON.parse(getLocalStorage);
-
     if (!login || !email || !password) return alert("Preencha todos os campos");
+    Api.post('api/public/login', { email, password }).then(resp => {
+      // localStorage.setItem("user", JSON.stringify(resp.user));
+      localStorage.setItem("token", resp.token);
 
-    if (user.email == email && user.password == password) {
-      setUser(user);
+      setUser(resp.user);
       setLogged(true);
-      navigate(redirectTo);
-    } else {
-      setLogged(false);
-      alert("Email ou senha incorretos");
-    }
+      // navigate(redirectTo);
+    }).catch(error => alert(error.response.data));
   };
 
   const registerUser = async (resgister) => {
@@ -86,6 +83,7 @@ export const AuthProvider = ({ children }) => {
   const userLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("personal");
+    localStorage.removeItem("token");
     setUser(null);
     setLogged(false);
     setLogout(true);
