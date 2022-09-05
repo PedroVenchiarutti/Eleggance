@@ -16,6 +16,12 @@ export default function AllProducts({ products, orderBy }) {
   const [minPrice, setMinPrice] = useState('1')
   const [maxPrice, setMaxPrice] = useState('3000')
   const [brands, setBrands] = useState(['newHair', 'natura', 'boticario', 'avon'])
+
+  var url = window.location.href;
+  url = url.split("produtos/");
+  url = url[1];
+
+
   if (data == "") {
     return (
       <div className="containerSpiner">
@@ -110,22 +116,38 @@ export default function AllProducts({ products, orderBy }) {
           </ul>
         </div>
       </aside>
-
-      {data.sort((a, b) => compareFunction(a, b))
+      {data
+        .sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
-          if (product.value >= minPrice && product.value <= maxPrice && brands.includes(product.brand)) {
-            return (
-              <li key={index} className="swiper-container">
-                <Link to={`/detalhes/${product.id}`}>
-                  <Card product={product} />
-                </Link>
-              </li>
-            );
+          if (
+            product.value >= minPrice &&
+            product.value <= maxPrice &&
+            brands.includes(product.brand)
+          ) {
+            if (url === "id") {
+              return (
+                <li key={index} className="swiper-container">
+                  <Link to={`/detalhes/${product.id}`}>
+                    <Card product={product} />
+                  </Link>
+                </li>
+              );
+            } else {
+              url = url[0].toUpperCase() + url.substring(1);
+              if (product.name.includes(url)) {
+                return (
+                  <li key={index} className="swiper-container">
+                    <Link to={`/detalhes/${product.id}`}>
+                      <Card product={product} />
+                    </Link>
+                  </li>
+                );
+              }
+            }
           } else {
             return;
           }
         })}
     </>
-  )
-
+  );
 }
