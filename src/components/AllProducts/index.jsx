@@ -88,7 +88,6 @@ export default function AllProducts({ products, orderBy }) {
                 <input type="number" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} />
               </li>
             </div>
-            <button className="button-apply" type="submit">Aplicar</button>
           </ul>
         </div>
       </aside>

@@ -15,18 +15,22 @@
 
     .productName {
       width: 100%;
+      font-size: 20px;
     }
 
     .productDescription {
       width: 100%;
+      font-size: 15px;
       // height: 20%;
-      height: 150px;
+      height: 80px;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .productPrice {
       text-align: center;
+      color: green;
+      font-size: 25px;
     }
   }
 }
