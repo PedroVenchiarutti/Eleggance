@@ -33,16 +33,6 @@ export default () => {
         </div>
 
         <div className="form-group">
-          <label>Valor mínimo</label>
-          <input
-            value={coupon.minValue}
-            maxLength={6}
-            type="number"
-            onChange={(ev) => updateState("minValue", ev.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
           <label>Valor desconto</label>
           <input
             value={coupon.discount}
@@ -57,15 +47,6 @@ export default () => {
             value={coupon.dt_limit}
             type="date"
             onChange={(ev) => updateState("dt_limit", ev.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Quantidade disponível</label>
-          <input
-            value={coupon.availableQuantity}
-            type="number"
-            onChange={(ev) => updateState("availableQuantity", ev.target.value)}
           />
         </div>
 

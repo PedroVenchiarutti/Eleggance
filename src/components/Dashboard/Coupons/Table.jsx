@@ -22,7 +22,6 @@ const getHeadRow = () => [
   "Valor desconto",
   <th className="responsive-hide">Data de início</th>,
   <th className="responsive-hide">Data de expiração</th>,
-  "Quantidade disponível",
 ];
 
 const getRows = (couponsList) =>
@@ -39,6 +38,5 @@ const getRows = (couponsList) =>
           {new Date(coupon.dt_limit).toLocaleDateString()}
         </td>
       ),
-      availableQuantity: coupon.availableQuantity ?? 0,
     };
   });
