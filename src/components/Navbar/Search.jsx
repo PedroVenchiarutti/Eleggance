@@ -10,7 +10,7 @@ export default (props) => {
   let i = 0;
   const a = data.filter(function (obj) {
     if (obj.name) {
-      objName = obj.name.toUpperCase();
+      objName = obj.name.toLowerCase();
       if (objName.includes(props.busca)) {
         if (props.busca != "") {
           if (i <= 2) {
@@ -35,9 +35,7 @@ export default (props) => {
                     <img src={produto.url_img} />
                     <div className="container-produto">
                       <p className="produto-name"> {produto.name}</p>
-                         <p className="produto-value">
-                          Clique para saber mais!
-                      </p>
+                      <p className="produto-value">Clique para saber mais!</p>
                     </div>
                   </div>
                 </div>

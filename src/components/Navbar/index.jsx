@@ -114,7 +114,7 @@ export const Navbar = () => {
                   type="text"
                   id="txtBusca"
                   placeholder="Buscar..."
-                  onChange={(ev) => setBusca(ev.target.value.toUpperCase())}
+                  onChange={(ev) => setBusca(ev.target.value.toLowerCase())}
                 />
                 <div className={active ? "menu menuOpen" : "menu menuClose"}>
                   <div className="list-container">
@@ -134,9 +134,11 @@ export const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <button>
-                <img src="/icons/iconmonstr-search-thin.svg" />
-              </button>
+              <Link to={"/produtos/" + busca}>
+                <button>
+                  <img src="/icons/iconmonstr-search-thin.svg" />
+                </button>
+              </Link>
             </div>
           </div>
           {/* menu hamburgue */}
