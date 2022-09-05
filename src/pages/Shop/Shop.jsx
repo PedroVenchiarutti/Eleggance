@@ -41,7 +41,7 @@ export default function Shop({ products }) {
               value={selectValue}
               placeholder={selectValue}
             />
-            <ul>
+            <ul className="products-container">
               <AllProducts products={shelfProducts} orderBy={selectValue} />
             </ul>
           </div>

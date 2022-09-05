@@ -1,22 +1,9 @@
-// <<<<<<< HEAD
-// a{
-//   text-decoration: none;
-// }
-
-// .container-card {
-//   width: 100%;
-//   height: 100%;
-  
-//   .container-text-product{
-//     color: #111;
-//   }
-// =======
 .container-promo {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-// >>>>>>> df9ca14d256e0a70023cd8fbeb16fc1aa4784136
+
 
   .swiper-pagination {
     position: relative;
@@ -28,6 +15,7 @@
     }
   }
 }
+
   @media (max-width: 1120px) {
     .swiper {
       width: 100vw !important;

@@ -6,6 +6,7 @@ import Loading from "../../components/SpinerLoader";
 import "./index.scss";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
+import Product from "./Product/product";
 
 export default function AllProducts({ products, orderBy }) {
   const { cart, productData } = useContext(CartContext)
@@ -13,9 +14,11 @@ export default function AllProducts({ products, orderBy }) {
   // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
   // GEt
   const { data } = useFetch(`api/public/products/pages/1`);
+
   const [minPrice, setMinPrice] = useState('1')
   const [maxPrice, setMaxPrice] = useState('3000')
   const [brands, setBrands] = useState(['newHair', 'natura', 'boticario', 'avon'])
+
   if (data == "") {
     return (
       <div className="containerSpiner">
@@ -48,35 +51,14 @@ export default function AllProducts({ products, orderBy }) {
       // brands.concat(brand)
       setBrands(current => [...current, brand])
     }
-
   }
 
   return (
     <>
       <aside>
         <div className="modal">
-          <ul>
+          <ul className="filter">
             <h1>Filtrar</h1>
-            {/* <hr />
-            <li>
-              <input type="checkbox" />
-              <label>Frete Grátis</label>
-            </li>
-            <hr />
-            <h2>Gênero</h2>
-            <li>
-              <input type="checkbox" />
-              <label>Masculino</label>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <label>Feminino</label>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <label>Unissex</label>
-            </li>
-            <hr /> */}
             <h2>Marca</h2>
             <li>
               <input type="checkbox" defaultChecked  value="newHair" onClick={(e) => toggleBrands(e.target.value)}/>
@@ -117,7 +99,8 @@ export default function AllProducts({ products, orderBy }) {
             return (
               <li key={index} className="swiper-container">
                 <Link to={`/detalhes/${product.id}`}>
-                  <Card product={product} />
+                  {/* <Card product={product}/> */}
+                  <Product product={product}/>
                 </Link>
               </li>
             );
