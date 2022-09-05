@@ -1,22 +1,9 @@
-// <<<<<<< HEAD
-// a{
-//   text-decoration: none;
-// }
-
-// .container-card {
-//   width: 100%;
-//   height: 100%;
-  
-//   .container-text-product{
-//     color: #111;
-//   }
-// =======
 .container-promo {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-// >>>>>>> df9ca14d256e0a70023cd8fbeb16fc1aa4784136
+  // >>>>>>> df9ca14d256e0a70023cd8fbeb16fc1aa4784136
 
   .swiper-pagination {
     position: relative;
@@ -28,24 +15,23 @@
     }
   }
 }
-  @media (max-width: 1120px) {
-    .swiper {
-      width: 100vw !important;
+@media (max-width: 1120px) {
+  .swiper {
+    width: 100vw !important;
 
-      .swiper-wrapper {
-        width: 100%;
-      }
-    }
-
-    .swiper-slide {
-      margin-right: 20px;
-
-      .container-img-promo {
-        display: flex;
-      }
+    .swiper-wrapper {
+      width: 100%;
     }
   }
 
+  .swiper-slide {
+    margin-right: 20px;
+
+    .container-img-promo {
+      display: flex;
+    }
+  }
+}
 
 .swiperSlidePromo {
   height: 100%;
@@ -155,14 +141,36 @@
       word-spacing: 10%;
     }
 
-    .full-price-promo {
+    .price-installments {
       font-size: 1.15rem;
-      color: #818181;
-      text-decoration: line-through;
+      color: green;
+    }
+
+    .price-installments-parceled {
+      font-size: 1.15rem;
+      color: rgb(167, 7, 7);
     }
 
     span {
       font-size: 0.938rem;
+    }
+
+    .button-buy-card {
+      width: 120px;
+      height: 40px;
+      border-radius: 6px;
+      border: none;
+      background-color: #e1ab38;
+      color: #fff;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+      box-shadow: 3px 2px 7px 0px #0000036e;
+    }
+
+    .button-buy-card:hover {
+      background-color: #f5a300;
+      transition: 0.2ms;
     }
   }
 
