@@ -243,7 +243,38 @@
     }
 
     .p-all-products-null-products {
-      padding-left: 5px
+      padding-left: 5px;
+    }
+  }
+
+  .pagination-container {
+    width: 80%;
+    justify-content: center;
+    display: flex;
+    list-style: none;
+    margin-bottom: 10px;
+    margin-left: 12%;
+    .buttonChangePage button,
+    .currentPage {
+      color: #eab53c;
+      text-transform: capitalize;
+      margin: 0 15px;
+      display: flex;
+      flex-wrap: nowrap;
+      font-size: 16px;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      height: 36px;
+      font-weight: 700;
+      border: none;
+    }
+
+    .currentPage {
+      width: 36px;
+      color: #e2e2e2;
+      border-radius: 50%;
+      background-color: #eab53c;
     }
   }
 

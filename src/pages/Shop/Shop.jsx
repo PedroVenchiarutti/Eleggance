@@ -10,6 +10,7 @@ import { CartContext } from "../../contexts/cart";
 import { useState } from "react";
 import Select from "../../components/Select/Select";
 import ShopFilter from "../../components/ShopFilter";
+import Pagination from "../../components/Pagination/Pagination";
 
 export default function Shop({ products }) {
   const { cart } = useContext(CartContext);
@@ -69,6 +70,7 @@ export default function Shop({ products }) {
           </div>
         </div>
       </main>
+      <Pagination></Pagination>
       <Footer />
     </div>
   );
