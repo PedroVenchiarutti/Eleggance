@@ -44,23 +44,21 @@ export const AuthProvider = ({ children }) => {
 
   const registerUser = userDatas => {
     if (userDatas.login && userDatas.email && userDatas.password && userDatas.confirmPassword) {
-      const userInfos = { 
+      const userInfos = {
         email: userDatas.email,
         password: userDatas.password
       };
 
       localStorage.setItem("userInfos", JSON.stringify(userInfos));
-      setUser(userDatas);
+      setLogged(true);
       navigate("/registration");
     } else alert("Preencha todos os campos");
   }
 
   const personalDataRecord = (personalDatas) => {
-    Api.post('api/public/register', { ...JSON.parse(localStorage.getItem("userInfos")), ...personalDatas } ).then(resp => {
-      setUser(resp.data.user);
-      setToken(resp.data.token);
-      localStorage.removeItem("userInfos");
-      onLoginSuccess('/home');
+    const newUser = { ...JSON.parse(localStorage.getItem("userInfos")), ...personalDatas }
+    Api.post('api/public/register', newUser).then(() => {
+      login(newUser.email, newUser.password);
     }).catch(error => alert(error.response.data));
   };
 
@@ -77,7 +75,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        authenticated: !!user,
+        authenticated: logged,
         user,
         loginName: user && user.name ? user.name : "",
         loading,
