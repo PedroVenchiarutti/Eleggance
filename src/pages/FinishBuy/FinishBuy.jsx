@@ -5,8 +5,8 @@ import ProductsList from "../../components/ProductsLIst";
 import "./FinishBuy.scss";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from '../../contexts/cart';
-import CouponForm from '../../components/FinishBuy/CouponForm';
+import { CartContext } from "../../contexts/cart";
+import CouponForm from "../../components/FinishBuy/CouponForm";
 import Api from "../../api/api";
 import PaymentForm from "../../components/FinishBuy/PaymentForm";
 import AddressForm from "../../components/FinishBuy/AddressForm/AddressForm";
@@ -15,33 +15,43 @@ import Table from "../../components/FinishBuy/Table";
 export default function FinishBuy() {
   const { cart, finishBuy } = useContext(CartContext);
 
-  const [paymentMethod, setPaymentMethod] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState("");
   const [couponDiscount, setCouponDiscount] = useState(0);
-  
+
   const sum = (accumulated, current) => (+accumulated ?? 0) + (+current ?? 0);
-  
-  const subTotalPrice = cart.map(product => product.qt * product.value).reduce(sum, 0);
+
+  const subTotalPrice = cart
+    .map((product) => product.qt * product.value)
+    .reduce(sum, 0);
   const infos = {
-    totalItems: cart.map(product => product.qt).reduce(sum, 0),
+    totalItems: cart.map((product) => product.qt).reduce(sum, 0),
     subTotalPrice,
     shippingPrice: 19.99,
     paymentMethod,
     discount: {
-      ...(paymentMethod) && {
-        byPaymentMethod: paymentMethod === "PIX" ? subTotalPrice * 0.10 : paymentMethod === "BOLETO" ? subTotalPrice * 0.08 : subTotalPrice * 0.05
-      },
-      ...(couponDiscount) && {
-        byCoupon: couponDiscount
-      }
-    }
-  }
+      ...(paymentMethod && {
+        byPaymentMethod:
+          paymentMethod === "PIX"
+            ? subTotalPrice * 0.1
+            : paymentMethod === "BOLETO"
+            ? subTotalPrice * 0.08
+            : subTotalPrice * 0.05,
+      }),
+      ...(couponDiscount && {
+        byCoupon: couponDiscount,
+      }),
+    },
+  };
 
   const handleCouponFormSubmit = (event, couponCode) => {
     event.preventDefault();
 
-    Api.get(`http://localhost:3333/api/public/discount/${couponCode}`)
-      .then(resp => setCouponDiscount(resp.data[0].discount)).catch(setCouponDiscount(0));
-  }
+    Api.get(
+      `https://api-elegancce.herokuapp.com/api/public/discount/${couponCode}`
+    )
+      .then((resp) => setCouponDiscount(resp.data[0].discount))
+      .catch(setCouponDiscount(0));
+  };
 
   return (
     <div className="finishBuyContainer">
@@ -60,7 +70,8 @@ export default function FinishBuy() {
           </AsideFinishBuy>
           <AsideFinishBuy title="2 - FRETE">
             <li>
-              Sedex - prazo dias uteis - R$ {infos.shippingPrice.toFixed(2).replace('.', ',')}
+              Sedex - prazo dias uteis - R${" "}
+              {infos.shippingPrice.toFixed(2).replace(".", ",")}
             </li>
           </AsideFinishBuy>
           <AsideFinishBuy title="3 - CUPOM">
@@ -69,7 +80,10 @@ export default function FinishBuy() {
         </div>
         <div className="col">
           <AsideFinishBuy title="4 - MÉTODO DE PAGAMENTO" class="paymentMethod">
-            <PaymentForm paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
+            <PaymentForm
+              paymentMethod={paymentMethod}
+              setPaymentMethod={setPaymentMethod}
+            />
           </AsideFinishBuy>
         </div>
         <div className="col">
@@ -78,7 +92,7 @@ export default function FinishBuy() {
             <div className="info-cart">
               <Table infos={infos} />
             </div>
-            <Link to='/perfil/pedidos'>
+            <Link to="/perfil/pedidos">
               <button onClick={() => finishBuy(15)}>Finalizar Compra</button>
             </Link>
           </AsideFinishBuy>

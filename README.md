@@ -7,31 +7,26 @@
 
 </div>
 
- 
-
-## Instruções 
+## Instruções
 
 - Para instalar os pacotes tanto na pasta backend, quanto nas pastas frontend
-    
         npm install
-    
 - Para iniciar a aplicação backend
-    
+
         npm run dev
 
 - Para gerar o Swagger
-    
         npm run swagger
 
 <br>
 <br>
 
 ### Local na maquina
-| Serviço | Link |
-| ------ | ------ |
-| Swagger Docs | http://localhost:3333/docs |
-| Rotas | https://localhost:3333/api |
 
+| Serviço      | Link                                     |
+| ------------ | ---------------------------------------- |
+| Swagger Docs | https://api-elegancce.herokuapp.com/docs |
+| Rotas        | https://localhost:3333/api               |
 
 ## Integrantes
 
@@ -57,7 +52,6 @@
 <img src="https://avatars.githubusercontent.com/u/88859663?v=4" style="height:50px; border-radius:100%"/>
 </a>
 </div>
-
 
 ## API do Projeto
 

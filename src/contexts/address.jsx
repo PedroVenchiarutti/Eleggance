@@ -12,7 +12,8 @@ const initialState = {
   complement: "",
 };
 
-const baseApiUrl = "http://localhost:3333/api/protected/client/addresses";
+const baseApiUrl =
+  "https://api-elegancce.herokuapp.com/api/protected/client/addresses";
 
 async function getCepDatas(cep) {
   const response = await (
@@ -83,7 +84,7 @@ export const AddressProvider = ({ children }) => {
   const getById = (addressId) =>
     useFetch(`api/protected/addresses/${addressId}`).data;
 
-  const userId = JSON.parse(localStorage.getItem("user")).id
+  const userId = JSON.parse(localStorage.getItem("user")).id;
   const { data } = useFetch(`api/protected/client/addresses/all/${userId}`);
   const state = {
     address,

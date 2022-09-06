@@ -1,10 +1,10 @@
 import axios, { Axios } from "axios";
 
 const Api = axios.create({
-  baseURL: "http://localhost:3333/",
+  baseURL: "https://api-elegancce.herokuapp.com/",
   headers: {
-    'Authorization': localStorage.getItem("token")
-  }
+    Authorization: localStorage.getItem("token"),
+  },
 });
 
 export default Api;
