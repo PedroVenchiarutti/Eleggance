@@ -130,7 +130,16 @@
 .amount-product {
   width: 40px;
   height: 22px;
-  margin-bottom: 13px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: rgb(187, 187, 187);
+  color: black;
+  text-align: center;
+  width: 50px;
+  height: 30px;
+  outline: none;
+  margin-left: 8px;
 }
 
 .button-buy-center {
@@ -210,16 +219,23 @@
     font-size: 15px;
     border-radius: 6px;
     width: 120px;
+    height: 30px;
     -webkit-appearance: none;
     vertical-align: baseline;
     float: left;
     margin-top: 2px;
+    border: none;
+    box-shadow: 1px 1px 6px 0px #333333;
   }
 
   button {
     border-radius: 6px;
     width: 50px;
     height: 30px;
+    border: none;
+    margin-top: 2px;
+    box-shadow: 1px 1px 6px 0px #333333;
+    cursor: pointer;
   }
 
   input::-webkit-outer-spin-button,
@@ -246,12 +262,12 @@
   //   //padding: 0 10px;
   // }
 
-  .heart-product:not(:checked)>input {
+  .heart-product:not(:checked) > input {
     position: absolute;
     top: -9999px;
   }
 
-  .heart-product:not(:checked)>label {
+  .heart-product:not(:checked) > label {
     float: right;
     width: 1em;
     overflow: hidden;
@@ -261,24 +277,24 @@
     color: #ccc;
   }
 
-  .heart-product:not(:checked)>label:before {
+  .heart-product:not(:checked) > label:before {
     content: " ❤ ";
   }
 
-  .heart-product>input:checked~label {
+  .heart-product > input:checked ~ label {
     color: red;
   }
 
-  .heart-product:not(:checked)>label:hover,
-  .heart-product:not(:checked)>label:hover~label {
+  .heart-product:not(:checked) > label:hover,
+  .heart-product:not(:checked) > label:hover ~ label {
     color: red;
   }
 
-  .heart-product>input:checked+label:hover,
-  .heart-product>input:checked+label:hover~label,
-  .heart-product>input:checked~label:hover,
-  .heart-product>input:checked~label:hover~label,
-  .heart-product>label:hover~input:checked~label {
+  .heart-product > input:checked + label:hover,
+  .heart-product > input:checked + label:hover ~ label,
+  .heart-product > input:checked ~ label:hover,
+  .heart-product > input:checked ~ label:hover ~ label,
+  .heart-product > label:hover ~ input:checked ~ label {
     color: red;
   }
 }

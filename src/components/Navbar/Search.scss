@@ -4,7 +4,7 @@
   position: absolute;
   z-index: 2;
   left: 300px;
-  top: 100px;
+  top: 115px;
   width: 600px;
   height: 250px;
   display: flex;
@@ -18,6 +18,11 @@
       font-size: 14px;
       color: black;
       font-weight: 500;
+
+      width: 150px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     .produto-value {
       font-size: 11px;

@@ -75,10 +75,6 @@ export default function ModalAddProduct() {
           return <div>Error...</div>;
         });
     });
-
-    /*  if (valor.url_img !== "") {
-      postItem();
-    } */
   };
 
   function modalToggle() {
@@ -94,11 +90,6 @@ export default function ModalAddProduct() {
     });
     setImages("");
   }
-
-  // function disableButton(){
-  //   let button = document.querySelector('.btnCadastrarProduto')
-  //   button.disabled = true
-  // }
 
   return (
     <div className="modalAddProducts" id="modalAddProducts">
@@ -123,19 +114,15 @@ export default function ModalAddProduct() {
               onChange={(e) => setValor({ ...valor, value: e.target.value })}
             />
             <label>Descrição:</label>
-            {/* <input
-              maxLength={255}
-              type="text"
+            <textarea
+              name="description"
+              cols="27"
+              rows="6"
               value={valor.description}
               onChange={(e) =>
                 setValor({ ...valor, description: e.target.value })
               }
-            /> */}
-            <textarea name="description" cols="27" rows="6"
-            value={valor.description}
-            onChange={(e) =>
-              setValor({ ...valor, description: e.target.value })}>
-              </textarea>
+            ></textarea>
             <label>Marca</label>
             <select
               name="brand"
@@ -145,6 +132,7 @@ export default function ModalAddProduct() {
               <option value="natura">Natura</option>
               <option value="boticario">O Boticário</option>
               <option value="avon">Avon</option>
+              <option value="semMarca">Sem marca</option>
             </select>
             {/* <input
               maxLength={45}

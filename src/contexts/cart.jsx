@@ -28,7 +28,7 @@ export const CartProvider = ({ children }) => {
 
     const finishBuy = (addressId) => {
         const order = {
-            user_id: 1, // Change to authenticated user id
+            user_id: JSON.parse(localStorage.getItem("user")).id,
             date: Math.floor(Date.now() / 1000),
             address_id: addressId,
             products: cart.map(item => {

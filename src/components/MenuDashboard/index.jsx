@@ -90,21 +90,6 @@ export default function MenuDashboard(props) {
             </div>
           </NavLink>
         </li>
-        <hr />
-        <li>
-          <NavLink to={"/admin/configuracoes"}>
-            <div className="menuOption">
-              <div className="icon-settings">
-                <img
-                  src="/icons/settings.png"
-                  alt="a"
-                  className="menuIcon-settings"
-                />{" "}
-              </div>
-              <div className="menuAdmin-settings">Configurações</div>
-            </div>
-          </NavLink>
-        </li>
       </ul>
       <div
         onClick={toogleMenu}
