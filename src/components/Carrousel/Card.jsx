@@ -6,7 +6,6 @@ const Card = ({ product }) => {
   {
     /* renderizando produtos da API */
   }
-  console.log("--->", product);
 
   const valorConvertido = product.value;
   const valorFormatado = valorConvertido.toString().replace(".", ",");

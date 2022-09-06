@@ -19,7 +19,6 @@ const FormCadastro = (props) => {
   const handleRegistrer = (e) => {
     e.preventDefault();
     registerUser(registerUserState);
-    console.log("cadastro ok ");
   };
 
   return (

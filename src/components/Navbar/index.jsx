@@ -15,8 +15,6 @@ export const Navbar = () => {
   const [modalUser, setModalUser] = useState(false);
   const navigation = useNavigate();
 
-  console.log('authenticated', authenticated)
-
   //
   const ToggleModalUser = () => {
     setModalUser(!modalUser);

@@ -38,14 +38,10 @@ import { RatingProvider } from "./contexts/rating";
 const changeRoutes = () => {
   const Private = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
-    if (loading) {
-      return <div className="loading">Loading...</div>;
-    }
-    if (!authenticated) {
-      return <Navigate to="/home" />;
-    } else {
-      return children;
-    }
+    console.log(authenticated)
+
+    if (loading) return <div className="loading">Loading...</div>
+    return authenticated ? children : <Navigate to="/home" />
   };
 
   const PrivateCard = ({ children }) => {
@@ -102,25 +98,27 @@ const changeRoutes = () => {
               <Route exact path="/produtos/" element={<Shop />} />
               <Route exact path="/produtos/:id" element={<Shop />} />
               <Route exact path="/financas" element={<Financas />} />
-              <Route exact path="/perfil" element={<MyProfile />} />
-              <Route exact path="/perfil/pedidos" element={<ProfileOrders />} />
-              <Route exact path="/perfil/dados" element={<MyData />} />
+              <Route exact path="/perfil" element={<Private><MyProfile /></Private>} />
+              <Route exact path="/perfil/pedidos" element={<Private><ProfileOrders /></Private>} />
+              <Route exact path="/perfil/dados" element={<Private><MyData /></Private>} />
               <Route
                 exact
                 path="/perfil/enderecos"
                 element={
-                  <AddressProvider>
-                    <ProfileAddresses />
-                  </AddressProvider>
+                  <Private>
+                    <AddressProvider>
+                      <ProfileAddresses />
+                    </AddressProvider>
+                  </Private>
                 }
               />
-              <Route exact path="/perfil/login" element={<MyLogin />} />
+              <Route exact path="/perfil/login" element={<Private><MyLogin /></Private>} />
               <Route
                 exact
                 path="/perfil/favoritos"
                 element={<ProfileFavorites />}
               />
-              <Route exact path="/perfil/avaliacoes" element={<RatingProvider><MyRatings /></RatingProvider>} />
+              <Route exact path="/perfil/avaliacoes" element={<Private><RatingProvider><MyRatings /></RatingProvider></Private>} />
 
               <Route
                 exact
@@ -145,11 +143,9 @@ const changeRoutes = () => {
               <Route
                 path="/registration"
                 element={
-                  <PrivateLogin>
-                    <Private>
-                      <RegistrationForm />
-                    </Private>
-                  </PrivateLogin>
+                  <Private>
+                    <RegistrationForm />
+                  </Private>
                 }
               />
               <Route exact path="/admin" element={<AdminLogin />} />
