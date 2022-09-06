@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 // hook para inserir
 import { useFetch } from "../hooks/useFetch";
-
+  
 // Criando um contexto para o Auth
 export const AuthContext = createContext();
 

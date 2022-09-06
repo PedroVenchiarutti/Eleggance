@@ -1,72 +1,72 @@
-    .info {
-        flex-grow: 1;
-    }
+.info {
+  flex-grow: 1;
+}
 
-    .infoText {
-        margin-right: 30px;
+.infoText {
+  margin-right: 30px;
+
+  .forms {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0px;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .saveButton {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.main-content {
+  h3 {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1120px) {
+  .toHome .pageTitle {
+    justify-content: center;
+  }
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px;
+    align-items: center;
+    width: 100%;
+
+    .main-content {
+      width: 100%;
+      flex-direction: column;
+      margin-top: 20px;
+      text-align: center;
+
+      .infoText {
+        margin-left: 0px;
 
         .forms {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          justify-content: left;
+          margin: 0px 0px;
 
-            display: flex;
-            justify-content: space-between;
-            margin: 0px 0px;
+          .formDiv {
+            margin-bottom: 20px;
 
             .form {
-                display: flex;
-                flex-direction: column;
-
-                .saveButton {
-                    width: 100%;
-                }
-
+              display: flex;
+              flex-direction: column;
             }
-
+          }
         }
+      }
     }
-
-    @media (max-width: 1120px) {
-
-
-        .toHome .pageTitle {
-            justify-content: center;
-        }
-
-        .profile-container {
-            display: flex;
-            flex-direction: column;
-            margin: 0px 0px;
-            align-items: center;
-            width: 100%;
-
-            .main-content {
-                width: 100%;
-                flex-direction: column;
-                margin-top: 20px;
-                text-align: center;
-
-                .infoText {
-
-                    margin-left: 0px;
-                    
-
-                    .forms {
-                        display: flex;
-                        flex-direction: column;
-                        width: 100%;
-                        justify-content: left;
-                        margin: 0px 0px;
-
-                        .formDiv {
-                            margin-bottom: 20px;
-
-                            .form {
-                                display: flex;
-                                flex-direction: column;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-    }
+  }
+}

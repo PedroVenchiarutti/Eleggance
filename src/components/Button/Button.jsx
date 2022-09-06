@@ -1,4 +1,5 @@
 import React, { Children } from "react";
+import "./Button.scss";
 
 const Button = ({ type, className, onChange, onClick, children }) => {
   return (
