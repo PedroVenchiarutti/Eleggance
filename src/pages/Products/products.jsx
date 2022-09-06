@@ -12,10 +12,8 @@ export default (state) => {
   //pegando Rota atual
   const location = useLocation();
 
-  
   const { data } = useFetch(`api/public/products/pages/1`);
 
-  console.log(location);
   const { id } = useParams();
 
   return (

@@ -26,7 +26,14 @@ export default ({ id }) => {
       qt: +quantity,
     };
 
-    console.log(data);
+    function inStock(data) {
+      if (data > 0) {
+        return "Em estoque";
+      } else {
+        return "Indisponível";
+      }
+    }
+
     return (
       <div className="container-components-product">
         <div className="container-top-products">
@@ -42,10 +49,10 @@ export default ({ id }) => {
               <div className="info-p-products">
                 <p>ref: {data[0].id}</p>
                 <p>
-                  Estoque: <span>Em Estoque</span>
+                  Estoque: <span>{inStock(data[0]?.qt)}</span>
                 </p>
                 <p>
-                  Marca: <span>Marca do Produto</span>
+                  Marca: <span>{data[0]?.brand}</span>
                 </p>
               </div>
             </div>
@@ -109,7 +116,7 @@ export default ({ id }) => {
             </div>
           </div>
         </div>
-        {showMoreInfos ? <InfoProducts data= {data}/> : null}
+        {showMoreInfos ? <InfoProducts data={data} /> : null}
       </div>
     );
   } else

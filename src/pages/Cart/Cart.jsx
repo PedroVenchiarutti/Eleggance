@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/index";
 import Footer from "../Footer/Footer";
-import ProductsList from "../../components/ProductsLIst/index";
 import ProductsCard from "../../components/ProductsCard/index";
-import { shelfProducts } from "../../api/mock";
 import Carrousel from "../../components/Carrousel/Carrousel";
 import "./Cart.scss";
 import { useFetch } from "../../hooks/useFetch";
@@ -14,6 +12,9 @@ import { AuthContext } from "../../contexts/auth";
 
 export default function Cart({ match }) {
   const { authenticated } = useContext(AuthContext);
+
+  const { data } = useFetch(`api/public/products/pages/1`);
+
   const navigation = useNavigate();
 
   if (!authenticated) navigation("/login");
@@ -30,29 +31,7 @@ export default function Cart({ match }) {
             </Link>
             <h1>Carrinho de Compras</h1>
           </div>
-        </div>
-        {/* <table className="table-cart">
-          <thead className="thead-cart">
-            <tr>
-              <th className="col-1">Produtos</th>
-              <th className="col-2">Quantidade</th>
-              <th className="col-3">Valor Unitário</th>
-              <th className="col-4">Valor Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ProductsList products={shelfProducts} />
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>SubTotal</td>
-            </tr>
-            <tr>
-              <td>R${subTotal}</td>
-            </tr>
-            ainda falta tornar o valor dinamico
-          </tfoot>
-        </table> */}
+        </div>{" "}
         <ul className="cartProducts">
           <ProductsCard products={cart} />
         </ul>
@@ -67,10 +46,7 @@ export default function Cart({ match }) {
           </button>
         </Link>
       </div>
-      <Carrousel
-        products={shelfProducts}
-        title="Baseado Nas Suas Ultimas Visitas"
-      />
+      <Carrousel products={data} title="Baseado Nas Suas Ultimas Visitas" />
       <Footer />
     </div>
   );

@@ -1,5 +1,6 @@
 .product {
   margin-top: 20px;
+  height: 590px;
 
   .product-container {
     box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
@@ -16,6 +17,9 @@
     .productName {
       width: 100%;
       font-size: 20px;
+      height: 70px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .productDescription {
@@ -25,6 +29,7 @@
       height: 80px;
       overflow: hidden;
       text-overflow: ellipsis;
+      margin-bottom: 8px;
     }
 
     .productPrice {

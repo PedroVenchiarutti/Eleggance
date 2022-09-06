@@ -128,11 +128,13 @@
             .container-text-product {
               //background-color: #333;
               width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+
               display: flex;
               align-items: center;
               height: 100%;
               flex-direction: column;
-              white-space: normal;
 
               .full-price-promo {
                 font-size: 0.875rem;
@@ -160,10 +162,6 @@
                 font-size: 1.3rem;
                 color: #eab53c;
                 font-weight: 800;
-              }
-              .price-installments {
-                color: green;
-                font-size: 14px;
               }
             }
 
@@ -219,6 +217,9 @@
           margin-bottom: 20px;
         }
       }
+    }
+    .p-all-products-null-products {
+      padding-left: 5px
     }
   }
 
