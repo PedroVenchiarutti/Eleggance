@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import Product from "./Product/product";
 
-export default function AllProducts({ products, orderBy }) {
+export default function AllProducts({ products, orderBy, minPrice, maxPrice, brands }) {
   const { cart, productData } = useContext(CartContext);
   const [progress, setProgress] = useState(true);
   var { id } = useParams();
@@ -17,14 +17,14 @@ export default function AllProducts({ products, orderBy }) {
   // GEt
   const { data } = useFetch(`api/public/products/pages/1`);
 
-  const [minPrice, setMinPrice] = useState("1");
-  const [maxPrice, setMaxPrice] = useState("3000");
-  const [brands, setBrands] = useState([
-    "newHair",
-    "natura",
-    "boticario",
-    "avon",
-  ]);
+  // const [minPrice, setMinPrice] = useState("1");
+  // const [maxPrice, setMaxPrice] = useState("3000");
+  // const [brands, setBrands] = useState([
+  //   "newHair",
+  //   "natura",
+  //   "boticario",
+  //   "avon",
+  // ]);
 
   if (data == "") {
     return (
@@ -45,23 +45,22 @@ export default function AllProducts({ products, orderBy }) {
     }
   }
 
-  function toggleBrands(brand) {
-    if (brands.includes(brand)) {
-      console.log(brands);
-      setBrands((current) =>
-        current.filter((current) => {
-          return current !== brand;
-        })
-      );
-    } else {
-      // brands.concat(brand)
-      setBrands((current) => [...current, brand]);
-    }
-  }
+  // function toggleBrands(brand) {
+  //   if (brands.includes(brand)) {
+  //     console.log(brands);
+  //     setBrands((current) =>
+  //       current.filter((current) => {
+  //         return current !== brand;
+  //       })
+  //     );
+  //   } else {
+  //     setBrands((current) => [...current, brand]);
+  //   }
+  // }
 
   return (
     <>
-      <aside>
+      {/* <aside className="filter">
         <div className="modal">
           <ul className="filter">
             <h1>Filtrar</h1>
@@ -124,21 +123,10 @@ export default function AllProducts({ products, orderBy }) {
             </div>
           </ul>
         </div>
-      </aside>
+      </aside> */}
       {data
         .sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
-// <<<<<<< HEAD
-//           if (product.value >= minPrice && product.value <= maxPrice && brands.includes(product.brand)) {
-//             return (
-//               <li key={index} className="swiper-container">
-//                 <Link to={`/detalhes/${product.id}`}>
-//                   {/* <Card product={product}/> */}
-//                   <Product product={product}/>
-//                 </Link>
-//               </li>
-//             );
-// =======
           if (
             product.value >= minPrice &&
             product.value <= maxPrice &&
@@ -177,7 +165,6 @@ export default function AllProducts({ products, orderBy }) {
                 }
               }
             }
-// >>>>>>> bf6748342ad559e69a6a738ff1125331522603f3
           } else {
             return;
           }
