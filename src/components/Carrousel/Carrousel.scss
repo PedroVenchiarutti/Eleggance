@@ -3,6 +3,10 @@
   height: 100%;
   display: flex;
   justify-content: center;
+// <<<<<<< HEAD
+
+// =======
+// >>>>>>> bf6748342ad559e69a6a738ff1125331522603f3
 
   .swiper-pagination {
     position: relative;
@@ -14,9 +18,16 @@
     }
   }
 }
+// <<<<<<< HEAD
+
+//   @media (max-width: 1120px) {
+//     .swiper {
+//       width: 100vw !important;
+// =======
 @media (max-width: 1120px) {
   .swiper {
     width: 100vw !important;
+// >>>>>>> bf6748342ad559e69a6a738ff1125331522603f3
 
     .swiper-wrapper {
       width: 100%;
