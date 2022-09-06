@@ -61,6 +61,11 @@ export default function Shop({ products }) {
     }
   }
 
+  function getData() {
+    return (
+      <p>retornei p</p>
+    )
+  }
 
   return (
     <div className="shopContainer">
@@ -75,76 +80,9 @@ export default function Shop({ products }) {
             placeholder={selectValue}
           />
           <div className="filterAndProducts">
-            <aside className="filter">
-              <div className="modal">
-                <ul className="filter">
-                  <h1>Filtrar</h1>
-                  <h2>Marca</h2>
-                  <li>
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      value="newHair"
-                      onClick={(e) => toggleBrands(e.target.value)}
-                    />
-                    <label>New Hair</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      value="natura"
-                      onClick={(e) => toggleBrands(e.target.value)}
-                    />
-                    <label>Natura</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      value="boticario"
-                      onClick={(e) => toggleBrands(e.target.value)}
-                    />
-                    <label>O Boticário</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      value="avon"
-                      onClick={(e) => toggleBrands(e.target.value)}
-                    />
-                    <label>Avon</label>
-                  </li>
-                  <hr />
-                  <h2>Preço</h2>
-                  <div className="filter-by-price">
-                    <li>
-                      <label> de </label>
-                      <input
-                        type="number"
-                        value={minPrice}
-                        onChange={(e) => setMinPrice(e.target.value)}
-                      />
-                    </li>
-                    <li>
-                      <label>Até</label>
-                      <input
-                        type="number"
-                        value={maxPrice}
-                        onChange={(e) => setMaxPrice(e.target.value)}
-                      />
-                    </li>
-                  </div>
-                </ul>
-              </div>
-            </aside>
-
-
+            <ShopFilter toggleBrands={toggleBrands} minPrice={minPrice} maxPrice={maxPrice} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
             <div className="ul-products">
-              {/* <ul className="products-container"> */}
               <AllProducts products={shelfProducts} orderBy={selectValue} minPrice={minPrice} maxPrice={maxPrice} brands={brands} />
-              {/* </ul> */}
             </div>
           </div>
         </div>
