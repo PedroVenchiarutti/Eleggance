@@ -2,40 +2,39 @@ import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Api from "../api/api";
 
-// hook para inserir
-import { useFetch } from "../hooks/useFetch";
-
 // Criando um contexto para o Auth
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState("");
-  const [loading, setLoading] = useState(true);
+
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState("");
   const [logged, setLogged] = useState(false);
   const [logout, setLogout] = useState(false);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
-
-    if (recoveredUser) {
-      setUser(JSON.parse(recoveredUser));
-    }
-
+    if (recoveredUser) setUser(JSON.parse(recoveredUser));
     setLoading(false);
   }, []);
+  
+  const onLoginSuccess = redirectTo => {
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+    setLogged(true);
+    navigate(redirectTo);
+  }
 
-  const login = (email, password, redirectTo = '/home') => {
-    if (!login || !email || !password) return alert("Preencha todos os campos");
-    Api.post('api/public/login', { email, password }).then(resp => {
-      // localStorage.setItem("user", JSON.stringify(resp.user));
-      localStorage.setItem("token", resp.token);
-
-      setUser(resp.user);
-      setLogged(true);
-      // navigate(redirectTo);
-    }).catch(error => alert(error.response.data));
-  };
+  const login = (email, password, redirectTo = '/home') => 
+    email && password ?
+      Api.post('api/public/login', { email, password }).then(resp => {
+        setUser(resp.data.user);
+        setToken(resp.data.token);
+        onLoginSuccess(redirectTo);
+      }).catch(error => alert(error.response.data)) : alert("Preencha todos os campos.");
 
   const registerUser = async (resgister) => {
     try {
@@ -78,12 +77,9 @@ export const AuthProvider = ({ children }) => {
       console.log(error, "Erro ao cadastrar usuário");
     }
   };
-  // console.log("userrrss", user);
 
   const userLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("personal");
-    localStorage.removeItem("token");
+    setToken(null);
     setUser(null);
     setLogged(false);
     setLogout(true);
@@ -93,9 +89,9 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        authenticated: !!user,
+        authenticated: logged,
         user,
-        loginName: user ? user.login : "",
+        loginName: user ? user.name : "",
         loading,
         login,
         userLogout,
