@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import "./finances.scss";
 import RenderLineChart from "./graph";
 import MenuDashboard from "../../components/MenuDashboard";
-import CardFinance from "../../components/CardFinances/cardFinance";
 import NavBarFinances from "../../components/NabBarFinance/navBarFinances";
 import { useState } from "react";
 import Api from "../../api/api";
 import { useFetch } from "../../hooks/useFetch";
+import Cards from "../../components/Dashboard/Cards/Cards";
 
 const Finances = (props) => {
   const getTheDateCurrent = (e) => {
@@ -68,7 +68,7 @@ const Finances = (props) => {
       <div className="right-finances">
         <NavBarFinances name={"Administração"} />
         {/* */}
-        <CardFinance />
+        <Cards />
         {/*  */}
 
         <div className="finances-graph">
