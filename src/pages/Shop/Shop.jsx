@@ -27,7 +27,6 @@ export default function Shop({ products }) {
   const [selectValue, setSelectValue] = useState("");
   const updateSelectState = (event) => setSelectValue(event.target.value);
 
-
   const [minPrice, setMinPrice] = useState("1");
   const [maxPrice, setMaxPrice] = useState("3000");
   const [brands, setBrands] = useState([
@@ -36,16 +35,6 @@ export default function Shop({ products }) {
     "boticario",
     "avon",
   ]);
-
-  // function compareFunction(a, b) {
-  //   if (orderBy == "asc") {
-  //     return a.value - b.value;
-  //   } else if (orderBy == "desc") {
-  //     return b.value - a.value;
-  //   } else {
-  //     return;
-  //   }
-  // }
 
   function toggleBrands(brand) {
     if (brands.includes(brand)) {
@@ -56,15 +45,8 @@ export default function Shop({ products }) {
         })
       );
     } else {
-      // brands.concat(brand)
       setBrands((current) => [...current, brand]);
     }
-  }
-
-  function getData() {
-    return (
-      <p>retornei p</p>
-    )
   }
 
   return (

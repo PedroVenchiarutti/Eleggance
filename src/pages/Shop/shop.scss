@@ -60,10 +60,12 @@
           cursor: pointer;
           background-color: #e8b02dee;
         }
+
         .filter-by-price {
           width: 100%;
           justify-content: space-between;
           display: flex;
+
           input {
             margin-left: 5px;
             width: 50px;
@@ -71,6 +73,7 @@
         }
       }
     }
+
     .col-2 {
       display: flex;
       flex-direction: column;
@@ -80,7 +83,7 @@
       // max-width: 1120px;
       min-height: 800px;
 
-      .filterAndProducts{
+      .filterAndProducts {
         display: flex;
       }
 
@@ -92,7 +95,7 @@
         list-style-type: none;
         flex-wrap: wrap;
 
-        .swiper-container{
+        .swiper-container {
           height: 400px;
         }
 
@@ -170,6 +173,7 @@
                 width: 100%;
                 color: #333;
               }
+
               .price-discount {
                 //margin-top: 30px;
                 font-size: 1.3rem;
@@ -195,13 +199,16 @@
               transition: 0.3s all ease-in-out;
             }
           }
+
           .container-img-promo:hover {
             img {
               transform: scale(1.02);
             }
+
             background-size: 100% 100%;
           }
-          .full-price-promo > span:hover {
+
+          .full-price-promo>span:hover {
             // width: 100%;
             // height: 100%;
             display: flex;
@@ -211,6 +218,7 @@
             word-break: break-all;
             text-align: center;
           }
+
           a {
             padding: 0px 0px;
             color: #333;
@@ -218,8 +226,10 @@
           }
         }
       }
-      .select-div{
+
+      .select-div {
         text-align: end;
+
         select {
           // margin-left: 90%;
           width: 200px;
@@ -231,6 +241,7 @@
         }
       }
     }
+
     .p-all-products-null-products {
       padding-left: 5px
     }
@@ -239,27 +250,30 @@
   @media (max-width: 1020px) {
     main {
       flex-direction: column;
+
       aside {
         width: 100%;
+
         .modal ul {
           height: 90%;
         }
       }
+
       .col-2 {
         margin-top: 25px;
-        
-        .filterAndProducts{
+
+        .filterAndProducts {
           display: flex;
           flex-direction: column;
           text-align: center;
 
-          .ul-products{
+          .ul-products {
             display: block;
           }
 
         }
 
-        ul{
+        ul {
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
