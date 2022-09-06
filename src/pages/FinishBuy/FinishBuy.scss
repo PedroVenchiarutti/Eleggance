@@ -10,8 +10,8 @@
     background-color: #222222;
     color: #e1ab38;
 
-    h1{
-      a{
+    h1 {
+      a {
         font-family: Great Vibes;
         text-decoration: none;
         color: #e1ab38;
@@ -73,11 +73,24 @@
             border: 0.5px solid black;
             margin-right: 8px;
           }
-          button{
+          button {
             cursor: pointer;
-            padding: 5.5px 40px;
-            border: 1px solid #000000;
-            box-shadow: none;
+            padding: 5px;
+            border: none;
+            width: 120px;
+            background-color: #ffce45;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 5px;
+            &:hover {
+              background-color: #f5a300;
+              -moz-transition: all 0.3s;
+              -webkit-transition: all 0.3s;
+              transition: all 0.2s;
+              -moz-transform: scale(1.1);
+              -webkit-transform: scale(1.1);
+              transform: scale(1.1);
+            }
           }
         }
         input {
@@ -85,6 +98,27 @@
           border: none;
           width: 30px;
         }
+
+        a > button {
+          cursor: pointer;
+          padding: 5px;
+          border: none;
+          width: 190px;
+          background-color: #ffce45;
+          font-size: 1.2rem;
+          font-weight: 600;
+          border-radius: 5px;
+          &:hover {
+            background-color: #f5a300;
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.2s;
+            -moz-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+          }
+        }
+
         .iconPaymentMethod {
           height: 60px;
           margin-right: 10px;
@@ -124,16 +158,6 @@
             font-weight: 700;
           }
         }
-        button {
-          border: none;
-          background-color: #e1ab38;
-          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.67);
-          border-radius: 5px;
-          color: #f3f3f3;
-          font-size: 16px;
-          padding: 7px;
-          cursor: pointer;
-        }
       }
       .iconTrash {
         display: none;
@@ -145,7 +169,7 @@
     .paymentMethod ul li {
       transition: 0.3s all ease-in-out;
       border-radius: 5px;
-      border: 0.5px solid black;
+      border: 1px solid rgb(136 136 136);
       padding-left: 15px;
       padding-right: 55px;
     }
@@ -153,6 +177,7 @@
       color: #f3f3f3;
       background-color: #e1ab38;
       cursor: pointer;
+      outline: none;
     }
     .itemsCart ul {
       flex-direction: column;
@@ -166,9 +191,10 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      
+
       td:first-of-type {
         width: 60%;
+        font-weight: 600;
       }
       td:last-of-type {
         width: 40%;
@@ -184,7 +210,7 @@
         align-items: center;
         display: flex;
         margin-bottom: 39px;
-  
+
         img {
           height: 100%;
           width: 100%;

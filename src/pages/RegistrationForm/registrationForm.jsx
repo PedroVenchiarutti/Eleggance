@@ -43,7 +43,7 @@ const RegistrationForm = (props) => {
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
         .then((url) => {
-          console.log('urlaaaaaaaaaaaaaaaaaa', url);
+          console.log("urlaaaaaaaaaaaaaaaaaa", url);
           setPersonalName({ ...personalName, img_url: url });
           personalDataRecord(personalName);
           setProgress(true);
@@ -54,6 +54,32 @@ const RegistrationForm = (props) => {
         });
     });
   };
+
+  function disbleButton() {
+    if (progress) {
+      return <Loading />;
+    }
+    return (
+      <>
+        <div>
+          <button
+            className="button-proximo-registration"
+            type="submit"
+            name="proximo"
+          >
+            Proximo
+          </button>
+        </div>
+        <div>
+          <button className="button-voltar-registration" type="submit">
+            <a className="ancora-button-voltar-registration" href="/cadastro">
+              Voltar
+            </a>
+          </button>
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="img-container-singup">
@@ -187,37 +213,16 @@ const RegistrationForm = (props) => {
                         >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>
-                          <option value="Prefere não dizer">Prefiro não dizer</option>
+                          <option value="Prefere não dizer">
+                            Prefiro não dizer
+                          </option>
                         </select>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="buttons-registration">
-                  <div>
-                    <button
-                      className="button-proximo-registration"
-                      type="submit"
-                      name="proximo"
-                    >
-                      Proximo
-                    </button>
-                  </div>
-                  <div>
-                    <button
-                      className="button-voltar-registration"
-                      type="submit"
-                    >
-                      <a
-                        className="ancora-button-voltar-registration"
-                        href="/cadastro"
-                      >
-                        Voltar
-                      </a>
-                    </button>
-                    <div>{progress === false ? <div> </div> : <Loading />}</div>
-                  </div>
-                </div>
+                <br />
+                <div className="buttons-registration">{disbleButton()}</div>
               </Form>
             </div>
           </div>

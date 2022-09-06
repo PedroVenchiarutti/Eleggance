@@ -37,32 +37,45 @@ export const AuthProvider = ({ children }) => {
     setToken(responseData.token);
 
     navigate(redirectTo);
-  }
+  };
 
-  const login = (email, password, redirectTo = '/home') =>
-    email && password ?
-      Api.post('api/public/login', { email, password }).then(resp => {
-        onLoginSuccess(resp.data, redirectTo);
-      }).catch(error => alert(error.response.data)) : alert("Preencha todos os campos.");
+  const login = (email, password, redirectTo = "/home") =>
+    email && password
+      ? Api.post("api/public/login", { email, password })
+          .then((resp) => {
+            onLoginSuccess(resp.data, redirectTo);
+          })
+          .catch((error) => alert(error.response.data))
+      : alert("Preencha todos os campos.");
 
-  const registerUser = userDatas => {
-    if (userDatas.login && userDatas.email && userDatas.password && userDatas.confirmPassword) {
+  const registerUser = (userDatas) => {
+    if (
+      userDatas.login &&
+      userDatas.email &&
+      userDatas.password &&
+      userDatas.confirmPassword
+    ) {
       const userInfos = {
         email: userDatas.email,
-        password: userDatas.password
+        password: userDatas.password,
       };
 
       localStorage.setItem("userInfos", JSON.stringify(userInfos));
       setLogged(true);
       navigate("/registration");
     } else alert("Preencha todos os campos");
-  }
+  };
 
   const personalDataRecord = (personalDatas) => {
-    const newUser = { ...JSON.parse(localStorage.getItem("userInfos")), ...personalDatas }
-    Api.post('api/public/register', newUser).then(() => {
-      login(newUser.email, newUser.password);
-    }).catch(error => alert(error.response.data));
+    const newUser = {
+      ...JSON.parse(localStorage.getItem("userInfos")),
+      ...personalDatas,
+    };
+    Api.post("api/public/register", newUser)
+      .then(() => {
+        login(newUser.email, newUser.password);
+      })
+      .catch((error) => alert(error.response.data));
   };
 
   const userLogout = () => {

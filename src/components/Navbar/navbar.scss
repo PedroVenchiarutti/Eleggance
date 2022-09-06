@@ -174,9 +174,13 @@
 
     .navbar-user-name-logout {
       h4 {
-        font-size: 20px;
+        font-size: 18px;
         color: #e1ab38;
         margin-left: 10px;
+        width: 180px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
 
         span {
           color: #e1ab38;

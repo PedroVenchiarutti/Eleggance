@@ -9,6 +9,7 @@ import * as yup from "yup";
 import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
 import Button from "../../components/Button/Button";
+import Loading from "../../components/SpinerLoader";
 
 const schema = yup.object({
   inputLogin: yup.string().required("Login é obrigatório").max(40),
@@ -19,6 +20,7 @@ const FormSingUp = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { authenticated, login } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -32,6 +34,26 @@ const FormSingUp = (props) => {
     e.preventDefault();
     console.log("submit", { email, password });
     login(email, password);
+  };
+
+  const loadingUser = () => {
+    if (loading) {
+      return <Loading />;
+    }
+    return (
+      <>
+        <div className="button-div-singup">
+          <Button type="submit" className="button-login-singup">
+            Entrar
+          </Button>
+        </div>
+        <div className="footer-card-singup">
+          <Link to="/">Esqueci minha senha</Link>
+          <Link to="/cadastro">Cadastre aqui</Link>
+          <Link to="/">Continuar sem entrar</Link>
+        </div>
+      </>
+    );
   };
 
   return (
@@ -76,16 +98,7 @@ const FormSingUp = (props) => {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <div className="button-div-singup">
-                    <Button type="submit" className="button-login-singup">
-                      Entrar
-                    </Button>
-                  </div>
-                  <div className="footer-card-singup">
-                    <Link to="/">Esqueci minha senha</Link>
-                    <Link to="/cadastro">Cadastre aqui</Link>
-                    <Link to="/">Continuar sem entrar</Link>
-                  </div>
+                  {loadingUser()}
                 </div>
               </div>
             </div>
