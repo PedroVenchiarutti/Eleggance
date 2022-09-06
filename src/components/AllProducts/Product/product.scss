@@ -1,0 +1,50 @@
+.product {
+  
+  .product-container {
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 0px 20px;
+    height: 70%;
+    text-align: center;
+    padding: 0px 5px;
+
+    .imgProduct {
+      width: 200px;
+    }
+
+    .productName {
+      width: 100%;
+      font-size: 20px;
+      height: 70px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+     
+    }
+
+    .productDescription {
+      width: 100%;
+      font-size: 15px;
+      // height: 20%;
+      height: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 8px;
+      white-space: wrap;
+    }
+
+    .productPrice {
+      text-align: center;
+      color: green;
+      font-size: 25px;
+    }
+  }
+}
+
+
+@media (max-width: 1120px) {
+
+
+  
+
+
+}
