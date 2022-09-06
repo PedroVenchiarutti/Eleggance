@@ -14,8 +14,8 @@ const RegistrationForm = (props) => {
   const [personalName, setPersonalName] = useState({
     name: "",
     cpf: "",
-    birthDate: "",
-    img: "",
+    birth: "",
+    img_url: "",
   });
   const { personalDataRecord } = useContext(AuthContext);
   const [progress, setProgress] = useState(false);
@@ -25,7 +25,6 @@ const RegistrationForm = (props) => {
   //Funcao para enviar a imagem para o firebase
   const firebaseUpload = (e) => {
     e.preventDefault();
-    console.log(e);
     const file = e.target[0]?.files[0];
     if (!file) return;
     const storageRef = ref(storage, `image/user/${file.name}`);
@@ -44,12 +43,9 @@ const RegistrationForm = (props) => {
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
         .then((url) => {
-          let urlImage = url;
-          setImgURL(urlImage);
-          personalDataRecord({
-            ...personalName,
-            img: urlImage,
-          });
+          console.log('urlaaaaaaaaaaaaaaaaaa', url);
+          setPersonalName({ ...personalName, img_url: url });
+          personalDataRecord(personalName);
           setProgress(true);
         })
         .catch((error) => {
@@ -170,11 +166,11 @@ const RegistrationForm = (props) => {
                             type="date"
                             name="data de nascimento"
                             required
-                            value={personalName.birthDate}
+                            value={personalName.birth}
                             onChange={(e) =>
                               setPersonalName({
                                 ...personalName,
-                                birthDate: e.target.value,
+                                birth: e.target.value,
                               })
                             }
                           />

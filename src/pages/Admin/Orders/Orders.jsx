@@ -11,7 +11,7 @@ export default function HomeDashboard() {
     <div className="dashboard-container">
       <MenuDashboard />
       <main>
-        <Header titleHead="Pedidos" />
+        <Header name="Pedidos" />
         <Orders />
       </main>
     </div>
