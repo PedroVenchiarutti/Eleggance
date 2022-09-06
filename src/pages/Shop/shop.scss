@@ -247,6 +247,17 @@
       }
       .col-2 {
         margin-top: 25px;
+        
+        .filterAndProducts{
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+
+          .ul-products{
+            display: block;
+          }
+
+        }
 
         ul{
           display: flex;
