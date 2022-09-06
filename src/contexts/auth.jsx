@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const recoveredUser = JSON.parse(localStorage.getItem("user"));
-    const recoveredToken = JSON.parse(localStorage.getItem("token"));
+    const recoveredToken = localStorage.getItem("token");
 
     if (recoveredUser && recoveredToken) {
       setUser(recoveredUser);
@@ -28,18 +28,21 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const onLoginSuccess = redirectTo => {
-    localStorage.setItem("user", JSON.stringify(user));
-    localStorage.setItem("token", JSON.stringify(token));
+  const onLoginSuccess = (responseData, redirectTo) => {
+    setLogged(true);
+    localStorage.setItem("user", JSON.stringify(responseData.user));
+    localStorage.setItem("token", responseData.token);
+
+    setUser(responseData.user);
+    setToken(responseData.token);
+
     navigate(redirectTo);
   }
 
   const login = (email, password, redirectTo = '/home') =>
     email && password ?
       Api.post('api/public/login', { email, password }).then(resp => {
-        setUser(resp.data.user);
-        setToken(resp.data.token);
-        onLoginSuccess(redirectTo);
+        onLoginSuccess(resp.data, redirectTo);
       }).catch(error => alert(error.response.data)) : alert("Preencha todos os campos.");
 
   const registerUser = userDatas => {
