@@ -4,9 +4,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Card from "./Card";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Carrousel = ({ products, title }) => {
+  const location = useLocation();
+
+  console.log(location.pathname);
+
   if (!products) return;
   return (
     <div className="container-promo">
@@ -41,6 +45,9 @@ const Carrousel = ({ products, title }) => {
                 <Link
                   to={`/detalhes/${product.id}`}
                   style={{ textDecoration: "none", color: "black" }}
+                  onClick={() => {
+                    location.reload();
+                  }}
                 >
                   <Card product={product} />
                 </Link>

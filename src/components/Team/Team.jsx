@@ -3,23 +3,20 @@ import Footer from "../../pages/Footer/Footer";
 import "./Team.scss";
 
 export default (props) => {
-  const notificationSubmit = () => {
-    if (!window.Notification) return;
-
-    Notification.requestPermission().then(showNotification);
-  };
-
-  function showNotification(permision) {
-    if (permision !== "granted") return;
-
-    const notification = new Notification(
-      "Sera encaminhando um link para Chat do Whats",
-      {
-        body: "This is a notification",
-        icon: "https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/react-512.png",
-      }
+  const notificationSubmit = (e) => {
+    e.preventDefault();
+    let person = prompt(
+      "Digite Seu WhatsApp e entraremos em contato",
+      "Ex: 13981706262"
     );
-  }
+    if (person == null || person == "") {
+      alert("Cancelado");
+    } else {
+      alert("Entraremos em contato em breve");
+    }
+
+    console.log(person);
+  };
 
   return (
     <div className="container-team">

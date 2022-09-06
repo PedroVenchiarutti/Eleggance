@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Carrousel.scss";
 import SpinerLoader from "../SpinerLoader";
+import { Link } from "react-router-dom";
 
 const Card = ({ product }) => {
   const [loading, setLoading] = useState(true);

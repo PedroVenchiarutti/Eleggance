@@ -1,91 +1,103 @@
-.info{
+.info {
+  padding: 25px 25px;
 
-    padding: 25px 25px;
-
-    .form{
-        font-size: 20px;
-        display: flex;
-        label{
-            display: block;
-        }
-    
-        .formWritable{
-            display: inline;
-            width: 60%;
-    
-            .submit{
-                background-color: #E4AF39;
-                color: white;
-                border: none;
-                font-size: 15px;
-                padding: 10px 10px;
-                cursor: pointer;
-            }
-    
-            .nameInput{
-                width: 70%;
-            }
-    
-            select{
-                padding: 0px 15px;
-                width: 60%;
-                background-color: white;
-            }
-    
-            input, select{
-                padding: 5px;
-                border-radius: 5px;
-                margin-bottom: 40px;            
-            }
-    
-            .phoneAndGender{
-                display: flex;
-    
-                input{
-                    margin-right: 25px;
-                    width: 80%;
-                }
-                span{
-                    width: 60%;
-                }
-            }
-        }
-    
-        .formReadOnly{
-            width: 40%;
-    
-            input{
-                padding: 5px;
-                border-radius: 5px;
-                background-color: #bdc2c2;
-                margin-bottom: 40px; 
-            }
-        }
+  .form {
+    font-size: 20px;
+    display: flex;
+    label {
+      display: block;
     }
+
+    .formWritable {
+      display: inline;
+      width: 60%;
+
+      .submit {
+        background-color: #e4af39;
+        color: white;
+        border: none;
+        font-size: 15px;
+        padding: 10px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .submit:hover {
+        background-color: #f5a300;
+        transition: 0.2ms;
+        -moz-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+
+      .nameInput {
+        width: 70%;
+      }
+
+      select {
+        padding: 0px 15px;
+        width: 60%;
+        background-color: white;
+      }
+
+      input,
+      select {
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 40px;
+        border: 1px solid rgba(51, 51, 51, 0.2);
+        outline: none;
+      }
+
+      .phoneAndGender {
+        display: flex;
+
+        input {
+          margin-right: 25px;
+          border: 1px solid rgba(51, 51, 51, 0.2);
+          outline: none;
+          width: 80%;
+        }
+        span {
+          width: 60%;
+        }
+      }
+    }
+
+    .formReadOnly {
+      width: 40%;
+
+      input {
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 40px;
+        border: 1px solid rgba(51, 51, 51, 0.2);
+        outline: none;
+      }
+    }
+  }
 }
 
-
 @media (max-width: 1120px) {
+  .toHome {
+    width: 100%;
+  }
 
-    .toHome{
-        width: 100%;
+  .footer__container {
+    min-width: 0px;
+    max-width: 375px;
+    margin: 0px 0px;
+  }
+
+  .form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .formReadOnly input {
+      width: 80%;
     }
-
-    .footer__container{
-        min-width: 0px;
-        max-width: 375px;
-        margin: 0px 0px;
-    }
-
-    .form{
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        .formReadOnly input{
-            width: 80%;
-        }
-
-    }
-
-
+  }
 }

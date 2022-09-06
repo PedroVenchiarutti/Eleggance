@@ -52,7 +52,7 @@ export const AddressProvider = ({ children }) => {
         district: address.district,
         city: address.city,
         complement: address.complement,
-        user_id: 1, // Change to authenticated user_id
+        user_id: JSON.parse(localStorage.getItem("user")).id,
       }).then(() => {
         alert("Endereço Cadastrado Com Sucesso");
         window.location.reload();
@@ -83,7 +83,7 @@ export const AddressProvider = ({ children }) => {
   const getById = (addressId) =>
     useFetch(`api/protected/addresses/${addressId}`).data;
 
-  const userId = 1; // Change to authenticated user_id
+  const userId = JSON.parse(localStorage.getItem("user")).id
   const { data } = useFetch(`api/protected/client/addresses/all/${userId}`);
   const state = {
     address,

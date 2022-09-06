@@ -1,22 +1,34 @@
 .table-content {
-    table {        
-        td.product {
-            width: 75%;
-            text-align: left;
-        }
-    
-        p.product-price { color: #E4AF39 }
-    
-        .buy-button {
-            letter-spacing: 1px;
-            font-weight: 500;
-            padding: 10px 8px;
-            border: solid 1px black;
-            color: white;
-            background-color: #E4AF39;
-            border-radius: 6px;
-    
-            &:hover { background-color: rgb(205, 148, 27) }
-        }
+  table {
+    td.product {
+      width: 75%;
+      text-align: left;
     }
+
+    p.product-price {
+      color: green;
+      font-weight: bold;
+    }
+
+    .buy-button {
+      background-color: #e4af39;
+      color: white;
+      border: none;
+      font-size: 15px;
+      padding: 10px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f5a300;
+        transition: 0.2ms;
+        -moz-transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+  }
 }

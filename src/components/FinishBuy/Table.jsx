@@ -1,6 +1,5 @@
 import Table from '../Table/Table';
 
-
 export default ({ infos }) => {
     const getPriceString = price => 'R$' + price.toFixed(2).replace('.', ',');
     const getTotalPrice = () =>

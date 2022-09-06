@@ -13,9 +13,8 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
 
     const productData = (event, data) => {
-        event.preventDefault()
-        setCart(current => [...current, data])
-        alert('adicionado ao carrinho')
+        event.preventDefault();
+        setCart(current => [...current, data]);
     }
 
     const removeItem = productId => setCart(current => current.filter(cart => cart.id !== productId));
@@ -27,9 +26,9 @@ export const CartProvider = ({ children }) => {
         setCart([...cart]);;
     }
 
-    const finishBuy = (addressId) => {    
+    const finishBuy = (addressId) => {
         const order = {
-            user_id: 1, // Change to authenticated user id
+            user_id: JSON.parse(localStorage.getItem("user")).id,
             date: Math.floor(Date.now() / 1000),
             address_id: addressId,
             products: cart.map(item => {
@@ -41,14 +40,13 @@ export const CartProvider = ({ children }) => {
         }
 
         Api.post('http://localhost:3333/api/protected/request', order).then(() => {
-
-            //não tá funcionando
+            // não tá funcionando qnd tá com mais de um item no carrinho, mas ainda assim tá salvando na api
+            alert('Pedido realizado com sucesso.');
             const navigate = useNavigate();
             navigate('/perfil/pedidos');
         }).catch(error => {
             console.log(error);
         });
-        alert('pedido feito')
     }
 
     const state = {
