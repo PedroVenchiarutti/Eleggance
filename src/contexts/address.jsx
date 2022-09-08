@@ -85,6 +85,7 @@ export const AddressProvider = ({ children }) => {
     useFetch(`api/protected/addresses/${addressId}`).data;
 
   const userId = JSON.parse(localStorage.getItem("user")).id;
+  
   const { data } = useFetch(`api/protected/client/addresses/all/${userId}`);
   const state = {
     address,
