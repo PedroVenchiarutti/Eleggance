@@ -299,7 +299,14 @@
           text-align: center;
 
           .ul-products {
+            margin-top: 20px;
             display: block;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            a{
+              width: 100%;
+            }            
           }
 
         }
