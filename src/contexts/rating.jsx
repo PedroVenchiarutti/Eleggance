@@ -9,7 +9,7 @@ const BASE_URL = "api/protected/client/reviews";
 
 export const RatingContext = createContext();
 export const RatingProvider = ({ children }) => {
-  const userId = JSON.parse(localStorage.getItem("user")).id;
+  const userId = JSON.parse(!!localStorage.getItem("user")).id;
 
   const { data } = useFetch(`${BASE_URL}/${userId}`);
 
