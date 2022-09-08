@@ -25,7 +25,7 @@ export default ({ id }) => {
         setNotification('');
         setShouldUpdateNotification(false);
       }, 10000);
-  }, [notification])
+  }, [notification]);
 
   const { productData } = useContext(CartContext);
 
@@ -87,8 +87,7 @@ export default ({ id }) => {
           </div>
           <div className="products-info-price">
             <div className="available-products">
-              <Ratings productId={infos.id} />
-              <h1>Nos avalie</h1>
+                <Ratings productId={infos.id} label="NOS AVALIE" />
             </div>
             <div className="price-product">
               <h1> R$ {infos.value.toFixed(2).replace(".", ",")}</h1>

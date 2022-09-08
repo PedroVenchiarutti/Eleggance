@@ -1,3 +1,12 @@
 .rating-container {
   padding: 0 20px;
+  justify-content: center;
+
+  .main-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;    
+  }
+
+  .message-div { color: red; }
 }

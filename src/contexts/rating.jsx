@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import { createContext } from "react";
 
 import Api from "../api/api";
@@ -9,7 +8,8 @@ const BASE_URL = "api/protected/client/reviews";
 
 export const RatingContext = createContext();
 export const RatingProvider = ({ children }) => {
-  const userId = JSON.parse(localStorage.getItem("user")).id;
+  const userFromStorage = localStorage.getItem("user");
+  const userId = userFromStorage ? JSON.parse(userFromStorage).id : "";
 
   const { data } = useFetch(`${BASE_URL}/${userId}`);
 
