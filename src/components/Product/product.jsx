@@ -21,7 +21,6 @@ export default ({ id }) => {
   const [notification, setNotification] = useState("");
   const [shouldUpdateNotification, setShouldUpdateNotification] =
     useState(false);
-
   useEffect(() => {
     if (shouldUpdateNotification)
       setTimeout(() => {
