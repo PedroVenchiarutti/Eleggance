@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useFetch } from '../../../hooks/useFetch';
+import React, { useState, useContext } from "react";
+import { AuthContext } from '../../../contexts/auth';
 
 import ClientMenu from "../common/ClientMenu";
 import Data from "../../Data/Data";
@@ -7,24 +7,12 @@ import Form from "../../Form/Form";
 
 import "./Content.scss";
 import "../Profile.scss";
-import Api from "../../../api/api";
-
-const initialState = {
-  name: "",
-  phone: "",
-  sexo: "",
-  cpf: "",
-  birth: ""
-}
-
-const BASE_URL = `api/protected/client/${JSON.parse(localStorage.getItem("user")).id}`;
 
 export default () => {
-  const [profile, setProfile] = useState({ ...initialState });
-  const updateProfileState = (fieldName, value) => setProfile(Object.assign({ ...profile }, { [fieldName]: value }));
+  const { user, updateUser } = useContext(AuthContext);
 
-  const { data } = useFetch(BASE_URL);
-  useEffect(() => { setProfile({ ...data, birth: new Date(data.birth).toLocaleDateString() }) }, [data]);
+  const [profile, setProfile] = useState({ ...user, birthdate: new Date(user.birth).toLocaleDateString() });
+  const updateProfileState = (fieldName, value) => setProfile(Object.assign({ ...profile }, { [fieldName]: value }));
 
   return (
     <div className="profile-container">
@@ -32,7 +20,7 @@ export default () => {
 
       <div className="main-content">
         <Data header="Meus dados cadastrais">
-          <Form className="form" onSubmit={e => onFormSubmit(e, profile)}>
+          <Form className="form" onSubmit={e => updateUser(e, profile)}>
             <div className="formWritable">
               <label>Nome Completo:</label>
               <input
@@ -67,8 +55,8 @@ export default () => {
               <label>CPF:</label>
               <input readOnly className="readOnly" value={profile.cpf ?? ""} />
 
-              <label htmlFor="birth">Data de nascimento:</label>
-              <input readOnly className="readOnly" value={profile.birth ?? ""} />
+              <label>Data de nascimento:</label>
+              <input readOnly className="readOnly" value={profile.birthdate} />
             </div>
           </Form>
         </Data>
@@ -76,8 +64,3 @@ export default () => {
     </div>
   );
 };
-
-const onFormSubmit = (event, profileInfos) => {
-  event.preventDefault();
-  Api.put(BASE_URL, profileInfos).then(() => window.location.reload()).catch(error => alert(error.response.data));
-}

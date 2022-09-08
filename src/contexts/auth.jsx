@@ -88,6 +88,13 @@ export const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
+  const updateUser = (event, profileInfos) => {
+    event.preventDefault();
+    console.log(profileInfos)
+    Api.put(`api/protected/client/${profileInfos.id}`, profileInfos).then(() => window.location.reload())
+      .catch(error => alert(error.response.data));
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -99,6 +106,7 @@ export const AuthProvider = ({ children }) => {
         userLogout,
         registerUser,
         personalDataRecord,
+        updateUser
       }}
     >
       {children}
