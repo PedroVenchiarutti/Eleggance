@@ -14,12 +14,6 @@ import Pagination from "../../components/Pagination/Pagination";
 
 export default function Shop({ products }) {
   const { cart } = useContext(CartContext);
-  // const [filter, setFilter] = useState('')
-
-  // const handleChange = event => {
-  //   console.log(event.target.value)
-  //   setFilter(event.target.value)
-  // }
 
   const orderByOptions = [
     { value: "desc", text: "maior preço" },
@@ -50,6 +44,11 @@ export default function Shop({ products }) {
     }
   }
 
+  function toggleModalFilter() {
+    let modal = document.querySelector(".modalFilter");
+    modal.classList.toggle("hidden");
+  }
+
   return (
     <div className="shopContainer">
       <Navbar />
@@ -63,9 +62,24 @@ export default function Shop({ products }) {
             placeholder={selectValue}
           />
           <div className="filterAndProducts">
-            <ShopFilter toggleBrands={toggleBrands} minPrice={minPrice} maxPrice={maxPrice} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
+            <label id="buttonToggleFilter" onClick={toggleModalFilter}>
+              Filtrar
+            </label>
+            <ShopFilter
+              toggleBrands={toggleBrands}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              setMinPrice={setMinPrice}
+              setMaxPrice={setMaxPrice}
+            />
             <div className="ul-products">
-              <AllProducts products={shelfProducts} orderBy={selectValue} minPrice={minPrice} maxPrice={maxPrice} brands={brands} />
+              <AllProducts
+                products={shelfProducts}
+                orderBy={selectValue}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
+                brands={brands}
+              />
             </div>
           </div>
         </div>

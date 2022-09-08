@@ -22,6 +22,10 @@
         box-shadow: 2px 3px 10px #00000041;
         height: 590px;
 
+        button {
+          display: none;
+        }
+
         h1,
         h2 {
           text-align: center;
@@ -68,7 +72,9 @@
 
           input {
             margin-left: 5px;
-            width: 50px;
+            width: 70px;
+            padding-left: 6px;
+            font-size: 18px;
           }
         }
       }
@@ -85,6 +91,17 @@
 
       .filterAndProducts {
         display: flex;
+
+        label {
+          text-align: right;
+          margin-right: 10px;
+          font-size: 20px;
+          text-decoration: underline;
+        }
+
+        #buttonToggleFilter {
+          display: none;
+        }
       }
 
       .ul-products {
@@ -208,7 +225,7 @@
             background-size: 100% 100%;
           }
 
-          .full-price-promo>span:hover {
+          .full-price-promo > span:hover {
             // width: 100%;
             // height: 100%;
             display: flex;
@@ -285,8 +302,34 @@
       aside {
         width: 100%;
 
+        .hidden {
+          display: none;
+        }
+
         .modal ul {
-          height: 90%;
+          height: calc(100vh - 200px);
+          width: 90vw;
+          left: 5vw;
+          display: flex;
+          position: fixed;
+          top: 100px;
+          box-shadow: 0px 0px 0px 100px rgba(86, 86, 86, 0.467);
+          z-index: 5;
+
+          .row {
+            display: flex;
+            width: 60%;
+            margin-left: 40%;
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+              display: block;
+              width: 50px;
+              font-size: 25px;
+              height: 50px;
+            }
+          }
         }
       }
 
@@ -298,10 +341,17 @@
           flex-direction: column;
           text-align: center;
 
-          .ul-products {
+          #buttonToggleFilter {
             display: block;
           }
 
+          .ul-products {
+            display: block;
+            .swiper-container {
+              display: flex;
+              justify-content: center;
+            }
+          }
         }
 
         ul {

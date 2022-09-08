@@ -3,10 +3,10 @@
   height: 100%;
   display: flex;
   justify-content: center;
-// <<<<<<< HEAD
+  // <<<<<<< HEAD
 
-// =======
-// >>>>>>> bf6748342ad559e69a6a738ff1125331522603f3
+  // =======
+  // >>>>>>> bf6748342ad559e69a6a738ff1125331522603f3
 
   .swiper-pagination {
     position: relative;
@@ -27,7 +27,7 @@
 @media (max-width: 1120px) {
   .swiper {
     width: 100vw !important;
-// >>>>>>> bf6748342ad559e69a6a738ff1125331522603f3
+    // >>>>>>> bf6748342ad559e69a6a738ff1125331522603f3
 
     .swiper-wrapper {
       width: 100%;
@@ -83,7 +83,6 @@
   .swiper {
     width: 100%;
     height: 100%;
-    margin-left: 32px;
 
     .swiper-wrapper {
       margin-top: 10px;
@@ -114,6 +113,15 @@
     -webkit-align-items: center;
     align-items: center;
     height: 450px;
+
+    a {
+      width: 100%;
+
+      .container-card {
+        display: flex;
+        justify-content: center;
+      }
+    }
   }
 
   .card-oferta {
