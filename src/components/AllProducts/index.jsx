@@ -56,8 +56,10 @@ export default function AllProducts({
             id = id[0].toUpperCase() + id.substring(1);
             product.name =
               product.name[0].toUpperCase() + product.name.substring(1);
+            console.log(id);
 
-            if (id === "id") {
+            if (id === "Id") {
+              console.log;
               return (
                 <li key={index} className="swiper-container">
                   <Link to={`/detalhes/${product.id}`}>
