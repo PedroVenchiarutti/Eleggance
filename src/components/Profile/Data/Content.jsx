@@ -11,7 +11,7 @@ import "../Profile.scss";
 export default () => {
   const { user, updateUser } = useContext(AuthContext);
 
-  const [profile, setProfile] = useState({ ...user, birthdate: new Date(user.birth).toLocaleDateString() });
+  const [profile, setProfile] = useState({ ...user });
   const updateProfileState = (fieldName, value) => setProfile(Object.assign({ ...profile }, { [fieldName]: value }));
 
   return (
@@ -56,7 +56,7 @@ export default () => {
               <input readOnly className="readOnly" value={profile.cpf ?? ""} />
 
               <label>Data de nascimento:</label>
-              <input readOnly className="readOnly" value={profile.birthdate} />
+              <input readOnly className="readOnly" value={new Date(profile.birth).toLocaleDateString()} />
             </div>
           </Form>
         </Data>
