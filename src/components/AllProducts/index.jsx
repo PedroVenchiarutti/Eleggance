@@ -8,7 +8,13 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import Product from "./Product/product";
 
-export default function AllProducts({ products, orderBy, minPrice, maxPrice, brands }) {
+export default function AllProducts({
+  products,
+  orderBy,
+  minPrice,
+  maxPrice,
+  brands,
+}) {
   const { cart, productData } = useContext(CartContext);
   const [progress, setProgress] = useState(true);
   var { id } = useParams();
@@ -24,7 +30,7 @@ export default function AllProducts({ products, orderBy, minPrice, maxPrice, bra
       </div>
     );
   }
-  if (!products) return
+  if (!products) return;
 
   function compareFunction(a, b) {
     if (orderBy == "asc") {
@@ -41,11 +47,16 @@ export default function AllProducts({ products, orderBy, minPrice, maxPrice, bra
       {data
         .sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
+          i++;
           if (
             product.value >= minPrice &&
             product.value <= maxPrice &&
             brands.includes(product.brand)
           ) {
+            id = id[0].toUpperCase() + id.substring(1);
+            product.name =
+              product.name[0].toUpperCase() + product.name.substring(1);
+
             if (id === "id") {
               return (
                 <li key={index} className="swiper-container">
@@ -55,28 +66,24 @@ export default function AllProducts({ products, orderBy, minPrice, maxPrice, bra
                 </li>
               );
             } else {
-              id = id[0].toUpperCase() + id.substring(1);
-              product.name =
-                product.name[0].toUpperCase() + product.name.substring(1);
               if (product.name.includes(id)) {
+                i = 1;
                 return (
                   <li key={index} className="swiper-container">
                     <Link to={`/detalhes/${product.id}`}>
-                      <Card product={product} />
+                      <Product product={product} />
                     </Link>
                   </li>
                 );
-              } else {
-                if (i == 0) {
-                  i = 1;
-                  return (
-                    <li key={index} className="swiper-container">
-                      <p className="p-all-products-null-products">
-                        Não foi encontrado nenhum produto com esse nome
-                      </p>
-                    </li>
-                  );
-                }
+              } else if (i == data.length) {
+                i = 1;
+                return (
+                  <li key={index} className="swiper-container">
+                    <p className="p-all-products-null-products">
+                      Não foi encontrado nenhum produto com esse nome
+                    </p>
+                  </li>
+                );
               }
             }
           } else {
