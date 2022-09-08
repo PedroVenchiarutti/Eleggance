@@ -17,23 +17,24 @@ export default ({ id }) => {
 
   const [quantity, setQuantity] = useState(1);
 
-  const [notification, setNotification] = useState('');
-  const [shouldUpdateNotification, setShouldUpdateNotification] = useState(false);
+  const [notification, setNotification] = useState("");
+  const [shouldUpdateNotification, setShouldUpdateNotification] =
+    useState(false);
   useEffect(() => {
     if (shouldUpdateNotification)
       setTimeout(() => {
-        setNotification('');
+        setNotification("");
         setShouldUpdateNotification(false);
       }, 10000);
-  }, [notification])
+  }, [notification]);
 
   const { productData } = useContext(CartContext);
 
   const addToCart = (event, productInfos) => {
     productData(event, productInfos);
     setShouldUpdateNotification(true);
-    setNotification('Produto adicionado ao carrinho');
-  }
+    setNotification("Produto adicionado ao carrinho");
+  };
 
   if (data.length) {
     const infos = {
@@ -107,7 +108,10 @@ export default ({ id }) => {
               ></input>
             </div>
             <div className="button-buy-center">
-              <button className="button-buy-product" onClick={ev => addToCart(ev, infos)}>
+              <button
+                className="button-buy-product"
+                onClick={(ev) => addToCart(ev, infos)}
+              >
                 <div className="icon-cart-product">
                   <img src="\icons\ShopCart.png" alt="foto" />
                 </div>
