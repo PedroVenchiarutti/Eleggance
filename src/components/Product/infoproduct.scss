@@ -1,13 +1,17 @@
-.container-info-product{
-    width: 75%;
-    height: 100%;
-    margin: 0 auto;
-    border: 2px solid black;
-    ul{
-        padding: 50px;
-    }
-    li{
-        list-style: none;
-        margin-top: 50px;
-    }
+.container-info-product {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  border: 1px solid #3333335e;
+  border-top: none;
+  box-shadow: 2px 4px 19px #9c9c9c;
+  border-radius: 0px 0px 6px 6px;
+
+  ul {
+    padding: 50px;
+  }
+  li {
+    list-style: none;
+    margin-top: 50px;
+  }
 }
