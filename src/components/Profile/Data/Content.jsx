@@ -1,89 +1,74 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useFetch } from '../../../hooks/useFetch';
+
 import ClientMenu from "../common/ClientMenu";
 import Data from "../../Data/Data";
-import "../Profile.scss";
 import Form from "../../Form/Form";
+
 import "./Content.scss";
+import "../Profile.scss";
+import Api from "../../../api/api";
 
-export default (props) => {
-  const [fullName, setFullName] = useState("");
-  const [phone, setPhone] = useState("");
+const initialState = {
+  name: "",
+  phone: "",
+  sexo: "",
+  cpf: "",
+  birth: ""
+}
 
-  const gender = document.getElementById("genderSelect");
+const BASE_URL = `api/protected/client/${JSON.parse(localStorage.getItem("user")).id}`;
 
-  function submitForm() {
-    event.preventDefault();
-    var object = {
-      "Nome completo": fullName,
-      Telefone: phone,
-      Gênero: gender.value,
-    };
+export default () => {
+  const [profile, setProfile] = useState({ ...initialState });
+  const updateProfileState = (fieldName, value) => setProfile(Object.assign({ ...profile }, { [fieldName]: value }));
 
-    localStorage.setItem("changes", JSON.stringify(object));
-  }
+  const { data } = useFetch(BASE_URL);
+  useEffect(() => { setProfile({ ...data, birth: new Date(data.birth).toLocaleDateString() }) }, [data]);
 
   return (
     <div className="profile-container">
       <ClientMenu selected="dados" />
+
       <div className="main-content">
         <Data header="Meus dados cadastrais">
-          <Form className="form">
+          <Form className="form" onSubmit={e => onFormSubmit(e, profile)}>
             <div className="formWritable">
-              <label htmlFor="name">Nome Completo:</label>
+              <label>Nome Completo:</label>
               <input
-                type="text"
-                name="name"
                 className="nameInput"
-                id="fullName"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                placeholder="Trazer nome da API"
+                value={profile.name ?? ""}
+                onChange={e => updateProfileState("name", e.target.value)}
               />
               <div className="phoneAndGender">
                 <span>
-                  <label htmlFor="phone">Telefone:</label>
+                  <label>Telefone:</label>
                   <input
-                    type="tel"
-                    name="phone"
-                    placeholder="13 9 1234-1234"
-                    id="phoneNumber"
-                    maxLength="13"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    className="phoneNumber"
+                    value={profile.phone ?? ""}
+                    onChange={e => updateProfileState("phone", e.target.value)}
                   />
                 </span>
                 <span>
-                  <label htmlFor="gender">Sexo:</label>
-                  <select name="gender" id="genderSelect">
+                  <label>Gênero:</label>
+                  <select value={profile.sexo} onChange={e => updateProfileState("sexo", e.target.value)}>
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
-                    <option value="Outro">Outro</option>
+                    <option value="">Prefiro não dizer</option>
                   </select>
                 </span>
               </div>
               <br />
-              <button type="submit" className="submit" onClick={submitForm}>
+              <button type="submit" className="submit">
                 Salvar Alterações
               </button>
             </div>
             <div className="formReadOnly">
-              <label htmlFor="cpf">CPF:</label>
-              <input
-                type="text"
-                name="cpf"
-                readOnly
-                className="readOnly"
-                placeholder="Trazer CPF da API"
-              />
+              <label>CPF:</label>
+              <input readOnly className="readOnly" value={profile.cpf ?? ""} />
 
               <label htmlFor="birth">Data de nascimento:</label>
-              <input
-                type="text"
-                name="birth"
-                readOnly
-                className="readOnly"
-                placeholder="Trazer data de nascimento da API"
-              />
+              <input readOnly className="readOnly" value={profile.birth ?? ""} />
             </div>
           </Form>
         </Data>
@@ -91,3 +76,8 @@ export default (props) => {
     </div>
   );
 };
+
+const onFormSubmit = (event, profileInfos) => {
+  event.preventDefault();
+  Api.put(BASE_URL, profileInfos).then(() => window.location.reload()).catch(error => alert(error.response.data));
+}
