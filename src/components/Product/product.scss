@@ -177,9 +177,10 @@
     justify-content: center;
     align-items: center;
   }
-
 }
-.cart-notification { color: #2ac300ed }
+.cart-notification {
+  color: #2ac300ed;
+}
 
 .button-buy-product:hover {
   background-color: #e1ab38;
@@ -360,6 +361,7 @@
       justify-content: center;
       display: flex;
       align-items: center;
+      margin-left: 8%;
     }
   }
 

@@ -1,13 +1,27 @@
-import React from "react"
-import { useState } from "react"
+import React from "react";
+import { useState } from "react";
 
-export default function ShopFilter({ toggleBrands, setMinPrice, setMaxPrice, minPrice, maxPrice }) {
+export default function ShopFilter({
+  toggleBrands,
+  setMinPrice,
+  setMaxPrice,
+  minPrice,
+  maxPrice,
+}) {
+  function toggleModalFilter() {
+    let modal = document.querySelector(".modalFilter");
+    modal.classList.toggle("hidden");
+  }
 
   return (
     <aside className="filter">
-      <div className="modal">
+      <div className="modal hidden modalFilter" id="modalFilter">
         <ul className="filter">
-          <h1>Filtrar</h1>
+          <div className="row">
+            <h1>Filtrar</h1>
+            <button onClick={toggleModalFilter}>X</button>
+          </div>
+
           <h2>Marca</h2>
           <li>
             <input
@@ -68,6 +82,5 @@ export default function ShopFilter({ toggleBrands, setMinPrice, setMaxPrice, min
         </ul>
       </div>
     </aside>
-  )
-
+  );
 }
