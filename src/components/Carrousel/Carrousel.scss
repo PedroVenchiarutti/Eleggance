@@ -35,11 +35,14 @@
   }
 
   .swiper-slide {
-    margin-right: 20px;
-
     .container-img-promo {
       display: flex;
     }
+  }
+
+  .homepage .swiper-slide img {
+    height: 250px;
+    width: 100vw;
   }
 }
 

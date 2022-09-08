@@ -8,10 +8,8 @@ export default (props) => {
   const { loginName } = useContext(AuthContext);
   const [busca, setBusca] = useState();
 
-
-
   return (
-    <div>
+    <div className="nav">
       <div className="container-nav-finances">
         <div className="nav-finances">
           <div className="nav-finances-title">
@@ -22,13 +20,12 @@ export default (props) => {
               id="search-products-finances"
               className="search-products-finances"
               onChange={(ev) => setBusca(ev.target.value.toUpperCase())}
-              
             />
             <label
               className="label-nav-finance"
               htmlFor="search-products-finances"
             >
-              <button  className="button-search">
+              <button className="button-search">
                 <img className="icon-search" src="/icons/search.png" />
               </button>
             </label>
@@ -41,7 +38,7 @@ export default (props) => {
         </div>
       </div>
       <div className="search-container">
-      <Search busca={busca} />
+        <Search busca={busca} />
       </div>
     </div>
   );
