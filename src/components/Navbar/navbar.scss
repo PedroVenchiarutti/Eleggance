@@ -152,7 +152,6 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  top: 10px;
 
   .navbar-user-logged-name {
     display: flex;
@@ -245,10 +244,6 @@ a {
     background-color: #111;
     color: #fff;
 
-    .navbar-user-logged{
-      top: 52px;
-    }
-
     //mobile
     .navbar-user-logged-mobile {
       display: flex;
@@ -289,7 +284,6 @@ a {
       .logoInSearch {
         display: flex;
         flex-direction: column;
-        align-items: center;
 
         a img {
           position: relative;

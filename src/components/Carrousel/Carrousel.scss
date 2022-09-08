@@ -73,7 +73,6 @@
   .swiper {
     width: 100%;
     height: 100%;
-    margin-left: 32px;
 
     .swiper-wrapper {
       margin-top: 10px;
@@ -104,6 +103,15 @@
     -webkit-align-items: center;
     align-items: center;
     height: 450px;
+
+    a {
+      width: 100%;
+
+      .container-card {
+        display: flex;
+        justify-content: center;
+      }
+    }
   }
 
   .card-oferta {
