@@ -42,10 +42,10 @@ export const AuthProvider = ({ children }) => {
   const login = (email, password, redirectTo = "/home") =>
     email && password
       ? Api.post("api/public/login", { email, password })
-          .then((resp) => {
-            onLoginSuccess(resp.data, redirectTo);
-          })
-          .catch((error) => alert(error.response.data))
+        .then((resp) => {
+          onLoginSuccess(resp.data, redirectTo);
+        })
+        .catch((error) => alert(error.response.data))
       : alert("Preencha todos os campos.");
 
   const registerUser = (userDatas) => {

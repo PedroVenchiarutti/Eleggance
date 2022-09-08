@@ -35,6 +35,7 @@ import { EditProvider } from "./contexts/modalEdit";
 import { CartProvider } from "./contexts/cart";
 import { RatingProvider } from "./contexts/rating";
 import { PageProvider } from "./contexts/productsPage";
+import { AdminContext, AdminProvider } from "./contexts/admin";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -69,177 +70,183 @@ const changeRoutes = () => {
     }
   };
 
+  const PrivateAdmin = ({ children }) => useContext(AdminContext).authenticated ? children : <Navigate to="/admin" />;
+
   return (
     <Router>
       <AuthProvider>
-        <PageProvider>
-          <CartProvider>
-            <EditProvider>
-              <Routes>
-                <Route exact path="/home" element={<HomePage />} />
-                <Route
-                  exact
-                  path="/cadastro"
-                  element={
-                    <PrivateLogin>
-                      <FormCadastro />
-                    </PrivateLogin>
-                  }
-                />
-                <Route
-                  exact
-                  path="/login"
-                  element={
-                    <PrivateLogin>
-                      <FormSingUp />
-                    </PrivateLogin>
-                  }
-                />
-                <Route exact path="/contato" element={<Schedulling />} />
-                <Route
-                  exact
-                  path="/detalhes/:id"
-                  element={
-                    <RatingProvider>
-                      <Products />
-                    </RatingProvider>
-                  }
-                />
-                <Route exact path="/produtos/" element={<Shop />} />
-                <Route exact path="/produtos/:id" element={<Shop />} />
-                <Route exact path="/financas" element={<Financas />} />
-                <Route
-                  exact
-                  path="/perfil"
-                  element={
-                    <Private>
-                      <MyProfile />
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/pedidos"
-                  element={
-                    <Private>
-                      <ProfileOrders />
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/dados"
-                  element={
-                    <Private>
-                      <MyData />
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/enderecos"
-                  element={
-                    <Private>
-                      <AddressProvider>
-                        <ProfileAddresses />
-                      </AddressProvider>
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/login"
-                  element={
-                    <Private>
-                      <MyLogin />
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/favoritos"
-                  element={<ProfileFavorites />}
-                />
-                <Route
-                  exact
-                  path="/perfil/avaliacoes"
-                  element={
-                    <Private>
+        <AdminProvider>
+          <PageProvider>
+            <CartProvider>
+              <EditProvider>
+                <Routes>
+                  <Route exact path="/home" element={<HomePage />} />
+                  <Route
+                    exact
+                    path="/cadastro"
+                    element={
+                      <PrivateLogin>
+                        <FormCadastro />
+                      </PrivateLogin>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/login"
+                    element={
+                      <PrivateLogin>
+                        <FormSingUp />
+                      </PrivateLogin>
+                    }
+                  />
+                  <Route exact path="/contato" element={<Schedulling />} />
+                  <Route
+                    exact
+                    path="/detalhes/:id"
+                    element={
                       <RatingProvider>
-                        <MyRatings />
+                        <Products />
                       </RatingProvider>
-                    </Private>
-                  }
-                />
+                    }
+                  />
+                  <Route exact path="/produtos/" element={<Shop />} />
+                  <Route exact path="/produtos/:id" element={<Shop />} />
+                  <Route exact path="/financas" element={<Financas />} />
+                  <Route
+                    exact
+                    path="/perfil"
+                    element={
+                      <Private>
+                        <MyProfile />
+                      </Private>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/perfil/pedidos"
+                    element={
+                      <Private>
+                        <ProfileOrders />
+                      </Private>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/perfil/dados"
+                    element={
+                      <Private>
+                        <MyData />
+                      </Private>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/perfil/enderecos"
+                    element={
+                      <Private>
+                        <AddressProvider>
+                          <ProfileAddresses />
+                        </AddressProvider>
+                      </Private>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/perfil/login"
+                    element={
+                      <Private>
+                        <MyLogin />
+                      </Private>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/perfil/favoritos"
+                    element={<ProfileFavorites />}
+                  />
+                  <Route
+                    exact
+                    path="/perfil/avaliacoes"
+                    element={
+                      <Private>
+                        <RatingProvider>
+                          <MyRatings />
+                        </RatingProvider>
+                      </Private>
+                    }
+                  />
 
-                <Route
-                  exact
-                  path="/finalizarCompra"
-                  element={
-                    <Private>
-                      <AddressProvider>
-                        <FinishBuy />
-                      </AddressProvider>
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/carrinho"
-                  element={
-                    <PrivateCard>
-                      <Cart />
-                    </PrivateCard>
-                  }
-                />
-                <Route
-                  path="/registration"
-                  element={
-                    <Private>
-                      <RegistrationForm />
-                    </Private>
-                  }
-                />
-                <Route exact path="/admin" element={<AdminLogin />} />
-                <Route exact path="/admin/home" element={<HomeDashboard />} />
-                <Route
-                  exact
-                  path="/admin/produtos"
-                  element={<ProdutosDashboard />}
-                />
-                <Route
-                  exact
-                  path="/admin/pedidos"
-                  element={<DashboardOrders />}
-                />
-                <Route
-                  exact
-                  path="/admin/cupons"
-                  element={
-                    <CouponProvider>
-                      <DashboardCoupons />
-                    </CouponProvider>
-                  }
-                />
-                <Route
-                  exact
-                  path="/admin/administracao"
-                  element={<Financas />}
-                />
-                <Route
-                  path="*"
-                  element={
-                    <Private>
-                      <HomePage />
-                    </Private>
-                  }
-                  to="/"
-                  replace
-                />
-              </Routes>
-            </EditProvider>
-          </CartProvider>
-        </PageProvider>
+                  <Route
+                    exact
+                    path="/finalizarCompra"
+                    element={
+                      <Private>
+                        <AddressProvider>
+                          <FinishBuy />
+                        </AddressProvider>
+                      </Private>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/carrinho"
+                    element={
+                      <PrivateCard>
+                        <Cart />
+                      </PrivateCard>
+                    }
+                  />
+                  <Route
+                    path="/registration"
+                    element={
+                      <Private>
+                        <RegistrationForm />
+                      </Private>
+                    }
+                  />
+                  <Route exact path="/admin" element={<AdminLogin />} />
+                  <Route exact path="/admin/home" element={<PrivateAdmin><HomeDashboard /></PrivateAdmin>} />
+                  <Route
+                    exact
+                    path="/admin/produtos"
+                    element={<PrivateAdmin><ProdutosDashboard /></PrivateAdmin>}
+                  />
+                  <Route
+                    exact
+                    path="/admin/pedidos"
+                    element={<PrivateAdmin><DashboardOrders /></PrivateAdmin>}
+                  />
+                  <Route
+                    exact
+                    path="/admin/cupons"
+                    element={
+                      <PrivateAdmin>
+                        <CouponProvider>
+                          <DashboardCoupons />
+                        </CouponProvider>
+                      </PrivateAdmin>
+                    }
+                  />
+                  <Route
+                    exact
+                    path="/admin/administracao"
+                    element={<PrivateAdmin><Financas /></PrivateAdmin>}
+                  />
+                  <Route
+                    path="*"
+                    element={
+                      <Private>
+                        <HomePage />
+                      </Private>
+                    }
+                    to="/"
+                    replace
+                  />
+                </Routes>
+              </EditProvider>
+            </CartProvider>
+          </PageProvider>
+        </AdminProvider>
       </AuthProvider>
     </Router>
   );
