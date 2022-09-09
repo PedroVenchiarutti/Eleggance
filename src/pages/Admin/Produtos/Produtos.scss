@@ -4,11 +4,13 @@
   display: flex;
   justify-content: flex-end;
 
+  .nav {
+    width: 100%;
+  }
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     width: 100%;
 
     .button-add {
@@ -96,7 +98,6 @@
       }
 
       .body-modal {
-
         display: flex;
         height: 100%;
 
@@ -127,7 +128,6 @@
             width: 60%;
             margin-left: 5%;
 
-
             .inputPhoto {
               height: 35px;
               font-weight: 600;
@@ -135,11 +135,9 @@
               border-radius: 5px;
             }
           }
-
         }
 
         .productVisualization {
-
           display: block;
           width: 42%;
 
@@ -183,8 +181,6 @@
             p {
               text-align: center;
             }
-
-
           }
         }
 
@@ -236,13 +232,14 @@
           flex-direction: column;
           align-items: center;
 
-          .main-modal{
+          .main-modal {
             margin: 0px;
           }
 
           .productVisualization .productAndInfo .productInfo {
             text-align: center;
           }
+<<<<<<< HEAD
 
           .areaBtn{
             align-items: center;
@@ -250,11 +247,12 @@
           }
 
 
+=======
+>>>>>>> 90898a76e85ce14c530ec5e66334f644b6ac4c3a
         }
       }
 
       .modalEditProducts {
-
         height: auto;
 
         .body-modal {
@@ -310,5 +308,22 @@
         }
       }
     }
+<<<<<<< HEAD
+=======
+
+    // .add, .body-modal{
+    //   .areaBtn{
+    //     background-color: aqua;
+    //     display: flex;
+    //     align-items: center;
+    //   }
+    // }
+
+    // {
+    //   background-color: aqua;
+    //   display: flex;
+    //   align-items: center;
+    // }
+>>>>>>> 90898a76e85ce14c530ec5e66334f644b6ac4c3a
   }
 }
