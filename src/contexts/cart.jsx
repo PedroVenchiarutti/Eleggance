@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
+import "./cart.scss";
 
 import Api from "../api/api";
 
@@ -10,17 +11,41 @@ import Api from "../api/api";
 export const CartContext = createContext([]);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [notification, setNotification] = useState("");
+  const [alertNotification, setAlertNotification] = useState(false);
+  /*   const [dateInfo, setDateInfo] = useState([]); */
 
   const productData = (event, data) => {
     event.preventDefault();
     setCart((current) => [...current, data]);
   };
 
-  const removeItem = (productId) =>
+  useEffect(() => {
+    const uid = cart[0];
+
+    if (uid) {
+      const getLocalStorageUser = localStorage.getItem("user");
+      const parseLocalStorageUser = JSON.parse(getLocalStorageUser);
+      parseLocalStorageUser?.productCart.push(uid);
+      if (parseLocalStorageUser?.productCart === null);
+      localStorage.setItem("user", JSON.stringify(parseLocalStorageUser));
+    }
+  }, [cart]);
+
+  const removeItem = (productId) => {
     setCart((current) => current.filter((cart) => cart.id !== productId));
+    const getLocalStorageUser = localStorage.getItem("user");
+    const parseLocalStorageUser = JSON.parse(getLocalStorageUser);
+    const removeItem = parseLocalStorageUser?.productCart.filter(
+      (item) => item.id !== productId
+    );
+    parseLocalStorageUser.productCart = removeItem;
+    localStorage.setItem("user", JSON.stringify(parseLocalStorageUser));
+  };
 
   const getItemIndexById = (productId) =>
     cart.findIndex((item) => item.id === productId);
+
   const setQuantity = (productId, quantity) => {
     // if (quantity === 0) removeItem(productId);
     cart[getItemIndexById(productId)].qt = +quantity;
@@ -58,6 +83,10 @@ export const CartProvider = ({ children }) => {
     setQuantity,
     removeItem,
     finishBuy,
+    notification,
+    setNotification,
+    alertNotification,
+    setAlertNotification,
   };
 
   return <CartContext.Provider value={state}>{children}</CartContext.Provider>;

@@ -6,6 +6,7 @@ import "./navbar.scss";
 import ModalUser from "../ModalUser/ModalUser";
 import { useFetch } from "../../hooks/useFetch";
 import Search from "./Search";
+import { CartContext } from "../../contexts/cart";
 
 export const Navbar = () => {
   const { authenticated, loginName } = useContext(AuthContext);
@@ -13,6 +14,7 @@ export const Navbar = () => {
   const [active, setMode] = useState(false);
   const [busca, setBusca] = useState("");
   const [modalUser, setModalUser] = useState(false);
+  const [quantity, setQuantity] = useState(null);
   const navigation = useNavigate();
 
   //
@@ -25,6 +27,27 @@ export const Navbar = () => {
   const ToggleMode = () => {
     setMode(!active);
   };
+
+  const { cart, alertNotification, setAlertNotification } =
+    useContext(CartContext);
+
+  console.log("alert notification", alertNotification);
+
+  useEffect(() => {
+    setAlertNotification(true);
+    const notificationAlert = () => {
+      if (alertNotification) {
+        const getCart = localStorage.getItem("user");
+        const parseCart = JSON.parse(getCart);
+        const cartLength = parseCart.productCart.length;
+        console.log("cart length", cartLength);
+        setQuantity(cartLength);
+        const notification = document.querySelector(".alertIcon");
+        notification?.classList.toggle("alertTremer");
+      }
+    };
+    notificationAlert();
+  }, [alertNotification]);
 
   // Pega a imagen do localStorage e renderizar na tela
   const renderImage = () => {
@@ -55,11 +78,18 @@ export const Navbar = () => {
               <button onClick={userLogout}>Sair</button>
             </div>
           </div>
-          <button className="buttonCart">
-            <Link to="/carrinho">
-              <img src="/icons/shoppingCart.svg" className="svgCart" />
-            </Link>
-          </button>
+          <div className="alertClass">
+            <span
+              className={quantity == 0 || quantity == null ? " " : "alertIcon"}
+            >
+              {quantity == 0 || quantity == null ? " " : quantity}
+            </span>
+            <button className="buttonCart">
+              <Link to="/carrinho">
+                <img src="/icons/shoppingCart.svg" className="svgCart" />
+              </Link>
+            </button>
+          </div>
         </div>
       );
     } else if (height >= 600 && width >= 600 && !authenticated) {
@@ -89,11 +119,6 @@ export const Navbar = () => {
               <img src="/img/Frame.svg" className="svgUser-mobile" />
             </button>
             {modalUser ? <ModalUser /> : null}
-            {/*   <button className="buttonCart">
-              <Link to="/carrinho">
-                <img src="/icons/shoppingCart.svg" className="svgCart-mobile" />
-              </Link>
-            </button> */}
           </div>
         </div>
       );

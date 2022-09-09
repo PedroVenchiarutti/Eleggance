@@ -3,9 +3,6 @@ import CardCart from "../ItemCart/CardCart";
 import "./index.scss";
 
 const ProductsList = ({ products }) => {
-
-  console.log(products)
-
   if (!products) return;
   return (
     <>
@@ -16,7 +13,7 @@ const ProductsList = ({ products }) => {
           <td>Valor Unitário</td>
           <td>Valor Total</td>
         </tr>
-        </table>
+      </table>
       {products.map((product, index) => {
         return (
           <li key={index} className="cardContainer">

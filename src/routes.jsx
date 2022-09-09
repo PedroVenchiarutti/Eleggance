@@ -48,7 +48,6 @@ const changeRoutes = () => {
   const PrivateCard = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
     const path = useMatch("/login");
-    console.log(path);
 
     if (loading) {
       return <div className="loading">Loading...</div>;
@@ -106,7 +105,15 @@ const changeRoutes = () => {
                   }
                 />
                 <Route exact path="/produtos/" element={<Shop />} />
-                <Route exact path="/produtos/:id" element={<Shop />} />
+                <Route
+                  exact
+                  path="/produtos/:id"
+                  element={
+                    <CartProvider>
+                      <Shop />
+                    </CartProvider>
+                  }
+                />
                 <Route exact path="/financas" element={<Financas />} />
                 <Route
                   exact
