@@ -140,11 +140,16 @@ const Finances = (props) => {
           </div>
           <div className="finance-value-final">
             <div className="finance-value-total">
-              <h3>Valor Total: R$ {valueTotal}</h3>
+              <h3>Valor Total: R$ {valueTotal.toFixed(2)}</h3>
             </div>
             <div className="finance-total-sell">
               <h3> Vendas No Periodo: {qtTotal}</h3>
             </div>
+            <div className="finance-total-sell">
+              <h3> Lucro estimado R$: {(valueTotal * 0.60).toFixed(2)}</h3>
+              
+            </div>
+            
           </div>
         </div>
       </div>

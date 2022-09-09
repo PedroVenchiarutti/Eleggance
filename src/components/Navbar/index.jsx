@@ -134,7 +134,7 @@ export const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <Link to={"/produtos/" + busca}>
+              <Link to={busca ? "/produtos/" + busca : "/produtos/id"}>
                 <button>
                   <img src="/icons/iconmonstr-search-thin.svg" />
                 </button>
