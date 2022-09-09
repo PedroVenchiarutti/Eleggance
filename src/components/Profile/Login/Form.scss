@@ -46,5 +46,11 @@
 @media (max-width: 1120px) {
   .formDiv {
     width: 100%;
+
+    .form{
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

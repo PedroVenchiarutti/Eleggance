@@ -69,7 +69,7 @@ export default ({ id }) => {
             <div className="icon-home-products">
               <img src="\icons\home.png" alt="foto" />
             </div>
-            <Link to="/produtos">Voltar</Link>
+            <Link to="/produtos/id">Voltar</Link>
           </div>
           <div className="available-products">
             <Ratings productId={infos.id} />
@@ -102,13 +102,13 @@ export default ({ id }) => {
             <div className="products-info-price">
               <div className="name-product">
                 <h1>{data[0].name}</h1>
-              </div>
-              <div className="heart-products">
-                <div className="heart-product">
-                  <input type="radio" id="heart1" name="rate" value="1" />
-                  <label htmlFor="heart1" title="text">
-                    1 heart
-                  </label>
+                <div className="heart-products">
+                  <div className="heart-product">
+                    <input type="radio" id="heart1" name="rate" value="1" />
+                    <label htmlFor="heart1" title="text">
+                      1 heart
+                    </label>
+                  </div>
                 </div>
               </div>
               <div className="price-product">

@@ -89,6 +89,7 @@
     justify-content: center;
     align-items: center;
     min-height: 300px;
+    flex-direction: column-reverse;
   }
 
   a {
@@ -102,14 +103,9 @@
   }
 
   .footer_logo {
-    width: 50%;
-    height: 50%;
     align-items: center;
     display: flex;
-
-    img {
-      width: 150px;
-    }
+    min-width: 300px;
   }
 
   .footer_content_img {
@@ -117,17 +113,19 @@
     height: 50%;
 
     img {
-      width: 120px;
-      height: 60px;
+      height: 65px;
     }
   }
 
   .footer_img {
     width: 30%;
     height: 50%;
+    margin: 15px 0;
 
     p {
-      font-size: 15px;
+      font-size: 18px;
+      width: 100vw;
+      text-align: center;
     }
   }
 }
