@@ -1,10 +1,11 @@
 .container-info-product {
-  width: 80%;
+  width: 60%;
   height: 100%;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   border: 1px solid #3333335e;
+  background: linear-gradient(#fcfcfc, #ffffff);
   border-top: none;
-  box-shadow: 2px 4px 19px #9c9c9c;
+  box-shadow: 1px 0px 1px #9c9c9c;
   border-radius: 0px 0px 6px 6px;
 
   ul {
