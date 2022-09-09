@@ -37,7 +37,7 @@
     display: block;
     align-items: center;
     width: 100%;
-    height: 100%;
+    // height: 100%;
   }
 
   .swiper-button-prev,
@@ -56,12 +56,13 @@
         height: 80%;
       }
 
-      .swiper-slide,
-      img {
-        width: 100%;
-        height: 100%;
-        position: relative;
-      }
+      // .swiper-slide,
+      // img {
+      //   width: 100%;
+      //   height: 100%;
+      //   position: relative;
+      // }
+
     }
   }
 }

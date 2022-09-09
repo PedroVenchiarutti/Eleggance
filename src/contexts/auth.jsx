@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Api from "../api/api";
+import adminActions from './authentication/admin';
 
 // Criando um contexto para o Auth
 export const AuthContext = createContext();
@@ -105,7 +106,8 @@ export const AuthProvider = ({ children }) => {
         userLogout,
         registerUser,
         personalDataRecord,
-        updateUser
+        updateUser,
+        ...adminActions()
       }}
     >
       {children}
