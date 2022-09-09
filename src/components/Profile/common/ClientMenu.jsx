@@ -7,16 +7,14 @@ const ClientMenu = (props) => {
     let navigate = useNavigate();
     const selected = props.selected;
     const initialMount = useRef(false);
-
     // console.log(options)
 
     // Espera o componente montar, pega as opções e marca a opção selecionada de acordo
     //com o props recebido
     useEffect(() => {
-        if(initialMount.current){
+        if(!initialMount.current){
             const options = document.querySelectorAll('.option');
             function getSelectedOption(){
-
                 switch(selected){
                     case 'perfil':
                         options[0].classList.add('selected');
@@ -40,15 +38,16 @@ const ClientMenu = (props) => {
                         options[6].classList.add('selected');
                     break;
                     default:
-                        
                 }
             }
             getSelectedOption()
-            console.log(options)
+            // console.log(options)
         } else {
             initialMount.current = true;
         }
     },[])
+
+    
 
     return(
         <div className="options">
@@ -63,14 +62,6 @@ const ClientMenu = (props) => {
                         <h2>Meu Perfil</h2>
                     </button>
                 </li>
-                {/* <Link to="/perfil">
-                <li className="option">
-                    <button className="liButton">
-                        <img src="/icons/user.png" alt="user" height="40px" width="50px"/>
-                        <h2>Meu Perfil</h2>
-                    </button>
-                </li>
-                </Link> */}
                 <li className="option">
                     <button className="liButton" onClick={() => {navigate('/perfil/pedidos')}}>
                         <img src="/icons/box.png" alt="caixa" height="40px" width="50px" className="box-icon"/>
