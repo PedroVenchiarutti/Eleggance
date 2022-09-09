@@ -92,12 +92,38 @@
     margin: 0px 0px;
   }
 
-  .form {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    .formReadOnly input {
-      width: 80%;
+  .info{
+    .form {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      .formReadOnly{
+        margin-top: 20px;
+      }
+
+      .formWritable, .formReadOnly{
+        width: 100%;
+        .nameInput{
+          width: 100%;
+        }
+        .phoneAndGender{
+          
+          input{
+            width: 100%;
+          }
+          select{
+            width: 100%;
+            margin-left: 10px;
+
+          }
+        }
+
+      }
+      input{
+        width: 100%;
+      }
     }
   }
+
 }
