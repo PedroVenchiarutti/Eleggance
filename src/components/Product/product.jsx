@@ -65,7 +65,7 @@ export default ({ id }) => {
             <div className="icon-home-products">
               <img src="\icons\home.png" alt="foto" />
             </div>
-            <Link to="/produtos">Voltar</Link>
+            <Link to="/produtos/id">Voltar</Link>
           </div>
           <div className="available-products">
             <Ratings productId={infos.id} />
