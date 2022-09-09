@@ -73,6 +73,13 @@
   }
 
   .photo-product {
+
+    text-align: center;
+    
+    p{
+      margin-right: 0px;
+    }
+
     img:hover {
       -webkit-transform: scale(1.1);
       transform: scale(1.1);
@@ -80,10 +87,11 @@
     }
 
     img {
-      width: 100%;
+      // width: 100%;
+      margin: 0px 0px;
       display: flex;
-      padding: 5px;
-      padding-bottom: 10px;
+      // padding: 5px;
+      // padding-bottom: 10px;
     }
   }
 
@@ -400,6 +408,7 @@
         width: 100%;
       }
     }
+
   }
 
   .name-product {

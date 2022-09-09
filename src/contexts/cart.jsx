@@ -7,6 +7,9 @@ import Api from "../api/api";
 
 // const initialState = []
 
+const min = 1;
+const max = 100;
+
 export const CartContext = createContext([]);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
@@ -23,7 +26,10 @@ export const CartProvider = ({ children }) => {
     cart.findIndex((item) => item.id === productId);
   const setQuantity = (productId, quantity) => {
     // if (quantity === 0) removeItem(productId);
-    cart[getItemIndexById(productId)].qt = +quantity;
+    //limitando input para 1 até 100
+    const value = Math.max(min, Math.min(max, Number(quantity)));
+
+    cart[getItemIndexById(productId)].qt = +value;
     setCart([...cart]);
   };
 

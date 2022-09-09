@@ -239,6 +239,10 @@
           .productVisualization .productAndInfo .productInfo {
             text-align: center;
           }
+          .areaBtn{
+            align-items: center;
+            width: 73%;
+          }
         }
       }
 
@@ -275,7 +279,6 @@
             .areaBtn {
               align-items: center;
               justify-content: center;
-              padding-right: 0%;
             }
           }
         }
@@ -299,19 +302,5 @@
         }
       }
     }
-
-    // .add, .body-modal{
-    //   .areaBtn{
-    //     background-color: aqua;
-    //     display: flex;
-    //     align-items: center;
-    //   }
-    // }
-
-    // {
-    //   background-color: aqua;
-    //   display: flex;
-    //   align-items: center;
-    // }
   }
 }

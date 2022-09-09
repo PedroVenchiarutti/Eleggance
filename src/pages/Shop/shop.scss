@@ -79,6 +79,7 @@
         }
       }
     }
+  }
 
     .col-2 {
       display: flex;
@@ -341,8 +342,19 @@
           flex-direction: column;
           text-align: center;
 
+          .ul-products {
+            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
+
           #buttonToggleFilter {
             display: block;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            a{
+              width: 100%;
+            }            
           }
 
           .ul-products {
