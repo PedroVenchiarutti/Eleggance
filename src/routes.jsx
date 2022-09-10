@@ -71,8 +71,7 @@ const changeRoutes = () => {
 
   const PrivateAdmin = ({ children }) => {
     const { adminAuthenticated } = useContext(AuthContext);
-    console.log(adminAuthenticated);
-    return adminAuthenticated ? children : <Navigate to="/admin" />;
+    return adminAuthenticated ? children : <Navigate to="/admin" />
   }
 
   return (

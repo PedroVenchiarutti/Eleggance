@@ -1,53 +1,85 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Api from "../api/api";
-import adminActions from './authentication/admin';
 
-// Criando um contexto para o Auth
+import Api from '../api/api';
+
+const USER_STORAGE_KEY = "user";
+const ADMIN_STORAGE_KEY = "admin";
+const TOKEN_STORAGE_KEY = "token";
+
+const saveUserInStorage = (user, token) => {
+  localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+  localStorage.setItem(TOKEN_STORAGE_KEY, token);
+}
+
+const saveAdminInStorage = (admin, token) => {
+  localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(admin));
+  localStorage.setItem(TOKEN_STORAGE_KEY, token);
+}
+
+const getUserFromStorage = () => JSON.parse(localStorage.getItem(USER_STORAGE_KEY));
+const getAdminFromStorage = () => JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY));
+
+const deleteToken = () => localStorage.removeItem(TOKEN_STORAGE_KEY);
+
+const deleteStorageUser = () => {
+  localStorage.removeItem(USER_STORAGE_KEY);
+  deleteToken();
+}
+
+const deleteStorageAdmin = () => {
+  localStorage.removeItem(ADMIN_STORAGE_KEY);
+  deleteToken();
+}
+
 export const AuthContext = createContext();
-
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({});
+  const [authenticated, setAuthenticated] = useState(false);
   const [token, setToken] = useState("");
-  const [logged, setLogged] = useState(false);
-  const [logout, setLogout] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const recoveredUser = JSON.parse(localStorage.getItem("user"));
-    const recoveredToken = localStorage.getItem("token");
+    const storageUser = getUserFromStorage();
+    const storageAdmin = getAdminFromStorage();
 
-    if (recoveredUser && recoveredToken) {
-      setUser(recoveredUser);
-      setToken(recoveredToken);
-      setLogged(true);
-    } else setLogged(false);
+    const storageToken = localStorage.getItem(TOKEN_STORAGE_KEY);
 
+    if (storageToken)
+      storageUser ? setLoggedUserState(storageUser, storageToken) : setLoggedAdminState(storageAdmin, storageToken);
+    else {
+      setUnloggedUserState();
+      setUnloggedAdminState();
+    }
+    
     setLoading(false);
   }, []);
 
-  const onLoginSuccess = (responseData, redirectTo) => {
-    setLogged(true);
-    localStorage.setItem("user", JSON.stringify(responseData.user));
-    localStorage.setItem("token", responseData.token);
+  const setLoggedUserState = (user, token) => {
+    saveUserInStorage(user, token)
+    setUser(user);
+    setToken(token);
+    setAuthenticated(true);
+  }
 
-    setUser(responseData.user);
-    setToken(responseData.token);
+  const setUnloggedUserState = () => {
+    deleteStorageUser();
+    setUser({});
+    setToken("");
+    setAuthenticated(false);
+  }
 
-    navigate(redirectTo);
-  };
-
-  const login = (email, password, redirectTo = "/home") =>
-    email && password
-      ? Api.post("api/public/login", { email, password })
-        .then((resp) => {
-          onLoginSuccess(resp.data, redirectTo);
-        })
-        .catch((error) => alert(error.response.data))
-      : alert("Preencha todos os campos.");
+  const login = (email, password, redirectTo = "/home") => {
+    if (email && password)
+      Api.post("api/public/login", { email, password }).then(resp => {
+        setLoggedUserState(resp.data.user, resp.data.token);
+        navigate(redirectTo);
+      }).catch(error => alert(error.response.data));
+    else alert("Preencha todos os campos");
+  }
 
   const registerUser = (userDatas) => {
     if (
@@ -62,7 +94,7 @@ export const AuthProvider = ({ children }) => {
       };
 
       localStorage.setItem("userInfos", JSON.stringify(userInfos));
-      setLogged(true);
+      setAuthenticated(true);
       navigate("/registration");
     } else alert("Preencha todos os campos");
   };
@@ -80,12 +112,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const userLogout = () => {
-    setToken(null);
-    setUser(null);
-    setLogged(false);
-    setLogout(true);
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    setUnloggedUserState();
     navigate("/login");
   };
 
@@ -95,22 +122,50 @@ export const AuthProvider = ({ children }) => {
       .catch(error => alert(error.response.data));
   }
 
-  return (
-    <AuthContext.Provider
-      value={{
-        authenticated: logged,
-        user,
-        loginName: user && user.name ? user.name : "",
-        loading,
-        login,
-        userLogout,
-        registerUser,
-        personalDataRecord,
-        updateUser,
-        ...adminActions()
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-};
+  //==================================================== admin
+
+  const [admin, setAdmin] = useState({});
+  const [adminAuthenticated, setAdminAuthenticated] = useState(false);
+
+  const setLoggedAdminState = (admin, token) => {
+    saveAdminInStorage(admin, token)
+    setAdmin(admin);
+    setToken(token);
+    setAdminAuthenticated(true);
+  }
+
+  const setUnloggedAdminState = () => {
+    deleteStorageAdmin();
+    setAdmin({});
+    setToken("");
+    setAdminAuthenticated(false);
+  }
+
+  const adminLogin = (email, password, redirectTo = "/admin/home") => {
+    if (email && password)
+      Api.post("api/public/admin/login", { email, password }).then(resp => {
+        setLoggedAdminState(resp.data.admin, resp.data.token);
+        navigate(redirectTo);
+      }).catch(error => alert(error.response.data));
+    else alert("Preencha todos os campos.");
+  }
+
+  const state = {
+    authenticated,
+    adminAuthenticated,
+    user,
+    admin,
+    loginName: user && user.name ? user.name : "",
+    adminName: admin && admin.name ? admin.name : "",
+    loading,
+    login,
+    adminLogin,
+    userLogout,
+    registerUser,
+    personalDataRecord,
+    updateUser
+  }
+
+  console.log(state);
+  return <AuthContext.Provider value={state} children={children} />
+}
