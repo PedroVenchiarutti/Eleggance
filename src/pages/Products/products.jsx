@@ -6,7 +6,6 @@ import Product from "../../components/Product/product";
 import Carrousel from "../../components/Carrousel/Carrousel.jsx";
 import { useLocation, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
-import "./products.scss";
 
 export default (state) => {
   //pegando Rota atual

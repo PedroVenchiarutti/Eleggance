@@ -13,7 +13,7 @@ export default function ModalAddProduct() {
     name: "",
     description: "",
     value: 0,
-    brand: "newHair",
+    brand: "",
     qt: 1,
     url_img: "",
   });
@@ -123,16 +123,11 @@ export default function ModalAddProduct() {
               }
             ></textarea>
             <label>Marca</label>
-            <select
+            <input
               name="brand"
+              value={valor.brand}
               onChange={(e) => setValor({ ...valor, brand: e.target.value })}
-            >
-              <option value="newHair">New Hair</option>
-              <option value="natura">Natura</option>
-              <option value="boticario">O Boticário</option>
-              <option value="avon">Avon</option>
-              <option value="semMarca">Sem marca</option>
-            </select>
+            />
             {/* <input
               maxLength={45}
               type="text"
