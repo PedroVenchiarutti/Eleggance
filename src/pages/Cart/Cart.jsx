@@ -11,21 +11,24 @@ import { CartContext } from "../../contexts/cart";
 import { AuthContext } from "../../contexts/auth";
 
 export default function Cart({ match }) {
-  const { authenticated } = useContext(AuthContext);
+  const { authenticated, adminAuthenticated } = useContext(AuthContext);
+
   const [itemCart, setItemCart] = useState([]);
 
   const { data } = useFetch(`api/public/products/pages/1`);
 
   const navigation = useNavigate();
 
-  if (!authenticated) navigation("/login");
+  if (!adminAuthenticated && !authenticated) {
+    navigation("/login");
+  }
 
   const { cart } = useContext(CartContext);
 
   useEffect(() => {
     const getLocalStorageUser = localStorage.getItem("user");
     const parseLocalStorageUser = JSON.parse(getLocalStorageUser);
-    setItemCart(parseLocalStorageUser.productCart);
+    setItemCart(parseLocalStorageUser?.productCart);
   }, [cart]);
 
   return (

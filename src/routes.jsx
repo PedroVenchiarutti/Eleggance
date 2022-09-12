@@ -47,11 +47,15 @@ const changeRoutes = () => {
 
   const PrivateCard = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
+    const { adminAuthenticated } = useContext(AuthContext);
+
     const path = useMatch("/login");
 
     if (loading) {
       return <div className="loading">Loading...</div>;
     }
+    if (adminAuthenticated) return children;
+
     if (!authenticated) {
       return <Navigate to="/login" />;
     } else {
@@ -61,8 +65,11 @@ const changeRoutes = () => {
 
   const PrivateLogin = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
+    const { adminAuthenticated } = useContext(AuthContext);
     if (authenticated) {
       return <Navigate to="/home" />;
+    } else if (adminAuthenticated) {
+      return <Navigate to="/admin/home" />;
     } else {
       return children;
     }
