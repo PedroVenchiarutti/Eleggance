@@ -5,6 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../api/firebase";
 import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
+import { usePost } from "../../hooks/useFetch";
 
 export default function ModalAddProduct() {
   const [imagesUrl, setImagesUrl] = useState(null);
@@ -23,16 +24,15 @@ export default function ModalAddProduct() {
   const [progress, setProgress] = useState(false);
 
   const postItem = async (e) => {
-    await Api.post(`api/protected/product`, {
-      ...valor,
-      url_img: e,
-    })
-      .then((res) => {
-        alert("Produto adicionado");
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    const data = {
+      data: {
+        ...valor,
+        url_img: e,
+      },
+    };
+    const callbackSuccess = (res) => alert("Produto Adicionado");
+    const callbackFailure = (error) => console.error(error);
+    usePost(`api/protected/product`, data, callbackSuccess, callbackFailure);
   };
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = (e) => {
@@ -68,7 +68,6 @@ export default function ModalAddProduct() {
           postItem(urlImage);
           setProgress(false);
           alert("Imagem carregada com sucesso");
-          location.reload();
         })
         .catch((error) => {
           console.log(error);

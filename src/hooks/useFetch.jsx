@@ -9,7 +9,11 @@ export function useFetch(url) {
   //Fazer uma rota para puxar os produtos no all getALlProducts
   useEffect(() => {
     async function getItem() {
-      const getItemAll = Api.get(`${url}`);
+      const getItemAll = Api.get(`${url}`, {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      });
       const response = await getItemAll;
       setData(response.data);
       setInsert(true);
@@ -18,4 +22,15 @@ export function useFetch(url) {
   }, []);
 
   return { data, insert };
+}
+
+export function usePost(url, data, callbackSuccess, callbackFailure) {
+  Api.post(url, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+    data: data,
+  })
+    .then(callbackSuccess)
+    .catch(callbackFailure);
 }
