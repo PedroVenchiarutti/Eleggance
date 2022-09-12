@@ -4,7 +4,6 @@ import Data from "../../Data/Data";
 import "../Profile.scss";
 import Form from "../../Form/Form";
 import "./Content.scss";
-import Api from "../../../api/api";
 
 export default (props) => {
 

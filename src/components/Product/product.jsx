@@ -39,7 +39,6 @@ export default ({ id }) => {
       setAlertNotification(false);
     } else {
       setNotification("Produto adicionado ao carrinho");
-      console.log("product info", productInfos.id);
       /* handleCart(productInfos.id); */
       setAlertNotification(true);
     }
