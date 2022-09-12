@@ -2,8 +2,6 @@ import React from "react";
 import "./product.scss";
 
 const Product = ({ product }) => {
-  console.log(product);
-
   const priceParceled = (product.value / 12).toFixed(2);
   const priceParceledFormatado = priceParceled.toString().replace(".", ",");
   const productPrice = product.value.toString().replace(".", ",");

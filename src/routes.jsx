@@ -48,7 +48,6 @@ const changeRoutes = () => {
   const PrivateCard = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
     const path = useMatch("/login");
-    console.log(path);
 
     if (loading) {
       return <div className="loading">Loading...</div>;

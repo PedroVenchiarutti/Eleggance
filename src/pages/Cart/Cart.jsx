@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/index";
 import Footer from "../Footer/Footer";
@@ -12,6 +12,7 @@ import { AuthContext } from "../../contexts/auth";
 
 export default function Cart({ match }) {
   const { authenticated } = useContext(AuthContext);
+  const [itemCart, setItemCart] = useState([]);
 
   const { data } = useFetch(`api/public/products/pages/1`);
 
@@ -20,6 +21,13 @@ export default function Cart({ match }) {
   if (!authenticated) navigation("/login");
 
   const { cart } = useContext(CartContext);
+
+  useEffect(() => {
+    const getLocalStorageUser = localStorage.getItem("user");
+    const parseLocalStorageUser = JSON.parse(getLocalStorageUser);
+    setItemCart(parseLocalStorageUser.productCart);
+  }, [cart]);
+
   return (
     <div className="cartContainer">
       <Navbar />
@@ -31,9 +39,9 @@ export default function Cart({ match }) {
             </Link>
             <h1>Carrinho de Compras</h1>
           </div>
-        </div>{" "}
+        </div>
         <ul className="cartProducts">
-          <ProductsCard products={cart} />
+          <ProductsCard products={itemCart} />
         </ul>
       </main>
       <div className="actions">

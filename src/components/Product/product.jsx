@@ -18,7 +18,9 @@ export default ({ id }) => {
 
   const [quantity, setQuantity] = useState(1);
 
-  const [notification, setNotification] = useState("");
+  const { productData, notification, setNotification, setAlertNotification } =
+    useContext(CartContext);
+
   const [shouldUpdateNotification, setShouldUpdateNotification] =
     useState(false);
   useEffect(() => {
@@ -29,15 +31,17 @@ export default ({ id }) => {
       }, 10000);
   }, [notification]);
 
-  const { productData } = useContext(CartContext);
-
   const addToCart = (event, productInfos) => {
     productData(event, productInfos);
     setShouldUpdateNotification(true);
     if (getToken == null) {
       setNotification("Você precisa estar logado para adicionar ao carrinho");
+      setAlertNotification(false);
     } else {
       setNotification("Produto adicionado ao carrinho");
+      console.log("product info", productInfos.id);
+      /* handleCart(productInfos.id); */
+      setAlertNotification(true);
     }
   };
 
@@ -98,13 +102,13 @@ export default ({ id }) => {
             <div className="products-info-price">
               <div className="name-product">
                 <h1>{data[0].name}</h1>
-              </div>
-              <div className="heart-products">
-                <div className="heart-product">
-                  <input type="radio" id="heart1" name="rate" value="1" />
-                  <label htmlFor="heart1" title="text">
-                    1 heart
-                  </label>
+                <div className="heart-products">
+                  <div className="heart-product">
+                    <input type="radio" id="heart1" name="rate" value="1" />
+                    <label htmlFor="heart1" title="text">
+                      1 heart
+                    </label>
+                  </div>
                 </div>
               </div>
               <div className="price-product">

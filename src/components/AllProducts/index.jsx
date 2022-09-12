@@ -7,6 +7,9 @@ import "./index.scss";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import Product from "./Product/product";
+import { PageContext } from "../../contexts/productsPage";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function AllProducts({
   products,
@@ -17,11 +20,21 @@ export default function AllProducts({
 }) {
   const { cart, productData } = useContext(CartContext);
   const [progress, setProgress] = useState(true);
+  const { page } = useContext(PageContext);
   var { id } = useParams();
+  const [data, setData] = useState([]);
   var i = 0;
   // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
   // GEt
-  const { data } = useFetch(`api/public/products/pages/1`);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api-elegancce.herokuapp.com/api/public/products/pages/${page}`
+      )
+      .then((response) => {
+        setData(response.data);
+      });
+  }, [page]);
 
   if (data == "") {
     return (

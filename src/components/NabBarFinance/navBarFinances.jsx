@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
+import { useEffect } from "react";
 
 import "../NabBarFinance/navBarFinances.scss";
 import "./navBarFinances.scss";
@@ -7,6 +8,7 @@ import Search from "../Navbar/Search";
 export default (props) => {
   const { loginName } = useContext(AuthContext);
   const [busca, setBusca] = useState();
+ 
 
   return (
     <div className="nav">

@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const recoveredUser = JSON.parse(localStorage.getItem("user"));
+
     const recoveredToken = localStorage.getItem("token");
 
     if (recoveredUser && recoveredToken) {
@@ -30,7 +31,15 @@ export const AuthProvider = ({ children }) => {
 
   const onLoginSuccess = (responseData, redirectTo) => {
     setLogged(true);
-    localStorage.setItem("user", JSON.stringify(responseData.user));
+
+    
+    
+    let data = {
+      ...responseData.user,
+      productCart: [],
+    };
+
+    localStorage.setItem("user", JSON.stringify(data));
     localStorage.setItem("token", responseData.token);
 
     setUser(responseData.user);
