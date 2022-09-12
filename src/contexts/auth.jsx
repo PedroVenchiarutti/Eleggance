@@ -2,61 +2,83 @@ import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Api from "../api/api";
 
-// Criando um contexto para o Auth
+const USER_STORAGE_KEY = "user";
+const ADMIN_STORAGE_KEY = "admin";
+const TOKEN_STORAGE_KEY = "token";
+
+const saveUserInStorage = (user, token) => {
+  localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+  localStorage.setItem(TOKEN_STORAGE_KEY, token);
+};
+
+const saveAdminInStorage = (admin, token) => {
+  localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(admin));
+  localStorage.setItem(TOKEN_STORAGE_KEY, token);
+};
+
+const getUserFromStorage = () =>
+  JSON.parse(localStorage.getItem(USER_STORAGE_KEY));
+const getAdminFromStorage = () =>
+  JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY));
+const deleteToken = () => localStorage.removeItem(TOKEN_STORAGE_KEY);
+
+const deleteStorageUser = () => {
+  localStorage.removeItem(USER_STORAGE_KEY);
+  deleteToken();
+};
+
+const deleteStorageAdmin = () => {
+  localStorage.removeItem(ADMIN_STORAGE_KEY);
+  deleteToken();
+};
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-
   const [user, setUser] = useState({});
+  const [authenticated, setAuthenticated] = useState(false);
   const [token, setToken] = useState("");
-  const [logged, setLogged] = useState(false);
-  const [logout, setLogout] = useState(false);
-
   const [loading, setLoading] = useState(true);
 
+  // \/
   useEffect(() => {
-    const recoveredUser = JSON.parse(localStorage.getItem("user"));
-
-    const recoveredToken = localStorage.getItem("token");
-
-    if (recoveredUser && recoveredToken) {
-      setUser(recoveredUser);
-      setToken(recoveredToken);
-      setLogged(true);
-    } else setLogged(false);
-
+    const storageUser = getUserFromStorage();
+    const storageAdmin = getAdminFromStorage();
+    const storageToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+    if (storageToken)
+      storageUser
+        ? setLoggedUserState(storageUser, storageToken)
+        : setLoggedAdminState(storageAdmin, storageToken);
+    else {
+      setUnloggedUserState();
+      setUnloggedAdminState();
+    }
     setLoading(false);
   }, []);
 
-  const onLoginSuccess = (responseData, redirectTo) => {
-    setLogged(true);
-
-    
-    
-    let data = {
-      ...responseData.user,
-      productCart: [],
-    };
-
-    localStorage.setItem("user", JSON.stringify(data));
-    localStorage.setItem("token", responseData.token);
-
-    setUser(responseData.user);
-    setToken(responseData.token);
-
-    navigate(redirectTo);
+  const setLoggedUserState = (user, token) => {
+    saveUserInStorage(user, token);
+    setUser(user);
+    setToken(token);
+    setAuthenticated(true);
   };
-
-  const login = (email, password, redirectTo = "/home") =>
-    email && password
-      ? Api.post("api/public/login", { email, password })
-          .then((resp) => {
-            onLoginSuccess(resp.data, redirectTo);
-          })
-          .catch((error) => alert(error.response.data))
-      : alert("Preencha todos os campos.");
-
+  const setUnloggedUserState = () => {
+    deleteStorageUser();
+    setUser({});
+    setToken("");
+    setAuthenticated(false);
+  };
+  
+  const login = (email, password, redirectTo = "/home") => {
+    if (email && password)
+      Api.post("api/public/login", { email, password })
+        .then((resp) => {
+          setLoggedUserState(resp.data.user, resp.data.token);
+          navigate(redirectTo);
+        })
+        .catch((error) => alert(error.response.data));
+    else alert("Preencha todos os campos");
+  };
   const registerUser = (userDatas) => {
     if (
       userDatas.login &&
@@ -68,13 +90,11 @@ export const AuthProvider = ({ children }) => {
         email: userDatas.email,
         password: userDatas.password,
       };
-
       localStorage.setItem("userInfos", JSON.stringify(userInfos));
-      setLogged(true);
+      setAuthenticated(true);
       navigate("/registration");
     } else alert("Preencha todos os campos");
   };
-
   const personalDataRecord = (personalDatas) => {
     const newUser = {
       ...JSON.parse(localStorage.getItem("userInfos")),
@@ -86,31 +106,56 @@ export const AuthProvider = ({ children }) => {
       })
       .catch((error) => alert(error.response.data));
   };
-
   const userLogout = () => {
-    setToken(null);
-    setUser(null);
-    setLogged(false);
-    setLogout(true);
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    setUnloggedUserState();
     navigate("/login");
   };
-
-  return (
-    <AuthContext.Provider
-      value={{
-        authenticated: logged,
-        user,
-        loginName: user && user.name ? user.name : "",
-        loading,
-        login,
-        userLogout,
-        registerUser,
-        personalDataRecord,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  const updateUser = (event, profileInfos) => {
+    event.preventDefault();
+    Api.put(`api/protected/client/${profileInfos.id}`, profileInfos)
+      .then(() => window.location.reload())
+      .catch((error) => alert(error.response.data));
+  };
+  //==================================================== admin
+  const [admin, setAdmin] = useState({});
+  const [adminAuthenticated, setAdminAuthenticated] = useState(false);
+  const setLoggedAdminState = (admin, token) => {
+    saveAdminInStorage(admin, token);
+    setAdmin(admin);
+    setToken(token);
+    setAdminAuthenticated(true);
+  };
+  const setUnloggedAdminState = () => {
+    deleteStorageAdmin();
+    setAdmin({});
+    setToken("");
+    setAdminAuthenticated(false);
+  };
+  const adminLogin = (email, password, redirectTo = "/admin/home") => {
+    if (email && password)
+      Api.post("api/public/admin/login", { email, password })
+        .then((resp) => {
+          setLoggedAdminState(resp.data.admin, resp.data.token);
+          navigate(redirectTo);
+        })
+        .catch((error) => alert(error.response.data));
+    else alert("Preencha todos os campos.");
+  };
+  const state = {
+    authenticated,
+    adminAuthenticated,
+    user,
+    admin,
+    loginName: user && user.name ? user.name : "",
+    adminName: admin && admin.name ? admin.name : "",
+    loading,
+    login,
+    adminLogin,
+    userLogout,
+    registerUser,
+    personalDataRecord,
+    updateUser,
+  };
+  console.log("state de atuh", state);
+  return <AuthContext.Provider value={state} children={children} />;
 };

@@ -53,7 +53,7 @@ const ClientMenu = (props) => {
         <div className="options">
             <ul>
                 <li className="helloUser">
-                        <h3>Olá, <span className="username">{props.username}</span></h3>
+                        <h3>Olá, <span className="username">{JSON.parse(localStorage.getItem("user")).name}</span></h3>
                         <Link to={'/home'}>Sair</Link>
                 </li>
                 <li className="option">

@@ -23,17 +23,17 @@ export default function ModalAddProduct() {
   const [progress, setProgress] = useState(false);
 
   const postItem = async (e) => {
-    await Api.post(`api/protected/product`, {
-      ...valor,
-      url_img: e,
-    })
-      .then((res) => {
-        alert("Produto adicionado");
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    const data = {
+      data: {
+        ...valor,
+        url_img: e,
+      },
+    };
+    const callbackSuccess = (res) => alert("Produto Adicionado");
+    const callbackFailure = (error) => console.error(error);
+    usePost(`api/protected/product`, data, callbackSuccess, callbackFailure);
   };
+
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = (e) => {
     document.querySelector(".btnCadastrarProduto").disabled = true;
