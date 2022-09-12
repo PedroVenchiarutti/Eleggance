@@ -25,11 +25,10 @@ export function useFetch(url) {
 }
 
 export function usePost(url, data, callbackSuccess, callbackFailure) {
-  Api.post(url, {
+  Api.post(url, data, {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
-    data: data,
   })
     .then(callbackSuccess)
     .catch(callbackFailure);

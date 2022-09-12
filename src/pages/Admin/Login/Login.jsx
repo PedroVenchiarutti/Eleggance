@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { AuthContext } from '../../../contexts/auth';
+import { AuthContext } from "../../../contexts/auth";
+
 import "./login.scss";
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { login } = useContext(AuthContext);
-  const handleSubmit = () => login(email, password, '/admin/home');
+  const { adminLogin } = useContext(AuthContext);
+  const handleSubmit = () => adminLogin(email, password);
 
   return (
     <div className="admin-login-container">

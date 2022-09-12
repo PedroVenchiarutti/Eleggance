@@ -71,10 +71,7 @@ export default ({ id }) => {
             </div>
             <Link to="/produtos/id">Voltar</Link>
           </div>
-          <div className="available-products">
-            <Ratings productId={infos.id} />
-            <h1>Nos avalie</h1>
-          </div>
+          <Ratings productId={infos.id} label="NOS AVALIE" />
           <div className="container-products">
             <div className="photo-info-products">
               <div className="name-product">
