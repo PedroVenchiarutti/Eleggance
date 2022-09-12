@@ -29,6 +29,7 @@ import { CartProvider } from "./contexts/cart";
 import { RatingProvider } from "./contexts/rating";
 import { PageProvider } from "./contexts/productsPage";
 import Profile from "./pages/Profile/";
+import { FavoritesProvider } from "./contexts/favorites";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
@@ -107,7 +108,9 @@ const changeRoutes = () => {
                   path="/detalhes/:id"
                   element={
                     <RatingProvider>
-                      <Products />
+                      <FavoritesProvider>
+                        <Products />
+                      </FavoritesProvider>
                     </RatingProvider>
                   }
                 />
@@ -126,7 +129,9 @@ const changeRoutes = () => {
                   <Private>
                     <AddressProvider>
                       <RatingProvider>
-                        <Profile />
+                        <FavoritesProvider>
+                          <Profile />
+                        </FavoritesProvider>
                       </RatingProvider>
                     </AddressProvider>
                   </Private>}
