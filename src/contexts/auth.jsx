@@ -156,6 +156,5 @@ export const AuthProvider = ({ children }) => {
     personalDataRecord,
     updateUser,
   };
-  console.log("state de atuh", state);
   return <AuthContext.Provider value={state} children={children} />;
 };
