@@ -48,7 +48,6 @@ const changeRoutes = () => {
   const PrivateCard = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
     const path = useMatch("/login");
-    console.log(path);
 
     if (loading) {
       return <div className="loading">Loading...</div>;
@@ -71,8 +70,17 @@ const changeRoutes = () => {
 
   const PrivateAdmin = ({ children }) => {
     const { adminAuthenticated } = useContext(AuthContext);
-    return adminAuthenticated ? children : <Navigate to="/admin" />
-  }
+    return adminAuthenticated ? children : <Navigate to="/admin" />;
+  };
+
+  const PrivateLoginAdmin = ({ children }) => {
+    const { adminAuthenticated } = useContext(AuthContext);
+    if (adminAuthenticated) {
+      return <Navigate to="/admin/home" />;
+    } else {
+      return children;
+    }
+  };
 
   return (
     <Router>
@@ -111,7 +119,15 @@ const changeRoutes = () => {
                   }
                 />
                 <Route exact path="/produtos/" element={<Shop />} />
-                <Route exact path="/produtos/:id" element={<Shop />} />
+                <Route
+                  exact
+                  path="/produtos/:id"
+                  element={
+                    <CartProvider>
+                      <Shop />
+                    </CartProvider>
+                  }
+                />
                 <Route exact path="/financas" element={<Financas />} />
                 <Route
                   exact
@@ -205,17 +221,41 @@ const changeRoutes = () => {
                     </Private>
                   }
                 />
-                <Route exact path="/admin" element={<AdminLogin />} />
-                <Route exact path="/admin/home" element={<PrivateAdmin><HomeDashboard /></PrivateAdmin>} />
+                <Route
+                  exact
+                  path="/admin"
+                  element={
+                    <PrivateLoginAdmin>
+                      <AdminLogin />
+                    </PrivateLoginAdmin>
+                  }
+                />
+                <Route
+                  exact
+                  path="/admin/home"
+                  element={
+                    <PrivateAdmin>
+                      <HomeDashboard />
+                    </PrivateAdmin>
+                  }
+                />
                 <Route
                   exact
                   path="/admin/produtos"
-                  element={<PrivateAdmin><ProdutosDashboard /></PrivateAdmin>}
+                  element={
+                    <PrivateAdmin>
+                      <ProdutosDashboard />
+                    </PrivateAdmin>
+                  }
                 />
                 <Route
                   exact
                   path="/admin/pedidos"
-                  element={<PrivateAdmin><DashboardOrders /></PrivateAdmin>}
+                  element={
+                    <PrivateAdmin>
+                      <DashboardOrders />
+                    </PrivateAdmin>
+                  }
                 />
                 <Route
                   exact
@@ -231,7 +271,11 @@ const changeRoutes = () => {
                 <Route
                   exact
                   path="/admin/administracao"
-                  element={<PrivateAdmin><Financas /></PrivateAdmin>}
+                  element={
+                    <PrivateAdmin>
+                      <Financas />
+                    </PrivateAdmin>
+                  }
                 />
                 <Route
                   path="*"

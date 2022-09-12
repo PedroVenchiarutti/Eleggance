@@ -18,7 +18,9 @@ export default ({ id }) => {
 
   const [quantity, setQuantity] = useState(1);
 
-  const [notification, setNotification] = useState("");
+  const { productData, notification, setNotification, setAlertNotification } =
+    useContext(CartContext);
+
   const [shouldUpdateNotification, setShouldUpdateNotification] =
     useState(false);
   useEffect(() => {
@@ -29,15 +31,17 @@ export default ({ id }) => {
       }, 10000);
   }, [notification]);
 
-  const { productData } = useContext(CartContext);
-
   const addToCart = (event, productInfos) => {
     productData(event, productInfos);
     setShouldUpdateNotification(true);
     if (getToken == null) {
       setNotification("Você precisa estar logado para adicionar ao carrinho");
+      setAlertNotification(false);
     } else {
       setNotification("Produto adicionado ao carrinho");
+      console.log("product info", productInfos.id);
+      /* handleCart(productInfos.id); */
+      setAlertNotification(true);
     }
   };
 
