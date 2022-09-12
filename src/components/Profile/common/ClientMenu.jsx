@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import './ClientMenu.scss';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
