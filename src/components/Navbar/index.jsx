@@ -31,15 +31,13 @@ export const Navbar = () => {
   const { cart, alertNotification, setAlertNotification } =
     useContext(CartContext);
 
-  console.log("alert notification", alertNotification);
-
   useEffect(() => {
     setAlertNotification(true);
     const notificationAlert = () => {
-      if (alertNotification) {
+      if (alertNotification && authenticated) {
         const getCart = localStorage.getItem("user");
         const parseCart = JSON.parse(getCart);
-        const cartLength = parseCart.productCart.length;
+        const cartLength = parseCart.productCart?.length;
         console.log("cart length", cartLength);
         setQuantity(cartLength);
         const notification = document.querySelector(".alertIcon");
