@@ -18,13 +18,19 @@ export default function FinishBuy() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [couponDiscount, setCouponDiscount] = useState(0);
 
-  const sum = (accumulated, current) => (+accumulated ?? 0) + (+current ?? 0);
+  // Novo carrinho
+  const userCart = JSON.parse(localStorage.getItem('user'))
+  const products = userCart.productCart
+  console.log(products)
 
-  const subTotalPrice = cart
+  const sum = (accumulated, current) => (+accumulated ?? 0) + (+current ?? 0);
+                        // cart
+  const subTotalPrice = products
     .map((product) => product.qt * product.value)
     .reduce(sum, 0);
   const infos = {
-    totalItems: cart.map((product) => product.qt).reduce(sum, 0),
+                //cart
+    totalItems: products.map((product) => product.qt).reduce(sum, 0),
     subTotalPrice,
     shippingPrice: 19.99,
     paymentMethod,
@@ -49,7 +55,7 @@ export default function FinishBuy() {
     Api.get(
       `https://api-elegancce.herokuapp.com/api/public/discount/${couponCode}`
     )
-      .then((resp) => setCouponDiscount(resp.data[0].discount))
+      .then((resp) => setCouponDiscount(resp.data[0].discount), console.log(couponDiscount, 'cupom valor'))
       .catch(setCouponDiscount(0));
   };
 
@@ -88,7 +94,8 @@ export default function FinishBuy() {
         </div>
         <div className="col">
           <AsideFinishBuy title="5 - INFORMAÇÕES DO PEDIDO" class="itemsCart">
-            <ProductsList products={cart} />
+            {/* <ProductsList products={cart} /> */}
+            <ProductsList products={products} />
             <div className="info-cart">
               <Table infos={infos} />
             </div>

@@ -4,6 +4,7 @@ import { AuthContext } from '../../../contexts/auth';
 import ClientMenu from "../common/ClientMenu";
 import Data from "../../Data/Data";
 import Form from "../../Form/Form";
+import "./Content.scss";
 
 import "./Content.scss";
 import "../Profile.scss";

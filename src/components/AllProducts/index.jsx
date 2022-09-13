@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Card from "../Carrousel/Card";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch";
 import Loading from "../../components/SpinerLoader";
 import "./index.scss";
 import { useContext } from "react";

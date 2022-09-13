@@ -52,7 +52,7 @@ const ItemCart = ({ product }) => {
       </div>
       <div className="prices">
         <div className="price">
-          <p>R${product.value.toFixed(2)}</p>
+          <p>R${product.value}</p>
         </div>
         <div className="totalValue">
           <p>R${(product.value * +product.qt).toFixed(2)}</p>
