@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }) => {
   const updateUser = (event, profileInfos) => {
     event.preventDefault();
     Api.put(`api/protected/client/${profileInfos.id}`, profileInfos)
-      .then(() => window.location.reload())
+      .then(() => window.location.reload(), alert('dados alterados'))
       .catch((error) => alert(error.response.data));
   };
   //==================================================== admin
