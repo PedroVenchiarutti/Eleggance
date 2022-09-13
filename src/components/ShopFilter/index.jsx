@@ -7,6 +7,7 @@ export default function ShopFilter({
   setMaxPrice,
   minPrice,
   maxPrice,
+  brands,
 }) {
   function toggleModalFilter() {
     let modal = document.querySelector(".modalFilter");
@@ -23,42 +24,17 @@ export default function ShopFilter({
           </div>
 
           <h2>Marca</h2>
-          <li>
-            <input
-              type="checkbox"
-              defaultChecked
-              value="newHair"
-              onClick={(e) => toggleBrands(e.target.value)}
-            />
-            <label>New Hair</label>
-          </li>
-          <li>
-            <input
-              type="checkbox"
-              defaultChecked
-              value="natura"
-              onClick={(e) => toggleBrands(e.target.value)}
-            />
-            <label>Natura</label>
-          </li>
-          <li>
-            <input
-              type="checkbox"
-              defaultChecked
-              value="boticario"
-              onClick={(e) => toggleBrands(e.target.value)}
-            />
-            <label>O Boticário</label>
-          </li>
-          <li>
-            <input
-              type="checkbox"
-              defaultChecked
-              value="avon"
-              onClick={(e) => toggleBrands(e.target.value)}
-            />
-            <label>Avon</label>
-          </li>
+          {brands.map((brand) => (
+            <li>
+              <input
+                type="checkbox"
+                defaultChecked
+                value={brand}
+                onClick={(e) => toggleBrands(e.target.value)}
+              />
+              <label>{brand}</label>
+            </li>
+          ))}
           <hr />
           <h2>Preço</h2>
           <div className="filter-by-price">

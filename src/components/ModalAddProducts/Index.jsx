@@ -5,14 +5,15 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../api/firebase";
 import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
-
+import axios from "axios";
+import { usePost } from "../../hooks/useFetch";
 export default function ModalAddProduct() {
   const [imagesUrl, setImagesUrl] = useState(null);
   const [valor, setValor] = useState({
     name: "",
     description: "",
     value: 0,
-    brand: "newHair",
+    brand: "",
     qt: 1,
     url_img: "",
   });
@@ -23,17 +24,15 @@ export default function ModalAddProduct() {
   const [progress, setProgress] = useState(false);
 
   const postItem = async (e) => {
-    const data = {
-      data: {
-        ...valor,
-        url_img: e,
-      },
-    };
-    const callbackSuccess = (res) => alert("Produto Adicionado");
-    const callbackFailure = (error) => console.error(error);
-    usePost(`api/protected/product`, data, callbackSuccess, callbackFailure);
-  };
+    let data = { ...valor, url_img: e };
 
+    usePost(
+      "api/protected/product",
+      data,
+      alert("Produto adicionado"),
+      (error) => console.error(error)
+    );
+  };
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = (e) => {
     document.querySelector(".btnCadastrarProduto").disabled = true;
@@ -124,16 +123,11 @@ export default function ModalAddProduct() {
               }
             ></textarea>
             <label>Marca</label>
-            <select
+            <input
               name="brand"
+              value={valor.brand}
               onChange={(e) => setValor({ ...valor, brand: e.target.value })}
-            >
-              <option value="newHair">New Hair</option>
-              <option value="natura">Natura</option>
-              <option value="boticario">O Boticário</option>
-              <option value="avon">Avon</option>
-              <option value="semMarca">Sem marca</option>
-            </select>
+            />
             {/* <input
               maxLength={45}
               type="text"
