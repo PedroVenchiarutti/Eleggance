@@ -103,12 +103,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .name-product {
       display: flex;
       align-items: center;
       margin: 25px 0;
       justify-content: space-between;
       width: 80%;
+
       h1 {
         font-size: 1.4rem;
         font-weight: 700;
@@ -212,6 +214,7 @@
     align-items: center;
   }
 }
+
 .cart-notification {
   color: #2ac300ed;
   text-align: center;
@@ -287,59 +290,6 @@
   }
 }
 
-//===========HEART===========//
-
-.heart-products {
-  flex-direction: row;
-  float: right;
-  //margin-left: 50px;
-  align-content: flex-end;
-
-  img {
-    margin-top: 10px;
-  }
-
-  // .heart-product {
-  //   //padding: 0 10px;
-  // }
-
-  .heart-product:not(:checked) > input {
-    position: absolute;
-    top: -9999px;
-  }
-
-  .heart-product:not(:checked) > label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 49px;
-    color: #ccc;
-  }
-
-  .heart-product:not(:checked) > label:before {
-    content: " ❤ ";
-  }
-
-  .heart-product > input:checked ~ label {
-    color: red;
-  }
-
-  .heart-product:not(:checked) > label:hover,
-  .heart-product:not(:checked) > label:hover ~ label {
-    color: red;
-  }
-
-  .heart-product > input:checked + label:hover,
-  .heart-product > input:checked + label:hover ~ label,
-  .heart-product > input:checked ~ label:hover,
-  .heart-product > input:checked ~ label:hover ~ label,
-  .heart-product > label:hover ~ input:checked ~ label {
-    color: red;
-  }
-}
-
 .ul-products {
   margin-top: 20px;
   margin-bottom: 100px;
@@ -372,6 +322,7 @@
         transform: scale(0.7);
       }
     }
+
     .container-products {
       flex-direction: column;
       width: 80%;
@@ -388,6 +339,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
             p {
               display: flex;
               justify-content: center;
@@ -459,6 +411,7 @@
   .button-buy-center {
     width: 100%;
     padding: 10px;
+
     .button-buy-product {
       width: 100%;
     }

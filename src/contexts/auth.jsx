@@ -62,6 +62,7 @@ export const AuthProvider = ({ children }) => {
     setToken(token);
     setAuthenticated(true);
   };
+
   const setUnloggedUserState = () => {
     deleteStorageUser();
     setUser({});
@@ -101,28 +102,38 @@ export const AuthProvider = ({ children }) => {
       navigate("/registration");
     } else alert("Preencha todos os campos");
   };
+
   const personalDataRecord = (personalDatas) => {
     const newUser = {
       ...JSON.parse(localStorage.getItem("userInfos")),
       ...personalDatas,
     };
+
     Api.post("api/public/register", newUser)
       .then(() => {
         login(newUser.email, newUser.password);
       })
       .catch((error) => console.log(error.response.data));
   };
-  const userLogout = () => {
+
+  const userLogout = (redirectTo = "/login") => {
     setUnloggedUserState();
-    navigate("/login");
+    setUnloggedAdminState();
+    navigate(redirectTo);
   };
+
   const updateUser = (event, profileInfos) => {
     event.preventDefault();
-    Api.put(`api/protected/client/${profileInfos.id}`, profileInfos)
+
+    const headers = { Authentication: localStorage.getItem("token") }
+
+    Api.put(`api/protected/client/${profileInfos.id}`, profileInfos, { headers })
       .then(() => window.location.reload())
       .catch((error) => alert(error.response.data));
   };
+
   //==================================================== admin
+
   const [admin, setAdmin] = useState({});
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
   const setLoggedAdminState = (admin, token) => {
@@ -131,12 +142,14 @@ export const AuthProvider = ({ children }) => {
     setToken(token);
     setAdminAuthenticated(true);
   };
+
   const setUnloggedAdminState = () => {
     deleteStorageAdmin();
     setAdmin({});
     setToken("");
     setAdminAuthenticated(false);
   };
+
   const adminLogin = (email, password, redirectTo = "/admin/home") => {
     if (email && password)
       Api.post("api/public/admin/login", { email, password })
@@ -147,6 +160,7 @@ export const AuthProvider = ({ children }) => {
         .catch((error) => alert(error.response.data));
     else alert("Preencha todos os campos.");
   };
+
   const state = {
     authenticated,
     adminAuthenticated,

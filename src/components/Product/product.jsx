@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./product.scss";
 import InfoProducts from "./infoproduct.jsx";
 import { useFetch } from "../../hooks/useFetch";
-import Loading from "../../components/SpinerLoader";
+import Loading from "../SpinerLoader";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import Ratings from "../Ratings";
 import { Link } from "react-router-dom";
+import Heart from "../Heart";
 
 export default ({ id }) => {
   const { data } = useFetch(`api/public/products/${id}`);
@@ -98,14 +99,7 @@ export default ({ id }) => {
             <div className="products-info-price">
               <div className="name-product">
                 <h1>{data[0].name}</h1>
-                <div className="heart-products">
-                  <div className="heart-product">
-                    <input type="radio" id="heart1" name="rate" value="1" />
-                    <label htmlFor="heart1" title="text">
-                      1 heart
-                    </label>
-                  </div>
-                </div>
+                <Heart productId={infos.id} />
               </div>
               <div className="price-product">
                 <h1 className="price">

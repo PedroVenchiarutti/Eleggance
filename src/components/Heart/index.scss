@@ -1,0 +1,45 @@
+.heart-products {
+    flex-direction: row;
+    float: right;
+    align-content: flex-end;
+
+    img {
+        margin-top: 10px;
+    }
+
+    .heart-product:not(:checked)>input {
+        position: absolute;
+        top: -9999px;
+    }
+
+    .heart-product:not(:checked)>label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 49px;
+        color: #ccc;
+    }
+
+    .heart-product:not(:checked)>label:before {
+        content: " ❤ ";
+    }
+
+    .heart-product>input:checked~label {
+        color: red;
+    }
+
+    .heart-product:not(:checked)>label:hover,
+    .heart-product:not(:checked)>label:hover~label {
+        color: red;
+    }
+
+    .heart-product>input:checked+label:hover,
+    .heart-product>input:checked+label:hover~label,
+    .heart-product>input:checked~label:hover,
+    .heart-product>input:checked~label:hover~label,
+    .heart-product>label:hover~input:checked~label {
+        color: red;
+    }
+}
