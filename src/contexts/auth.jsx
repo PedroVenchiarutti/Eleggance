@@ -68,17 +68,23 @@ export const AuthProvider = ({ children }) => {
     setToken("");
     setAuthenticated(false);
   };
-  
+
   const login = (email, password, redirectTo = "/home") => {
     if (email && password)
       Api.post("api/public/login", { email, password })
         .then((resp) => {
-          setLoggedUserState(resp.data.user, resp.data.token);
+          let data = {
+            ...resp.data.user,
+            productCart: [],
+          };
+
+          setLoggedUserState(data, resp.data.token);
           navigate(redirectTo);
         })
         .catch((error) => alert(error.response.data));
     else alert("Preencha todos os campos");
   };
+
   const registerUser = (userDatas) => {
     if (
       userDatas.login &&
@@ -156,6 +162,5 @@ export const AuthProvider = ({ children }) => {
     personalDataRecord,
     updateUser,
   };
-  console.log("state de atuh", state);
   return <AuthContext.Provider value={state} children={children} />;
 };

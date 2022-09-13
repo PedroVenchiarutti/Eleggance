@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-/* import useAuth from "../../hooks/useAuth"; */
 import Input from "../../components/Input/Input";
 import Form from "../../components/Form/Form";
 import Button from "../../components/Button/Button";
@@ -63,10 +62,6 @@ const FormSingUp = (props) => {
           <Form className="form-singup" onSubmit={handleSubmitt}>
             <div className="box-singup">
               <div className="box-header-singup">
-                {/* <div className="img-singup">
-                  IMAGEN CRASHANDO O SITE 
-                  <img src="img\LOGINECADASTRO.jpg" alt="foto" />
-                </div> */}
                 <div className="content-input-login-singup">
                   <div className="logo-login">
                     <img src="./logo.png" alt="logo" />
