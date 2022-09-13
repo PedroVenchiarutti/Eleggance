@@ -18,7 +18,20 @@ const FormCadastro = (props) => {
 
   const handleRegistrer = (e) => {
     e.preventDefault();
-    registerUser(registerUserState);
+    console.log(registerUserState.password);
+    if (registerUserState.password.length < 6) {
+      alert("Sua Senha Deve Conter pelo Menos 6 Dígitos");
+    } else if (
+      registerUserState.password !== registerUserState.confirmPassword
+    ) {
+      alert("As Senhas Devem Ser Iguais");
+    } else {
+      if (registerUserState.password.indexOf(" ") >= 0) {
+        alert("Sua Senha Não Pode Conter Espaços");
+      } else {
+        registerUser(registerUserState);
+      }
+    }
   };
 
   return (

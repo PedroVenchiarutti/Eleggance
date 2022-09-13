@@ -110,7 +110,7 @@ export const AuthProvider = ({ children }) => {
       .then(() => {
         login(newUser.email, newUser.password);
       })
-      .catch((error) => alert(error.response.data));
+      .catch((error) => console.log(error.response.data));
   };
   const userLogout = () => {
     setUnloggedUserState();
