@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "./Content.scss";
-import ClientMenu from "../common/ClientMenu";
 import Data from "../../Data/Data";
 import "../Profile.scss";
 import Form from "./Form";
+import "./Content.scss";
 import Api from "../../../api/api";
 
 export default (props) => {
@@ -20,12 +19,13 @@ export default (props) => {
       alert("Password must be at least 6 characters");
       return;
     }
-
     let data = { password, newPassword };
 
-    console.log(data);
-
-    Api.put("/api/protected/client/password", data)
+    Api.put("/api/protected/client/password", data, {
+      headers: {
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => {
         alert("Password changed successfully");
         setPassword("");
@@ -39,47 +39,44 @@ export default (props) => {
   };
 
   return (
-    <div className="profile-container">
-      <ClientMenu selected="login" />
-      <div className="main-content">
-        <Data header="Meu Login e Senha">
-          <h3>Alterar senha</h3>
-          <div className="forms">
-            <Form item="Senha" value="Alterar Senha" submit={handlePassword}>
-              <div className="perfil-password-atual">
-                <label htmlFor="currentpassword">Senha atual:</label>
-                <input
-                  type="password"
-                  name="currentpassword"
-                  placeholder="Digite sua senha Atual"
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                />
-              </div>
-              <div className="perfil-new-password">
-                <label htmlFor="newpassword">Nova senha: </label>
-                <input
-                  type="password"
-                  name="newpassword"
-                  placeholder="Digite sua senha"
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  value={newPassword}
-                />
-              </div>
-              <div className="perfil-confirm-password">
-                <label htmlFor="newpassword">Confirme a nova senha: </label>
-                <input
-                  type="password"
-                  name="confirmpassword"
-                  placeholder="Confirme sua senha"
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  value={confirmPassword}
-                />
-              </div>
-            </Form>
-          </div>
-        </Data>
-      </div>
-    </div>
+    <>
+      <Data header="Meu Login e Senha">
+        <h3>Alterar senha</h3>
+        <div className="forms">
+          <Form item="Senha" value="Alterar Senha" submit={handlePassword}>
+            <div className="perfil-password-atual">
+              <label htmlFor="currentpassword">Senha atual:</label>
+              <input
+                type="password"
+                name="currentpassword"
+                placeholder="Digite sua senha Atual"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="perfil-new-password">
+              <label htmlFor="newpassword">Nova senha: </label>
+              <input
+                type="password"
+                name="newpassword"
+                placeholder="Digite sua senha"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </div>
+            <div className="perfil-confirm-password">
+              <label htmlFor="newpassword">Confirme a nova senha: </label>
+              <input
+                type="password"
+                name="confirmpassword"
+                placeholder="Confirme sua senha"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+          </Form>
+        </div>
+      </Data>
+    </>
   );
 };

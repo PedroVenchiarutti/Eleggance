@@ -80,6 +80,16 @@
     font-size: 16px;
     padding-top: 10px;
   }
+
+  .btn-logout {
+    margin-left: 8px;
+    font-weight: normal;
+    
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }
 @media (max-width: 1120px) {
   .nav-finances-title {

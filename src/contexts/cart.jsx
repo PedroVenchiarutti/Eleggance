@@ -20,7 +20,15 @@ export const CartProvider = ({ children }) => {
 
   const productData = (event, data) => {
     event.preventDefault();
-    setCart((current) => [...current, data]);
+    console.log(data,'data do productData')
+    // setCart((current) => [...current, data]);
+    const getLocalStorageUser = localStorage.getItem("user");
+    const parseLocalStorageUser = JSON.parse(getLocalStorageUser);
+    console.log(parseLocalStorageUser.productCart)
+    parseLocalStorageUser.productCart.push(data)
+  
+    localStorage.setItem('user',JSON.stringify(parseLocalStorageUser))
+
   };
 
   useEffect(() => {
@@ -46,16 +54,33 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(parseLocalStorageUser));
   };
 
-  const getItemIndexById = (productId) =>
-    cart.findIndex((item) => item.id === productId);
+  // const getItemIndexById = (productId) =>
+  //   cart.findIndex((item) => item.id === productId);
 
   const setQuantity = (productId, quantity) => {
-    // if (quantity === 0) removeItem(productId);
+    const userCart = JSON.parse(localStorage.getItem('user'));
     //limitando input para 1 até 100
     const value = Math.max(min, Math.min(max, Number(quantity)));
-
-    cart[getItemIndexById(productId)].qt = +value;
+    console.log(productId, quantity)
+    console.log(userCart.productCart)
+    let itemIndex = 0
+    let iteration = 0
+    userCart.productCart.forEach((item) => {
+      if(item.id == productId){
+        itemIndex = iteration
+      }
+      iteration++;
+    })
+    console.log(itemIndex)
+    userCart.productCart[itemIndex].qt = +value
+    console.log(userCart.productCart[itemIndex].qt)
+    console.log(JSON.stringify(userCart))    
+    // cart[getItemIndexById(userCart.productCart)].qt = +value
+    // cart[getItemIndexById(productId)].qt = +value;
+    localStorage.setItem('user',JSON.stringify(userCart))
     setCart([...cart]);
+    console.log(cart)
+    
   };
 
   const finishBuy = (addressId) => {

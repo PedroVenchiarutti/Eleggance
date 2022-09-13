@@ -5,7 +5,7 @@ import "../NabBarFinance/navBarFinances.scss";
 import "./navBarFinances.scss";
 import Search from "../Navbar/Search";
 export default (props) => {
-  const { adminName } = useContext(AuthContext);
+  const { adminName, userLogout } = useContext(AuthContext);
   const [busca, setBusca] = useState();
 
   return (
@@ -34,6 +34,7 @@ export default (props) => {
           </div>
           <div className="nav-finance-user">
             <span>{adminName.toUpperCase()}</span>
+            <span className="btn-logout" onClick={() => userLogout("/admin")}>Sair</span>
           </div>
         </div>
       </div>

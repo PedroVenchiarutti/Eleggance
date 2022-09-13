@@ -5,7 +5,6 @@ import { storage } from "../../api/firebase";
 import { AuthContext } from "../../contexts/auth";
 import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
-import Input from "react-input-mask";
 
 const RegistrationForm = (props) => {
   const [previelImg, setPrevielImg] = useState("/icons/camera.png");
