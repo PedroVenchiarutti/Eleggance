@@ -118,10 +118,14 @@ export const AuthProvider = ({ children }) => {
   };
   const updateUser = (event, profileInfos) => {
     event.preventDefault();
-    Api.put(`api/protected/client/${profileInfos.id}`, profileInfos)
-      .then(() => window.location.reload())
-      .catch((error) => alert(error.response.data));
+    console.log(profileInfos.id);
+    Api.put(`/api/protected/client/${profileInfos.id}`, profileInfos)
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((error) => console.log(error.response.data));
   };
+
   //==================================================== admin
   const [admin, setAdmin] = useState({});
   const [adminAuthenticated, setAdminAuthenticated] = useState(false);
