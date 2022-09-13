@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useFetch } from "../hooks/useFetch";
+import { useFetch, usePost } from "../hooks/useFetch";
 import Api from "../api/api";
 
 const initialState = {
@@ -12,8 +12,7 @@ const initialState = {
   complement: "",
 };
 
-const baseApiUrl =
-  "https://api-elegancce.herokuapp.com/api/protected/client/addresses";
+const BASE_URL = "api/protected/client/addresses";
 
 async function getCepDatas(cep) {
   const response = await (
@@ -40,25 +39,24 @@ export const AddressProvider = ({ children }) => {
   const onFormSubmit = async (event) => {
     event.preventDefault();
 
-    const addressText = `${address.address}${
-      address.number ? `, ${address.number}` : ""
-    }${address.complement ? `, ${address.complement}` : ""}`;
+    const addressText = `${address.address}${address.number ? `, ${address.number}` : ""
+      }${address.complement ? `, ${address.complement}` : ""}`;
+
+    const addressToPost = {
+      cep: address.cep,
+      address: addressText,
+      district: address.district,
+      city: address.city,
+      complement: address.complement,
+      user_id: JSON.parse(localStorage.getItem("user")).id,
+    }
 
     // Missing API treatment for edit coupon.
-    if (inEditAddressMode) {
-    } else {
-      Api.post(baseApiUrl, {
-        cep: address.cep,
-        address: addressText,
-        district: address.district,
-        city: address.city,
-        complement: address.complement,
-        user_id: JSON.parse(localStorage.getItem("user")).id,
-      }).then(() => {
-        alert("Endereço Cadastrado Com Sucesso");
-        window.location.reload();
-      });
-    }
+    if (inEditAddressMode) { }
+    else usePost(BASE_URL, addressToPost, () => {
+      alert('Endereço cadastrado com sucesso.');
+      window.location.reload();
+    }, () => alert('Ocorreu um erro ao cadastrar o endereço'));
   };
 
   // API treatment for edit method bellow is missing.
@@ -66,8 +64,17 @@ export const AddressProvider = ({ children }) => {
     updateState("cep", cep);
     setInEditAddressMode(true);
   };
-  const removeAddressClick = (addressId) =>
-    Api.delete(`${baseApiUrl}/${addressId}`);
+  const removeAddressClick = (addressId) => {
+    const headers = {
+      Authorization: localStorage.getItem("token")
+    }
+    
+    Api.delete(`${BASE_URL}/${addressId}`, { headers })
+      .then(() => {
+        alert("Endereço removido com sucesso.");
+        window.location.reload();
+      }, () => alert("Ocorreu um erro ao remover o endereço."));
+  }
 
   const setAddressesDatas = async () => {
     const cep = address.cep.toString();
@@ -85,7 +92,7 @@ export const AddressProvider = ({ children }) => {
     useFetch(`api/protected/addresses/${addressId}`).data;
 
   const userId = JSON.parse(localStorage.getItem("user")).id;
-  
+
   const { data } = useFetch(`api/protected/client/addresses/all/${userId}`);
   const state = {
     address,

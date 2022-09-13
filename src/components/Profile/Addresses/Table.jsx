@@ -25,17 +25,17 @@ const getBodyObjects = (addresses) => addresses.map(address => {
     return {
         key: address.id,
         text: <td className="address">{address.address} - {address.district} - {address.city} {address.cep}</td>,
-        buttons: getTdButtons(address.cep)
+        buttons: getTdButtons(address.id, address.cep)
     }
 })
 
-const getTdButtons = (cep) => {
+const getTdButtons = (addressId, cep) => {
     const { editAddressClick, removeAddressClick } = useContext(AddressContext);
 
     return (
         <td>
             <button className="edit-button" onClick={() => editAddressClick(cep)}><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
-            <TrashButton onClick={() => removeAddressClick(cep)} />
+            <TrashButton onClick={() => removeAddressClick(addressId)} />
         </td>
     )
 }
