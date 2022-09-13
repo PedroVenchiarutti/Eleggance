@@ -119,7 +119,10 @@ export const AuthProvider = ({ children }) => {
 
   const updateUser = (event, profileInfos) => {
     event.preventDefault();
-    Api.put(`api/protected/client/${profileInfos.id}`, profileInfos)
+
+    const headers = { Authentication: localStorage.getItem("token") }
+
+    Api.put(`api/protected/client/${profileInfos.id}`, profileInfos, { headers })
       .then(() => window.location.reload())
       .catch((error) => alert(error.response.data));
   };
