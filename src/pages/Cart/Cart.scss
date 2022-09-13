@@ -42,7 +42,7 @@
 
     button {
       background-color: #e4af39;
-      border: 1px solid #0f0f0f;
+      border: none;
       color: white;
       border-radius: 20%;
       line-height: 20px;
@@ -52,6 +52,7 @@
     .quantityInput {
       width: 100%;
       text-align: center;
+      outline: none;
     }
 
     .deleteProduct {

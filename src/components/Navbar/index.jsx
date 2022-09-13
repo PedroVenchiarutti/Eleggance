@@ -9,7 +9,8 @@ import Search from "./Search";
 import { CartContext } from "../../contexts/cart";
 
 export const Navbar = () => {
-  const { authenticated, loginName } = useContext(AuthContext);
+  const { authenticated, loginName, adminName } = useContext(AuthContext);
+  const { adminAuthenticated } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
   const [busca, setBusca] = useState("");
@@ -17,7 +18,6 @@ export const Navbar = () => {
   const [quantity, setQuantity] = useState(null);
   const navigation = useNavigate();
 
-  //
   const ToggleModalUser = () => {
     setModalUser(!modalUser);
     console.log("modalUser", modalUser);
@@ -26,6 +26,32 @@ export const Navbar = () => {
   // Abrir/Fechar menu mobile Hamburguer
   const ToggleMode = () => {
     setMode(!active);
+  };
+
+  const AdminLogged = () => {
+    if (adminAuthenticated) {
+      return (
+        <div className="div-button">
+          <Link to="/admin/home" className="login-button">
+            <p>
+              {adminName}
+              <br />
+              <span className="admin-navbar">Admin</span>
+            </p>
+          </Link>
+        </div>
+      );
+    }
+    return (
+      <div className="div-button">
+        <Link to="/login" className="login-button">
+          <img src="/img/Frame.svg" />
+          <p>
+            Entre ou <br /> cadastre-se
+          </p>
+        </Link>
+      </div>
+    );
   };
 
   const { cart, alertNotification, setAlertNotification } =
@@ -62,7 +88,7 @@ export const Navbar = () => {
     const width = window.screen.width;
 
     if (height >= 600 && width >= 600 && authenticated) {
-      // renderizando Desktop
+      // renderizando Desktop se tiver logado
       return (
         <div className="navbar-user-logged">
           <div className="navbar-user-logged-name">
@@ -93,14 +119,7 @@ export const Navbar = () => {
     } else if (height >= 600 && width >= 600 && !authenticated) {
       return (
         <div className="navbar-user-logged">
-          <div className="div-button">
-            <Link to="/login" className="login-button">
-              <img src="/img/Frame.svg" />
-              <p>
-                Entre ou <br /> cadastre-se
-              </p>
-            </Link>
-          </div>
+          {AdminLogged()}
           <button className="buttonCart">
             <Link to="/carrinho">
               <img src="/icons/shoppingCart.svg" className="svgCart" />

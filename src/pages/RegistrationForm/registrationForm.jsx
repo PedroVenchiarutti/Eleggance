@@ -7,20 +7,18 @@ import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
 
 const RegistrationForm = (props) => {
-  const [imgURL, setImgURL] = useState("");
   const [previelImg, setPrevielImg] = useState("/icons/camera.png");
-  const [sexy, setSexy] = useState("");
   const [images, setImages] = useState("");
-  const [personalName, setPersonalName] = useState({
+  const [personalDatas, setPersonalDatas] = useState({
     name: "",
     cpf: "",
     birth: "",
-    img_url: "",
+    sexo: ""
   });
   const { personalDataRecord } = useContext(AuthContext);
   const [progress, setProgress] = useState(false);
 
-  console.log(personalName);
+  console.log(personalDatas);
 
   //Funcao para enviar a imagem para o firebase
   const firebaseUpload = (e) => {
@@ -38,14 +36,12 @@ const RegistrationForm = (props) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
-      (error) => {}
+      (error) => { }
     );
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
         .then((url) => {
-          console.log("urlaaaaaaaaaaaaaaaaaa", url);
-          setPersonalName({ ...personalName, img_url: url });
-          personalDataRecord(personalName);
+          personalDataRecord({ ...personalDatas, img_url: url });
           setProgress(true);
         })
         .catch((error) => {
@@ -140,10 +136,10 @@ const RegistrationForm = (props) => {
                           type="text"
                           name="name"
                           required
-                          value={personalName.name}
+                          value={personalDatas.name}
                           onChange={(e) =>
-                            setPersonalName({
-                              ...personalName,
+                            setPersonalDatas({
+                              ...personalDatas,
                               name: e.target.value,
                             })
                           }
@@ -156,10 +152,10 @@ const RegistrationForm = (props) => {
                             type="text"
                             name="cpf"
                             required
-                            value={personalName.cpf}
+                            value={personalDatas.cpf}
                             onChange={(e) =>
-                              setPersonalName({
-                                ...personalName,
+                              setPersonalDatas({
+                                ...personalDatas,
                                 cpf: e.target.value,
                               })
                             }
@@ -192,10 +188,10 @@ const RegistrationForm = (props) => {
                             type="date"
                             name="data de nascimento"
                             required
-                            value={personalName.birth}
+                            value={personalDatas.birth}
                             onChange={(e) =>
-                              setPersonalName({
-                                ...personalName,
+                              setPersonalDatas({
+                                ...personalDatas,
                                 birth: e.target.value,
                               })
                             }
@@ -208,12 +204,12 @@ const RegistrationForm = (props) => {
                           name="select"
                           className="select-form"
                           required
-                          value={sexy}
-                          onChange={(e) => setSexy(e.target.value)}
+                          value={personalDatas.sexo}
+                          onChange={(e) => setPersonalDatas({ ...personalDatas, sexo: e.target.value })}
                         >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>
-                          <option value="Prefere não dizer">
+                          <option value="">
                             Prefiro não dizer
                           </option>
                         </select>
