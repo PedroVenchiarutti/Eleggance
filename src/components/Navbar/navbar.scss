@@ -142,6 +142,11 @@
         font-weight: bold;
         justify-content: center;
       }
+
+      .admin-navbar {
+        padding-top: 10px;
+        color: #ff2c24;
+      }
     }
   }
 }
@@ -152,6 +157,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  top: 10px;
 
   .navbar-user-logged-name {
     display: flex;
@@ -221,6 +227,7 @@
     text-align: center;
     padding-top: 2px;
     border-radius: 50%;
+    color: #333;
   }
 
   .alertIcon {

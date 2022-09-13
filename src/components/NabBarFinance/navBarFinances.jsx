@@ -6,7 +6,7 @@ import "../NabBarFinance/navBarFinances.scss";
 import "./navBarFinances.scss";
 import Search from "../Navbar/Search";
 export default (props) => {
-  const { loginName } = useContext(AuthContext);
+  const { adminName } = useContext(AuthContext);
   const [busca, setBusca] = useState();
  
 
@@ -35,7 +35,7 @@ export default (props) => {
             <img className="icon-bell" src="/icons/notification.png" />
           </div>
           <div className="nav-finance-user">
-            <span>{loginName.toUpperCase()}</span>
+            <span>{adminName.toUpperCase()}</span>
           </div>
         </div>
       </div>

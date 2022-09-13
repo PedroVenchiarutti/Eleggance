@@ -13,19 +13,18 @@ export default (props) => {
   var [i, setI] = useState(0);
 
   useEffect(() => {
-    console.log(busca);
     axios
       .get(`https://api-elegancce.herokuapp.com/api/public/search/${busca}`)
       .then((response) => {
+        i = 0;
         const { data } = response;
+        console.log(data);
         setProducts(
-          data.filter(function (obj) {
-            console.log(i);
+          data.filter((obj) => {
             if (obj.name) {
               objName = obj.name.toLowerCase();
               if (objName.includes(props.busca)) {
                 if (props.busca != "") {
-                  console.log(i)
                   if (i <= 2) {
                     setI((i = i + 1));
                     return objName;
@@ -37,7 +36,6 @@ export default (props) => {
         );
       });
   }, [busca]);
-  console.log(products);
 
   if (props.busca && i >= 1) {
     return (
