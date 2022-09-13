@@ -85,7 +85,7 @@ export default ({ id }) => {
                 </div>
               </div>
               <div className="photo-product">
-                <img src={infos.image} alt="foto" />
+                <img src={infos.image} alt="foto" width='400px'/>
                 <div className="info-products-info">
                   <p className="ul-products">
                     <a onClick={() => toggleMoreInfos()}>
