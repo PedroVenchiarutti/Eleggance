@@ -74,7 +74,12 @@ export const AuthProvider = ({ children }) => {
     if (email && password)
       Api.post("api/public/login", { email, password })
         .then((resp) => {
-          setLoggedUserState(resp.data.user, resp.data.token);
+          let data = {
+            ...resp.data.user,
+            productCart: [],
+          };
+
+          setLoggedUserState(data, resp.data.token);
           navigate(redirectTo);
         })
         .catch((error) => alert(error.response.data));
@@ -108,7 +113,7 @@ export const AuthProvider = ({ children }) => {
       .then(() => {
         login(newUser.email, newUser.password);
       })
-      .catch((error) => alert(error.response.data));
+      .catch((error) => console.log(error.response.data));
   };
 
   const userLogout = (redirectTo = "/login") => {
@@ -171,6 +176,5 @@ export const AuthProvider = ({ children }) => {
     personalDataRecord,
     updateUser,
   };
-
   return <AuthContext.Provider value={state} children={children} />;
 };

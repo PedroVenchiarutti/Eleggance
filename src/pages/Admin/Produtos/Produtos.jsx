@@ -7,6 +7,7 @@ import "./Produtos.scss";
 import { EditContext } from "../../../contexts/modalEdit";
 import { useContext } from "react";
 import Header from "../../../components/NabBarFinance/navBarFinances";
+import Pagination from "../../../components/Pagination/Pagination";
 
 export default function ProdutosDashboard() {
   function modalToggle() {
@@ -25,6 +26,7 @@ export default function ProdutosDashboard() {
         <AdminProductsList />
         <ModalAddProducts />
         <ModalEditProducts editing={editing} />
+        <Pagination />
 
         <div onClick={modalToggle} className="button-add">
           +
