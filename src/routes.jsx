@@ -91,8 +91,8 @@ const changeRoutes = () => {
 
   return (
     <Router>
-      <AuthProvider>
-        <PageProvider>
+      <PageProvider>
+        <AuthProvider>
           <CartProvider>
             <EditProvider>
               <Routes>
@@ -297,8 +297,8 @@ const changeRoutes = () => {
               </Routes>
             </EditProvider>
           </CartProvider>
-        </PageProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </PageProvider>
     </Router>
   );
 };

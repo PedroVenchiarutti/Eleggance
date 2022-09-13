@@ -4,7 +4,8 @@ import "./product.scss";
 const Product = ({ product }) => {
   const priceParceled = (product.value / 12).toFixed(2);
   const priceParceledFormatado = priceParceled.toString().replace(".", ",");
-  const productPrice = product.value.toString().replace(".", ",");
+  const productValue = product.value.toFixed(2);
+  const productPrice = productValue.toString().replace(".", ",");
 
   return (
     <div className="product">
