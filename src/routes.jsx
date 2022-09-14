@@ -19,13 +19,6 @@ import AdminLogin from "./pages/Admin/Login/Login";
 import HomeDashboard from "./pages/Admin/dashboard/Home";
 import ProdutosDashboard from "./pages/Admin/Produtos/Produtos";
 import FinishBuy from "./pages/FinishBuy/FinishBuy";
-import MyProfile from "./pages/Profile/Profile";
-import MyData from "./pages/Profile/Data";
-import ProfileOrders from "./pages/Profile/Orders";
-import ProfileAddresses from "./pages/Profile/Addresses";
-import ProfileFavorites from "./pages/Profile/Favorites";
-import MyLogin from "./pages/Profile/Login";
-import MyRatings from "./pages/Profile/Ratings";
 import { AddressProvider } from "./contexts/address";
 import DashboardOrders from "./pages/Admin/Orders/Orders";
 import DashboardCoupons from "./pages/Admin/Coupons/Coupons";
@@ -35,11 +28,12 @@ import { EditProvider } from "./contexts/modalEdit";
 import { CartProvider } from "./contexts/cart";
 import { RatingProvider } from "./contexts/rating";
 import { PageProvider } from "./contexts/productsPage";
+import Profile from "./pages/Profile/";
+import { FavoritesProvider } from "./contexts/favorites";
 
 const changeRoutes = () => {
   const Private = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext);
-    console.log(authenticated);
 
     if (loading) return <div className="loading">Loading...</div>;
     return authenticated ? children : <Navigate to="/home" />;
@@ -91,8 +85,8 @@ const changeRoutes = () => {
 
   return (
     <Router>
-      <AuthProvider>
-        <PageProvider>
+      <PageProvider>
+        <AuthProvider>
           <CartProvider>
             <EditProvider>
               <Routes>
@@ -121,7 +115,9 @@ const changeRoutes = () => {
                   path="/detalhes/:id"
                   element={
                     <RatingProvider>
-                      <Products />
+                      <FavoritesProvider>
+                        <Products />
+                      </FavoritesProvider>
                     </RatingProvider>
                   }
                 />
@@ -136,68 +132,16 @@ const changeRoutes = () => {
                   }
                 />
                 <Route exact path="/financas" element={<Financas />} />
-                <Route
-                  exact
-                  path="/perfil"
-                  element={
-                    <Private>
-                      <MyProfile />
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/pedidos"
-                  element={
-                    <Private>
-                      <ProfileOrders />
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/dados"
-                  element={
-                    <Private>
-                      <MyData />
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/enderecos"
-                  element={
-                    <Private>
-                      <AddressProvider>
-                        <ProfileAddresses />
-                      </AddressProvider>
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/login"
-                  element={
-                    <Private>
-                      <MyLogin />
-                    </Private>
-                  }
-                />
-                <Route
-                  exact
-                  path="/perfil/favoritos"
-                  element={<ProfileFavorites />}
-                />
-                <Route
-                  exact
-                  path="/perfil/avaliacoes"
-                  element={
-                    <Private>
+                <Route exact path="/perfil" element={
+                  <Private>
+                    <AddressProvider>
                       <RatingProvider>
-                        <MyRatings />
+                        <FavoritesProvider>
+                          <Profile />
+                        </FavoritesProvider>
                       </RatingProvider>
-                    </Private>
-                  }
+                    </AddressProvider>
+                  </Private>}
                 />
 
                 <Route
@@ -297,8 +241,8 @@ const changeRoutes = () => {
               </Routes>
             </EditProvider>
           </CartProvider>
-        </PageProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </PageProvider>
     </Router>
   );
 };

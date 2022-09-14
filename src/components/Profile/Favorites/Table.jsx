@@ -1,4 +1,6 @@
-import { myFavorites } from '../../../api/mock';
+import { useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import { FavoritesContext } from '../../../contexts/favorites';
 import Table from '../../Table/Table';
 import SaleTag from '../common/SaleTag';
 import TrashButton from '../common/TrashButton';
@@ -10,16 +12,27 @@ export default () =>
         <Table headerColumnsArray={[]} bodyObjectsArray={getBodyObjects()} />
     </div>
 
-const getBodyObjects = () => (
-    myFavorites.map(favorite => {
+const getBodyObjects = () => {
+    const { favorites, deleteFavorite } = useContext(FavoritesContext);
+
+    return favorites.map(favorite => {
+        const product = favorite.product;
+
         return {
-            image: <td className='responsive-hide'><img src="/img/produtos/gloss.png" /></td>,
-            infos: getMainInfos(favorite.name, favorite.inSale),
-            deleteBtn: <td><TrashButton /></td>,
-            price: <td><p className="product-price responsive-hide">R${favorite.price}</p></td>,
-            buyBtn: <td><button className='buy-button'>COMPRAR</button></td>
+            image: <td className='responsive-hide'><img src={product.url_img} /></td>,
+            infos: getMainInfos(product.name, product.inSale),
+            deleteBtn: getDeleteButton(favorite.product_id, deleteFavorite),
+            price: <td><p className="product-price responsive-hide">R${product.value}</p></td>,
+            buyBtn: getBuyButton(favorite.product_id)
         }
     })
-)
+}
 
 const getMainInfos = (name, inSale) => <td className='product'> <p>{name}</p> {inSale ? <SaleTag /> : ''} </td>
+
+const getDeleteButton = (productId, deleteFavorite) => <td><TrashButton onClick={() => deleteFavorite(productId)} /></td>;
+const getBuyButton = productId => {
+    const navigate = useNavigate();
+    return <td><button className='buy-button' onClick={() => navigate(`/detalhes/${productId}`)}>COMPRAR</button></td>
+}
+

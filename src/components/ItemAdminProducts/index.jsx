@@ -1,11 +1,21 @@
 import React from "react";
 import { useFetch } from "../../hooks/useFetch";
-import { useContext } from "react"
+import { useContext } from "react";
 import { EditContext } from "../../contexts/modalEdit";
 import Api from "../../api/api";
+import { PageContext } from "../../contexts/productsPage";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default function ItemAdminProducts() {
-  const { data } = useFetch(`api/public/products/pages/1`);
+  const { page } = useContext(PageContext);
+
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    Api.get(`api/public/products/pages/${page}`).then((response) => {
+      setData(response.data);
+    });
+  }, [page]);
 
   const { onFormSubmit } = useContext(EditContext);
 
@@ -18,16 +28,16 @@ export default function ItemAdminProducts() {
   function removeItem(item) {
     Api.delete(`api/protected/product/${item}`)
       .then((res) => {
-        console.log(res)
+        console.log(res);
       })
-      .catch(error => {
-        console.error(error)
-      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
-  function removedItemReturn(){
-    alert('item removido')
-    window.location.reload()
+  function removedItemReturn() {
+    alert("item removido");
+    window.location.reload();
   }
 
   return (
@@ -55,16 +65,22 @@ export default function ItemAdminProducts() {
               <label>{data.qt}</label>
             </td>
             <td className="col-6">
-              <button className="editButton" onClick={ev => onFormSubmit(ev, data)} >
+              <button
+                className="editButton"
+                onClick={(ev) => onFormSubmit(ev, data)}
+              >
                 <img
                   className="icon-edit"
                   src="/icons/icon-edit-address.svg"
                   onClick={modalToggleEdit}
                 />
               </button>
-              <button className="editButton" onClick={() => {
-                removeItem(data.id)
-                  }}>
+              <button
+                className="editButton"
+                onClick={() => {
+                  removeItem(data.id);
+                }}
+              >
                 <img
                   className="icon-trash"
                   src="/icons/trashIcon.svg"

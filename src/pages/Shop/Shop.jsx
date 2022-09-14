@@ -11,6 +11,9 @@ import { useState } from "react";
 import Select from "../../components/Select/Select";
 import ShopFilter from "../../components/ShopFilter";
 import Pagination from "../../components/Pagination/Pagination";
+import { useFetch } from "../../hooks/useFetch";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function Shop({ products }) {
   const { cart } = useContext(CartContext);
@@ -30,6 +33,15 @@ export default function Shop({ products }) {
     "boticario",
     "avon",
   ]);
+
+  useEffect(() => {
+    axios
+      .get("https://api-elegancce.herokuapp.com/api/public/products")
+      .then((response) => {
+        response.data.map((response) => setBrands([...brands, response.brand]));
+        console.log(brands);
+      });
+  }, []);
 
   function toggleBrands(brand) {
     if (brands.includes(brand)) {
@@ -69,6 +81,7 @@ export default function Shop({ products }) {
               toggleBrands={toggleBrands}
               minPrice={minPrice}
               maxPrice={maxPrice}
+              brands={brands}
               setMinPrice={setMinPrice}
               setMaxPrice={setMaxPrice}
             />

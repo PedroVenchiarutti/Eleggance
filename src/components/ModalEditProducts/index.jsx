@@ -11,17 +11,17 @@ import { storage } from "../../api/firebase";
 export default function ModalEditProduct() {
   const { data } = useFetch(`api/public/products/pages/1`);
 
-  const { editing, updateState } = useContext(EditContext)
+  const { editing, updateState } = useContext(EditContext);
 
   const [progress, setProgress] = useState(false);
   const [imagesUrl, setImagesUrl] = useState("");
 
   async function postItem() {
-    console.log(editing)
-    await Api.put(`api/protected/product/${editing.id}`,editing)
+    console.log(editing);
+    await Api.put(`api/protected/product/${editing.id}`, editing)
       .then(function (response) {
         console.log(response);
-        alert('Produto editado')
+        alert("Produto editado");
       })
       .catch(function (error) {
         console.error(error);
@@ -29,10 +29,10 @@ export default function ModalEditProduct() {
   }
   // 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
   const firebaseUpload = (e) => {
-    document.querySelector('.btnCadastrarProduto').disabled = true
+    document.querySelector(".btnCadastrarProduto").disabled = true;
     e.preventDefault();
     const file = e.target[5]?.files[0];
-    console.log(file, 'oi');
+    console.log(file, "oi");
 
     if (!file) return;
     const storageRef = ref(storage, `image/produtos/${file.name}`);
@@ -46,27 +46,26 @@ export default function ModalEditProduct() {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
       },
-      (error) => { }
+      (error) => {}
     );
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
         .then((url) => {
           let urlImage = url;
           setImagesUrl(urlImage);
-          updateState('url_img', urlImage)
+          updateState("url_img", urlImage);
           console.log("valorzin", urlImage);
           postItem();
           setProgress(true);
-          window.location.reload()
+          window.location.reload();
         })
 
         .catch((error) => {
           console.log(error);
           return <div>Error...</div>;
         });
-    }
-    );
-  }
+    });
+  };
 
   function modalToggle() {
     let modalEdit = document.getElementById("modalEditProducts");
@@ -87,40 +86,41 @@ export default function ModalEditProduct() {
               maxLength={45}
               type="text"
               value={editing.name}
-              onChange={ev => updateState('name', ev.target.value)}
+              onChange={(ev) => updateState("name", ev.target.value)}
             />
             <label>Valor:</label>
             <input
               type="number"
               value={editing.value}
-              onChange={ev => updateState('value', ev.target.value)}
+              onChange={(ev) => updateState("value", ev.target.value)}
             />
             <label>Descrição:</label>
             <input
               maxLength={255}
               type="text"
               value={editing.description}
-              onChange={ev => updateState('description', ev.target.value)}
+              onChange={(ev) => updateState("description", ev.target.value)}
             />
             <label>Categoria</label>
             <input
               maxLength={45}
               type="text"
               value={editing.brand}
-              onChange={ev => updateState('brand', ev.target.value)}
+              onChange={(ev) => updateState("brand", ev.target.value)}
             />
             <label>Quantidade Disponível</label>
             <input
               maxLength={3}
               type="number"
               value={editing.qt}
-              onChange={ev => updateState('qt', ev.target.value)} />
+              onChange={(ev) => updateState("qt", ev.target.value)}
+            />
             <label>Foto Do Produto</label>
             <input
               type="file"
               className="inputPhoto"
               // value={editing.url_img}
-              onChange={ev => updateState('url_img', ev.target.value)}
+              onChange={(ev) => updateState("url_img", ev.target.value)}
             />
           </div>
           <div className="productVisualization">
@@ -132,7 +132,10 @@ export default function ModalEditProduct() {
                 <h1>R${editing.value}</h1>
                 <p>10x de R$4,99 sem juros</p>
                 <p>Frete Grátis</p>
-                <h5>O tratamento único Belkit melhora a força e resistência do cabelo...</h5>
+                <h5>
+                  O tratamento único Belkit melhora a força e resistência do
+                  cabelo...
+                </h5>
               </div>
             </div>
             <div className="areaBtn">
@@ -141,7 +144,10 @@ export default function ModalEditProduct() {
                 {/* <button className="btn btnCadastrarProduto" onClick={firebaseUpload}>  */}
                 EDITAR
               </button>
-              <div className="btn btnCancelarCadastrarProduto" onClick={modalToggle}>
+              <div
+                className="btn btnCancelarCadastrarProduto"
+                onClick={modalToggle}
+              >
                 CANCELAR
               </div>
             </div>

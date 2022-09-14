@@ -74,10 +74,9 @@
   }
 
   .photo-product {
-
     text-align: center;
-    
-    p{
+
+    p {
       margin-right: 0px;
     }
 
@@ -89,6 +88,8 @@
 
     img {
       // width: 100%;
+      min-width: 100%;
+      max-width: 100%;
       margin: 0px 0px;
       display: flex;
       // padding: 5px;
@@ -103,12 +104,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .name-product {
       display: flex;
       align-items: center;
       margin: 25px 0;
       justify-content: space-between;
       width: 80%;
+
       h1 {
         font-size: 1.4rem;
         font-weight: 700;
@@ -212,6 +215,7 @@
     align-items: center;
   }
 }
+
 .cart-notification {
   color: #2ac300ed;
   text-align: center;
@@ -224,7 +228,7 @@
 
 .button-buy-product:hover {
   background-color: #e1ab38;
-  transform: scale(1.1);
+  transform: scale(1.03);
   opacity: 80%;
   transition: 0.5s;
 }
@@ -287,59 +291,6 @@
   }
 }
 
-//===========HEART===========//
-
-.heart-products {
-  flex-direction: row;
-  float: right;
-  //margin-left: 50px;
-  align-content: flex-end;
-
-  img {
-    margin-top: 10px;
-  }
-
-  // .heart-product {
-  //   //padding: 0 10px;
-  // }
-
-  .heart-product:not(:checked) > input {
-    position: absolute;
-    top: -9999px;
-  }
-
-  .heart-product:not(:checked) > label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 49px;
-    color: #ccc;
-  }
-
-  .heart-product:not(:checked) > label:before {
-    content: " ❤ ";
-  }
-
-  .heart-product > input:checked ~ label {
-    color: red;
-  }
-
-  .heart-product:not(:checked) > label:hover,
-  .heart-product:not(:checked) > label:hover ~ label {
-    color: red;
-  }
-
-  .heart-product > input:checked + label:hover,
-  .heart-product > input:checked + label:hover ~ label,
-  .heart-product > input:checked ~ label:hover,
-  .heart-product > input:checked ~ label:hover ~ label,
-  .heart-product > label:hover ~ input:checked ~ label {
-    color: red;
-  }
-}
-
 .ul-products {
   margin-top: 20px;
   margin-bottom: 100px;
@@ -372,6 +323,7 @@
         transform: scale(0.7);
       }
     }
+
     .container-products {
       flex-direction: column;
       width: 100%;
@@ -419,7 +371,6 @@
         width: 100%;
       }
     }
-
   }
 
   .name-product {
@@ -450,7 +401,6 @@
       justify-content: center;
       display: flex;
       align-items: center;
-      margin-left: 8%;
     }
   }
 
@@ -467,6 +417,7 @@
   .button-buy-center {
     width: 100%;
     padding: 10px;
+
     .button-buy-product {
       width: 100%;
     }

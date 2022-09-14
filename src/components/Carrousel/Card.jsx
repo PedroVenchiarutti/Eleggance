@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Card = ({ product }) => {
   const [loading, setLoading] = useState(true);
 
-  const valorConvertido = product.value;
+  const valorConvertido = product.value.toFixed(2);
   const valorFormatado = valorConvertido.toString().replace(".", ",");
   const priceParceled = (product.value / 12).toFixed(2);
   const priceParceledFormatado = priceParceled.toString().replace(".", ",");

@@ -12,11 +12,39 @@ const RegistrationForm = (props) => {
   const [personalDatas, setPersonalDatas] = useState({
     name: "",
     cpf: "",
+    phone: 0,
     birth: "",
-    sexo: ""
+    sexo: "",
   });
   const { personalDataRecord } = useContext(AuthContext);
   const [progress, setProgress] = useState(false);
+
+  function TestaCPF(strCPF) {
+    var Soma;
+    var Resto;
+    let i;
+    Soma = 0;
+    strCPF.toString();
+    strCPF.replace(".", "");
+    strCPF.replace("-", "");
+    if (strCPF == "00000000000") return false;
+
+    for (i = 1; i <= 9; i++)
+      Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+
+    if (Resto == 10 || Resto == 11) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+    Soma = 0;
+    for (i = 1; i <= 10; i++)
+      Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+
+    if (Resto == 10 || Resto == 11) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+    return true;
+  }
 
   console.log(personalDatas);
 
@@ -24,31 +52,65 @@ const RegistrationForm = (props) => {
   const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
-    if (!file) return;
-    const storageRef = ref(storage, `image/user/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    console.log("FILE", file);
+    if (!file) {
+      if (personalDatas.cpf.length === 11) {
+        if (TestaCPF(personalDatas.cpf)) {
+          if (personalDatas.name.length !== 0) {
+            personalDataRecord({
+              ...personalDatas,
+              img_url:
+                "https://firebasestorage.googleapis.com/v0/b/projeto-elegancce.appspot.com/o/image%2F1077114.png?alt=media&token=6d8a803a-1f6c-470b-8296-d52a40378fe0",
+            });
+            setProgress(true);
+          } else {
+            alert("Preencha o campo nome");
+          }
+        } else {
+          alert("CPF Invalido");
+        }
+      } else {
+        alert("CPF invalido");
+      }
+    } else {
+      const storageRef = ref(storage, `image/user/${file.name}`);
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        console.log("snapshot", snapshot);
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(progress);
-      },
-      (error) => { }
-    );
-    uploadTask.then((res) => {
-      getDownloadURL(storageRef)
-        .then((url) => {
-          personalDataRecord({ ...personalDatas, img_url: url });
-          setProgress(true);
-        })
-        .catch((error) => {
-          console.log(error);
-          return <div>Error...</div>;
-        });
-    });
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      console.log("file", file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          console.log("snapshot", snapshot);
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        },
+        (error) => {}
+      );
+      uploadTask.then((res) => {
+        getDownloadURL(storageRef)
+          .then((url) => {
+            if (personalDatas.cpf.length === 11) {
+              if (TestaCPF(personalDatas.cpf)) {
+                if (personalDatas.name.length !== 0) {
+                  personalDataRecord({ ...personalDatas, img_url: url });
+                  setProgress(true);
+                } else {
+                  alert("Preencha o campo nome");
+                }
+              } else {
+                alert("CPF Invalido");
+              }
+            } else {
+              alert("CPF invalido");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            return <div>Error...</div>;
+          });
+      });
+    }
   };
 
   function disbleButton() {
@@ -148,9 +210,10 @@ const RegistrationForm = (props) => {
                           <label className="label-form">CPF:</label>
                           <input
                             className="input-form-registration"
-                            placeholder="000.000.000-00"
+                            placeholder="00000000000"
                             type="text"
                             name="cpf"
+                            maxLength={11}
                             required
                             value={personalDatas.cpf}
                             onChange={(e) =>
@@ -169,6 +232,11 @@ const RegistrationForm = (props) => {
                       <ul className="li-icon-form">
                         <li className="li-icons-form">
                           <div>
+                            <img src="\icons\icon-tel.png" alt="" />
+                          </div>
+                        </li>
+                        <li className="li-icons-form">
+                          <div className="div-li-icon-form">
                             <img src="\icons\icon-calendar.png" alt="" />
                           </div>
                         </li>
@@ -181,6 +249,22 @@ const RegistrationForm = (props) => {
                     </div>
                     <div className="container-name-registration">
                       <div className="grid-item">
+                        <label className="label-form">
+                          Telefone:
+                          <input
+                            className="input-form-registration"
+                            type="number"
+                            name="data de nascimento"
+                            placeholder="(00) 00000-0000"
+                            value={personalDatas.phone}
+                            onChange={(e) =>
+                              setPersonalDatas({
+                                ...personalDatas,
+                                phone: e.target.value,
+                              })
+                            }
+                          />
+                        </label>
                         <label className="label-form">
                           Data de nascimento:
                           <input
@@ -205,13 +289,16 @@ const RegistrationForm = (props) => {
                           className="select-form"
                           required
                           value={personalDatas.sexo}
-                          onChange={(e) => setPersonalDatas({ ...personalDatas, sexo: e.target.value })}
+                          onChange={(e) =>
+                            setPersonalDatas({
+                              ...personalDatas,
+                              sexo: e.target.value,
+                            })
+                          }
                         >
                           <option value="Masculino"> Masculino</option>
                           <option value="Feminino"> Feminino</option>
-                          <option value="">
-                            Prefiro não dizer
-                          </option>
+                          <option value="">Prefiro não dizer</option>
                         </select>
                       </div>
                     </div>
