@@ -154,7 +154,7 @@
 // javascript code mobile
 .navbar-user-logged {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
   position: relative;
   top: 10px;
@@ -231,14 +231,13 @@
   }
 
   .alertIcon {
-    display: flex;
+    display: block;
     width: 30px;
     height: 30px;
     margin-right: 10px;
     position: relative;
-    left: 50px;
-
-    top: 20px;
+    left: 25px;
+    top: 30px;
   }
 
   .alertTremer {
@@ -267,8 +266,8 @@
 
 a {
   .svgCart {
-    margin-top: 20px;
     width: 71px;
+    margin-top: 25px;
     // margin-left: 30px;
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
