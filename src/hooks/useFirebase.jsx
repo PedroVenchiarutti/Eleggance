@@ -74,4 +74,19 @@ const useFirebase = (e) => {
   // }, []);
 };
 
-export default useFirebase;
+// export default useFirebase;
+
+export default function useStorageFb(storageRef, file, callbackSuccess) {
+  const uploadTask = uploadBytesResumable(storageRef, file);
+
+  uploadTask.then((res) => {
+    getDownloadURL(storageRef)
+      .then((url) => {
+        callbackSuccess(url);
+      })
+      .catch((error) => {
+        console.log(error);
+        return <div>Error...</div>;
+      });
+  });
+}

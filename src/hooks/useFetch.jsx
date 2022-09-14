@@ -33,3 +33,13 @@ export function usePost(url, data, callbackSuccess, callbackFailure) {
     .then(callbackSuccess)
     .catch(callbackFailure);
 }
+
+export function useDelete(url, callbackSuccess, callbackFailure) {
+  Api.delete(url, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+    .then(callbackSuccess)
+    .catch(callbackFailure);
+}
