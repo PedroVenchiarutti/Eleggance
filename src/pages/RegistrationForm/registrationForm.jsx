@@ -55,7 +55,6 @@ const RegistrationForm = (props) => {
   const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
-    console.log("FILE", file);
     if (!file) {
       if (personalDatas.cpf.length === 11) {
         if (CpfValidator(personalDatas.cpf)) {
