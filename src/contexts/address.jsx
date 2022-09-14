@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+
+import Api from "../api/api";
 import { useFetch } from "../hooks/useFetch";
 import { usePost } from "../hooks/useFetch";
 
@@ -12,8 +14,10 @@ const initialState = {
   complement: "",
 };
 
-const baseApiUrl =
-  "https://api-elegancce.herokuapp.com/api/protected/client/addresses";
+const BASE_URL = "api/protected/client/addresses";
+const headers = {
+  Authorization: localStorage.getItem("token")
+}
 
 async function getCepDatas(cep) {
   const response = await (
@@ -40,42 +44,53 @@ export const AddressProvider = ({ children }) => {
   const onFormSubmit = async (event) => {
     event.preventDefault();
 
-    const addressText = `${address.address}${
-      address.number ? `, ${address.number}` : ""
-    }${address.complement ? `, ${address.complement}` : ""}`;
+    const addressText = `${address.address}${address.number ? `, ${address.number}` : ""
+      }${address.complement ? `, ${address.complement}` : ""}`;
 
-    // Missing API treatment for edit coupon.
+    const object = {
+      cep: address.cep,
+      address: addressText,
+      district: address.district,
+      city: address.city,
+      complement: address.complement,
+      user_id: JSON.parse(localStorage.getItem("user")).id,
+    }
+
     if (inEditAddressMode) {
+      Api.patch(`${BASE_URL}/${address.id}`, object, { headers })
+        .then(() => {
+          alert("Endereço atualizado com sucesso");
+          window.location.reload();
+        })
+        .catch(error => alert("Ocorreu um erro ao atualizar o endereço."));
     } else {
-      usePost(
-        "api/protected/client/addresses",
-        {
-          cep: address.cep,
-          address: addressText,
-          district: address.district,
-          city: address.city,
-          complement: address.complement,
-          user_id: JSON.parse(localStorage.getItem("user")).id,
-        },
-        () => {
-          alert("Endereço Cadastrado Com Sucesso");
-          window.location.reload();
-        },
-        () => {
-          alert("Erro ao cadastrar endereço tente novamente");
-          window.location.reload();
-        }
-      );
+      usePost(BASE_URL, object, () => {
+        alert("Endereço Cadastrado Com Sucesso");
+        window.location.reload();
+      }, () => {
+        alert("Erro ao cadastrar endereço tente novamente");
+        window.location.reload();
+      });
     }
   };
 
   // API treatment for edit method bellow is missing.
-  const editAddressClick = (cep) => {
+  const editAddressClick = (id, cep) => {
     updateState("cep", cep);
+    updateState("id", id);
     setInEditAddressMode(true);
   };
-  const removeAddressClick = (addressId) =>
-    Api.delete(`${baseApiUrl}/${addressId}`);
+  const removeAddressClick = (addressId) => {
+    const headers = {
+      Authorization: localStorage.getItem("token")
+    }
+
+    Api.delete(`${BASE_URL}/${addressId}`, { headers })
+      .then(() => {
+        alert("Endereço removido com sucesso.");
+        window.location.reload();
+      }, () => alert("Ocorreu um erro ao remover o endereço."));
+  }
 
   const setAddressesDatas = async () => {
     const cep = address.cep.toString();
@@ -89,8 +104,7 @@ export const AddressProvider = ({ children }) => {
     setAddressesDatas();
   }, [address.cep]);
 
-  const getById = (addressId) =>
-    useFetch(`api/protected/addresses/${addressId}`).data;
+  const getById = (addressId) => useFetch(`api/protected/addresses/${addressId}`).data;
 
   const userId = JSON.parse(localStorage.getItem("user")).id;
 
@@ -106,7 +120,5 @@ export const AddressProvider = ({ children }) => {
     removeAddressClick,
   };
 
-  return (
-    <AddressContext.Provider value={state}>{children}</AddressContext.Provider>
-  );
+  return <AddressContext.Provider value={state}>{children}</AddressContext.Provider>;
 };
