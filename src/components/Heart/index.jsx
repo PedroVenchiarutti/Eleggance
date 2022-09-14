@@ -4,8 +4,7 @@ import { FavoritesContext } from '../../contexts/favorites';
 
 import './index.scss';
 export default ({ productId }) => {
-    const { selectedFavorite, getSelectedFavorite, saveFavorite, deleteFavorite } = useContext(FavoritesContext);
-    getSelectedFavorite(productId);
+    const { selectedFavorite, saveFavorite, deleteFavorite } = useContext(FavoritesContext);
 
     const [checkedInput, setChecketInput] = useState(selectedFavorite.product_id == productId);
     useEffect(() => {

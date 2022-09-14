@@ -16,6 +16,8 @@ const getRows = () => {
         const { data } = useFetch(`api/public/products/${rating.product_id}`);
         const product = data[0] ?? {};
 
+        console.log(rating);
+
         return {
             key: rating.id,
             image: <td><img src={product.url_img} alt="Imagem do produto" /></td>,
