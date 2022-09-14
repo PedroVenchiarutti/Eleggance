@@ -159,6 +159,13 @@
   position: relative;
   top: 10px;
 
+  .div-button{
+    a{
+      margin-top: 25px;
+      margin-right: 25px;
+    }
+  }
+
   .navbar-user-logged-name {
     display: flex;
     align-items: center;
