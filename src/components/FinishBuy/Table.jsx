@@ -34,7 +34,8 @@ export default ({ infos }) => {
                         <>
                             <tr>
                                 <td>Desconto do cupom</td>
-                                <td>{getPriceString((infos.discount.byCoupon / 100) * infos.subTotalPrice)}</td>
+                                {/* <td>{getPriceString(infos.discount.byCoupon)}</td> */}
+                                <td>R${((infos.discount.byCoupon/100) * infos.subTotalPrice).toFixed(2)}</td>
                             </tr>
                             <hr />
                         </> : ''
