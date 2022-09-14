@@ -5,15 +5,19 @@ import { RatingContext } from '../../contexts/rating';
 import { Rating } from 'react-simple-star-rating'
 
 import './index.scss'
+import { useEffect } from 'react';
 
 export default ({ productId, selectedStar, label }) => {
     const { authenticated } = useContext(AuthContext);
-    const { getSelectedRating, selectedRating, saveRating } = useContext(RatingContext);
+    const { selectedRating, saveRating } = useContext(RatingContext);
 
-    const [stars, setStars] = useState(selectedStar ? selectedStar * 20 : selectedRating.stars * 20);
+    const [stars, setStars] = useState((selectedStar ? selectedStar : selectedRating.stars) * 20);
     const [errorMessage, setErrorMessage] = useState("");
-
-    if (authenticated) getSelectedRating(productId);
+    
+    useEffect(() => {
+        if (!selectedStar) setStars(selectedRating.stars * 20);
+    }, [selectedRating])
+    
     const handleChange = rate => {
         if (authenticated) saveRating(rate, productId);
         else {

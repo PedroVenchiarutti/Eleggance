@@ -3,6 +3,11 @@
     flex-direction: column;
     flex-grow: 1;
 
+    .edit-finish {
+        border: none;
+        background-color: transparent;
+    }
+
     .address-infos {
         display: flex;
         align-items: center;

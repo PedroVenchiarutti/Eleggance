@@ -6,7 +6,10 @@ export default ({ addressId }) => {
     const [addressText, setAddressText] = useState('');
 
     if (addressId) {
-        Api.get(`api/protected/addresses/${addressId}`).then(resp => {
+        const headers = {
+            Authorization: localStorage.getItem("token")
+        }
+        Api.get(`api/protected/addresses/${addressId}`, { headers }).then(resp => {
             const address = resp.data[0];
             setAddressText(`${address.address} - ${address.cep} - ${address.district} | ${address.city}`);
         });
@@ -15,7 +18,7 @@ export default ({ addressId }) => {
             <div className="address-infos">
                 <span>{addressText}</span>
                 <button className="edit-finish">
-                    <Link to="/perfil/enderecos"><img src="/icons/icon-edit.svg" /></Link>
+                    <Link to="/perfil?tab=enderecos"><img src="/icons/icon-edit.svg" /></Link>
                 </button>
             </div>
         )

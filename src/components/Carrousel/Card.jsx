@@ -13,7 +13,7 @@ const Card = ({ product }) => {
 
   if (!product) return;
 
-  return (
+  return (  
     <div className="container-card">
       <div className="container-img-promo">
         {loading && <SpinerLoader />}

@@ -33,17 +33,19 @@
         padding: 20px;
       }
 
-      li > a {
+      li > a, li > span {
         text-decoration: none;
         color: #fff;
         font-size: 1.2rem;
         font-weight: 600;
+        cursor: pointer;
       }
 
-      li > a:hover {
+      li > a:hover, li > span:hover {
         color: #ffce45;
         font-weight: 800;
         transition: 0.2;
+        cursor: pointer;
       }
     }
   }

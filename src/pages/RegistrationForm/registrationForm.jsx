@@ -5,7 +5,7 @@ import { storage } from "../../api/firebase";
 import { AuthContext } from "../../contexts/auth";
 import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
-import Input from "react-input-mask";
+import useStorageFb from "../../hooks/useFirebase";
 
 const RegistrationForm = (props) => {
   const [previelImg, setPrevielImg] = useState("/icons/camera.png");
@@ -20,7 +20,9 @@ const RegistrationForm = (props) => {
   const { personalDataRecord } = useContext(AuthContext);
   const [progress, setProgress] = useState(false);
 
-  function TestaCPF(strCPF) {
+  const [state, setState] = useState("");
+
+  function CpfValidator(strCPF) {
     var Soma;
     var Resto;
     let i;
@@ -53,10 +55,9 @@ const RegistrationForm = (props) => {
   const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
-    console.log("FILE", file);
     if (!file) {
       if (personalDatas.cpf.length === 11) {
-        if (TestaCPF(personalDatas.cpf)) {
+        if (CpfValidator(personalDatas.cpf)) {
           if (personalDatas.name.length !== 0) {
             personalDataRecord({
               ...personalDatas,
@@ -75,45 +76,28 @@ const RegistrationForm = (props) => {
       }
     } else {
       const storageRef = ref(storage, `image/user/${file.name}`);
-
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      console.log("file", file);
-
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          console.log("snapshot", snapshot);
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        },
-        (error) => {}
-      );
-      uploadTask.then((res) => {
-        getDownloadURL(storageRef)
-          .then((url) => {
-            if (personalDatas.cpf.length === 11) {
-              if (TestaCPF(personalDatas.cpf)) {
-                if (personalDatas.name.length !== 0) {
-                  personalDataRecord({ ...personalDatas, img_url: url });
-                  setProgress(true);
-                } else {
-                  alert("Preencha o campo nome");
-                }
-              } else {
-                alert("CPF Invalido");
-              }
+      useStorageFb(storageRef, file, (url) => {
+        if (personalDatas.cpf.length === 11) {
+          if (CpfValidator(personalDatas.cpf)) {
+            if (personalDatas.name.length !== 0) {
+              console.log("URL", url);
+              personalDataRecord({
+                ...personalDatas,
+                img_url: url,
+              });
+              setProgress(true);
             } else {
-              alert("CPF invalido");
+              alert("Preencha o campo nome");
             }
-          })
-          .catch((error) => {
-            console.log(error);
-            return <div>Error...</div>;
-          });
+          } else {
+            alert("CPF Invalido");
+          }
+        } else {
+          alert("CPF invalido");
+        }
       });
     }
   };
-
   function disbleButton() {
     if (progress) {
       return <Loading />;
@@ -254,7 +238,7 @@ const RegistrationForm = (props) => {
                           Telefone:
                           <input
                             className="input-form-registration"
-                            type="number"
+                            type="text"
                             name="data de nascimento"
                             placeholder="(00) 00000-0000"
                             value={personalDatas.phone}

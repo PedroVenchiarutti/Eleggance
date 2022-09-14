@@ -122,14 +122,25 @@ export const AuthProvider = ({ children }) => {
     navigate(redirectTo);
   };
 
-  const updateUser = (event, profileInfos) => {
+  const updateUser = async (event, profileInfos) => {
     event.preventDefault();
 
-    const headers = { Authentication: localStorage.getItem("token") }
+    const { name, phone, img_url, sexo, birth } = profileInfos;
 
-    Api.put(`api/protected/client/${profileInfos.id}`, profileInfos, { headers })
-      .then(() => window.location.reload())
-      .catch((error) => alert(error.response.data));
+    const data = {
+      name,
+      phone,
+      img_url,
+      sexo,
+    };
+
+    await Api.put(`/api/protected/client/updateclient`, data, {
+      headers: { Authorization: `${localStorage.getItem("token")}` },
+    })
+      .then((resp) => {
+        /* console.log(resp); */
+      })
+      .catch((error) => console.log(error.response.data));
   };
 
   //==================================================== admin

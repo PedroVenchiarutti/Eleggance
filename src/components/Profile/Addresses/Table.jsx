@@ -34,7 +34,7 @@ const getTdButtons = (addressId, cep) => {
 
     return (
         <td>
-            <button className="edit-button" onClick={() => editAddressClick(cep)}><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
+            <button className="edit-button" onClick={() => editAddressClick(addressId, cep)}><img src="/icons/icon-edit-address.svg" alt="Editar" /></button>
             <TrashButton onClick={() => removeAddressClick(addressId)} />
         </td>
     )
