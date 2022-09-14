@@ -72,7 +72,7 @@ export const Navbar = () => {
 
     return (
       <button onClick={() => navigation("/perfil")}>
-        <img src={img_url || "/icons/userWhite.svg"} alt="Foto usuario" />
+        <img className={img_url ? 'rounded' : ''} src={img_url || "/icons/userWhite.svg"} alt="Foto usuario" />
       </button>
     );
   };
