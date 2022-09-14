@@ -1,5 +1,5 @@
 import React from "react";
-import { useFetch } from "../../hooks/useFetch";
+import { useDelete, useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { EditContext } from "../../contexts/modalEdit";
 import Api from "../../api/api";
@@ -26,18 +26,18 @@ export default function ItemAdminProducts() {
   }
 
   function removeItem(item) {
-    Api.delete(`api/protected/product/${item}`)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  function removedItemReturn() {
-    alert("item removido");
-    window.location.reload();
+    useDelete(
+      `https://api-elegancce.herokuapp.com/api/protected/product/${item}`,
+      () => {
+        alert("item removido");
+        window.location.reload();
+      },
+      (error) => {
+        {
+          console.error(error);
+        }
+      }
+    );
   }
 
   return (
@@ -84,7 +84,7 @@ export default function ItemAdminProducts() {
                 <img
                   className="icon-trash"
                   src="/icons/trashIcon.svg"
-                  onClick={() => removedItemReturn()}
+                  onClick={() => useDelete()}
                 />
               </button>
             </td>
