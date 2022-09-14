@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import ClientMenu from '../common/ClientMenu'
 import MainHeader from '../common/MainHeader';
 import ContentHeader from '../common/ContentHeader';
 import Select from '../../Select/Select';
@@ -21,22 +20,18 @@ export default () => {
     const updateSelectState = (event) => setSelectValue(event.target.value);
 
     return (
-        <div className="profile-container">
-            <ClientMenu selected="pedidos" />
+        <>
+            <MainHeader>
+                Todas as suas compras ficam salvas aqui. Caso deseje rever ou tenha algum problema, entre em contato conosco.
+            </MainHeader>
 
-            <div className="main-content">
-                <MainHeader>
-                    Todas as suas compras ficam salvas aqui. Caso deseje rever ou tenha algum problema, entre em contato conosco.
-                </MainHeader>
-
-                <div className="content">
-                    <ContentHeader title="Meus pedidos">
-                        <Select onChange={updateSelectState} options={orderByOptions} />
-                    </ContentHeader>
-                    <Table orderBy={selectValue} />
-                </div>
+            <div className="content">
+                <ContentHeader title="Meus pedidos">
+                    <Select onChange={updateSelectState} options={orderByOptions} />
+                </ContentHeader>
+                <Table orderBy={selectValue} />
             </div>
-        </div>
+        </>
     )
 
 }

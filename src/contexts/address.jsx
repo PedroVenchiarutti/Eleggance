@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
-import Api from "../api/api";
+import { usePost } from "../hooks/useFetch";
 
 const initialState = {
   user_id: 1,
@@ -47,17 +47,25 @@ export const AddressProvider = ({ children }) => {
     // Missing API treatment for edit coupon.
     if (inEditAddressMode) {
     } else {
-      Api.post(baseApiUrl, {
-        cep: address.cep,
-        address: addressText,
-        district: address.district,
-        city: address.city,
-        complement: address.complement,
-        user_id: JSON.parse(localStorage.getItem("user")).id,
-      }).then(() => {
-        alert("Endereço Cadastrado Com Sucesso");
-        window.location.reload();
-      });
+      usePost(
+        "api/protected/client/addresses",
+        {
+          cep: address.cep,
+          address: addressText,
+          district: address.district,
+          city: address.city,
+          complement: address.complement,
+          user_id: JSON.parse(localStorage.getItem("user")).id,
+        },
+        () => {
+          alert("Endereço Cadastrado Com Sucesso");
+          window.location.reload();
+        },
+        () => {
+          alert("Erro ao cadastrar endereço tente novamente");
+          window.location.reload();
+        }
+      );
     }
   };
 
@@ -85,7 +93,7 @@ export const AddressProvider = ({ children }) => {
     useFetch(`api/protected/addresses/${addressId}`).data;
 
   const userId = JSON.parse(localStorage.getItem("user")).id;
-  
+
   const { data } = useFetch(`api/protected/client/addresses/all/${userId}`);
   const state = {
     address,

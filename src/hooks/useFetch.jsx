@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Api from "../api/api";
 
 //Criar um hook personalizado quer consiga fazer as requisiçoes na API
