@@ -11,7 +11,6 @@ import { useState } from "react";
 import Select from "../../components/Select/Select";
 import ShopFilter from "../../components/ShopFilter";
 import Pagination from "../../components/Pagination/Pagination";
-import { useFetch } from "../../hooks/useFetch";
 import { useEffect } from "react";
 import axios from "axios";
 
@@ -27,28 +26,28 @@ export default function Shop({ products }) {
 
   const [minPrice, setMinPrice] = useState("1");
   const [maxPrice, setMaxPrice] = useState("3000");
-  const [brands, setBrands] = useState([
-    "newHair",
-    "natura",
-    "boticario",
-    "avon",
-  ]);
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://api-elegancce.herokuapp.com/api/public/products")
       .then((response) => {
-        response.data.map((response) => setBrands([...brands, response.brand]));
-        console.log(brands);
+        console.log(typeof response.data);
+        response.data.map((product, key) => {
+          if (!brands.includes(product.brand)) {
+            setBrands((brands) => [...brands, product.brand]);
+            console.log(product.brand);
+          }
+        });
       });
   }, []);
 
   function toggleBrands(brand) {
     if (brands.includes(brand)) {
-      console.log(brands);
       setBrands((current) =>
-        current.filter((current) => {
-          return current !== brand;
+        current.filter((curr) => {
+          setBrands([...brands, curr]);
+          return curr === brand;
         })
       );
     } else {

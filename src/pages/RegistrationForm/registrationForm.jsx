@@ -22,7 +22,7 @@ const RegistrationForm = (props) => {
 
   const [state, setState] = useState("");
 
-  function TestaCPF(strCPF) {
+  function CpfValidator(strCPF) {
     var Soma;
     var Resto;
     let i;
@@ -58,7 +58,7 @@ const RegistrationForm = (props) => {
     console.log("FILE", file);
     if (!file) {
       if (personalDatas.cpf.length === 11) {
-        if (TestaCPF(personalDatas.cpf)) {
+        if (CpfValidator(personalDatas.cpf)) {
           if (personalDatas.name.length !== 0) {
             personalDataRecord({
               ...personalDatas,
@@ -79,7 +79,7 @@ const RegistrationForm = (props) => {
       const storageRef = ref(storage, `image/user/${file.name}`);
       useStorageFb(storageRef, file, (url) => {
         if (personalDatas.cpf.length === 11) {
-          if (TestaCPF(personalDatas.cpf)) {
+          if (CpfValidator(personalDatas.cpf)) {
             if (personalDatas.name.length !== 0) {
               console.log("URL", url);
               personalDataRecord({

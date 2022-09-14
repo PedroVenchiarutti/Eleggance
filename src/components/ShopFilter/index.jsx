@@ -28,9 +28,10 @@ export default function ShopFilter({
             <li>
               <input
                 type="checkbox"
-                defaultChecked
                 value={brand}
-                onClick={(e) => toggleBrands(e.target.value)}
+                onClick={(e) => {
+                  toggleBrands(e.target.value);
+                }}
               />
               <label>{brand}</label>
             </li>
