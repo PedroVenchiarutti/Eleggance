@@ -113,6 +113,14 @@
 
       .swiper-container {
         height: 400px;
+
+        .product {
+          .container-product-img {
+            img {
+              max-height: 200px;
+            }
+          }
+        }
       }
 
       // .products-container{
