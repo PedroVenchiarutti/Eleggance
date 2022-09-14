@@ -4,7 +4,6 @@ import { AuthContext } from "../../contexts/auth";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
 import ModalUser from "../ModalUser/ModalUser";
-import { useFetch } from "../../hooks/useFetch";
 import Search from "./Search";
 import { CartContext } from "../../contexts/cart";
 
@@ -176,7 +175,7 @@ export const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <Link to={"/produtos/" + busca}>
+              <Link to={busca ? "/produtos/" + busca : "/produtos/id"}>
                 <button>
                   <img src="/icons/iconmonstr-search-thin.svg" />
                 </button>

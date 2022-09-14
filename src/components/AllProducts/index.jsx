@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "../Carrousel/Card";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
 import Loading from "../../components/SpinerLoader";
 import "./index.scss";
 import { useContext } from "react";
@@ -9,6 +10,7 @@ import Product from "./Product/product";
 import { PageContext } from "../../contexts/productsPage";
 import { useEffect } from "react";
 import axios from "axios";
+import { SearchConsuming } from "../../contexts/searchConsuming";
 
 export default function AllProducts({
   products,
@@ -53,18 +55,23 @@ export default function AllProducts({
       return;
     }
   }
-
+  const dataSearch = React.useContext(SearchConsuming);
   return (
     <>
       {data
         .sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
+          i++;
           if (
             product.value >= minPrice &&
             product.value <= maxPrice &&
             brands.includes(product.brand)
           ) {
-            if (id === "id") {
+            id = id[0].toUpperCase() + id.substring(1);
+            product.name =
+              product.name[0].toUpperCase() + product.name.substring(1);
+
+            if (id === "Id") {
               return (
                 <li key={index} className="swiper-container">
                   <Link to={`/detalhes/${product.id}`}>
@@ -73,28 +80,39 @@ export default function AllProducts({
                 </li>
               );
             } else {
-              id = id[0].toUpperCase() + id.substring(1);
-              product.name =
-                product.name[0].toUpperCase() + product.name.substring(1);
-              if (product.name.includes(id)) {
+              if (dataSearch != undefined) {
+                if (dataSearch.length > 0 && dataSearch[0].length > 0) {
+                  dataSearch[0].map((products, index) => {
+                    if (products.name.includes(id)) {
+                      return (
+                        <li key={index} className="swiper-container">
+                          <Link to={`/detalhes/${products.id}`}>
+                            <Product product={products} />
+                          </Link>
+                        </li>
+                      );
+                    }
+                  });
+                  if (product.name.includes(id)) {
+                    i = 1;
+                    return (
+                      <li key={index} className="swiper-container">
+                        <Link to={`/detalhes/${product.id}`}>
+                          <Product product={product} />
+                        </Link>
+                      </li>
+                    );
+                  }
+                }
+              } else if (i == data.length) {
+                i = 1;
                 return (
                   <li key={index} className="swiper-container">
-                    <Link to={`/detalhes/${product.id}`}>
-                      <Card product={product} />
-                    </Link>
+                    <p className="p-all-products-null-products">
+                      Não foi encontrado nenhum produto com esse nome
+                    </p>
                   </li>
                 );
-              } else {
-                if (i == 0) {
-                  i = 1;
-                  return (
-                    <li key={index} className="swiper-container">
-                      <p className="p-all-products-null-products">
-                        Não foi encontrado nenhum produto com esse nome
-                      </p>
-                    </li>
-                  );
-                }
               }
             }
           } else {
@@ -103,4 +121,36 @@ export default function AllProducts({
         })}
     </>
   );
+}
+
+{
+  /*else {
+              if (dataSearch != undefined) {
+                if (dataSearch.length > 0 && dataSearch[0].length > 0) {
+                  dataSearch[0].map((product, index) => {
+                    console.log(product.name);
+                    if (product.name.includes(id)) {
+                      i = 1;
+                      return (
+                        <li key={index} className="swiper-container">
+                          <Link to={`/detalhes/${product.id}`}>
+                            <Product product={product} />
+                          </Link>
+                        </li>
+                      );
+                    } else if (i == data.length) {
+                      i = 1;
+                      return (
+                        <li key={index} className="swiper-container">
+                          <p className="p-all-products-null-products">
+                            Não foi encontrado nenhum produto com esse nome
+                          </p>
+                        </li>
+                      );
+                    }
+                  });
+                }
+              }
+            }
+          }*/
 }

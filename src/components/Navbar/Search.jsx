@@ -1,33 +1,48 @@
-import { useFetch } from "../../hooks/useFetch";
 import { NavLink } from "react-router-dom";
 import React from "react";
 import "./Search.scss";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default (props) => {
-  const { data } = useFetch(`api/public/products/pages/1`);
-
+  var busca = props.busca;
   let objName = "";
-  let i = 0;
-  const a = data.filter(function (obj) {
-    if (obj.name) {
-      objName = obj.name.toLowerCase();
-      if (objName.includes(props.busca)) {
-        if (props.busca != "") {
-          if (i <= 2) {
-            i = i + 1;
-            return objName;
-          }
-        }
-      }
-    }
-  });
+
+  const [products, setProducts] = useState(1);
+  var [i, setI] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get(`https://api-elegancce.herokuapp.com/api/public/search/${busca}`)
+      .then((response) => {
+        i = 0;
+        const { data } = response;
+        console.log(data);
+        setProducts(
+          data.filter((obj) => {
+            if (obj.name) {
+              objName = obj.name.toLowerCase();
+              if (objName.includes(props.busca)) {
+                if (props.busca != "") {
+                  if (i <= 2) {
+                    setI((i = i + 1));
+                    return objName;
+                  }
+                }
+              }
+            }
+          })
+        );
+      });
+  }, [busca]);
 
   if (props.busca && i >= 1) {
     return (
       <div className="search-produto">
         <h4>Produtos Sugeridos</h4>
         <div className="container-produtos-map">
-          {a.map((produto, keys) => {
+          {products.map((produto, keys) => {
             return (
               <NavLink key={produto.id} to={"/detalhes/" + produto.id}>
                 <div className="produto">
