@@ -4,11 +4,18 @@ import "../Profile.scss";
 import Form from "./Form";
 import "./Content.scss";
 import Api from "../../../api/api";
+import { usePut } from "../../../hooks/useFetch";
+import { set } from "react-hook-form";
 
 export default (props) => {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [toogle, setToogle] = useState(false);
+  const [message, setMessage] = useState({
+    type: "",
+    message: "",
+  });
 
   const handlePassword = (e) => {
     e.preventDefault();
@@ -21,21 +28,31 @@ export default (props) => {
     }
     let data = { password, newPassword };
 
-    Api.put("/api/protected/client/password", data, {
-      headers: {
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-    })
-      .then((res) => {
-        alert("Password changed successfully");
+    usePut(
+      "/api/protected/client/password",
+      data,
+      (response) => {
+        setToogle(true);
+        setMessage({
+          type: "success",
+          message: "Senha alterada com sucesso!",
+        });
         setPassword("");
         setNewPassword("");
         setConfirmPassword("");
-      })
-      .catch((err) => {
-        console.log(err);
-        alert("Password change failed");
-      });
+        return;
+      },
+      (error) => {
+        setToogle(true);
+        let errorData = error.response.data;
+
+        setMessage({
+          type: "error",
+          message: errorData,
+        });
+        return;
+      }
+    );
   };
 
   return (
@@ -75,6 +92,21 @@ export default (props) => {
               />
             </div>
           </Form>
+        </div>
+        <div className="message-error">
+          {toogle ? (
+            <p
+              className={
+                message.type == "error"
+                  ? "messager-error"
+                  : "p-alteração-sucess"
+              }
+            >
+              Error em tentar alterar a senha: Atual {message.message}
+            </p>
+          ) : (
+            ""
+          )}
         </div>
       </Data>
     </>

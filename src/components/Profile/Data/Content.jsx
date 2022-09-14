@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../../contexts/auth";
+import { useFetch } from "../../../hooks/useFetch";
 
 import Data from "../../Data/Data";
 import Form from "../../Form/Form";
@@ -11,25 +12,34 @@ import "../Profile.scss";
 export default () => {
   const { user, updateUser } = useContext(AuthContext);
   const [profile, setProfile] = useState("");
-  /* 
-  const [profile, setProfile] = useState({ ...user });*/
+  const [toogle, setToogle] = useState(false);
+  const [message, setMessage] = useState({
+    type: "",
+    message: "",
+  });
 
   const updateProfileState = (fieldName, value) =>
     setProfile(Object.assign({ ...profile }, { [fieldName]: value }));
 
+  const date = profile.birth
+    ? new Date(profile.birth).toISOString().split("T")[0]
+    : "";
+
+  const { data } = useFetch(`api/protected/client/${user.id}`);
+
   useEffect(() => {
-    Api.get(`api/protected/client/${user.id}`, {
-      headers: {
-        Authorization: `${localStorage.getItem("token")}`,
-      },
-    });
-    setProfile(user);
-  }, []);
+    if (data) {
+      setProfile(data);
+    }
+  }, [data]);
 
   return (
     <>
       <Data header="Meus dados cadastrais">
-        <Form className="form" onSubmit={(e) => updateUser(e, profile)}>
+        <Form
+          className="form"
+          onSubmit={(e) => updateUser(e, profile, setToogle, setMessage)}
+        >
           <div className="formWritable">
             <label>Nome Completo:</label>
             <input
@@ -62,17 +72,26 @@ export default () => {
             <button type="submit" className="submit">
               Salvar Alterações
             </button>
+            {toogle ? (
+              <p
+                className={
+                  message.type == "error"
+                    ? "messager-error"
+                    : "p-alteração-sucess"
+                }
+              >
+                {message.message}
+              </p>
+            ) : (
+              ""
+            )}
           </div>
           <div className="formReadOnly">
             <label>CPF:</label>
             <input readOnly className="readOnly" value={profile.cpf ?? ""} />
 
             <label>Data de nascimento:</label>
-            <input
-              readOnly
-              className="readOnly"
-              value={new Date(profile.birth).toLocaleDateString()}
-            />
+            <input readOnly className="readOnly" value={date} type="date" />
           </div>
         </Form>
       </Data>

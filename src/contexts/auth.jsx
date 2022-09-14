@@ -122,7 +122,7 @@ export const AuthProvider = ({ children }) => {
     navigate(redirectTo);
   };
 
-  const updateUser = async (event, profileInfos) => {
+  const updateUser = async (event, profileInfos, setToogle, setMessage) => {
     event.preventDefault();
 
     const { name, phone, img_url, sexo, birth } = profileInfos;
@@ -138,9 +138,20 @@ export const AuthProvider = ({ children }) => {
       headers: { Authorization: `${localStorage.getItem("token")}` },
     })
       .then((resp) => {
-        /* console.log(resp); */
+        setToogle(true);
+        setMessage({
+          type: "success",
+          message: "Dados atualizados com sucesso!",
+        });
       })
-      .catch((error) => console.log(error.response.data));
+      .catch((error) => {
+        console.log(error);
+        setMessage({
+          type: "error",
+          message: "Erro ao atualizar dados, tente novamente!",
+        });
+        setToogle(true);
+      });
   };
 
   //==================================================== admin

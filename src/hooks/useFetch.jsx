@@ -33,3 +33,13 @@ export function usePost(url, data, callbackSuccess, callbackFailure) {
     .then(callbackSuccess)
     .catch(callbackFailure);
 }
+
+export function usePut(url, data, callbackSuccess, callbackFailure) {
+  Api.put(url, data, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+    .then(callbackSuccess)
+    .catch(callbackFailure);
+}
