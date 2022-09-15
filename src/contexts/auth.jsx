@@ -99,7 +99,6 @@ export const AuthProvider = ({ children }) => {
       const userInfos = {
         username: userDatas.username,
         email: userDatas.email,
-        email: userDatas.email,
         password: userDatas.password,
       };
       localStorage.setItem("userInfos", JSON.stringify(userInfos));

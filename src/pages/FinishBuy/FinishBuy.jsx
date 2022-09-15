@@ -13,7 +13,7 @@ import AddressForm from "../../components/FinishBuy/AddressForm/AddressForm";
 import Table from "../../components/FinishBuy/Table";
 
 export default function FinishBuy() {
-  const { cart, finishBuy } = useContext(CartContext);
+  const { finishBuy } = useContext(CartContext);
 
   const [paymentMethod, setPaymentMethod] = useState("");
   const [couponDiscount, setCouponDiscount] = useState(0);
@@ -24,12 +24,12 @@ export default function FinishBuy() {
   console.log(products)
 
   const sum = (accumulated, current) => (+accumulated ?? 0) + (+current ?? 0);
-                        // cart
+  // cart
   const subTotalPrice = products
     .map((product) => product.qt * product.value)
     .reduce(sum, 0);
   const infos = {
-                //cart
+    //cart
     totalItems: products.map((product) => product.qt).reduce(sum, 0),
     subTotalPrice,
     shippingPrice: 19.99,
@@ -40,8 +40,8 @@ export default function FinishBuy() {
           paymentMethod === "PIX"
             ? subTotalPrice * 0.1
             : paymentMethod === "BOLETO"
-            ? subTotalPrice * 0.08
-            : subTotalPrice * 0.05,
+              ? subTotalPrice * 0.08
+              : subTotalPrice * 0.05,
       }),
       ...(couponDiscount && {
         byCoupon: couponDiscount,
@@ -59,6 +59,9 @@ export default function FinishBuy() {
       .catch(setCouponDiscount(0));
   };
 
+  const [addressId, setAddressId] = useState('');
+  const onAddressChange = (event) => setAddressId(event.target.value);
+
   return (
     <div className="finishBuyContainer">
       <header>
@@ -72,7 +75,7 @@ export default function FinishBuy() {
       <main>
         <div className="col">
           <AsideFinishBuy title="1 - ENDEREÇO">
-            <AddressForm />
+            <AddressForm addressId={addressId} onAddressChange={onAddressChange} />
           </AsideFinishBuy>
           <AsideFinishBuy title="2 - FRETE">
             <li>
@@ -99,8 +102,8 @@ export default function FinishBuy() {
             <div className="info-cart">
               <Table infos={infos} />
             </div>
-            <Link to="/perfil/pedidos">
-              <button onClick={() => finishBuy(15)}>Finalizar Compra</button>
+            <Link to="#">
+              <button onClick={() => finishBuy(addressId)}>Finalizar Compra</button>
             </Link>
           </AsideFinishBuy>
         </div>
