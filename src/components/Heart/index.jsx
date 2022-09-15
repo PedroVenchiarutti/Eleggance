@@ -4,7 +4,7 @@ import { FavoritesContext } from '../../contexts/favorites';
 
 import './index.scss';
 export default ({ productId }) => {
-    const { selectedFavorite, saveFavorite, deleteFavorite } = useContext(FavoritesContext);
+    const { selectedFavorite, saveFavorite } = useContext(FavoritesContext);
 
     const [checkedInput, setChecketInput] = useState(selectedFavorite.product_id == productId);
     useEffect(() => {
@@ -12,11 +12,8 @@ export default ({ productId }) => {
     }, [selectedFavorite])
 
     const updateFavorite = () => {
-        try {
-            if (selectedFavorite.product_id == productId) deleteFavorite(selectedFavorite.id);
-            else saveFavorite(productId);
-            setChecketInput(!checkedInput);
-        } catch (error) { }
+        saveFavorite(productId);
+        setChecketInput(!checkedInput);
     }
 
     return (

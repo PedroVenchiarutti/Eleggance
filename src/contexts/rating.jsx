@@ -2,7 +2,7 @@ import { useState, useEffect, createContext, useContext } from "react";
 import { useParams } from "react-router";
 
 import Api from "../api/api";
-import { useFetch, usePost } from "../hooks/useFetch";
+import { useDelete, useFetch, usePost, usePut } from "../hooks/useFetch";
 
 import { AuthContext } from "./auth";
 
@@ -39,30 +39,26 @@ export const RatingProvider = ({ children }) => {
       product_id: productId,
     };
 
+    const previousReview = data.find(item => item.product_id == productId);
     const onSuccess = (message) => {
       alert(message);
-      data.push(review);
+      data.push(previousReview ?? review);
     };
 
-    if (review.id)
-      Api.put(`${BASE_URL}/${review.id}`, review, { headers }).then(() =>
-        onSuccess("Avaliação atualizada com sucesso")
-      );
-    else
-      usePost(BASE_URL, review, (resp) => {
-        review.id = resp.data.id;
-        onSuccess("Agradecemos a sua avaliação.");
-      });
+    if (previousReview) usePut(`${BASE_URL}/${review.id}`, review, () => {
+      onSuccess("Avaliação atualizada com sucesso");
+    });
+    else usePost(BASE_URL, review, () => {
+      onSuccess("Agradecemos a sua avaliação.");
+    });
   };
 
-  const deleteRating = (ratingId) => {
-    Api.delete(`api/protected/client/reviews/${ratingId}`, { headers }).then(
+  const deleteRating = (ratingId) =>
+    useDelete(`api/protected/client/reviews/${ratingId}`,
       () => {
         alert("Avaliação removida com sucesso");
         window.location.reload();
-      }
-    );
-  };
+      });
 
   const state = {
     selectedRating,
@@ -70,7 +66,6 @@ export const RatingProvider = ({ children }) => {
     saveRating,
     deleteRating,
   };
-  return (
-    <RatingContext.Provider value={state}>{children}</RatingContext.Provider>
-  );
+
+  return <RatingContext.Provider value={state}>{children}</RatingContext.Provider>;
 };
