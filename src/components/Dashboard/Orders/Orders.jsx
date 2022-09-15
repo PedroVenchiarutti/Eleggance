@@ -7,7 +7,7 @@ import './Orders.scss';
 
 export default () => {
     const headerColumns = ["Nome do produto", "Quantidade", "Valor", <th className="responsive-hide">Status pagamento</th>, <th className="responsive-hide">Status entrega</th>, "Código da venda"];
-    const { data } = useFetch('api/protected/request/');
+    const { data } = useFetch('api/protected/admin/requests/');
 
     return (
         <div className="content">

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 import Api from "../api/api";
-import { useFetch } from "../hooks/useFetch";
+import { useDelete, useFetch } from "../hooks/useFetch";
 import { usePost } from "../hooks/useFetch";
 
 const initialState = {
@@ -80,17 +80,12 @@ export const AddressProvider = ({ children }) => {
     updateState("id", id);
     setInEditAddressMode(true);
   };
-  const removeAddressClick = (addressId) => {
-    const headers = {
-      Authorization: localStorage.getItem("token")
-    }
-
-    Api.delete(`${BASE_URL}/${addressId}`, { headers })
-      .then(() => {
+  const removeAddressClick = (addressId) =>
+    useDelete(`${BASE_URL}/${addressId}`,
+      () => {
         alert("Endereço removido com sucesso.");
         window.location.reload();
-      }, () => alert("Ocorreu um erro ao remover o endereço."));
-  }
+      }, () => alert("Ocorreu um erro ao remover o endereço"));
 
   const setAddressesDatas = async () => {
     const cep = address.cep.toString();
