@@ -80,6 +80,7 @@ export const AddressProvider = ({ children }) => {
     updateState("id", id);
     setInEditAddressMode(true);
   };
+  
   const removeAddressClick = (addressId) => {
     const headers = {
       Authorization: localStorage.getItem("token")

@@ -58,7 +58,6 @@ export const Navbar = () => {
         const getCart = localStorage.getItem("user");
         const parseCart = JSON.parse(getCart);
         const cartLength = parseCart.productCart?.length;
-        console.log("cart length", cartLength);
         setQuantity(cartLength);
         const notification = document.querySelector(".alertIcon");
         notification?.classList.toggle("alertTremer");
