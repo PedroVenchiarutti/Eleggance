@@ -91,6 +91,11 @@ export const CartProvider = ({ children }) => {
 
     usePost("api/protected/request", order, () => {
       alert("Pedido realizado com sucesso.");
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      user.productCart = [];
+      localStorage.setItem("user", JSON.stringify(user));
+
       navigate("/perfil?tab=pedidos");
     }, () => {
       alert("Ocorreu um erro.");
