@@ -1432,12 +1432,12 @@ firebase@^2.1.2:
 
 firestore@^1.1.6:
   version "1.1.6"
-  resolved "https://registry.npmjs.org/firestore/-/firestore-1.1.6.tgz"
+  resolved "https://registry.yarnpkg.com/firestore/-/firestore-1.1.6.tgz#73284bce9fe9b08bdad6c18278d25b696e123cc2"
   integrity sha512-RW2IPatMS7XUFtecjN5gxAdX1badHwaoYgplFDNLeN9ZjapOjgRv9Voa3P9ffRT0/lxBUMOFNkLxGHYWQBeaZA==
   dependencies:
     firebase "^2.1.2"
     firebase-token-generator "^2.0.0"
-    lodash "^3.1.0"
+    lodash "^4.17.1"
 
 follow-redirects@^1.14.9:
   version "1.15.1"

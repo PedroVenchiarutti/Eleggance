@@ -61,8 +61,6 @@ export const CartProvider = ({ children }) => {
     const userCart = JSON.parse(localStorage.getItem('user'));
     //limitando input para 1 até 100
     const value = Math.max(min, Math.min(max, Number(quantity)));
-    console.log(productId, quantity)
-    console.log(userCart.productCart)
     let itemIndex = 0
     let iteration = 0
     userCart.productCart.forEach((item) => {
@@ -71,12 +69,8 @@ export const CartProvider = ({ children }) => {
       }
       iteration++;
     })
-    console.log(itemIndex)
     userCart.productCart[itemIndex].qt = +value
-    console.log(userCart.productCart[itemIndex].qt)
-    console.log(JSON.stringify(userCart))    
-    // cart[getItemIndexById(userCart.productCart)].qt = +value
-    // cart[getItemIndexById(productId)].qt = +value;
+
     localStorage.setItem('user',JSON.stringify(userCart))
     setCart([...cart]);
     console.log(cart)

@@ -66,6 +66,7 @@
     width: 100%;
     flex-wrap: nowrap;
     position: relative;
+    font-size: 15px;
 
     span {
       color: red;
@@ -326,13 +327,16 @@
 
     .container-products {
       flex-direction: column;
-      width: 80%;
-
+      width: 100%;
       .photo-info-products {
         width: 100%;
         margin: 0px;
         padding: 0px;
         font-size: 10px;
+
+        .name-product{
+          margin-bottom: 15px;
+        }
 
         .photo-product {
           .info-products-info {
@@ -340,7 +344,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
+            .ul-products{
+              margin-bottom: 15px;
+            }
             p {
               display: flex;
               justify-content: center;

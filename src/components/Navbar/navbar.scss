@@ -154,10 +154,17 @@
 // javascript code mobile
 .navbar-user-logged {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
   position: relative;
   top: 10px;
+
+  .div-button{
+    a{
+      margin-top: 25px;
+      margin-right: 25px;
+    }
+  }
 
   .navbar-user-logged-name {
     display: flex;
@@ -183,7 +190,7 @@
         font-size: 18px;
         color: #e1ab38;
         margin-left: 10px;
-        width: 180px;
+        width: 160px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -232,14 +239,13 @@
   }
 
   .alertIcon {
-    display: flex;
+    display: block;
     width: 30px;
     height: 30px;
     margin-right: 10px;
     position: relative;
-    left: 50px;
-
-    top: 20px;
+    left: 25px;
+    top: 30px;
   }
 
   .alertTremer {
@@ -268,9 +274,9 @@
 
 a {
   .svgCart {
-    margin-top: 20px;
     width: 71px;
-    margin-left: 30px;
+    margin-top: 25px;
+    // margin-left: 30px;
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
