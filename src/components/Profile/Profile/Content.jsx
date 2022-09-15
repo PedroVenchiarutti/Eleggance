@@ -24,7 +24,19 @@ export default () => {
     }
   }, [data]);  
 
-  console.log(profile)
+
+  // refactor cpfMask?
+  let cpfFormat = 0;
+
+  if(profile.cpf){
+    const cpf = new String(profile.cpf)
+    const cpf1 = cpf.substring(0,3)
+    const cpf2 = cpf.slice(3,6)
+    const cpf3 = cpf.slice(6,9)
+    const cpf4 = cpf.slice(9,11)
+    cpfFormat = cpf1 + '.' + cpf2 + '.' + cpf3 + '-' + cpf4
+  }
+
   return (
     <>
       <MainHeader
@@ -38,7 +50,7 @@ export default () => {
             Nome: <span className="infoP">{profile.name}</span>
           </p>
           <p>
-            CPF: <span className="infoP">{profile.cpf}</span>
+            CPF: <span className="infoP">{cpfFormat}</span>
           </p>
           <p>
             Sexo: <span className="infoP">{profile.sexo}</span>

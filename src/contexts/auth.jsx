@@ -67,9 +67,7 @@ export const AuthProvider = ({ children }) => {
       productCart: user.productCart,
       token: token
     }
-    // console.log(user)
     saveUserInStorage(userData, token);
-    // console.log(userData)
     setUser(user);
     setToken(token);
     setAuthenticated(true);
