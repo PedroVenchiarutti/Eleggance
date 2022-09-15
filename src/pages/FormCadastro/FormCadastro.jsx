@@ -8,7 +8,7 @@ import Button from "../../components/Button/Button";
 
 const FormCadastro = (props) => {
   const [registerUserState, setRegisterUserState] = useState({
-    login: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -18,6 +18,7 @@ const FormCadastro = (props) => {
 
   const handleRegistrer = (e) => {
     e.preventDefault();
+    registerUser(registerUserState);
     console.log(registerUserState.password);
     if (registerUserState.password.length < 6) {
       alert("Sua Senha Deve Conter pelo Menos 6 Dígitos");
@@ -41,38 +42,31 @@ const FormCadastro = (props) => {
           <Form onSubmit={handleRegistrer} className="form-cadastro">
             <div className="box-cadastro">
               <div className="box-header-cadastro">
-                {/* <div className="img-cadastro">
-                  IMAGEN CRASHANDO O SITE
-                  <img src="img\LOGINECADASTRO.jpg" alt="foto" />
-                </div> */}
                 <div className="content-input-cadastro">
                   <div className="logo-cadastro">
                     <img src="./logo.png" alt="logo" />
                   </div>
                   <h2>Cadastre-se</h2>
-                  {/* <p className="error-message">{errors.inputLogin?.message}</p> */}
                   <div className="hero-svg-cadastro">
                     <img src="/iconUser.svg" />
                     <Input
                       type="text"
-                      placeholder="Login"
-                      name="inputLogin"
-                      id="inputLoginResgister"
-                      value={registerUserState.login}
+                      placeholder="username"
+                      name="inputusername"
+                      id="inputusernameResgister"
+                      value={registerUserState.username}
                       onChange={(e) =>
                         setRegisterUserState({
                           ...registerUserState,
-                          login: e.target.value,
+                          username: e.target.value,
                         })
                       }
                     />
                   </div>
-                  {/*   <p className="error-message">{errors.inputEmail?.message}</p> */}
                   <div className="hero-svg-cadastro">
                     <img src="/iconEmail.svg" />
                     <Input
                       type="email"
-                      /*     {...register("inputLogin")} */
                       placeholder="Email"
                       name="inputEmail"
                       id="inputEmail"
@@ -85,9 +79,6 @@ const FormCadastro = (props) => {
                       }
                     />
                   </div>
-                  {/*       <p className="error-message">
-                    {errors.createPassword?.message}
-                  </p> */}
                   <div className="hero-svg-cadastro">
                     <img src="/iconPassword.svg" />
                     <Input
@@ -104,9 +95,6 @@ const FormCadastro = (props) => {
                       }
                     />
                   </div>
-                  {/*       <p className="error-message">
-                    {errors.confirmPassword?.message}
-                  </p> */}
                   <div className="hero-svg-cadastro">
                     <img src="/iconConfirmPassword.svg" />
                     <Input
@@ -124,10 +112,7 @@ const FormCadastro = (props) => {
                     />
                   </div>
                   <div className="button-div-cadastro">
-                    <Button className="button-cadastro">
-                      Cadastrar
-                      {/* <Link to="/registration">Cadastrar</Link> */}
-                    </Button>
+                    <Button className="button-cadastro">Cadastrar</Button>
                   </div>
                   <div className="footer-card-cadastro">
                     <Link to="/">Esqueceu a senha</Link>

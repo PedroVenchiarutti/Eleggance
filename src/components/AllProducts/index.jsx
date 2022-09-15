@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "../Carrousel/Card";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/SpinerLoader";
 import "./index.scss";
-import { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
 import Product from "./Product/product";
 import { PageContext } from "../../contexts/productsPage";
-import { useEffect } from "react";
 import axios from "axios";
+import { filtersContext } from "../../contexts/filters";
 
 export default function AllProducts({
   products,
@@ -22,6 +21,7 @@ export default function AllProducts({
   const { page } = useContext(PageContext);
   var { id } = useParams();
   const [data, setData] = useState([]);
+  const { brandsSelected } = useContext(filtersContext);
   var i = 0;
   // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
   // GEt
@@ -62,7 +62,9 @@ export default function AllProducts({
           if (
             product.value >= minPrice &&
             product.value <= maxPrice &&
-            brands.includes(product.brand)
+            brandsSelected.length > 0
+              ? brandsSelected.includes(product.brand)
+              : brands.includes(product.brand)
           ) {
             if (id === "id") {
               return (
@@ -80,7 +82,7 @@ export default function AllProducts({
                 return (
                   <li key={index} className="swiper-container">
                     <Link to={`/detalhes/${product.id}`}>
-                      <Card product={product} />
+                      <Card key={product.id} product={product} />
                     </Link>
                   </li>
                 );
