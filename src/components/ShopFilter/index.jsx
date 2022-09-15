@@ -24,17 +24,16 @@ export default function ShopFilter({
           </div>
 
           <h2>Marca</h2>
-          {brands.map((brand, index) => (
-            <li>
+          {brands.map((brand) => (
+            <li key={brand}>
               <input
                 type="checkbox"
-                key={index}
+                id={brand}
+                name={brand}
                 value={brand}
-                onClick={(e) => {
-                  toggleBrands(e.target.value);
-                }}
+                onChange={() => toggleBrands(brand)}
               />
-              <label key={index}>{brand}</label>
+              <label htmlFor={brand}>{brand}</label>
             </li>
           ))}
           <hr />

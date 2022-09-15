@@ -32,24 +32,18 @@ export default function Shop({ products }) {
     axios
       .get("https://api-elegancce.herokuapp.com/api/public/brands")
       .then((response) => {
-        console.log(typeof response.data);
-        response.data.map((product, key) => {
-          setBrands((brands) => [...brands, product.brand]);
-          console.log(product.brand);
+        response.data.map((brand) => {
+          console.log(brand);
+          setBrands([...brands, brand]);
         });
       });
   }, []);
 
   function toggleBrands(brand) {
     if (brands.includes(brand)) {
-      setBrands((current) =>
-        current.filter((curr) => {
-          setBrands([...brands, curr]);
-          return curr === brand;
-        })
-      );
+      setBrands(brands.filter((item) => item !== brand));
     } else {
-      setBrands((current) => [...current, brand]);
+      setBrands([...brands, brand]);
     }
   }
 

@@ -17,7 +17,7 @@ export function useFetch(url) {
       const response = await getItemAll;
       setData(response.data);
       setInsert(true);
-    }
+    } 
     getItem();
   }, []);
 
