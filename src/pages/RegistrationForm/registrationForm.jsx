@@ -82,6 +82,7 @@ const RegistrationForm = (props) => {
           if (CpfValidator(personalDatas.cpf)) {
             if (personalDatas.name.length !== 0) {
               console.log("URL", url);
+              console;
               personalDataRecord({
                 ...personalDatas,
                 img_url: url,
