@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./registrationForm.scss";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref } from "firebase/storage";
 import { storage } from "../../api/firebase";
 import { AuthContext } from "../../contexts/auth";
 import Form from "../../components/Form/Form";
@@ -55,6 +55,7 @@ const RegistrationForm = (props) => {
   const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
+    console.log(file);
     if (!file) {
       if (personalDatas.cpf.length === 11) {
         if (CpfValidator(personalDatas.cpf)) {

@@ -74,7 +74,9 @@
 
   .photo-product {
     text-align: center;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     p {
       margin-right: 0px;
     }

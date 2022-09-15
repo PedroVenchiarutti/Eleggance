@@ -76,11 +76,11 @@ export default function AllProducts({
               id = id[0].toUpperCase() + id.substring(1);
               product.name =
                 product.name[0].toUpperCase() + product.name.substring(1);
-              if (product.name.includes(id)) {
+              if (product.name.includes(id)) {  
                 return (
                   <li key={index} className="swiper-container">
                     <Link to={`/detalhes/${product.id}`}>
-                      <Card product={product} />
+                      <Card key={product.id} product={product} />
                     </Link>
                   </li>
                 );
