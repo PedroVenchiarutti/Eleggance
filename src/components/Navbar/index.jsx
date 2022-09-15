@@ -16,6 +16,7 @@ export const Navbar = () => {
   const [busca, setBusca] = useState("");
   const [modalUser, setModalUser] = useState(false);
   const [quantity, setQuantity] = useState(null);
+  const [dataUser, setDataUser] = useState({});
   const navigation = useNavigate();
 
   const ToggleModalUser = () => setModalUser(!modalUser);
@@ -49,7 +50,8 @@ export const Navbar = () => {
     );
   };
 
-  const { cart, alertNotification, setAlertNotification } = useContext(CartContext);
+  const { cart, alertNotification, setAlertNotification } =
+    useContext(CartContext);
 
   useEffect(() => {
     setAlertNotification(true);
@@ -66,12 +68,25 @@ export const Navbar = () => {
     notificationAlert();
   }, [alertNotification]);
 
+  useEffect(() => {
+    const getUser = localStorage.getItem("user", JSON.stringify());
+    const parseUser = JSON.parse(getUser);
+    const newImg = {
+      ...parseUser,
+    };
+    setDataUser(newImg);
+  }, []);
+
   const renderImage = () => {
-    const { img_url } = JSON.parse(localStorage.getItem("user"));
+    const img_url = dataUser.img_url;
 
     return (
       <button onClick={() => navigation("/perfil")}>
-        <img className={img_url ? 'rounded' : ''} src={img_url || "/icons/userWhite.svg"} alt="Foto usuario" />
+        <img
+          className={img_url ? "rounded" : ""}
+          src={img_url || "/icons/userWhite.svg"}
+          alt="Foto usuario"
+        />
       </button>
     );
   };

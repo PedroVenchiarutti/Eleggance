@@ -34,6 +34,16 @@ export function usePost(url, data, callbackSuccess, callbackFailure) {
     .catch(callbackFailure);
 }
 
+export function usePut(url, data, callbackSuccess, callbackFailure) {
+  Api.put(url, data, {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+    .then(callbackSuccess)
+    .catch(callbackFailure);
+}
+
 export function useDelete(url, callbackSuccess, callbackFailure) {
   Api.delete(url, {
     headers: {
