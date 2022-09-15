@@ -24,10 +24,8 @@ export default () => {
     }
   }, [data]);  
 
-
   // refactor cpfMask?
-  let cpfFormat = 0;
-
+  let cpfFormat
   if(profile.cpf){
     const cpf = new String(profile.cpf)
     const cpf1 = cpf.substring(0,3)
@@ -35,6 +33,15 @@ export default () => {
     const cpf3 = cpf.slice(6,9)
     const cpf4 = cpf.slice(9,11)
     cpfFormat = cpf1 + '.' + cpf2 + '.' + cpf3 + '-' + cpf4
+  }
+
+  let phoneFormat
+  if(profile.phone){
+    const phone = new String(profile.phone)
+    const phone1 = phone.substring(0,2)
+    const phone2 = phone.substring(2,7)
+    const phone3 = phone.substring(7,11)
+    phoneFormat = '(' + phone1 + ')' + phone2 + '-' + phone3
   }
 
   return (
@@ -59,7 +66,7 @@ export default () => {
             Data de nascimento: <span className="infoP">{date}</span>
           </p>
           <p>
-            Telefone Principal: <span className="infoP">{profile.phone}</span>
+            Telefone Principal: <span className="infoP">{phoneFormat}</span>
           </p>
           <p>
             E-mail: <span className="infoP">{profile.email}</span>
