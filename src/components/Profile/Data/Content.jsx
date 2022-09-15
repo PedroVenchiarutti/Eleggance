@@ -22,7 +22,6 @@ export default () => {
     type: "",
     message: "",
   });
-  console.log(user,'data user')
   const updateProfileState = (fieldName, value) =>
     setProfile(Object.assign({ ...profile }, { [fieldName]: value }));
 
