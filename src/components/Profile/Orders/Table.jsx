@@ -6,7 +6,7 @@ import Table from "../../Table/Table";
 import './Table.scss'
 
 export default ({ orderBy }) => {
-    const { data } = useFetch('api/protected/request/');
+    const { data } = useFetch('api/protected/requests/');
     return <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(data, orderBy)} />
 }
 
