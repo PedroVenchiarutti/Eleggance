@@ -9,7 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 const Carrousel = ({ products, title }) => {
   const location = useLocation();
 
-  console.log(location.pathname);
+  console.log(products);
 
   if (!products) return;
   return (

@@ -5,34 +5,41 @@ import Form from "./Form";
 import "./Content.scss";
 import Api from "../../../api/api";
 import { usePut } from "../../../hooks/useFetch";
-import { set } from "react-hook-form";
+import SpinnerButton from "../../SpinerButton";
 
 export default (props) => {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [spinner, setSpinner] = useState(false);
+
   const [toogle, setToogle] = useState(false);
   const [message, setMessage] = useState({
     type: "",
     message: "",
   });
 
-  const handlePassword = (e) => {
+  const handlePassword = async (e) => {
     e.preventDefault();
+    setSpinner(true);
     if (newPassword !== confirmPassword) {
       alert("Passwords don't match");
+      setSpinner(false);
+
       return;
     } else if (newPassword.length < 6) {
       alert("Password must be at least 6 characters");
+      setSpinner(false);
       return;
     }
     let data = { password, newPassword };
 
-    usePut(
+    await usePut(
       "/api/protected/client/password",
       data,
       (response) => {
         setToogle(true);
+        setSpinner(false);
         setMessage({
           type: "success",
           message: "Senha alterada com sucesso!",
@@ -44,6 +51,8 @@ export default (props) => {
       },
       (error) => {
         setToogle(true);
+        setSpinner(false);
+
         let errorData = error.response.data;
 
         setMessage({
@@ -60,7 +69,13 @@ export default (props) => {
       <Data header="Meu Login e Senha">
         <h3>Alterar senha</h3>
         <div className="forms">
-          <Form item="Senha" value="Alterar Senha" submit={handlePassword}>
+          <Form
+            item="Senha"
+            value="Alterar Senha"
+            submit={handlePassword}
+            setSpinner={setSpinner}
+            spinner={spinner}
+          >
             <div className="perfil-password-atual">
               <label htmlFor="currentpassword">Senha atual:</label>
               <input
