@@ -30,14 +30,12 @@ export default function Shop({ products }) {
 
   useEffect(() => {
     axios
-      .get("https://api-elegancce.herokuapp.com/api/public/products")
+      .get("https://api-elegancce.herokuapp.com/api/public/brands")
       .then((response) => {
         console.log(typeof response.data);
         response.data.map((product, key) => {
-          if (!brands.includes(product.brand)) {
-            setBrands((brands) => [...brands, product.brand]);
-            console.log(product.brand);
-          }
+          setBrands((brands) => [...brands, product.brand]);
+          console.log(product.brand);
         });
       });
   }, []);

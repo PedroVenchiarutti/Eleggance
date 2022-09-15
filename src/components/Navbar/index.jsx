@@ -16,17 +16,13 @@ export const Navbar = () => {
   const [busca, setBusca] = useState("");
   const [modalUser, setModalUser] = useState(false);
   const [quantity, setQuantity] = useState(null);
+  const [dataUser, setDataUser] = useState({});
   const navigation = useNavigate();
 
-  const ToggleModalUser = () => {
-    setModalUser(!modalUser);
-    console.log("modalUser", modalUser);
-  };
+  const ToggleModalUser = () => setModalUser(!modalUser);
 
   // Abrir/Fechar menu mobile Hamburguer
-  const ToggleMode = () => {
-    setMode(!active);
-  };
+  const ToggleMode = () => setMode(!active);
 
   const AdminLogged = () => {
     if (adminAuthenticated) {
@@ -73,11 +69,25 @@ export const Navbar = () => {
     notificationAlert();
   }, [alertNotification]);
 
-  // Pega a imagen do localStorage e renderizar na tela
+  useEffect(() => {
+    const getUser = localStorage.getItem("user", JSON.stringify());
+    const parseUser = JSON.parse(getUser);
+    const newImg = {
+      ...parseUser,
+    };
+    setDataUser(newImg);
+  }, []);
+
   const renderImage = () => {
+    const img_url = dataUser.img_url;
+
     return (
       <button onClick={() => navigation("/perfil")}>
-        <img src="/icons/userWhite.svg" alt="Foto usuario" />
+        <img
+          className={img_url ? "rounded" : ""}
+          src={img_url || "/icons/userWhite.svg"}
+          alt="Foto usuario"
+        />
       </button>
     );
   };
