@@ -18,10 +18,16 @@ const getBodyObjects = () => {
     return favorites.map(favorite => {
         const product = favorite.product;
 
+        const onDeleteClick = () => {
+            deleteFavorite(favorite.id).then(() => {
+                window.location.reload();
+            })
+        }
+
         return {
             image: <td className='responsive-hide'><img src={product.url_img} /></td>,
             infos: getMainInfos(product.name, product.inSale),
-            deleteBtn: getDeleteButton(favorite.product_id, deleteFavorite),
+            deleteBtn: getDeleteButton(onDeleteClick),
             price: <td><p className="product-price responsive-hide">R${product.value}</p></td>,
             buyBtn: getBuyButton(favorite.product_id)
         }
@@ -30,9 +36,8 @@ const getBodyObjects = () => {
 
 const getMainInfos = (name, inSale) => <td className='product'> <p>{name}</p> {inSale ? <SaleTag /> : ''} </td>
 
-const getDeleteButton = (productId, deleteFavorite) => <td><TrashButton onClick={() => deleteFavorite(productId)} /></td>;
+const getDeleteButton = deleteFavorite => <td><TrashButton onClick={() => deleteFavorite()} /></td>;
 const getBuyButton = productId => {
     const navigate = useNavigate();
     return <td><button className='buy-button' onClick={() => navigate(`/detalhes/${productId}`)}>COMPRAR</button></td>
 }
-

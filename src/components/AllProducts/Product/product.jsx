@@ -6,6 +6,7 @@ const Product = ({ product }) => {
   const priceParceledFormatado = priceParceled.toString().replace(".", ",");
   const productValue = product.value.toFixed(2);
   const productPrice = productValue.toString().replace(".", ",");
+  console.log(product)
 
   return (
     <div className="product">

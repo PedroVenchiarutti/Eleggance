@@ -7,7 +7,7 @@ import axios from "axios";
 export const SearchConsuming = React.createContext({});
 
 export const SearchProvider = (props) => {
-  var busca = "nh";
+  var busca = "new";
 
   const [products, setProducts] = useState(1);
   const [data1, setData1] = useState(1);
