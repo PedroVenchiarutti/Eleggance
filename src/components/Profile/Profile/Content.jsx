@@ -9,7 +9,7 @@ import "../Profile.scss";
 
 export default () => {
   const { user } = useContext(AuthContext);
-
+  console.log(user)
   const date = user.birth
     ? new Date(user.birth).toISOString().split("T")[0]
     : "";
