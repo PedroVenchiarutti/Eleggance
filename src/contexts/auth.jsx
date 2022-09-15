@@ -1,6 +1,9 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Api from "../api/api";
+import useStorageFb from "../hooks/useFirebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../../src/api/firebase";
 
 const USER_STORAGE_KEY = "user";
 const ADMIN_STORAGE_KEY = "admin";
@@ -122,10 +125,16 @@ export const AuthProvider = ({ children }) => {
     navigate(redirectTo);
   };
 
-  const updateUser = async (event, profileInfos) => {
+  const updateUser = async (
+    event,
+    profileInfos,
+    setToogle,
+    setMessage,
+    setSpinner
+  ) => {
     event.preventDefault();
-
-    const { name, phone, img_url, sexo, birth } = profileInfos;
+    setSpinner(true);
+    const { name, phone, img_url, sexo } = profileInfos;
 
     const data = {
       name,
@@ -134,13 +143,56 @@ export const AuthProvider = ({ children }) => {
       sexo,
     };
 
-    await Api.put(`/api/protected/client/updateclient`, data, {
-      headers: { Authorization: `${localStorage.getItem("token")}` },
-    })
-      .then((resp) => {
-        /* console.log(resp); */
-      })
-      .catch((error) => console.log(error.response.data));
+    const storageRef = ref(storage, `users/${user.id}/${img_url.name}`);
+
+    if (profileInfos.img_url == " ") {
+      return setMessage({ type: "error", message: "Selecione uma imagem" });
+    } else {
+      useStorageFb(
+        storageRef,
+        img_url,
+        (url) => {
+          data.img_url = url;
+          Api.put(`/api/protected/client/updateclient`, data, {
+            headers: { Authorization: `${localStorage.getItem("token")}` },
+          })
+            .then((resp) => {
+              const getUser = localStorage.getItem(
+                "user",
+                JSON.stringify(user)
+              );
+              const userImage = JSON.parse(getUser);
+
+              const newImg = {
+                ...userImage,
+                img_url: url,
+              };
+              localStorage.setItem("user", JSON.stringify(newImg));
+              setToogle(true);
+              setSpinner(false);
+              setMessage({
+                type: "success",
+                message:
+                  "Dados atualizados com sucesso! Faça o login novamente",
+              });
+              return;
+            })
+            .catch((error) => {
+              console.log(error);
+              setMessage({
+                type: "error",
+                message: "Erro ao atualizar dados, tente novamente!",
+              });
+              setToogle(true);
+              setSpinner(false);
+              return;
+            });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   };
 
   //==================================================== admin
