@@ -91,12 +91,14 @@ export const AuthProvider = ({ children }) => {
 
   const registerUser = (userDatas) => {
     if (
-      userDatas.login &&
+      userDatas.username &&
       userDatas.email &&
       userDatas.password &&
       userDatas.confirmPassword
     ) {
       const userInfos = {
+        username: userDatas.username,
+        email: userDatas.email,
         email: userDatas.email,
         password: userDatas.password,
       };
@@ -229,7 +231,7 @@ export const AuthProvider = ({ children }) => {
     adminAuthenticated,
     user,
     admin,
-    loginName: user && user.name ? user.name : "",
+    username: user && user.username ? user.username : "",
     adminName: admin && admin.name ? admin.name : "",
     loading,
     login,
