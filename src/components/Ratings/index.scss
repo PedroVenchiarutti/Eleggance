@@ -9,10 +9,14 @@
   .main-div {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    width: 60%;
 
-    h3 { margin-left: 20px }
+    h3 {
+      margin-left: 20px;
+    }
   }
 
-  .message-div { color: red }
+  .message-div {
+    color: red;
+  }
 }

@@ -9,7 +9,7 @@ import Search from "./Search";
 import { CartContext } from "../../contexts/cart";
 
 export const Navbar = () => {
-  const { authenticated, loginName, adminName } = useContext(AuthContext);
+  const { authenticated, adminName, username } = useContext(AuthContext);
   const { adminAuthenticated } = useContext(AuthContext);
   const { userLogout } = useContext(AuthContext);
   const [active, setMode] = useState(false);
@@ -17,6 +17,7 @@ export const Navbar = () => {
   const [modalUser, setModalUser] = useState(false);
   const [quantity, setQuantity] = useState(null);
   const [dataUser, setDataUser] = useState({});
+  const user = localStorage.getItem("user");
   const navigation = useNavigate();
 
   const ToggleModalUser = () => setModalUser(!modalUser);
@@ -106,7 +107,7 @@ export const Navbar = () => {
             <div className="navbar-user-name-logout">
               <h4>
                 <span onClick={() => navigation("/perfil")}>
-                  {loginName.toUpperCase()}
+                  {username.toUpperCase()}
                 </span>
               </h4>
               <button onClick={userLogout}>Sair</button>

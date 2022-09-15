@@ -35,7 +35,6 @@ export default function Shop({ products }) {
         console.log(typeof response.data);
         response.data.map((product, key) => {
           setBrands((brands) => [...brands, product.brand]);
-          console.log(product.brand);
         });
       });
   }, []);
