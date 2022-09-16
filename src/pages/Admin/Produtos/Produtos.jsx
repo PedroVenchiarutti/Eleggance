@@ -22,7 +22,7 @@ export default function ProdutosDashboard() {
       <MenuDashboard />
       <main>
         <Header name="Produtos" />
-
+        
         <AdminProductsList />
         <ModalAddProducts />
         <ModalEditProducts editing={editing} />

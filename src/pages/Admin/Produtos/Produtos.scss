@@ -7,6 +7,7 @@
   .nav {
     width: 100%;
   }
+
   main {
     display: flex;
     flex-direction: column;
@@ -84,22 +85,31 @@
 
       //MODAL ADICIONAR
       .add {
+
         input {
           min-width: 100%;
         }
 
-        .label-productImage {
-          width: 50%;
+        .offerModal{
+          input{
+            min-width: 20%;
+          }
         }
+
+        // .label-productImage {
+        //   width: 50%;
+        // }
 
         .areaBtn {
           margin-top: 9%;
+          margin-left: 5%;
         }
       }
 
       .body-modal {
         display: flex;
         height: 100%;
+        width: 100%;
 
         .main-modal {
           display: flex;
@@ -109,6 +119,7 @@
           margin-left: 5%;
           margin-top: 6%;
           width: 50%;
+          margin-bottom: 10px;
 
           input {
             height: 40px;
@@ -118,6 +129,21 @@
             padding-left: 6px;
             font-size: 20px;
             border: 0.5px solid black;
+          }
+
+          #offer {
+            z-index: 7;
+            display: none;
+        
+            .radios {
+              display: flex;
+              margin-top: 2%;
+
+            }
+
+            .finalValue{
+              background-color: rgb(190, 189, 189);
+            }
           }
 
           .inputPhoto {
@@ -187,8 +213,13 @@
         .areaBtn {
           display: flex;
           flex-direction: column;
-          align-items: flex-end;
+          // align-items: flex-end;
+          align-items: center;
           text-align: center;
+
+          .inputPhoto {
+            margin-bottom: 50%;
+          }
 
           .btn {
             padding: 5px 15px;
@@ -232,6 +263,7 @@
           flex-direction: column;
           align-items: center;
 
+
           .main-modal {
             margin: 0px;
           }
@@ -239,7 +271,8 @@
           .productVisualization .productAndInfo .productInfo {
             text-align: center;
           }
-          .areaBtn{
+
+          .areaBtn {
             align-items: center;
             width: 73%;
           }

@@ -7,12 +7,15 @@ import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
 import axios from "axios";
 import { usePost } from "../../hooks/useFetch";
+import ModalOffer from "../ModalOffer";
 export default function ModalAddProduct() {
   const [imagesUrl, setImagesUrl] = useState(null);
   const [valor, setValor] = useState({
     name: "",
-    description: "",
+    description: '',
     value: 0,
+    offer: false,
+    pricepromo: 0,
     brand: "",
     qt: 1,
     url_img: "",
@@ -22,6 +25,7 @@ export default function ModalAddProduct() {
     "/icons/iconmonstr-photo-camera-6-72.png"
   );
   const [progress, setProgress] = useState(false);
+  const [offerPrice, setOfferPrice] = useState('0')
 
   const postItem = async (e) => {
     let data = { ...valor, url_img: e };
@@ -53,7 +57,7 @@ export default function ModalAddProduct() {
 
         setProgress(true);
       },
-      (error) => {}
+      (error) => { }
     );
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
@@ -81,6 +85,8 @@ export default function ModalAddProduct() {
     modalAdd.classList.toggle("open");
     setValor({
       name: "",
+      offer: false,
+      pricepromo: 0,
       description: "",
       value: "",
       brand: "",
@@ -90,6 +96,30 @@ export default function ModalAddProduct() {
     setImages("");
   }
 
+  function setCheckbox(e) {
+    setValor({ ...valor, offer: !e })
+    console.log(valor.offer)
+    let offers = document.getElementById('offer')
+    if(valor.offer == true){
+      offers.style.display = 'block'
+    }else{
+      offers.style.display = 'none'
+    }
+    // console.log(e)
+  }
+
+  const min = 0
+  const max = 100
+  // function setOffer(price) {
+  //   // setValor({ ...valor, price: price})
+  //   const value = Math.max(min, Math.min(max, Number(price)));
+  //   setOfferPrice(value)
+  //   setValor({ ...valor, pricepromo: valor.value * (value / 100) })
+  // }
+
+  function offerModal() {
+
+  }
   return (
     <div className="modalAddProducts" id="modalAddProducts">
       <div className="header-modal">
@@ -112,6 +142,15 @@ export default function ModalAddProduct() {
               value={valor.value}
               onChange={(e) => setValor({ ...valor, value: e.target.value })}
             />
+            <label>Oferta:</label>
+            <input
+              type="checkbox"
+              id="checkboxValue"
+              value={valor.offer}
+              onChange={e => setCheckbox(e.target.checked)}
+            // onChange={(e) => setValor({ ...valor, offer: e.target.value })}
+            />
+            <ModalOffer offerPrice={offerPrice} valor={valor} setValor={setValor}/>
             <label>Descrição:</label>
             <textarea
               name="description"
@@ -146,6 +185,9 @@ export default function ModalAddProduct() {
                 })
               }
             />
+
+          </div>
+          <div className="areaBtn">
             <label>Foto Do Produto</label>
             <label className="label-productImage" htmlFor="inputPhoto">
               <img
@@ -161,8 +203,6 @@ export default function ModalAddProduct() {
               name="image"
               onChange={(e) => setImages(e.target.files[0])}
             />
-          </div>
-          <div className="areaBtn">
             <button type="submit" className="btn btnCadastrarProduto">
               Cadastrar Produto
             </button>
