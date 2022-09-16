@@ -32,7 +32,6 @@ export default function Shop({ products }) {
     axios
       .get("https://api-elegancce.herokuapp.com/api/public/brands")
       .then((response) => {
-        console.log(typeof response.data);
         response.data.map((product, key) => {
           setBrands((brands) => [...brands, product.brand]);
         });

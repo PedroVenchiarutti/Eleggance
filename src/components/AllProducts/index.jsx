@@ -22,18 +22,26 @@ export default function AllProducts({
   var { id } = useParams();
   const [data, setData] = useState([]);
   const { brandsSelected } = useContext(filtersContext);
-  var i = 0;
-  // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
-  // GEt
+
   useEffect(() => {
     axios
-      .get(
-        `https://api-elegancce.herokuapp.com/api/public/products/pages/${page}`
-      )
+      .get(`https://api-elegancce.herokuapp.com/api/public/products/`)
       .then((response) => {
-        setData(response.data);
+        if (brandsSelected.length > 0) {
+          response.data.forEach((product) => {
+            if (brandsSelected.includes(product.brand)) {
+              if (brandsSelected.length > 1) {
+                setData((data) => [...data, product]);
+              } else {
+                setData([product]);
+              }
+            }
+          });
+        } else {
+          setData(response.data.slice(page * 10 - 10, page * 10));
+        }
       });
-  }, [page]);
+  }, [page, brandsSelected]);
 
   if (data == "") {
     return (
@@ -54,18 +62,14 @@ export default function AllProducts({
     }
   }
 
+  console.log("data:", data);
+
   return (
     <>
       {data
         .sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
-          if (
-            product.value >= minPrice &&
-            product.value <= maxPrice &&
-            brandsSelected.length > 0
-              ? brandsSelected.includes(product.brand)
-              : brands.includes(product.brand)
-          ) {
+          if (product.value >= minPrice && product.value <= maxPrice) {
             if (id === "id") {
               return (
                 <li key={index} className="swiper-container">
