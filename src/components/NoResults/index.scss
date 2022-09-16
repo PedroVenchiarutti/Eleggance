@@ -11,5 +11,10 @@
         opacity: 0.3;
     }
 
-    h2 { font-weight: 300; }
+    h2, p { font-weight: 300; }
+
+    @media (max-width: 1100px) {
+        h2 { font-size: 1rem; }
+        p { font-size: 0.8rem; }
+    }
 }
