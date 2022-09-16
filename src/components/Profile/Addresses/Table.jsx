@@ -2,18 +2,20 @@ import React, { useContext } from "react";
 import { AddressContext } from "../../../contexts/address";
 
 import Table from '../../Table/Table';
+import Loading from '../../SpinerLoader';
 import TrashButton from "../common/TrashButton";
 
 import './Table.scss'
+import NoResults from "../../NoResults";
 
 export default () => {
-    const { addresses } = useContext(AddressContext);
+    const { addresses, loading } = useContext(AddressContext);
 
-    return (
+    if (loading) return <div className="loading"><Loading /></div>
+    return addresses.length ?
         <div className="table-content">
             <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getBodyObjects(addresses)} />
-        </div>
-    )
+        </div> : <NoResults message="Você não possui endereços cadastrados" shouldShowBottomMessage={false} />
 }
 
 const getHeadRow = () => [<>

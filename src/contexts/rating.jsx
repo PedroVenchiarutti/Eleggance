@@ -17,7 +17,7 @@ export const RatingProvider = ({ children }) => {
   const userFromStorage = localStorage.getItem("user");
   const userId = userFromStorage ? JSON.parse(userFromStorage).id : "";
 
-  const { data } = useFetch(`${BASE_URL}/${userId}`);
+  const { data, loading } = useFetch(`${BASE_URL}/${userId}`);
 
   const [selectedRating, setSelectedRating] = useState({
     user_id: userId,
@@ -63,6 +63,7 @@ export const RatingProvider = ({ children }) => {
   const state = {
     selectedRating,
     ratings: data,
+    loading,
     saveRating,
     deleteRating,
   };

@@ -2,6 +2,9 @@ import { useContext } from 'react';
 import { RatingContext } from '../../../contexts/rating';
 
 import Table from '../../Table/Table';
+import Loading from '../../SpinerLoader';
+import NoResults from '../../NoResults';
+
 import SaleTag from '../common/SaleTag';
 import TrashButton from '../common/TrashButton';
 import Ratings from '../../Ratings'
@@ -10,10 +13,16 @@ import { useFetch } from '../../../hooks/useFetch';
 
 import './Table.scss'
 
-export default () => <Table headerColumnsArray={[]} bodyObjectsArray={getRows()} />
+export default () => {
+    const { ratings, loading } = useContext(RatingContext);
 
-const getRows = () => {
-    const { ratings, deleteRating } = useContext(RatingContext);
+    if (loading) return <div className="loading"><Loading /></div>
+    return ratings.length ?
+        <Table headerColumnsArray={[]} bodyObjectsArray={getRows(ratings)} /> : <NoResults message="Você não possui avaliações cadastradas." />
+}
+
+const getRows = (ratings) => {
+    const { deleteRating } = useContext(RatingContext);
 
     return ratings.map(rating => {
         const { data } = useFetch(`api/public/products/${rating.product_id}`);

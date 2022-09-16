@@ -1,19 +1,28 @@
 import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FavoritesContext } from '../../../contexts/favorites';
+
 import Table from '../../Table/Table';
+import Loading from '../../SpinerLoader';
+import NoResults from '../../NoResults';
+
 import SaleTag from '../common/SaleTag';
 import TrashButton from '../common/TrashButton';
 
 import './Table.scss';
 
-export default () =>
-    <div className="table-content">
-        <Table headerColumnsArray={[]} bodyObjectsArray={getBodyObjects()} />
-    </div>
+export default () => {
+    const { favorites, loading } = useContext(FavoritesContext)
 
-const getBodyObjects = () => {
-    const { favorites, deleteFavorite } = useContext(FavoritesContext);
+    if (loading) return <div className="loading"><Loading /></div>
+    return favorites.length ?
+        <div className="table-content">
+            <Table headerColumnsArray={[]} bodyObjectsArray={getBodyObjects(favorites)} />
+        </div> : <NoResults message="Você não possui produtos favoritados." />;
+}
+
+const getBodyObjects = (favorites) => {
+    const { deleteFavorite } = useContext(FavoritesContext);
 
     return favorites.map(favorite => {
         const product = favorite.product;

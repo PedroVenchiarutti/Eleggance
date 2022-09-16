@@ -1,0 +1,15 @@
+.no-results-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin-top: 2vh;
+
+    img {
+        width: 10%;
+        margin-bottom: 3vh;
+        opacity: 0.3;
+    }
+
+    h2 { font-weight: 300; }
+}
