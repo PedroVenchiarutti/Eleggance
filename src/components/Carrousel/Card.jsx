@@ -34,7 +34,6 @@ const Card = ({ product }) => {
               10x
             </span>
             <br />
-            de R$
           </span>
           <p className="price-installments-parceled">
             R<span>$</span>
@@ -63,7 +62,6 @@ const Card = ({ product }) => {
               12x
             </span>
             <br />
-            de R$
           </span>
           <p className="price-installments-parceled">
             R<span>$</span>

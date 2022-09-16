@@ -38,7 +38,6 @@ export default function AllProducts({ products, orderBy }) {
               product.value
             );
             if (product.value >= minPrice && product.value <= maxPrice) {
-              console.log("entrou if");
               setData(response.data.slice(page * 10 - 10, page * 10));
             }
           });
@@ -64,8 +63,6 @@ export default function AllProducts({ products, orderBy }) {
       return;
     }
   }
-
-  console.log("data:", data);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { filtersContext } from "../../contexts/filters";
 
-export default function ShopFilter({ toggleBrands, brands }) {
+export default function ShopFilter({ brands }) {
   const {
     brandsSelected,
     setBrandsSelected,
