@@ -107,7 +107,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     .name-product {
       display: flex;
@@ -148,6 +147,20 @@
 
   h3 {
     color: #333333;
+  }
+
+  .content-promo-render {
+    h1 {
+      font-size: 1.5rem;
+      color: #333333;
+      padding-top: 20px;
+      text-decoration: line-through;
+    }
+
+    p {
+      color: #e1ab38;
+      font-size: 45px;
+    }
   }
 }
 
@@ -453,83 +466,3 @@
     padding: 0px;
   }
 }
-
-// .icon-star-product {
-//   display: none;
-// }
-// .icon-heart-products {
-//   padding-left: 70px;
-// }
-// .icon-star-products {
-//   width: 50%;
-//   padding-top: 8px;
-//   .star-one {
-//     padding: 0%;
-//   }
-//   .star-two {
-//     padding: 0%;
-//   }
-//   .star-three {
-//     padding: 0%;
-//   }
-//   .star-four {
-//     padding: 0%;
-//   }
-//   .star-five {
-//     padding: 0%;
-//   }
-// }
-
-// .icon-star-products {
-//   .star-one {
-//     margin-right: 2px;
-//     justify-content: center;
-//     padding-left: 5px;
-//     padding-top: 8px;
-//   }
-
-//   .star-two {
-//     margin-right: 2px;
-//     justify-content: center;
-//     padding-left: 5px;
-//     padding-top: 8px;
-//   }
-
-//   .star-three {
-//     margin-right: 2px;
-//     justify-content: center;
-//     padding-left: 5px;
-//     padding-top: 8px;
-//   }
-
-//   .star-four {
-//     margin-right: 2px;
-//     justify-content: center;
-//     padding-left: 5px;
-//     padding-top: 8px;
-//   }
-
-//   .star-five {
-//     margin-right: 2px;
-//     justify-content: center;
-//     padding-left: 5px;
-//     padding-top: 8px;
-//   }
-// }
-
-// .rating {
-//   padding-left: 20px;
-//   padding-top: 8px;
-//   font-size: 20px;
-//   color: #333333;
-// }
-
-// .icon-heart-products {
-//   padding: 10px;
-//   padding-left: 150px;
-//   img:hover {
-//     background-color: #e1ab38;
-//     opacity: 80%;
-//     transition: 0.5s;
-//   }
-// }

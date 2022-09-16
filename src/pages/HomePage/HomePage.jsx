@@ -22,10 +22,6 @@ const HomePage = (props) => {
 
   const { data } = page1;
 
-  const newMap = data.map((product) => product);
-
-  const shelf = newMap;
-
   const newData1 = data.filter((item) => item.offer === true);
 
   const newData2 = data.slice(10, 20);
@@ -37,7 +33,7 @@ const HomePage = (props) => {
         <HomeBanner images={images} smallBanner={smallBanner} />
       </header>
       <Taskbar />
-      <Carrousel products={newData1} title="Ofertas" />
+      {<Carrousel products={newData1} title="Ofertas" />}
       <SectionInfo />
       <Carrousel products={newData2} title="Tendências" />
       {/* <AboutUs /> */}
