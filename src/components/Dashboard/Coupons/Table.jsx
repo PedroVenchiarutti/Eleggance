@@ -1,20 +1,15 @@
 import { useContext } from "react";
 import { CouponContext } from "../../../contexts/coupon";
 
-import Loading from "../../SpinerLoader";
 import Table from "../../Table/Table";
+import NoResults from "../../NoResults";
 
 export default () => {
   const { coupons } = useContext(CouponContext);
 
-  return coupons.length ? (
-    <Table
-      headerColumnsArray={getHeadRow()}
-      bodyObjectsArray={getRows(coupons)}
-    />
-  ) : (
-    <Loading />
-  );
+  return coupons.length ?
+    <Table headerColumnsArray={getHeadRow()} bodyObjectsArray={getRows(coupons)} />
+      : <NoResults message="Não existe cupons de desconto cadastrados." shouldShowBottomMessage={false} />; 
 };
 
 const getHeadRow = () => [

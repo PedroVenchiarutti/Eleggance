@@ -15,7 +15,7 @@ export const FavoritesProvider = ({ children }) => {
 
     const userFromStorage = localStorage.getItem("user");
     const userId = userFromStorage ? JSON.parse(userFromStorage).id : "";
-    let { data } = useFetch(`${BASE_URL}/${userId}`);
+    let { data, loading } = useFetch(`${BASE_URL}/${userId}`);
 
     const [selectedFavorite, setSelectedFavorite] = useState({ user_id: userId });
     useEffect(() => {
@@ -30,7 +30,7 @@ export const FavoritesProvider = ({ children }) => {
             product_id: productId
         }
 
-        const previousFavorite = data.find(item => item.product_id = productId);
+        const previousFavorite = data.find(item => item.product_id == productId);
         if (previousFavorite) deleteFavorite(previousFavorite.id)
         else usePost(BASE_URL, favorite, () => {
             alert('Produto favoritado. Agradecemos o feedback');
@@ -52,6 +52,7 @@ export const FavoritesProvider = ({ children }) => {
     const state = {
         selectedFavorite,
         favorites: data,
+        loading,
         saveFavorite,
         deleteFavorite
     };
