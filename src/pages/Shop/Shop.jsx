@@ -74,8 +74,6 @@ export default function Shop({ products }) {
             </label>
             <ShopFilter
               toggleBrands={toggleBrands}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
               brands={brands}
               setMinPrice={setMinPrice}
               setMaxPrice={setMaxPrice}
@@ -84,8 +82,6 @@ export default function Shop({ products }) {
               <AllProducts
                 products={shelfProducts}
                 orderBy={selectValue}
-                minPrice={minPrice}
-                maxPrice={maxPrice}
                 brands={brands}
               />
             </div>

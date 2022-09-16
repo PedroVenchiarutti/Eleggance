@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { filtersContext } from "../../contexts/filters";
 
-export default function ShopFilter({
-  toggleBrands,
-  setMinPrice,
-  setMaxPrice,
-  minPrice,
-  maxPrice,
-  brands,
-}) {
-  const { brandsSelected, setBrandsSelected } = useContext(filtersContext);
+export default function ShopFilter({ toggleBrands, brands }) {
+  const {
+    brandsSelected,
+    setBrandsSelected,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+  } = useContext(filtersContext);
 
   function toggleModalFilter() {
     let modal = document.querySelector(".modalFilter");

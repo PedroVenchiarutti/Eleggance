@@ -9,18 +9,12 @@ import { PageContext } from "../../contexts/productsPage";
 import axios from "axios";
 import { filtersContext } from "../../contexts/filters";
 
-export default function AllProducts({
-  products,
-  orderBy,
-  minPrice,
-  maxPrice,
-  brands,
-}) {
+export default function AllProducts({ products, orderBy }) {
   const [progress, setProgress] = useState(true);
   const { page } = useContext(PageContext);
   var { id } = useParams();
   const [data, setData] = useState([]);
-  const { brandsSelected } = useContext(filtersContext);
+  const { brandsSelected, minPrice, maxPrice } = useContext(filtersContext);
 
   useEffect(() => {
     axios
@@ -34,10 +28,23 @@ export default function AllProducts({
           });
           setData(resposta);
         } else {
-          setData(response.data.slice(page * 10 - 10, page * 10));
+          response.data.forEach((product) => {
+            console.log(
+              "minprice: ",
+              minPrice,
+              "maxprice: ",
+              maxPrice,
+              "valor: ",
+              product.value
+            );
+            if (product.value >= minPrice && product.value <= maxPrice) {
+              console.log("entrou if");
+              setData(response.data.slice(page * 10 - 10, page * 10));
+            }
+          });
         }
       });
-  }, [page, brandsSelected]);
+  }, [page, brandsSelected, minPrice, maxPrice]);
 
   if (data == "") {
     return (
@@ -65,42 +72,38 @@ export default function AllProducts({
       {data
         .sort((a, b) => compareFunction(a, b))
         .map((product, index) => {
-          if (product.value >= minPrice && product.value <= maxPrice) {
-            if (id === "id") {
+          if (id === "id") {
+            return (
+              <li key={index} className="swiper-container">
+                <Link to={`/detalhes/${product.id}`}>
+                  <Product product={product} />
+                </Link>
+              </li>
+            );
+          } else {
+            id = id[0].toUpperCase() + id.substring(1);
+            product.name =
+              product.name[0].toUpperCase() + product.name.substring(1);
+            if (product.name.includes(id)) {
               return (
                 <li key={index} className="swiper-container">
                   <Link to={`/detalhes/${product.id}`}>
-                    <Product product={product} />
+                    <Card key={product.id} product={product} />
                   </Link>
                 </li>
               );
             } else {
-              id = id[0].toUpperCase() + id.substring(1);
-              product.name =
-                product.name[0].toUpperCase() + product.name.substring(1);
-              if (product.name.includes(id)) {
+              if (i == 0) {
+                i = 1;
                 return (
                   <li key={index} className="swiper-container">
-                    <Link to={`/detalhes/${product.id}`}>
-                      <Card key={product.id} product={product} />
-                    </Link>
+                    <p className="p-all-products-null-products">
+                      Não foi encontrado nenhum produto com esse nome
+                    </p>
                   </li>
                 );
-              } else {
-                if (i == 0) {
-                  i = 1;
-                  return (
-                    <li key={index} className="swiper-container">
-                      <p className="p-all-products-null-products">
-                        Não foi encontrado nenhum produto com esse nome
-                      </p>
-                    </li>
-                  );
-                }
               }
             }
-          } else {
-            return;
           }
         })}
     </>
