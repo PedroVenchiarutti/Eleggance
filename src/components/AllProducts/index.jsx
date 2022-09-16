@@ -16,7 +16,6 @@ export default function AllProducts({
   maxPrice,
   brands,
 }) {
-  const { cart, productData } = useContext(CartContext);
   const [progress, setProgress] = useState(true);
   const { page } = useContext(PageContext);
   var { id } = useParams();
@@ -28,15 +27,12 @@ export default function AllProducts({
       .get(`https://api-elegancce.herokuapp.com/api/public/products/`)
       .then((response) => {
         if (brandsSelected.length > 0) {
-          response.data.forEach((product) => {
+          let resposta = response.data.filter((product) => {
             if (brandsSelected.includes(product.brand)) {
-              if (brandsSelected.length > 1) {
-                setData((data) => [...data, product]);
-              } else {
-                setData([product]);
-              }
+              return [product];
             }
           });
+          setData(resposta);
         } else {
           setData(response.data.slice(page * 10 - 10, page * 10));
         }
