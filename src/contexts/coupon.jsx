@@ -26,10 +26,11 @@ export const CouponProvider = ({ children }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
   const toggleModalVisibility = () => setModalVisibility(!modalVisibility);
 
-  let { data } = useFetch("api/protected/dicount/");
+  const { data, loading } = useFetch("api/protected/dicount/");
   const state = {
     coupon,
     coupons: data,
+    loading,
     modalVisibility,
     toggleModalVisibility,
     updateState,

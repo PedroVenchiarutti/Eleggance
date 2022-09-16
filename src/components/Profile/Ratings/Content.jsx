@@ -1,6 +1,5 @@
 import React from "react";
 
-import ClientMenu from "../common/ClientMenu";
 import ContentHeader from "../common/ContentHeader";
 import Table from './Table'
 

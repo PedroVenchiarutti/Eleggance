@@ -5,6 +5,7 @@ import Api from "../api/api";
 export function useFetch(url) {
   const [data, setData] = useState([]);
   const [insert, setInsert] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   //Fazer uma rota para puxar os produtos no all getALlProducts
   useEffect(() => {
@@ -17,11 +18,12 @@ export function useFetch(url) {
       const response = await getItemAll;
       setData(response.data);
       setInsert(true);
+      setLoading(false);
     } 
     getItem();
   }, []);
 
-  return { data, insert };
+  return { data, insert, loading };
 }
 
 export function usePost(url, data, callbackSuccess, callbackFailure) {

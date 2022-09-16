@@ -103,10 +103,11 @@ export const AddressProvider = ({ children }) => {
 
   const userId = JSON.parse(localStorage.getItem("user")).id;
 
-  const { data } = useFetch(`api/protected/client/addresses/all/${userId}`);
+  const { data, loading } = useFetch(`api/protected/client/addresses/all/${userId}`);
   const state = {
     address,
     addresses: data,
+    loading,
     getById,
     updateState,
     onCepChange,
