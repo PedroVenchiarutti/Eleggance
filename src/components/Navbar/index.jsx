@@ -6,6 +6,7 @@ import "./navbar.scss";
 import ModalUser from "../ModalUser/ModalUser";
 import Search from "./Search";
 import { CartContext } from "../../contexts/cart";
+import { SearchProvider } from "../../contexts/searchConsuming";
 
 export const Navbar = () => {
   const { authenticated, loginName, adminName } = useContext(AuthContext);
@@ -57,7 +58,6 @@ export const Navbar = () => {
         const getCart = localStorage.getItem("user");
         const parseCart = JSON.parse(getCart);
         const cartLength = parseCart.productCart?.length;
-        console.log("cart length", cartLength);
         setQuantity(cartLength);
         const notification = document.querySelector(".alertIcon");
         notification?.classList.toggle("alertTremer");
@@ -135,7 +135,6 @@ export const Navbar = () => {
       );
     }
   };
-
   return (
     <div>
       <div className="navbar-container">
@@ -188,6 +187,8 @@ export const Navbar = () => {
         </nav>
       </div>
       <Search busca={busca} />
+      <SearchProvider busca={busca} />
     </div>
   );
+
 };

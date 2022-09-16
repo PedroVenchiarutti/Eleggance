@@ -27,8 +27,13 @@ export default function AllProducts({
   const [data, setData] = useState([]);
   var i = 0;
   const [Products1, setProduct] = useState();
+
   // numero 1  siginifica a pagina atual e lista pagina de 10 em 10 produtos
   // GEt
+
+
+
+
   useEffect(() => {
     axios
       .get(
@@ -36,6 +41,7 @@ export default function AllProducts({
       )
       .then((response) => {
         setData(response.data);
+        
       });
   }, [page]);
 
@@ -64,7 +70,6 @@ export default function AllProducts({
         {data
           .sort((a, b) => compareFunction(a, b))
           .map((product, index) => {
-            console.log(data);
             i++;
             if (
               product.value >= minPrice &&
@@ -91,71 +96,44 @@ export default function AllProducts({
       </>
     );
   } else if (id != "id") {
-    const data1 = dataSearch[0];
-    return (
-      <>
-        {data1.map((product, index) => {
-          
-          i++;
-          if (
-            product.value >= minPrice &&
-            product.value <= maxPrice &&
-            brands.includes(product.brand)
-          ) {
-            id = id[0].toUpperCase() + id.substring(1);
-            product.name =
-              product.name[0].toUpperCase() + product.name.substring(1);
-              
-              
+    if (dataSearch[0].length) {
+      const data1 = dataSearch[0];
+      if (data1 != undefined) {
+        return (
+          <>
+            {data1.map((product, index) => {
+              i++;
+              if (
+                product.value >= minPrice &&
+                product.value <= maxPrice &&
+                brands.includes(product.brand)
+              ) {
+                id = id[0].toUpperCase() + id.substring(1);
+                product.name =
+                  product.name[0].toUpperCase() + product.name.substring(1);
 
-            if (id === product.name) {
-              
-              return (
-                
-                <li key={index} className="swiper-container">
-                  <Link to={`/detalhes/${product.id}`}>
-                    <Product product={product} />
-                  </Link>
-                </li>
-              );
-            }
-          } else {
-            return;
-          }
-        })}
-      </>
-    );
-  }
-}
-
-{
-  /*else {
-              if (dataSearch != undefined) {
-                if (dataSearch.length > 0 && dataSearch[0].length > 0) {
-                  dataSearch[0].map((product, index) => {
-                    console.log(product.name);
-                    if (product.name.includes(id)) {
-                      i = 1;
-                      return (
-                        <li key={index} className="swiper-container">
-                          <Link to={`/detalhes/${product.id}`}>
-                            <Product product={product} />
-                          </Link>
-                        </li>
-                      );
-                    } else if (i == data.length) {
-                      i = 1;
-                      return (
-                        <li key={index} className="swiper-container">
-                          <p className="p-all-products-null-products">
-                            Não foi encontrado nenhum produto com esse nome
-                          </p>
-                        </li>
-                      );
-                    }
-                  });
+                if (product.name.includes(id)) {
+                  return (
+                    <li key={index} className="swiper-container">
+                      <Link to={`/detalhes/${product.id}`}>
+                        <Product product={product} />
+                      </Link>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li key={index} className="swiper-container">
+                      <p className="p-all-products-null-products">
+                        Não foi encontrado nenhum produto com esse nome
+                      </p>
+                    </li>
+                  );
                 }
               }
-            }
-          }*/
+            })}
+          </>
+        );
+      }
+    }
+  }
 }

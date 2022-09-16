@@ -3,7 +3,7 @@ import React from "react";
 import "./Search.scss";
 import axios from "axios";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState } from "react";;
 
 export default (props) => {
   var busca = props.busca;
@@ -11,14 +11,12 @@ export default (props) => {
 
   const [products, setProducts] = useState(1);
   var [i, setI] = useState(0);
-
   useEffect(() => {
     axios
       .get(`https://api-elegancce.herokuapp.com/api/public/search/${busca}`)
       .then((response) => {
         i = 0;
         const { data } = response;
-        console.log(data);
         setProducts(
           data.filter((obj) => {
             if (obj.name) {
