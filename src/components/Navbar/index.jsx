@@ -92,6 +92,7 @@ export const Navbar = () => {
     );
   };
 
+
   //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
   const userLogged = () => {
     const height = window.screen.height;
@@ -186,7 +187,10 @@ export const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <Link to={"/produtos/" + busca}>
+              <Link
+                onClick={busca}
+                to={busca ? "/produtos/" + busca : "/produtos/id"}
+              >
                 <button>
                   <img src="/icons/iconmonstr-search-thin.svg" />
                 </button>
