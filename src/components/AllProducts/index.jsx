@@ -29,14 +29,6 @@ export default function AllProducts({ products, orderBy }) {
           setData(resposta);
         } else {
           response.data.forEach((product) => {
-            console.log(
-              "minprice: ",
-              minPrice,
-              "maxprice: ",
-              maxPrice,
-              "valor: ",
-              product.value
-            );
             if (product.value >= minPrice && product.value <= maxPrice) {
               setData(response.data.slice(page * 10 - 10, page * 10));
             }

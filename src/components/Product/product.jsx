@@ -44,7 +44,7 @@ export default ({ id }) => {
       setAlertNotification(true);
     }
   };
-  
+
   if (data) {
     const infos = {
       id: data.id,
@@ -56,7 +56,7 @@ export default ({ id }) => {
       qt: +quantity,
     };
 
-    const inStock = () => data.qt > 0 ? "Em estoque" : "Indisponível";
+    const inStock = () => (data.qt > 0 ? "Em estoque" : "Indisponível");
 
     const renderInfos = () => {
       if (infos.promo) {
@@ -94,10 +94,12 @@ export default ({ id }) => {
       <div className="container-components-product">
         <div className="container-border-product">
           <div className="container-top-products">
-            <div className="icon-home-products">
-              <img src="\icons\home.png" alt="foto" />
+            <div className="content-top-products">
+              <div className="icon-home-products">
+                <img src="\icons\home.png" alt="foto" />
+              </div>
+              <Link to="/produtos/id">Voltar</Link>
             </div>
-            <Link to="/produtos/id">Voltar</Link>
           </div>
           <Ratings productId={infos.id} label="NOS AVALIE" />
           <div className="container-products">
