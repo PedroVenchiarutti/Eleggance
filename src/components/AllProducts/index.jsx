@@ -32,6 +32,7 @@ export default function AllProducts({ products, orderBy }) {
           });
           setData(resposta);
         } else {
+
           setData(response.data.slice(page * 10 - 10, page * 10));
         }
 

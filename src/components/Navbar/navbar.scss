@@ -13,6 +13,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    max-width: 1200px;
 
     .logoInSearch {
       display: flex;
@@ -159,8 +160,8 @@
   position: relative;
   top: 10px;
 
-  .div-button{
-    a{
+  .div-button {
+    a {
       margin-top: 25px;
       margin-right: 25px;
     }
@@ -182,7 +183,9 @@
         height: 60px;
         margin-top: 20px;
       }
-      .rounded { border-radius: 50%; }
+      .rounded {
+        border-radius: 50%;
+      }
     }
 
     .navbar-user-name-logout {

@@ -8,7 +8,7 @@ export default ({ productId }) => {
 
     const [checkedInput, setChecketInput] = useState(selectedFavorite.product_id == productId);
     useEffect(() => {
-        setChecketInput(selectedFavorite.product_id == productId);
+        setChecketInput(+selectedFavorite.product_id === +productId);
     }, [selectedFavorite])
 
     const updateFavorite = () => {
