@@ -16,6 +16,12 @@
       border: solid 1px #e4af39;
       border-radius: 10px;
       flex-grow: 1;
+
+      .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 
@@ -27,7 +33,7 @@
     padding: 10px 10px;
     border-radius: 6px;
     cursor: pointer;
-
+    
     &:hover {
       background-color: #f5a300;
       transition: 0.2ms;

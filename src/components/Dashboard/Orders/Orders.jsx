@@ -1,19 +1,21 @@
 import { useFetch } from '../../../hooks/useFetch'
 
 import Table from "../../Table/Table";
+import Loading from '../../SpinerLoader';
+import NoResults from '../../NoResults';
 
 import '../Dashboard.scss';
 import './Orders.scss';
 
 export default () => {
     const headerColumns = ["Nome do produto", "Quantidade", "Valor", <th className="responsive-hide">Status pagamento</th>, <th className="responsive-hide">Status entrega</th>, "Código da venda"];
-    const { data } = useFetch('api/protected/request/');
+    const { data, loading } = useFetch('api/protected/admin/requests/');
 
-    return (
+    if (loading) return <div className="content"><Loading /></div>
+    return data.length ?
         <div className="content">
             <Table headerColumnsArray={headerColumns} bodyObjectsArray={getRows(data)} />
-        </div>
-    )
+        </div> : <NoResults message="Não existe nenhum pedido cadastrado." shouldShowBottomMessage={false} />
 }
 
 const getRows = (orders) => orders.map(order => {

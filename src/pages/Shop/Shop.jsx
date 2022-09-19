@@ -32,7 +32,6 @@ export default function Shop({ products }) {
     axios
       .get("https://api-elegancce.herokuapp.com/api/public/brands")
       .then((response) => {
-        console.log(typeof response.data);
         response.data.map((product, key) => {
           setBrands((brands) => [...brands, product.brand]);
         });
@@ -75,8 +74,6 @@ export default function Shop({ products }) {
             </label>
             <ShopFilter
               toggleBrands={toggleBrands}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
               brands={brands}
               setMinPrice={setMinPrice}
               setMaxPrice={setMaxPrice}
@@ -85,8 +82,6 @@ export default function Shop({ products }) {
               <AllProducts
                 products={shelfProducts}
                 orderBy={selectValue}
-                minPrice={minPrice}
-                maxPrice={maxPrice}
                 brands={brands}
               />
             </div>

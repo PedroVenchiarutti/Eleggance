@@ -8,7 +8,6 @@ import Api from "../../../api/api";
 
 import "./Content.scss";
 import "../Profile.scss";
-import SpinnerButton from "../../SpinerButton";
 
 export default () => {
   const { user, updateUser } = useContext(AuthContext);

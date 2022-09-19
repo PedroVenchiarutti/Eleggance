@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { filtersContext } from "../../contexts/filters";
 
-export default function ShopFilter({
-  toggleBrands,
-  setMinPrice,
-  setMaxPrice,
-  minPrice,
-  maxPrice,
-  brands,
-}) {
-  const { brandsSelected, setBrandsSelected } = useContext(filtersContext);
+export default function ShopFilter({ brands }) {
+  const {
+    brandsSelected,
+    setBrandsSelected,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+  } = useContext(filtersContext);
 
   function toggleModalFilter() {
     let modal = document.querySelector(".modalFilter");
@@ -27,25 +27,21 @@ export default function ShopFilter({
 
           <h2>Marca</h2>
           {brands.map((brand) => (
-            <li key={brand}>
-              <a
-                onClick={(e) => {
-                  if (brandsSelected.indexOf(brand) >= 0) {
-                    setBrandsSelected(
-                      brandsSelected.filter((item) => item !== brand)
-                    );
-                    e.nativeEvent.path[0].style = "color: #fcfcfc";
-                    console.log(brandsSelected);
-                  } else {
-                    setBrandsSelected((current) => [...current, brand]);
-                    e.nativeEvent.path[0].style = "color: #e1ab38";
-                    console.log(brandsSelected);
-                  }
-                }}
-                htmlFor={brand}
-              >
-                {brand}
-              </a>
+            <li
+              key={brand}
+              onClick={(e) => {
+                if (brandsSelected.indexOf(brand) >= 0) {
+                  setBrandsSelected(
+                    brandsSelected.filter((item) => item !== brand)
+                  );
+                  e.nativeEvent.path[0].style = "color: #fcfcfc;";
+                } else {
+                  setBrandsSelected((current) => [...current, brand]);
+                  e.nativeEvent.path[0].style = "color: #e1ab38;";
+                }
+              }}
+            >
+              <a htmlFor={brand}>{brand}</a>
             </li>
           ))}
           <hr />

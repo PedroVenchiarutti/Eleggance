@@ -122,7 +122,7 @@ export default function ModalEditProduct() {
               value={editing.description}
               onChange={(ev) => updateState("description", ev.target.value)}
             />
-            <label>Categoria</label>
+            <label>Marca</label>
             <input
               maxLength={45}
               type="text"

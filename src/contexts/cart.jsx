@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./cart.scss";
 
-import Api from "../api/api";
+import { usePost } from "../hooks/useFetch";
 
 // const initialState = []
 
@@ -17,17 +15,18 @@ export const CartProvider = ({ children }) => {
   const [notification, setNotification] = useState("");
   const [alertNotification, setAlertNotification] = useState(false);
   /*   const [dateInfo, setDateInfo] = useState([]); */
+  const navigate = useNavigate();
 
   const productData = (event, data) => {
     event.preventDefault();
-    console.log(data,'data do productData')
+    console.log(data, 'data do productData')
     // setCart((current) => [...current, data]);
     const getLocalStorageUser = localStorage.getItem("user");
     const parseLocalStorageUser = JSON.parse(getLocalStorageUser);
     console.log(parseLocalStorageUser.productCart)
     parseLocalStorageUser.productCart.push(data)
-  
-    localStorage.setItem('user',JSON.stringify(parseLocalStorageUser))
+
+    localStorage.setItem('user', JSON.stringify(parseLocalStorageUser))
 
   };
 
@@ -64,42 +63,44 @@ export const CartProvider = ({ children }) => {
     let itemIndex = 0
     let iteration = 0
     userCart.productCart.forEach((item) => {
-      if(item.id == productId){
+      if (item.id == productId) {
         itemIndex = iteration
       }
       iteration++;
     })
     userCart.productCart[itemIndex].qt = +value
 
-    localStorage.setItem('user',JSON.stringify(userCart))
+    localStorage.setItem('user', JSON.stringify(userCart))
     setCart([...cart]);
     console.log(cart)
-    
+
   };
 
   const finishBuy = (addressId) => {
     const order = {
       user_id: JSON.parse(localStorage.getItem("user")).id,
       date: Math.floor(Date.now() / 1000),
-      address_id: addressId,
-      products: cart.map((item) => {
+      address_id: +addressId,
+      products: JSON.parse(localStorage.getItem("user")).productCart.map(product => {
         return {
-          qt: item.qt,
-          id: item.id,
-        };
-      }),
+          qt: product.qt,
+          id: product.id,
+        }
+      })
     };
 
-    Api.post("https://api-elegancce.herokuapp.com/api/protected/request", order)
-      .then(() => {
-        // não tá funcionando qnd tá com mais de um item no carrinho, mas ainda assim tá salvando na api
-        alert("Pedido realizado com sucesso.");
-        const navigate = useNavigate();
-        navigate("/perfil/pedidos");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    usePost("api/protected/request", order, () => {
+      alert("Pedido realizado com sucesso.");
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      user.productCart = [];
+      localStorage.setItem("user", JSON.stringify(user));
+
+      navigate("/perfil?tab=pedidos");
+    }, () => {
+      alert("Ocorreu um erro.");
+      console.error(error);
+    });
   };
 
   const state = {

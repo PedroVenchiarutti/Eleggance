@@ -9,8 +9,6 @@ import { Link, useLocation } from "react-router-dom";
 const Carrousel = ({ products, title }) => {
   const location = useLocation();
 
-  console.log(location.pathname);
-
   if (!products) return;
   return (
     <div className="container-promo">

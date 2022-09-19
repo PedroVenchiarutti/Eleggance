@@ -51,6 +51,8 @@ export default ({ id }) => {
       name: data[0].name,
       value: +data[0].value,
       image: data[0].url_img,
+      promo: data[0].offer,
+      pricepromo: data[0].pricepromo,
       qt: +quantity,
     };
 
@@ -61,6 +63,38 @@ export default ({ id }) => {
         return "Indisponível";
       }
     }
+
+    const renderInfos = () => {
+      if (infos.promo) {
+        return (
+          <>
+            <div className="content-promo-render">
+              <h1 className="price">
+                R$ {infos.value.toFixed(2).replace(".", ",")}
+              </h1>
+              <p className="price-promo">
+                R$ {infos.pricepromo.toFixed(2).replace(".", ",")}
+              </p>
+              <h3>
+                10x de {(infos.pricepromo / 10).toFixed(2).replace(".", ",")}{" "}
+                sem JUROS
+              </h3>
+            </div>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <h1 className="price">
+              R$ {infos.value.toFixed(2).replace(".", ",")}
+            </h1>
+            <h3>
+              10x de {(infos.value / 10).toFixed(2).replace(".", ",")} sem JUROS
+            </h3>
+          </>
+        );
+      }
+    };
 
     return (
       <div className="container-components-product">
@@ -86,7 +120,7 @@ export default ({ id }) => {
                 </div>
               </div>
               <div className="photo-product">
-                <img src={infos.image} alt="foto" width='400px'/>
+                <img src={infos.image} alt="foto" width="400px" />
                 <div className="info-products-info">
                   <p className="ul-products">
                     <a onClick={() => toggleMoreInfos()}>
@@ -101,15 +135,7 @@ export default ({ id }) => {
                 <h1>{data[0].name}</h1>
                 <Heart productId={infos.id} />
               </div>
-              <div className="price-product">
-                <h1 className="price">
-                  R$ {infos.value.toFixed(2).replace(".", ",")}
-                </h1>
-                <h3>
-                  10x de {(infos.value / 10).toFixed(2).replace(".", ",")} sem
-                  JUROS
-                </h3>
-              </div>
+              <div className="price-product">{renderInfos()}</div>
               <div className="button-product">
                 Quantidade:
                 <input

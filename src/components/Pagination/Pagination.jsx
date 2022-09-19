@@ -1,34 +1,16 @@
 import axios from "axios";
 import React, { useState, useContext, useEffect } from "react";
 import { PageContext } from "../../contexts/productsPage.jsx";
-import { useFetch } from "../../hooks/useFetch";
 
 export default function Pagination() {
   const { page, setPage } = useContext(PageContext);
-  const [data, setData] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     axios
-      .get(
-        `https://api-elegancce.herokuapp.com/api/public/products/pages/${
-          page + 1
-        }`
-      )
+      .get(`https://api-elegancce.herokuapp.com/api/public/products/`)
       .then((response) => {
-        if (page === 1) {
-          let btnPrev = document.getElementById("prev");
-          btnPrev.style.visibility = "hidden";
-        } else {
-          let btnPrev = document.getElementById("prev");
-          btnPrev.style.visibility = "";
-        }
-        if (response.data.length === 0) {
-          let btnNext = document.getElementById("next");
-          btnNext.style.visibility = "hidden";
-        } else {
-          let btnNext = document.getElementById("next");
-          btnNext.style.visibility = "";
-        }
+        setTotalPages(Math.ceil(response.data.length / 10));
       });
   }, [page]);
 
@@ -42,15 +24,49 @@ export default function Pagination() {
     }
   }
 
-  return (
-    <ul className="pagination-container">
-      <li id="prev" onClick={handlePreviousPage} className="buttonChangePage">
-        <button> {"<"} anterior </button>
-      </li>
-      <li className="currentPage">{page}</li>
-      <li onClick={handleNextPage} className="buttonChangePage" id="next">
-        <button>seguinte {">"}</button>
-      </li>
-    </ul>
-  );
+  function showButtons() {
+    if (totalPages > 1) {
+      if (page === 1) {
+        return (
+          <>
+            <li className="currentPage">{page}</li>
+            <li onClick={handleNextPage} className="buttonChangePage" id="next">
+              <button>{page + 1}</button>
+            </li>
+          </>
+        );
+      } else if (page === totalPages) {
+        return (
+          <>
+            <li
+              id="prev"
+              onClick={handlePreviousPage}
+              className="buttonChangePage"
+            >
+              <button> {page - 1} </button>
+            </li>
+            <li className="currentPage">{page}</li>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <li
+              id="prev"
+              onClick={handlePreviousPage}
+              className="buttonChangePage"
+            >
+              <button> {page - 1} </button>
+            </li>
+            <li className="currentPage">{page}</li>
+            <li onClick={handleNextPage} className="buttonChangePage" id="next">
+              <button>{page + 1}</button>
+            </li>
+          </>
+        );
+      }
+    }
+  }
+
+  return <ul className="pagination-container">{showButtons()}</ul>;
 }

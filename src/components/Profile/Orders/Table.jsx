@@ -2,12 +2,17 @@ import React from "react";
 import { useFetch } from "../../../hooks/useFetch";
 
 import Table from "../../Table/Table";
+import Loading from '../../SpinerLoader';
+import NoResults from "../../NoResults";
 
 import './Table.scss'
-
 export default ({ orderBy }) => {
-    const { data } = useFetch('api/protected/request/');
-    return <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(data, orderBy)} />
+    const { data, loading } = useFetch('api/protected/requests/');
+
+    if (loading) return <div className="loading"><Loading /></div>
+    return data.length ?
+        <Table headerColumnsArray={getHeadRows()} bodyObjectsArray={getBodyObjects(data, orderBy)} />
+            : <NoResults />
 }
 
 const getHeadRows = () => [<>

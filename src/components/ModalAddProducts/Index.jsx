@@ -25,7 +25,6 @@ export default function ModalAddProduct() {
     "/icons/iconmonstr-photo-camera-6-72.png"
   );
   const [progress, setProgress] = useState(false);
-  const [offerPrice, setOfferPrice] = useState('0')
 
   const postItem = async (e) => {
     let data = { ...valor, url_img: e };
@@ -97,29 +96,16 @@ export default function ModalAddProduct() {
   }
 
   function setCheckbox(e) {
-    setValor({ ...valor, offer: !e })
-    console.log(valor.offer)
+    setValor({ ...valor, offer: e })
     let offers = document.getElementById('offer')
     if(valor.offer == true){
-      offers.style.display = 'block'
-    }else{
+      console.log(valor.offer)
       offers.style.display = 'none'
+    }else{
+      offers.style.display = 'block'
     }
-    // console.log(e)
   }
 
-  const min = 0
-  const max = 100
-  // function setOffer(price) {
-  //   // setValor({ ...valor, price: price})
-  //   const value = Math.max(min, Math.min(max, Number(price)));
-  //   setOfferPrice(value)
-  //   setValor({ ...valor, pricepromo: valor.value * (value / 100) })
-  // }
-
-  function offerModal() {
-
-  }
   return (
     <div className="modalAddProducts" id="modalAddProducts">
       <div className="header-modal">
@@ -148,9 +134,8 @@ export default function ModalAddProduct() {
               id="checkboxValue"
               value={valor.offer}
               onChange={e => setCheckbox(e.target.checked)}
-            // onChange={(e) => setValor({ ...valor, offer: e.target.value })}
             />
-            <ModalOffer offerPrice={offerPrice} valor={valor} setValor={setValor}/>
+            <ModalOffer valor={valor} setValor={setValor}/>
             <label>Descrição:</label>
             <textarea
               name="description"

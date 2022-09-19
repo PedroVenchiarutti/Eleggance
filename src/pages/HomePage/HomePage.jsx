@@ -17,7 +17,15 @@ import { SectionInfo } from "../../components/SectionInfo";
 import { useFetch } from "../../hooks/useFetch";
 
 const HomePage = (props) => {
-  const { data } = useFetch(`api/public/products/pages/1`);
+  /*   const page1 = useFetch(`api/public/products/pages/1`); */
+  const page1 = useFetch(`api/public/products`);
+
+  const { data } = page1;
+
+  const newData1 = data.filter((item) => item.offer === true);
+
+  const newData2 = data.slice(10, 20);
+
   return (
     <>
       <header className="homepage">
@@ -25,9 +33,9 @@ const HomePage = (props) => {
         <HomeBanner images={images} smallBanner={smallBanner} />
       </header>
       <Taskbar />
-      <Carrousel products={data} title="Ofertas" />
+      {<Carrousel products={newData1} title="Ofertas" />}
       <SectionInfo />
-      <Carrousel products={data} title="Tendências" />
+      <Carrousel products={newData2} title="Tendências" />
       {/* <AboutUs /> */}
       <Footer />
     </>
