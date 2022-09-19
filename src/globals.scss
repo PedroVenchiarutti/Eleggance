@@ -23,3 +23,16 @@ html {
     scroll-behavior: smooth;
 }
 
+body::-webkit-scrollbar {
+    width: 7px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #222;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #ffce45;
+}
+
+

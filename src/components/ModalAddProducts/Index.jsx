@@ -33,6 +33,15 @@ export default function ModalAddProduct() {
       (error) => console.error(error)
     );
   };
+
+  function titleize(text) {
+    var words = text.toLowerCase().split(" ");
+    for (var a = 0; a < words.length; a++) {
+      var w = words[a];
+      words[a] = w[0].toUpperCase() + w.slice(1);
+    }
+    return words.join(" ");
+  }
   // Criar um hooks personalizado para utilização dessa função
   const firebaseUpload = (e) => {
     document.querySelector(".btnCadastrarProduto").disabled = true;
@@ -99,8 +108,10 @@ export default function ModalAddProduct() {
             <input
               maxLength={45}
               type="text"
-              value={valor.name}
-              onChange={(e) => setValor({ ...valor, name: e.target.value })}
+              value={titleize(valor.name)}
+              onChange={(e) =>
+                setValor({ ...valor, name: titleize(e.target.value) })
+              }
             />
             <label>Valor:</label>
             <input

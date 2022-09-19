@@ -50,7 +50,7 @@ const FormCadastro = (props) => {
                     <img src="/iconUser.svg" />
                     <Input
                       type="text"
-                      placeholder="username"
+                      placeholder="Nome De Usuário"
                       name="inputusername"
                       id="inputusernameResgister"
                       value={registerUserState.username}
