@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Carrousel.scss";
 import SpinerLoader from "../SpinerLoader";
-import { Link } from "react-router-dom";
 
 const Card = ({ product }) => {
   const [loading, setLoading] = useState(true);
@@ -12,14 +11,18 @@ const Card = ({ product }) => {
   const priceParceledFormatado = priceParceled.toString().replace(".", ",");
 
   const renderProductDiscount = (product) => {
-    console.log(product);
     if (product.offer) {
+      let discount = product.pricepromo.toFixed(2);
+      let discountFormatado = discount.toString().replace(".", ",");
+      let priceParceled = (product.pricepromo / 10).toFixed(2);
+      let priceParceledFormatado = priceParceled.toString().replace(".", ",");
+
       return (
         <div className="product-offer">
           <span className="cash-payment">à vista</span>
           <p className="price-installments">
             R<span>$</span>
-            {product.pricepromo}
+            {discountFormatado}
           </p>
           <span>
             ou em
@@ -37,7 +40,7 @@ const Card = ({ product }) => {
           </span>
           <p className="price-installments-parceled">
             R<span>$</span>
-            {(product.pricepromo / 10).toFixed(2)}
+            {priceParceledFormatado}
           </p>
         </div>
       );
