@@ -117,7 +117,7 @@ export const AuthProvider = ({ children }) => {
       .then(() => {
         login(newUser.email, newUser.password);
       })
-      .catch((error) => console.log(error.response.data));
+      .catch((error) => alert("Erro ao cadastrar usuário"));
   };
 
   const userLogout = (redirectTo = "/login") => {
@@ -179,7 +179,6 @@ export const AuthProvider = ({ children }) => {
               return;
             })
             .catch((error) => {
-              console.log(error);
               setMessage({
                 type: "error",
                 message: "Erro ao atualizar dados, tente novamente!",
@@ -190,7 +189,7 @@ export const AuthProvider = ({ children }) => {
             });
         },
         (error) => {
-          console.log(error);
+          alert("Erro ao atualizar imagem");
         }
       );
     }

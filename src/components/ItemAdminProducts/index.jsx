@@ -22,7 +22,6 @@ export default function ItemAdminProducts() {
   function modalToggleEdit() {
     let modalEdit = document.getElementById("modalEditProducts");
     modalEdit.classList.toggle("open");
-    console.log(data);
   }
 
   function removeItem(item) {

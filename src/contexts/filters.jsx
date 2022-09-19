@@ -4,8 +4,8 @@ export const filtersContext = createContext();
 
 export const FiltersProvider = ({ children }) => {
   const [brandsSelected, setBrandsSelected] = useState([]);
-  const [minPrice, setMinPrice] = useState(15);
-  const [maxPrice, setMaxPrice] = useState(300);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(3000);
 
   return (
     <filtersContext.Provider
