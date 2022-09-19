@@ -11,7 +11,7 @@
 
   .columns-task-bar {
     display: flex;
-    max-width: 80%;
+    max-width: 1200px;
     max-height: 500px;
     background-color: white;
     margin: 0 auto;
@@ -19,7 +19,7 @@
     .swiper-pagination {
       bottom: -5px;
       .swiper-pagination-bullet {
-       background-color: #111;
+        background-color: #111;
       }
     }
   }

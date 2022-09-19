@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../contexts/auth";
 
 import Data from "../../Data/Data";
@@ -6,13 +6,43 @@ import MainHeader from "../common/MainHeader";
 
 import "./Content.scss";
 import "../Profile.scss";
+import { useFetch } from "../../../hooks/useFetch";
 
 export default () => {
-  const { user } = useContext(AuthContext);
 
-  const date = user.birth
-    ? new Date(user.birth).toISOString().split("T")[0]
+  const [profile, setProfile] = useState("");
+  const { user } = useContext(AuthContext);
+  const date = profile.birth
+    ? new Date(profile.birth).toISOString().split("T")[0]
     : "";
+
+  const { data } = useFetch(`api/protected/client/${user.id}`);
+
+  useEffect(() => {
+    if (data) {
+      setProfile(data);
+    }
+  }, [data]);  
+
+  // refactor cpfMask?
+  let cpfFormat
+  if(profile.cpf){
+    const cpf = new String(profile.cpf)
+    const cpf1 = cpf.substring(0,3)
+    const cpf2 = cpf.slice(3,6)
+    const cpf3 = cpf.slice(6,9)
+    const cpf4 = cpf.slice(9,11)
+    cpfFormat = cpf1 + '.' + cpf2 + '.' + cpf3 + '-' + cpf4
+  }
+
+  let phoneFormat
+  if(profile.phone){
+    const phone = new String(profile.phone)
+    const phone1 = phone.substring(0,2)
+    const phone2 = phone.substring(2,7)
+    const phone3 = phone.substring(7,11)
+    phoneFormat = '(' + phone1 + ')' + phone2 + '-' + phone3
+  }
 
   return (
     <>
@@ -24,22 +54,22 @@ export default () => {
       <Data header="Meus Dados">
         <>
           <p>
-            Nome: <span className="infoP">{user.name}</span>
+            Nome: <span className="infoP">{profile.name}</span>
           </p>
           <p>
-            CPF: <span className="infoP">{user.cpf}</span>
+            CPF: <span className="infoP">{cpfFormat}</span>
           </p>
           <p>
-            Sexo: <span className="infoP">{user.sexo}</span>
+            Sexo: <span className="infoP">{profile.sexo}</span>
           </p>
           <p>
             Data de nascimento: <span className="infoP">{date}</span>
           </p>
           <p>
-            Telefone Principal: <span className="infoP">{user.phone}</span>
+            Telefone Principal: <span className="infoP">{phoneFormat}</span>
           </p>
           <p>
-            E-mail: <span className="infoP">{user.email}</span>
+            E-mail: <span className="infoP">{profile.email}</span>
           </p>
         </>
       </Data>

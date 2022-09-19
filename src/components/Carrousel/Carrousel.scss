@@ -4,13 +4,19 @@
   display: flex;
   justify-content: center;
 
-  .swiper-pagination {
-    position: relative;
-    padding-top: 20px;
-    display: block;
+  .content-promo {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
 
-    .swiper-pagination-bullet {
-      background-color: #111;
+    .swiper-pagination {
+      position: relative;
+      padding-top: 20px;
+      display: block;
+
+      .swiper-pagination-bullet {
+        background-color: #111;
+      }
     }
   }
 }
@@ -228,8 +234,6 @@
 
     .price-installments {
       span {
-        font-size: em;
-        text-decoration: line-through;
         font-weight: 500;
       }
     }

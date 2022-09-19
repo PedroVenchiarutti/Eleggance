@@ -20,7 +20,11 @@ export default function AllProducts({ products, orderBy }) {
 
   useEffect(() => {
     axios
-      .get(`https://api-elegancce.herokuapp.com/api/public/products/`)
+      .get(
+        `https://api-elegancce.herokuapp.com/api/public/filter/?to=${parseInt(
+          maxPrice
+        )}&from=${parseInt(minPrice)}`
+      )
       .then((response) => {
         setProductData(response.data);
         if (brandsSelected.length > 0) {

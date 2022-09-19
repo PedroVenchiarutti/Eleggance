@@ -17,10 +17,8 @@ export default function ModalEditProduct() {
   const [imagesUrl, setImagesUrl] = useState("");
 
   async function postItem() {
-    console.log(editing);
     await Api.put(`api/protected/product/${editing.id}`, editing)
       .then(function (response) {
-        console.log(response);
         alert("Produto editado");
       })
       .catch(function (error) {
@@ -32,7 +30,6 @@ export default function ModalEditProduct() {
     document.querySelector(".btnCadastrarProduto").disabled = true;
     e.preventDefault();
     const file = e.target[5]?.files[0];
-    console.log(file, "oi");
 
     if (!file) return;
     const storageRef = ref(storage, `image/produtos/${file.name}`);
@@ -41,7 +38,6 @@ export default function ModalEditProduct() {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        console.log("snapshot", snapshot);
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progress);
@@ -54,14 +50,13 @@ export default function ModalEditProduct() {
           let urlImage = url;
           setImagesUrl(urlImage);
           updateState("url_img", urlImage);
-          console.log("valorzin", urlImage);
           postItem();
           setProgress(true);
           window.location.reload();
         })
 
         .catch((error) => {
-          console.log(error);
+          alert("Erro ao fazer upload da imagem");
           return <div>Error...</div>;
         });
     });
@@ -70,6 +65,14 @@ export default function ModalEditProduct() {
   function modalToggle() {
     let modalEdit = document.getElementById("modalEditProducts");
     modalEdit.classList.toggle("open");
+  }
+
+  const min = 1
+  const max = 100 
+  function setOffer(pricepromo){
+    // setValor({ ...valor, pricepromo: pricepromo})
+    const value = Math.max(min, Math.min(max, Number(pricepromo)));
+    setValor({ ...valor, pricepromo: value})
   }
 
   return (
@@ -94,6 +97,19 @@ export default function ModalEditProduct() {
               value={editing.value}
               onChange={(ev) => updateState("value", ev.target.value)}
             />
+            <label>Oferta:</label>
+            <input
+              type="checkbox"
+              value={editing.offer}
+              onChange={(e) => updateState("offer", e.target.value )}
+            />
+            <label>Valor da oferta em %</label>
+            <input
+              type="number"
+              value={editing.pricepromo}
+              // onChange={(e) => setValor({ ...valor, pricepromo: e.target.value })}
+              onChange={e => setOffer(e.target.value)}
+            />
             <label>Descrição:</label>
             <input
               maxLength={255}
@@ -101,7 +117,7 @@ export default function ModalEditProduct() {
               value={editing.description}
               onChange={(ev) => updateState("description", ev.target.value)}
             />
-            <label>Categoria</label>
+            <label>Marca</label>
             <input
               maxLength={45}
               type="text"

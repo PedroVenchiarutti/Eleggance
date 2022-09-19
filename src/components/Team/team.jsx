@@ -9,7 +9,7 @@ export default (props) => {
       {/* ============================================= */}
       {/* =====TEAM===== */}
       <div className="cast-team">
-      {/* ============================================= */}
+        {/* ============================================= */}
         {/* =====TEAM 1 ANA===== */}
         <div className="team-first">
           <div className="photo-employee">
@@ -66,7 +66,10 @@ export default (props) => {
       {/* =====CONTAINER BUTTON===== */}
       <div className="container-button-team">
         <div className="container-agendamento-button">
-          <a href="/solicitation" className="agendamento-button">
+          <a
+            href="https://wa.me/qr/G3IPJ2AEDYFLN1"
+            className="agendamento-button"
+          >
             <p>Solicite um agendamento</p>
           </a>
         </div>

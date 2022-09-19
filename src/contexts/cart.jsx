@@ -19,15 +19,11 @@ export const CartProvider = ({ children }) => {
 
   const productData = (event, data) => {
     event.preventDefault();
-    console.log(data, 'data do productData')
-    // setCart((current) => [...current, data]);
     const getLocalStorageUser = localStorage.getItem("user");
     const parseLocalStorageUser = JSON.parse(getLocalStorageUser);
-    console.log(parseLocalStorageUser.productCart)
-    parseLocalStorageUser.productCart.push(data)
+    parseLocalStorageUser.productCart.push(data);
 
-    localStorage.setItem('user', JSON.stringify(parseLocalStorageUser))
-
+    localStorage.setItem("user", JSON.stringify(parseLocalStorageUser));
   };
 
   useEffect(() => {
@@ -57,23 +53,21 @@ export const CartProvider = ({ children }) => {
   //   cart.findIndex((item) => item.id === productId);
 
   const setQuantity = (productId, quantity) => {
-    const userCart = JSON.parse(localStorage.getItem('user'));
+    const userCart = JSON.parse(localStorage.getItem("user"));
     //limitando input para 1 até 100
     const value = Math.max(min, Math.min(max, Number(quantity)));
-    let itemIndex = 0
-    let iteration = 0
+    let itemIndex = 0;
+    let iteration = 0;
     userCart.productCart.forEach((item) => {
       if (item.id == productId) {
-        itemIndex = iteration
+        itemIndex = iteration;
       }
       iteration++;
-    })
-    userCart.productCart[itemIndex].qt = +value
+    });
+    userCart.productCart[itemIndex].qt = +value;
 
-    localStorage.setItem('user', JSON.stringify(userCart))
+    localStorage.setItem("user", JSON.stringify(userCart));
     setCart([...cart]);
-    console.log(cart)
-
   };
 
   const finishBuy = (addressId) => {
@@ -81,26 +75,33 @@ export const CartProvider = ({ children }) => {
       user_id: JSON.parse(localStorage.getItem("user")).id,
       date: Math.floor(Date.now() / 1000),
       address_id: +addressId,
-      products: JSON.parse(localStorage.getItem("user")).productCart.map(product => {
-        return {
-          qt: product.qt,
-          id: product.id,
+      products: JSON.parse(localStorage.getItem("user")).productCart.map(
+        (product) => {
+          return {
+            qt: product.qt,
+            id: product.id,
+          };
         }
-      })
+      ),
     };
 
-    usePost("api/protected/request", order, () => {
-      alert("Pedido realizado com sucesso.");
+    usePost(
+      "api/protected/request",
+      order,
+      () => {
+        alert("Pedido realizado com sucesso.");
 
-      const user = JSON.parse(localStorage.getItem("user"));
-      user.productCart = [];
-      localStorage.setItem("user", JSON.stringify(user));
+        const user = JSON.parse(localStorage.getItem("user"));
+        user.productCart = [];
+        localStorage.setItem("user", JSON.stringify(user));
 
-      navigate("/perfil?tab=pedidos");
-    }, () => {
-      alert("Ocorreu um erro.");
-      console.error(error);
-    });
+        navigate("/perfil?tab=pedidos");
+      },
+      () => {
+        alert("Ocorreu um erro.");
+        console.error(error);
+      }
+    );
   };
 
   const state = {

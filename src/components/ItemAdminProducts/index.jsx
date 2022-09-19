@@ -16,13 +16,12 @@ export default function ItemAdminProducts() {
       setData(response.data);
     });
   }, [page]);
-
+  console.log(data)
   const { onFormSubmit } = useContext(EditContext);
 
   function modalToggleEdit() {
     let modalEdit = document.getElementById("modalEditProducts");
     modalEdit.classList.toggle("open");
-    console.log(data);
   }
 
   function removeItem(item) {

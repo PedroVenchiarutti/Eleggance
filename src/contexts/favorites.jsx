@@ -5,6 +5,11 @@ import { useDelete, useFetch, usePost } from "../hooks/useFetch";
 import Api from "../api/api";
 import { AuthContext } from "./auth";
 
+const initialState = {
+    data: [],
+    loading: false
+}
+
 const BASE_URL = "api/protected/client/favorites";
 const headers = { Authorization: localStorage.getItem("token") };
 
@@ -15,7 +20,8 @@ export const FavoritesProvider = ({ children }) => {
 
     const userFromStorage = localStorage.getItem("user");
     const userId = userFromStorage ? JSON.parse(userFromStorage).id : "";
-    let { data, loading } = useFetch(`${BASE_URL}/${userId}`);
+
+    let { data, loading } = userId ? useFetch(`${BASE_URL}/${userId}`) : initialState;
 
     const [selectedFavorite, setSelectedFavorite] = useState({ user_id: userId });
     useEffect(() => {
@@ -25,16 +31,18 @@ export const FavoritesProvider = ({ children }) => {
     }, [id, authenticated])
 
     const saveFavorite = productId => {
-        const favorite = {
-            user_id: userId,
-            product_id: productId
-        }
+        if (authenticated) {
+            const favorite = {
+                user_id: userId,
+                product_id: productId
+            }
 
-        const previousFavorite = data.find(item => item.product_id == productId);
-        if (previousFavorite) deleteFavorite(previousFavorite.id)
-        else usePost(BASE_URL, favorite, () => {
-            alert('Produto favoritado. Agradecemos o feedback');
-        }, () => alert("Ocorreu um erro"));
+            const previousFavorite = data.find(item => item.product_id == productId);
+            if (previousFavorite) deleteFavorite(previousFavorite.id)
+            else usePost(BASE_URL, favorite, () => {
+                alert('Produto favoritado. Agradecemos o feedback');
+            }, () => alert("Ocorreu um erro"));
+        } else alert("Você precisa estar autenticado para salvar esse produto como favorito");
     }
 
     const deleteFavorite = favoriteId => new Promise((resolve, reject) => {

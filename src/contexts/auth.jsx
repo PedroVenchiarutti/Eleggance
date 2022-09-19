@@ -60,7 +60,14 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const setLoggedUserState = (user, token) => {
-    saveUserInStorage(user, token);
+    const userData = {
+      id: user.id,
+      name: user.name,
+      img_url: user.img_url,
+      productCart: user.productCart,
+      token: token
+    }
+    saveUserInStorage(userData, token);
     setUser(user);
     setToken(token);
     setAuthenticated(true);
@@ -117,7 +124,7 @@ export const AuthProvider = ({ children }) => {
       .then(() => {
         login(newUser.email, newUser.password);
       })
-      .catch((error) => console.log(error.response.data));
+      .catch((error) => alert("Erro ao cadastrar usuário"));
   };
 
   const userLogout = (redirectTo = "/login") => {
@@ -179,7 +186,6 @@ export const AuthProvider = ({ children }) => {
               return;
             })
             .catch((error) => {
-              console.log(error);
               setMessage({
                 type: "error",
                 message: "Erro ao atualizar dados, tente novamente!",
@@ -190,7 +196,7 @@ export const AuthProvider = ({ children }) => {
             });
         },
         (error) => {
-          console.log(error);
+          alert("Erro ao atualizar imagem");
         }
       );
     }

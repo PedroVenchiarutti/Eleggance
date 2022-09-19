@@ -1,11 +1,11 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 export const filtersContext = createContext();
 
 export const FiltersProvider = ({ children }) => {
-  const [brandsSelected, setBrandsSelected] = React.useState([]);
-  const [minPrice, setMinPrice] = React.useState(15);
-  const [maxPrice, setMaxPrice] = React.useState(300);
+  const [brandsSelected, setBrandsSelected] = useState([]);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(3000);
 
   return (
     <filtersContext.Provider
