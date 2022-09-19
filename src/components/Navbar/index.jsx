@@ -61,7 +61,6 @@ export const Navbar = () => {
         const getCart = localStorage.getItem("user");
         const parseCart = JSON.parse(getCart);
         const cartLength = parseCart.productCart?.length;
-        console.log("cart length", cartLength);
         setQuantity(cartLength);
         const notification = document.querySelector(".alertIcon");
         notification?.classList.toggle("alertTremer");
@@ -92,6 +91,7 @@ export const Navbar = () => {
       </button>
     );
   };
+
 
   //verificar a tela do usuario e renderizar o botao de logout e se ele estiver logado ou nao
   const userLogged = () => {
@@ -187,7 +187,10 @@ export const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <Link to={"/produtos/" + busca}>
+              <Link
+                onClick={busca}
+                to={busca ? "/produtos/" + busca : "/produtos/id"}
+              >
                 <button>
                   <img src="/icons/iconmonstr-search-thin.svg" />
                 </button>

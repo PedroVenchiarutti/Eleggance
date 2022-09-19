@@ -14,12 +14,15 @@ export default function AllProducts({ products, orderBy }) {
   const { page } = useContext(PageContext);
   var { id } = useParams();
   const [data, setData] = useState([]);
+  const [productData, setProductData] = useState([]);
+  var i = 0;
   const { brandsSelected, minPrice, maxPrice } = useContext(filtersContext);
 
   useEffect(() => {
     axios
       .get(`https://api-elegancce.herokuapp.com/api/public/products/`)
       .then((response) => {
+        setProductData(response.data);
         if (brandsSelected.length > 0) {
           let resposta = response.data.filter((product) => {
             if (brandsSelected.includes(product.brand)) {
@@ -29,14 +32,6 @@ export default function AllProducts({ products, orderBy }) {
           setData(resposta);
         } else {
           response.data.forEach((product) => {
-            console.log(
-              "minprice: ",
-              minPrice,
-              "maxprice: ",
-              maxPrice,
-              "valor: ",
-              product.value
-            );
             if (product.value >= minPrice && product.value <= maxPrice) {
               setData(response.data.slice(page * 10 - 10, page * 10));
             }
@@ -64,33 +59,51 @@ export default function AllProducts({ products, orderBy }) {
     }
   }
 
-  return (
-    <>
-      {data
-        .sort((a, b) => compareFunction(a, b))
-        .map((product, index) => {
-          if (id === "id") {
-            return (
-              <li key={index} className="swiper-container">
-                <Link to={`/detalhes/${product.id}`}>
-                  <Product product={product} />
-                </Link>
-              </li>
-            );
-          } else {
-            id = id[0].toUpperCase() + id.substring(1);
-            product.name =
-              product.name[0].toUpperCase() + product.name.substring(1);
-            if (product.name.includes(id)) {
-              return (
-                <li key={index} className="swiper-container">
-                  <Link to={`/detalhes/${product.id}`}>
-                    <Card key={product.id} product={product} />
-                  </Link>
-                </li>
-              );
-            } else {
-              if (i == 0) {
+  if (id === "id") {
+    return (
+      <>
+        {data
+          .sort((a, b) => compareFunction(a, b))
+          .map((product, index) => {
+            i++;
+            {
+              id = id[0].toUpperCase() + id.substring(1);
+              product.name =
+                product.name[0].toUpperCase() + product.name.substring(1);
+              if (id === "Id") {
+                return (
+                  <li key={index} className="swiper-container">
+                    <Link to={`/detalhes/${product.id}`}>
+                      <Product product={product} />
+                    </Link>
+                  </li>
+                );
+              }
+            }
+          })}
+      </>
+    );
+  } else {
+    return (
+      <>
+        {productData
+          .sort((a, b) => compareFunction(a, b))
+          .map((product, index) => {
+            i++;
+            {
+              id = id[0].toUpperCase() + id.substring(1);
+              product.name =
+                product.name[0].toUpperCase() + product.name.substring(1);
+              if (product.name.includes(id)) {
+                i = 1;
+                return (
+                  <li key={index} className="swiper-container">
+                    <Link to={`/detalhes/${product.id}`}>
+                      <Product product={product} />
+                    </Link>
+                  </li>
+                );
+              } else if (i == productData.length) {
                 i = 1;
                 return (
                   <li key={index} className="swiper-container">
@@ -101,8 +114,8 @@ export default function AllProducts({ products, orderBy }) {
                 );
               }
             }
-          }
-        })}
-    </>
-  );
+          })}
+      </>
+    );
+  }
 }
