@@ -21,7 +21,6 @@ export default function FinishBuy() {
   // Novo carrinho
   const userCart = JSON.parse(localStorage.getItem('user'))
   const products = userCart.productCart
-  console.log(products)
 
   const sum = (accumulated, current) => (+accumulated ?? 0) + (+current ?? 0);
   // cart
@@ -55,7 +54,7 @@ export default function FinishBuy() {
     Api.get(
       `https://api-elegancce.herokuapp.com/api/public/discount/${couponCode}`
     )
-      .then((resp) => setCouponDiscount(resp.data[0].discount), console.log(couponDiscount, 'cupom valor'))
+      .then((resp) => setCouponDiscount(resp.data[0].discount))
       .catch(setCouponDiscount(0));
   };
 

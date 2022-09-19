@@ -35,8 +35,6 @@ export default function AllProducts({ products, orderBy }) {
 
           setData(response.data.slice(page * 10 - 10, page * 10));
         }
-
-        console.log(parseInt(minPrice), parseInt(maxPrice));
       });
   }, [page, brandsSelected, minPrice, maxPrice]);
 

@@ -49,13 +49,10 @@ const RegistrationForm = (props) => {
     return true;
   }
 
-  console.log(personalDatas);
-
   //Funcao para enviar a imagem para o firebase
   const firebaseUpload = (e) => {
     e.preventDefault();
     const file = e.target[0]?.files[0];
-    console.log(file);
     if (!file) {
       if (personalDatas.cpf.length === 11) {
         if (CpfValidator(personalDatas.cpf)) {
@@ -81,7 +78,6 @@ const RegistrationForm = (props) => {
         if (personalDatas.cpf.length === 11) {
           if (CpfValidator(personalDatas.cpf)) {
             if (personalDatas.name.length !== 0) {
-              console.log("URL", url);
               console;
               personalDataRecord({
                 ...personalDatas,

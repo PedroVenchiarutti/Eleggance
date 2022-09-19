@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import "./cardFinance.scss"
 
 export default (props) => {
-  const { data } = useFetch(`api/public/products/pages/1`);
+  const { data } = useFetch(`api/public/products/pages/1`, false);
   let pedidos = data.length;
 
   return (

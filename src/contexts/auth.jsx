@@ -11,18 +11,18 @@ const TOKEN_STORAGE_KEY = "token";
 
 const saveUserInStorage = (user, token) => {
   localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
-  localStorage.setItem(TOKEN_STORAGE_KEY, token);
+  localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(token));
 };
 
 const saveAdminInStorage = (admin, token) => {
   localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(admin));
-  localStorage.setItem(TOKEN_STORAGE_KEY, token);
+  localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(token));
 };
 
-const getUserFromStorage = () =>
-  JSON.parse(localStorage.getItem(USER_STORAGE_KEY));
-const getAdminFromStorage = () =>
-  JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY));
+const getUserFromStorage = () => JSON.parse(localStorage.getItem(USER_STORAGE_KEY));
+const getAdminFromStorage = () => JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY));
+const getTokenFromStorage = () => JSON.parse(localStorage.getItem(TOKEN_STORAGE_KEY))
+
 const deleteToken = () => localStorage.removeItem(TOKEN_STORAGE_KEY);
 
 const deleteStorageUser = () => {
@@ -47,22 +47,22 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const storageUser = getUserFromStorage();
     const storageAdmin = getAdminFromStorage();
-    const storageToken = localStorage.getItem(TOKEN_STORAGE_KEY);
-    if (storageToken)
-      storageUser
-        ? setLoggedUserState(storageUser, storageToken)
-        : setLoggedAdminState(storageAdmin, storageToken);
-    else {
+    const storageToken = getTokenFromStorage();
+
+    if (storageToken && storageToken.generatedToken) {
+      storageUser ? setLoggedUserState(storageUser, storageToken) : setLoggedAdminState(storageAdmin, storageToken);
+    } else {
       setUnloggedUserState();
       setUnloggedAdminState();
     }
+
     setLoading(false);
   }, []);
 
   const setLoggedUserState = (user, token) => {
     saveUserInStorage(user, token);
     setUser(user);
-    setToken(token);
+    setToken(token.generatedToken);
     setAuthenticated(true);
   };
 
@@ -179,7 +179,6 @@ export const AuthProvider = ({ children }) => {
               return;
             })
             .catch((error) => {
-              console.log(error);
               setMessage({
                 type: "error",
                 message: "Erro ao atualizar dados, tente novamente!",
@@ -190,7 +189,6 @@ export const AuthProvider = ({ children }) => {
             });
         },
         (error) => {
-          console.log(error);
         }
       );
     }

@@ -18,7 +18,6 @@ const Finances = (props) => {
       const mesCurrent = dataCurrent[0];
       const anoCurrent = dataCurrent[2];
       const currentData = diaCurrent + "-" + mesCurrent + "-" + anoCurrent;
-      console.log(currentData);
     }
   };
   const getTheDate = (e) => {
@@ -30,7 +29,6 @@ const Finances = (props) => {
       const mes = data[0];
       const ano = data[2];
       const currentData = dia + "-" + mes + "-" + ano;
-      console.log(currentData);
     }
   };
 
@@ -42,7 +40,6 @@ const Finances = (props) => {
         setProducts(response.data);
       })
       .catch(() => {
-        console.log("Deu tudo errado");
       });
   }, []);
 

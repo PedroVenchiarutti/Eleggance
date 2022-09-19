@@ -15,7 +15,7 @@ export default function Cart({ match }) {
 
   const [itemCart, setItemCart] = useState([]);
 
-  const { data } = useFetch(`api/public/products/pages/1`);
+  const { data } = useFetch(`api/public/products/pages/1`, false);
 
   const navigation = useNavigate();
 

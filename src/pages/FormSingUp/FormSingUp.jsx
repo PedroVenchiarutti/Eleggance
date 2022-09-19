@@ -31,7 +31,6 @@ const FormSingUp = (props) => {
 
   const handleSubmitt = (e) => {
     e.preventDefault();
-    console.log("submit", { email, password });
     login(email, password);
   };
 

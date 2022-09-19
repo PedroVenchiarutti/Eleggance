@@ -19,11 +19,9 @@ export const CartProvider = ({ children }) => {
 
   const productData = (event, data) => {
     event.preventDefault();
-    console.log(data, 'data do productData')
     // setCart((current) => [...current, data]);
     const getLocalStorageUser = localStorage.getItem("user");
     const parseLocalStorageUser = JSON.parse(getLocalStorageUser);
-    console.log(parseLocalStorageUser.productCart)
     parseLocalStorageUser.productCart.push(data)
 
     localStorage.setItem('user', JSON.stringify(parseLocalStorageUser))
@@ -72,7 +70,6 @@ export const CartProvider = ({ children }) => {
 
     localStorage.setItem('user', JSON.stringify(userCart))
     setCart([...cart]);
-    console.log(cart)
 
   };
 

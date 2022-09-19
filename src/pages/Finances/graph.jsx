@@ -33,7 +33,6 @@ export default function App() {
         .then(() => {
           let numArr = arr.length;
           numArr = numArr + 1;
-          console.log(numArr);
           arr.forEach((number) => {
             if (numArr != data.length) {
               let arr1 = [number[1], number[2], number[4]];
@@ -42,7 +41,6 @@ export default function App() {
           });
         })
         .catch(() => {
-          console.log("Deu ruim :( ");
         });
     }, []);
   }

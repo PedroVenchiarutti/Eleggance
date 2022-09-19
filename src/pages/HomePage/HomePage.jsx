@@ -18,7 +18,7 @@ import { useFetch } from "../../hooks/useFetch";
 
 const HomePage = (props) => {
   /*   const page1 = useFetch(`api/public/products/pages/1`); */
-  const page1 = useFetch(`api/public/products`);
+  const page1 = useFetch(`api/public/products`, false);
 
   const { data } = page1;
 

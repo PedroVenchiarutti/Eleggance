@@ -50,7 +50,6 @@ const sortListByOptions = (ordersList, orderBy) => {
         }
     });
 
-    console.log(ordersList);
 
     switch (orderBy) {
         case 'price':

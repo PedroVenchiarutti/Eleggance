@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import Heart from "../Heart";
 
 export default ({ id }) => {
-  const { data } = useFetch(`api/public/products/${id}`);
+  const { data } = useFetch(`api/public/products/${id}`, false);
 
   const getToken = localStorage.getItem("token");
 

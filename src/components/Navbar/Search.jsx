@@ -4,7 +4,7 @@ import React from "react";
 import "./Search.scss";
 
 export default (props) => {
-  const { data } = useFetch(`api/public/products/pages/1`);
+  const { data } = useFetch(`api/public/products/pages/1`, false);
 
   let objName = "";
   let i = 0;

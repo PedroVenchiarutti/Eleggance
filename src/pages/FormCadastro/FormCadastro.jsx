@@ -19,7 +19,6 @@ const FormCadastro = (props) => {
   const handleRegistrer = (e) => {
     e.preventDefault();
     registerUser(registerUserState);
-    console.log(registerUserState.password);
     if (registerUserState.password.length < 6) {
       alert("Sua Senha Deve Conter pelo Menos 6 Dígitos");
     } else if (

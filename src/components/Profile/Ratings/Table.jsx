@@ -26,7 +26,7 @@ const getRows = (ratings) => {
     const { deleteRating } = useContext(RatingContext);
 
     return ratings.map(rating => {
-        const { data } = useFetch(`api/public/products/${rating.product_id}`);
+        const { data } = useFetch(`api/public/products/${rating.product_id}`, false);
         const product = data ?? {};
         
         return {

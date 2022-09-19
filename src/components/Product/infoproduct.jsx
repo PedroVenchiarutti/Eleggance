@@ -2,7 +2,6 @@ import React from "react";
 import "./infoproduct.scss";
 
 export default (props) => {
-  console.log(props.data.qt);
 
   return (
     <div className="container-info-product">

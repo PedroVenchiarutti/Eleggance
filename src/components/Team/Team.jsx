@@ -15,7 +15,6 @@ export default (props) => {
       alert("Entraremos em contato em breve");
     }
 
-    console.log(person);
   };
 
   return (
