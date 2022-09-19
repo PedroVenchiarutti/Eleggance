@@ -4,12 +4,13 @@
   align-items: center;
   margin-bottom: 10px;
   position: relative;
-  padding-left: 20px;
 
   .main-div {
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 100%;
+    justify-content: flex-end;
+    max-width: 1200px;
 
     h3 {
       margin-left: 20px;

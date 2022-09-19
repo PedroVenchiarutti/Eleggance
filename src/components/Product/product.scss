@@ -6,7 +6,8 @@
 
   .container-products {
     background: #fcfcfc;
-    width: 60%;
+    width: 100%;
+    max-width: 1200px;
     height: 100%;
     display: flex;
     position: relative;
@@ -121,7 +122,8 @@
       align-items: center;
       margin: 25px 0;
       justify-content: space-between;
-      width: 80%;
+      width: 100%;
+      padding-right: 3px;
 
       h1 {
         font-size: 1.4rem;
@@ -181,7 +183,10 @@
   }
 
   input {
-    background-color: #e8b02dee;
+    text-align: center;
+    width: 50px;
+    height: min-content;
+    margin: 0 4px;
   }
 
   input::placeholder {
@@ -396,8 +401,8 @@
       }
 
       .products-info-price {
-        margin-left: 0;
         width: 100%;
+        padding: 0px 15px;
       }
     }
   }
@@ -440,9 +445,6 @@
   }
 
   .button-product {
-    input {
-      background-color: #000;
-    }
     padding-left: 0;
   }
 
