@@ -16,7 +16,7 @@ export default function ItemAdminProducts() {
       setData(response.data);
     });
   }, [page]);
-
+  console.log(data)
   const { onFormSubmit } = useContext(EditContext);
 
   function modalToggleEdit() {

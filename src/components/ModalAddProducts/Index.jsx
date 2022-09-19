@@ -7,12 +7,15 @@ import Form from "../../components/Form/Form";
 import Loading from "../../components/SpinerLoader";
 import axios from "axios";
 import { usePost } from "../../hooks/useFetch";
+import ModalOffer from "../ModalOffer";
 export default function ModalAddProduct() {
   const [imagesUrl, setImagesUrl] = useState(null);
   const [valor, setValor] = useState({
     name: "",
-    description: "",
+    description: '',
     value: 0,
+    offer: false,
+    pricepromo: 0,
     brand: "",
     qt: 1,
     url_img: "",
@@ -51,7 +54,7 @@ export default function ModalAddProduct() {
 
         setProgress(true);
       },
-      (error) => {}
+      (error) => { }
     );
     uploadTask.then((res) => {
       getDownloadURL(storageRef)
@@ -77,6 +80,8 @@ export default function ModalAddProduct() {
     modalAdd.classList.toggle("open");
     setValor({
       name: "",
+      offer: false,
+      pricepromo: 0,
       description: "",
       value: "",
       brand: "",
@@ -84,6 +89,17 @@ export default function ModalAddProduct() {
       url_img: "",
     });
     setImages("");
+  }
+
+  function setCheckbox(e) {
+    setValor({ ...valor, offer: e })
+    let offers = document.getElementById('offer')
+    if(valor.offer == true){
+      console.log(valor.offer)
+      offers.style.display = 'none'
+    }else{
+      offers.style.display = 'block'
+    }
   }
 
   return (
@@ -108,6 +124,14 @@ export default function ModalAddProduct() {
               value={valor.value}
               onChange={(e) => setValor({ ...valor, value: e.target.value })}
             />
+            <label>Oferta:</label>
+            <input
+              type="checkbox"
+              id="checkboxValue"
+              value={valor.offer}
+              onChange={e => setCheckbox(e.target.checked)}
+            />
+            <ModalOffer valor={valor} setValor={setValor}/>
             <label>Descrição:</label>
             <textarea
               name="description"
@@ -142,6 +166,9 @@ export default function ModalAddProduct() {
                 })
               }
             />
+
+          </div>
+          <div className="areaBtn">
             <label>Foto Do Produto</label>
             <label className="label-productImage" htmlFor="inputPhoto">
               <img
@@ -157,8 +184,6 @@ export default function ModalAddProduct() {
               name="image"
               onChange={(e) => setImages(e.target.files[0])}
             />
-          </div>
-          <div className="areaBtn">
             <button type="submit" className="btn btnCadastrarProduto">
               Cadastrar Produto
             </button>

@@ -60,7 +60,14 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const setLoggedUserState = (user, token) => {
-    saveUserInStorage(user, token);
+    const userData = {
+      id: user.id,
+      name: user.name,
+      img_url: user.img_url,
+      productCart: user.productCart,
+      token: token
+    }
+    saveUserInStorage(userData, token);
     setUser(user);
     setToken(token);
     setAuthenticated(true);

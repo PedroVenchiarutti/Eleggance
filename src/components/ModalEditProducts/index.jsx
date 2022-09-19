@@ -67,6 +67,14 @@ export default function ModalEditProduct() {
     modalEdit.classList.toggle("open");
   }
 
+  const min = 1
+  const max = 100 
+  function setOffer(pricepromo){
+    // setValor({ ...valor, pricepromo: pricepromo})
+    const value = Math.max(min, Math.min(max, Number(pricepromo)));
+    setValor({ ...valor, pricepromo: value})
+  }
+
   return (
     <div className="modalEditProducts" id="modalEditProducts">
       <div className="header-modal">
@@ -89,6 +97,19 @@ export default function ModalEditProduct() {
               value={editing.value}
               onChange={(ev) => updateState("value", ev.target.value)}
             />
+            <label>Oferta:</label>
+            <input
+              type="checkbox"
+              value={editing.offer}
+              onChange={(e) => updateState("offer", e.target.value )}
+            />
+            <label>Valor da oferta em %</label>
+            <input
+              type="number"
+              value={editing.pricepromo}
+              // onChange={(e) => setValor({ ...valor, pricepromo: e.target.value })}
+              onChange={e => setOffer(e.target.value)}
+            />
             <label>Descrição:</label>
             <input
               maxLength={255}
@@ -96,7 +117,7 @@ export default function ModalEditProduct() {
               value={editing.description}
               onChange={(ev) => updateState("description", ev.target.value)}
             />
-            <label>Categoria</label>
+            <label>Marca</label>
             <input
               maxLength={45}
               type="text"
