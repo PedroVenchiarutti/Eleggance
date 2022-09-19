@@ -29,7 +29,7 @@ const AboutUs = (props) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       },
       (error) => {
-        console.log(error);
+        alert("Erro ao fazer upload da imagem");
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {

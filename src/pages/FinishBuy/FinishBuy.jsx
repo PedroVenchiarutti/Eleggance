@@ -19,9 +19,8 @@ export default function FinishBuy() {
   const [couponDiscount, setCouponDiscount] = useState(0);
 
   // Novo carrinho
-  const userCart = JSON.parse(localStorage.getItem('user'))
-  const products = userCart.productCart
-  console.log(products)
+  const userCart = JSON.parse(localStorage.getItem("user"));
+  const products = userCart.productCart;
 
   const sum = (accumulated, current) => (+accumulated ?? 0) + (+current ?? 0);
   // cart
@@ -40,8 +39,8 @@ export default function FinishBuy() {
           paymentMethod === "PIX"
             ? subTotalPrice * 0.1
             : paymentMethod === "BOLETO"
-              ? subTotalPrice * 0.08
-              : subTotalPrice * 0.05,
+            ? subTotalPrice * 0.08
+            : subTotalPrice * 0.05,
       }),
       ...(couponDiscount && {
         byCoupon: couponDiscount,
@@ -55,11 +54,11 @@ export default function FinishBuy() {
     Api.get(
       `https://api-elegancce.herokuapp.com/api/public/discount/${couponCode}`
     )
-      .then((resp) => setCouponDiscount(resp.data[0].discount), console.log(couponDiscount, 'cupom valor'))
+      .then((resp) => setCouponDiscount(resp.data[0].discount))
       .catch(setCouponDiscount(0));
   };
 
-  const [addressId, setAddressId] = useState('');
+  const [addressId, setAddressId] = useState("");
   const onAddressChange = (event) => setAddressId(event.target.value);
 
   return (
@@ -75,7 +74,10 @@ export default function FinishBuy() {
       <main>
         <div className="col">
           <AsideFinishBuy title="1 - ENDEREÇO">
-            <AddressForm addressId={addressId} onAddressChange={onAddressChange} />
+            <AddressForm
+              addressId={addressId}
+              onAddressChange={onAddressChange}
+            />
           </AsideFinishBuy>
           <AsideFinishBuy title="2 - FRETE">
             <li>
@@ -103,7 +105,9 @@ export default function FinishBuy() {
               <Table infos={infos} />
             </div>
             <Link to="#">
-              <button onClick={() => finishBuy(addressId)}>Finalizar Compra</button>
+              <button onClick={() => finishBuy(addressId)}>
+                Finalizar Compra
+              </button>
             </Link>
           </AsideFinishBuy>
         </div>

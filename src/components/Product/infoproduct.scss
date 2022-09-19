@@ -1,5 +1,6 @@
 .container-info-product {
-  width: 60%;
+  width: 100%;
+  max-width: 1200px;
   height: 100%;
   margin: 0 auto 50px auto;
   border: 1px solid #3333335e;
@@ -19,6 +20,9 @@
 
 @media (max-width: 1020px) {
   .container-info-product {
-    width: 80%;
+    width: 100%;
+    ul {
+      padding: 20px;
+    }
   }
 }

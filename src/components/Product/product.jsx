@@ -133,13 +133,16 @@ export default ({ id }) => {
               </div>
               <div className="price-product">{renderInfos()}</div>
               <div className="button-product">
-                Quantidade:
+                Quantidade
                 <input
-                  className="amount-product"
-                  type="number"
                   value={quantity}
-                  onChange={(ev) => setQuantity(+ev.target.value)}
-                ></input>
+                  onChange={(event) => setQuantity(event.target.value)}
+                  type="number"
+                  min="1"
+                  max={data.qt}
+                  
+                />
+                Disponível: {data.qt}
               </div>
               <div className="frete-product">
                 <div className="frete-itens">

@@ -13,7 +13,6 @@ export default function useStorageFb(storageRef, file, callbackSuccess) {
         callbackSuccess(url);
       })
       .catch((error) => {
-        console.log(error);
         return <div>Error...</div>;
       });
   });

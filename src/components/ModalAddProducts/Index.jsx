@@ -38,7 +38,6 @@ export default function ModalAddProduct() {
     document.querySelector(".btnCadastrarProduto").disabled = true;
     e.preventDefault();
     const file = e.target[5]?.files[0];
-    console.log(file);
 
     if (!file) return;
     const storageRef = ref(storage, `image/produtos/${file.name}`);
@@ -47,7 +46,6 @@ export default function ModalAddProduct() {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        console.log("snapshot", snapshot);
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
@@ -59,7 +57,6 @@ export default function ModalAddProduct() {
       getDownloadURL(storageRef)
         .then((url) => {
           let urlImage = url;
-          console.log(urlImage);
           if (urlImage === undefined) {
             alert("Erro ao carregar imagem");
             return;
@@ -70,7 +67,6 @@ export default function ModalAddProduct() {
           location.reload();
         })
         .catch((error) => {
-          console.log(error);
           return <div>Error...</div>;
         });
     });
