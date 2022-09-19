@@ -159,6 +159,10 @@
     font-weight: 500;
   }
 
+  input {
+    background-color: #e8b02dee;
+  }
+
   input::placeholder {
     text-align: center;
     justify-content: center;
@@ -415,6 +419,9 @@
   }
 
   .button-product {
+    input {
+      background-color: #000;
+    }
     padding-left: 0;
   }
 
