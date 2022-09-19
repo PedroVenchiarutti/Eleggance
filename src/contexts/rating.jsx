@@ -6,6 +6,11 @@ import { useDelete, useFetch, usePost, usePut } from "../hooks/useFetch";
 
 import { AuthContext } from "./auth";
 
+const initialState = {
+  data: [],
+  loading: false
+}
+
 const BASE_URL = "api/protected/client/reviews";
 const headers = { Authorization: localStorage.getItem("token") };
 
@@ -13,11 +18,11 @@ export const RatingContext = createContext();
 export const RatingProvider = ({ children }) => {
   const { id } = useParams();
   const { authenticated } = useContext(AuthContext);
-
+  
   const userFromStorage = localStorage.getItem("user");
   const userId = userFromStorage ? JSON.parse(userFromStorage).id : "";
-
-  const { data, loading } = useFetch(`${BASE_URL}/${userId}`);
+  
+  const { data, loading } = userId ? useFetch(`${BASE_URL}/${userId}`) : initialState;  
 
   const [selectedRating, setSelectedRating] = useState({
     user_id: userId,
