@@ -25,16 +25,18 @@ export const FavoritesProvider = ({ children }) => {
     }, [id, authenticated])
 
     const saveFavorite = productId => {
-        const favorite = {
-            user_id: userId,
-            product_id: productId
-        }
+        if (authenticated) {
+            const favorite = {
+                user_id: userId,
+                product_id: productId
+            }
 
-        const previousFavorite = data.find(item => item.product_id == productId);
-        if (previousFavorite) deleteFavorite(previousFavorite.id)
-        else usePost(BASE_URL, favorite, () => {
-            alert('Produto favoritado. Agradecemos o feedback');
-        }, () => alert("Ocorreu um erro"));
+            const previousFavorite = data.find(item => item.product_id == productId);
+            if (previousFavorite) deleteFavorite(previousFavorite.id)
+            else usePost(BASE_URL, favorite, () => {
+                alert('Produto favoritado. Agradecemos o feedback');
+            }, () => alert("Ocorreu um erro"));
+        } else alert("Você precisa estar autenticado para salvar esse produto como favorito");
     }
 
     const deleteFavorite = favoriteId => new Promise((resolve, reject) => {

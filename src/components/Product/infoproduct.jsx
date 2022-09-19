@@ -2,19 +2,19 @@ import React from "react";
 import "./infoproduct.scss";
 
 export default (props) => {
-  console.log(props.data[0].qt);
+  console.log(props.data.qt);
 
   return (
     <div className="container-info-product">
       <ul>
         <li>
-          <h3>{props.data[0].name}</h3>
+          <h3>{props.data.name}</h3>
         </li>
         <li>
           <h4> Informações dos Produtos </h4>
         </li>
         <li>
-          <p>{props.data[0].description}</p>
+          <p>{props.data.description}</p>
         </li>
         <li>
           <h4>Modo de usar</h4>

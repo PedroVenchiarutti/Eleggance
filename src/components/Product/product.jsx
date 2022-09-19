@@ -44,25 +44,19 @@ export default ({ id }) => {
       setAlertNotification(true);
     }
   };
-
-  if (data.length) {
+  
+  if (data) {
     const infos = {
-      id: data[0].id,
-      name: data[0].name,
-      value: +data[0].value,
-      image: data[0].url_img,
-      promo: data[0].offer,
-      pricepromo: data[0].pricepromo,
+      id: data.id,
+      name: data.name,
+      value: +data.value,
+      image: data.url_img,
+      promo: data.offer,
+      pricepromo: data.pricepromo,
       qt: +quantity,
     };
 
-    function inStock(data) {
-      if (data > 0) {
-        return "Em estoque";
-      } else {
-        return "Indisponível";
-      }
-    }
+    const inStock = () => data.qt > 0 ? "Em estoque" : "Indisponível";
 
     const renderInfos = () => {
       if (infos.promo) {
@@ -110,12 +104,12 @@ export default ({ id }) => {
             <div className="photo-info-products">
               <div className="name-product">
                 <div className="info-p-products">
-                  <p>ref: {data[0].id}</p>
+                  <p>ref: {data.id}</p>
                   <p>
-                    Estoque: <span>{inStock(data[0]?.qt)}</span>
+                    Estoque: <span>{inStock()}</span>
                   </p>
                   <p>
-                    Marca: <span>{data[0]?.brand}</span>
+                    Marca: <span>{data?.brand}</span>
                   </p>
                 </div>
               </div>
@@ -132,7 +126,7 @@ export default ({ id }) => {
             </div>
             <div className="products-info-price">
               <div className="name-product">
-                <h1>{data[0].name}</h1>
+                <h1>{data.name}</h1>
                 <Heart productId={infos.id} />
               </div>
               <div className="price-product">{renderInfos()}</div>
