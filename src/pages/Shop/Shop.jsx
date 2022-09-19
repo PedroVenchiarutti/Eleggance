@@ -24,8 +24,8 @@ export default function Shop({ products }) {
   const [selectValue, setSelectValue] = useState("");
   const updateSelectState = (event) => setSelectValue(event.target.value);
 
-  const [minPrice, setMinPrice] = useState("1");
-  const [maxPrice, setMaxPrice] = useState("3000");
+  const [minPrice, setMinPrice] = useState(1);
+  const [maxPrice, setMaxPrice] = useState(3000);
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
