@@ -15,10 +15,12 @@ export default function Pagination() {
   }, [page]);
 
   function handleNextPage() {
+    document.body.scrollTop = 0;
     setPage(page + 1);
   }
 
   function handlePreviousPage() {
+    document.body.scrollTop = 0;
     if (page > 1) {
       setPage(page - 1);
     }

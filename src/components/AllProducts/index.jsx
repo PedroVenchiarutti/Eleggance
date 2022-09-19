@@ -18,7 +18,11 @@ export default function AllProducts({ products, orderBy }) {
 
   useEffect(() => {
     axios
-      .get(`https://api-elegancce.herokuapp.com/api/public/products/`)
+      .get(
+        `https://api-elegancce.herokuapp.com/api/public/filter/?to=${parseInt(
+          maxPrice
+        )}&from=${parseInt(minPrice)}`
+      )
       .then((response) => {
         if (brandsSelected.length > 0) {
           let resposta = response.data.filter((product) => {
@@ -28,12 +32,11 @@ export default function AllProducts({ products, orderBy }) {
           });
           setData(resposta);
         } else {
-          response.data.forEach((product) => {
-            if (product.value >= minPrice && product.value <= maxPrice) {
-              setData(response.data.slice(page * 10 - 10, page * 10));
-            }
-          });
+
+          setData(response.data.slice(page * 10 - 10, page * 10));
         }
+
+        console.log(parseInt(minPrice), parseInt(maxPrice));
       });
   }, [page, brandsSelected, minPrice, maxPrice]);
 
