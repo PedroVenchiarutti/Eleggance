@@ -5,6 +5,11 @@ import { useDelete, useFetch, usePost } from "../hooks/useFetch";
 import Api from "../api/api";
 import { AuthContext } from "./auth";
 
+const initialState = {
+    data: [],
+    loading: false
+}
+
 const BASE_URL = "api/protected/client/favorites";
 const headers = { Authorization: localStorage.getItem("token") };
 
@@ -15,7 +20,8 @@ export const FavoritesProvider = ({ children }) => {
 
     const userFromStorage = localStorage.getItem("user");
     const userId = userFromStorage ? JSON.parse(userFromStorage).id : "";
-    let { data, loading } = useFetch(`${BASE_URL}/${userId}`);
+
+    let { data, loading } = userId ? useFetch(`${BASE_URL}/${userId}`) : initialState;
 
     const [selectedFavorite, setSelectedFavorite] = useState({ user_id: userId });
     useEffect(() => {
